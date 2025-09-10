@@ -2,95 +2,157 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* DentiPay Design System - Sophisticated dental finance platform
+All colors MUST be HSL. Dental pastels with intelligence-first positioning.
 */
 
 @layer base {
   :root {
+    /* Core Colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 0 0% 7%;
+    
+    /* Card System */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 0 0% 7%;
+    --card-hover: 210 40% 98%;
+    
+    /* Interactive Elements */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
+    --popover-foreground: 0 0% 7%;
+    
+    /* Brand Colors */
+    --primary: 0 0% 7%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Dental Pastels */
+    --dental-blue: 208 100% 85%;
+    --dental-blue-muted: 208 45% 92%;
+    --dental-lavender: 260 60% 88%;
+    --dental-lavender-muted: 260 30% 95%;
+    --dental-peach: 15 80% 88%;
+    --dental-peach-muted: 15 40% 95%;
+    --dental-green: 140 50% 85%;
+    --dental-green-muted: 140 25% 93%;
+    
+    /* Intelligence Theme */
+    --intelligence: 215 84% 55%;
+    --intelligence-foreground: 0 0% 100%;
+    --intelligence-glow: 215 84% 75%;
+    
+    /* Secondary System */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 0 0% 7%;
+    
+    /* Muted Variations */
+    --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    
+    /* Accent System */
+    --accent: 208 100% 85%;
+    --accent-foreground: 0 0% 7%;
+    
+    /* Status Colors */
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
+    --destructive-foreground: 0 0% 100%;
+    --success: 140 50% 55%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 90% 60%;
+    --warning-foreground: 0 0% 7%;
+    
+    /* Borders & Inputs */
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 215 84% 55%;
 
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Spacing & Borders */
+    --radius: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--intelligence)), hsl(var(--dental-blue)));
+    --gradient-intelligence: linear-gradient(180deg, hsl(var(--intelligence)), hsl(var(--intelligence-glow)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+    --gradient-dental: linear-gradient(90deg, hsl(var(--dental-blue)), hsl(var(--dental-lavender)));
+    
+    /* Shadows & Effects */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--intelligence) / 0.15);
+    --shadow-glow: 0 0 40px hsl(var(--intelligence-glow) / 0.25);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--foreground) / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-fast: all 0.15s ease-out;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
+    /* Core Colors - Dark Mode */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+    
+    /* Card System - Dark */
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+    --card-hover: 0 0% 12%;
+    
+    /* Interactive - Dark */
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+    
+    /* Brand - Dark */
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 7%;
+    
+    /* Dental Pastels - Dark Mode */
+    --dental-blue: 208 85% 65%;
+    --dental-blue-muted: 208 35% 25%;
+    --dental-lavender: 260 55% 70%;
+    --dental-lavender-muted: 260 25% 20%;
+    --dental-peach: 15 70% 70%;
+    --dental-peach-muted: 15 30% 22%;
+    --dental-green: 140 45% 65%;
+    --dental-green-muted: 140 20% 20%;
+    
+    /* Intelligence - Dark */
+    --intelligence: 215 84% 65%;
+    --intelligence-foreground: 0 0% 7%;
+    --intelligence-glow: 215 84% 80%;
+    
+    /* Secondary - Dark */
     --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
+    --secondary-foreground: 0 0% 98%;
+    
+    /* Muted - Dark */
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
+    
+    /* Accent - Dark */
+    --accent: 208 85% 65%;
+    --accent-foreground: 0 0% 7%;
+    
+    /* Status - Dark */
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 140 45% 60%;
+    --success-foreground: 0 0% 98%;
+    --warning: 45 85% 65%;
+    --warning-foreground: 0 0% 7%;
+    
+    /* Borders - Dark */
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --ring: 215 84% 65%;
+    
+    /* Gradients - Dark */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--intelligence)), hsl(var(--dental-blue)));
+    --gradient-intelligence: linear-gradient(180deg, hsl(var(--intelligence)), hsl(var(--intelligence-glow)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+    
+    /* Shadows - Dark */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--intelligence) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--intelligence-glow) / 0.4);
   }
 }
 
@@ -100,6 +162,83 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+  }
+  
+  /* Typography Enhancements */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  
+  /* Smooth Scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Utility Classes */
+@layer utilities {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-intelligence {
+    background: var(--gradient-intelligence);
+  }
+  
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+  
+  .gradient-dental {
+    background: var(--gradient-dental);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-spring {
+    transition: var(--transition-spring);
+  }
+  
+  .transition-fast {
+    transition: var(--transition-fast);
+  }
+  
+  /* Parallax Base */
+  .parallax-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 1px;
+  }
+  
+  .parallax-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .parallax-back {
+    transform: translateZ(-1px) scale(2);
+  }
+  
+  .parallax-base {
+    transform: translateZ(0);
   }
 }

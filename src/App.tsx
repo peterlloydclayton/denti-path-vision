@@ -3,7 +3,13 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { FloatingNav } from "@/components/layout/FloatingNav";
+import { GDPRBanner } from "@/components/layout/GDPRBanner";
 import Index from "./pages/Index";
+import Providers from "./pages/Providers";
+import Patients from "./pages/Patients";
+import IntelligentFinancing from "./pages/IntelligentFinancing";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -14,11 +20,19 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="relative min-h-screen">
+          <FloatingNav />
+          <GDPRBanner />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/providers" element={<Providers />} />
+            <Route path="/patients" element={<Patients />} />
+            <Route path="/intelligent-financing" element={<IntelligentFinancing />} />
+            <Route path="/about" element={<About />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
