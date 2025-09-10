@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, Users, Search, Brain, Building, MessageSquare } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const navItems = [
@@ -15,7 +15,24 @@ const navItems = [
 export const FloatingNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  const [currentPath, setCurrentPath] = useState('/');
+
+  // Use window.location as fallback and update when navigation occurs
+  useEffect(() => {
+    const updatePath = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    
+    // Set initial path
+    updatePath();
+    
+    // Listen for navigation changes
+    window.addEventListener('popstate', updatePath);
+    
+    return () => {
+      window.removeEventListener('popstate', updatePath);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,13 +127,16 @@ export const FloatingNav = () => {
               <div className="space-y-2">
                 {navItems.map((item) => {
                   const Icon = item.icon;
-                  const isActive = location.pathname === item.href;
+                  const isActive = currentPath === item.href;
                   
                   return (
                     <motion.div key={item.href} variants={itemVariants}>
                       <Link
                         to={item.href}
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => {
+                          setIsOpen(false);
+                          setCurrentPath(item.href);
+                        }}
                         className={`
                           flex items-center gap-4 p-4 rounded-xl
                           transition-smooth hover:bg-card-hover
