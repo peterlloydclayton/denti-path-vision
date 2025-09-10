@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, Users, Search, Brain, Building, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { DesktopNav } from './DesktopNav';
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
@@ -13,33 +15,39 @@ const navItems = [
 ];
 
 export const FloatingNav = () => {
+  const isMobile = useIsMobile();
+
+  // On desktop/tablet, show the floating desktop nav
+  if (!isMobile) {
+    return <DesktopNav />;
+  }
+
+  // On mobile, show the burger menu
+  return <MobileNav />;
+};
+
+const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
 
-  // Use window.location as fallback and update when navigation occurs
   useEffect(() => {
     const updatePath = () => {
       setCurrentPath(window.location.pathname);
     };
     
-    // Set initial path
-    updatePath();
-    
-    // Listen for navigation changes
-    window.addEventListener('popstate', updatePath);
-    
-    return () => {
-      window.removeEventListener('popstate', updatePath);
-    };
-  }, []);
-
-  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
+    
+    updatePath();
+    window.addEventListener('popstate', updatePath);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('popstate', updatePath);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const menuVariants = {
@@ -72,7 +80,7 @@ export const FloatingNav = () => {
 
   return (
     <>
-      {/* Floating Menu Button */}
+      {/* Mobile Menu Button */}
       <motion.div
         className={`fixed top-6 right-6 z-50 transition-smooth ${
           scrolled ? 'shadow-elegant' : 'shadow-soft'
@@ -88,8 +96,8 @@ export const FloatingNav = () => {
           className={`
             relative rounded-full w-14 h-14 p-0 
             bg-primary text-primary-foreground
-            hover:bg-intelligence hover:shadow-glow
-            transition-smooth border-2 border-white/20
+            hover:bg-primary/90 hover:shadow-peach
+            transition-smooth border-2 border-dental-blue/20
             ${scrolled ? 'backdrop-blur-md bg-primary/90' : ''}
           `}
         >
@@ -102,11 +110,10 @@ export const FloatingNav = () => {
         </Button>
       </motion.div>
 
-      {/* Floating Menu Panel */}
+      {/* Mobile Menu Panel */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
               initial={{ opacity: 0 }}
@@ -115,7 +122,6 @@ export const FloatingNav = () => {
               onClick={() => setIsOpen(false)}
             />
 
-            {/* Menu Panel */}
             <motion.div
               className="fixed top-24 right-6 z-50 bg-card border rounded-2xl shadow-elegant p-6 min-w-[280px]"
               variants={menuVariants}
@@ -141,8 +147,8 @@ export const FloatingNav = () => {
                           flex items-center gap-4 p-4 rounded-xl
                           transition-smooth hover:bg-card-hover
                           ${isActive 
-                            ? 'bg-intelligence text-intelligence-foreground shadow-soft' 
-                            : 'text-card-foreground hover:text-intelligence'
+                            ? 'bg-primary text-primary-foreground shadow-soft' 
+                            : 'text-card-foreground hover:text-primary'
                           }
                         `}
                       >
@@ -154,7 +160,6 @@ export const FloatingNav = () => {
                 })}
               </div>
 
-              {/* Chat Button */}
               <motion.div variants={itemVariants} className="mt-6 pt-4 border-t">
                 <Button
                   className="w-full bg-dental-blue text-primary hover:bg-dental-blue/80 shadow-soft"

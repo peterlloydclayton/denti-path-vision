@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ParallaxSection } from '@/components/ui/parallax-section';
 import { AnimatedText } from '@/components/ui/animated-text';
+import teamImage from '@/assets/dental-team.jpg';
 
 const Providers = () => {
   const benefits = [
@@ -45,20 +46,27 @@ const Providers = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-hero text-white">
-        <div className="container mx-auto px-6">
+      <section className="py-24 bg-background">
+        {/* Hero Image Background */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-5"
+          style={{ backgroundImage: `url(${teamImage})` }}
+        />
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <AnimatedText>
               <h1 className="text-hero-mobile md:text-hero font-bold mb-6">
                 Transform Your Practice with{' '}
-                <span className="bg-gradient-to-r from-dental-peach to-dental-lavender bg-clip-text text-transparent">
+                <span className="relative">
                   Intelligent Financing
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-dental-lavender rounded-full"></div>
                 </span>
               </h1>
             </AnimatedText>
             
             <AnimatedText delay={0.2}>
-              <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
+              <p className="text-xl md:text-2xl mb-8 text-muted-foreground leading-relaxed">
                 Join thousands of dental practices using DentiPay's AI-powered 
                 financing platform to increase treatment acceptance and grow revenue
               </p>
@@ -66,13 +74,13 @@ const Providers = () => {
 
             <AnimatedText delay={0.4}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 shadow-elegant">
                   Start Free Trial <ArrowRight className="ml-2" size={20} />
                 </Button>
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-white text-white hover:bg-white hover:text-primary text-lg px-8"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8"
                 >
                   Schedule Demo
                 </Button>
@@ -102,16 +110,16 @@ const Providers = () => {
                 <AnimatedText key={index} delay={index * 0.1}>
                   <Card className="group hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
                     <CardContent className="p-8">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="w-16 h-16 rounded-2xl bg-intelligence/10 flex items-center justify-center group-hover:bg-intelligence/20 transition-smooth">
-                          <Icon size={32} className="text-intelligence" />
-                        </div>
-                        <div className="text-right">
-                          <div className="text-2xl font-bold text-intelligence">
-                            {benefit.metric}
-                          </div>
-                        </div>
-                      </div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-dental-blue/10 flex items-center justify-center group-hover:bg-dental-blue/20 transition-smooth">
+                  <Icon size={32} className="text-dental-blue" />
+                </div>
+                <div className="text-right">
+                  <div className="text-2xl font-bold text-dental-blue">
+                    {benefit.metric}
+                  </div>
+                </div>
+              </div>
                       <h3 className="text-2xl font-bold mb-4">{benefit.title}</h3>
                       <p className="text-muted-foreground leading-relaxed">
                         {benefit.description}
@@ -126,7 +134,7 @@ const Providers = () => {
       </ParallaxSection>
 
       {/* Features Section */}
-      <section className="py-24 bg-gradient-subtle">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div>
@@ -144,7 +152,7 @@ const Providers = () => {
                 {features.map((feature, index) => (
                   <AnimatedText key={index} delay={index * 0.1}>
                     <div className="flex items-center gap-3">
-                      <CheckCircle size={20} className="text-intelligence flex-shrink-0" />
+                      <CheckCircle size={20} className="text-dental-blue flex-shrink-0" />
                       <span className="text-lg">{feature}</span>
                     </div>
                   </AnimatedText>
@@ -161,11 +169,11 @@ const Providers = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="bg-gradient-subtle p-6 rounded-lg">
+                  <div className="bg-secondary/50 p-6 rounded-lg">
                     <div className="space-y-4">
                       <div className="flex justify-between items-center">
                         <span className="text-muted-foreground">Today's Approvals</span>
-                        <span className="text-2xl font-bold text-intelligence">47</span>
+                        <span className="text-2xl font-bold text-dental-blue">47</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-muted-foreground">Revenue Generated</span>
@@ -173,7 +181,7 @@ const Providers = () => {
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-muted-foreground">Acceptance Rate</span>
-                        <span className="text-2xl font-bold text-dental-blue">94%</span>
+                        <span className="text-2xl font-bold text-dental-peach">94%</span>
                       </div>
                     </div>
                   </div>
@@ -185,7 +193,7 @@ const Providers = () => {
       </section>
 
       {/* CTA Section */}
-      <ParallaxSection className="py-24 bg-intelligence text-intelligence-foreground" offset={-20}>
+      <ParallaxSection className="py-24 bg-primary text-primary-foreground" offset={-20}>
         <div className="container mx-auto px-6 text-center">
           <AnimatedText>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -198,7 +206,7 @@ const Providers = () => {
             
             <Button
               size="lg"
-              className="bg-white text-intelligence hover:bg-white/90 text-lg px-8"
+              className="bg-background text-primary hover:bg-background/90 text-lg px-8 shadow-peach"
             >
               Start Your Free Trial <ArrowRight className="ml-2" size={20} />
             </Button>

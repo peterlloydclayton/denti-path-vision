@@ -2,84 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DentiPay Design System - Sophisticated dental finance platform
-All colors MUST be HSL. Dental pastels with intelligence-first positioning.
+/* DentiPay Design System - Sleek Black & White with Pastel Accents
+All colors MUST be HSL. Black primary, white secondary, pastels for accents only.
 */
 
 @layer base {
   :root {
-    /* Core Colors */
+    /* Core Colors - Black & White Primary */
     --background: 0 0% 100%;
     --foreground: 0 0% 7%;
     
     /* Card System */
     --card: 0 0% 100%;
     --card-foreground: 0 0% 7%;
-    --card-hover: 210 40% 98%;
+    --card-hover: 0 0% 98%;
     
     /* Interactive Elements */
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
     
-    /* Brand Colors */
+    /* Brand Colors - Black Primary */
     --primary: 0 0% 7%;
     --primary-foreground: 0 0% 100%;
     
-    /* Dental Pastels */
-    --dental-blue: 208 100% 85%;
-    --dental-blue-muted: 208 45% 92%;
-    --dental-lavender: 260 60% 88%;
-    --dental-lavender-muted: 260 30% 95%;
-    --dental-peach: 15 80% 88%;
-    --dental-peach-muted: 15 40% 95%;
-    --dental-green: 140 50% 85%;
-    --dental-green-muted: 140 25% 93%;
+    /* Dental Pastels - Light Accents Only */
+    --dental-blue: 208 65% 85%;
+    --dental-blue-muted: 208 35% 95%;
+    --dental-lavender: 260 45% 88%;
+    --dental-lavender-muted: 260 25% 96%;
+    --dental-peach: 15 60% 88%;
+    --dental-peach-muted: 15 30% 96%;
+    --dental-green: 140 35% 85%;
+    --dental-green-muted: 140 20% 95%;
     
-    /* Intelligence Theme */
-    --intelligence: 215 84% 55%;
+    /* Intelligence Theme - Black Based */
+    --intelligence: 0 0% 7%;
     --intelligence-foreground: 0 0% 100%;
-    --intelligence-glow: 215 84% 75%;
+    --intelligence-accent: 208 65% 85%;
     
     /* Secondary System */
-    --secondary: 210 40% 96%;
+    --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 7%;
     
     /* Muted Variations */
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
     
     /* Accent System */
-    --accent: 208 100% 85%;
+    --accent: 0 0% 96%;
     --accent-foreground: 0 0% 7%;
     
     /* Status Colors */
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --success: 140 50% 55%;
+    --success: 140 35% 55%;
     --success-foreground: 0 0% 100%;
-    --warning: 45 90% 60%;
+    --warning: 45 75% 60%;
     --warning-foreground: 0 0% 7%;
     
     /* Borders & Inputs */
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 215 84% 55%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 7%;
 
     /* Spacing & Borders */
     --radius: 0.75rem;
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
     
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--intelligence)), hsl(var(--dental-blue)));
-    --gradient-intelligence: linear-gradient(180deg, hsl(var(--intelligence)), hsl(var(--intelligence-glow)));
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
-    --gradient-dental: linear-gradient(90deg, hsl(var(--dental-blue)), hsl(var(--dental-lavender)));
-    
-    /* Shadows & Effects */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--intelligence) / 0.15);
-    --shadow-glow: 0 0 40px hsl(var(--intelligence-glow) / 0.25);
-    --shadow-soft: 0 4px 20px -4px hsl(var(--foreground) / 0.1);
+    /* Shadows - Pastel Accents */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--dental-blue) / 0.15);
+    --shadow-peach: 0 8px 25px -8px hsl(var(--dental-peach) / 0.2);
+    --shadow-lavender: 0 8px 25px -8px hsl(var(--dental-lavender) / 0.2);
+    --shadow-green: 0 8px 25px -8px hsl(var(--dental-green) / 0.2);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--foreground) / 0.08);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -105,54 +101,51 @@ All colors MUST be HSL. Dental pastels with intelligence-first positioning.
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 7%;
     
-    /* Dental Pastels - Dark Mode */
-    --dental-blue: 208 85% 65%;
-    --dental-blue-muted: 208 35% 25%;
-    --dental-lavender: 260 55% 70%;
-    --dental-lavender-muted: 260 25% 20%;
-    --dental-peach: 15 70% 70%;
-    --dental-peach-muted: 15 30% 22%;
-    --dental-green: 140 45% 65%;
-    --dental-green-muted: 140 20% 20%;
+    /* Dental Pastels - Dark Mode Adjusted */
+    --dental-blue: 208 55% 70%;
+    --dental-blue-muted: 208 25% 20%;
+    --dental-lavender: 260 40% 75%;
+    --dental-lavender-muted: 260 20% 18%;
+    --dental-peach: 15 55% 75%;
+    --dental-peach-muted: 15 25% 20%;
+    --dental-green: 140 30% 70%;
+    --dental-green-muted: 140 15% 18%;
     
     /* Intelligence - Dark */
-    --intelligence: 215 84% 65%;
+    --intelligence: 0 0% 98%;
     --intelligence-foreground: 0 0% 7%;
-    --intelligence-glow: 215 84% 80%;
+    --intelligence-accent: 208 55% 70%;
     
     /* Secondary - Dark */
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
     
     /* Muted - Dark */
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
     
     /* Accent - Dark */
-    --accent: 208 85% 65%;
-    --accent-foreground: 0 0% 7%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 98%;
     
     /* Status - Dark */
     --destructive: 0 62.8% 50.6%;
     --destructive-foreground: 0 0% 98%;
-    --success: 140 45% 60%;
+    --success: 140 30% 65%;
     --success-foreground: 0 0% 98%;
-    --warning: 45 85% 65%;
+    --warning: 45 70% 65%;
     --warning-foreground: 0 0% 7%;
     
     /* Borders - Dark */
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 215 84% 65%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 98%;
     
-    /* Gradients - Dark */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--intelligence)), hsl(var(--dental-blue)));
-    --gradient-intelligence: linear-gradient(180deg, hsl(var(--intelligence)), hsl(var(--intelligence-glow)));
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
-    
-    /* Shadows - Dark */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--intelligence) / 0.3);
-    --shadow-glow: 0 0 40px hsl(var(--intelligence-glow) / 0.4);
+    /* Shadows - Dark Mode Pastels */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--dental-blue) / 0.25);
+    --shadow-peach: 0 8px 25px -8px hsl(var(--dental-peach) / 0.3);
+    --shadow-lavender: 0 8px 25px -8px hsl(var(--dental-lavender) / 0.3);
+    --shadow-green: 0 8px 25px -8px hsl(var(--dental-green) / 0.3);
   }
 }
 
@@ -179,28 +172,20 @@ All colors MUST be HSL. Dental pastels with intelligence-first positioning.
 
 /* Custom Utility Classes */
 @layer utilities {
-  .gradient-hero {
-    background: var(--gradient-hero);
-  }
-  
-  .gradient-intelligence {
-    background: var(--gradient-intelligence);
-  }
-  
-  .gradient-subtle {
-    background: var(--gradient-subtle);
-  }
-  
-  .gradient-dental {
-    background: var(--gradient-dental);
-  }
-  
   .shadow-elegant {
     box-shadow: var(--shadow-elegant);
   }
   
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
+  .shadow-peach {
+    box-shadow: var(--shadow-peach);
+  }
+  
+  .shadow-lavender {
+    box-shadow: var(--shadow-lavender);
+  }
+  
+  .shadow-green {
+    box-shadow: var(--shadow-green);
   }
   
   .shadow-soft {
@@ -217,6 +202,30 @@ All colors MUST be HSL. Dental pastels with intelligence-first positioning.
   
   .transition-fast {
     transition: var(--transition-fast);
+  }
+  
+  /* Video Placeholder Styles */
+  .video-placeholder {
+    @apply bg-muted rounded-2xl aspect-video flex items-center justify-center;
+    @apply border-2 border-dashed border-border;
+  }
+  
+  .image-placeholder {
+    @apply bg-muted rounded-xl aspect-square flex items-center justify-center;
+    @apply border-2 border-dashed border-border;
+  }
+  
+  /* Dash Accents */
+  .dash-accent-blue::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-dental-blue;
+    border-radius: 2px;
+  }
+  
+  .dash-accent-peach::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-dental-peach;
+    border-radius: 2px;
   }
   
   /* Parallax Base */

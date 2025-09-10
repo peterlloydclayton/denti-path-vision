@@ -1,10 +1,14 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Brain, Zap, Shield, Users, TrendingUp, CheckCircle } from 'lucide-react';
+import { ArrowRight, Brain, Zap, Shield, Users, TrendingUp, CheckCircle, Play, Video } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ParallaxSection } from '@/components/ui/parallax-section';
 import { AnimatedText, SplitText } from '@/components/ui/animated-text';
+import { VideoSection } from '@/components/ui/video-section';
 import { Link } from 'react-router-dom';
+import heroImage from '@/assets/hero-dental-office.jpg';
+import teamImage from '@/assets/dental-team.jpg';
+import patientImage from '@/assets/happy-patient.jpg';
 
 const Index = () => {
   const features = [
@@ -12,25 +16,25 @@ const Index = () => {
       icon: Brain,
       title: 'AI-Driven Intelligence',
       description: 'PATH & SCOPE technology revolutionizes patient financing with predictive approvals',
-      color: 'dental-blue'
+      color: 'blue'
     },
     {
       icon: Zap,
       title: 'Instant Decisions',
       description: 'Real-time approvals that eliminate waiting and maximize treatment acceptance',
-      color: 'dental-lavender'
+      color: 'peach'
     },
     {
       icon: Shield,
       title: 'Secure & Compliant',
       description: 'Enterprise-grade security with full HIPAA and financial compliance',
-      color: 'dental-peach'
+      color: 'lavender'
     },
     {
       icon: Users,
       title: 'Patient-Centric',
       description: 'Seamless experience that puts patients first and providers second to none',
-      color: 'dental-green'
+      color: 'green'
     }
   ];
 
@@ -44,8 +48,13 @@ const Index = () => {
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+      <section className="relative min-h-screen flex items-center justify-center bg-background">
+        {/* Hero Image Background */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{ backgroundImage: `url(${heroImage})` }}
+        />
+        <div className="absolute inset-0 bg-background/80" />
         
         <ParallaxSection className="container mx-auto px-6 text-center relative z-10">
           <motion.div
@@ -55,17 +64,18 @@ const Index = () => {
             className="max-w-5xl mx-auto"
           >
             <AnimatedText delay={0.2}>
-              <h1 className="text-hero-mobile md:text-hero font-bold text-white mb-6">
+              <h1 className="text-hero-mobile md:text-hero font-bold text-primary mb-6">
                 The Future of{' '}
-                <span className="bg-gradient-to-r from-dental-peach to-dental-lavender bg-clip-text text-transparent">
+                <span className="relative">
                   Patient Financing
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-dental-peach rounded-full"></div>
                 </span>
               </h1>
             </AnimatedText>
 
             <AnimatedText delay={0.4}>
-              <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
-                Where CareCredit Ends, <strong>DentiPay Begins</strong> — 
+              <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto">
+                Where CareCredit Ends, <strong className="text-primary">DentiPay Begins</strong> — 
                 Intelligent, Instant, and Integrated
               </p>
             </AnimatedText>
@@ -74,7 +84,7 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <Button
                   size="lg"
-                  className="bg-white text-primary hover:bg-white/90 shadow-elegant text-lg px-8"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant text-lg px-8"
                   asChild
                 >
                   <Link to="/providers">
@@ -85,7 +95,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-primary text-lg px-8"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8"
                   asChild
                 >
                   <Link to="/patients">
@@ -96,19 +106,19 @@ const Index = () => {
             </AnimatedText>
 
             <AnimatedText delay={0.8}>
-              <div className="flex items-center justify-center gap-6 text-white/80">
+              <div className="flex items-center justify-center gap-6 text-muted-foreground">
                 <div className="flex items-center gap-2">
-                  <CheckCircle size={20} />
+                  <CheckCircle size={20} className="text-dental-blue" />
                   <span>No Credit Checks</span>
                 </div>
-                <div className="hidden sm:block w-px h-6 bg-white/20" />
+                <div className="hidden sm:block w-px h-6 bg-border" />
                 <div className="flex items-center gap-2">
-                  <CheckCircle size={20} />
+                  <CheckCircle size={20} className="text-dental-peach" />
                   <span>Instant Approvals</span>
                 </div>
-                <div className="hidden sm:block w-px h-6 bg-white/20" />
+                <div className="hidden sm:block w-px h-6 bg-border" />
                 <div className="flex items-center gap-2">
-                  <CheckCircle size={20} />
+                  <CheckCircle size={20} className="text-dental-lavender" />
                   <span>AI-Powered</span>
                 </div>
               </div>
@@ -148,7 +158,7 @@ const Index = () => {
       </ParallaxSection>
 
       {/* Features Section */}
-      <section className="py-24 bg-gradient-subtle">
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-6">
           <AnimatedText className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -163,12 +173,14 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {features.map((feature, index) => {
               const Icon = feature.icon;
+              const shadowClass = `shadow-${feature.color.replace('dental-', '')}`;
+              
               return (
                 <AnimatedText key={index} delay={index * 0.2}>
-                  <Card className="group hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
+                  <Card className={`group hover:${shadowClass} transition-smooth hover:-translate-y-1 h-full`}>
                     <CardContent className="p-8">
-                      <div className={`w-16 h-16 rounded-2xl bg-${feature.color}/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-smooth`}>
-                        <Icon size={32} className={`text-${feature.color.replace('-', '')}`} />
+                      <div className={`w-16 h-16 rounded-2xl bg-dental-${feature.color.replace('dental-', '')}/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-smooth`}>
+                        <Icon size={32} className={`text-dental-${feature.color.replace('dental-', '')}`} />
                       </div>
                       <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
                       <p className="text-muted-foreground leading-relaxed">
@@ -183,8 +195,65 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Team & Trust Section */}
+      <ParallaxSection className="py-24 bg-background" offset={20}>
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            <AnimatedText from="left">
+              <div 
+                className="relative rounded-2xl overflow-hidden shadow-lavender aspect-[4/3]"
+                style={{ backgroundImage: `url(${teamImage})` }}
+              >
+                <div className="absolute inset-0 bg-primary/20" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="bg-background/90 backdrop-blur-md rounded-xl p-4">
+                    <h4 className="font-bold text-lg mb-2">Expert Team</h4>
+                    <p className="text-muted-foreground">Dental finance professionals with 20+ years experience</p>
+                  </div>
+                </div>
+              </div>
+            </AnimatedText>
+
+            <div>
+              <AnimatedText>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                  Trusted by <span className="text-dental-peach">10,000+</span> Practices
+                </h2>
+                <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+                  Our team of dental finance experts has helped practices 
+                  nationwide increase treatment acceptance and grow their revenue 
+                  through intelligent financing solutions.
+                </p>
+              </AnimatedText>
+
+              <AnimatedText delay={0.3}>
+                <div className="grid grid-cols-2 gap-6 mb-8">
+                  <div className="text-center p-4 rounded-xl bg-dental-blue/10">
+                    <div className="text-3xl font-bold text-dental-blue mb-1">$1.5B+</div>
+                    <div className="text-sm text-muted-foreground">Financing Processed</div>
+                  </div>
+                  <div className="text-center p-4 rounded-xl bg-dental-green/10">
+                    <div className="text-3xl font-bold text-dental-green mb-1">97%</div>
+                    <div className="text-sm text-muted-foreground">Approval Accuracy</div>
+                  </div>
+                </div>
+              </AnimatedText>
+
+              <AnimatedText delay={0.5}>
+                <VideoSection
+                  title="Customer Success Stories"
+                  description="Hear from practice owners who transformed their business with DentiPay"
+                  accent="peach"
+                  aspectRatio="wide"
+                />
+              </AnimatedText>
+            </div>
+          </div>
+        </div>
+      </ParallaxSection>
+
       {/* CTA Section */}
-      <ParallaxSection className="py-24 bg-intelligence text-intelligence-foreground" offset={-30}>
+      <ParallaxSection className="py-24 bg-primary text-primary-foreground" offset={-30}>
         <div className="container mx-auto px-6 text-center">
           <AnimatedText>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -198,7 +267,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-white text-intelligence hover:bg-white/90 text-lg px-8"
+                className="bg-background text-primary hover:bg-background/90 text-lg px-8 shadow-peach"
                 asChild
               >
                 <Link to="/providers">
@@ -209,7 +278,7 @@ const Index = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-intelligence text-lg px-8"
+                className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary text-lg px-8"
                 asChild
               >
                 <Link to="/intelligent-financing">

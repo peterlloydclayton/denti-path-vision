@@ -42,7 +42,7 @@ export default {
         intelligence: {
           DEFAULT: "hsl(var(--intelligence))",
           foreground: "hsl(var(--intelligence-foreground))",
-          glow: "hsl(var(--intelligence-glow))",
+          accent: "hsl(var(--intelligence-accent))",
         },
         
         /* System Colors */
@@ -117,7 +117,9 @@ export default {
       },
       boxShadow: {
         'elegant': 'var(--shadow-elegant)',
-        'glow': 'var(--shadow-glow)',
+        'peach': 'var(--shadow-peach)',
+        'lavender': 'var(--shadow-lavender)',
+        'green': 'var(--shadow-green)',
         'soft': 'var(--shadow-soft)',
       },
       keyframes: {

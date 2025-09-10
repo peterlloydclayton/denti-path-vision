@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { ParallaxSection } from '@/components/ui/parallax-section';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Link } from 'react-router-dom';
+import patientImage from '@/assets/happy-patient.jpg';
 
 const Patients = () => {
   const benefits = [
@@ -61,21 +62,28 @@ const Patients = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-hero text-white">
-        <div className="container mx-auto px-6">
+      <section className="py-24 bg-background">
+        {/* Hero Image Background */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-5"
+          style={{ backgroundImage: `url(${patientImage})` }}
+        />
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <AnimatedText>
               <h1 className="text-hero-mobile md:text-hero font-bold mb-6">
                 The Smile You{' '}
-                <span className="bg-gradient-to-r from-dental-peach to-dental-lavender bg-clip-text text-transparent">
+                <span className="relative">
                   Deserve
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-dental-peach rounded-full"></div>
                 </span>{' '}
                 is Within Reach
               </h1>
             </AnimatedText>
             
             <AnimatedText delay={0.2}>
-              <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
+              <p className="text-xl md:text-2xl mb-8 text-muted-foreground leading-relaxed">
                 Find trusted dental providers and get instant financing approval 
                 for the treatment you need, when you need it
               </p>
@@ -86,11 +94,11 @@ const Patients = () => {
                 <div className="relative">
                   <Input
                     placeholder="Enter your zip code or city..."
-                    className="h-14 pl-12 pr-4 text-lg bg-white text-primary border-0"
+                    className="h-14 pl-12 pr-4 text-lg bg-background text-primary border-2 border-dental-blue/20 focus:border-dental-blue"
                   />
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
                 </div>
-                <Button className="w-full mt-4 h-14 text-lg bg-dental-blue hover:bg-dental-blue/90">
+                <Button className="w-full mt-4 h-14 text-lg bg-primary hover:bg-primary/90 shadow-elegant">
                   Find Providers Near You
                 </Button>
               </div>
@@ -191,7 +199,7 @@ const Patients = () => {
       </section>
 
       {/* How It Works */}
-      <ParallaxSection className="py-24 bg-background" offset={-20}>
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <AnimatedText className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -207,7 +215,7 @@ const Patients = () => {
             ].map((item, index) => (
               <AnimatedText key={index} delay={index * 0.2}>
                 <div className="text-center">
-                  <div className="w-16 h-16 rounded-full bg-intelligence text-intelligence-foreground flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                  <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                     {item.step}
                   </div>
                   <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
@@ -217,23 +225,23 @@ const Patients = () => {
             ))}
           </div>
         </div>
-      </ParallaxSection>
+      </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-dental-blue text-white">
+      <section className="py-24 bg-dental-blue/10">
         <div className="container mx-auto px-6 text-center">
           <AnimatedText>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Your Perfect Smile Awaits
             </h2>
-            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+            <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
               Don't let cost be a barrier to the dental care you deserve. 
               Find a provider and get approved today.
             </p>
             
             <Button
               size="lg"
-              className="bg-white text-dental-blue hover:bg-white/90 text-lg px-8"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 shadow-peach"
             >
               Find Providers Now
             </Button>
