@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FloatingNav } from "@/components/layout/FloatingNav";
 import { GDPRBanner } from "@/components/layout/GDPRBanner";
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import Index from "./pages/Index";
 import Providers from "./pages/Providers";
 import Patients from "./pages/Patients";
@@ -20,6 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <div className="relative min-h-screen">
           <FloatingNav />
           <GDPRBanner />
