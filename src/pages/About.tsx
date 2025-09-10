@@ -240,19 +240,19 @@ const About = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Card className="bg-white/10 backdrop-blur border-white/20">
+              <Card className="bg-background/95 backdrop-blur border-border shadow-soft">
                 <CardContent className="p-6 text-center">
-                  <TrendingUp className="mx-auto mb-3 text-dental-peach" size={32} />
-                  <div className="font-bold">Global Expansion</div>
-                  <div className="text-sm opacity-80">Bringing intelligent financing worldwide</div>
+                  <TrendingUp className="mx-auto mb-3 text-accent-peach" size={32} />
+                  <div className="font-bold text-foreground">Global Expansion</div>
+                  <div className="text-sm text-muted-foreground">Bringing intelligent financing worldwide</div>
                 </CardContent>
               </Card>
               
-              <Card className="bg-white/10 backdrop-blur border-white/20">
+              <Card className="bg-background/95 backdrop-blur border-border shadow-soft">
                 <CardContent className="p-6 text-center">
-                  <Award className="mx-auto mb-3 text-dental-lavender" size={32} />
-                  <div className="font-bold">Healthcare Integration</div>
-                  <div className="text-sm opacity-80">Expanding beyond dental to all healthcare</div>
+                  <Award className="mx-auto mb-3 text-accent-lavender" size={32} />
+                  <div className="font-bold text-foreground">Healthcare Integration</div>
+                  <div className="text-sm text-muted-foreground">Expanding beyond dental to all healthcare</div>
                 </CardContent>
               </Card>
             </div>
