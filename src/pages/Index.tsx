@@ -18,7 +18,7 @@ import { AnimatedText, SplitText } from "@/components/ui/animated-text";
 import { VideoSection } from "@/components/ui/video-section";
 import { ScrollReveal, StaggerContainer, StaggerItem, MagneticButton, FloatingElements } from "@/components/ui/enhanced-animations";
 import { HoverCard, CountUp, ProgressiveImage, GlowButton } from "@/components/ui/micro-interactions";
-import heroImage from "@/assets/hero-dental-office.jpg";
+import heroImage from "@/assets/hero-dental-office-clean.jpg";
 import teamImage from "@/assets/dental-team.jpg";
 import patientImage from "@/assets/happy-patient.jpg";
 
