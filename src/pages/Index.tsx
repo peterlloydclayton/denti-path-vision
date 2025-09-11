@@ -280,8 +280,9 @@ const Index = () => {
 
           <ScrollReveal>
             <VideoSection 
-              title="See Echo in Action"
-              description="Experience how our AI processes real-time applications"
+              title="Welcome To DentiPay"
+              videoUrl="https://youtu.be/eWq1aw-ug_s?feature=shared"
+              placeholder={false}
               aspectRatio="video"
               accent="blue"
               className="mb-16"

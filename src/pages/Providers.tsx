@@ -178,9 +178,10 @@ const Providers = () => {
               <div className="mb-8">
                 <VideoSection 
                   title="DENTIPAY: Meet The Future Of Dental Case Acceptance"
+                  videoUrl="https://youtu.be/mNTFwDsYP1s?feature=shared"
+                  placeholder={false}
                   aspectRatio="video"
                   accent="blue"
-                  placeholder={true}
                   className="max-w-3xl mx-auto"
                 />
               </div>

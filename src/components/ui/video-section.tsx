@@ -6,6 +6,7 @@ interface VideoSectionProps {
   title?: string;
   description?: string;
   placeholder?: boolean;
+  videoUrl?: string;
   aspectRatio?: 'video' | 'square' | 'wide';
   accent?: 'blue' | 'peach' | 'lavender' | 'green';
   className?: string;
@@ -15,6 +16,7 @@ export const VideoSection = ({
   title = "Video Title",
   description = "Video description goes here", 
   placeholder = true,
+  videoUrl,
   aspectRatio = 'video',
   accent = 'blue',
   className = ''
@@ -39,6 +41,14 @@ export const VideoSection = ({
     green: 'text-dental-green'
   };
 
+  // Convert YouTube URL to embed URL
+  const getEmbedUrl = (url: string) => {
+    const videoId = url.includes('youtu.be/') 
+      ? url.split('youtu.be/')[1].split('?')[0]
+      : url.split('v=')[1]?.split('&')[0];
+    return `https://www.youtube.com/embed/${videoId}`;
+  };
+
   return (
     <div className={`space-y-4 ${className}`}>
       {placeholder ? (
@@ -57,9 +67,19 @@ export const VideoSection = ({
             Video placeholder - Click to play
           </p>
         </Card>
+      ) : videoUrl ? (
+        <div className={`${aspectClasses[aspectRatio]} bg-card rounded-2xl overflow-hidden ${accentClasses[accent]}`}>
+          <iframe
+            src={getEmbedUrl(videoUrl)}
+            title={title}
+            className="w-full h-full"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
       ) : (
         <div className={`${aspectClasses[aspectRatio]} bg-card rounded-2xl overflow-hidden ${accentClasses[accent]}`}>
-          {/* Actual video would go here */}
           <div className="w-full h-full bg-muted flex items-center justify-center">
             <Button size="lg" className="rounded-full w-16 h-16 p-0">
               <Play size={24} fill="currentColor" />
