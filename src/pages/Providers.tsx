@@ -141,7 +141,7 @@ const Providers = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div className="pt-24">
       {/* Hero Section */}
       <section className="py-24 bg-background relative overflow-hidden">
         <div 

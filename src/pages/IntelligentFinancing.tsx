@@ -45,7 +45,7 @@ const IntelligentFinancing = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div className="pt-24">
       {/* Hero Section */}
       <section className="py-24 bg-gradient-intelligence text-intelligence-foreground">
         <div className="container mx-auto px-6">

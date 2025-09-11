@@ -161,12 +161,28 @@ const MobileNav = () => {
               </div>
 
               <motion.div variants={itemVariants} className="mt-6 pt-4 border-t">
+                <div className="space-y-2 mb-4">
+                  <Link
+                    to="/login"
+                    className="block w-full p-3 text-center rounded-xl bg-secondary hover:bg-secondary/80 transition-smooth font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="block w-full p-3 text-center rounded-xl bg-secondary hover:bg-secondary/80 transition-smooth font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Sign Up
+                  </Link>
+                </div>
                 <Button
-                  className="w-full bg-dental-blue text-primary hover:bg-dental-blue/80 shadow-soft"
+                  className="w-full bg-dental-blue text-primary-foreground hover:bg-dental-blue/80 shadow-soft"
                   onClick={() => setIsOpen(false)}
                 >
                   <MessageSquare size={20} className="mr-2" />
-                  AI Assistant
+                  Meet Echo
                 </Button>
               </motion.div>
             </motion.div>

@@ -38,59 +38,80 @@ export const DesktopNav = () => {
   return (
     <motion.nav
       className={`
-        fixed top-6 left-6 z-50
-        bg-background/90 backdrop-blur-md border rounded-2xl
-        transition-smooth px-6 py-3
-        ${scrolled ? 'shadow-elegant' : 'shadow-soft'}
+        fixed top-0 left-0 right-0 z-50 w-full
+        bg-background/90 backdrop-blur-md border-b
+        transition-smooth px-8 py-4
+        ${scrolled ? 'shadow-elegant' : ''}
       `}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex items-center gap-1">
-        {/* Logo/Brand */}
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        {/* Logo/Brand - Left */}
         <Link
           to="/"
-          className="font-bold text-xl mr-6 text-primary hover:text-intelligence transition-smooth"
+          className="font-bold text-2xl text-primary hover:text-intelligence transition-smooth"
           onClick={() => setCurrentPath('/')}
         >
           DentiPay
         </Link>
 
-        {/* Navigation Items */}
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = currentPath === item.href;
-          
-          return (
-            <Link
-              key={item.href}
-              to={item.href}
-              onClick={() => setCurrentPath(item.href)}
-              className={`
-                flex items-center gap-2 px-4 py-2 rounded-xl
-                transition-smooth font-medium text-sm
-                ${isActive 
-                  ? 'bg-primary text-primary-foreground shadow-soft' 
-                  : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
-                }
-              `}
-            >
-              <Icon size={16} />
-              <span>{item.label}</span>
-            </Link>
-          );
-        })}
+        {/* Navigation Items - Center */}
+        <div className="flex items-center gap-1">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = currentPath === item.href;
+            
+            return (
+              <Link
+                key={item.href}
+                to={item.href}
+                onClick={() => setCurrentPath(item.href)}
+                className={`
+                  flex items-center gap-2 px-4 py-2 rounded-xl
+                  transition-smooth font-medium text-sm
+                  ${isActive 
+                    ? 'bg-primary text-primary-foreground shadow-soft' 
+                    : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
+                  }
+                `}
+              >
+                <Icon size={16} />
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
+        </div>
 
-        {/* AI Assistant Button */}
-        <div className="ml-4 pl-4 border-l border-border">
-          <Button
-            size="sm"
-            className="bg-dental-blue text-primary hover:bg-dental-blue/80 shadow-soft"
-          >
-            <MessageSquare size={16} className="mr-2" />
-            AI Assistant
-          </Button>
+        {/* Right Section - Login/Signup + Meet Echo */}
+        <div className="flex items-center gap-4">
+          {/* Login/Signup Links */}
+          <div className="flex items-center gap-4">
+            <Link
+              to="/login"
+              className="text-muted-foreground hover:text-primary transition-smooth font-medium"
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              className="text-muted-foreground hover:text-primary transition-smooth font-medium"
+            >
+              Sign Up
+            </Link>
+          </div>
+
+          {/* Meet Echo Button */}
+          <div className="pl-4 border-l border-border">
+            <Button
+              size="sm"
+              className="bg-dental-blue text-primary-foreground hover:bg-dental-blue/80 shadow-soft"
+            >
+              <MessageSquare size={16} className="mr-2" />
+              Meet Echo
+            </Button>
+          </div>
         </div>
       </div>
     </motion.nav>
