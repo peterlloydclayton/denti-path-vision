@@ -438,11 +438,11 @@ const Index = () => {
       <ParallaxSection className="py-20 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Experience What Intelligence Feels Like
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Transforming workflows for both providers and patients with intuitive AI-powered experiences
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+              Revolutionary experiences tailored for both providers and patients
             </p>
           </ScrollReveal>
 
@@ -482,7 +482,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="p-2 bg-accent-blue/10 rounded-lg">
-                      <BarChart3 className="h-5 w-5 text-accent-blue" />
+                      <Brain className="h-5 w-5 text-accent-blue" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Predictive Analytics</h4>
@@ -491,7 +491,7 @@ const Index = () => {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="p-2 bg-accent-blue/10 rounded-lg">
-                      <Brain className="h-5 w-5 text-accent-blue" />
+                      <Award className="h-5 w-5 text-accent-blue" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Clinical Insights</h4>
@@ -615,15 +615,15 @@ const Index = () => {
       <ParallaxSection className="py-20 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Built for Healthcare, Secured for Trust
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Enterprise-grade security meets healthcare compliance standards
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+              Enterprise-grade security and seamless integration capabilities
             </p>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-12">
             <ScrollReveal>
               <div className="space-y-6">
                 <h3 className="text-2xl font-bold text-foreground mb-6">Security & Compliance</h3>
@@ -632,21 +632,21 @@ const Index = () => {
                     <Lock className="h-6 w-6 text-accent-blue mt-1" />
                     <div>
                       <h4 className="font-semibold text-foreground">Bank-Level Encryption</h4>
-                      <p className="text-muted-foreground">256-bit SSL encryption and security protocols</p>
+                      <p className="text-muted-foreground">Advanced security protocols and data protection</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <Shield className="h-6 w-6 text-accent-blue mt-1" />
                     <div>
                       <h4 className="font-semibold text-foreground">HIPAA Compliant</h4>
-                      <p className="text-muted-foreground">Compliant data handling and patient privacy protection</p>
+                      <p className="text-muted-foreground">Full healthcare data privacy compliance</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <Award className="h-6 w-6 text-accent-blue mt-1" />
                     <div>
                       <h4 className="font-semibold text-foreground">SOC 2 Type II Certified</h4>
-                      <p className="text-muted-foreground">Independently verified security controls</p>
+                      <p className="text-muted-foreground">Independently audited security controls</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
@@ -672,17 +672,17 @@ const Index = () => {
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Timer className="h-6 w-6 text-accent-green mt-1" />
+                    <TrendingUp className="h-6 w-6 text-accent-green mt-1" />
                     <div>
-                      <h4 className="font-semibold text-foreground">Real-Time Synchronization</h4>
-                      <p className="text-muted-foreground">Instant data updates across all systems</p>
+                      <h4 className="font-semibold text-foreground">Real-Time Data Sync</h4>
+                      <p className="text-muted-foreground">Live synchronization with your existing workflows</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Brain className="h-6 w-6 text-accent-green mt-1" />
+                    <Target className="h-6 w-6 text-accent-green mt-1" />
                     <div>
                       <h4 className="font-semibold text-foreground">Custom Workflow Automation</h4>
-                      <p className="text-muted-foreground">Tailored automation for your practice needs</p>
+                      <p className="text-muted-foreground">Tailored processes for your practice needs</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
@@ -738,7 +738,7 @@ const Index = () => {
                     </MagneticButton>
                   </StaggerItem>
                   <StaggerItem>
-                    <Button variant="ghost" className="text-muted-foreground">
+                    <Button variant="link" className="text-muted-foreground hover:text-foreground">
                       View Pricing →
                     </Button>
                   </StaggerItem>
