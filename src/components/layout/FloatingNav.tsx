@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, Users, Search, Brain, Building, MessageSquare } from 'lucide-react';
+import { Menu, X, Home, Users, Stethoscope, Brain, Building, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -8,8 +8,8 @@ import { DesktopNav } from './DesktopNav';
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
-  { href: '/providers', label: 'Providers', icon: Users },
-  { href: '/patients', label: 'Patients', icon: Search },
+  { href: '/providers', label: 'Providers', icon: Stethoscope },
+  { href: '/patients', label: 'Patients', icon: Users },
   { href: '/intelligent-financing', label: 'Intelligence', icon: Brain },
   { href: '/about', label: 'About', icon: Building },
 ];
