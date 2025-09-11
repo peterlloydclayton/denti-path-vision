@@ -106,7 +106,7 @@ export const DesktopNav = () => {
           <div className="pl-4 border-l border-border">
             <Button
               size="sm"
-              className="bg-dental-blue text-primary-foreground hover:bg-dental-blue/80 shadow-soft"
+              className="bg-dental-blue text-black hover:bg-dental-blue/80 shadow-soft"
             >
               <MessageSquare size={16} className="mr-2" />
               Meet Echo

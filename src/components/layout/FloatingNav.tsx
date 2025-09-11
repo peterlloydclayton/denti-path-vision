@@ -178,7 +178,7 @@ const MobileNav = () => {
                   </Link>
                 </div>
                 <Button
-                  className="w-full bg-dental-blue text-primary-foreground hover:bg-dental-blue/80 shadow-soft"
+                  className="w-full bg-dental-blue text-black hover:bg-dental-blue/80 shadow-soft"
                   onClick={() => setIsOpen(false)}
                 >
                   <MessageSquare size={20} className="mr-2" />
