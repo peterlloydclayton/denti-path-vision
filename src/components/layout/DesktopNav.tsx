@@ -88,18 +88,22 @@ export const DesktopNav = () => {
         <div className="flex items-center gap-4">
           {/* Login/Signup Links */}
           <div className="flex items-center gap-4">
-            <Link
-              to="/login"
+            <a
+              href="https://dental-docs-hub.lovable.app/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-smooth font-medium"
             >
               Login
-            </Link>
-            <Link
-              to="/signup"
+            </a>
+            <a
+              href="https://dental-docs-hub.lovable.app/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-smooth font-medium"
             >
               Sign Up
-            </Link>
+            </a>
           </div>
 
           {/* Meet Echo Button */}

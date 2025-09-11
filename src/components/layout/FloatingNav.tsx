@@ -162,20 +162,24 @@ const MobileNav = () => {
 
               <motion.div variants={itemVariants} className="mt-6 pt-4 border-t">
                 <div className="space-y-2 mb-4">
-                  <Link
-                    to="/login"
+                  <a
+                    href="https://dental-docs-hub.lovable.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full p-3 text-center rounded-xl bg-secondary hover:bg-secondary/80 transition-smooth font-medium"
                     onClick={() => setIsOpen(false)}
                   >
                     Login
-                  </Link>
-                  <Link
-                    to="/signup"
+                  </a>
+                  <a
+                    href="https://dental-docs-hub.lovable.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full p-3 text-center rounded-xl bg-secondary hover:bg-secondary/80 transition-smooth font-medium"
                     onClick={() => setIsOpen(false)}
                   >
                     Sign Up
-                  </Link>
+                  </a>
                 </div>
                 <Button
                   className="w-full bg-dental-blue text-black hover:bg-dental-blue/80 shadow-soft"
