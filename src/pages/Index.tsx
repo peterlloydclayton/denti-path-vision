@@ -726,7 +726,7 @@ const Index = () => {
                 <StaggerContainer className="flex flex-col gap-4" staggerDelay={0.1}>
                   <StaggerItem>
                     <MagneticButton>
-                      <GlowButton className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-4 rounded-lg w-full">
+                      <GlowButton className="bg-primary hover:bg-primary/90 text-primary-foreground text-xl font-bold px-8 py-4 rounded-lg w-full">
                         Start Free Trial <ArrowRight className="ml-2 h-5 w-5" />
                       </GlowButton>
                     </MagneticButton>
@@ -755,7 +755,7 @@ const Index = () => {
                 <StaggerContainer className="flex flex-col gap-4" staggerDelay={0.1}>
                   <StaggerItem>
                     <MagneticButton>
-                      <GlowButton className="bg-accent-green hover:bg-accent-green/90 text-white text-lg px-8 py-4 rounded-lg w-full">
+                      <GlowButton className="bg-primary hover:bg-primary/90 text-primary-foreground text-xl font-bold px-8 py-4 rounded-lg w-full">
                         Find Your Provider <ArrowRight className="ml-2 h-5 w-5" />
                       </GlowButton>
                     </MagneticButton>
