@@ -316,6 +316,123 @@ const IntelligentFinancing = () => {
         </div>
       </section>
 
+      {/* SCOPE's Financial Engine - 30 Data Points */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
+              SCOPE's Financial Engine: The 30-Data Points That Drive Every Decision
+            </h2>
+            <p className="text-xl text-black max-w-4xl mx-auto">
+              SCOPE's robust AI engine analyzes a comprehensive array of financial data points, ensuring precise, holistic patient funding assessments.
+            </p>
+          </AnimatedText>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Credit Underwriting Determinations */}
+              <AnimatedText delay={0.1}>
+                <Card className="shadow-elegant h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3 text-intelligence">
+                      <BarChart3 size={24} />
+                      Credit Underwriting Determinations
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      {[
+                        'FICO Score',
+                        'Recent Credit Inquiries', 
+                        'Credit Card Utilization',
+                        'Average Age of Accounts',
+                        'Revolving vs Installment Balances',
+                        'Payment History',
+                        'Number of Open Tradelines',
+                        'Active Collections or Charge-offs',
+                        'Bankruptcy / Public Records',
+                        'Thin File / Credit Depth'
+                      ].map((item, index) => (
+                        <div key={index} className="flex items-center gap-3">
+                          <CheckCircle size={16} className="text-intelligence flex-shrink-0" />
+                          <span className="text-sm text-black">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </AnimatedText>
+
+              {/* Personal Income & Capital */}
+              <AnimatedText delay={0.2}>
+                <Card className="shadow-elegant h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3 text-dental-peach">
+                      <TrendingUp size={24} />
+                      Personal Income & Capital
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      {[
+                        'Verified Monthly Income',
+                        'Income Stability (Job Duration)',
+                        'Bank Account Balance Trends',
+                        'Direct Deposit Patterns',
+                        'Disposable Income Calculation',
+                        'Rent/Mortgage Payment History',
+                        'Number of Dependents',
+                        'Recent Major Purchases',
+                        'Tax Return / Paystub Validation',
+                        'Overdraft / NSF Frequency'
+                      ].map((item, index) => (
+                        <div key={index} className="flex items-center gap-3">
+                          <CheckCircle size={16} className="text-dental-peach flex-shrink-0" />
+                          <span className="text-sm text-black">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </AnimatedText>
+
+              {/* Business Credit Resources */}
+              <AnimatedText delay={0.3}>
+                <Card className="shadow-elegant h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3 text-dental-blue">
+                      <Database size={24} />
+                      Business Credit Resources
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      {[
+                        'Business Entity Status',
+                        'Monthly Gross Receipts',
+                        'Client Volume Consistency',
+                        'Merchant Processor Statements',
+                        'Business Credit Score',
+                        'Equipment Financing / Lines',
+                        'Age of Business',
+                        'Operating Account Stability',
+                        'Web Presence / Listings',
+                        'Invoice-to-Payment Lag Time'
+                      ].map((item, index) => (
+                        <div key={index} className="flex items-center gap-3">
+                          <CheckCircle size={16} className="text-dental-blue flex-shrink-0" />
+                          <span className="text-sm text-black">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </AnimatedText>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Integration Benefits */}
       <ParallaxSection className="py-24 bg-background" offset={-30}>
         <div className="container mx-auto px-6">
