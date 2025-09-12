@@ -177,8 +177,8 @@ const Providers = () => {
             <AnimatedText delay={0.4}>
               <div className="mb-8">
                 <VideoSection 
-                  title="DENTIPAY: Meet The Future Of Dental Case Acceptance"
-                  videoUrl="https://youtu.be/mNTFwDsYP1s?feature=shared"
+                  title="AI-Powered Behavioural Financing - Intelligence that Drives Approvals"
+                  videoUrl="https://youtu.be/ADNzL1ZH9Rw?feature=shared"
                   placeholder={false}
                   aspectRatio="video"
                   accent="blue"
