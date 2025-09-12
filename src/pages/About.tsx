@@ -226,6 +226,174 @@ const About = () => {
         </div>
       </section>
 
+      {/* Founder's Circle */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
+              Founder's Circle: From Vision to Velocity
+            </h2>
+            <p className="text-xl text-black max-w-4xl mx-auto">
+              Breaking Barriers in Innovation, Access, and Profitability
+            </p>
+          </AnimatedText>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12">
+              {/* Dr. Charles Zahédi */}
+              <AnimatedText delay={0.1}>
+                <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
+                  <CardContent className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold mb-2 text-black">Dr. Charles Zahédi</h3>
+                      <p className="text-lg text-intelligence font-medium">Co-Founder</p>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Dr. Charles Zahédi is an accomplished clinician, innovator, and business strategist with over 34 years of experience in dentistry and healthcare systems. After earning his dental degree, he built a reputation for developing advanced treatment protocols and scalable care delivery models that improve patient outcomes while expanding access to care.
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed mt-4">
+                      Throughout his career, Dr. Zahédi has combined clinical expertise with a passion for innovation, integrating technologies like AI-driven treatment planning, in-house lab workflows, and patient-friendly financing models. He has served diverse patient populations, with a focus on underserved and aging communities, and has trained teams to deliver care at scale without sacrificing quality.
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed mt-4">
+                      Dr. Zahédi's work reflects a lifelong commitment to transforming dental care by bridging the gap between clinical excellence, patient affordability, and operational efficiency.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedText>
+
+              {/* Dr. Emelio Arguello */}
+              <AnimatedText delay={0.2}>
+                <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
+                  <CardContent className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold mb-2 text-black">Dr. Emilio Argüello</h3>
+                      <p className="text-lg text-intelligence font-medium">Co-Founder</p>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Dr. Emilio Argüello was born and raised in Mexico City. After graduating from dental school at the Universidad Autónoma Metropolitana, he moved to the U.S. in 1998 following time abroad as a competitive fencer. He earned his dental degree and specialty training in Periodontics at Tufts University and is now a Board-Certified Periodontist.
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed mt-4">
+                      For nearly 20 years, Dr. Argüello has served as core faculty and researcher at Harvard University, co-authoring textbooks and numerous peer-reviewed publications. Over the last 15 years, he has built and transitioned multiple dental companies, advised leading organizations, and served on academic and industry boards.
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed mt-4">
+                      Most recently, he co-founded Mexico Dental Implants, delivering advanced oral rehabilitation services to international patients across certified clinics in Mexico. He also maintains a private practice at Altura Periodontics in Denver, while his wife, Dr. Caitlin White, practices at Foundations Orthodontics.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedText>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Team */}
+      <ParallaxSection className="py-24 bg-gradient-subtle" offset={30}>
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
+              Leadership That Builds Revolutions
+            </h2>
+            <p className="text-xl text-black max-w-4xl mx-auto">
+              Where innovation meets execution — and disruption becomes inevitable.
+            </p>
+          </AnimatedText>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Adam Zuckerman */}
+              <AnimatedText delay={0.1}>
+                <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
+                  <CardContent className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold mb-2 text-black">Adam Zuckerman</h3>
+                      <p className="text-lg text-dental-peach font-medium">Founder/CEO</p>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Adam Zuckerman is the Founder and CEO of DentiPay, an AI-powered behavioral financing platform revolutionizing patient approvals and provider profitability. A proven fintech innovator and strategic operator, Adam specializes in building high-growth ventures at the intersection of AI, finance, and healthcare. His leadership has consistently driven rapid expansion and strategic partnerships across multiple ventures in these sectors.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedText>
+
+              {/* Jay Oku */}
+              <AnimatedText delay={0.2}>
+                <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
+                  <CardContent className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold mb-2 text-black">Jay Oku</h3>
+                      <p className="text-lg text-dental-blue font-medium">Chief Business Officer</p>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      As DentiPay's Chief Business Officer, Jay Oku leads business strategy, provider growth, and capital partnerships. With over 15 years in real estate finance, he is known for innovative underwriting and ethical origination. Jay has successfully launched and scaled purpose-driven ventures, expanding brands into 38 international markets. He applies his foundation of integrity and discipline to align fintech with human outcomes at DentiPay, making patient financing intelligent, ethical, and accessible for all.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedText>
+
+              {/* Dr. Donald R. Thorne */}
+              <AnimatedText delay={0.3}>
+                <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
+                  <CardContent className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold mb-2 text-black">Dr. Donald R. Thorne</h3>
+                      <p className="text-lg text-intelligence font-medium">Co-Founder & Chairman</p>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Dr. Thorne is DentiPay's Co-Founder and Chairman. A veteran serial entrepreneur, he brings decades of expertise in marketing, finance, distribution, and M&A. He co-founded NAID and Instashred, leading Instashred to a landmark exit in 2000 for nearly $100 million. Today, Don invests in and advises ventures across technology, healthcare, and fintech, accelerating growth through strategic capital and operational excellence.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedText>
+
+              {/* Nuttalya Reussi */}
+              <AnimatedText delay={0.4}>
+                <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
+                  <CardContent className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold mb-2 text-black">Nuttalya Reussi</h3>
+                      <p className="text-lg text-dental-lavender font-medium">Chief Operating Officer</p>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Ms. Reussi is DentiPay's Chief Operating Officer, overseeing operational strategy and market expansion. A seasoned strategic marketer, she excels in building high-impact campaigns that drive provider engagement and brand visibility. With expertise in global communications and cross-market collaborations, Nuttayla holds a master's degree from Kyiv National Linguistic University in Ukraine.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedText>
+
+              {/* Michael Weydemuller */}
+              <AnimatedText delay={0.5}>
+                <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
+                  <CardContent className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold mb-2 text-black">Michael Weydemuller</h3>
+                      <p className="text-lg text-dental-green font-medium">Growth & Capital</p>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Michael Weydemuller is the Founding Partner of Growth & Capital at DentiPay, leading provider acquisition, capital strategy, and market expansion. With over 25 years of experience in taxation, compliance, and capital markets, he is instrumental in fueling DentiPay's rapid scale through operational discipline and entrepreneurial instinct.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedText>
+
+              {/* Colin Dedely */}
+              <AnimatedText delay={0.6}>
+                <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
+                  <CardContent className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold mb-2 text-black">Colin Dedely</h3>
+                      <p className="text-lg text-dental-peach font-medium">Technology & Credit Systems</p>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Colin Dedely is the Founding Partner of Technology & Credit Systems at DentiPay, where he leads the development of the platform's fintech architecture, patient pre-approval engine, and provider credit optimization systems. With a proven track record of securing more than $80 million in consumer financing at an industry-leading 90% approval rate.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedText>
+            </div>
+          </div>
+        </div>
+      </ParallaxSection>
+
       {/* Future Vision */}
       <ParallaxSection className="py-24 bg-intelligence text-intelligence-foreground" offset={-30}>
         <div className="container mx-auto px-6 text-center">
