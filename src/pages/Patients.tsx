@@ -204,10 +204,10 @@ const Patients = () => {
             <AnimatedText delay={0.3}>
               <div className="mb-8">
                 <VideoSection 
-                  videoUrl="https://youtu.be/eWq1aw-ug_s?feature=shared"
+                  videoUrl="https://youtu.be/S9DOZEmf9f4?feature=shared"
                   title="From DENIED DENTAL CARE to APPROVED: My Story Behind DentiPay"
-                  aspectRatio="wide"
-                  className="max-w-3xl mx-auto"
+                  aspectRatio="video"
+                  className="mb-8"
                 />
               </div>
             </AnimatedText>
