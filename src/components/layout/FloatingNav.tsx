@@ -135,7 +135,7 @@ const MobileNav = () => {
                 <img 
                   src="/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png" 
                   alt="DentiPay" 
-                  className="h-6 w-auto"
+                  className="h-9 w-auto"
                 />
               </div>
               
