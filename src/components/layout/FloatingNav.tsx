@@ -130,6 +130,15 @@ const MobileNav = () => {
               exit="closed"
               style={{ originX: 1, originY: 0 }}
             >
+              {/* Logo at top of mobile menu */}
+              <div className="mb-6 pb-4 border-b flex justify-center">
+                <img 
+                  src="/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png" 
+                  alt="DentiPay" 
+                  className="h-6 w-auto"
+                />
+              </div>
+              
               <div className="space-y-2">
                 {navItems.map((item) => {
                   const Icon = item.icon;

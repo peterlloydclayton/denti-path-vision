@@ -51,10 +51,14 @@ export const DesktopNav = () => {
         {/* Logo/Brand - Left */}
         <Link
           to="/"
-          className="font-bold text-2xl text-primary hover:text-intelligence transition-smooth"
+          className="flex items-center hover:opacity-80 transition-smooth"
           onClick={() => setCurrentPath('/')}
         >
-          DentiPay
+          <img 
+            src="/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png" 
+            alt="DentiPay" 
+            className="h-8 w-auto"
+          />
         </Link>
 
         {/* Navigation Items - Center */}
