@@ -60,7 +60,7 @@ const IntelligentFinancing = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto text-center">
             <AnimatedText>
-              <h1 className="text-hero-mobile md:text-hero font-bold mb-6">
+              <h1 className="text-hero-mobile md:text-hero font-bold mb-6 text-black">
                 The Intelligence Behind DentiPay
               </h1>
             </AnimatedText>
