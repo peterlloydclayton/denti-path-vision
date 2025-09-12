@@ -70,7 +70,7 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <AnimatedText>
-              <h1 className="text-hero-mobile md:text-hero font-bold mb-6">
+              <h1 className="text-hero-mobile md:text-hero font-bold mb-6 text-black">
                 Transforming Dental Finance{' '}
                 <span className="bg-gradient-to-r from-dental-peach to-dental-lavender bg-clip-text text-transparent">
                   Through Intelligence
@@ -79,7 +79,7 @@ const About = () => {
             </AnimatedText>
             
             <AnimatedText delay={0.2}>
-              <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
+              <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed text-black">
                 DentiPay is pioneering a new category of healthcare finance — 
                 where artificial intelligence meets human compassion to make 
                 dental care accessible to everyone
@@ -96,8 +96,8 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <AnimatedText>
-                  <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Mission</h2>
-                  <p className="text-xl leading-relaxed text-muted-foreground mb-8">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">Our Mission</h2>
+                  <p className="text-xl leading-relaxed text-black mb-8">
                     To eliminate financial barriers in dental care by creating the most 
                     intelligent, patient-centered financing platform in healthcare. 
                     We believe everyone deserves access to quality dental treatment, 
@@ -127,10 +127,10 @@ const About = () => {
       <section className="py-24 bg-gradient-subtle">
         <div className="container mx-auto px-6">
           <AnimatedText className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
               Impact by Numbers
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-black">
               Measurable results that demonstrate our commitment to transforming dental finance
             </p>
           </AnimatedText>
@@ -154,10 +154,10 @@ const About = () => {
       <ParallaxSection className="py-24 bg-background" offset={-20}>
         <div className="container mx-auto px-6">
           <AnimatedText className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
               Our Core Values
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               The principles that guide every decision, innovation, and relationship we build
             </p>
           </AnimatedText>
@@ -193,10 +193,10 @@ const About = () => {
       <section className="py-24 bg-gradient-subtle">
         <div className="container mx-auto px-6">
           <AnimatedText className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
               Our Journey
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-black">
               Key milestones in our mission to transform dental finance
             </p>
           </AnimatedText>

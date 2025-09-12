@@ -66,13 +66,13 @@ const IntelligentFinancing = () => {
             </AnimatedText>
             
             <AnimatedText delay={0.2}>
-              <h2 className="text-2xl md:text-3xl mb-4 opacity-90">
+              <h2 className="text-2xl md:text-3xl mb-4 opacity-90 text-black">
                 PATH & SCOPE - Revolutionary AI that Transforms Dental Financing
               </h2>
             </AnimatedText>
             
             <AnimatedText delay={0.3}>
-              <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed max-w-3xl mx-auto text-black">
                 Our revolutionary AI platform doesn't just process payments — 
                 it predicts outcomes, optimizes decisions, and transforms 
                 how dental practices approach patient financing.
@@ -118,7 +118,7 @@ const IntelligentFinancing = () => {
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <AnimatedText className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
               One Brand. One Portal. One Intelligence. One System.
             </h2>
           </AnimatedText>
@@ -172,15 +172,15 @@ const IntelligentFinancing = () => {
                     <div className="w-16 h-16 rounded-2xl bg-intelligence/10 flex items-center justify-center">
                       <Brain size={32} className="text-intelligence" />
                     </div>
-                    <div>
-                      <h2 className="text-5xl font-bold">PATH</h2>
-                      <p className="text-muted-foreground">Predictive Approval Technology Hub</p>
-                    </div>
+                     <div>
+                       <h2 className="text-5xl font-bold text-black">PATH</h2>
+                       <p className="text-black">Predictive Approval Technology Hub</p>
+                     </div>
                   </div>
                 </AnimatedText>
 
                 <AnimatedText delay={0.2}>
-                  <p className="text-xl leading-relaxed mb-8">
+                  <p className="text-xl leading-relaxed mb-8 text-black">
                     PATH revolutionizes patient financing with <strong>precognitive intelligence</strong> — 
                     our system doesn't just respond to applications, it anticipates outcomes 
                     and optimizes every interaction for maximum success.
@@ -281,15 +281,15 @@ const IntelligentFinancing = () => {
                       <Target size={32} className="text-dental-peach" />
                     </div>
                   <div>
-                    <h2 className="text-5xl font-bold">SCOPE</h2>
-                    <p className="text-muted-foreground">Strategic Care Optimization Platform Engine</p>
+                    <h2 className="text-5xl font-bold text-black">SCOPE</h2>
+                    <p className="text-black">Strategic Care Optimization Platform Engine</p>
                     <p className="text-sm text-dental-peach font-medium mt-1">The Sentient Capable Outcome Predictive Engine</p>
                   </div>
                   </div>
                 </AnimatedText>
 
                 <AnimatedText delay={0.2}>
-                  <p className="text-xl leading-relaxed mb-8">
+                  <p className="text-xl leading-relaxed mb-8 text-black">
                     SCOPE transforms practice intelligence into <strong>strategic advantage</strong> — 
                     analyzing treatment patterns, patient behaviors, and market dynamics 
                     to optimize every aspect of your dental practice.
@@ -320,10 +320,10 @@ const IntelligentFinancing = () => {
       <ParallaxSection className="py-24 bg-background" offset={-30}>
         <div className="container mx-auto px-6">
           <AnimatedText className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
               The Power of Integrated Intelligence
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               When PATH and SCOPE work together, they create an unprecedented 
               level of financial intelligence that transforms dental practices
             </p>
@@ -374,7 +374,7 @@ const IntelligentFinancing = () => {
       <section className="py-24 bg-gradient-subtle">
         <div className="container mx-auto px-6">
           <AnimatedText className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
               Traditional Lending Asks One Question. SCOPE Answers With Thirty.
             </h2>
           </AnimatedText>
