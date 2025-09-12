@@ -12,6 +12,8 @@ import Providers from "./pages/Providers";
 import Patients from "./pages/Patients";
 import IntelligentFinancing from "./pages/IntelligentFinancing";
 import About from "./pages/About";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +35,8 @@ const App = () => (
               <Route path="/patients" element={<Patients />} />
               <Route path="/intelligent-financing" element={<IntelligentFinancing />} />
               <Route path="/about" element={<About />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-use" element={<TermsOfUse />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
