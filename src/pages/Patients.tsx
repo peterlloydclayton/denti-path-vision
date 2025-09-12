@@ -207,6 +207,7 @@ const Patients = () => {
                   videoUrl="https://youtu.be/S9DOZEmf9f4?feature=shared"
                   title="From DENIED DENTAL CARE to APPROVED: My Story Behind DentiPay"
                   aspectRatio="video"
+                  placeholder={false}
                   className="mb-8"
                 />
               </div>
