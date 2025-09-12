@@ -560,7 +560,7 @@ const Providers = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-background text-background hover:bg-background hover:text-primary text-lg px-8"
+                className="border-background text-primary hover:bg-background hover:text-primary text-lg px-8"
               >
                 Start Free Trial
               </Button>
