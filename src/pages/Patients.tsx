@@ -175,6 +175,17 @@ const Patients = () => {
         <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
           {/* Mobile Landscape Layout */}
           <div className="hidden md:flex lg:hidden relative min-h-screen border-4 border-red-500 z-[9999] overflow-hidden">
+            {/* Main Title - 20% from top */}
+            <div className="absolute top-[20%] left-12 z-20 w-1/2">
+              <AnimatedText>
+                <h1 className="text-5xl font-bold text-foreground leading-tight">
+                  Making Your<br />
+                  Dream Smile<br />
+                  Affordable
+                </h1>
+              </AnimatedText>
+            </div>
+            
             {/* Image - Right aligned */}
             <div className="absolute right-0 top-0 h-full flex items-center justify-end z-[9998]">
               <img 
