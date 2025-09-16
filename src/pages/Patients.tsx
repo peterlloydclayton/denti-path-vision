@@ -192,7 +192,7 @@ const Patients = () => {
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="absolute right-0 bottom-0 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[calc((100vh-6rem)*0.8)] md:h-[85vh] translate-x-[30%] sm:translate-x-[30%] md:translate-x-[30%]"
+                className="absolute right-0 bottom-0 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[calc((100vh-6rem)*0.8)] md:h-[85vh] translate-x-[30%] sm:translate-x-[30%] md:translate-x-0"
               />
             </div>
           </div>
