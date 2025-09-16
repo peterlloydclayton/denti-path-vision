@@ -176,11 +176,11 @@ const Patients = () => {
           {/* Mobile Landscape Layout */}
           <div className="hidden md:flex lg:hidden relative min-h-screen" style={{ border: '2px solid red' }}>
             {/* Image - Right aligned, moved 40% from left */}
-            <div className="absolute left-[10%] bottom-0 w-[120%] h-full flex items-end justify-center z-[9998] overflow-visible" style={{ border: '2px solid green' }}>
+            <div className="absolute left-[10%] bottom-0 w-[120%] h-full flex items-end justify-center z-10 overflow-visible" style={{ border: '2px solid green' }}>
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="w-[115%] h-[95%] object-cover object-bottom z-[110] border-4 border-blue-500"
+                className="w-[115%] h-[95%] object-cover object-bottom z-10 border-4 border-blue-500"
                 onLoad={() => console.log('Image loaded in tablet mode')}
               />
             </div>
