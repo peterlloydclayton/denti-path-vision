@@ -230,9 +230,9 @@ const Patients = () => {
         </div>
         
         {/* Mobile Portrait Title */}
-        <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-5/6" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText>
-            <h1 className="text-base font-bold mb-6 text-foreground leading-tight">
+            <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight">
               Making Your<br />
               Dream Smile<br />
               Affordable
@@ -288,7 +288,7 @@ const Patients = () => {
         </div>
 
         {/* Mobile Portrait Button */}
-        <div className="block sm:hidden absolute top-[42%] left-6 z-[150]" style={{ transform: 'translateY(4em)' }}>
+        <div className="block sm:hidden absolute bottom-6 left-6 z-[150]" style={{ transform: 'translateY(0.3em)' }}>
           <Button className="h-12 text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-8 font-semibold">
             Get Financing
           </Button>
