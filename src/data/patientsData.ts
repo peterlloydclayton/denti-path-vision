@@ -1,4 +1,9 @@
 import { CreditCard, Clock, Shield, Heart, Calculator } from 'lucide-react';
+import dentist1 from '@/assets/dentist-1.png';
+import dentist2 from '@/assets/dentist-2.png';
+import dentist3 from '@/assets/dentist-3.png';
+import dentist4 from '@/assets/dentist-4.png';
+import dentist5 from '@/assets/dentist-5.png';
 
 export const benefits = [
   {
@@ -44,7 +49,8 @@ export const sampleProviders = [
     location: 'Beverly Hills, CA',
     rating: 4.9,
     reviews: 247,
-    verified: true
+    verified: true,
+    image: dentist1
   },
   {
     name: 'Dr. Michael Chen',
@@ -52,7 +58,8 @@ export const sampleProviders = [
     location: 'Austin, TX',
     rating: 4.8,
     reviews: 189,
-    verified: true
+    verified: true,
+    image: dentist2
   },
   {
     name: 'Dr. Emily Rodriguez',
@@ -60,7 +67,26 @@ export const sampleProviders = [
     location: 'Miami, FL',
     rating: 4.9,
     reviews: 312,
-    verified: true
+    verified: true,
+    image: dentist3
+  },
+  {
+    name: 'Dr. Arjun Patel',
+    specialty: 'Periodontics',
+    location: 'Seattle, WA',
+    rating: 4.8,
+    reviews: 156,
+    verified: true,
+    image: dentist4
+  },
+  {
+    name: 'Dr. Priya Sharma',
+    specialty: 'Endodontics',
+    location: 'Denver, CO',
+    rating: 4.9,
+    reviews: 203,
+    verified: true,
+    image: dentist5
   }
 ];
 
