@@ -187,14 +187,6 @@ const Patients = () => {
                   Ai Driven Financing For Smarter & More Affordable Payment Options
                 </h2>
               </AnimatedText>
-
-              <AnimatedText delay={0.4}>
-                <div className="absolute bottom-[15%] left-0 z-30">
-                  <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
-                    Get Financing
-                  </Button>
-                </div>
-              </AnimatedText>
             </div>
 
             {/* Right Hero Image */}
@@ -210,6 +202,15 @@ const Patients = () => {
               />
             </div>
           </div>
+          
+          {/* Button positioned separately */}
+          <AnimatedText delay={0.4}>
+            <div className="absolute bottom-[15%] left-6 md:left-12 z-30">
+              <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
+                Get Financing
+              </Button>
+            </div>
+          </AnimatedText>
         </div>
       </section>
 
