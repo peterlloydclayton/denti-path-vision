@@ -170,77 +170,41 @@ const Patients = () => {
 
   return (
     <div className="pt-24">
-      {/* Hero Section */}
-      <section className="py-24 bg-background">
-        {/* Hero Image Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-5"
-          style={{ backgroundImage: `url(${patientImage})` }}
-        />
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <AnimatedText>
-              <h1 className="text-hero-mobile md:text-hero font-bold mb-6">
-                The Smile You{' '}
-                <span className="relative">
-                  Deserve
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-dental-peach rounded-full"></div>
-                </span>
-                , Financing Made Simple
-              </h1>
-            </AnimatedText>
-            
-            <AnimatedText delay={0.2}>
-              <h2 className="text-xl md:text-2xl mb-4 text-primary font-semibold">
-                Intelligent pre-approval that works for you, not against you.
-              </h2>
-              <p className="text-lg mb-8 text-muted-foreground leading-relaxed">
-                No more financial stress. No more delayed treatment. Just clear options and confident decisions.
-              </p>
-            </AnimatedText>
+      {/* Hero Section - New Design */}
+      <section className="h-screen bg-dental-blue-muted relative overflow-hidden">
+        <div className="container mx-auto px-6 h-full">
+          <div className="flex items-center h-full">
+            {/* Left Content */}
+            <div className="flex-1 pr-8 relative z-20">
+              <AnimatedText>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight">
+                  Making Your Dream Smile Affordable
+                </h1>
+              </AnimatedText>
+              
+              <AnimatedText delay={0.2}>
+                <h2 className="text-xl md:text-2xl mb-12 text-foreground font-medium leading-relaxed max-w-2xl">
+                  Ai Driven Financing For Smarter & More Affordable Payment Options
+                </h2>
+              </AnimatedText>
 
-            {/* Video Section */}
-            <AnimatedText delay={0.3}>
-              <div className="mb-8">
-                <VideoSection 
-                  videoUrl="https://youtu.be/S9DOZEmf9f4?feature=shared"
-                  title="From DENIED DENTAL CARE to APPROVED: My Story Behind DentiPay"
-                  aspectRatio="video"
-                  placeholder={false}
-                  className="mb-8"
-                />
-              </div>
-            </AnimatedText>
+              <AnimatedText delay={0.4}>
+                <div className="relative z-30">
+                  <Button className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
+                    Get Financing
+                  </Button>
+                </div>
+              </AnimatedText>
+            </div>
 
-            <AnimatedText delay={0.4}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button className="h-14 text-lg bg-primary hover:bg-primary/90 shadow-elegant px-8">
-                  Find My DentiPay Provider
-                </Button>
-                <Button variant="outline" className="h-14 text-lg border-2 px-8">
-                  Check My Pre-Approval
-                </Button>
-              </div>
-            </AnimatedText>
-
-            {/* Trust Indicators */}
-            <AnimatedText delay={0.5}>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center justify-center gap-2">
-                  <CheckCircle size={16} className="text-dental-blue" />
-                  Over 1,200 providers nationwide
-                </div>
-                <div className="flex items-center justify-center gap-2">
-                  <CheckCircle size={16} className="text-dental-blue" />
-                  94% approval rate
-                </div>
-                <div className="flex items-center justify-center gap-2">
-                  <CheckCircle size={16} className="text-dental-blue" />
-                  No impact to credit score for pre-qualification
-                </div>
-              </div>
-            </AnimatedText>
+            {/* Right Hero Image */}
+            <div className="flex-1 h-full relative">
+              <img 
+                src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
+                alt="Happy patient with dental financing"
+                className="absolute right-0 bottom-0 h-4/5 w-auto object-contain object-bottom z-10"
+              />
+            </div>
           </div>
         </div>
       </section>
