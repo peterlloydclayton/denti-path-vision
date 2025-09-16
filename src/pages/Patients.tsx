@@ -177,8 +177,10 @@ const Patients = () => {
             {/* Left Content */}
             <div className="flex-[3] md:flex-1 pr-0 md:pr-8 relative z-10">
               <AnimatedText>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight ml-2 md:ml-0" style={{ transform: 'translateY(0.5em)' }}>
-                  Making Your Dream Smile Affordable
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight ml-2 md:ml-0" style={{ transform: 'translateY(1em)' }}>
+                  Making Your<br />
+                  Dream Smile<br />
+                  Affordable
                 </h1>
               </AnimatedText>
             </div>
@@ -188,7 +190,7 @@ const Patients = () => {
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="absolute right-0 bottom-0 h-full w-auto object-contain object-bottom z-10 max-w-none md:right-0 md:transform-none"
+                className="absolute right-0 bottom-0 w-auto object-contain object-bottom z-10 max-w-none md:right-0 md:transform-none md:h-full"
                 style={{ 
                   height: 'calc((100vh - 6rem) * 0.6)',
                   transform: 'translateX(30%)'
@@ -199,9 +201,9 @@ const Patients = () => {
         </div>
         
         {/* Subtitle positioned separately */}
-        <div className="absolute top-[34%] left-6 md:left-12 z-20 w-1/2 hidden md:block" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="absolute top-[34%] left-6 md:left-12 z-20 w-1/2 block" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText delay={0.2}>
-            <h2 className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed">
+            <h2 className="text-base md:text-xl text-gray-600 font-medium leading-relaxed text-left">
               Ai Driven Financing For Smarter & More Affordable Payment Options
             </h2>
           </AnimatedText>

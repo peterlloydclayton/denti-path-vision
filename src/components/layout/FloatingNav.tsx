@@ -92,7 +92,7 @@ const MobileNav = () => {
           <img 
             src={dentiPayLogo}
             alt="DentiPay" 
-            className="h-12 w-auto"
+            className="h-11 w-auto"
           />
         </Link>
       </motion.div>
