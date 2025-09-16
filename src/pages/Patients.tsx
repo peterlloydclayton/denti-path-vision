@@ -192,24 +192,9 @@ const Patients = () => {
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="absolute right-0 bottom-0 w-auto object-contain object-bottom z-10 max-w-none hero-image"
+                className="absolute right-0 bottom-0 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[calc((100vh-6rem)*0.8)] md:h-[85vh]"
                 style={{ 
-                  height: 'calc((100vh - 6rem) * 0.8)',
                   transform: 'translateX(30%)'
-                }}
-                // Override height for landscape using CSS custom property
-                ref={(img) => {
-                  if (img) {
-                    const updateHeight = () => {
-                      if (window.innerWidth >= 768) {
-                        img.style.height = '85vh';
-                      } else {
-                        img.style.height = 'calc((100vh - 6rem) * 0.8)';
-                      }
-                    };
-                    updateHeight();
-                    window.addEventListener('resize', updateHeight);
-                  }
                 }}
               />
             </div>
