@@ -213,8 +213,8 @@ const Patients = () => {
           </AnimatedText>
         </div>
         
-        {/* Subtitle - positioned where title was on desktop */}
-        <div className="absolute top-[34%] md:top-[34%] left-6 md:left-12 z-20 w-1/2 block" style={{ transform: 'translateY(0.5em)' }}>
+        {/* Subtitle - positioned below title on landscape */}
+        <div className="absolute top-[34%] md:top-[42%] left-6 md:left-12 z-20 w-1/2 block" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText delay={0.2}>
             <h2 className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed text-left italic">
               Ai Driven Financing For Smarter & More Affordable Payment Options
