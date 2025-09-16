@@ -171,7 +171,7 @@ const Patients = () => {
   return (
     <div className="overflow-x-hidden">
       {/* Hero Section - New Design */}
-      <section className="h-[calc(100vh-4rem)] bg-dental-blue-muted relative z-30 overflow-hidden">
+      <section className="min-h-screen bg-dental-blue-muted relative z-30 overflow-hidden">
         <div className="container mx-auto px-2 md:px-6 h-full overflow-hidden">
           <div className="flex items-start pt-20 md:items-center md:pt-0 h-full">
             {/* Left Content - Mobile title only */}
@@ -214,7 +214,7 @@ const Patients = () => {
         </div>
         
         {/* Subtitle - positioned below title on landscape */}
-        <div className="absolute top-[34%] md:top-[42%] left-6 md:left-12 z-20 w-1/2 block" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="absolute top-[34%] md:top-[50%] left-6 md:left-12 z-20 w-1/2 block" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText delay={0.2}>
             <h2 className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed text-left italic">
               Ai Driven Financing For Smarter & More Affordable Payment Options
