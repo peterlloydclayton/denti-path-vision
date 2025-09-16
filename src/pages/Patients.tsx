@@ -217,7 +217,7 @@ const Patients = () => {
         </div>
         
         {/* Button positioned absolutely to section - aligned with title */}
-        <div className="absolute bottom-[12%] left-6 md:left-12 z-50" style={{ transform: 'translateY(0.3em)' }}>
+        <div className="absolute bottom-[12%] left-6 md:left-12 z-[120]" style={{ transform: 'translateY(0.3em)' }}>
           <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
             Get Financing
           </Button>
