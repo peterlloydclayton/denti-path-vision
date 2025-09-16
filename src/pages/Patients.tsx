@@ -192,7 +192,7 @@ const Patients = () => {
                 alt="Happy patient with dental financing"
                 className="absolute right-0 bottom-0 w-auto object-contain object-bottom z-10 max-w-none md:right-0 md:transform-none md:h-full"
                 style={{ 
-                  height: 'calc((100vh - 6rem) * 0.6)',
+                  height: 'calc((100vh - 6rem) * 0.8)',
                   transform: 'translateX(30%)'
                 }}
               />
@@ -203,7 +203,7 @@ const Patients = () => {
         {/* Subtitle positioned separately */}
         <div className="absolute top-[34%] left-6 md:left-12 z-20 w-1/2 block" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText delay={0.2}>
-            <h2 className="text-base md:text-xl text-gray-600 font-medium leading-relaxed text-left">
+            <h2 className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed text-left italic">
               Ai Driven Financing For Smarter & More Affordable Payment Options
             </h2>
           </AnimatedText>
