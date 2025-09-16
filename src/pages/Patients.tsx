@@ -199,7 +199,7 @@ const Patients = () => {
         </div>
         
         {/* Subtitle positioned separately */}
-        <div className="absolute top-[40%] left-6 md:left-12 z-40 w-1/2">
+        <div className="absolute top-[28%] left-6 md:left-12 z-40 w-1/2">
           <AnimatedText delay={0.2}>
             <h2 className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed">
               Ai Driven Financing For Smarter & More Affordable Payment Options
