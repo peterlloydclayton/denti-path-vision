@@ -189,7 +189,9 @@ const Patients = () => {
             <div className="absolute top-1/2 left-12 -translate-y-1/2 z-20 w-1/2">
               <AnimatedText delay={0.2}>
                 <h2 className="text-lg text-gray-600 font-medium leading-relaxed italic">
-                  Ai Driven Financing For Smarter & More Affordable Payment Options
+                  Ai Driven Financing<br />
+                  For Smarter & More<br />
+                  Affordable Payment Options
                 </h2>
               </AnimatedText>
             </div>
