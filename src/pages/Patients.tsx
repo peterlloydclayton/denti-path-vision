@@ -202,16 +202,16 @@ const Patients = () => {
               />
             </div>
           </div>
-          
-          {/* Button positioned separately */}
-          <AnimatedText delay={0.4}>
-            <div className="absolute bottom-[15%] left-6 md:left-12 z-30">
-              <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
-                Get Financing
-              </Button>
-            </div>
-          </AnimatedText>
         </div>
+        
+        {/* Button positioned absolutely to section */}
+        <AnimatedText delay={0.4}>
+          <div className="absolute bottom-[15%] left-6 md:left-12 z-50">
+            <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
+              Get Financing
+            </Button>
+          </div>
+        </AnimatedText>
       </section>
 
       {/* Find Your Provider Section */}
