@@ -42,37 +42,39 @@ const Providers = () => {
 
   const intelligenceFeatures = [
     {
-      title: "PATH Patient Portal",
-      description: "2-minute applications with real-time pre-approvals and 94% success rates",
+      title: "DentiPay (The Brand Layer)",
+      subtitle: "The trusted face for dentistry finance",
+      description: "Market leverage and network effect that drives patient adoption",
       features: [
-        "Patient journey prediction",
-        "Financial capacity analysis", 
-        "Optimal timing recommendations",
-        "Behavioral financing optimization"
+        "Market Leverage: A recognizable, unified financial brand increases patient trust",
+        "Network Effect: Every provider strengthens brand equity, creating shared familiarity", 
+        "Speed to Adoption: Brand credibility reduces patient hesitation and shortens decision cycles"
       ],
       icon: Users
     },
     {
-      title: "SCOPE Intelligence Engine", 
-      description: "Clinical decision support with predictive modeling and revenue optimization",
+      title: "PATH (The Portal)",
+      subtitle: "Patient Acceptance Treatment Hub", 
+      description: "2-minute applications with real-time pre-approvals and transparent terms",
       features: [
-        "Real-time practice analytics",
-        "Treatment acceptance predictions", 
-        "Revenue optimization tools",
-        "Precognitive patient insights"
+        "2-minute application process with intuitive patient interface",
+        "Real-time pre-approvals with transparent terms and conditions",
+        "94% approval rates vs. 45% industry average",
+        "Behavioral financing optimization based on patient psychology"
       ],
-      icon: Brain
+      icon: Target
     },
     {
-      title: "Echo AI Enhancement",
-      description: "Voice-enabled interaction processing 50+ data points for optimal outcomes",
+      title: "SCOPE (The Intelligence Engine)",
+      subtitle: "Sentient Capable Outcome Predictive Engine",
+      description: "Clinical decision support with predictive modeling using 30+ data points",
       features: [
-        "Natural language processing",
-        "Multi-modal data integration",
-        "Predictive conversation flows",
-        "Instant decision support"
+        "Clinical decision support in real-time during consultations",
+        "Financial capacity analysis and personalized recommendations", 
+        "Predictive modeling using 30+ data points per decision",
+        "Treatment outcome probability scoring for optimal planning"
       ],
-      icon: MessageSquare
+      icon: Brain
     }
   ];
 
@@ -297,6 +299,7 @@ const Providers = () => {
                   <CardHeader>
                     <feature.icon className="h-12 w-12 text-primary mb-4" />
                     <CardTitle className="text-2xl text-foreground">{feature.title}</CardTitle>
+                    <p className="text-muted-foreground font-medium mb-2">{feature.subtitle}</p>
                     <CardDescription className="text-muted-foreground">
                       {feature.description}
                     </CardDescription>
