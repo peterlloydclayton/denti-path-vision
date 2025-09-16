@@ -175,17 +175,11 @@ const Patients = () => {
         <div className="container mx-auto px-2 md:px-6 h-full">
           <div className="flex items-start pt-20 md:items-center md:pt-0 h-full">
             {/* Left Content */}
-            <div className="flex-[3] md:flex-1 pr-0 md:pr-8 relative z-20 border-4 border-red-500">
+            <div className="flex-[3] md:flex-1 pr-0 md:pr-8 relative z-20">
               <AnimatedText>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight">
                   Making Your Dream Smile Affordable
                 </h1>
-              </AnimatedText>
-              
-              <AnimatedText delay={0.2}>
-                <h2 className="text-xl md:text-2xl mb-12 text-foreground font-medium leading-relaxed max-w-2xl">
-                  Ai Driven Financing For Smarter & More Affordable Payment Options
-                </h2>
               </AnimatedText>
             </div>
 
@@ -202,6 +196,15 @@ const Patients = () => {
               />
             </div>
           </div>
+        </div>
+        
+        {/* Subtitle positioned separately */}
+        <div className="absolute top-[40%] left-6 md:left-12 z-40 w-1/2">
+          <AnimatedText delay={0.2}>
+            <h2 className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed">
+              Ai Driven Financing For Smarter & More Affordable Payment Options
+            </h2>
+          </AnimatedText>
         </div>
         
         {/* Button positioned absolutely to section */}
