@@ -173,13 +173,13 @@ const Patients = () => {
       {/* Hero Section - New Design */}
       <section className="min-h-screen bg-dental-blue-muted relative z-30 sm:overflow-visible md:overflow-hidden">
         <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
-          <div className="flex justify-start md:justify-center items-start pt-20 md:items-center md:pt-0 min-h-screen ml-[-40%] sm:ml-[15%] md:ml-0">
+          <div className="flex justify-start md:justify-center items-start pt-20 md:items-center md:pt-0 min-h-screen ml-[-20%] sm:ml-[15%] md:ml-0">
             {/* Right Hero Image - Centered */}
             <div className="w-full max-w-md min-h-screen relative border-4 border-blue-500 z-[100]">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="absolute bottom-0 left-[40%] sm:left-[25%] md:left-1/2 transform -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc((100vh-6rem)*0.92)] sm:h-[calc((100vh-6rem)*0.82)] md:h-[85vh] border-4 border-red-500"
+                className="absolute bottom-0 left-[40%] sm:left-[15%] md:left-1/2 transform -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc((100vh-6rem)*0.92)] sm:h-[calc((100vh-6rem)*0.82)] md:h-[85vh] border-4 border-red-500"
               />
             </div>
           </div>
