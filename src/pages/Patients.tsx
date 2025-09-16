@@ -174,14 +174,18 @@ const Patients = () => {
       <section className="min-h-screen bg-dental-blue-muted relative z-30 sm:overflow-visible md:overflow-hidden">
         <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
           {/* Mobile Landscape Layout */}
-          <div className="hidden md:flex lg:hidden flex-col justify-start items-start min-h-screen pt-0 ml-[-25%] border-4 border-red-500 relative z-[9999]">
-            {/* Title Above Image for Mobile Landscape */}
-            <div className="text-center mb-8 z-20">
-              <AnimatedText>
-                <h1 className="text-4xl font-bold text-foreground leading-tight mb-4">
-                  Making Your Dream Smile Affordable
-                </h1>
-              </AnimatedText>
+          <div className="hidden md:flex lg:hidden relative min-h-screen border-4 border-red-500 z-[9999] overflow-hidden">
+            {/* Image - Right aligned */}
+            <div className="absolute right-0 top-0 h-full flex items-center justify-end z-[9998]">
+              <img 
+                src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
+                alt="Happy patient with dental financing"
+                className="w-auto h-[85vh] object-contain object-bottom z-[110]"
+              />
+            </div>
+            
+            {/* Subtitle - Middle of container */}
+            <div className="absolute top-1/2 left-12 -translate-y-1/2 z-20 w-1/2">
               <AnimatedText delay={0.2}>
                 <h2 className="text-lg text-gray-600 font-medium leading-relaxed italic">
                   Ai Driven Financing For Smarter & More Affordable Payment Options
@@ -189,17 +193,8 @@ const Patients = () => {
               </AnimatedText>
             </div>
             
-            {/* Image Below Title for Mobile Landscape */}
-            <div className="w-full max-w-md relative z-[9998] flex-1 flex items-end border-4 border-blue-500">
-              <img 
-                src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
-                alt="Happy patient with dental financing"
-                className="w-auto h-[60vh] object-contain object-bottom z-[110] ml-0"
-              />
-            </div>
-            
-            {/* Button for Mobile Landscape */}
-            <div className="mb-8 z-[120]">
+            {/* Button - Shifted right but left aligned */}
+            <div className="absolute bottom-[12%] left-[20%] z-[120]">
               <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
                 Get Financing
               </Button>
