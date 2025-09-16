@@ -190,7 +190,7 @@ const Patients = () => {
             </div>
             
             {/* Image Below Title for Mobile Landscape */}
-            <div className="w-full max-w-md relative z-[100] flex-1 flex items-end">
+            <div className="w-full max-w-md relative z-[100] flex-1 flex items-end ml-[-25%]">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
