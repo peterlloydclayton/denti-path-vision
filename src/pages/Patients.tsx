@@ -281,7 +281,7 @@ const Patients = () => {
         </div>
         
         {/* Desktop Button */}
-        <div className="hidden md:block absolute top-[60%] left-12 z-[120]" style={{ transform: 'translateY(0.3em)' }}>
+        <div className="hidden md:block absolute top-[60%] left-12 z-[120]" style={{ transform: 'translateY(2.3em)' }}>
           <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
             Get Financing
           </Button>
