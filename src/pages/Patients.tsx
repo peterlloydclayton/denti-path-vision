@@ -173,26 +173,13 @@ const Patients = () => {
       {/* Hero Section - New Design */}
       <section className="min-h-screen bg-dental-blue-muted relative z-30 sm:overflow-visible md:overflow-hidden">
         <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
-          <div className="flex items-start pt-20 md:items-center md:pt-0 min-h-screen">
-            {/* Left Content - Mobile title only */}
-            <div className="flex-[3] md:flex-1 pr-0 md:pr-8 relative z-10">
-              <div className="block md:hidden">
-                <AnimatedText>
-                  <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight ml-2" style={{ transform: 'translateY(1em)' }}>
-                    Making Your<br />
-                    Dream Smile<br />
-                    Affordable
-                  </h1>
-                </AnimatedText>
-              </div>
-            </div>
-
-            {/* Right Hero Image */}
-            <div className="flex-[1] md:flex-1 min-h-screen relative border-2 border-blue-500 sm:border-0">
+          <div className="flex justify-center items-start pt-20 md:items-center md:pt-0 min-h-screen">
+            {/* Right Hero Image - Centered */}
+            <div className="w-full max-w-md min-h-screen relative border-2 border-blue-500 sm:border-0">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="absolute bottom-0 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[calc((100vh-6rem)*0.8)] md:h-[85vh] left-0 sm:left-[60%] md:left-[70%] lg:right-0 lg:left-auto border-2 border-red-500 sm:border-0"
+                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[calc((100vh-6rem)*0.8)] md:h-[85vh] border-2 border-red-500 sm:border-0"
               />
             </div>
           </div>
