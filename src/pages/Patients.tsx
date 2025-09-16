@@ -174,15 +174,17 @@ const Patients = () => {
       <section className="h-[calc(100vh-4rem)] bg-dental-blue-muted relative z-30 overflow-hidden">
         <div className="container mx-auto px-2 md:px-6 h-full overflow-hidden">
           <div className="flex items-start pt-20 md:items-center md:pt-0 h-full">
-            {/* Left Content */}
+            {/* Left Content - Mobile title only */}
             <div className="flex-[3] md:flex-1 pr-0 md:pr-8 relative z-10">
-              <AnimatedText>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight ml-2 md:ml-0" style={{ transform: 'translateY(1em)' }}>
-                  Making Your<br />
-                  Dream Smile<br />
-                  Affordable
-                </h1>
-              </AnimatedText>
+              <div className="block md:hidden">
+                <AnimatedText>
+                  <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight ml-2" style={{ transform: 'translateY(1em)' }}>
+                    Making Your<br />
+                    Dream Smile<br />
+                    Affordable
+                  </h1>
+                </AnimatedText>
+              </div>
             </div>
 
             {/* Right Hero Image */}
@@ -190,7 +192,7 @@ const Patients = () => {
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="absolute right-0 bottom-0 w-auto object-contain object-bottom z-10 max-w-none md:right-0 md:transform-none md:h-full"
+                className="absolute right-0 bottom-0 w-auto object-contain object-bottom z-10 max-w-none md:right-0 md:transform-none hero-image"
                 style={{ 
                   height: 'calc((100vh - 6rem) * 0.8)',
                   transform: 'translateX(30%)'
@@ -200,8 +202,19 @@ const Patients = () => {
           </div>
         </div>
         
-        {/* Subtitle positioned separately */}
-        <div className="absolute top-[34%] left-6 md:left-12 z-20 w-1/2 block" style={{ transform: 'translateY(0.5em)' }}>
+        {/* Desktop Title - positioned where subtitle was on mobile */}
+        <div className="hidden md:block absolute top-[34%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
+          <AnimatedText>
+            <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+              Making Your<br />
+              Dream Smile<br />
+              Affordable
+            </h1>
+          </AnimatedText>
+        </div>
+        
+        {/* Subtitle - positioned where title was on desktop */}
+        <div className="absolute top-[34%] md:top-[20%] left-6 md:left-12 z-20 w-1/2 block" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText delay={0.2}>
             <h2 className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed text-left italic">
               Ai Driven Financing For Smarter & More Affordable Payment Options
@@ -209,8 +222,8 @@ const Patients = () => {
           </AnimatedText>
         </div>
         
-        {/* Button positioned absolutely to section */}
-        <div className="absolute bottom-[12%] left-6 z-50" style={{ transform: 'translateY(0.3em)' }}>
+        {/* Button positioned absolutely to section - aligned with title */}
+        <div className="absolute bottom-[12%] left-6 md:left-12 z-50" style={{ transform: 'translateY(0.3em)' }}>
           <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
             Get Financing
           </Button>
