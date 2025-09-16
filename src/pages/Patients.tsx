@@ -188,7 +188,7 @@ const Patients = () => {
             </div>
 
             {/* Right Hero Image */}
-            <div className="flex-[1] md:flex-1 min-h-screen relative">
+            <div className="flex-[1] md:flex-1 min-h-screen relative border-2 border-blue-500 sm:border-0">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
