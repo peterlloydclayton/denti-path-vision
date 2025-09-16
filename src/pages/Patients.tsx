@@ -185,6 +185,17 @@ const Patients = () => {
           </div>
         </div>
         
+        {/* Mobile Title */}
+        <div className="block md:hidden absolute top-[15%] left-6 z-20 w-3/4" style={{ transform: 'translateY(0.5em)' }}>
+          <AnimatedText>
+            <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight">
+              Making Your<br />
+              Dream Smile<br />
+              Affordable
+            </h1>
+          </AnimatedText>
+        </div>
+        
         {/* Desktop Title - positioned where subtitle was on mobile */}
         <div className="hidden md:block absolute top-[20%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText>
