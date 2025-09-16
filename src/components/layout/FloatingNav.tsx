@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { DesktopNav } from './DesktopNav';
+import dentiPayLogo from '@/assets/dentipay-logo.png';
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
@@ -80,6 +81,22 @@ const MobileNav = () => {
 
   return (
     <>
+      {/* Logo - Fixed upper left */}
+      <motion.div
+        className="fixed top-6 left-6 z-50"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+      >
+        <Link to="/">
+          <img 
+            src={dentiPayLogo}
+            alt="DentiPay" 
+            className="h-12 w-auto"
+          />
+        </Link>
+      </motion.div>
+
       {/* Mobile Menu Button - Floating over hero */}
       <motion.div
         className={`fixed top-6 right-6 z-50 transition-smooth ${
