@@ -258,4 +258,41 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
       transform: translateX(0%) !important;
     }
   }
+
+  /* Mobile Landscape Responsiveness */
+  @media (orientation: landscape) and (max-height: 500px) {
+    .mobile-landscape-title {
+      top: 8% !important;
+    }
+    
+    .mobile-landscape-text {
+      font-size: 2.5rem !important;
+      margin-bottom: 0.5rem !important;
+      line-height: 1.1 !important;
+    }
+    
+    .mobile-landscape-subtitle {
+      display: none !important;
+    }
+    
+    .mobile-landscape-button {
+      bottom: 10% !important;
+    }
+  }
+
+  /* Additional mobile landscape adjustments for very short screens */
+  @media (orientation: landscape) and (max-height: 400px) {
+    .mobile-landscape-title {
+      top: 5% !important;
+    }
+    
+    .mobile-landscape-text {
+      font-size: 2rem !important;
+      margin-bottom: 0.25rem !important;
+    }
+    
+    .mobile-landscape-button {
+      bottom: 5% !important;
+    }
+  }
 }

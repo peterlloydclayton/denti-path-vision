@@ -230,9 +230,9 @@ const Patients = () => {
         </div>
         
         {/* Mobile Portrait Title */}
-        <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4 mobile-landscape-title" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText>
-            <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight">
+            <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight mobile-landscape-text">
               Making Your<br />
               Dream Smile<br />
               Affordable
@@ -261,8 +261,8 @@ const Patients = () => {
           </AnimatedText>
         </div>
         
-        {/* Mobile Portrait Subtitle */}
-        <div className="block sm:hidden absolute top-[34%] left-6 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
+        {/* Mobile Portrait Subtitle - Hidden on mobile landscape */}
+        <div className="block sm:hidden absolute top-[34%] left-6 z-20 w-1/2 mobile-landscape-subtitle" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText delay={0.2}>
             <h2 className="text-lg text-gray-600 font-medium leading-relaxed text-left italic">
               Ai Driven Financing For Smarter & More Affordable Payment Options
@@ -277,8 +277,8 @@ const Patients = () => {
           </Button>
         </div>
 
-        {/* Mobile Portrait Button */}
-        <div className="block sm:hidden absolute bottom-[30%] left-6 z-[150]" style={{ transform: 'translateY(3em)' }}>
+        {/* Mobile Portrait Button - Lower on landscape */}
+        <div className="block sm:hidden absolute bottom-[30%] left-6 z-[150] mobile-landscape-button" style={{ transform: 'translateY(3em)' }}>
           <Button className="h-12 text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-8 font-semibold">
             Get Financing
           </Button>
