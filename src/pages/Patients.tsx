@@ -173,7 +173,7 @@ const Patients = () => {
       {/* Hero Section - New Design */}
       <section className="min-h-screen bg-dental-blue-muted relative z-30 sm:overflow-visible md:overflow-hidden">
         <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
-          <div className="flex justify-start md:justify-center items-start pt-20 md:items-center md:pt-0 min-h-screen">
+          <div className="flex justify-start md:justify-center items-start pt-20 md:items-center md:pt-0 min-h-screen ml-[15%] md:ml-0">
             {/* Right Hero Image - Centered */}
             <div className="w-full max-w-md min-h-screen relative border-2 border-blue-500 sm:border-0">
               <img 
