@@ -176,7 +176,7 @@ const Patients = () => {
           {/* Mobile Landscape Layout */}
           <div className="hidden md:flex lg:hidden relative min-h-screen border-4 border-red-500 z-[9999]">
             {/* Image - Right aligned, moved 40% from left */}
-            <div className="absolute left-[40%] top-0 h-full flex items-center justify-end z-[9998]">
+            <div className="absolute left-[40%] bottom-0 h-full flex items-end justify-end z-[9998]">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
