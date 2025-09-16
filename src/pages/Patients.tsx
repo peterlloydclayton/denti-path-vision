@@ -174,7 +174,7 @@ const Patients = () => {
       <section className="min-h-screen bg-dental-blue-muted relative z-30 sm:overflow-visible md:overflow-hidden">
         <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
           {/* Mobile Landscape Layout */}
-          <div className="hidden sm:flex md:hidden flex-col justify-start items-start min-h-screen pt-0 ml-[-25%]">
+          <div className="hidden sm:flex md:hidden flex-col justify-start items-start min-h-screen pt-0 ml-[-25%] border-4 border-red-500">
             {/* Title Above Image for Mobile Landscape */}
             <div className="text-center mb-8 z-20">
               <AnimatedText>
@@ -190,7 +190,7 @@ const Patients = () => {
             </div>
             
             {/* Image Below Title for Mobile Landscape */}
-            <div className="w-full max-w-md relative z-[100] flex-1 flex items-end">
+            <div className="w-full max-w-md relative z-[100] flex-1 flex items-end border-4 border-blue-500">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
