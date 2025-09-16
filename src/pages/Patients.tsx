@@ -190,7 +190,7 @@ const Patients = () => {
                 alt="Happy patient with dental financing"
                 className="absolute right-0 bottom-0 h-full w-auto object-contain object-bottom z-10 max-w-none md:right-0 md:transform-none"
                 style={{ 
-                  height: 'calc(100vh - 6rem)',
+                  height: 'calc((100vh - 6rem) * 0.6)',
                   transform: 'translateX(30%)'
                 }}
               />
