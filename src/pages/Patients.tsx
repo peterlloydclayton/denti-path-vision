@@ -174,13 +174,13 @@ const Patients = () => {
       <section className="min-h-screen bg-dental-blue-muted relative z-30 overflow-visible">
         <div className="container mx-auto px-2 md:px-6 min-h-screen overflow-visible">
           {/* Mobile Landscape Layout */}
-          <div className="hidden md:flex lg:hidden relative min-h-screen border-4 border-red-500 z-[9999]">
+          <div className="hidden md:flex lg:hidden relative min-h-screen">
             {/* Image - Right aligned, moved 40% from left */}
-            <div className="absolute left-[40%] bottom-0 w-[60%] h-full flex items-end justify-end z-[9998]">
+            <div className="absolute left-[40%] bottom-0 w-[55%] h-full flex items-end justify-center z-[9998]">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="w-full h-[95%] object-cover object-bottom z-[110] border-4 border-blue-500"
+                className="w-auto h-[95%] object-contain object-bottom z-[110] border-4 border-blue-500"
               />
             </div>
             
@@ -194,7 +194,7 @@ const Patients = () => {
             </div>
             
             {/* Button - Shifted right but left aligned, in front of image */}
-            <div className="absolute bottom-[12%] left-[20%] z-[150]">
+            <div className="absolute bottom-[12%] left-[20%] z-[200]">
               <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
                 Get Financing
               </Button>
@@ -249,7 +249,7 @@ const Patients = () => {
         </div>
         
         {/* Tablet Title - closer to top */}
-        <div className="md:block lg:hidden absolute top-[8%] left-12 z-[10000] w-1/2 border-8 border-red-500 bg-yellow-300 p-8 shadow-2xl" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="md:block lg:hidden absolute top-[8%] left-12 z-[10000] w-1/2" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText>
             <h1 className="text-6xl lg:text-7xl font-bold text-black leading-tight">
               Making Your<br />
