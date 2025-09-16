@@ -80,29 +80,7 @@ const MobileNav = () => {
 
   return (
     <>
-      {/* Mobile Logo - Left Side */}
-      <motion.div
-        className={`fixed top-6 left-6 z-50 transition-smooth ${
-          scrolled ? 'shadow-elegant' : 'shadow-soft'
-        }`}
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 400, damping: 25 }}
-      >
-        <Link
-          to="/"
-          className="block hover:opacity-80 transition-smooth"
-          onClick={() => setCurrentPath('/')}
-        >
-          <img 
-            src="/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png" 
-            alt="DentiPay" 
-            className="h-10 w-auto"
-          />
-        </Link>
-      </motion.div>
-
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Button - Floating over hero */}
       <motion.div
         className={`fixed top-6 right-6 z-50 transition-smooth ${
           scrolled ? 'shadow-elegant' : 'shadow-soft'
@@ -152,6 +130,15 @@ const MobileNav = () => {
               exit="closed"
               style={{ originX: 1, originY: 0 }}
             >
+              {/* Logo at top of mobile menu */}
+              <div className="mb-6 pb-4 border-b flex justify-center">
+                <img 
+                  src="/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png" 
+                  alt="DentiPay" 
+                  className="h-9 w-auto"
+                />
+              </div>
+              
               <div className="space-y-2">
                 {navItems.map((item) => {
                   const Icon = item.icon;
