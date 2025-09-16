@@ -171,7 +171,7 @@ const Patients = () => {
   return (
     <div className="">
       {/* Hero Section - New Design */}
-      <section className="h-screen bg-dental-blue-muted relative border-4 border-red-500">
+      <section className="h-screen bg-dental-blue-muted relative">
         <div className="container mx-auto px-2 md:px-6 h-full">
           <div className="flex items-start pt-20 md:items-center md:pt-0 h-full">
             {/* Left Content */}
@@ -208,7 +208,7 @@ const Patients = () => {
         </div>
         
         {/* Button positioned absolutely to section */}
-        <div className="fixed bottom-[15%] left-6 z-50">
+        <div className="fixed bottom-[12%] left-6 z-50">
           <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
             Get Financing
           </Button>
