@@ -204,8 +204,8 @@ const Patients = () => {
           </div>
         </div>
         
-        {/* Button positioned absolutely to section - DEBUG VERSION */}
-        <div className="fixed bottom-[15%] left-6 z-50 bg-blue-500 p-4 border-4 border-yellow-500">
+        {/* Button positioned absolutely to section */}
+        <div className="fixed bottom-[15%] left-6 z-50">
           <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
             Get Financing
           </Button>
