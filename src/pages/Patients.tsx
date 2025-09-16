@@ -173,20 +173,66 @@ const Patients = () => {
       {/* Hero Section - New Design */}
       <section className="min-h-screen bg-dental-blue-muted relative z-30 sm:overflow-visible md:overflow-hidden">
         <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
-          <div className="flex justify-start sm:justify-center md:justify-center items-start pt-20 sm:items-center md:items-center sm:pt-0 md:pt-0 min-h-screen ml-[10%] sm:ml-0 md:ml-0">
+          {/* Mobile Landscape Layout */}
+          <div className="hidden sm:flex md:hidden flex-col justify-center items-center min-h-screen pt-0">
+            {/* Title Above Image for Mobile Landscape */}
+            <div className="text-center mb-8 z-20">
+              <AnimatedText>
+                <h1 className="text-4xl font-bold text-foreground leading-tight mb-4">
+                  Making Your Dream Smile Affordable
+                </h1>
+              </AnimatedText>
+              <AnimatedText delay={0.2}>
+                <h2 className="text-lg text-gray-600 font-medium leading-relaxed italic">
+                  Ai Driven Financing For Smarter & More Affordable Payment Options
+                </h2>
+              </AnimatedText>
+            </div>
+            
+            {/* Image Below Title for Mobile Landscape */}
+            <div className="w-full max-w-md relative z-[100] flex-1 flex items-end">
+              <img 
+                src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
+                alt="Happy patient with dental financing"
+                className="w-auto h-[60vh] object-contain object-bottom z-[110] mx-auto"
+              />
+            </div>
+            
+            {/* Button for Mobile Landscape */}
+            <div className="mb-8 z-[120]">
+              <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
+                Get Financing
+              </Button>
+            </div>
+          </div>
+
+          {/* Desktop Layout */}
+          <div className="hidden md:flex justify-center items-center min-h-screen">
             {/* Right Hero Image - Centered */}
             <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-xl min-h-screen relative z-[100]">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="absolute bottom-0 left-[-150px] sm:left-1/2 lg:left-1/2 xl:left-1/2 2xl:left-1/2 transform-none sm:-translate-x-1/2 lg:-translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc((100vh-6rem)*0.92)] sm:h-[85vh] md:h-[85vh]"
+                className="absolute bottom-0 left-1/2 xl:left-1/2 2xl:left-1/2 -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              />
+            </div>
+          </div>
+
+          {/* Mobile Portrait Layout */}
+          <div className="flex sm:hidden justify-start items-start pt-20 min-h-screen ml-[10%]">
+            {/* Right Hero Image - Centered */}
+            <div className="w-full max-w-md min-h-screen relative z-[100]">
+              <img 
+                src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
+                alt="Happy patient with dental financing"
+                className="absolute bottom-0 left-[-150px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc((100vh-6rem)*0.92)]"
               />
             </div>
           </div>
         </div>
         
-        {/* Mobile Title */}
-        <div className="block md:hidden absolute top-[15%] left-6 z-20 w-3/4" style={{ transform: 'translateY(0.5em)' }}>
+        {/* Mobile Portrait Title */}
+        <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText>
             <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight">
               Making Your<br />
@@ -197,9 +243,9 @@ const Patients = () => {
         </div>
         
         {/* Desktop Title - positioned where subtitle was on mobile */}
-        <div className="hidden sm:block absolute top-[20%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="hidden md:block absolute top-[20%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText>
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+            <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
               Making Your<br />
               Dream Smile<br />
               Affordable
@@ -207,17 +253,33 @@ const Patients = () => {
           </AnimatedText>
         </div>
         
-        {/* Subtitle - positioned below title on landscape */}
-        <div className="absolute top-[34%] sm:top-[50%] md:top-[50%] left-6 sm:left-12 md:left-12 z-20 w-1/2 block" style={{ transform: 'translateY(0.5em)' }}>
+        {/* Desktop Subtitle - positioned below title */}
+        <div className="hidden md:block absolute top-[50%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText delay={0.2}>
-            <h2 className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed text-left italic">
+            <h2 className="text-xl text-gray-600 font-medium leading-relaxed text-left italic">
               Ai Driven Financing For Smarter & More Affordable Payment Options
             </h2>
           </AnimatedText>
         </div>
         
-        {/* Button positioned absolutely to section - aligned with title */}
-        <div className="absolute bottom-[12%] left-6 sm:left-12 md:left-12 z-[120]" style={{ transform: 'translateY(0.3em)' }}>
+        {/* Mobile Portrait Subtitle */}
+        <div className="block sm:hidden absolute top-[34%] left-6 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
+          <AnimatedText delay={0.2}>
+            <h2 className="text-lg text-gray-600 font-medium leading-relaxed text-left italic">
+              Ai Driven Financing For Smarter & More Affordable Payment Options
+            </h2>
+          </AnimatedText>
+        </div>
+        
+        {/* Desktop Button */}
+        <div className="hidden md:block absolute bottom-[12%] left-12 z-[120]" style={{ transform: 'translateY(0.3em)' }}>
+          <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
+            Get Financing
+          </Button>
+        </div>
+
+        {/* Mobile Portrait Button */}
+        <div className="block sm:hidden absolute bottom-[12%] left-6 z-[120]" style={{ transform: 'translateY(0.3em)' }}>
           <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
             Get Financing
           </Button>
