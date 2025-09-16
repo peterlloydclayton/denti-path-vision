@@ -169,10 +169,10 @@ const Patients = () => {
   ];
 
   return (
-    <div className="">
+    <div className="overflow-x-hidden">
       {/* Hero Section - New Design */}
-      <section className="h-[calc(100vh-4rem)] bg-dental-blue-muted relative z-30">
-        <div className="container mx-auto px-2 md:px-6 h-full">
+      <section className="h-[calc(100vh-4rem)] bg-dental-blue-muted relative z-30 overflow-hidden">
+        <div className="container mx-auto px-2 md:px-6 h-full overflow-hidden">
           <div className="flex items-start pt-20 md:items-center md:pt-0 h-full">
             {/* Left Content */}
             <div className="flex-[3] md:flex-1 pr-0 md:pr-8 relative z-10">
