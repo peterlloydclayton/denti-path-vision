@@ -219,13 +219,13 @@ const Patients = () => {
           </div>
 
           {/* Mobile Portrait Layout */}
-          <div className="flex sm:hidden justify-start items-start pt-20 min-h-screen ml-[10%]">
+          <div className="flex sm:hidden justify-start items-start pt-20 h-[calc(100vh-5rem)] ml-[10%]">
             {/* Right Hero Image - Centered */}
-            <div className="w-full max-w-md min-h-screen relative z-[100]">
+            <div className="w-full max-w-md h-[calc(100vh-5rem)] relative z-[100]">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="absolute bottom-0 left-[-150px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc((100vh-6rem)*0.92)]"
+                className="absolute bottom-16 left-[-150px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(100vh-12rem)]"
               />
             </div>
           </div>
@@ -279,8 +279,8 @@ const Patients = () => {
         </div>
 
         {/* Mobile Portrait Button */}
-        <div className="block sm:hidden absolute bottom-[12%] left-6 z-[120]" style={{ transform: 'translateY(0.3em)' }}>
-          <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
+        <div className="block sm:hidden absolute bottom-6 left-6 z-[120]" style={{ transform: 'translateY(0.3em)' }}>
+          <Button className="h-12 text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-8 font-semibold">
             Get Financing
           </Button>
         </div>
