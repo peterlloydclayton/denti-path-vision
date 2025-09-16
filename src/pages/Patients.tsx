@@ -171,13 +171,13 @@ const Patients = () => {
   return (
     <div className="">
       {/* Hero Section - New Design */}
-      <section className="h-screen bg-dental-blue-muted relative">
+      <section className="h-screen bg-dental-blue-muted relative z-30">
         <div className="container mx-auto px-2 md:px-6 h-full">
           <div className="flex items-start pt-20 md:items-center md:pt-0 h-full">
             {/* Left Content */}
-            <div className="flex-[3] md:flex-1 pr-0 md:pr-8 relative z-20">
+            <div className="flex-[3] md:flex-1 pr-0 md:pr-8 relative z-10">
               <AnimatedText>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight ml-2 md:ml-0" style={{ transform: 'translateY(0.5em)' }}>
                   Making Your Dream Smile Affordable
                 </h1>
               </AnimatedText>
@@ -199,9 +199,9 @@ const Patients = () => {
         </div>
         
         {/* Subtitle positioned separately */}
-        <div className="absolute top-[34%] left-6 md:left-12 z-40 w-1/2">
+        <div className="absolute top-[34%] left-6 md:left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText delay={0.2}>
-            <h2 className="text-xl md:text-2xl text-gray-600 font-medium leading-relaxed">
+            <h2 className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed">
               Ai Driven Financing For Smarter & More Affordable Payment Options
             </h2>
           </AnimatedText>
