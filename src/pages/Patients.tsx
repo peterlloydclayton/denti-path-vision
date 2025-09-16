@@ -171,8 +171,8 @@ const Patients = () => {
   return (
     <div className="overflow-x-hidden">
       {/* Hero Section - New Design */}
-      <section className="min-h-screen bg-dental-blue-muted relative z-30 sm:overflow-visible md:overflow-hidden">
-        <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
+      <section className="min-h-screen bg-dental-blue-muted relative z-30 overflow-visible">
+        <div className="container mx-auto px-2 md:px-6 min-h-screen overflow-visible">
           {/* Mobile Landscape Layout */}
           <div className="hidden md:flex lg:hidden relative min-h-screen border-4 border-red-500 z-[9999]">
             {/* Image - Right aligned, moved 40% from left */}
@@ -249,7 +249,7 @@ const Patients = () => {
         </div>
         
         {/* Tablet Title - closer to top */}
-        <div className="md:block lg:hidden absolute top-[8%] left-12 z-[10000] w-1/2 border-2 border-blue-500 p-4" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="md:block lg:hidden absolute top-[8%] left-12 z-[10000] w-1/2 border-8 border-red-500 bg-yellow-300 p-8 shadow-2xl" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText>
             <h1 className="text-6xl lg:text-7xl font-bold text-black leading-tight">
               Making Your<br />
