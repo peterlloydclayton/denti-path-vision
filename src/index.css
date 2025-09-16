@@ -273,10 +273,13 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     
     .mobile-landscape-subtitle {
       display: none !important;
+      visibility: hidden !important;
     }
     
     .mobile-landscape-button {
       bottom: 10% !important;
+      right: 6% !important;
+      left: auto !important;
     }
   }
 
@@ -293,6 +296,22 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     
     .mobile-landscape-button {
       bottom: 5% !important;
+      right: 6% !important;
+      left: auto !important;
+    }
+  }
+
+  /* Specific iPhone Pro Max landscape support */
+  @media (orientation: landscape) and (max-height: 450px) and (min-width: 850px) {
+    .mobile-landscape-subtitle {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    
+    .mobile-landscape-button {
+      right: 6% !important;
+      left: auto !important;
     }
   }
 }
