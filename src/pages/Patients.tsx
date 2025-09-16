@@ -230,7 +230,7 @@ const Patients = () => {
         </div>
         
         {/* Mobile Portrait Title */}
-        <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4 mobile-landscape-title" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4 mobile-landscape-title">
           <AnimatedText>
             <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight mobile-landscape-text">
               Making Your<br />
@@ -241,7 +241,7 @@ const Patients = () => {
         </div>
         
         {/* Desktop & Tablet Title - positioned where subtitle was on mobile */}
-        <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-20 w-1/2">
           <AnimatedText>
             <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
               Making Your<br />
@@ -253,7 +253,7 @@ const Patients = () => {
         
         
         {/* Desktop Subtitle - positioned below title */}
-        <div className="hidden md:block absolute top-[50%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="hidden md:block absolute top-[50%] left-12 z-20 w-1/2">
           <AnimatedText delay={0.2}>
             <h2 className="text-xl text-gray-600 font-medium leading-relaxed text-left italic">
               Ai Driven Financing For Smarter & More Affordable Payment Options
@@ -262,7 +262,7 @@ const Patients = () => {
         </div>
         
         {/* Mobile Portrait Subtitle - Hidden on mobile landscape */}
-        <div className="block sm:hidden absolute top-[34%] left-6 z-20 w-1/2 mobile-landscape-subtitle" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="block sm:hidden absolute top-[34%] left-6 z-20 w-1/2 mobile-landscape-subtitle">
           <AnimatedText delay={0.2}>
             <h2 className="text-lg text-gray-600 font-medium leading-relaxed text-left italic">
               Ai Driven Financing For Smarter & More Affordable Payment Options
@@ -271,14 +271,14 @@ const Patients = () => {
         </div>
         
         {/* Desktop Button */}
-        <div className="hidden md:block absolute top-[60%] left-12 z-[120]" style={{ transform: 'translateY(2.3em)' }}>
+        <div className="hidden md:block absolute top-[60%] left-12 z-[120]">
           <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
             Get Financing
           </Button>
         </div>
 
         {/* Mobile Portrait Button - Lower on landscape */}
-        <div className="block sm:hidden absolute bottom-[30%] left-6 z-[150] mobile-landscape-button" style={{ transform: 'translateY(3em)' }}>
+        <div className="block sm:hidden absolute bottom-[30%] left-6 z-[150] mobile-landscape-button">
           <Button className="h-12 text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-8 font-semibold">
             Get Financing
           </Button>

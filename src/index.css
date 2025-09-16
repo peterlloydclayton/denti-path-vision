@@ -259,14 +259,15 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
   }
 
-  /* Mobile Landscape Responsiveness */
-  @media (orientation: landscape) and (max-height: 500px) {
+  /* Mobile Landscape Responsiveness - Higher Specificity */
+  @media screen and (orientation: landscape) and (max-height: 500px) {
     .mobile-landscape-title {
       top: 8% !important;
+      transform: translateY(0em) !important;
     }
     
     .mobile-landscape-text {
-      font-size: 2.5rem !important;
+      font-size: 2.2rem !important;
       margin-bottom: 0.5rem !important;
       line-height: 1.1 !important;
     }
@@ -274,44 +275,74 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     .mobile-landscape-subtitle {
       display: none !important;
       visibility: hidden !important;
+      opacity: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
     }
     
     .mobile-landscape-button {
       bottom: 10% !important;
       right: 6% !important;
       left: auto !important;
+      transform: translateY(0em) !important;
     }
   }
 
-  /* Additional mobile landscape adjustments for very short screens */
-  @media (orientation: landscape) and (max-height: 400px) {
+  /* Samsung Galaxy S10 and similar */
+  @media screen and (orientation: landscape) and (max-height: 380px) {
     .mobile-landscape-title {
       top: 5% !important;
+      transform: translateY(0em) !important;
     }
     
     .mobile-landscape-text {
-      font-size: 2rem !important;
+      font-size: 1.8rem !important;
       margin-bottom: 0.25rem !important;
+      line-height: 1.05 !important;
     }
     
-    .mobile-landscape-button {
-      bottom: 5% !important;
-      right: 6% !important;
-      left: auto !important;
-    }
-  }
-
-  /* Specific iPhone Pro Max landscape support */
-  @media (orientation: landscape) and (max-height: 450px) and (min-width: 850px) {
     .mobile-landscape-subtitle {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
     }
     
     .mobile-landscape-button {
+      bottom: 8% !important;
       right: 6% !important;
       left: auto !important;
+      transform: translateY(0em) !important;
+    }
+  }
+
+  /* iPhone 14 Pro Max and similar large phones */
+  @media screen and (orientation: landscape) and (max-height: 450px) and (min-width: 800px) {
+    .mobile-landscape-title {
+      top: 8% !important;
+      transform: translateY(0em) !important;
+    }
+    
+    .mobile-landscape-text {
+      font-size: 2.2rem !important;
+      margin-bottom: 0.5rem !important;
+      line-height: 1.1 !important;
+    }
+    
+    .mobile-landscape-subtitle {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+    
+    .mobile-landscape-button {
+      bottom: 10% !important;
+      right: 6% !important;
+      left: auto !important;
+      transform: translateY(0em) !important;
     }
   }
 }
