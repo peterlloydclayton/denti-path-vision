@@ -189,8 +189,8 @@ const Patients = () => {
               </AnimatedText>
 
               <AnimatedText delay={0.4}>
-                <div className="relative z-30">
-                  <Button className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
+                <div className="absolute bottom-[15%] left-0 z-30">
+                  <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
                     Get Financing
                   </Button>
                 </div>
