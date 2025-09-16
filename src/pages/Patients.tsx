@@ -248,10 +248,10 @@ const Patients = () => {
           </AnimatedText>
         </div>
         
-        {/* Tablet Title - 20% below navbar */}
-        <div className="hidden md:block lg:hidden absolute top-[20%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
+        {/* Tablet Title - closer to top */}
+        <div className="hidden md:block lg:hidden absolute top-[8%] left-12 z-20 w-1/2 border-2 border-blue-500 p-4" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText>
-            <h1 className="text-6xl lg:text-7xl font-bold text-red-500 leading-tight">
+            <h1 className="text-6xl lg:text-7xl font-bold text-black leading-tight">
               Making Your<br />
               Dream Smile<br />
               Affordable
