@@ -180,7 +180,7 @@ const Patients = () => {
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="w-auto h-[85vh] object-contain object-bottom z-[110]"
+                className="w-auto h-[85%] object-contain object-bottom z-[110]"
               />
             </div>
             
@@ -193,8 +193,8 @@ const Patients = () => {
               </AnimatedText>
             </div>
             
-            {/* Button - Shifted right but left aligned */}
-            <div className="absolute bottom-[12%] left-[20%] z-[120]">
+            {/* Button - Shifted right but left aligned, in front of image */}
+            <div className="absolute bottom-[12%] left-[20%] z-[150]">
               <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
                 Get Financing
               </Button>
