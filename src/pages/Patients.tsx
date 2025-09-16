@@ -251,16 +251,6 @@ const Patients = () => {
           </AnimatedText>
         </div>
         
-        {/* Tablet Title - closer to top */}
-        <div className="md:block lg:hidden absolute top-[8%] left-12 z-[10000] w-1/2" style={{ transform: 'translateY(0.5em)' }}>
-          <AnimatedText>
-            <h1 className="text-6xl lg:text-7xl font-bold text-black leading-tight">
-              Making Your<br />
-              Dream Smile<br />
-              Affordable
-            </h1>
-          </AnimatedText>
-        </div>
         
         {/* Desktop Subtitle - positioned below title */}
         <div className="hidden md:block absolute top-[50%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
@@ -288,7 +278,7 @@ const Patients = () => {
         </div>
 
         {/* Mobile Portrait Button */}
-        <div className="block sm:hidden absolute bottom-6 left-6 z-[150]" style={{ transform: 'translateY(0.3em)' }}>
+        <div className="block sm:hidden absolute bottom-[30%] left-6 z-[150]" style={{ transform: 'translateY(0.3em)' }}>
           <Button className="h-12 text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-8 font-semibold">
             Get Financing
           </Button>
