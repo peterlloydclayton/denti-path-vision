@@ -203,7 +203,7 @@ const Patients = () => {
         </div>
         
         {/* Desktop Title - positioned where subtitle was on mobile */}
-        <div className="hidden md:block absolute top-[34%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="hidden md:block absolute top-[20%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText>
             <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
               Making Your<br />
@@ -214,7 +214,7 @@ const Patients = () => {
         </div>
         
         {/* Subtitle - positioned where title was on desktop */}
-        <div className="absolute top-[34%] md:top-[20%] left-6 md:left-12 z-20 w-1/2 block" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="absolute top-[34%] md:top-[34%] left-6 md:left-12 z-20 w-1/2 block" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText delay={0.2}>
             <h2 className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed text-left italic">
               Ai Driven Financing For Smarter & More Affordable Payment Options
