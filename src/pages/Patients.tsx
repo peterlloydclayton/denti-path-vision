@@ -175,8 +175,8 @@ const Patients = () => {
         <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
           {/* Mobile Landscape Layout */}
           <div className="hidden md:flex lg:hidden relative min-h-screen border-4 border-red-500 z-[9999] overflow-hidden">
-            {/* Image - Right aligned */}
-            <div className="absolute right-0 top-0 h-full flex items-center justify-end z-[9998]">
+            {/* Image - Right aligned, moved 40% from left */}
+            <div className="absolute left-[40%] top-0 h-full flex items-center justify-end z-[9998]">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
@@ -238,7 +238,18 @@ const Patients = () => {
         </div>
         
         {/* Desktop Title - positioned where subtitle was on mobile */}
-        <div className="hidden md:block absolute top-[20%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="hidden lg:block absolute top-[20%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
+          <AnimatedText>
+            <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+              Making Your<br />
+              Dream Smile<br />
+              Affordable
+            </h1>
+          </AnimatedText>
+        </div>
+        
+        {/* Tablet Title - 20% below navbar */}
+        <div className="hidden md:block lg:hidden absolute top-[20%] left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText>
             <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
               Making Your<br />
