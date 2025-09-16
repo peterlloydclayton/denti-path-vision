@@ -174,7 +174,7 @@ const Patients = () => {
       <section className="min-h-screen bg-dental-blue-muted relative z-30 sm:overflow-visible md:overflow-hidden">
         <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
           {/* Mobile Landscape Layout */}
-          <div className="hidden sm:flex md:hidden flex-col justify-center items-center min-h-screen pt-0 ml-[-25%]">
+          <div className="hidden sm:flex md:hidden flex-col justify-start items-start min-h-screen pt-0 ml-[-25%]">
             {/* Title Above Image for Mobile Landscape */}
             <div className="text-center mb-8 z-20">
               <AnimatedText>
