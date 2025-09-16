@@ -171,7 +171,7 @@ const Patients = () => {
   return (
     <div className="">
       {/* Hero Section - New Design */}
-      <section className="h-screen bg-dental-blue-muted relative z-30">
+      <section className="h-[calc(100vh-4rem)] bg-dental-blue-muted relative z-30">
         <div className="container mx-auto px-2 md:px-6 h-full">
           <div className="flex items-start pt-20 md:items-center md:pt-0 h-full">
             {/* Left Content */}
@@ -190,7 +190,7 @@ const Patients = () => {
                 alt="Happy patient with dental financing"
                 className="absolute right-0 bottom-0 h-full w-auto object-contain object-bottom z-10 max-w-none md:right-0 md:transform-none"
                 style={{ 
-                  height: '80vh',
+                  height: 'calc(100vh - 6rem)',
                   transform: 'translateX(30%)'
                 }}
               />
