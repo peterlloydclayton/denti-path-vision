@@ -199,7 +199,7 @@ const Patients = () => {
         </div>
         
         {/* Subtitle positioned separately */}
-        <div className="absolute top-[34%] left-6 md:left-12 z-20 w-1/2" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="absolute top-[34%] left-6 md:left-12 z-20 w-1/2 hidden md:block" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText delay={0.2}>
             <h2 className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed">
               Ai Driven Financing For Smarter & More Affordable Payment Options
@@ -208,7 +208,7 @@ const Patients = () => {
         </div>
         
         {/* Button positioned absolutely to section */}
-        <div className="absolute bottom-[12%] left-6 z-50">
+        <div className="absolute bottom-[12%] left-6 z-50" style={{ transform: 'translateY(0.3em)' }}>
           <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
             Get Financing
           </Button>
