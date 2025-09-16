@@ -249,7 +249,7 @@ const Patients = () => {
         </div>
         
         {/* Tablet Title - closer to top */}
-        <div className="hidden md:block lg:hidden absolute top-[8%] left-12 z-[10000] w-1/2 border-4 border-red-500 p-4 bg-yellow-200" style={{ transform: 'translateY(0.5em)' }}>
+        <div className="hidden md:block lg:hidden absolute top-[8%] left-12 z-[10000] w-1/2 border-2 border-blue-500 p-4" style={{ transform: 'translateY(0.5em)' }}>
           <AnimatedText>
             <h1 className="text-6xl lg:text-7xl font-bold text-black leading-tight">
               Making Your<br />
