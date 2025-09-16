@@ -175,11 +175,11 @@ const Patients = () => {
         <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
           <div className="flex justify-start md:justify-center items-start pt-20 md:items-center md:pt-0 min-h-screen ml-[-40%] sm:ml-[15%] md:ml-0">
             {/* Right Hero Image - Centered */}
-            <div className="w-full max-w-md min-h-screen relative border-0 sm:border-2 sm:border-blue-500 md:border-0">
+            <div className="w-full max-w-md min-h-screen relative border-0 sm:border-2 sm:border-blue-500 md:border-0 sm:z-50">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
-                className="absolute bottom-0 left-[60%] sm:left-[45%] md:left-1/2 transform -translate-x-1/2 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[calc((100vh-6rem)*0.92)] sm:h-[calc((100vh-6rem)*0.82)] md:h-[85vh] border-0 sm:border-2 sm:border-red-500 md:border-0"
+                className="absolute bottom-0 left-[60%] sm:left-[45%] md:left-1/2 transform -translate-x-1/2 w-auto object-contain object-bottom z-10 sm:z-[60] md:z-10 max-w-none hero-image h-[calc((100vh-6rem)*0.92)] sm:h-[calc((100vh-6rem)*0.82)] md:h-[85vh] border-0 sm:border-2 sm:border-red-500 md:border-0"
               />
             </div>
           </div>
