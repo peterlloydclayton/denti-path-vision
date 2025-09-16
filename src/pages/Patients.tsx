@@ -175,7 +175,7 @@ const Patients = () => {
         <div className="container mx-auto px-4 md:px-6 h-full">
           <div className="flex items-start pt-20 md:items-center md:pt-0 h-full">
             {/* Left Content */}
-            <div className="flex-1 pr-2 md:pr-8 relative z-20 max-w-full">
+            <div className="flex-[1.3] md:flex-1 pr-0 md:pr-8 relative z-20">
               <AnimatedText>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight">
                   Making Your Dream Smile Affordable
