@@ -196,8 +196,8 @@ const Patients = () => {
               </AnimatedText>
             </div>
             
-            {/* Button - Shifted right but left aligned, in front of image */}
-            <div className="absolute bottom-[12%] left-[20%] z-[300]">
+            {/* Button - Positioned below subtitle */}
+            <div className="absolute top-[65%] left-12 z-[300]">
               <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
                 Get Financing
               </Button>
