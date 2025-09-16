@@ -83,7 +83,9 @@ const MobileNav = () => {
     <>
       {/* Logo - Fixed upper left */}
       <motion.div
-        className="fixed top-6 left-6 z-50"
+        className={`fixed top-6 left-6 z-50 transition-smooth rounded-xl ${
+          scrolled ? 'bg-background/95 backdrop-blur-md shadow-soft px-3 py-2' : ''
+        }`}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 400, damping: 25 }}

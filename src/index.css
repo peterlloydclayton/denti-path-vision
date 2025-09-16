@@ -251,10 +251,11 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     transform: translateZ(0);
   }
   
-  /* Hero Image Responsive Height */
+  /* Hero Image Responsive Height and Positioning */
   @media (min-width: 768px) {
     .hero-image {
       height: calc(100vh - 6rem) !important;
+      transform: translateX(0%) !important;
     }
   }
 }
