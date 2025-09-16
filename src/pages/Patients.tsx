@@ -169,7 +169,7 @@ const Patients = () => {
   ];
 
   return (
-    <div className="pt-24">
+    <div className="">
       {/* Hero Section - New Design */}
       <section className="h-screen bg-dental-blue-muted relative overflow-hidden">
         <div className="container mx-auto px-6 h-full">
