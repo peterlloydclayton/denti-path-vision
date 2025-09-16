@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Users, Stethoscope, Brain, Building, MessageSquare } from 'lucide-react';
+import { Home, Users, Stethoscope, Brain, Building } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -88,7 +88,7 @@ export const DesktopNav = () => {
           })}
         </div>
 
-        {/* Right Section - Login/Signup + Meet Echo */}
+        {/* Right Section - Login/Signup */}
         <div className="flex items-center gap-4">
           {/* Login/Signup Links */}
           <div className="flex items-center gap-4">
@@ -108,17 +108,6 @@ export const DesktopNav = () => {
             >
               Sign Up
             </a>
-          </div>
-
-          {/* Meet Echo Button */}
-          <div className="pl-4 border-l border-border">
-            <Button
-              size="sm"
-              className="bg-dental-blue text-black hover:bg-dental-blue/80 shadow-soft"
-            >
-              <MessageSquare size={16} className="mr-2" />
-              Meet Echo
-            </Button>
           </div>
         </div>
       </div>

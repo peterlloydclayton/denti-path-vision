@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, Users, Stethoscope, Brain, Building, MessageSquare } from 'lucide-react';
+import { Menu, X, Home, Users, Stethoscope, Brain, Building } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -189,7 +189,7 @@ const MobileNav = () => {
               </div>
 
               <motion.div variants={itemVariants} className="mt-6 pt-4 border-t">
-                <div className="space-y-2 mb-4">
+                <div className="space-y-2">
                   <a
                     href="https://dental-docs-hub.lovable.app/"
                     target="_blank"
@@ -209,13 +209,6 @@ const MobileNav = () => {
                     Sign Up
                   </a>
                 </div>
-                <Button
-                  className="w-full bg-dental-blue text-black hover:bg-dental-blue/80 shadow-soft"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <MessageSquare size={20} className="mr-2" />
-                  Meet Echo
-                </Button>
               </motion.div>
             </motion.div>
           </>
