@@ -259,8 +259,8 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
   }
 
-  /* Mobile Landscape Responsiveness - Higher Specificity */
-  @media screen and (orientation: landscape) and (max-height: 500px) {
+  /* Narrow Height Responsiveness - All Devices */
+  @media screen and (max-height: 600px) {
     .mobile-landscape-title {
       top: 8% !important;
       transform: translateY(0em) !important;
@@ -288,8 +288,8 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
   }
 
-  /* Samsung Galaxy S10 and similar */
-  @media screen and (orientation: landscape) and (max-height: 380px) {
+  /* Very Narrow Heights - Further Adjustments */
+  @media screen and (max-height: 450px) {
     .mobile-landscape-title {
       top: 5% !important;
       transform: translateY(0em) !important;
@@ -301,14 +301,6 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
       line-height: 1.05 !important;
     }
     
-    .mobile-landscape-subtitle {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-      height: 0 !important;
-      overflow: hidden !important;
-    }
-    
     .mobile-landscape-button {
       bottom: 8% !important;
       right: 6% !important;
@@ -317,32 +309,20 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
   }
 
-  /* iPhone 14 Pro Max and similar large phones */
-  @media screen and (orientation: landscape) and (max-height: 450px) and (min-width: 800px) {
+  /* Extremely Narrow Heights */
+  @media screen and (max-height: 350px) {
     .mobile-landscape-title {
-      top: 8% !important;
-      transform: translateY(0em) !important;
+      top: 3% !important;
     }
     
     .mobile-landscape-text {
-      font-size: 2.2rem !important;
-      margin-bottom: 0.5rem !important;
-      line-height: 1.1 !important;
-    }
-    
-    .mobile-landscape-subtitle {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-      height: 0 !important;
-      overflow: hidden !important;
+      font-size: 1.5rem !important;
+      margin-bottom: 0.1rem !important;
+      line-height: 1 !important;
     }
     
     .mobile-landscape-button {
-      bottom: 10% !important;
-      right: 6% !important;
-      left: auto !important;
-      transform: translateY(0em) !important;
+      bottom: 5% !important;
     }
   }
 }
