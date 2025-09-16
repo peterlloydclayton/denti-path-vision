@@ -174,7 +174,7 @@ const Patients = () => {
       <section className="min-h-screen bg-dental-blue-muted relative z-30 sm:overflow-visible md:overflow-hidden">
         <div className="container mx-auto px-2 md:px-6 min-h-screen sm:overflow-visible md:overflow-hidden">
           {/* Mobile Landscape Layout */}
-          <div className="hidden md:flex lg:hidden relative min-h-screen border-4 border-red-500 z-[9999] overflow-hidden">
+          <div className="hidden md:flex lg:hidden relative min-h-screen border-4 border-red-500 z-[9999]">
             {/* Image - Right aligned, moved 40% from left */}
             <div className="absolute left-[40%] top-0 h-full flex items-center justify-end z-[9998]">
               <img 
