@@ -278,7 +278,7 @@ const Patients = () => {
         </div>
 
         {/* Mobile Portrait Button */}
-        <div className="block sm:hidden absolute bottom-[30%] left-6 z-[150]" style={{ transform: 'translateY(1em)' }}>
+        <div className="block sm:hidden absolute bottom-[30%] left-6 z-[150]" style={{ transform: 'translateY(3em)' }}>
           <Button className="h-12 text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-8 font-semibold">
             Get Financing
           </Button>
