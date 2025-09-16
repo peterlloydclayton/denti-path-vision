@@ -172,8 +172,8 @@ const Patients = () => {
     <div className="overflow-x-hidden">
       {/* Hero Section - New Design */}
       <section className="min-h-screen bg-dental-blue-muted relative z-30 overflow-hidden">
-        <div className="container mx-auto px-2 md:px-6 h-full overflow-hidden">
-          <div className="flex items-start pt-20 md:items-center md:pt-0 h-full">
+        <div className="container mx-auto px-2 md:px-6 min-h-screen overflow-hidden">
+          <div className="flex items-start pt-20 md:items-center md:pt-0 min-h-screen">
             {/* Left Content - Mobile title only */}
             <div className="flex-[3] md:flex-1 pr-0 md:pr-8 relative z-10">
               <div className="block md:hidden">
@@ -188,7 +188,7 @@ const Patients = () => {
             </div>
 
             {/* Right Hero Image */}
-            <div className="flex-[1] md:flex-1 h-full relative">
+            <div className="flex-[1] md:flex-1 min-h-screen relative">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
