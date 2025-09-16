@@ -18,12 +18,12 @@ const navItems = [
 export const FloatingNav = () => {
   const isMobile = useIsMobile();
 
-  // On desktop/tablet, show the floating desktop nav
+  // On desktop, show the floating desktop nav
   if (!isMobile) {
     return <DesktopNav />;
   }
 
-  // On mobile, show the burger menu
+  // On mobile and tablet, show the burger menu
   return <MobileNav />;
 };
 
