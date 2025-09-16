@@ -172,10 +172,10 @@ const Patients = () => {
     <div className="">
       {/* Hero Section - New Design */}
       <section className="h-screen bg-dental-blue-muted relative overflow-hidden border-4 border-red-500">
-        <div className="container mx-auto px-4 md:px-6 h-full">
+        <div className="container mx-auto px-2 md:px-6 h-full">
           <div className="flex items-start pt-20 md:items-center md:pt-0 h-full">
             {/* Left Content */}
-            <div className="flex-[1.3] md:flex-1 pr-0 md:pr-8 relative z-20">
+            <div className="flex-[3] md:flex-1 pr-0 md:pr-8 relative z-20">
               <AnimatedText>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight">
                   Making Your Dream Smile Affordable
@@ -198,7 +198,7 @@ const Patients = () => {
             </div>
 
             {/* Right Hero Image */}
-            <div className="flex-1 h-full relative">
+            <div className="flex-[1] md:flex-1 h-full relative">
               <img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
                 alt="Happy patient with dental financing"
