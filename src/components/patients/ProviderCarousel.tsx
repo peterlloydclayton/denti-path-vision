@@ -17,14 +17,16 @@ export const ProviderCarousel = () => {
       <AnimatedText delay={0.3}>
         <Carousel
           opts={{
-            align: "start",
+            align: "center",
             loop: true,
+            skipSnaps: false,
+            dragFree: false,
           }}
           className="w-full"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
             {sampleProviders.map((provider, index) => (
-              <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={index} className="pl-2 md:pl-4 basis-4/5 sm:basis-2/5 lg:basis-1/3">
                 <Card className="hover:shadow-elegant transition-smooth hover:-translate-y-1">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4 mb-4">

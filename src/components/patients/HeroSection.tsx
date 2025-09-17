@@ -5,39 +5,8 @@ export const HeroSection = () => {
   return (
     <section className="min-h-screen bg-dental-blue-muted relative z-30 overflow-visible">
       <div className="container mx-auto px-2 md:px-6 min-h-screen overflow-visible">
-        {/* Mobile Landscape Layout */}
-        <div className="hidden md:flex lg:hidden relative min-h-screen">
-          {/* Image - Right aligned, moved 40% from left */}
-          <div className="absolute left-[10%] bottom-0 w-[120%] h-full flex items-end justify-center z-10 overflow-visible">
-            <img 
-              src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
-              alt="Happy patient with dental financing"
-              className="w-[115%] h-[95%] object-cover object-bottom z-10"
-              onLoad={() => console.log('Image loaded in tablet mode')}
-            />
-          </div>
-          
-          {/* Subtitle - Middle of container */}
-          <div className="absolute top-1/2 left-12 -translate-y-1/2 z-20 w-1/2">
-            <AnimatedText delay={0.2}>
-              <h2 className="text-lg text-gray-600 font-medium leading-relaxed italic">
-                Ai Driven Financing<br />
-                For Smarter & More<br />
-                Affordable Payment Options
-              </h2>
-            </AnimatedText>
-          </div>
-          
-          {/* Button - Positioned below subtitle */}
-          <div className="absolute top-[65%] left-12 z-[300]">
-            <Button className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold">
-              Get Financing
-            </Button>
-          </div>
-        </div>
-
         {/* Desktop Layout */}
-        <div className="hidden md:flex justify-center items-center min-h-screen">
+        <div className="hidden lg:flex justify-center items-center min-h-screen">
           {/* Right Hero Image - Centered */}
           <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-xl min-h-screen relative z-[100]">
             <img 
