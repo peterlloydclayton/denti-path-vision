@@ -136,11 +136,11 @@ export const JourneySection = () => {
         <div className="lg:hidden max-w-2xl mx-auto">
           <StaggerContainer>
             <div className="relative">
-              {/* Vertical Progress Line */}
-              <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border"></div>
+              {/* Vertical Progress Line - ends at final circle */}
+              <div className="absolute left-6 top-0 h-[calc(100%-3rem)] w-0.5 bg-border"></div>
               <motion.div 
                 className="absolute left-6 top-0 w-0.5 bg-dental-blue"
-                style={{ height: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
+                style={{ height: useTransform(scrollYProgress, [0, 1], ["0%", "calc(100% - 3rem)"]) }}
               ></motion.div>
 
                 <div className="space-y-12">
@@ -177,34 +177,16 @@ export const JourneySection = () => {
                   
                   {/* Final Completion Circle - Inline with Steps */}
                   <StaggerItem>
-                    <div className="flex items-start gap-6">
-                      <motion.div 
-                        className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-elegant relative z-10 flex-shrink-0"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.2 }}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                      >
-                        <CheckCircle className="w-6 h-6" />
-                      </motion.div>
-                      
-                      <motion.div 
-                        className="flex-1 bg-card rounded-xl p-6 shadow-lg border border-border"
-                        whileHover={{ scale: 1.01, x: 4 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <h3 className="text-lg font-bold mb-2 text-green-600">Complete!</h3>
-                        <p className="text-foreground/70 mb-3 text-sm">Your dental care journey is ready to begin</p>
-                        
-                        <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-                          <div className="flex items-start gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                            <p className="text-xs text-green-800 font-medium">Ready to start your treatment with confidence</p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </div>
+                    <motion.div 
+                      className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-elegant relative z-10 flex-shrink-0 ml-6"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                    >
+                      <CheckCircle className="w-6 h-6" />
+                    </motion.div>
                   </StaggerItem>
                 </div>
             </div>
