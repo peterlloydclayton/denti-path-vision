@@ -46,7 +46,7 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     
     /* Muted Variations */
     --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted-foreground: 0 0% 25%;
     
     /* Accent System */
     --accent: 0 0% 96%;

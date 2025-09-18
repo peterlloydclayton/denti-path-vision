@@ -46,18 +46,12 @@ export const JourneySection = () => {
 
   return (
     <section ref={sectionRef} className="py-24 bg-background relative overflow-hidden">
-      {/* Floating background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-dental-peach/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-dental-blue/10 rounded-full blur-3xl"></div>
-      </div>
-
       <div className="container mx-auto px-6 relative">
         <AnimatedText className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-dental-blue via-primary to-dental-peach bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             Your Journey to Confident Dental Care
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
             Getting Started is Simple
           </p>
         </AnimatedText>
@@ -66,11 +60,11 @@ export const JourneySection = () => {
         <div className="hidden lg:block max-w-7xl mx-auto">
           <StaggerContainer className="relative">
             {/* Progress Line Background */}
-            <div className="absolute top-20 left-0 right-0 h-1 bg-border/30 rounded-full"></div>
+            <div className="absolute top-20 left-0 right-0 h-1 bg-border rounded-full"></div>
             
             {/* Animated Progress Line */}
             <motion.div 
-              className="absolute top-20 left-0 h-1 bg-gradient-to-r from-dental-blue to-dental-peach rounded-full"
+              className="absolute top-20 left-0 h-1 bg-dental-blue rounded-full"
               style={{ width: progressWidth }}
             ></motion.div>
 
@@ -85,8 +79,8 @@ export const JourneySection = () => {
                     {/* Step Circle */}
                     <div className="relative z-10 mb-8">
                       <motion.div 
-                        className="w-20 h-20 rounded-full bg-gradient-to-br from-dental-blue to-dental-peach text-white flex items-center justify-center text-2xl font-bold mx-auto shadow-elegant relative overflow-hidden"
-                        whileHover={{ scale: 1.1 }}
+                        className="w-20 h-20 rounded-full bg-dental-blue text-white flex items-center justify-center text-2xl font-bold mx-auto shadow-elegant relative overflow-hidden"
+                        whileHover={{ scale: 1.1, backgroundColor: "hsl(var(--dental-lavender))" }}
                         transition={{ duration: 0.2 }}
                       >
                         <motion.div
@@ -108,25 +102,25 @@ export const JourneySection = () => {
 
                     {/* Step Card */}
                     <motion.div 
-                      className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-border/50 group-hover:shadow-elegant group-hover:border-dental-blue/30 transition-all duration-300"
+                      className="bg-card rounded-2xl p-6 shadow-lg border border-border group-hover:shadow-elegant group-hover:border-dental-blue transition-all duration-300"
                       whileHover={{ scale: 1.02 }}
                     >
                       <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-dental-blue transition-colors">
                         {item.title}
                       </h3>
-                      <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                      <p className="text-foreground/70 mb-4 text-sm leading-relaxed">
                         {item.desc}
                       </p>
                       
                       {/* Benefit Badge */}
                       <motion.div 
-                        className="bg-dental-peach/10 border border-dental-peach/20 rounded-lg p-3 group-hover:bg-dental-peach/20 transition-colors"
+                        className="bg-dental-lavender/20 border border-dental-lavender/30 rounded-lg p-3 group-hover:bg-dental-lavender/30 transition-colors"
                         initial={{ opacity: 0.8 }}
                         whileHover={{ opacity: 1 }}
                       >
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-dental-peach mt-0.5 flex-shrink-0" />
-                          <p className="text-xs text-dental-blue font-medium leading-relaxed">
+                          <CheckCircle className="w-4 h-4 text-dental-blue mt-0.5 flex-shrink-0" />
+                          <p className="text-xs text-foreground/80 font-medium leading-relaxed">
                             {item.benefit}
                           </p>
                         </div>
@@ -144,9 +138,9 @@ export const JourneySection = () => {
           <StaggerContainer>
             <div className="relative">
               {/* Vertical Progress Line */}
-              <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border/30"></div>
+              <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border"></div>
               <motion.div 
-                className="absolute left-6 top-0 w-0.5 bg-gradient-to-b from-dental-blue to-dental-peach"
+                className="absolute left-6 top-0 w-0.5 bg-dental-blue"
                 style={{ height: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
               ></motion.div>
 
@@ -156,25 +150,25 @@ export const JourneySection = () => {
                     <div className="flex items-start gap-6">
                       {/* Step Circle */}
                       <motion.div 
-                        className="w-16 h-16 rounded-full bg-gradient-to-br from-dental-blue to-dental-peach text-white flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-elegant relative z-10"
-                        whileHover={{ scale: 1.05 }}
+                        className="w-16 h-16 rounded-full bg-dental-blue text-white flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-elegant relative z-10"
+                        whileHover={{ scale: 1.05, backgroundColor: "hsl(var(--dental-lavender))" }}
                       >
                         {item.step}
                       </motion.div>
 
                       {/* Step Content */}
                       <motion.div 
-                        className="flex-1 bg-card/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-border/50"
+                        className="flex-1 bg-card rounded-xl p-6 shadow-lg border border-border"
                         whileHover={{ scale: 1.01, x: 4 }}
                         transition={{ duration: 0.2 }}
                       >
                         <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                        <p className="text-muted-foreground mb-3 text-sm">{item.desc}</p>
+                        <p className="text-foreground/70 mb-3 text-sm">{item.desc}</p>
                         
-                        <div className="bg-dental-peach/10 border border-dental-peach/20 rounded-lg p-3">
+                        <div className="bg-dental-lavender/20 border border-dental-lavender/30 rounded-lg p-3">
                           <div className="flex items-start gap-2">
-                            <CheckCircle className="w-4 h-4 text-dental-peach mt-0.5 flex-shrink-0" />
-                            <p className="text-xs text-dental-blue font-medium">{item.benefit}</p>
+                            <CheckCircle className="w-4 h-4 text-dental-blue mt-0.5 flex-shrink-0" />
+                            <p className="text-xs text-foreground/80 font-medium">{item.benefit}</p>
                           </div>
                         </div>
                       </motion.div>
