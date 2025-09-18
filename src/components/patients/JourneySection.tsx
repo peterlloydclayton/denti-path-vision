@@ -113,22 +113,6 @@ export const JourneySection = () => {
                 </StaggerItem>
               ))}
             </div>
-            
-            {/* Final Completion Circle */}
-            <StaggerItem>
-              <div className="flex justify-center mt-16">
-                <motion.div 
-                  className="w-20 h-20 rounded-full bg-green-500 text-white flex items-center justify-center shadow-elegant"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.2 }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                >
-                  <CheckCircle className="w-8 h-8" />
-                </motion.div>
-              </div>
-            </StaggerItem>
           </StaggerContainer>
         </div>
 
