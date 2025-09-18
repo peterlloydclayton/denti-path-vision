@@ -18,29 +18,25 @@ export const JourneySection = () => {
       step: '1', 
       title: 'Find Your Provider', 
       desc: 'Search for dental providers near you who accept DentiPay',
-      benefit: 'Know financing is available before you visit',
-      icon: '🔍'
+      benefit: 'Know financing is available before you visit'
     },
     { 
       step: '2', 
       title: 'Instant Pre-Qualification', 
       desc: 'Complete our simple application and get approved in seconds',
-      benefit: 'Get clear payment options immediately with no credit score impact',
-      icon: '⚡'
+      benefit: 'Get clear payment options immediately with no credit score impact'
     },
     { 
       step: '3', 
       title: 'Treatment Planning', 
       desc: 'Work with your provider to create a treatment plan',
-      benefit: 'Flexible payment plans that match your budget and timeline',
-      icon: '📋'
+      benefit: 'Flexible payment plans that match your budget and timeline'
     },
     { 
       step: '4', 
       title: 'Treatment & Payment', 
       desc: 'Begin your dental care with confidence',
-      benefit: 'Focus on your health, not financial stress',
-      icon: '✨'
+      benefit: 'Focus on your health, not financial stress'
     }
   ];
 
@@ -79,24 +75,11 @@ export const JourneySection = () => {
                     {/* Step Circle */}
                     <div className="relative z-10 mb-8">
                       <motion.div 
-                        className="w-20 h-20 rounded-full bg-dental-blue text-white flex items-center justify-center text-2xl font-bold mx-auto shadow-elegant relative overflow-hidden"
+                        className="w-20 h-20 rounded-full bg-dental-blue text-white flex items-center justify-center text-2xl font-bold mx-auto shadow-elegant"
                         whileHover={{ scale: 1.1, backgroundColor: "hsl(var(--dental-lavender))" }}
                         transition={{ duration: 0.2 }}
                       >
-                        <motion.div
-                          initial={{ opacity: 1 }}
-                          whileHover={{ opacity: 0 }}
-                          className="absolute inset-0 flex items-center justify-center text-2xl font-bold"
-                        >
-                          {item.step}
-                        </motion.div>
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.5 }}
-                          whileHover={{ opacity: 1, scale: 1 }}
-                          className="absolute inset-0 flex items-center justify-center text-3xl"
-                        >
-                          {item.icon}
-                        </motion.div>
+                        {item.step}
                       </motion.div>
                     </div>
 
@@ -130,6 +113,22 @@ export const JourneySection = () => {
                 </StaggerItem>
               ))}
             </div>
+            
+            {/* Final Completion Circle */}
+            <StaggerItem>
+              <div className="flex justify-center mt-16">
+                <motion.div 
+                  className="w-20 h-20 rounded-full bg-green-500 text-white flex items-center justify-center shadow-elegant"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                >
+                  <CheckCircle className="w-8 h-8" />
+                </motion.div>
+              </div>
+            </StaggerItem>
           </StaggerContainer>
         </div>
 
@@ -144,38 +143,54 @@ export const JourneySection = () => {
                 style={{ height: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
               ></motion.div>
 
-              <div className="space-y-12">
-                {journeySteps.map((item, index) => (
-                  <StaggerItem key={index}>
-                    <div className="flex items-start gap-6">
-                      {/* Step Circle */}
-                      <motion.div 
-                        className="w-16 h-16 rounded-full bg-dental-blue text-white flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-elegant relative z-10"
-                        whileHover={{ scale: 1.05, backgroundColor: "hsl(var(--dental-lavender))" }}
-                      >
-                        {item.step}
-                      </motion.div>
+                <div className="space-y-12">
+                  {journeySteps.map((item, index) => (
+                    <StaggerItem key={index}>
+                      <div className="flex items-start gap-6">
+                        {/* Step Circle */}
+                        <motion.div 
+                          className="w-16 h-16 rounded-full bg-dental-blue text-white flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-elegant relative z-10"
+                          whileHover={{ scale: 1.05, backgroundColor: "hsl(var(--dental-lavender))" }}
+                        >
+                          {item.step}
+                        </motion.div>
 
-                      {/* Step Content */}
-                      <motion.div 
-                        className="flex-1 bg-card rounded-xl p-6 shadow-lg border border-border"
-                        whileHover={{ scale: 1.01, x: 4 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                        <p className="text-foreground/70 mb-3 text-sm">{item.desc}</p>
-                        
-                        <div className="bg-dental-lavender/20 border border-dental-lavender/30 rounded-lg p-3">
-                          <div className="flex items-start gap-2">
-                            <CheckCircle className="w-4 h-4 text-dental-blue mt-0.5 flex-shrink-0" />
-                            <p className="text-xs text-foreground/80 font-medium">{item.benefit}</p>
+                        {/* Step Content */}
+                        <motion.div 
+                          className="flex-1 bg-card rounded-xl p-6 shadow-lg border border-border"
+                          whileHover={{ scale: 1.01, x: 4 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                          <p className="text-foreground/70 mb-3 text-sm">{item.desc}</p>
+                          
+                          <div className="bg-dental-lavender/20 border border-dental-lavender/30 rounded-lg p-3">
+                            <div className="flex items-start gap-2">
+                              <CheckCircle className="w-4 h-4 text-dental-blue mt-0.5 flex-shrink-0" />
+                              <p className="text-xs text-foreground/80 font-medium">{item.benefit}</p>
+                            </div>
                           </div>
-                        </div>
+                        </motion.div>
+                      </div>
+                    </StaggerItem>
+                  ))}
+                  
+                  {/* Final Completion Circle for Mobile */}
+                  <StaggerItem>
+                    <div className="flex justify-center mt-8">
+                      <motion.div 
+                        className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-elegant relative z-10"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.2 }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                      >
+                        <CheckCircle className="w-6 h-6" />
                       </motion.div>
                     </div>
                   </StaggerItem>
-                ))}
-              </div>
+                </div>
             </div>
           </StaggerContainer>
         </div>
