@@ -23,7 +23,7 @@ export const JourneySection = () => {
     { 
       step: '2', 
       title: 'Instant Pre-Qualification', 
-      desc: 'Complete our simple application and get approved in seconds',
+      desc: 'Clear payment options. No credit score impact',
       benefit: 'Get clear payment options immediately with no credit score impact'
     },
     { 
@@ -102,7 +102,7 @@ export const JourneySection = () => {
                         whileHover={{ opacity: 1 }}
                       >
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-dental-blue mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 text-dental-blue/70 mt-0.5 flex-shrink-0" />
                           <p className="text-xs text-foreground/80 font-medium leading-relaxed">
                             {item.benefit}
                           </p>
@@ -150,7 +150,7 @@ export const JourneySection = () => {
                           
                           <div className="bg-dental-lavender/20 border border-dental-lavender/30 rounded-lg p-3">
                             <div className="flex items-start gap-2">
-                              <CheckCircle className="w-4 h-4 text-dental-blue mt-0.5 flex-shrink-0" />
+                              <CheckCircle className="w-4 h-4 text-dental-blue/70 mt-0.5 flex-shrink-0" />
                               <p className="text-xs text-foreground/80 font-medium">{item.benefit}</p>
                             </div>
                           </div>
