@@ -163,7 +163,7 @@ export const JourneySection = () => {
                   <StaggerItem>
                     <div className="flex items-start gap-6">
                       <motion.div 
-                        className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-elegant relative z-10 flex-shrink-0"
+                        className="w-16 h-16 rounded-full bg-emerald-300 text-white flex items-center justify-center shadow-elegant relative z-10 flex-shrink-0"
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.2 }}
                         initial={{ opacity: 0, scale: 0.8 }}
