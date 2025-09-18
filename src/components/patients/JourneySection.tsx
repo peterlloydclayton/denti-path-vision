@@ -24,7 +24,7 @@ export const JourneySection = () => {
       step: '2', 
       title: 'Instant Pre-Qualification', 
       desc: 'Clear payment options. No credit score impact',
-      benefit: 'Get clear payment options immediately with no credit score impact'
+      benefit: 'Clear payment options. No credit score impact'
     },
     { 
       step: '3', 
