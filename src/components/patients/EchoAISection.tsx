@@ -1,6 +1,8 @@
 import { Bot, CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedText } from '@/components/ui/animated-text';
+import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
+import { PulseRipples } from '@/components/ui/pulse-ripples';
 
 export const EchoAISection = () => {
   const aiFeatures = [
@@ -16,14 +18,24 @@ export const EchoAISection = () => {
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="flex items-center justify-center gap-3">
-              <Bot className="text-dental-blue" size={48} />
+              <div className="relative">
+                <PulseRipples isActive={true} />
+                <Bot className="text-dental-blue relative z-10" size={48} />
+              </div>
               Meet Echo, Your Personalized Healthcare AI
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Our proprietary voice-enabled AI specializes in understanding your healthcare needs 
             to help you navigate your financial journey with confidence.
           </p>
+          
+          {/* Audio Visualizer Section */}
+          <div className="flex flex-col items-center gap-6 mb-8">
+            <AudioVisualizer className="h-12" />
+            <Waveform />
+            <EqualizerBars className="h-10" />
+          </div>
         </AnimatedText>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
