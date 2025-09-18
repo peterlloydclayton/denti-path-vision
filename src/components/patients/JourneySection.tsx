@@ -1,38 +1,60 @@
 import { AnimatedText } from '@/components/ui/animated-text';
+import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { CheckCircle } from 'lucide-react';
 
 export const JourneySection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start center", "end center"]
+  });
+
+  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   const journeySteps = [
     { 
       step: '1', 
       title: 'Find Your Provider', 
       desc: 'Search for dental providers near you who accept DentiPay',
-      benefit: 'Know financing is available before you visit'
+      benefit: 'Know financing is available before you visit',
+      icon: '🔍'
     },
     { 
       step: '2', 
       title: 'Instant Pre-Qualification', 
       desc: 'Complete our simple application and get approved in seconds',
-      benefit: 'Get clear payment options immediately with no credit score impact'
+      benefit: 'Get clear payment options immediately with no credit score impact',
+      icon: '⚡'
     },
     { 
       step: '3', 
       title: 'Treatment Planning', 
       desc: 'Work with your provider to create a treatment plan',
-      benefit: 'Flexible payment plans that match your budget and timeline'
+      benefit: 'Flexible payment plans that match your budget and timeline',
+      icon: '📋'
     },
     { 
       step: '4', 
       title: 'Treatment & Payment', 
       desc: 'Begin your dental care with confidence',
-      benefit: 'Focus on your health, not financial stress'
+      benefit: 'Focus on your health, not financial stress',
+      icon: '✨'
     }
   ];
 
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-6">
-        <AnimatedText className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+    <section ref={sectionRef} className="py-24 bg-background relative overflow-hidden">
+      {/* Floating background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-dental-peach/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-dental-blue/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative">
+        <AnimatedText className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-dental-blue via-primary to-dental-peach bg-clip-text text-transparent">
             Your Journey to Confident Dental Care
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -40,19 +62,128 @@ export const JourneySection = () => {
           </p>
         </AnimatedText>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {journeySteps.map((item, index) => (
-            <AnimatedText key={index} delay={index * 0.2}>
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  {item.step}
-                </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-muted-foreground mb-2">{item.desc}</p>
-                <p className="text-sm text-dental-blue font-medium">{item.benefit}</p>
+        {/* Desktop Timeline */}
+        <div className="hidden lg:block max-w-7xl mx-auto">
+          <StaggerContainer className="relative">
+            {/* Progress Line Background */}
+            <div className="absolute top-20 left-0 right-0 h-1 bg-border/30 rounded-full"></div>
+            
+            {/* Animated Progress Line */}
+            <motion.div 
+              className="absolute top-20 left-0 h-1 bg-gradient-to-r from-dental-blue to-dental-peach rounded-full"
+              style={{ width: progressWidth }}
+            ></motion.div>
+
+            <div className="grid grid-cols-4 gap-8">
+              {journeySteps.map((item, index) => (
+                <StaggerItem key={index}>
+                  <motion.div 
+                    className="group relative"
+                    whileHover={{ y: -8 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    {/* Step Circle */}
+                    <div className="relative z-10 mb-8">
+                      <motion.div 
+                        className="w-20 h-20 rounded-full bg-gradient-to-br from-dental-blue to-dental-peach text-white flex items-center justify-center text-2xl font-bold mx-auto shadow-elegant relative overflow-hidden"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <motion.div
+                          initial={{ opacity: 1 }}
+                          whileHover={{ opacity: 0 }}
+                          className="absolute inset-0 flex items-center justify-center text-2xl font-bold"
+                        >
+                          {item.step}
+                        </motion.div>
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          whileHover={{ opacity: 1, scale: 1 }}
+                          className="absolute inset-0 flex items-center justify-center text-3xl"
+                        >
+                          {item.icon}
+                        </motion.div>
+                      </motion.div>
+                    </div>
+
+                    {/* Step Card */}
+                    <motion.div 
+                      className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-border/50 group-hover:shadow-elegant group-hover:border-dental-blue/30 transition-all duration-300"
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-dental-blue transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                        {item.desc}
+                      </p>
+                      
+                      {/* Benefit Badge */}
+                      <motion.div 
+                        className="bg-dental-peach/10 border border-dental-peach/20 rounded-lg p-3 group-hover:bg-dental-peach/20 transition-colors"
+                        initial={{ opacity: 0.8 }}
+                        whileHover={{ opacity: 1 }}
+                      >
+                        <div className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-dental-peach mt-0.5 flex-shrink-0" />
+                          <p className="text-xs text-dental-blue font-medium leading-relaxed">
+                            {item.benefit}
+                          </p>
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
+                </StaggerItem>
+              ))}
+            </div>
+          </StaggerContainer>
+        </div>
+
+        {/* Mobile/Tablet Vertical Timeline */}
+        <div className="lg:hidden max-w-2xl mx-auto">
+          <StaggerContainer>
+            <div className="relative">
+              {/* Vertical Progress Line */}
+              <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border/30"></div>
+              <motion.div 
+                className="absolute left-6 top-0 w-0.5 bg-gradient-to-b from-dental-blue to-dental-peach"
+                style={{ height: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
+              ></motion.div>
+
+              <div className="space-y-12">
+                {journeySteps.map((item, index) => (
+                  <StaggerItem key={index}>
+                    <div className="flex items-start gap-6">
+                      {/* Step Circle */}
+                      <motion.div 
+                        className="w-16 h-16 rounded-full bg-gradient-to-br from-dental-blue to-dental-peach text-white flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-elegant relative z-10"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {item.step}
+                      </motion.div>
+
+                      {/* Step Content */}
+                      <motion.div 
+                        className="flex-1 bg-card/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-border/50"
+                        whileHover={{ scale: 1.01, x: 4 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                        <p className="text-muted-foreground mb-3 text-sm">{item.desc}</p>
+                        
+                        <div className="bg-dental-peach/10 border border-dental-peach/20 rounded-lg p-3">
+                          <div className="flex items-start gap-2">
+                            <CheckCircle className="w-4 h-4 text-dental-peach mt-0.5 flex-shrink-0" />
+                            <p className="text-xs text-dental-blue font-medium">{item.benefit}</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </StaggerItem>
+                ))}
               </div>
-            </AnimatedText>
-          ))}
+            </div>
+          </StaggerContainer>
         </div>
       </div>
     </section>
