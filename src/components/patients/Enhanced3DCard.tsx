@@ -118,7 +118,7 @@ export const Enhanced3DCard = ({ benefit, index }: Enhanced3DCardProps) => {
                 transform: isHovered ? "translateZ(10px)" : "translateZ(0px)",
               }}
               transition={{ duration: 0.3 }}
-              className="text-sm text-dental-blue font-semibold mt-auto"
+              className="text-sm text-dental-blue-dark font-semibold mt-auto"
             >
               {benefit.description}
             </motion.p>

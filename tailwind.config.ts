@@ -30,6 +30,7 @@ export default {
         dental: {
           blue: "hsl(var(--dental-blue))",
           "blue-muted": "hsl(var(--dental-blue-muted))",
+          "blue-dark": "hsl(var(--dental-blue-dark))",
           lavender: "hsl(var(--dental-lavender))",
           "lavender-muted": "hsl(var(--dental-lavender-muted))",
           peach: "hsl(var(--dental-peach))",

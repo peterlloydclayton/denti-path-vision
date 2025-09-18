@@ -8,10 +8,10 @@ export const BenefitsSection = () => {
     <section className="py-24 bg-dental-blue relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-20">
         <AnimatedText className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
             Why Patients Love DentiPay
           </h2>
-          <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-foreground/80 max-w-4xl mx-auto leading-relaxed">
             Experience the easiest way to finance your dental care
           </p>
         </AnimatedText>
