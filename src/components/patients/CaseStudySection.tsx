@@ -62,6 +62,7 @@ export const CaseStudySection = () => {
                       src={caseStudyImage} 
                       alt="Happy dental patient case study"
                       className="w-full h-full object-cover"
+                      style={{ objectPosition: '60% center' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-black/40 group-hover:from-primary/30 group-hover:to-black/50 transition-all duration-500" />
                     
