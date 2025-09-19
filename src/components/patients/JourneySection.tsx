@@ -3,6 +3,7 @@ import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animatio
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { CheckCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export const JourneySection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -114,6 +115,22 @@ export const JourneySection = () => {
               ))}
             </div>
           </StaggerContainer>
+          
+          {/* Get Financing Button - Desktop */}
+          <motion.div 
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+          >
+            <Button 
+              size="lg" 
+              className="bg-dental-blue hover:bg-dental-blue/90 text-dental-blue-dark font-semibold px-8 py-3 rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
+            >
+              Get Financing
+            </Button>
+          </motion.div>
         </div>
 
         {/* Mobile/Tablet Vertical Timeline */}
@@ -177,6 +194,22 @@ export const JourneySection = () => {
                 </div>
             </div>
           </StaggerContainer>
+          
+          {/* Get Financing Button - Mobile */}
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+          >
+            <Button 
+              size="lg" 
+              className="bg-dental-blue hover:bg-dental-blue/90 text-dental-blue-dark font-semibold px-8 py-3 rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
+            >
+              Get Financing
+            </Button>
+          </motion.div>
         </div>
       </div>
     </section>
