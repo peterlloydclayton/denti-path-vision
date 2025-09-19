@@ -15,7 +15,7 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
   useEffect(() => {
     const updateObjectPosition = () => {
       if (window.innerWidth < 768) {
-        setObjectPosition('25% center');
+        setObjectPosition('35% center');
       } else if (window.innerWidth < 1024) {
         setObjectPosition('60% center');
       } else {
