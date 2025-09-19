@@ -19,8 +19,8 @@ export const EchoAISection = () => {
   const createCard = (feature: string, index: number) => {
     const IconComponent = aiIcons[index];
     return (
-      <Card className="text-center transition-smooth h-full min-h-[300px] bg-gray-800">
-        <CardContent className="p-6 flex flex-col items-center justify-center h-full">
+      <Card className="text-center transition-smooth h-full min-h-[300px] bg-gray-800 flex items-center justify-center">
+        <CardContent className="p-6 flex flex-col items-center justify-center text-center w-full">
           <div className="flex items-center justify-center mx-auto mb-4">
             {index === 0 ? (
               <div className="relative">
@@ -45,7 +45,7 @@ export const EchoAISection = () => {
               </div>
             )}
           </div>
-          <p className="text-white">{feature}</p>
+          <p className="text-white text-center">{feature}</p>
         </CardContent>
       </Card>
     );
