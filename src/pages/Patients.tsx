@@ -14,8 +14,8 @@ const Patients = () => {
     <div className="overflow-x-hidden">
       <HeroSection />
       <JourneySection />
-      <ProviderSearchSection />
       <BenefitsSection />
+      <ProviderSearchSection />
       <EchoAISection />
       <PatientStoriesSection />
       <FinancialToolsSection />
