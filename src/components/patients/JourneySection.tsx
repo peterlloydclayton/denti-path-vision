@@ -116,7 +116,7 @@ export const JourneySection = () => {
             </div>
           </StaggerContainer>
           
-          {/* Get Financing Button - Desktop */}
+          {/* Get Financing Button - Desktop (50% larger) */}
           <motion.div 
             className="text-center mt-16"
             initial={{ opacity: 0, y: 20 }}
@@ -126,7 +126,7 @@ export const JourneySection = () => {
           >
             <Button 
               size="lg" 
-              className="bg-dental-blue hover:bg-dental-blue/90 text-dental-blue-dark font-semibold px-8 py-3 rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
+              className="bg-foreground hover:bg-foreground/90 text-background font-semibold px-12 py-4 text-lg rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
             >
               Get Financing
             </Button>
@@ -176,40 +176,40 @@ export const JourneySection = () => {
                     </StaggerItem>
                   ))}
                   
-                  {/* Final Completion Circle - Aligned with other circles */}
-                  <StaggerItem>
-                    <div className="flex items-start gap-6">
-                      <motion.div 
-                        className="w-16 h-16 rounded-full bg-emerald-300 text-white flex items-center justify-center shadow-elegant relative z-10 flex-shrink-0"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.2 }}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                      >
-                        <CheckCircle className="w-6 h-6" />
-                      </motion.div>
-                    </div>
-                  </StaggerItem>
+                   {/* Final Completion Circle with Button - Mobile */}
+                   <StaggerItem>
+                     <div className="flex items-start gap-6">
+                       <motion.div 
+                         className="w-16 h-16 rounded-full bg-emerald-300 text-white flex items-center justify-center shadow-elegant relative z-10 flex-shrink-0"
+                         whileHover={{ scale: 1.05 }}
+                         transition={{ duration: 0.2 }}
+                         initial={{ opacity: 0, scale: 0.8 }}
+                         whileInView={{ opacity: 1, scale: 1 }}
+                         viewport={{ once: true }}
+                       >
+                         <CheckCircle className="w-6 h-6" />
+                       </motion.div>
+                       
+                       {/* Get Financing Button - Mobile (next to green circle) */}
+                       <motion.div 
+                         className="flex items-center"
+                         initial={{ opacity: 0, x: 20 }}
+                         whileInView={{ opacity: 1, x: 0 }}
+                         viewport={{ once: true }}
+                         transition={{ delay: 0.5 }}
+                       >
+                         <Button 
+                           size="lg" 
+                           className="bg-foreground hover:bg-foreground/90 text-background font-semibold px-12 py-4 text-lg rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
+                         >
+                           Get Financing
+                         </Button>
+                       </motion.div>
+                     </div>
+                   </StaggerItem>
                 </div>
             </div>
           </StaggerContainer>
-          
-          {/* Get Financing Button - Mobile */}
-          <motion.div 
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-          >
-            <Button 
-              size="lg" 
-              className="bg-dental-blue hover:bg-dental-blue/90 text-dental-blue-dark font-semibold px-8 py-3 rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
-            >
-              Get Financing
-            </Button>
-          </motion.div>
         </div>
       </div>
     </section>
