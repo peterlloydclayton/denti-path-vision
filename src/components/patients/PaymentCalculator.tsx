@@ -38,9 +38,9 @@ export const PaymentCalculator = () => {
   };
 
   const results = [
-    calculatePayment(loanAmount, interestRate, 12),
     calculatePayment(loanAmount, interestRate, 36),
-    calculatePayment(loanAmount, interestRate, 60)
+    calculatePayment(loanAmount, interestRate, 60),
+    calculatePayment(loanAmount, interestRate, 96)
   ];
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
