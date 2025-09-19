@@ -19,7 +19,7 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
       } else if (window.innerWidth < 1024) {
         setObjectPosition('60% center');
       } else {
-        setObjectPosition('55% center');
+        setObjectPosition('50% center');
       }
     };
 
