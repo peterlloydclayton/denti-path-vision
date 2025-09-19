@@ -25,10 +25,10 @@ export const CaseStudySection = () => {
           <div className="bg-card/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl border border-border/50">
             <div className="grid lg:grid-cols-2 min-h-[600px]">
               {/* Text Content Side */}
-              <div className="flex flex-col justify-center p-8 lg:p-12 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10">
+              <div className="flex flex-col justify-center p-8 lg:p-12 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 -ml-[10%]">
                 <AnimatedText>
                   <div className="space-y-6">
-                    <div className="inline-flex items-center px-4 py-2 rounded-full bg-sky-100 text-sky-600 text-sm font-medium">
+                    <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
                       Case Study
                     </div>
                     <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
@@ -52,7 +52,7 @@ export const CaseStudySection = () => {
               </div>
 
               {/* Video/Image Side */}
-              <div className="relative group cursor-pointer ml-[10%]">
+              <div className="relative group cursor-pointer">
                 {!isPlaying ? (
                   <div 
                     className="relative w-full h-full min-h-[400px] lg:min-h-full"
@@ -71,7 +71,7 @@ export const CaseStudySection = () => {
                         <div className="absolute inset-0 bg-white/20 rounded-full animate-ping scale-150"></div>
                         <Button 
                           size="lg" 
-                          className="relative w-24 h-24 rounded-full bg-sky-100 hover:bg-sky-200 text-sky-600 hover:text-sky-700 shadow-2xl transform group-hover:scale-110 transition-all duration-300 border-4 border-sky-200/50"
+                          className="relative w-24 h-24 rounded-full bg-white/95 hover:bg-white text-primary hover:text-primary shadow-2xl transform group-hover:scale-110 transition-all duration-300 border-4 border-white/50"
                         >
                           <Play size={36} fill="currentColor" className="ml-1" />
                         </Button>
