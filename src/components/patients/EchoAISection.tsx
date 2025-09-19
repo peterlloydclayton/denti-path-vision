@@ -52,10 +52,10 @@ export const EchoAISection = () => {
                               ease: "easeInOut"
                             }}
                           >
-                            <Bot size={32} className="text-blue-800 dark:text-blue-400" />
+                            <Bot size={32} className="text-dental-blue" />
                           </motion.div>
                         ) : (
-                          <div className="text-blue-800 dark:text-blue-400">
+                          <div className="text-dental-blue">
                             <IconComponent className="h-8" barCount={8} />
                           </div>
                         )}
