@@ -3,11 +3,11 @@ import { AnimatedText } from '@/components/ui/animated-text';
 
 export const HeroSection = () => {
   return (
-    <section className="min-h-screen relative z-30 overflow-visible">
+    <section className="h-screen relative z-30 overflow-visible">
       {/* Controlled Background */}
       <div className="absolute inset-0 bg-dental-blue" style={{ height: '100vh' }}></div>
       
-      <div className="container mx-auto px-2 md:px-6 min-h-screen overflow-visible relative">
+      <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop Layout */}
         <div className="hidden lg:flex justify-center items-center min-h-screen">
           {/* Right Hero Image - Centered */}
