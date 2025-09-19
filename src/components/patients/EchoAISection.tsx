@@ -40,7 +40,7 @@ export const EchoAISection = () => {
               return (
                 <VoiceActiveCard key={index} index={index} className="relative">
                   <Card className="text-center transition-smooth h-full min-h-[200px]">
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 flex flex-col items-center justify-center h-full">
                       <div className="flex items-center justify-center mx-auto mb-4">
                         {index === 0 ? (
                           <div className="relative">
