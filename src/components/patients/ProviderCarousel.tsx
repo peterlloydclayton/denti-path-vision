@@ -34,7 +34,7 @@ export const ProviderCarousel = () => {
   }, [api, onSelect]);
 
   return (
-    <div className="relative max-w-4xl mx-auto pt-8">
+    <div className="relative max-w-4xl mx-auto py-12">
       <AnimatedText delay={0.3}>
         <Carousel
           setApi={setApi}
