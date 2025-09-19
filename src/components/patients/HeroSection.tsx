@@ -3,8 +3,11 @@ import { AnimatedText } from '@/components/ui/animated-text';
 
 export const HeroSection = () => {
   return (
-    <section className="h-screen bg-dental-blue relative z-30 overflow-hidden">
-      <div className="container mx-auto px-2 md:px-6 min-h-screen overflow-visible">
+    <section className="min-h-screen relative z-30 overflow-visible">
+      {/* Controlled Background */}
+      <div className="absolute inset-0 bg-dental-blue" style={{ height: '100vh' }}></div>
+      
+      <div className="container mx-auto px-2 md:px-6 min-h-screen overflow-visible relative">
         {/* Desktop Layout */}
         <div className="hidden lg:flex justify-center items-center min-h-screen">
           {/* Right Hero Image - Centered */}
@@ -13,6 +16,18 @@ export const HeroSection = () => {
               src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
               alt="Happy patient with dental financing"
               className="absolute bottom-0 left-1/2 xl:left-[40%] 2xl:left-[40%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+            />
+          </div>
+        </div>
+
+        {/* Tablet Layout */}
+        <div className="hidden sm:flex lg:hidden justify-center items-center min-h-screen">
+          {/* Right Hero Image - Centered */}
+          <div className="w-full max-w-md min-h-screen relative z-[100]">
+            <img 
+              src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
+              alt="Happy patient with dental financing"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
             />
           </div>
         </div>
