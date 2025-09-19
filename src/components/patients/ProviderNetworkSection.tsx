@@ -7,7 +7,7 @@ export const ProviderNetworkSection = () => {
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-4">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Trusted Providers in Your Area
+            Services You Can Trust
           </h2>
         </AnimatedText>
 
