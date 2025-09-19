@@ -69,7 +69,7 @@ export const AnimatedPhraseCloud = () => {
   );
 
   return (
-    <div className="py-16 overflow-hidden">
+    <div className="py-12 overflow-hidden">
       <div className="space-y-8">
         {/* Row 1 - Moving right to left */}
         <ScrollingRow 
