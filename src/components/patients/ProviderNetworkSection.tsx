@@ -18,10 +18,10 @@ export const ProviderNetworkSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-gray-800">
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Trusted Providers in Your Area
           </h2>
         </AnimatedText>
@@ -31,7 +31,7 @@ export const ProviderNetworkSection = () => {
             <AnimatedText key={index} delay={index * 0.1}>
               <div className="text-center">
                 <div className="text-5xl font-bold text-dental-blue mb-2">{stat.value}</div>
-                <div className="text-muted-foreground">{stat.label}</div>
+                <div className="text-gray-300">{stat.label}</div>
               </div>
             </AnimatedText>
           ))}
