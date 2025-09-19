@@ -1,11 +1,28 @@
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import caseStudyImage from '@/assets/case-study-patient.jpg';
 
 export const CaseStudySection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [objectPosition, setObjectPosition] = useState('65% center');
+
+  useEffect(() => {
+    const updateObjectPosition = () => {
+      if (window.innerWidth < 768) {
+        setObjectPosition('75% center');
+      } else if (window.innerWidth < 1024) {
+        setObjectPosition('60% center');
+      } else {
+        setObjectPosition('65% center');
+      }
+    };
+
+    updateObjectPosition();
+    window.addEventListener('resize', updateObjectPosition);
+    return () => window.removeEventListener('resize', updateObjectPosition);
+  }, []);
   
   const handlePlayClick = () => {
     setIsPlaying(true);
@@ -61,7 +78,8 @@ export const CaseStudySection = () => {
                     <img 
                       src={caseStudyImage} 
                       alt="Happy dental patient case study"
-                      className="w-full h-full object-cover object-[75%_center] md:object-[60%_center] lg:object-[65%_center]"
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-black/40 group-hover:from-primary/30 group-hover:to-black/50 transition-all duration-500" />
                     
