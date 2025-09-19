@@ -10,12 +10,34 @@ import {
 } from '@/components/ui/carousel';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { sampleProviders } from '@/data/patientsData';
+import { useCallback, useEffect, useState } from 'react';
+import { type CarouselApi } from '@/components/ui/carousel';
 
 export const ProviderCarousel = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  const onSelect = useCallback((api: CarouselApi) => {
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap());
+  }, []);
+
+  useEffect(() => {
+    if (!api) return;
+    
+    onSelect(api);
+    api.on('select', () => onSelect(api));
+    
+    return () => {
+      api.off('select', () => onSelect(api));
+    };
+  }, [api, onSelect]);
+
   return (
     <div className="relative max-w-4xl mx-auto">
       <AnimatedText delay={0.3}>
         <Carousel
+          setApi={setApi}
           opts={{
             align: "center",
             loop: true,
@@ -27,10 +49,14 @@ export const ProviderCarousel = () => {
           <CarouselContent className="-ml-2 md:-ml-4">
             {sampleProviders.map((provider, index) => (
               <CarouselItem key={index} className="pl-2 md:pl-4 basis-4/5 sm:basis-2/5 lg:basis-1/3">
-                <Card className="hover:shadow-elegant transition-smooth hover:-translate-y-1">
+                <Card className={`hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 ${
+                  index === current ? 'scale-110' : 'scale-100'
+                }`}>
                   <CardContent className="p-0">
                     {/* Full width image at top */}
-                    <div className="w-full h-48 overflow-hidden rounded-t-lg bg-muted">
+                    <div className={`w-full overflow-hidden rounded-t-lg bg-muted transition-all duration-500 ${
+                      index === current ? 'h-56' : 'h-48'
+                    }`}>
                       <img 
                         src={provider.image} 
                         alt={`${provider.name} headshot`}
