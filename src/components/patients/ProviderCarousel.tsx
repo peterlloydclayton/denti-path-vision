@@ -50,8 +50,8 @@ export const ProviderCarousel = () => {
                     
                     <div className="flex items-center gap-2 mb-4">
                       <Star size={16} className="text-dental-peach fill-current" />
-                      <span className="font-semibold">{provider.rating}</span>
-                      <span className="text-sm text-muted-foreground">({provider.reviews} reviews)</span>
+                      <span className="font-bold text-xl text-dental-blue">{provider.rating}</span>
+                      <span className="font-semibold text-dental-blue">({provider.reviews} reviews)</span>
                       {provider.verified && (
                         <span className="text-xs bg-dental-blue/10 text-dental-blue px-2 py-1 rounded-full ml-auto">
                           DentiPay Verified ✓
