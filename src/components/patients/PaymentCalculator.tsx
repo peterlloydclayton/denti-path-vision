@@ -84,7 +84,7 @@ export const PaymentCalculator = () => {
                 min={1000}
                 max={100000}
                 step={1000}
-                className="mt-3 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:bg-dental-blue-darker [&>*:last-child]:border-dental-blue-darker"
+                className="mt-3 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-dental-blue [&>*:last-child]:bg-dental-blue-light"
               />
               <div className="flex justify-between text-sm text-muted-foreground mt-1">
                 <span>$1,000</span>
@@ -104,7 +104,7 @@ export const PaymentCalculator = () => {
                 min={0}
                 max={20}
                 step={0.1}
-                className="mt-6 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:bg-dental-blue-darker [&>*:last-child]:border-dental-blue-darker"
+                className="mt-6 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-dental-blue [&>*:last-child]:bg-dental-blue-light"
               />
               <div className="flex justify-between text-sm text-muted-foreground mt-1">
                 <span>0%</span>
