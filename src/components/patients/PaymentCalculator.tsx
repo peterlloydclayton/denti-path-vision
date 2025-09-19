@@ -159,8 +159,8 @@ export const PaymentCalculator = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="bg-dental-blue-light border-dental-blue text-dental-blue-darker hover:bg-dental-blue hover:text-white shadow-md" />
-          <CarouselNext className="bg-dental-blue-light border-dental-blue text-dental-blue-darker hover:bg-dental-blue hover:text-white shadow-md" />
+          <CarouselPrevious className="bg-dental-blue border-dental-blue text-white hover:bg-dental-blue-darker hover:text-white shadow-md" />
+          <CarouselNext className="bg-dental-blue border-dental-blue text-white hover:bg-dental-blue-darker hover:text-white shadow-md" />
         </Carousel>
       </div>
 
