@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { VoiceFlowLayout, VoiceActiveCard } from '@/components/ui/voice-flow-layout';
 import { CentralVoiceHub } from '@/components/ui/central-voice-hub';
+import { motion } from 'framer-motion';
 import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
 
 export const EchoAISection = () => {
@@ -41,9 +42,20 @@ export const EchoAISection = () => {
                     <CardContent className="p-6">
                       <div className="flex items-center justify-center mx-auto mb-4">
                         {index === 0 ? (
-                          <Bot size={32} className="text-slate-700 dark:text-slate-300" />
+                          <motion.div
+                            animate={{
+                              scale: [1, 1.05, 1],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                          >
+                            <Bot size={32} className="text-dental-blue" />
+                          </motion.div>
                         ) : (
-                          <div className="text-slate-700 dark:text-slate-300">
+                          <div className="text-dental-blue">
                             <IconComponent className="h-8" barCount={8} />
                           </div>
                         )}
