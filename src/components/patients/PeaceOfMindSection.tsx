@@ -17,25 +17,25 @@ export const PeaceOfMindSection = () => {
     { 
       bg: 'bg-dental-blue-dark/10', 
       icon: 'text-dental-blue-dark',
-      accent: 'border-l-dental-blue-darker',
+      accent: 'border-l-dental-blue',
       trigger: 'hover:bg-dental-blue-muted/50'
     },
     { 
       bg: 'bg-dental-blue-darker/10', 
       icon: 'text-dental-blue-darker',
-      accent: 'border-l-dental-blue-darker',
+      accent: 'border-l-dental-blue',
       trigger: 'hover:bg-dental-blue/20'
     },
     { 
       bg: 'bg-dental-blue-dark/15', 
       icon: 'text-dental-blue-dark',
-      accent: 'border-l-dental-blue-darker',
+      accent: 'border-l-dental-blue',
       trigger: 'hover:bg-dental-blue-muted/40'
     },
     { 
       bg: 'bg-dental-blue-darker/15', 
       icon: 'text-dental-blue-darker',
-      accent: 'border-l-dental-blue-darker',
+      accent: 'border-l-dental-blue',
       trigger: 'hover:bg-dental-blue/25'
     }
   ];
