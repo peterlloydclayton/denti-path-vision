@@ -75,7 +75,7 @@ export const CustomSlider = ({
         {/* Thumb */}
         <div
           className={cn(
-            "absolute top-1/2 w-5 h-5 -mt-2.5 -ml-2.5 bg-dental-blue border-0 rounded-full shadow-md transition-all duration-150 cursor-grab",
+            "absolute top-1/2 w-5 h-5 -mt-2.5 -ml-2.5 bg-dental-blue-darker border-0 rounded-full shadow-md transition-all duration-150 cursor-grab",
             isDragging && "cursor-grabbing scale-110 shadow-lg"
           )}
           style={{ left: `${percentage}%` }}
