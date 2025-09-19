@@ -13,12 +13,12 @@ export const FinancialToolsSection = () => {
           </h2>
         </AnimatedText>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="flex justify-center max-w-2xl mx-auto">
           {financialTools.map((tool, index) => {
             const Icon = tool.icon;
             return (
               <AnimatedText key={index} delay={index * 0.2}>
-                <Card className="text-center hover:shadow-soft transition-smooth hover:-translate-y-1 h-full">
+                <Card className="text-center hover:shadow-soft transition-smooth hover:-translate-y-1 h-full w-full">
                   <CardContent className="p-6">
                     <div className="w-16 h-16 rounded-2xl bg-intelligence/10 flex items-center justify-center mx-auto mb-4">
                       <Icon size={32} className="text-intelligence" />

@@ -1,4 +1,4 @@
-import { CreditCard, Clock, Shield, Heart, Calculator } from 'lucide-react';
+import { CreditCard, Clock, Shield, Heart } from 'lucide-react';
 import dentist1 from '@/assets/dentist-1.png';
 import dentist2 from '@/assets/dentist-2.png';
 import dentist3 from '@/assets/dentist-3.png';
@@ -122,13 +122,6 @@ export const patientStories = [
 ];
 
 export const financialTools = [
-  {
-    icon: Calculator,
-    title: 'Treatment Cost Estimator',
-    description: 'Get an estimated cost range for your treatment',
-    benefit: 'Plan your budget before your appointment',
-    cta: 'Try Cost Estimator'
-  },
   {
     icon: CreditCard,
     title: 'Payment Plan Calculator',
