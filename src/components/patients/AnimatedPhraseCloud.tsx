@@ -49,12 +49,20 @@ export const AnimatedPhraseCloud = () => {
       >
         {/* Duplicate phrases for seamless loop */}
         {[...phrases, ...phrases, ...phrases].map((phrase, index) => (
-          <span
+          <motion.span
             key={index}
-            className={`${phrase.size} font-bold text-dental-blue opacity-80 hover:opacity-100 transition-opacity whitespace-nowrap px-4`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.8 }}
+            whileHover={{ opacity: 1 }}
+            transition={{ 
+              duration: 0.8,
+              delay: index * 0.1,
+              ease: "easeOut"
+            }}
+            className={`${phrase.size} font-bold text-dental-blue whitespace-nowrap px-4`}
           >
             {phrase.text}
-          </span>
+          </motion.span>
         ))}
       </motion.div>
     </div>
