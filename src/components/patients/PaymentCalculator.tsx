@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { AnimatedText } from '@/components/ui/animated-text';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 interface CalculatorResult {
   term: number;
@@ -115,38 +116,46 @@ export const PaymentCalculator = () => {
       </AnimatedText>
 
       {/* Results Cards */}
-      <div className="grid md:grid-cols-3 gap-6">
-        {results.map((result, index) => (
-          <AnimatedText key={result.term} delay={index * 0.1}>
-            <Card className="text-center hover:shadow-soft transition-smooth hover:-translate-y-1">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg font-bold text-primary">
-                  {result.term} Months
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div>
-                  <p className="text-sm text-muted-foreground">Monthly Payment</p>
-                  <p className="text-2xl font-bold text-foreground">
-                    {formatCurrency(result.monthlyPayment)}
-                  </p>
-                </div>
-                <div className="pt-3 border-t space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Total Payment:</span>
-                    <span className="font-medium">{formatCurrency(result.totalPayment)}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Total Interest:</span>
-                    <span className="font-medium text-dental-blue-darker">
-                      {formatCurrency(result.totalInterest)}
-                    </span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </AnimatedText>
-        ))}
+      <div className="relative">
+        <Carousel className="w-full max-w-3xl mx-auto">
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {results.map((result, index) => (
+              <CarouselItem key={result.term} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <AnimatedText delay={index * 0.1}>
+                  <Card className="text-center hover:shadow-elegant transition-smooth hover:-translate-y-1 bg-gradient-to-br from-dental-blue-light/10 to-white border-dental-blue-light/20">
+                    <CardHeader className="pb-3 bg-dental-blue-light/10 rounded-t-lg">
+                      <CardTitle className="text-lg font-bold text-dental-blue-darker">
+                        {result.term} Months
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3 pt-4">
+                      <div>
+                        <p className="text-sm text-dental-blue">Monthly Payment</p>
+                        <p className="text-2xl font-bold text-foreground">
+                          {formatCurrency(result.monthlyPayment)}
+                        </p>
+                      </div>
+                      <div className="pt-3 border-t border-dental-blue-light/30 space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-dental-blue">Total Payment:</span>
+                          <span className="font-medium text-foreground">{formatCurrency(result.totalPayment)}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-dental-blue">Total Interest:</span>
+                          <span className="font-medium text-dental-blue-darker">
+                            {formatCurrency(result.totalInterest)}
+                          </span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </AnimatedText>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="border-dental-blue-light text-dental-blue-darker hover:bg-dental-blue-light/20" />
+          <CarouselNext className="border-dental-blue-light text-dental-blue-darker hover:bg-dental-blue-light/20" />
+        </Carousel>
       </div>
 
       <div className="text-center text-sm text-muted-foreground">
