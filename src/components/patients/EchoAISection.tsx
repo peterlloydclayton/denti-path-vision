@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { VoiceFlowLayout, VoiceActiveCard } from '@/components/ui/voice-flow-layout';
 import { CentralVoiceHub } from '@/components/ui/central-voice-hub';
+import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { motion } from 'framer-motion';
 import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
 
@@ -42,18 +43,22 @@ export const EchoAISection = () => {
                     <CardContent className="p-6">
                       <div className="flex items-center justify-center mx-auto mb-4">
                         {index === 0 ? (
-                          <motion.div
-                            animate={{
-                              scale: [1, 1.05, 1],
-                            }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              ease: "easeInOut"
-                            }}
-                          >
-                            <Bot size={32} className="text-dental-blue" />
-                          </motion.div>
+                          <div className="relative">
+                            <PulseRipples isActive={true} className="w-16 h-16" />
+                            <motion.div
+                              className="absolute inset-0 flex items-center justify-center z-20"
+                              animate={{
+                                scale: [1, 1.05, 1],
+                              }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                              }}
+                            >
+                              <Bot size={32} className="text-dental-blue" />
+                            </motion.div>
+                          </div>
                         ) : (
                           <div className="text-dental-blue">
                             <IconComponent className="h-8" barCount={8} />
