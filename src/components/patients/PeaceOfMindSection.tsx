@@ -17,7 +17,7 @@ export const PeaceOfMindSection = () => {
     { 
       bg: 'bg-dental-blue-dark/10', 
       icon: 'text-dental-blue-dark',
-      accent: 'border-l-dental-blue-dark',
+      accent: 'border-l-dental-blue-darker',
       trigger: 'hover:bg-dental-blue-muted/50'
     },
     { 
@@ -29,7 +29,7 @@ export const PeaceOfMindSection = () => {
     { 
       bg: 'bg-dental-blue-dark/15', 
       icon: 'text-dental-blue-dark',
-      accent: 'border-l-dental-blue-dark',
+      accent: 'border-l-dental-blue-darker',
       trigger: 'hover:bg-dental-blue-muted/40'
     },
     { 
