@@ -24,7 +24,7 @@ export const FinalCTASection = () => {
           <div className="flex justify-center mb-12">
             <Button
               size="lg"
-              className="bg-gradient-primary text-white hover:scale-105 transition-all duration-300 text-xl px-12 py-4 rounded-xl shadow-elegant hover:shadow-glow border-0 font-semibold"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300 text-xl px-12 py-4 rounded-xl shadow-elegant font-semibold"
             >
               Get Pre-Approved Now
             </Button>
