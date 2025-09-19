@@ -31,11 +31,11 @@ export const FinalCTASection = () => {
           </div>
 
           {/* Final Trust Elements */}
-          <div className="flex flex-col items-start gap-4 text-lg text-foreground max-w-4xl mx-auto">
+          <div className="flex flex-col gap-4 max-w-4xl mx-auto">
             {trustElements.map((element, index) => (
-              <div key={index} className="flex items-center gap-3">
+              <div key={index} className="flex items-center justify-start gap-3 text-lg">
                 <CheckCircle size={24} className="text-dental-blue flex-shrink-0" />
-                <span className="font-medium">{element}</span>
+                <span className="font-medium text-foreground">{element}</span>
               </div>
             ))}
           </div>
