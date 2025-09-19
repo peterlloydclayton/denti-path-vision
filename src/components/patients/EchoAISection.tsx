@@ -4,6 +4,7 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { motion } from 'framer-motion';
 import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
+import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
 
 export const EchoAISection = () => {
   const aiFeatures = [
@@ -14,6 +15,43 @@ export const EchoAISection = () => {
   ];
 
   const aiIcons = [Bot, AudioVisualizer, Waveform, EqualizerBars];
+
+  const createCard = (feature: string, index: number) => {
+    const IconComponent = aiIcons[index];
+    return (
+      <Card className="text-center transition-smooth h-full min-h-[300px] bg-gray-800">
+        <CardContent className="p-6 flex flex-col items-center justify-center h-full">
+          <div className="flex items-center justify-center mx-auto mb-4">
+            {index === 0 ? (
+              <div className="relative">
+                <PulseRipples isActive={true} className="w-16 h-16" />
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center z-20"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <Bot size={32} className="text-dental-blue" />
+                </motion.div>
+              </div>
+            ) : (
+              <div className="text-dental-blue">
+                <IconComponent className="h-8" barCount={8} />
+              </div>
+            )}
+          </div>
+          <p className="text-white">{feature}</p>
+        </CardContent>
+      </Card>
+    );
+  };
+
+  const slides = aiFeatures.map((feature, index) => createCard(feature, index));
 
   return (
     <section className="py-24 bg-background">
@@ -28,44 +66,11 @@ export const EchoAISection = () => {
           </p>
         </AnimatedText>
 
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {aiFeatures.map((feature, index) => {
-              const IconComponent = aiIcons[index];
-              return (
-                <Card key={index} className="text-center transition-smooth h-full min-h-[200px] bg-gray-800">
-                  <CardContent className="p-6 flex flex-col items-center justify-center h-full">
-                    <div className="flex items-center justify-center mx-auto mb-4">
-                      {index === 0 ? (
-                        <div className="relative">
-                          <PulseRipples isActive={true} className="w-16 h-16" />
-                          <motion.div
-                            className="absolute inset-0 flex items-center justify-center z-20"
-                            animate={{
-                              scale: [1, 1.05, 1],
-                            }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              ease: "easeInOut"
-                            }}
-                          >
-                            <Bot size={32} className="text-dental-blue" />
-                          </motion.div>
-                        </div>
-                      ) : (
-                        <div className="text-dental-blue">
-                          <IconComponent className="h-8" barCount={8} />
-                        </div>
-                      )}
-                    </div>
-                    <p className="text-white">{feature}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
+        <EmblaParallaxCarousel 
+          slides={slides}
+          className="max-w-6xl mx-auto"
+          options={{ align: 'start', loop: true }}
+        />
       </div>
     </section>
   );
