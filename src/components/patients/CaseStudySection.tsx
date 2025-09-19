@@ -46,7 +46,7 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
           <div className="bg-card/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl border border-border/50">
             <div className="grid lg:grid-cols-2 min-h-[600px]">
               {/* Video/Image Side */}
-              <div className={`relative group cursor-pointer ${imagePosition === 'right' ? 'lg:order-2' : ''}`}>
+              <div className={`relative group cursor-pointer ${imagePosition === 'right' ? 'lg:order-2' : 'order-2 lg:order-1'}`}>
                 {!isPlaying ? (
                   <div 
                     className="relative w-full h-full min-h-[400px] lg:min-h-full"
@@ -94,7 +94,7 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
               </div>
 
               {/* Text Content Side */}
-              <div className={`flex flex-col justify-center p-8 lg:p-12 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 ${imagePosition === 'right' ? 'lg:order-1' : ''}`}>
+              <div className={`flex flex-col justify-center p-8 lg:p-12 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 ${imagePosition === 'right' ? 'lg:order-1' : 'order-1 lg:order-2'}`}>
                 <AnimatedText>
                   <div className="space-y-6">
                     <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
