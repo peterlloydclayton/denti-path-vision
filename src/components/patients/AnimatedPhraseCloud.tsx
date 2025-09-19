@@ -41,7 +41,7 @@ export const AnimatedPhraseCloud = () => {
           x: [0, -2000],
         }}
         transition={{
-          duration: 40,
+          duration: 46,
           repeat: Infinity,
           ease: "linear",
           delay,
