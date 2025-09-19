@@ -135,13 +135,6 @@ export const financialTools = [
     description: 'Explore monthly payment options for different treatment costs',
     benefit: 'See what fits in your budget',
     cta: 'Calculate Payments'
-  },
-  {
-    icon: Shield,
-    title: 'Insurance Benefit Optimizer',
-    description: 'Maximize your insurance benefits alongside DentiPay financing',
-    benefit: 'Use your benefits efficiently and reduce out-of-pocket costs',
-    cta: 'Check Benefits'
   }
 ];
 
