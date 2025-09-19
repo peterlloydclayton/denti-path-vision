@@ -21,13 +21,7 @@ export const FinalCTASection = () => {
             nationwide with financing options available at your first visit.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 shadow-peach"
-            >
-              Find Providers Near Me
-            </Button>
+          <div className="flex justify-center mb-8">
             <Button
               size="lg"
               variant="outline"
@@ -35,21 +29,14 @@ export const FinalCTASection = () => {
             >
               Get Pre-Approved Now
             </Button>
-            <Button
-              size="lg"
-              variant="link"
-              className="text-lg px-8 text-primary"
-            >
-              Calculate My Payment
-            </Button>
           </div>
 
           {/* Final Trust Elements */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-muted-foreground max-w-2xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-sm text-muted-foreground max-w-4xl mx-auto">
             {trustElements.map((element, index) => (
-              <div key={index} className="flex items-center justify-center gap-2">
-                <CheckCircle size={16} className="text-dental-blue" />
-                {element}
+              <div key={index} className="flex items-center gap-2">
+                <CheckCircle size={16} className="text-dental-blue flex-shrink-0" />
+                <span>{element}</span>
               </div>
             ))}
           </div>
