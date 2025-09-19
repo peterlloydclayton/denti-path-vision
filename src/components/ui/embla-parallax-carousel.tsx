@@ -109,21 +109,24 @@ export const EmblaParallaxCarousel: React.FC<EmblaParallaxCarouselProps> = ({
         </div>
       </div>
 
-      <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-      <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-
-      <div className="flex justify-center mt-6">
-        {scrollSnaps.map((_, index) => (
-          <DotButton
-            key={index}
-            onClick={() => onDotButtonClick(index)}
-            className={`w-2 h-2 rounded-full mx-1 transition-all duration-200 ${
-              index === selectedIndex 
-                ? 'bg-white scale-125' 
-                : 'bg-white/30 hover:bg-white/50'
-            }`}
-          />
-        ))}
+      <div className="flex justify-center items-center mt-6 space-x-4">
+        <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+        
+        <div className="flex space-x-2">
+          {scrollSnaps.map((_, index) => (
+            <DotButton
+              key={index}
+              onClick={() => onDotButtonClick(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                index === selectedIndex 
+                  ? 'bg-white scale-125' 
+                  : 'bg-white/30 hover:bg-white/50'
+              }`}
+            />
+          ))}
+        </div>
+        
+        <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
       </div>
     </div>
   );
