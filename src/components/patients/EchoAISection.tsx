@@ -39,12 +39,12 @@ export const EchoAISection = () => {
                 <VoiceActiveCard key={index} index={index} className="relative">
                   <Card className="text-center transition-smooth h-full">
                     <CardContent className="p-6">
-                      <div className="w-12 h-12 rounded-xl bg-intelligence/10 flex items-center justify-center mx-auto mb-4">
+                      <div className="flex items-center justify-center mx-auto mb-4">
                         {index === 0 ? (
-                          <Bot size={24} className="text-dental-blue/80" />
+                          <Bot size={32} className="text-slate-700 dark:text-slate-300" />
                         ) : (
-                          <div className="text-dental-blue/80">
-                            <IconComponent className="h-6" barCount={8} />
+                          <div className="text-slate-700 dark:text-slate-300">
+                            <IconComponent className="h-8" barCount={8} />
                           </div>
                         )}
                       </div>
