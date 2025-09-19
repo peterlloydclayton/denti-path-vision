@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Heart } from 'lucide-react';
 
 interface CalculatorResult {
   term: number;
@@ -78,14 +79,23 @@ export const PaymentCalculator = () => {
                 onChange={handleAmountChange}
                 className="text-lg font-semibold text-dental-blue-darker"
               />
-               <Slider
-                value={[loanAmount]}
-                onValueChange={(value) => setLoanAmount(value[0])}
-                min={1000}
-                max={100000}
-                step={1000}
-                className="mt-3 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-0 [&>*:last-child]:bg-dental-blue [&>*:last-child]:shadow-md"
-              />
+               <div className="relative">
+                <Slider
+                  value={[loanAmount]}
+                  onValueChange={(value) => setLoanAmount(value[0])}
+                  min={1000}
+                  max={100000}
+                  step={1000}
+                  className="mt-3 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-2 [&>*:last-child]:border-dental-blue [&>*:last-child]:bg-background [&>*:last-child]:rounded-full [&>*:last-child]:h-6 [&>*:last-child]:w-6 [&>*:last-child]:flex [&>*:last-child]:items-center [&>*:last-child]:justify-center"
+                />
+                <Heart 
+                  size={12} 
+                  className="absolute top-1/2 -translate-y-1/2 text-dental-blue pointer-events-none z-10" 
+                  style={{
+                    left: `calc(${((loanAmount - 1000) / (100000 - 1000)) * 100}% - 12px)`
+                  }}
+                />
+              </div>
                <div className="flex justify-between text-sm text-dental-blue-darker/70 mt-1">
                 <span>$1,000</span>
                 <span>$100,000</span>
@@ -98,14 +108,23 @@ export const PaymentCalculator = () => {
               <Label htmlFor="interest-rate" className="text-sm font-medium mb-2 block text-dental-blue-darker">
                 Interest Rate: {interestRate.toFixed(1)}%
               </Label>
-               <Slider
-                value={[interestRate]}
-                onValueChange={(value) => setInterestRate(value[0])}
-                min={0}
-                max={20}
-                step={0.1}
-                className="mt-6 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-0 [&>*:last-child]:bg-dental-blue [&>*:last-child]:shadow-md"
-              />
+               <div className="relative">
+                <Slider
+                  value={[interestRate]}
+                  onValueChange={(value) => setInterestRate(value[0])}
+                  min={0}
+                  max={20}
+                  step={0.1}
+                  className="mt-6 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-2 [&>*:last-child]:border-dental-blue [&>*:last-child]:bg-background [&>*:last-child]:rounded-full [&>*:last-child]:h-6 [&>*:last-child]:w-6 [&>*:last-child]:flex [&>*:last-child]:items-center [&>*:last-child]:justify-center"
+                />
+                <Heart 
+                  size={12} 
+                  className="absolute top-1/2 -translate-y-1/2 text-dental-blue pointer-events-none z-10" 
+                  style={{
+                    left: `calc(${(interestRate / 20) * 100}% - 12px)`
+                  }}
+                />
+              </div>
                <div className="flex justify-between text-sm text-dental-blue-darker/70 mt-1">
                 <span>0%</span>
                 <span>20%</span>
