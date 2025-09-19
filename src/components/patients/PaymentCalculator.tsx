@@ -76,7 +76,7 @@ export const PaymentCalculator = () => {
                 step="1000"
                 value={loanAmount}
                 onChange={handleAmountChange}
-                className="text-lg font-semibold"
+                className="text-lg font-semibold text-dental-blue-darker"
               />
                <Slider
                 value={[loanAmount]}
@@ -84,7 +84,7 @@ export const PaymentCalculator = () => {
                 min={1000}
                 max={100000}
                 step={1000}
-                className="mt-3 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-dental-blue [&>*:last-child]:bg-dental-blue-light"
+                className="mt-3 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-0 [&>*:last-child]:bg-dental-blue [&>*:last-child]:shadow-md"
               />
                <div className="flex justify-between text-sm text-dental-blue-darker/70 mt-1">
                 <span>$1,000</span>
@@ -104,7 +104,7 @@ export const PaymentCalculator = () => {
                 min={0}
                 max={20}
                 step={0.1}
-                className="mt-6 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-dental-blue [&>*:last-child]:bg-dental-blue-light"
+                className="mt-6 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-0 [&>*:last-child]:bg-dental-blue [&>*:last-child]:shadow-md"
               />
                <div className="flex justify-between text-sm text-dental-blue-darker/70 mt-1">
                 <span>0%</span>
