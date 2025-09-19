@@ -17,7 +17,7 @@ export const ProviderSearchSection = () => {
 
 
         {/* Provider Carousel */}
-        <div className="mb-12 py-16">
+        <div className="mb-12">
           <ProviderCarousel />
         </div>
 
