@@ -46,7 +46,7 @@ export const ProviderCarousel = () => {
           }}
           className="w-full"
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
+          <CarouselContent className="-ml-2 md:-ml-4 py-8">
             {sampleProviders.map((provider, index) => (
               <CarouselItem key={index} className="pl-2 md:pl-4 basis-4/5 sm:basis-2/5 lg:basis-1/3">
                 <Card className={`hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 relative ${
