@@ -1,20 +1,20 @@
 import { motion } from 'framer-motion';
-import { SectionHeader } from '@/components/ui/section-header';
+import { AnimatedText } from '@/components/ui/animated-text';
 import { Enhanced3DCard } from './Enhanced3DCard';
 import { benefits } from '@/data/patientsData';
-import happyPatientImage from '@/assets/happy-patient.jpg';
 
 export const BenefitsSection = () => {
   return (
     <section className="py-24 bg-dental-blue relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-20">
-        <SectionHeader 
-          title="Why Patients Love DentiPay"
-          subtitle="Experience the easiest way to finance your dental care"
-          imageSrc={happyPatientImage}
-          imageAlt="Happy dental patient smiling after treatment"
-          variant="split-layout"
-        />
+        <AnimatedText className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+            Why Patients Love DentiPay
+          </h2>
+          <p className="text-xl md:text-2xl text-foreground/80 max-w-4xl mx-auto leading-relaxed">
+            Experience the easiest way to finance your dental care
+          </p>
+        </AnimatedText>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto perspective-1000">
           {benefits.map((benefit, index) => (
