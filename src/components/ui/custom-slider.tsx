@@ -30,6 +30,15 @@ export const CustomSlider = ({
     onValueChange(Math.max(min, Math.min(max, newValue)));
   }, [min, max, step, onValueChange]);
 
+  const handleTouchStart = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    const rect = e.currentTarget.getBoundingClientRect();
+    const touch = e.touches[0];
+    const newPercentage = Math.max(0, Math.min(100, ((touch.clientX - rect.left) / rect.width) * 100));
+    const newValue = Math.round((min + (newPercentage / 100) * (max - min)) / step) * step;
+    onValueChange(Math.max(min, Math.min(max, newValue)));
+  }, [min, max, step, onValueChange]);
+
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!isDragging) return;
     
@@ -42,21 +51,42 @@ export const CustomSlider = ({
     onValueChange(Math.max(min, Math.min(max, newValue)));
   }, [isDragging, min, max, step, onValueChange]);
 
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    if (!isDragging) return;
+    
+    const slider = document.querySelector('[data-slider-track]') as HTMLElement;
+    if (!slider) return;
+    
+    const rect = slider.getBoundingClientRect();
+    const touch = e.touches[0];
+    const newPercentage = Math.max(0, Math.min(100, ((touch.clientX - rect.left) / rect.width) * 100));
+    const newValue = Math.round((min + (newPercentage / 100) * (max - min)) / step) * step;
+    onValueChange(Math.max(min, Math.min(max, newValue)));
+  }, [isDragging, min, max, step, onValueChange]);
+
   const handleMouseUp = useCallback(() => {
     setIsDragging(false);
   }, []);
 
-  // Add global mouse event listeners
+  const handleTouchEnd = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  // Add global mouse and touch event listeners
   React.useEffect(() => {
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('touchmove', handleTouchMove);
+      document.addEventListener('touchend', handleTouchEnd);
       return () => {
         document.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mouseup', handleMouseUp);
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('touchend', handleTouchEnd);
       };
     }
-  }, [isDragging, handleMouseMove, handleMouseUp]);
+  }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd]);
 
   return (
     <div className={cn("relative flex items-center w-full h-6 cursor-pointer", className)}>
@@ -65,6 +95,7 @@ export const CustomSlider = ({
         data-slider-track
         className="relative w-full h-2 bg-dental-blue-light/30 rounded-full"
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
       >
         {/* Filled portion */}
         <div

@@ -7,8 +7,11 @@ export const FinancialToolsSection = () => {
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Tools to Help You Plan
+            Your Dental Financing Payment Calculator
           </h2>
+          <p className="text-xl text-muted-foreground">
+            Plan Your Treatment & Your Financing
+          </p>
         </AnimatedText>
 
         <PaymentCalculator />
