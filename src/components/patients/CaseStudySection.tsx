@@ -32,9 +32,9 @@ export const CaseStudySection = () => {
                       Case Study
                     </div>
                     <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                      Real Patients,<br />
-                      Real Providers,<br />
-                      <span className="text-primary">Real Smiles</span>
+                      Real Patients.<br />
+                      Real Providers.<br />
+                      <span className="text-primary">Real Smiles.</span>
                     </h2>
                     <p className="text-xl text-muted-foreground leading-relaxed">
                       Discover how DentiPay has transformed dental care accessibility, 
