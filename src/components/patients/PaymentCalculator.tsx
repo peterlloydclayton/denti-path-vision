@@ -117,32 +117,38 @@ export const PaymentCalculator = () => {
 
       {/* Results Cards */}
       <div className="relative">
-        <Carousel className="w-full max-w-3xl mx-auto">
+        <Carousel 
+          className="w-full max-w-3xl mx-auto"
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+        >
           <CarouselContent className="-ml-2 md:-ml-4">
             {results.map((result, index) => (
               <CarouselItem key={result.term} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <AnimatedText delay={index * 0.1}>
-                  <Card className="text-center hover:shadow-elegant transition-smooth hover:-translate-y-1 bg-gradient-to-br from-dental-blue-light/10 to-white border-dental-blue-light/20">
-                    <CardHeader className="pb-3 bg-dental-blue-light/10 rounded-t-lg">
+                  <Card className="text-center hover:shadow-elegant transition-smooth hover:-translate-y-1 bg-gradient-to-br from-dental-blue-darker/5 to-dental-blue-light/5 border-dental-blue/30">
+                    <CardHeader className="pb-3 bg-dental-blue-darker/10 rounded-t-lg">
                       <CardTitle className="text-lg font-bold text-dental-blue-darker">
                         {result.term} Months
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3 pt-4">
                       <div>
-                        <p className="text-sm text-dental-blue">Monthly Payment</p>
-                        <p className="text-2xl font-bold text-foreground">
+                        <p className="text-sm font-semibold text-dental-blue-darker/80">Monthly Payment</p>
+                        <p className="text-2xl font-bold text-dental-blue-darker">
                           {formatCurrency(result.monthlyPayment)}
                         </p>
                       </div>
-                      <div className="pt-3 border-t border-dental-blue-light/30 space-y-2">
+                      <div className="pt-3 border-t border-dental-blue/30 space-y-2">
                         <div className="flex justify-between text-sm">
-                          <span className="text-dental-blue">Total Payment:</span>
-                          <span className="font-medium text-foreground">{formatCurrency(result.totalPayment)}</span>
+                          <span className="text-dental-blue-darker/80 font-medium">Total Payment:</span>
+                          <span className="font-semibold text-dental-blue-darker">{formatCurrency(result.totalPayment)}</span>
                         </div>
                         <div className="flex justify-between text-sm">
-                          <span className="text-dental-blue">Total Interest:</span>
-                          <span className="font-medium text-dental-blue-darker">
+                          <span className="text-dental-blue-darker/80 font-medium">Total Interest:</span>
+                          <span className="font-semibold text-dental-blue-darker">
                             {formatCurrency(result.totalInterest)}
                           </span>
                         </div>
@@ -153,8 +159,8 @@ export const PaymentCalculator = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="border-dental-blue-light text-dental-blue-darker hover:bg-dental-blue-light/20" />
-          <CarouselNext className="border-dental-blue-light text-dental-blue-darker hover:bg-dental-blue-light/20" />
+          <CarouselPrevious className="border-dental-blue text-dental-blue-darker hover:bg-dental-blue-light/30 hover:text-dental-blue-darker" />
+          <CarouselNext className="border-dental-blue text-dental-blue-darker hover:bg-dental-blue-light/30 hover:text-dental-blue-darker" />
         </Carousel>
       </div>
 
