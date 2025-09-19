@@ -109,7 +109,7 @@ export const EmblaParallaxCarousel: React.FC<EmblaParallaxCarouselProps> = ({
         </div>
       </div>
 
-      <div className="flex justify-center items-center mt-6 space-x-4">
+      <div className="flex justify-center items-center mt-4 space-x-12">
         <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
         
         <div className="flex space-x-2">
@@ -119,8 +119,8 @@ export const EmblaParallaxCarousel: React.FC<EmblaParallaxCarouselProps> = ({
               onClick={() => onDotButtonClick(index)}
               className={`w-2 h-2 rounded-full transition-all duration-200 ${
                 index === selectedIndex 
-                  ? 'bg-white scale-125' 
-                  : 'bg-white/30 hover:bg-white/50'
+                  ? 'bg-gray-600 scale-125' 
+                  : 'bg-gray-300 hover:bg-gray-400'
               }`}
             />
           ))}
