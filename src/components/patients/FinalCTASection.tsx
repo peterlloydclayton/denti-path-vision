@@ -34,19 +34,19 @@ export const FinalCTASection = () => {
           <div className="grid gap-6 max-w-2xl mx-auto">
             <div className="flex items-start gap-4 text-left">
               <CheckCircle size={28} className="text-dental-blue flex-shrink-0 mt-1" />
-              <span className="text-xl font-semibold text-foreground leading-tight">
+              <span className="text-xl font-semibold text-dental-blue leading-tight">
                 No impact to credit score for pre-qualification
               </span>
             </div>
             <div className="flex items-start gap-4 text-left">
               <CheckCircle size={28} className="text-dental-blue flex-shrink-0 mt-1" />
-              <span className="text-xl font-semibold text-foreground leading-tight">
+              <span className="text-xl font-semibold text-dental-blue leading-tight">
                 Instant decisions in under 60 seconds
               </span>
             </div>
             <div className="flex items-start gap-4 text-left">
               <CheckCircle size={28} className="text-dental-blue flex-shrink-0 mt-1" />
-              <span className="text-xl font-semibold text-foreground leading-tight">
+              <span className="text-xl font-semibold text-dental-blue leading-tight">
                 24/7 patient support
               </span>
             </div>
