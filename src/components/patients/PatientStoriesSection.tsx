@@ -49,7 +49,7 @@ export const PatientStoriesSection = () => {
     <Card className="hover:shadow-elegant transition-smooth hover:-translate-y-1 mb-8 flex-shrink-0">
       <CardContent className="p-8">
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-16 h-16 rounded-full bg-dental-peach/20 flex items-center justify-center">
+          <div className="w-16 h-16 rounded-full bg-dental-peach/30 flex items-center justify-center">
             <Users className="text-dental-peach" size={24} />
           </div>
           <div>
