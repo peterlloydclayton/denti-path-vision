@@ -1,8 +1,6 @@
 import { Bot } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedText } from '@/components/ui/animated-text';
-import { VoiceFlowLayout, VoiceActiveCard } from '@/components/ui/voice-flow-layout';
-import { CentralVoiceHub } from '@/components/ui/central-voice-hub';
 import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { motion } from 'framer-motion';
 import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
@@ -30,49 +28,44 @@ export const EchoAISection = () => {
           </p>
         </AnimatedText>
 
-        <VoiceFlowLayout 
-          centralElement={<CentralVoiceHub />}
-          className="max-w-6xl mx-auto"
-        >
+        <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {aiFeatures.map((feature, index) => {
               const IconComponent = aiIcons[index];
               return (
-                <VoiceActiveCard key={index} index={index} className="relative">
-                  <Card className="text-center transition-smooth h-full min-h-[200px]">
-                    <CardContent className="p-6 flex flex-col items-center justify-center h-full">
-                      <div className="flex items-center justify-center mx-auto mb-4">
-                        {index === 0 ? (
-                          <div className="relative">
-                            <PulseRipples isActive={true} className="w-16 h-16" />
-                            <motion.div
-                              className="absolute inset-0 flex items-center justify-center z-20"
-                              animate={{
-                                scale: [1, 1.05, 1],
-                              }}
-                              transition={{
-                                duration: 2,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                              }}
-                            >
-                              <Bot size={32} className="text-dental-blue" />
-                            </motion.div>
-                          </div>
-                        ) : (
-                          <div className="text-dental-blue">
-                            <IconComponent className="h-8" barCount={8} />
-                          </div>
-                        )}
-                      </div>
-                      <p className="text-muted-foreground">{feature}</p>
-                    </CardContent>
-                  </Card>
-                </VoiceActiveCard>
+                <Card key={index} className="text-center transition-smooth h-full min-h-[200px]">
+                  <CardContent className="p-6 flex flex-col items-center justify-center h-full">
+                    <div className="flex items-center justify-center mx-auto mb-4">
+                      {index === 0 ? (
+                        <div className="relative">
+                          <PulseRipples isActive={true} className="w-16 h-16" />
+                          <motion.div
+                            className="absolute inset-0 flex items-center justify-center z-20"
+                            animate={{
+                              scale: [1, 1.05, 1],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                          >
+                            <Bot size={32} className="text-dental-blue" />
+                          </motion.div>
+                        </div>
+                      ) : (
+                        <div className="text-dental-blue">
+                          <IconComponent className="h-8" barCount={8} />
+                        </div>
+                      )}
+                    </div>
+                    <p className="text-muted-foreground">{feature}</p>
+                  </CardContent>
+                </Card>
               );
             })}
           </div>
-        </VoiceFlowLayout>
+        </div>
       </div>
     </section>
   );
