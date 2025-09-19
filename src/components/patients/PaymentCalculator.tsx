@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Slider } from '@/components/ui/slider';
+import { CustomSlider } from '@/components/ui/custom-slider';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
@@ -78,13 +78,13 @@ export const PaymentCalculator = () => {
                 onChange={handleAmountChange}
                 className="text-lg font-semibold text-dental-blue-darker"
               />
-               <Slider
-                value={[loanAmount]}
-                onValueChange={(value) => setLoanAmount(value[0])}
+               <CustomSlider
+                value={loanAmount}
+                onValueChange={setLoanAmount}
                 min={1000}
                 max={100000}
                 step={1000}
-                className="mt-3 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-2 [&>*:last-child]:border-dental-blue [&>*:last-child]:bg-background"
+                className="mt-3"
               />
                <div className="flex justify-between text-sm text-dental-blue-darker/70 mt-1">
                 <span>$1,000</span>
@@ -98,13 +98,13 @@ export const PaymentCalculator = () => {
               <Label htmlFor="interest-rate" className="text-sm font-medium mb-2 block text-dental-blue-darker">
                 Interest Rate: {interestRate.toFixed(1)}%
               </Label>
-               <Slider
-                value={[interestRate]}
-                onValueChange={(value) => setInterestRate(value[0])}
+               <CustomSlider
+                value={interestRate}
+                onValueChange={setInterestRate}
                 min={0}
                 max={20}
                 step={0.1}
-                className="mt-6 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-2 [&>*:last-child]:border-dental-blue [&>*:last-child]:bg-background"
+                className="mt-6"
               />
                <div className="flex justify-between text-sm text-dental-blue-darker/70 mt-1">
                 <span>0%</span>
