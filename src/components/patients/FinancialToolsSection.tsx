@@ -25,7 +25,7 @@ export const FinancialToolsSection = () => {
                     </div>
                     <h3 className="text-xl font-bold mb-3">{tool.title}</h3>
                     <p className="text-muted-foreground mb-2">{tool.description}</p>
-                    <p className="text-sm text-dental-blue-dark font-medium mb-4">{tool.benefit}</p>
+                    <p className="text-sm text-dental-blue-darker font-medium mb-4">{tool.benefit}</p>
                     <Button variant="outline" className="w-full">
                       {tool.cta}
                     </Button>
