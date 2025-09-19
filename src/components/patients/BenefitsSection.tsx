@@ -13,7 +13,7 @@ export const BenefitsSection = () => {
           subtitle="Experience the easiest way to finance your dental care"
           imageSrc={happyPatientImage}
           imageAlt="Happy dental patient smiling after treatment"
-          variant="with-image-circle"
+          variant="split-layout"
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto perspective-1000">
