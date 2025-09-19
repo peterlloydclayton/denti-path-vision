@@ -36,7 +36,7 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
     const videoId = url.includes('youtu.be/') 
       ? url.split('youtu.be/')[1].split('?')[0]
       : url.split('v=')[1]?.split('&')[0];
-    return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1&fs=1&rel=0&modestbranding=1`;
   };
 
   return (
@@ -66,7 +66,7 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
                         <div className="absolute inset-0 bg-white/20 rounded-full animate-ping scale-150"></div>
                         <Button 
                           size="lg" 
-                          className="relative w-24 h-24 rounded-full bg-white/95 hover:bg-white text-primary hover:text-primary shadow-2xl transform group-hover:scale-110 transition-all duration-300 border-4 border-white/50"
+                          className="relative w-24 h-24 rounded-full bg-dental-blue hover:bg-dental-blue/90 text-dental-blue-dark hover:text-dental-blue-dark shadow-2xl transform group-hover:scale-110 transition-all duration-300 border-4 border-dental-blue/50"
                         >
                           <Play size={36} fill="currentColor" className="ml-1" />
                         </Button>
@@ -97,7 +97,7 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
               <div className={`flex flex-col justify-center p-8 lg:p-12 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 ${imagePosition === 'right' ? 'lg:order-1' : 'order-1 lg:order-2'}`}>
                 <AnimatedText>
                   <div className="space-y-6">
-                    <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                     <div className="inline-flex items-center px-4 py-2 rounded-full bg-dental-blue text-dental-blue-dark text-sm font-medium">
                       Case Study
                     </div>
                     <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
