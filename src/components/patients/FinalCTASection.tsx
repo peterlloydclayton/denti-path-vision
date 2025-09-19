@@ -21,17 +21,8 @@ export const FinalCTASection = () => {
             nationwide with financing options available at your first visit.
           </p>
           
-          <div className="flex justify-center mb-12">
-            <Button
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300 text-xl px-12 py-4 rounded-xl shadow-elegant font-semibold"
-            >
-              Get Pre-Approved Now
-            </Button>
-          </div>
-
           {/* Final Trust Elements */}
-          <div className="grid gap-6 max-w-2xl mx-auto">
+          <div className="grid gap-6 max-w-2xl mx-auto mb-12">
             <div className="flex items-start gap-4 text-left">
               <CheckCircle size={28} className="text-dental-blue flex-shrink-0 mt-1" />
               <span className="text-xl font-semibold text-slate-600 leading-tight">
@@ -50,6 +41,15 @@ export const FinalCTASection = () => {
                 24/7 patient support
               </span>
             </div>
+          </div>
+
+          <div className="flex justify-center">
+            <Button
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300 text-xl px-12 py-4 rounded-xl shadow-elegant font-semibold"
+            >
+              Get Pre-Approved Now
+            </Button>
           </div>
         </AnimatedText>
       </div>
