@@ -4,7 +4,11 @@ import { Play } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import caseStudyImage from '@/assets/case-study-patient.jpg';
 
-export const CaseStudySection = () => {
+interface CaseStudySectionProps {
+  imagePosition?: 'left' | 'right';
+}
+
+export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [objectPosition, setObjectPosition] = useState('65% center');
 
@@ -41,35 +45,8 @@ export const CaseStudySection = () => {
         <div className="max-w-7xl mx-auto">
           <div className="bg-card/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl border border-border/50">
             <div className="grid lg:grid-cols-2 min-h-[600px]">
-              {/* Text Content Side */}
-              <div className="flex flex-col justify-center p-8 lg:p-12 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10">
-                <AnimatedText>
-                  <div className="space-y-6">
-                    <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                      Case Study
-                    </div>
-                    <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                      Real Patients.<br />
-                      Real Providers.<br />
-                      <span className="text-primary">Real Smiles.</span>
-                    </h2>
-                    <p className="text-xl text-muted-foreground leading-relaxed">
-                      Discover how DentiPay has transformed dental care accessibility, 
-                      covering thousands of patients and connecting them with trusted providers 
-                      for life-changing treatments.
-                    </p>
-                    <div className="flex items-center gap-4 pt-4">
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        Watch Success Stories
-                      </div>
-                    </div>
-                  </div>
-                </AnimatedText>
-              </div>
-
               {/* Video/Image Side */}
-              <div className="relative group cursor-pointer">
+              <div className={`relative group cursor-pointer ${imagePosition === 'right' ? 'lg:order-2' : ''}`}>
                 {!isPlaying ? (
                   <div 
                     className="relative w-full h-full min-h-[400px] lg:min-h-full"
@@ -114,6 +91,33 @@ export const CaseStudySection = () => {
                     allowFullScreen
                   />
                 )}
+              </div>
+
+              {/* Text Content Side */}
+              <div className={`flex flex-col justify-center p-8 lg:p-12 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 ${imagePosition === 'right' ? 'lg:order-1' : ''}`}>
+                <AnimatedText>
+                  <div className="space-y-6">
+                    <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                      Case Study
+                    </div>
+                    <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+                      Real Patients.<br />
+                      Real Providers.<br />
+                      <span className="text-primary">Real Smiles.</span>
+                    </h2>
+                    <p className="text-xl text-muted-foreground leading-relaxed">
+                      Discover how DentiPay has transformed dental care accessibility, 
+                      covering thousands of patients and connecting them with trusted providers 
+                      for life-changing treatments.
+                    </p>
+                    <div className="flex items-center gap-4 pt-4">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        Watch Success Stories
+                      </div>
+                    </div>
+                  </div>
+                </AnimatedText>
               </div>
             </div>
           </div>
