@@ -33,7 +33,7 @@ export const EchoAISection = () => {
             {aiFeatures.map((feature, index) => {
               const IconComponent = aiIcons[index];
               return (
-                <Card key={index} className="text-center transition-smooth h-full min-h-[200px] bg-black">
+                <Card key={index} className="text-center transition-smooth h-full min-h-[200px] bg-gray-800">
                   <CardContent className="p-6 flex flex-col items-center justify-center h-full">
                     <div className="flex items-center justify-center mx-auto mb-4">
                       {index === 0 ? (
