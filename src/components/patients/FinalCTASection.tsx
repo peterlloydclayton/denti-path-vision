@@ -31,13 +31,25 @@ export const FinalCTASection = () => {
           </div>
 
           {/* Final Trust Elements */}
-          <div className="flex flex-col gap-4 max-w-4xl mx-auto">
-            {trustElements.map((element, index) => (
-              <div key={index} className="flex items-center justify-start gap-3 text-lg">
-                <CheckCircle size={24} className="text-dental-blue flex-shrink-0" />
-                <span className="font-medium text-foreground">{element}</span>
-              </div>
-            ))}
+          <div className="grid gap-6 max-w-2xl mx-auto">
+            <div className="flex items-start gap-4 text-left">
+              <CheckCircle size={28} className="text-dental-blue flex-shrink-0 mt-1" />
+              <span className="text-xl font-semibold text-foreground leading-tight">
+                No impact to credit score for pre-qualification
+              </span>
+            </div>
+            <div className="flex items-start gap-4 text-left">
+              <CheckCircle size={28} className="text-dental-blue flex-shrink-0 mt-1" />
+              <span className="text-xl font-semibold text-foreground leading-tight">
+                Instant decisions in under 60 seconds
+              </span>
+            </div>
+            <div className="flex items-start gap-4 text-left">
+              <CheckCircle size={28} className="text-dental-blue flex-shrink-0 mt-1" />
+              <span className="text-xl font-semibold text-foreground leading-tight">
+                24/7 patient support
+              </span>
+            </div>
           </div>
         </AnimatedText>
       </div>
