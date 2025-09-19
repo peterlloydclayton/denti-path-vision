@@ -33,13 +33,13 @@ export const HeroSection = () => {
         </div>
 
         {/* Mobile Portrait Layout */}
-        <div className="flex sm:hidden justify-start items-start pt-20 h-[calc(100vh-5rem)] ml-[25%]">
+        <div className="flex sm:hidden justify-start items-start pt-20 h-screen ml-[25%]">
           {/* Right Hero Image - Centered */}
-          <div className="w-full max-w-md h-[calc(100vh-5rem)] relative z-[100]">
+          <div className="w-full max-w-md h-screen relative z-[100]">
             <img 
               src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
               alt="Happy patient with dental financing"
-              className="absolute bottom-0 left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
+              className="absolute bottom-0 left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(100vh-8rem)]"
             />
           </div>
         </div>
