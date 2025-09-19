@@ -1,4 +1,5 @@
 import { HeroSection } from '@/components/patients/HeroSection';
+import { CaseStudySection } from '@/components/patients/CaseStudySection';
 import { ProviderSearchSection } from '@/components/patients/ProviderSearchSection';
 import { JourneySection } from '@/components/patients/JourneySection';
 import { BenefitsSection } from '@/components/patients/BenefitsSection';
@@ -13,6 +14,7 @@ const Patients = () => {
   return (
     <div className="overflow-x-hidden">
       <HeroSection />
+      <CaseStudySection />
       <JourneySection />
       <BenefitsSection />
       <ProviderSearchSection />
