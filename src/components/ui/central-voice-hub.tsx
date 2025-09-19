@@ -58,12 +58,6 @@ export const CentralVoiceHub = ({ className = '' }: CentralVoiceHubProps) => {
           <Waveform />
         </motion.div>
         
-        <motion.div
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 1.8, repeat: Infinity, delay: 1 }}
-        >
-          <EqualizerBars className="h-8" />
-        </motion.div>
       </div>
 
       {/* Speaking indicator text */}
