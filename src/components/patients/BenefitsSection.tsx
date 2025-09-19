@@ -8,7 +8,7 @@ export const BenefitsSection = () => {
   return (
     <>
       {/* Section Header outside blue area */}
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-6 py-12 mb-16">
         <SectionHeader 
           title="Why Patients Love DentiPay"
           subtitle="Experience the easiest way to finance your dental care"
