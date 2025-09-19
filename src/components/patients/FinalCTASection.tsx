@@ -21,22 +21,21 @@ export const FinalCTASection = () => {
             nationwide with financing options available at your first visit.
           </p>
           
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-12">
             <Button
               size="lg"
-              variant="outline"
-              className="text-lg px-8 border-2"
+              className="bg-gradient-primary text-white hover:scale-105 transition-all duration-300 text-xl px-12 py-4 rounded-xl shadow-elegant hover:shadow-glow border-0 font-semibold"
             >
               Get Pre-Approved Now
             </Button>
           </div>
 
           {/* Final Trust Elements */}
-          <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-sm text-muted-foreground max-w-4xl mx-auto">
+          <div className="flex flex-col items-start gap-4 text-lg text-foreground max-w-4xl mx-auto">
             {trustElements.map((element, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <CheckCircle size={16} className="text-dental-blue flex-shrink-0" />
-                <span>{element}</span>
+              <div key={index} className="flex items-center gap-3">
+                <CheckCircle size={24} className="text-dental-blue flex-shrink-0" />
+                <span className="font-medium">{element}</span>
               </div>
             ))}
           </div>
