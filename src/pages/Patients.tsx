@@ -13,8 +13,8 @@ const Patients = () => {
   return (
     <div className="overflow-x-hidden">
       <HeroSection />
-      <ProviderSearchSection />
       <JourneySection />
+      <ProviderSearchSection />
       <BenefitsSection />
       <EchoAISection />
       <PatientStoriesSection />
