@@ -44,11 +44,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export const PrevButton: React.FC<ButtonProps> = ({ children, ...restProps }) => {
   return (
     <button
-      className="p-2 text-white hover:text-white/70 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+      className="p-3 text-white hover:text-white/70 transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed border border-white/20 rounded-full hover:border-white/40"
       type="button"
       {...restProps}
     >
-      <ChevronLeft size={24} />
+      <ChevronLeft size={20} />
       {children}
     </button>
   );
@@ -57,11 +57,11 @@ export const PrevButton: React.FC<ButtonProps> = ({ children, ...restProps }) =>
 export const NextButton: React.FC<ButtonProps> = ({ children, ...restProps }) => {
   return (
     <button
-      className="p-2 text-white hover:text-white/70 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+      className="p-3 text-white hover:text-white/70 transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed border border-white/20 rounded-full hover:border-white/40"
       type="button"
       {...restProps}
     >
-      <ChevronRight size={24} />
+      <ChevronRight size={20} />
       {children}
     </button>
   );
