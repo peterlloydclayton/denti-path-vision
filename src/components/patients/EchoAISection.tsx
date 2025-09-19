@@ -39,8 +39,8 @@ export const EchoAISection = () => {
               const IconComponent = aiIcons[index];
               return (
                 <VoiceActiveCard key={index} index={index} className="relative">
-                  <Card className="text-center transition-smooth h-full min-h-80">
-                    <CardContent className="p-8 flex flex-col justify-center h-full">
+                  <Card className="text-center transition-smooth h-full">
+                    <CardContent className="p-6">
                       <div className="flex items-center justify-center mx-auto mb-4">
                         {index === 0 ? (
                           <div className="relative">
