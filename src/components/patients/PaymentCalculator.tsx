@@ -78,13 +78,13 @@ export const PaymentCalculator = () => {
                 onChange={handleAmountChange}
                 className="text-lg font-semibold"
               />
-              <Slider
+               <Slider
                 value={[loanAmount]}
                 onValueChange={(value) => setLoanAmount(value[0])}
                 min={1000}
                 max={100000}
                 step={1000}
-                className="mt-3"
+                className="mt-3 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-dental-blue [&>*:last-child]:bg-dental-blue-light"
               />
               <div className="flex justify-between text-sm text-muted-foreground mt-1">
                 <span>$1,000</span>
@@ -98,13 +98,13 @@ export const PaymentCalculator = () => {
               <Label htmlFor="interest-rate" className="text-sm font-medium mb-2 block">
                 Interest Rate: {interestRate.toFixed(1)}%
               </Label>
-              <Slider
+               <Slider
                 value={[interestRate]}
                 onValueChange={(value) => setInterestRate(value[0])}
                 min={0}
                 max={20}
                 step={0.1}
-                className="mt-6"
+                className="mt-6 [&>*:first-child]:bg-dental-blue-light/30 [&>*:first-child>*]:bg-dental-blue [&>*:last-child]:border-dental-blue [&>*:last-child]:bg-dental-blue-light"
               />
               <div className="flex justify-between text-sm text-muted-foreground mt-1">
                 <span>0%</span>
