@@ -3,7 +3,7 @@ import { AnimatedText } from '@/components/ui/animated-text';
 
 export const HeroSection = () => {
   return (
-    <section className="min-h-screen bg-dental-blue-muted relative z-30 overflow-visible">
+    <section className="min-h-screen bg-dental-blue relative z-30 overflow-visible">
       <div className="container mx-auto px-2 md:px-6 min-h-screen overflow-visible">
         {/* Desktop Layout */}
         <div className="hidden lg:flex justify-center items-center min-h-screen">
