@@ -4,10 +4,10 @@ import { AnimatedText } from '@/components/ui/animated-text';
 
 export const ProviderNetworkSection = () => {
   const networkStats = [
-    { value: '1,200+', label: 'verified providers nationwide' },
-    { value: '4.8/5', label: 'average provider rating' },
-    { value: 'All', label: 'specialties covered' },
-    { value: 'Same-Day', label: 'treatment starts available' }
+    { value: '1,200+', label: 'Verified providers nationwide' },
+    { value: '4.8/5', label: 'Average provider rating' },
+    { value: 'All', label: 'Specialties covered' },
+    { value: 'Same-Day', label: 'Treatment starts available' }
   ];
 
   const networkBenefits = [
@@ -30,7 +30,7 @@ export const ProviderNetworkSection = () => {
           {networkStats.map((stat, index) => (
             <AnimatedText key={index} delay={index * 0.1}>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
+                <div className="text-5xl font-bold text-dental-blue mb-2">{stat.value}</div>
                 <div className="text-muted-foreground">{stat.label}</div>
               </div>
             </AnimatedText>
