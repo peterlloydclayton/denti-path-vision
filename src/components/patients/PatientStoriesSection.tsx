@@ -69,7 +69,7 @@ export const PatientStoriesSection = () => {
           </div>
           <div className="flex justify-between text-sm mt-1">
             <span className="text-muted-foreground">Payment:</span>
-            <span className="font-semibold text-dental-blue">{story.payment}</span>
+            <span className="font-semibold text-dental-blue-custom">{story.payment}</span>
           </div>
         </div>
       </CardContent>
