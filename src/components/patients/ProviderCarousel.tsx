@@ -34,7 +34,7 @@ export const ProviderCarousel = () => {
   }, [api, onSelect]);
 
   return (
-    <div className="relative max-w-4xl mx-auto">
+    <div className="relative max-w-4xl mx-auto pt-8">
       <AnimatedText delay={0.3}>
         <Carousel
           setApi={setApi}
@@ -49,8 +49,10 @@ export const ProviderCarousel = () => {
           <CarouselContent className="-ml-2 md:-ml-4">
             {sampleProviders.map((provider, index) => (
               <CarouselItem key={index} className="pl-2 md:pl-4 basis-4/5 sm:basis-2/5 lg:basis-1/3">
-                <Card className={`hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 ${
-                  index === current ? 'scale-110' : 'scale-100'
+                <Card className={`hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 relative ${
+                  index === current 
+                    ? 'scale-110 z-20 shadow-2xl' 
+                    : 'scale-100 z-10'
                 }`}>
                   <CardContent className="p-0">
                     {/* Full width image at top */}
@@ -96,8 +98,8 @@ export const ProviderCarousel = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex" />
+          <CarouselPrevious className="hidden sm:flex z-30" />
+          <CarouselNext className="hidden sm:flex z-30" />
         </Carousel>
       </AnimatedText>
     </div>
