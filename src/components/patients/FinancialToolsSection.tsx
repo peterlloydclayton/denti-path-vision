@@ -4,7 +4,7 @@ import approvalSignal from '@/assets/approval-signal.jpg';
 
 export const FinancialToolsSection = () => {
   return (
-    <section className="py-24 bg-background relative">
+    <section className="py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto pl-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -19,7 +19,7 @@ export const FinancialToolsSection = () => {
       </div>
       
       {/* Approval signal image attached to viewport side */}
-      <div className="absolute -bottom-12 right-0 w-96 h-64 md:w-[960px] md:h-80 z-10 border-2 border-red-500">
+      <div className="fixed -bottom-12 right-0 w-96 h-64 md:w-[960px] md:h-80 z-10 border-2 border-red-500">
         <img 
           src={approvalSignal} 
           alt="Approval signal - dental financing approved" 
