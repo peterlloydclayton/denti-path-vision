@@ -31,10 +31,11 @@ export const SectionHeader = ({
       </div>
 
       {/* Card positioned above the image */}
-      <div className="mb-8 ml-8 mr-8 md:ml-12 md:mr-2/3">
+      <div className="relative mb-8 ml-8 mr-8 md:ml-12 md:mr-2/3">
         {/* Blue highlight offset */}
         <motion.div 
-          className="absolute top-6 left-6 w-full h-full bg-dental-blue rounded-2xl"
+          className="absolute top-6 left-6 bg-dental-blue rounded-2xl"
+          style={{ width: 'calc(100% - 24px)', height: 'calc(100% - 24px)' }}
           initial={{ opacity: 0, x: 20, y: 20 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
