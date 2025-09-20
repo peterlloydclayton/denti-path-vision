@@ -63,6 +63,7 @@ export const EchoAISection = () => {
           subtitle="Our proprietary voice-enabled AI specializes in understanding your healthcare needs to help you navigate your financial journey with confidence."
           backgroundComponent={<DentistWithSoundwaves />}
           altText="Dentist with AI technology"
+          layout="card-only"
         />
       </div>
 

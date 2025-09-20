@@ -9,7 +9,7 @@ interface SectionHeaderProps {
   backgroundComponent?: React.ReactNode;
   altText?: string;
   className?: string;
-  layout?: 'image-right' | 'image-left';
+  layout?: 'image-right' | 'image-left' | 'card-only';
 }
 
 export const SectionHeader = ({ 
@@ -36,7 +36,49 @@ export const SectionHeader = ({
 
       {/* Horizontal layout for desktop */}
       <div className="relative">
-        {layout === 'image-left' ? (
+        {layout === 'card-only' ? (
+          // Layout: Expanded card with background component in corner
+          <div className="flex justify-center">
+            <div className="relative w-full max-w-4xl">
+              {/* Blue highlight offset */}
+              <motion.div 
+                className="absolute top-6 left-6 w-full h-full bg-dental-blue rounded-2xl"
+                initial={{ opacity: 0, x: 20, y: 20 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              />
+              
+              {/* Main black card with background component */}
+              <motion.div 
+                className="relative bg-black/95 backdrop-blur-sm rounded-2xl p-8 md:p-10 border border-white/10 shadow-2xl overflow-hidden min-h-96"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              >
+                <AnimatedText delay={0.6}>
+                  <p className="text-base md:text-lg text-white/80 leading-relaxed relative z-10">
+                    {subtitle}
+                  </p>
+                </AnimatedText>
+
+                {/* Decorative accent line */}
+                <motion.div 
+                  className="absolute bottom-6 left-8 w-12 h-1 bg-dental-blue rounded-full z-10"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 48 }}
+                  transition={{ duration: 0.6, delay: 1 }}
+                />
+
+                {/* Background component positioned in lower right corner */}
+                {backgroundComponent && (
+                  <div className="absolute bottom-0 right-0 w-48 h-48 md:w-64 md:h-64 opacity-40 z-0">
+                    {backgroundComponent}
+                  </div>
+                )}
+              </motion.div>
+            </div>
+          </div>
+        ) : layout === 'image-left' ? (
           // Layout: Image Left, Card Right
           <div className="flex flex-col md:flex-row md:items-center gap-8">
             {/* Image section - left side */}
