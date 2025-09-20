@@ -19,11 +19,11 @@ export const FinancialToolsSection = () => {
       </div>
       
       {/* Approval signal image attached to viewport side */}
-      <div className="absolute bottom-0 right-0 z-10 w-56 h-[500px] md:w-[576px] md:h-[624px] border-2 border-red-500 md:border-0">
+      <div className="absolute bottom-0 right-0 z-10 w-screen h-[325px] md:w-[576px] md:h-[624px] border-2 border-red-500 md:border-0">
         <img 
           src={approvalSignal} 
           alt="Approval signal - dental financing approved" 
-          className="w-full h-full object-cover drop-shadow-lg border-2 border-blue-500 md:border-0"
+          className="w-36 h-[325px] md:w-full md:h-full object-cover drop-shadow-lg border-2 border-blue-500 md:border-0 ml-auto"
         />
       </div>
     </section>
