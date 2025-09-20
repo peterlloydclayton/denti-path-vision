@@ -33,8 +33,8 @@ export const SectionHeader = ({
         <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/30" />
       </motion.div>
 
-      {/* Overlapping Text Card */}
-      <div className="absolute -bottom-4 md:-bottom-12 left-8 right-8 md:left-12 md:right-2/3">
+      {/* Overlapping Text Card - Now positioned relative to image bottom */}
+      <div className="relative -mt-32 md:-mt-12 ml-8 mr-8 md:ml-12 md:mr-2/3">
         {/* Blue highlight offset */}
         <motion.div 
           className="absolute top-6 left-6 w-full h-full bg-dental-blue rounded-2xl"
