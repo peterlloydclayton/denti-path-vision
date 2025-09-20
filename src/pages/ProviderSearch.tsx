@@ -568,15 +568,18 @@ export const ProviderSearch = () => {
               <CardContent className="p-0">
                 <div
                   ref={mapRef}
-                  className="w-full h-96 rounded-lg bg-muted flex items-center justify-center"
+                  className="w-full h-96 rounded-lg bg-muted"
+                  style={{ minHeight: '400px' }}
                 >
                   {!googleMapsLoaded && (
-                    <div className="text-center text-muted-foreground">
-                      <MapPin size={48} className="mx-auto mb-4" />
-                      <p>Loading Google Maps...</p>
-                      <p className="text-sm mt-2">
-                        Note: Google Maps API key required for full functionality
-                      </p>
+                    <div className="w-full h-full flex items-center justify-center text-center text-muted-foreground">
+                      <div>
+                        <MapPin size={48} className="mx-auto mb-4" />
+                        <p>Loading Google Maps...</p>
+                        <p className="text-sm mt-2">
+                          Note: Google Maps API key required for full functionality
+                        </p>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -613,10 +616,10 @@ export const ProviderSearch = () => {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProviders.map((provider) => (
-                <Card key={provider.id} className="hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 relative h-[580px] flex flex-col">
+                <Card key={provider.id} className="hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 relative min-h-[600px] flex flex-col">
                   <CardContent className="p-0 flex flex-col h-full">
                     {/* Full width image at top - increased height to show full images */}
-                    <div className="w-full h-56 overflow-hidden rounded-t-lg bg-muted flex-shrink-0">
+                    <div className="w-full h-64 overflow-hidden rounded-t-lg bg-muted flex-shrink-0">
                       {(provider.profile_photo_url || provider.photo_url) ? (
                         <img
                           src={provider.profile_photo_url || provider.photo_url}
