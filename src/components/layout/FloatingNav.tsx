@@ -83,7 +83,7 @@ const MobileNav = () => {
     <>
       {/* Logo - Fixed upper left */}
       <motion.div
-        className={`fixed top-6 left-6 z-[9999] transition-smooth rounded-xl ${
+        className={`fixed top-6 left-6 z-50 transition-smooth rounded-xl ${
           scrolled ? 'bg-background/95 backdrop-blur-md shadow-soft px-3 py-2' : ''
         }`}
         initial={{ scale: 0 }}
@@ -101,7 +101,7 @@ const MobileNav = () => {
 
       {/* Mobile Menu Button - Floating over hero */}
       <motion.div
-        className={`fixed top-6 right-6 z-[9999] transition-smooth ${
+        className={`fixed top-6 right-6 z-50 transition-smooth ${
           scrolled ? 'shadow-elegant' : 'shadow-soft'
         }`}
         initial={{ scale: 0 }}
@@ -134,7 +134,7 @@ const MobileNav = () => {
         {isOpen && (
           <>
             <motion.div
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-[9998]"
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -142,7 +142,7 @@ const MobileNav = () => {
             />
 
             <motion.div
-              className="fixed top-24 right-6 z-[9999] bg-card border rounded-2xl shadow-elegant p-6 min-w-[280px]"
+              className="fixed top-24 right-6 z-50 bg-card border rounded-2xl shadow-elegant p-6 min-w-[280px]"
               variants={menuVariants}
               initial="closed"
               animate="open"

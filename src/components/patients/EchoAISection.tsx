@@ -5,8 +5,6 @@ import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { motion } from 'framer-motion';
 import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
 import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
-import { SectionHeader } from '@/components/ui/section-header';
-import { DentistWithSoundwaves } from './DentistWithSoundwaves';
 
 export const EchoAISection = () => {
   const aiFeatures = [
@@ -56,36 +54,24 @@ export const EchoAISection = () => {
   const slides = aiFeatures.map((feature, index) => createCard(feature, index));
 
   return (
-    <>
-      {/* Section Header without title */}
-      <div className="container mx-auto px-6 py-12 mb-4 relative z-[1000]">
-        <SectionHeader 
-          subtitle="Our proprietary voice-enabled AI specializes in understanding your healthcare needs to help you navigate your financial journey with confidence."
-          backgroundComponent={<DentistWithSoundwaves />}
-          altText="Dentist with AI technology"
-          layout="card-only"
+    <section className="py-24 bg-background">
+      <div className="container mx-auto px-6">
+        <AnimatedText className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Meet Echo, Your Personalized Healthcare AI
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Our proprietary voice-enabled AI specializes in understanding your healthcare needs 
+            to help you navigate your financial journey with confidence.
+          </p>
+        </AnimatedText>
+
+        <EmblaParallaxCarousel 
+          slides={slides}
+          className="max-w-6xl mx-auto"
+          options={{ align: 'start', loop: true }}
         />
       </div>
-
-      {/* Title section between image/card and carousel */}
-      <div className="container mx-auto px-6 mb-8 text-center">
-        <AnimatedText delay={0.2}>
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
-            Meet Echo, Your Personalized Healthcare AI
-          </h1>
-        </AnimatedText>
-      </div>
-
-      {/* Features carousel section */}
-      <section className="bg-background relative z-[1000]">
-        <div className="container mx-auto px-6">
-          <EmblaParallaxCarousel 
-            slides={slides}
-            className="max-w-6xl mx-auto"
-            options={{ align: 'start', loop: true }}
-          />
-        </div>
-      </section>
-    </>
+    </section>
   );
 };
