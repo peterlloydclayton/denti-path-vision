@@ -30,9 +30,9 @@ export const SectionHeader = ({
         </AnimatedText>
       </div>
 
-      {/* Full Background Image or Component */}
+      {/* Background Image or Component */}
       <motion.div 
-        className="relative h-80 md:h-96 w-full rounded-2xl overflow-hidden"
+        className="relative h-80 md:h-96 w-full md:w-[40%] rounded-2xl overflow-hidden"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -44,7 +44,7 @@ export const SectionHeader = ({
             <img 
               src={backgroundImage} 
               alt={altText} 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain md:object-cover"
             />
             {/* Subtle overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/30" />
