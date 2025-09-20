@@ -1,43 +1,71 @@
-import { useState, useEffect, useRef } from 'react';
-import { Search, MapPin, Phone, User } from 'lucide-react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { Search, MapPin, Phone, User, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { getActiveProviders, PublicProviderProfile } from '@/lib/supabase';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { getActiveProviders, PublicProviderProfile, supabase } from '@/lib/supabase';
 import { Loader } from '@googlemaps/js-api-loader';
 import { toast } from '@/hooks/use-toast';
 
+interface ProviderWithDistance extends PublicProviderProfile {
+  distance?: number;
+  coordinates?: { lat: number; lng: number };
+}
+
 export const ProviderSearch = () => {
-  const [providers, setProviders] = useState<PublicProviderProfile[]>([]);
-  const [filteredProviders, setFilteredProviders] = useState<PublicProviderProfile[]>([]);
+  const [providers, setProviders] = useState<ProviderWithDistance[]>([]);
+  const [filteredProviders, setFilteredProviders] = useState<ProviderWithDistance[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [locationSearch, setLocationSearch] = useState('');
+  const [radiusFilter, setRadiusFilter] = useState<string>('25');
   const [loading, setLoading] = useState(true);
   const [selectedProvider, setSelectedProvider] = useState<PublicProviderProfile | null>(null);
+  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<any>(null);
+  const markersRef = useRef<any[]>([]);
   const [googleMapsLoaded, setGoogleMapsLoaded] = useState(false);
-
-  // Google Maps API Key - Note: You'll need to provide this
-  const GOOGLE_MAPS_API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY'; // Replace with your actual API key
+  const [googleMapsApiKey, setGoogleMapsApiKey] = useState<string>('');
 
   useEffect(() => {
+    loadGoogleMapsApiKey();
     loadProviders();
-    loadGoogleMaps();
   }, []);
 
   useEffect(() => {
+    if (googleMapsApiKey) {
+      loadGoogleMaps();
+    }
+  }, [googleMapsApiKey]);
+
+  useEffect(() => {
     filterProviders();
-  }, [providers, searchTerm, locationSearch]);
+  }, [providers, searchTerm, locationSearch, userLocation, radiusFilter]);
+
+  const loadGoogleMapsApiKey = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke('get-maps-key');
+      if (error) throw error;
+      setGoogleMapsApiKey(data.apiKey);
+    } catch (error) {
+      console.error('Error loading Google Maps API key:', error);
+      toast({
+        title: "API Key Error",
+        description: "Failed to load Google Maps API key from Supabase.",
+        variant: "destructive"
+      });
+    }
+  };
 
   const loadGoogleMaps = async () => {
-    if (GOOGLE_MAPS_API_KEY === 'YOUR_GOOGLE_MAPS_API_KEY') {
+    if (!googleMapsApiKey) {
       toast({
         title: "Google Maps API Key Required",
-        description: "Please add your Google Maps API key to enable map functionality.",
+        description: "Please configure your Google Maps API key in Supabase secrets.",
         variant: "destructive"
       });
       return;
@@ -45,9 +73,9 @@ export const ProviderSearch = () => {
 
     try {
       const loader = new Loader({
-        apiKey: GOOGLE_MAPS_API_KEY,
+        apiKey: googleMapsApiKey,
         version: 'weekly',
-        libraries: ['places']
+        libraries: ['places', 'geometry']
       });
 
       await loader.load();
@@ -77,14 +105,39 @@ export const ProviderSearch = () => {
         }
       ]
     });
+
+    // Initialize Places Autocomplete for location search
+    const locationInput = document.getElementById('location-search') as HTMLInputElement;
+    if (locationInput) {
+      const autocomplete = new (window as any).google.maps.places.Autocomplete(locationInput);
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace();
+        if (place.geometry && place.geometry.location) {
+          const location = {
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng()
+          };
+          setUserLocation(location);
+          mapInstance.current?.setCenter(location);
+          mapInstance.current?.setZoom(12);
+        }
+      });
+    }
   };
 
   const loadProviders = async () => {
     setLoading(true);
     try {
       const data = await getActiveProviders();
-      setProviders(data);
-      setFilteredProviders(data);
+      // Geocode provider addresses
+      const providersWithCoords = await Promise.all(
+        data.map(async (provider) => {
+          const coordinates = await geocodeAddress(`${provider.address}, ${provider.city}, ${provider.state}`);
+          return { ...provider, coordinates };
+        })
+      );
+      setProviders(providersWithCoords);
+      setFilteredProviders(providersWithCoords);
     } catch (error) {
       console.error('Error loading providers:', error);
       toast({
@@ -97,9 +150,46 @@ export const ProviderSearch = () => {
     }
   };
 
-  const filterProviders = () => {
-    let filtered = providers;
+  const geocodeAddress = async (address: string): Promise<{ lat: number; lng: number } | null> => {
+    if (!googleMapsLoaded || !address) return null;
+    
+    try {
+      const geocoder = new (window as any).google.maps.Geocoder();
+      const result = await new Promise((resolve) => {
+        geocoder.geocode({ address }, (results: any, status: any) => {
+          if (status === 'OK' && results[0]) {
+            resolve({
+              lat: results[0].geometry.location.lat(),
+              lng: results[0].geometry.location.lng()
+            });
+          } else {
+            resolve(null);
+          }
+        });
+      });
+      return result as { lat: number; lng: number } | null;
+    } catch (error) {
+      console.error('Geocoding error:', error);
+      return null;
+    }
+  };
 
+  const calculateDistance = (coord1: { lat: number; lng: number }, coord2: { lat: number; lng: number }): number => {
+    if (!googleMapsLoaded) return 0;
+    
+    const distance = (window as any).google.maps.geometry.spherical.computeDistanceBetween(
+      new (window as any).google.maps.LatLng(coord1.lat, coord1.lng),
+      new (window as any).google.maps.LatLng(coord2.lat, coord2.lng)
+    );
+    
+    // Convert meters to miles
+    return Math.round((distance * 0.000621371) * 10) / 10;
+  };
+
+  const filterProviders = useCallback(() => {
+    let filtered = [...providers];
+
+    // Text-based filtering
     if (searchTerm) {
       filtered = filtered.filter(provider =>
         provider.first_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -108,7 +198,8 @@ export const ProviderSearch = () => {
       );
     }
 
-    if (locationSearch) {
+    // Location-based filtering
+    if (locationSearch && !userLocation) {
       filtered = filtered.filter(provider =>
         provider.city?.toLowerCase().includes(locationSearch.toLowerCase()) ||
         provider.state?.toLowerCase().includes(locationSearch.toLowerCase()) ||
@@ -116,7 +207,84 @@ export const ProviderSearch = () => {
       );
     }
 
+    // Radius filtering when user location is available
+    if (userLocation && radiusFilter) {
+      const maxDistance = parseInt(radiusFilter);
+      filtered = filtered.filter(provider => {
+        if (!provider.coordinates) return false;
+        const distance = calculateDistance(userLocation, provider.coordinates);
+        provider.distance = distance;
+        return distance <= maxDistance;
+      });
+    }
+
+    // Sort by distance if available
+    if (userLocation) {
+      filtered.sort((a, b) => (a.distance || 0) - (b.distance || 0));
+    }
+
     setFilteredProviders(filtered);
+    updateMapMarkers(filtered);
+  }, [providers, searchTerm, locationSearch, userLocation, radiusFilter, googleMapsLoaded]);
+
+  const updateMapMarkers = (providersToShow: ProviderWithDistance[]) => {
+    if (!mapInstance.current || !googleMapsLoaded) return;
+
+    // Clear existing markers
+    markersRef.current.forEach(marker => marker.setMap(null));
+    markersRef.current = [];
+
+    // Add new markers
+    const bounds = new (window as any).google.maps.LatLngBounds();
+    let hasValidCoordinates = false;
+
+    providersToShow.forEach(provider => {
+      if (provider.coordinates) {
+        const marker = new (window as any).google.maps.Marker({
+          position: provider.coordinates,
+          map: mapInstance.current,
+          title: `Dr. ${provider.first_name} ${provider.last_name}`,
+          icon: {
+            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="15" fill="#2563eb" stroke="white" stroke-width="2"/>
+                <path fill="white" d="M16 8c-2.21 0-4 1.79-4 4 0 2.21 1.79 4 4 4s4-1.79 4-4c0-2.21-1.79-4-4-4zm0 6c-1.1 0-2-0.9-2-2s0.9-2 2-2 2 0.9 2 2-0.9 2-2 2z"/>
+                <path fill="white" d="M16 18c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
+            `),
+            scaledSize: new (window as any).google.maps.Size(32, 32)
+          }
+        });
+
+        const infoWindow = new (window as any).google.maps.InfoWindow({
+          content: `
+            <div style="padding: 8px;">
+              <h3 style="margin: 0 0 4px 0; font-weight: bold;">Dr. ${provider.first_name} ${provider.last_name}</h3>
+              <p style="margin: 0; color: #666;">${provider.practice_name}</p>
+              <p style="margin: 4px 0 0 0; color: #666;">${provider.city}, ${provider.state}</p>
+              ${provider.distance ? `<p style="margin: 4px 0 0 0; color: #666;">${provider.distance} miles away</p>` : ''}
+            </div>
+          `
+        });
+
+        marker.addListener('click', () => {
+          infoWindow.open(mapInstance.current, marker);
+        });
+
+        markersRef.current.push(marker);
+        bounds.extend(marker.getPosition());
+        hasValidCoordinates = true;
+      }
+    });
+
+    // Fit map to show all markers
+    if (hasValidCoordinates) {
+      mapInstance.current.fitBounds(bounds);
+      const zoom = mapInstance.current.getZoom();
+      if (zoom > 15) {
+        mapInstance.current.setZoom(15);
+      }
+    }
   };
 
   const ProviderModal = ({ provider }: { provider: PublicProviderProfile }) => (
@@ -199,25 +367,51 @@ export const ProviderSearch = () => {
           </AnimatedText>
 
           {/* Search Filters */}
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-4 mb-8">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
-              <Input
-                placeholder="Search by provider name or practice..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
+          <div className="max-w-4xl mx-auto mb-8">
+            <div className="grid md:grid-cols-3 gap-4 mb-4">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
+                <Input
+                  placeholder="Search by provider name or practice..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+              <div className="relative">
+                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
+                <Input
+                  id="location-search"
+                  placeholder="Enter city, state, or zip code..."
+                  value={locationSearch}
+                  onChange={(e) => setLocationSearch(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+              <div className="relative">
+                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
+                <Select value={radiusFilter} onValueChange={setRadiusFilter}>
+                  <SelectTrigger className="pl-10">
+                    <SelectValue placeholder="Distance" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="5">Within 5 miles</SelectItem>
+                    <SelectItem value="10">Within 10 miles</SelectItem>
+                    <SelectItem value="25">Within 25 miles</SelectItem>
+                    <SelectItem value="50">Within 50 miles</SelectItem>
+                    <SelectItem value="100">Within 100 miles</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
-            <div className="relative">
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
-              <Input
-                placeholder="Enter city, state, or zip code..."
-                value={locationSearch}
-                onChange={(e) => setLocationSearch(e.target.value)}
-                className="pl-10"
-              />
-            </div>
+            {userLocation && (
+              <div className="text-center">
+                <Badge variant="secondary" className="mb-2">
+                  <MapPin size={14} className="mr-1" />
+                  Showing providers near your selected location
+                </Badge>
+              </div>
+            )}
           </div>
 
           {/* Google Map */}
@@ -292,6 +486,11 @@ export const ProviderSearch = () => {
                       <p className="text-sm text-muted-foreground">
                         {provider.city}, {provider.state}
                       </p>
+                      {provider.distance && (
+                        <p className="text-sm text-primary font-medium">
+                          {provider.distance} miles away
+                        </p>
+                      )}
                     </div>
 
                     {provider.specialties && provider.specialties.length > 0 && (
