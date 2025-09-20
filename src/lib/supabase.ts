@@ -44,7 +44,8 @@ export const getActiveProviders = async (searchTerm?: string, city?: string) => 
       location:location_id (
         city,
         state,
-        zip_code
+        zip_code,
+        address
       )
     `)
     .eq('is_active', true);
