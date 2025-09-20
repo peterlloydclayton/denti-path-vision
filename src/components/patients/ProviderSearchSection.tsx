@@ -4,7 +4,7 @@ import { ProviderCarousel } from './ProviderCarousel';
 
 export const ProviderSearchSection = () => {
   return (
-    <section className="py-24 pb-12 bg-gradient-subtle">
+    <section className="py-24 pb-6 bg-gradient-subtle">
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">

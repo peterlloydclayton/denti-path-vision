@@ -55,9 +55,9 @@ export const EchoAISection = () => {
   const slides = aiFeatures.map((feature, index) => createCard(feature, index));
 
   return (
-    <section className="py-16 bg-background overflow-visible">
+    <section className="py-8 bg-background overflow-visible">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col items-center mb-16">
+        <div className="flex flex-col items-center mb-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
