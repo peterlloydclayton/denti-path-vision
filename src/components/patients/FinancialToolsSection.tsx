@@ -4,7 +4,7 @@ import approvalSignal from '@/assets/approval-signal.jpg';
 
 export const FinancialToolsSection = () => {
   return (
-    <section className="pt-24 pb-64 md:pb-72 bg-background relative border-4 border-green-500">
+    <section className="pt-24 pb-[520px] md:pb-[644px] bg-background relative border-4 border-green-500">
       <div className="container mx-auto pl-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
