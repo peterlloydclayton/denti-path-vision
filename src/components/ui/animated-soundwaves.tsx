@@ -4,11 +4,11 @@ export const AnimatedSoundwaves = () => {
   const waves = Array.from({ length: 8 }, (_, i) => i);
   
   return (
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+    <div className="absolute inset-0 flex items-center justify-center overflow-hidden z-0">
       {waves.map((wave, index) => (
         <motion.div
           key={wave}
-          className="absolute bg-dental-blue/20 rounded-full"
+          className="absolute bg-blue-900/30 rounded-full"
           style={{
             width: `${120 + index * 40}px`,
             height: `${120 + index * 40}px`,
@@ -31,7 +31,7 @@ export const AnimatedSoundwaves = () => {
         {Array.from({ length: 5 }).map((_, i) => (
           <motion.div
             key={`left-${i}`}
-            className="bg-dental-blue/40 w-1 rounded-full"
+            className="bg-blue-900/50 w-1 rounded-full"
             animate={{
               height: [20, 60, 20],
             }}
@@ -49,7 +49,7 @@ export const AnimatedSoundwaves = () => {
         {Array.from({ length: 5 }).map((_, i) => (
           <motion.div
             key={`right-${i}`}
-            className="bg-dental-blue/40 w-1 rounded-full"
+            className="bg-blue-900/50 w-1 rounded-full"
             animate={{
               height: [20, 60, 20],
             }}
