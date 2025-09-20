@@ -23,7 +23,7 @@ export const FinancialToolsSection = () => {
         <img 
           src={approvalSignal} 
           alt="Approval signal - dental financing approved" 
-          className="w-full h-full object-contain drop-shadow-lg border-2 border-blue-500"
+          className="w-full h-full object-cover drop-shadow-lg border-2 border-blue-500"
         />
       </div>
     </section>
