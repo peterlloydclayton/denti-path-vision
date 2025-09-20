@@ -200,7 +200,7 @@ const MobileNav = () => {
                     Login
                   </a>
                   <a
-                    href="https://dental-docs-hub.lovable.app/"
+                    href="https://dental-docs-hub.lovable.app/signup"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full p-3 text-center rounded-xl bg-secondary hover:bg-secondary/80 transition-smooth font-medium"

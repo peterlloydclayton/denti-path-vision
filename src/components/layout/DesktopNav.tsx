@@ -101,7 +101,7 @@ export const DesktopNav = () => {
               Login
             </a>
             <a
-              href="https://dental-docs-hub.lovable.app/"
+              href="https://dental-docs-hub.lovable.app/signup"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-smooth font-medium"

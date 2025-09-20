@@ -762,7 +762,12 @@ const Index = () => {
                   </StaggerItem>
                   <StaggerItem>
                     <MagneticButton>
-                      <Button variant="outline" size="lg" className="text-lg px-8 py-4 w-full">
+                      <Button 
+                        variant="outline" 
+                        size="lg" 
+                        className="text-lg px-8 py-4 w-full"
+                        onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
+                      >
                         Get Pre-Approved
                       </Button>
                     </MagneticButton>

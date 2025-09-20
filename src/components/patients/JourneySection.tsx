@@ -127,6 +127,7 @@ export const JourneySection = () => {
             <Button 
               size="lg" 
               className="bg-foreground hover:bg-foreground/90 text-background font-semibold px-12 py-4 text-lg rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
+              onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
             >
               Get Financing
             </Button>
@@ -198,12 +199,13 @@ export const JourneySection = () => {
                          viewport={{ once: true }}
                          transition={{ delay: 0.5 }}
                        >
-                         <Button 
-                           size="lg" 
-                           className="bg-foreground hover:bg-foreground/90 text-background font-semibold px-12 py-4 text-lg rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
-                         >
-                           Get Financing
-                         </Button>
+                          <Button 
+                            size="lg" 
+                            className="bg-foreground hover:bg-foreground/90 text-background font-semibold px-12 py-4 text-lg rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
+                            onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
+                          >
+                            Get Financing
+                          </Button>
                        </motion.div>
                      </div>
                    </StaggerItem>

@@ -48,6 +48,7 @@ export const FinalCTASection = () => {
             <Button
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300 text-xl px-12 py-4 rounded-xl shadow-elegant font-semibold"
+              onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
             >
               Get Pre-Approved Now
             </Button>
