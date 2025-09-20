@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { AnimatedSoundwaves } from '@/components/ui/animated-soundwaves';
-import dentistEchoImg from '@/assets/dentist-echo-ai.jpg';
+import dentistEchoImg from '@/assets/dentist-echo.png';
 
 export const DentistWithSoundwaves = () => {
   return (
