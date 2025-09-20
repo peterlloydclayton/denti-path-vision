@@ -5,7 +5,8 @@ import { AnimatedText } from './animated-text';
 interface SectionHeaderProps {
   title: string;
   subtitle: string;
-  backgroundImage: string;
+  backgroundImage?: string;
+  backgroundComponent?: React.ReactNode;
   altText?: string;
   className?: string;
 }
@@ -14,6 +15,7 @@ export const SectionHeader = ({
   title, 
   subtitle, 
   backgroundImage,
+  backgroundComponent,
   altText = "Section image",
   className = "" 
 }: SectionHeaderProps) => {
@@ -28,20 +30,26 @@ export const SectionHeader = ({
         </AnimatedText>
       </div>
 
-      {/* Full Background Image */}
+      {/* Full Background Image or Component */}
       <motion.div 
         className="relative h-80 md:h-96 w-full rounded-2xl overflow-hidden"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <img 
-          src={backgroundImage} 
-          alt={altText} 
-          className="w-full h-full object-cover"
-        />
-        {/* Subtle overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/30" />
+        {backgroundComponent ? (
+          backgroundComponent
+        ) : (
+          <>
+            <img 
+              src={backgroundImage} 
+              alt={altText} 
+              className="w-full h-full object-cover"
+            />
+            {/* Subtle overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/30" />
+          </>
+        )}
       </motion.div>
 
       {/* Decorative Card - Now empty */}

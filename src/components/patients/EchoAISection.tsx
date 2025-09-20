@@ -5,6 +5,8 @@ import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { motion } from 'framer-motion';
 import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
 import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
+import { SectionHeader } from '@/components/ui/section-header';
+import { DentistWithSoundwaves } from './DentistWithSoundwaves';
 
 export const EchoAISection = () => {
   const aiFeatures = [
@@ -54,24 +56,27 @@ export const EchoAISection = () => {
   const slides = aiFeatures.map((feature, index) => createCard(feature, index));
 
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-6">
-        <AnimatedText className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Meet Echo, Your Personalized Healthcare AI
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our proprietary voice-enabled AI specializes in understanding your healthcare needs 
-            to help you navigate your financial journey with confidence.
-          </p>
-        </AnimatedText>
-
-        <EmblaParallaxCarousel 
-          slides={slides}
-          className="max-w-6xl mx-auto"
-          options={{ align: 'start', loop: true }}
+    <>
+      {/* Section Header outside background area */}
+      <div className="container mx-auto px-6 py-12 mb-16">
+        <SectionHeader 
+          title="Meet Echo, Your Personalized Healthcare AI"
+          subtitle="Our proprietary voice-enabled AI specializes in understanding your healthcare needs to help you navigate your financial journey with confidence."
+          backgroundComponent={<DentistWithSoundwaves />}
+          altText="Dentist with AI technology"
         />
       </div>
-    </section>
+
+      {/* Features carousel section */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <EmblaParallaxCarousel 
+            slides={slides}
+            className="max-w-6xl mx-auto"
+            options={{ align: 'start', loop: true }}
+          />
+        </div>
+      </section>
+    </>
   );
 };
