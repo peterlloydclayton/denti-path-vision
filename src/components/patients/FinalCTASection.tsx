@@ -11,7 +11,7 @@ export const FinalCTASection = () => {
   ];
 
   return (
-    <section className="pt-24 pb-0 bg-dental-blue/10 relative">
+    <section className="py-24 bg-dental-blue/10">
       <div className="container mx-auto px-6 text-center">
         <AnimatedText>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -54,11 +54,11 @@ export const FinalCTASection = () => {
           </div>
 
           {/* Smile image centered and flush with bottom */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+          <div className="flex justify-center">
             <img 
               src={smileImage} 
               alt="Beautiful smile - dental financing success" 
-              className="w-auto h-auto max-w-xs"
+              className="w-auto h-auto max-w-md"
             />
           </div>
         </AnimatedText>
