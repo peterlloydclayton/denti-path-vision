@@ -6,6 +6,7 @@ interface SectionHeaderProps {
   title: string;
   subtitle: string;
   backgroundImage: string;
+  altText?: string;
   className?: string;
 }
 
@@ -13,6 +14,7 @@ export const SectionHeader = ({
   title, 
   subtitle, 
   backgroundImage,
+  altText = "Section image",
   className = "" 
 }: SectionHeaderProps) => {
   return (
@@ -35,7 +37,7 @@ export const SectionHeader = ({
       >
         <img 
           src={backgroundImage} 
-          alt="Happy patient" 
+          alt={altText} 
           className="w-full h-full object-cover"
         />
         {/* Subtle overlay */}
@@ -61,7 +63,7 @@ export const SectionHeader = ({
         >
           <AnimatedText delay={0.6}>
             <p className="text-base md:text-lg text-white/80 leading-relaxed">
-              Experience the easiest way to finance your dental care
+              {subtitle}
             </p>
           </AnimatedText>
 
