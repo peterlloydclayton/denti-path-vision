@@ -71,7 +71,7 @@ export const SectionHeader = ({
 
                 {/* Background component positioned in lower right corner */}
                 {backgroundComponent && (
-                  <div className="absolute bottom-0 right-0 w-64 h-64 md:w-80 md:h-80 opacity-70 z-0">
+                  <div className="absolute bottom-0 right-0 w-64 h-64 md:w-80 md:h-80 opacity-100 z-0">
                     {backgroundComponent}
                   </div>
                 )}
