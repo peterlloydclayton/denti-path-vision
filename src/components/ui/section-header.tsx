@@ -60,7 +60,7 @@ export const SectionHeader = ({
             </motion.div>
 
             {/* Card section - right side */}
-            <div className="relative md:w-[50%] md:ml-auto">
+            <div className="relative md:w-[42.5%] md:ml-auto">
               {/* Blue highlight offset */}
               <motion.div 
                 className="absolute top-6 left-6 w-full h-full bg-dental-blue rounded-2xl"
@@ -96,7 +96,7 @@ export const SectionHeader = ({
           // Layout: Card Left, Image Right (default)
           <>
             {/* Card section - left side */}
-            <div className="relative md:w-[50%] mb-8">
+            <div className="relative md:w-[42.5%] mb-8">
               {/* Blue highlight offset */}
               <motion.div 
                 className="absolute top-6 left-6 w-full h-full bg-dental-blue rounded-2xl"
