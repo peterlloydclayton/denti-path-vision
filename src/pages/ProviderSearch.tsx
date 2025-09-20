@@ -47,6 +47,32 @@ export const ProviderSearch = () => {
     filterProviders();
   }, [providers, searchTerm, locationSearch, userLocation, radiusFilter]);
 
+  // Cleanup effect to prevent DOM manipulation errors
+  useEffect(() => {
+    return () => {
+      // Clear all markers
+      if (markersRef.current) {
+        markersRef.current.forEach(marker => {
+          if (marker && marker.setMap) {
+            marker.setMap(null);
+          }
+        });
+        markersRef.current = [];
+      }
+
+      // Close and clear info window
+      if (currentInfoWindowRef.current) {
+        currentInfoWindowRef.current.close();
+        currentInfoWindowRef.current = null;
+      }
+
+      // Clear map instance
+      if (mapInstance.current) {
+        mapInstance.current = null;
+      }
+    };
+  }, []);
+
   const loadGoogleMapsApiKey = async () => {
     // Using the provided Google Maps API key directly
     setGoogleMapsApiKey('AIzaSyB_qpGxmxtx7N1CBayqG3-gUoYVLPqOVjI');
@@ -87,11 +113,21 @@ export const ProviderSearch = () => {
 
     // Wait for Google Maps to be available
     if (!(window as any).google?.maps) {
-      setTimeout(initializeMap, 100);
+      // Prevent infinite recursion if Google Maps fails to load
+      const retryCount = (initializeMap as any).retryCount || 0;
+      if (retryCount < 50) { // Max 5 seconds of retries
+        (initializeMap as any).retryCount = retryCount + 1;
+        setTimeout(initializeMap, 100);
+      } else {
+        console.error('Google Maps failed to load after multiple attempts');
+      }
       return;
     }
 
     try {
+      // Clear retry counter on success
+      (initializeMap as any).retryCount = 0;
+      
       mapInstance.current = new (window as any).google.maps.Map(mapRef.current, {
         center: { lat: 39.8283, lng: -98.5795 }, // Center of US
         zoom: 4,
@@ -106,7 +142,7 @@ export const ProviderSearch = () => {
 
       // Force map to resize and render after a short delay
       setTimeout(() => {
-        if (mapInstance.current) {
+        if (mapInstance.current && mapRef.current) {
           (window as any).google.maps.event.trigger(mapInstance.current, 'resize');
         }
       }, 200);
