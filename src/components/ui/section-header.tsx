@@ -55,7 +55,7 @@ export const SectionHeader = ({
         </motion.div>
 
         {/* Card section - below image */}
-        <div className="relative md:w-[60%] md:mx-auto">
+        <div className="relative md:w-[50%] md:ml-auto">
           {/* Blue highlight offset */}
           <motion.div 
             className="absolute top-6 left-6 w-full h-full bg-dental-blue rounded-2xl"
