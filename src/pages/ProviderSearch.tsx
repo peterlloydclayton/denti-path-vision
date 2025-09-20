@@ -97,42 +97,7 @@ export const ProviderSearch = () => {
       ]
     });
 
-    // Initialize Places Autocomplete for location search (using modern API)
-    const locationInput = document.getElementById('location-search') as HTMLInputElement;
-    if (locationInput && (window as any).google?.maps?.places?.PlaceAutocompleteElement) {
-      try {
-        const autocompleteElement = new (window as any).google.maps.places.PlaceAutocompleteElement();
-        autocompleteElement.addEventListener('gmp-placeselect', (event: any) => {
-          const place = event.place;
-          if (place.location) {
-            const location = {
-              lat: place.location.lat(),
-              lng: place.location.lng()
-            };
-            setUserLocation(location);
-            mapInstance.current?.setCenter(location);
-            mapInstance.current?.setZoom(12);
-          }
-        });
-        locationInput.parentNode?.appendChild(autocompleteElement);
-      } catch (error) {
-        // Fallback to legacy Autocomplete if new API fails
-        console.warn('Using legacy Autocomplete API');
-        const autocomplete = new (window as any).google.maps.places.Autocomplete(locationInput);
-        autocomplete.addListener('place_changed', () => {
-          const place = autocomplete.getPlace();
-          if (place.geometry && place.geometry.location) {
-            const location = {
-              lat: place.geometry.location.lat(),
-              lng: place.geometry.location.lng()
-            };
-            setUserLocation(location);
-            mapInstance.current?.setCenter(location);
-            mapInstance.current?.setZoom(12);
-          }
-        });
-      }
-    }
+    // Note: Google Places autocomplete removed to prevent UI overlay issues
   };
 
   const loadProviders = async () => {
