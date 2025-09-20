@@ -66,7 +66,7 @@ export const EchoAISection = () => {
             className="mb-8 overflow-visible relative"
           >
             {/* Pulsing Soundwave Background */}
-            <div className="absolute inset-0 flex items-center justify-center -z-10">
+            <div className="absolute inset-0 flex items-center justify-center z-0">
               <div className="flex items-center justify-center space-x-1">
                 {[...Array(12)].map((_, i) => (
                   <motion.div
