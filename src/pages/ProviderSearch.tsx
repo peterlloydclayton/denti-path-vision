@@ -520,15 +520,15 @@ export const ProviderSearch = () => {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProviders.map((provider) => (
-                <Card key={provider.id} className="hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 relative">
-                  <CardContent className="p-0">
-                    {/* Full width image at top */}
-                    <div className="w-full h-48 overflow-hidden rounded-t-lg bg-muted">
+                <Card key={provider.id} className="hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 relative h-[580px] flex flex-col">
+                  <CardContent className="p-0 flex flex-col h-full">
+                    {/* Full width image at top - increased height to show full images */}
+                    <div className="w-full h-56 overflow-hidden rounded-t-lg bg-muted flex-shrink-0">
                       {(provider.profile_photo_url || provider.photo_url) ? (
                         <img
                           src={provider.profile_photo_url || provider.photo_url}
                           alt={provider.full_name || `Dr. ${provider.first_name} ${provider.last_name}`}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover object-top"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-muted">
@@ -537,8 +537,8 @@ export const ProviderSearch = () => {
                       )}
                     </div>
                     
-                    {/* Information below image */}
-                    <div className="p-6">
+                    {/* Information below image - flex-grow to fill available space */}
+                    <div className="p-6 flex flex-col flex-grow">
                       <div className="mb-4">
                         <h3 className="font-bold text-lg break-words leading-tight">
                           {provider.full_name || `Dr. ${provider.first_name || ''} ${provider.last_name || ''}`.trim()}
@@ -588,21 +588,24 @@ export const ProviderSearch = () => {
                         </div>
                       )}
                       
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button 
-                            className="w-full bg-intelligence hover:bg-intelligence/90"
-                            onClick={() => setSelectedProvider(provider)}
-                          >
-                            View Profile & Book
-                          </Button>
-                        </DialogTrigger>
-                        {selectedProvider && <ProviderModal provider={selectedProvider} />}
-                      </Dialog>
+                      {/* Button positioned at bottom using mt-auto */}
+                      <div className="mt-auto">
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button 
+                              className="w-full bg-intelligence hover:bg-intelligence/90"
+                              onClick={() => setSelectedProvider(provider)}
+                            >
+                              View Profile & Book
+                            </Button>
+                          </DialogTrigger>
+                          {selectedProvider && <ProviderModal provider={selectedProvider} />}
+                        </Dialog>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
-              ))}
+               ))}
             </div>
           )}
 
