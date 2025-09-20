@@ -67,13 +67,13 @@ export const EchoAISection = () => {
           >
             {/* Pulsing Soundwave Background */}
             <div className="absolute inset-0 flex items-center justify-center z-0">
-              <div className="flex items-center justify-center space-x-1">
+              <div className="flex items-center justify-center space-x-2">
                 {[...Array(12)].map((_, i) => (
                   <motion.div
                     key={i}
-                    className="w-2 bg-gradient-to-t from-blue-200 to-blue-300 rounded-full opacity-60"
+                    className="w-4 bg-gradient-to-t from-blue-200 to-blue-300 rounded-full opacity-60"
                     style={{
-                      height: `${20 + Math.sin(i * 0.5) * 40}px`
+                      height: `${40 + Math.sin(i * 0.5) * 80}px`
                     }}
                     animate={{
                       scaleY: [0.3, 1, 0.3],
@@ -90,7 +90,7 @@ export const EchoAISection = () => {
               </div>
               {/* Outer pulse rings */}
               <motion.div
-                className="absolute w-[500px] h-[500px] rounded-full border-2 border-blue-200/30"
+                className="absolute w-[1000px] h-[1000px] rounded-full border-2 border-blue-200/30"
                 animate={{
                   scale: [1, 1.2, 1],
                   opacity: [0.6, 0.2, 0.6]
@@ -102,7 +102,7 @@ export const EchoAISection = () => {
                 }}
               />
               <motion.div
-                className="absolute w-[400px] h-[400px] rounded-full border-2 border-blue-300/40"
+                className="absolute w-[800px] h-[800px] rounded-full border-2 border-blue-300/40"
                 animate={{
                   scale: [1, 1.3, 1],
                   opacity: [0.4, 0.1, 0.4]
