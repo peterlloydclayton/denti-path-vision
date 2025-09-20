@@ -34,7 +34,7 @@ export const SectionHeader = ({
       <div className="relative">
         {/* Image section - right side on desktop */}
         <motion.div 
-          className="relative h-80 md:h-96 w-full md:w-[50%] md:ml-auto rounded-2xl overflow-hidden mb-8 border-4 border-orange-500"
+          className="relative h-80 md:h-96 w-full md:w-[50%] md:ml-auto rounded-2xl overflow-hidden mb-8"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}

@@ -58,7 +58,7 @@ export const EchoAISection = () => {
   return (
     <>
       {/* Section Header outside background area */}
-      <div className="container mx-auto px-6 py-12 mb-4 border-4 border-red-500 relative z-[1000]">
+      <div className="container mx-auto px-6 py-12 mb-4 relative z-[1000]">
         <SectionHeader 
           title="Meet Echo, Your Personalized Healthcare AI"
           subtitle="Our proprietary voice-enabled AI specializes in understanding your healthcare needs to help you navigate your financial journey with confidence."
@@ -68,8 +68,8 @@ export const EchoAISection = () => {
       </div>
 
       {/* Features carousel section */}
-      <section className="bg-background border-4 border-blue-500 relative z-[1000]">
-        <div className="container mx-auto px-6 border-4 border-green-500">
+      <section className="bg-background relative z-[1000]">
+        <div className="container mx-auto px-6">
           <EmblaParallaxCarousel 
             slides={slides}
             className="max-w-6xl mx-auto"
