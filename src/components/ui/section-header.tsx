@@ -24,7 +24,7 @@ export const SectionHeader = ({
       {/* Title above everything */}
       <div className="mb-8">
         <AnimatedText delay={0.2}>
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight text-center">
             {title}
           </h1>
         </AnimatedText>
