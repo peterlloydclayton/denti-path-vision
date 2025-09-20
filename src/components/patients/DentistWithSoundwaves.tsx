@@ -11,7 +11,7 @@ export const DentistWithSoundwaves = () => {
       </div>
       
       {/* Main content container with rounded corners and proper clipping */}
-      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm">
+      <div className="relative w-full h-full rounded-2xl overflow-hidden">
         {/* Dentist image overlay */}
         <div className="relative z-10 w-full h-full flex items-center justify-center">
           <img 
