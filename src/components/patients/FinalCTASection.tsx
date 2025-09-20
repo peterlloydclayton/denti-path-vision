@@ -58,7 +58,7 @@ export const FinalCTASection = () => {
             <img 
               src={smileImage} 
               alt="Beautiful smile - dental financing success" 
-              className="w-auto h-auto max-w-xs"
+              className="w-auto h-auto max-w-[16rem]"
             />
           </div>
         </AnimatedText>
