@@ -114,6 +114,45 @@ export const EchoAISection = () => {
                   delay: 0.5
                 }}
               />
+              <motion.div
+                className="absolute w-[600px] h-[600px] rounded-full border-2 border-blue-400/35"
+                animate={{
+                  scale: [1, 1.25, 1],
+                  opacity: [0.5, 0.15, 0.5]
+                }}
+                transition={{
+                  duration: 2.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              />
+              <motion.div
+                className="absolute w-[450px] h-[450px] rounded-full border border-blue-300/25"
+                animate={{
+                  scale: [1, 1.4, 1],
+                  opacity: [0.3, 0.1, 0.3]
+                }}
+                transition={{
+                  duration: 3.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.5
+                }}
+              />
+              <motion.div
+                className="absolute w-[300px] h-[300px] rounded-full border border-blue-200/20"
+                animate={{
+                  scale: [1, 1.5, 1],
+                  opacity: [0.2, 0.05, 0.2]
+                }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2
+                }}
+              />
             </div>
             <img 
               src={smilingDentist} 
