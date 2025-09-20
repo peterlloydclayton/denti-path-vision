@@ -68,7 +68,7 @@ export const EchoAISection = () => {
             <img 
               src={smilingDentist} 
               alt="Smiling female dentist with stethoscope" 
-              className="w-48 h-48 md:w-56 md:h-56 object-contain mx-auto"
+              className="w-96 h-96 md:w-[28rem] md:h-[28rem] object-contain mx-auto"
             />
           </motion.div>
           <AnimatedText className="text-center">
