@@ -514,6 +514,53 @@ export const ProviderSearch = () => {
             </p>
           </AnimatedText>
 
+          {/* Search Filters */}
+          <div className="max-w-4xl mx-auto mb-8">
+            <div className="grid md:grid-cols-3 gap-4 mb-4">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
+                <Input
+                  placeholder="Search by provider name or practice..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+              <div className="relative">
+                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
+                <Input
+                  id="location-search"
+                  placeholder="Enter city, state, or zip code..."
+                  value={locationSearch}
+                  onChange={(e) => setLocationSearch(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+              <div className="relative">
+                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
+                <Select value={radiusFilter} onValueChange={setRadiusFilter}>
+                  <SelectTrigger className="pl-10">
+                    <SelectValue placeholder="Distance" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="5">Within 5 miles</SelectItem>
+                    <SelectItem value="10">Within 10 miles</SelectItem>
+                    <SelectItem value="25">Within 25 miles</SelectItem>
+                    <SelectItem value="50">Within 50 miles</SelectItem>
+                    <SelectItem value="100">Within 100 miles</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            {userLocation && (
+              <div className="text-center">
+                <Badge variant="secondary" className="mb-2">
+                  <MapPin size={14} className="mr-1" />
+                  Showing providers near your selected location
+                </Badge>
+              </div>
+            )}
+          </div>
 
           {/* Google Map */}
           <div className="max-w-6xl mx-auto mb-12">
