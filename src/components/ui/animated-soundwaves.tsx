@@ -8,7 +8,7 @@ export const AnimatedSoundwaves = () => {
       {waves.map((wave, index) => (
         <motion.div
           key={wave}
-          className="absolute bg-dental-blue/30 rounded-full"
+           className="absolute bg-dental-blue/30 rounded-full"
           style={{
              width: `${60 + index * 20}px`,
              height: `${60 + index * 20}px`,
