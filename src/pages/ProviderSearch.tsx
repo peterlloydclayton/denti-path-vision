@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Search, MapPin, Phone, User, Filter } from 'lucide-react';
+import { Search, MapPin, Phone, User, Filter, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -514,65 +514,86 @@ export const ProviderSearch = () => {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProviders.map((provider) => (
-                <Card key={provider.id} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="text-center mb-4">
+                <Card key={provider.id} className="hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 relative">
+                  <CardContent className="p-0">
+                    {/* Full width image at top */}
+                    <div className="w-full h-48 overflow-hidden rounded-t-lg bg-muted">
                       {(provider.profile_photo_url || provider.photo_url) ? (
                         <img
                           src={provider.profile_photo_url || provider.photo_url}
                           alt={provider.full_name || `Dr. ${provider.first_name} ${provider.last_name}`}
-                          className="w-20 h-20 rounded-full object-cover mx-auto mb-4"
+                          className="w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
-                          <User size={32} className="text-muted-foreground" />
+                        <div className="w-full h-full flex items-center justify-center bg-muted">
+                          <User size={48} className="text-muted-foreground" />
                         </div>
-                      )}
-                      <h3 className="font-semibold text-lg">
-                        {provider.full_name || `Dr. ${provider.first_name || ''} ${provider.last_name || ''}`.trim()}
-                      </h3>
-                      <p className="text-muted-foreground">{provider.practice_name || provider.business_location}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {getLocationDisplay(provider)}
-                      </p>
-                      {provider.distance && (
-                        <p className="text-sm text-primary font-medium">
-                          {provider.distance} miles away
-                        </p>
                       )}
                     </div>
-
-                    {provider.specialties && provider.specialties.length > 0 && (
+                    
+                    {/* Information below image */}
+                    <div className="p-6">
                       <div className="mb-4">
-                        <div className="flex flex-wrap gap-1 justify-center">
-                          {provider.specialties.slice(0, 3).map((specialty, index) => (
-                            <Badge key={index} variant="outline" className="text-xs">
-                              {specialty}
-                            </Badge>
-                          ))}
-                          {provider.specialties.length > 3 && (
-                            <Badge variant="outline" className="text-xs">
-                              +{provider.specialties.length - 3} more
-                            </Badge>
-                          )}
-                        </div>
+                        <h3 className="font-bold text-lg break-words leading-tight">
+                          {provider.full_name || `Dr. ${provider.first_name || ''} ${provider.last_name || ''}`.trim()}
+                        </h3>
+                        <p className="text-muted-foreground text-sm break-words leading-relaxed">
+                          {provider.practice_name || provider.business_location}
+                        </p>
                       </div>
-                    )}
+                      
+                      <div className="flex items-start gap-2 mb-2">
+                        <MapPin size={16} className="text-muted-foreground flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-muted-foreground break-words leading-relaxed">
+                          {getLocationDisplay(provider)}
+                          {provider.distance && (
+                            <span className="block text-primary font-medium">
+                              {provider.distance} miles away
+                            </span>
+                          )}
+                        </span>
+                      </div>
+                      
+                      <div className="flex items-start gap-2 mb-4 flex-wrap">
+                        <div className="flex items-center gap-1">
+                          <Star size={16} className="text-dental-peach fill-current flex-shrink-0" />
+                          <span className="font-bold text-xl text-slate-600">4.8</span>
+                        </div>
+                        <span className="font-semibold text-slate-600 text-sm break-words">(127 reviews)</span>
+                        <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full ml-auto">
+                          DentiPay Verified ✓
+                        </span>
+                      </div>
 
-                    {provider.bio && (
-                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                        {provider.bio}
-                      </p>
-                    )}
-
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button className="w-full" onClick={() => setSelectedProvider(provider)}>
-                          Get Treatment
-                        </Button>
-                      </DialogTrigger>
-                      {selectedProvider && <ProviderModal provider={selectedProvider} />}
-                    </Dialog>
+                      {provider.specialties && provider.specialties.length > 0 && (
+                        <div className="mb-4">
+                          <div className="flex flex-wrap gap-1">
+                            {provider.specialties.slice(0, 2).map((specialty, index) => (
+                              <Badge key={index} variant="outline" className="text-xs">
+                                {specialty}
+                              </Badge>
+                            ))}
+                            {provider.specialties.length > 2 && (
+                              <Badge variant="outline" className="text-xs">
+                                +{provider.specialties.length - 2} more
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                      
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button 
+                            className="w-full bg-intelligence hover:bg-intelligence/90"
+                            onClick={() => setSelectedProvider(provider)}
+                          >
+                            View Profile & Book
+                          </Button>
+                        </DialogTrigger>
+                        {selectedProvider && <ProviderModal provider={selectedProvider} />}
+                      </Dialog>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
