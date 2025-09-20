@@ -25,6 +25,12 @@ export interface PublicProviderProfile {
   contact_phone?: string;
   contact_email?: string;
   location_id?: string;
+  location?: {
+    city?: string;
+    state?: string;
+    address?: string;
+    zip_code?: string;
+  };
   is_active: boolean;
   created_at: string;
   updated_at: string;
@@ -33,15 +39,23 @@ export interface PublicProviderProfile {
 export const getActiveProviders = async (searchTerm?: string, city?: string) => {
   let query = supabase
     .from('public_provider_profiles')
-    .select('*')
+    .select(`
+      *,
+      location:location_id (
+        city,
+        state,
+        address,
+        zip_code
+      )
+    `)
     .eq('is_active', true);
 
   if (searchTerm) {
-    query = query.or(`first_name.ilike.%${searchTerm}%,last_name.ilike.%${searchTerm}%,practice_name.ilike.%${searchTerm}%`);
+    query = query.or(`full_name.ilike.%${searchTerm}%,practice_name.ilike.%${searchTerm}%,business_location.ilike.%${searchTerm}%`);
   }
 
   if (city) {
-    query = query.ilike('city', `%${city}%`);
+    query = query.ilike('location.city', `%${city}%`);
   }
 
   const { data, error } = await query;

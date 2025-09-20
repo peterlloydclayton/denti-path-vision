@@ -119,14 +119,10 @@ export const ProviderSearch = () => {
     setLoading(true);
     try {
       const data = await getActiveProviders();
-      // Geocode provider addresses using business_location as fallback
+      // Geocode provider addresses using proper location data
       const providersWithCoords = await Promise.all(
         data.map(async (provider) => {
-          const address = provider.address || provider.business_location || '';
-          const fullAddress = provider.city && provider.state 
-            ? `${address}, ${provider.city}, ${provider.state}`
-            : address;
-          
+          const fullAddress = getAddressForGeocoding(provider);
           const coordinates = fullAddress ? await geocodeAddress(fullAddress) : null;
           return { ...provider, coordinates };
         })
@@ -181,6 +177,33 @@ export const ProviderSearch = () => {
     return Math.round((distance * 0.000621371) * 10) / 10;
   };
 
+  const getLocationDisplay = (provider: ProviderWithDistance) => {
+    // Priority: location.city/state, then direct city/state, then business_location as fallback
+    const locationCity = provider.location?.city || provider.city;
+    const locationState = provider.location?.state || provider.state;
+    
+    if (locationCity && locationState) {
+      return `${locationCity}, ${locationState}`;
+    } else if (locationCity) {
+      return locationCity;
+    } else if (provider.business_location) {
+      return provider.business_location;
+    }
+    return 'Location not specified';
+  };
+
+  const getAddressForGeocoding = (provider: PublicProviderProfile) => {
+    // Use location data if available, otherwise fall back to direct fields
+    const city = provider.location?.city || provider.city;
+    const state = provider.location?.state || provider.state;
+    const address = provider.location?.address || provider.address || provider.business_location;
+    
+    if (city && state) {
+      return address ? `${address}, ${city}, ${state}` : `${city}, ${state}`;
+    }
+    return address || '';
+  };
+
   const filterProviders = useCallback(() => {
     let filtered = [...providers];
 
@@ -197,12 +220,16 @@ export const ProviderSearch = () => {
 
     // Location-based filtering
     if (locationSearch && !userLocation) {
-      filtered = filtered.filter(provider =>
-        provider.city?.toLowerCase().includes(locationSearch.toLowerCase()) ||
-        provider.state?.toLowerCase().includes(locationSearch.toLowerCase()) ||
-        provider.address?.toLowerCase().includes(locationSearch.toLowerCase()) ||
-        provider.business_location?.toLowerCase().includes(locationSearch.toLowerCase())
-      );
+      filtered = filtered.filter(provider => {
+        const locationCity = provider.location?.city || provider.city;
+        const locationState = provider.location?.state || provider.state;
+        const locationAddress = provider.location?.address || provider.address;
+        
+        return locationCity?.toLowerCase().includes(locationSearch.toLowerCase()) ||
+               locationState?.toLowerCase().includes(locationSearch.toLowerCase()) ||
+               locationAddress?.toLowerCase().includes(locationSearch.toLowerCase()) ||
+               provider.business_location?.toLowerCase().includes(locationSearch.toLowerCase());
+      });
     }
 
     // Radius filtering when user location is available
@@ -255,9 +282,7 @@ export const ProviderSearch = () => {
         });
 
         const displayName = provider.full_name || `Dr. ${provider.first_name || ''} ${provider.last_name || ''}`.trim();
-        const locationText = provider.city && provider.state 
-          ? `${provider.city}, ${provider.state}` 
-          : provider.business_location || 'Location not specified';
+        const locationText = getLocationDisplay(provider);
 
         const infoWindow = new (window as any).google.maps.InfoWindow({
           content: `
@@ -310,7 +335,7 @@ export const ProviderSearch = () => {
             <h3 className="font-semibold text-lg mb-2">Practice Information</h3>
             <p className="text-muted-foreground mb-1">{provider.practice_name || provider.business_location}</p>
             <p className="text-muted-foreground mb-1">
-              {provider.city && provider.state ? `${provider.city}, ${provider.state}` : (provider.business_location || 'Location not specified')}
+              {getLocationDisplay(provider)}
             </p>
             {(provider.phone || provider.contact_phone) && (
               <p className="text-muted-foreground flex items-center gap-2">
@@ -489,7 +514,7 @@ export const ProviderSearch = () => {
                       </h3>
                       <p className="text-muted-foreground">{provider.practice_name || provider.business_location}</p>
                       <p className="text-sm text-muted-foreground">
-                        {provider.city && provider.state ? `${provider.city}, ${provider.state}` : (provider.business_location || 'Location not specified')}
+                        {getLocationDisplay(provider)}
                       </p>
                       {provider.distance && (
                         <p className="text-sm text-primary font-medium">
