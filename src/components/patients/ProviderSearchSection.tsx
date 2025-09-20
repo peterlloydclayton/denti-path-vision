@@ -21,7 +21,7 @@ export const ProviderSearchSection = () => {
           <ProviderCarousel />
         </div>
 
-        <AnimatedText className="text-center">
+        <AnimatedText className="text-center mb-0">
           <Button size="lg" variant="outline" className="text-lg px-8">
             View All Providers in Your Area
           </Button>
