@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { AnimatedText } from './animated-text';
 
 interface SectionHeaderProps {
-  title: string;
+  title?: string;
   subtitle: string;
   backgroundImage?: string;
   backgroundComponent?: React.ReactNode;
@@ -23,14 +23,16 @@ export const SectionHeader = ({
 }: SectionHeaderProps) => {
   return (
     <div className={`relative max-w-6xl mx-auto ${className}`}>
-      {/* Title above everything */}
-      <div className="mb-8">
-        <AnimatedText delay={0.2}>
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight text-center">
-            {title}
-          </h1>
-        </AnimatedText>
-      </div>
+      {/* Title above everything - only if provided */}
+      {title && (
+        <div className="mb-8">
+          <AnimatedText delay={0.2}>
+            <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight text-center">
+              {title}
+            </h1>
+          </AnimatedText>
+        </div>
+      )}
 
       {/* Horizontal layout for desktop */}
       <div className="relative">

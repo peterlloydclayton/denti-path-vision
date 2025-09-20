@@ -57,14 +57,22 @@ export const EchoAISection = () => {
 
   return (
     <>
-      {/* Section Header outside background area */}
+      {/* Section Header without title */}
       <div className="container mx-auto px-6 py-12 mb-4 relative z-[1000]">
         <SectionHeader 
-          title="Meet Echo, Your Personalized Healthcare AI"
           subtitle="Our proprietary voice-enabled AI specializes in understanding your healthcare needs to help you navigate your financial journey with confidence."
           backgroundComponent={<DentistWithSoundwaves />}
           altText="Dentist with AI technology"
         />
+      </div>
+
+      {/* Title section between image/card and carousel */}
+      <div className="container mx-auto px-6 mb-8 text-center">
+        <AnimatedText delay={0.2}>
+          <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
+            Meet Echo, Your Personalized Healthcare AI
+          </h1>
+        </AnimatedText>
       </div>
 
       {/* Features carousel section */}

@@ -38,7 +38,7 @@ export const DesktopNav = () => {
   return (
     <motion.nav
       className={`
-        fixed top-0 left-0 right-0 z-50 w-full
+        fixed top-0 left-0 right-0 z-[9999] w-full
         bg-background border-b
         transition-smooth px-8 py-4
         ${scrolled ? 'shadow-elegant' : ''}
