@@ -494,7 +494,7 @@ export const ProviderSearch = () => {
           className="w-full"
           onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
         >
-          Get Started
+          Get Financing & Treatment Options
         </Button>
       </div>
     </DialogContent>
@@ -692,7 +692,7 @@ export const ProviderSearch = () => {
                               className="w-full bg-intelligence hover:bg-intelligence/90"
                               onClick={() => setSelectedProvider(provider)}
                             >
-                              View Profile & Book
+                              View Profile
                             </Button>
                           </DialogTrigger>
                           {selectedProvider && <ProviderModal provider={selectedProvider} />}
