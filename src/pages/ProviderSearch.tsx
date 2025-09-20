@@ -83,26 +83,38 @@ export const ProviderSearch = () => {
   };
 
   const initializeMap = () => {
-    if (!mapRef.current || !googleMapsLoaded) return;
+    if (!mapRef.current) return;
 
-    mapInstance.current = new (window as any).google.maps.Map(mapRef.current, {
-      center: { lat: 39.8283, lng: -98.5795 }, // Center of US
-      zoom: 4,
-      styles: [
-        {
-          featureType: 'poi',
-          elementType: 'labels',
-          stylers: [{ visibility: 'off' }]
+    // Wait for Google Maps to be available
+    if (!(window as any).google?.maps) {
+      setTimeout(initializeMap, 100);
+      return;
+    }
+
+    try {
+      mapInstance.current = new (window as any).google.maps.Map(mapRef.current, {
+        center: { lat: 39.8283, lng: -98.5795 }, // Center of US
+        zoom: 4,
+        styles: [
+          {
+            featureType: 'poi',
+            elementType: 'labels',
+            stylers: [{ visibility: 'off' }]
+          }
+        ]
+      });
+
+      // Force map to resize and render after a short delay
+      setTimeout(() => {
+        if (mapInstance.current) {
+          (window as any).google.maps.event.trigger(mapInstance.current, 'resize');
         }
-      ]
-    });
-
-    // Force map to resize and render
-    setTimeout(() => {
-      if (mapInstance.current) {
-        (window as any).google.maps.event.trigger(mapInstance.current, 'resize');
-      }
-    }, 100);
+      }, 200);
+      
+      console.log('Map initialized successfully');
+    } catch (error) {
+      console.error('Error initializing map:', error);
+    }
   };
 
   const loadProviders = async () => {
