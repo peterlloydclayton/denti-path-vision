@@ -6,12 +6,12 @@ export const DentistWithSoundwaves = () => {
   return (
     <div className="relative w-full h-full">
       {/* Animated soundwaves background - positioned to extend beyond container */}
-      <div className="absolute inset-0 -inset-x-8 -inset-y-8">
+      <div className="absolute inset-0 -inset-x-8 -inset-y-8 z-0">
         <AnimatedSoundwaves />
       </div>
       
       {/* Main content container with rounded corners and proper clipping */}
-      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white">
+      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm">
         {/* Dentist image overlay */}
         <div className="relative z-10 w-full h-full flex items-center justify-center">
           <img 
