@@ -28,6 +28,7 @@ export const ProviderSearch = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<any>(null);
   const markersRef = useRef<any[]>([]);
+  const currentInfoWindowRef = useRef<any>(null);
   const [googleMapsLoaded, setGoogleMapsLoaded] = useState(false);
   const [googleMapsApiKey, setGoogleMapsApiKey] = useState<string>('');
 
@@ -280,9 +281,13 @@ export const ProviderSearch = () => {
   const updateMapMarkers = (providersToShow: ProviderWithDistance[]) => {
     if (!mapInstance.current || !googleMapsLoaded) return;
 
-    // Clear existing markers
+    // Clear existing markers and close any open info windows
     markersRef.current.forEach(marker => marker.setMap(null));
     markersRef.current = [];
+    if (currentInfoWindowRef.current) {
+      currentInfoWindowRef.current.close();
+      currentInfoWindowRef.current = null;
+    }
 
     // Add new markers
     const bounds = new (window as any).google.maps.LatLngBounds();
@@ -308,20 +313,108 @@ export const ProviderSearch = () => {
 
         const displayName = provider.full_name || `Dr. ${provider.first_name || ''} ${provider.last_name || ''}`.trim();
         const locationText = getLocationDisplay(provider);
+        const photoUrl = provider.profile_photo_url || provider.photo_url;
 
         const infoWindow = new (window as any).google.maps.InfoWindow({
           content: `
-            <div style="padding: 8px;">
-              <h3 style="margin: 0 0 4px 0; font-weight: bold;">${displayName}</h3>
-              <p style="margin: 0; color: #666;">${provider.practice_name || provider.business_location || ''}</p>
-              <p style="margin: 4px 0 0 0; color: #666;">${locationText}</p>
-              ${provider.distance ? `<p style="margin: 4px 0 0 0; color: #666;">${provider.distance} miles away</p>` : ''}
+            <div style="padding: 12px; min-width: 280px; max-width: 320px;">
+              <div style="display: flex; align-items: flex-start; gap: 12px;">
+                ${photoUrl ? `
+                  <img 
+                    src="${photoUrl}" 
+                    alt="${displayName}"
+                    style="
+                      width: 60px; 
+                      height: 60px; 
+                      border-radius: 50%; 
+                      object-fit: cover; 
+                      flex-shrink: 0;
+                      border: 2px solid #e5e7eb;
+                    "
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div style="
+                    width: 60px; 
+                    height: 60px; 
+                    border-radius: 50%; 
+                    background-color: #f3f4f6; 
+                    display: none; 
+                    align-items: center; 
+                    justify-content: center;
+                    flex-shrink: 0;
+                    border: 2px solid #e5e7eb;
+                  ">
+                    <svg width="24" height="24" fill="#9ca3af" viewBox="0 0 24 24">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                  </div>
+                ` : `
+                  <div style="
+                    width: 60px; 
+                    height: 60px; 
+                    border-radius: 50%; 
+                    background-color: #f3f4f6; 
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: center;
+                    flex-shrink: 0;
+                    border: 2px solid #e5e7eb;
+                  ">
+                    <svg width="24" height="24" fill="#9ca3af" viewBox="0 0 24 24">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                  </div>
+                `}
+                <div style="flex: 1; min-width: 0;">
+                  <h3 style="margin: 0 0 4px 0; font-weight: bold; font-size: 16px; color: #111827; line-height: 1.2;">${displayName}</h3>
+                  <p style="margin: 0 0 4px 0; color: #6b7280; font-size: 14px; line-height: 1.3;">${provider.practice_name || provider.business_location || ''}</p>
+                  <p style="margin: 0 0 4px 0; color: #6b7280; font-size: 14px; line-height: 1.3;">${locationText}</p>
+                  ${provider.distance ? `<p style="margin: 0 0 8px 0; color: #2563eb; font-weight: 600; font-size: 14px;">${provider.distance} miles away</p>` : ''}
+                  ${provider.specialties && provider.specialties.length > 0 ? `
+                    <div style="margin-top: 8px;">
+                      ${provider.specialties.slice(0, 2).map(specialty => 
+                        `<span style="
+                          display: inline-block; 
+                          background-color: #eff6ff; 
+                          color: #2563eb; 
+                          padding: 2px 8px; 
+                          border-radius: 12px; 
+                          font-size: 12px; 
+                          margin-right: 4px; 
+                          margin-bottom: 4px;
+                          border: 1px solid #dbeafe;
+                          font-weight: 500;
+                        ">${specialty}</span>`
+                      ).join('')}
+                      ${provider.specialties.length > 2 ? `
+                        <span style="
+                          display: inline-block; 
+                          background-color: #f3f4f6; 
+                          color: #6b7280; 
+                          padding: 2px 8px; 
+                          border-radius: 12px; 
+                          font-size: 12px;
+                          border: 1px solid #e5e7eb;
+                          font-weight: 500;
+                        ">+${provider.specialties.length - 2} more</span>
+                      ` : ''}
+                    </div>
+                  ` : ''}
+                </div>
+              </div>
             </div>
           `
         });
 
         marker.addListener('click', () => {
+          // Close current info window if it exists
+          if (currentInfoWindowRef.current) {
+            currentInfoWindowRef.current.close();
+          }
+          
+          // Open new info window and store reference
           infoWindow.open(mapInstance.current, marker);
+          currentInfoWindowRef.current = infoWindow;
         });
 
         markersRef.current.push(marker);
