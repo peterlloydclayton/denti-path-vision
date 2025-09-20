@@ -5,6 +5,7 @@ import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { motion } from 'framer-motion';
 import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
 import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
+import smilingDentist from '@/assets/smiling-woman-dentist-transparent.png';
 
 export const EchoAISection = () => {
   const aiFeatures = [
@@ -54,17 +55,32 @@ export const EchoAISection = () => {
   const slides = aiFeatures.map((feature, index) => createCard(feature, index));
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-background overflow-visible">
       <div className="container mx-auto px-6">
-        <AnimatedText className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Meet Echo, Your Personalized Healthcare AI
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our proprietary voice-enabled AI specializes in understanding your healthcare needs 
-            to help you navigate your financial journey with confidence.
-          </p>
-        </AnimatedText>
+        <div className="flex flex-col items-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-8 overflow-visible"
+          >
+            <img 
+              src={smilingDentist} 
+              alt="Smiling female dentist with stethoscope" 
+              className="w-48 h-48 md:w-56 md:h-56 object-contain mx-auto"
+            />
+          </motion.div>
+          <AnimatedText className="text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Meet Echo, Your Personalized Healthcare AI
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Our proprietary voice-enabled AI specializes in understanding your healthcare needs 
+              to help you navigate your financial journey with confidence.
+            </p>
+          </AnimatedText>
+        </div>
 
         <EmblaParallaxCarousel 
           slides={slides}
