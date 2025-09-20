@@ -7,16 +7,24 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export interface PublicProviderProfile {
   id: string;
-  first_name: string;
-  last_name: string;
+  provider_id?: string;
+  full_name?: string;
+  first_name?: string;
+  last_name?: string;
+  title?: string;
+  photo_url?: string;
   profile_photo_url?: string;
   bio?: string;
   specialties?: string[];
   practice_name?: string;
+  business_location?: string;
   city?: string;
   state?: string;
   address?: string;
   phone?: string;
+  contact_phone?: string;
+  contact_email?: string;
+  location_id?: string;
   is_active: boolean;
   created_at: string;
   updated_at: string;

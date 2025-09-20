@@ -47,18 +47,8 @@ export const ProviderSearch = () => {
   }, [providers, searchTerm, locationSearch, userLocation, radiusFilter]);
 
   const loadGoogleMapsApiKey = async () => {
-    try {
-      const { data, error } = await supabase.functions.invoke('get-maps-key');
-      if (error) throw error;
-      setGoogleMapsApiKey(data.apiKey);
-    } catch (error) {
-      console.error('Error loading Google Maps API key:', error);
-      toast({
-        title: "API Key Error",
-        description: "Failed to load Google Maps API key from Supabase.",
-        variant: "destructive"
-      });
-    }
+    // Using the provided Google Maps API key directly
+    setGoogleMapsApiKey('AIzaSyB_qpGxmxtx7N1CBayqG3-gUoYVLPqOVjI');
   };
 
   const loadGoogleMaps = async () => {
@@ -129,10 +119,15 @@ export const ProviderSearch = () => {
     setLoading(true);
     try {
       const data = await getActiveProviders();
-      // Geocode provider addresses
+      // Geocode provider addresses using business_location as fallback
       const providersWithCoords = await Promise.all(
         data.map(async (provider) => {
-          const coordinates = await geocodeAddress(`${provider.address}, ${provider.city}, ${provider.state}`);
+          const address = provider.address || provider.business_location || '';
+          const fullAddress = provider.city && provider.state 
+            ? `${address}, ${provider.city}, ${provider.state}`
+            : address;
+          
+          const coordinates = fullAddress ? await geocodeAddress(fullAddress) : null;
           return { ...provider, coordinates };
         })
       );
@@ -194,7 +189,9 @@ export const ProviderSearch = () => {
       filtered = filtered.filter(provider =>
         provider.first_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         provider.last_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        provider.practice_name?.toLowerCase().includes(searchTerm.toLowerCase())
+        provider.full_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        provider.practice_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        provider.business_location?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
@@ -203,7 +200,8 @@ export const ProviderSearch = () => {
       filtered = filtered.filter(provider =>
         provider.city?.toLowerCase().includes(locationSearch.toLowerCase()) ||
         provider.state?.toLowerCase().includes(locationSearch.toLowerCase()) ||
-        provider.address?.toLowerCase().includes(locationSearch.toLowerCase())
+        provider.address?.toLowerCase().includes(locationSearch.toLowerCase()) ||
+        provider.business_location?.toLowerCase().includes(locationSearch.toLowerCase())
       );
     }
 
@@ -256,12 +254,17 @@ export const ProviderSearch = () => {
           }
         });
 
+        const displayName = provider.full_name || `Dr. ${provider.first_name || ''} ${provider.last_name || ''}`.trim();
+        const locationText = provider.city && provider.state 
+          ? `${provider.city}, ${provider.state}` 
+          : provider.business_location || 'Location not specified';
+
         const infoWindow = new (window as any).google.maps.InfoWindow({
           content: `
             <div style="padding: 8px;">
-              <h3 style="margin: 0 0 4px 0; font-weight: bold;">Dr. ${provider.first_name} ${provider.last_name}</h3>
-              <p style="margin: 0; color: #666;">${provider.practice_name}</p>
-              <p style="margin: 4px 0 0 0; color: #666;">${provider.city}, ${provider.state}</p>
+              <h3 style="margin: 0 0 4px 0; font-weight: bold;">${displayName}</h3>
+              <p style="margin: 0; color: #666;">${provider.practice_name || provider.business_location || ''}</p>
+              <p style="margin: 4px 0 0 0; color: #666;">${locationText}</p>
               ${provider.distance ? `<p style="margin: 4px 0 0 0; color: #666;">${provider.distance} miles away</p>` : ''}
             </div>
           `
@@ -291,26 +294,28 @@ export const ProviderSearch = () => {
     <DialogContent className="max-w-2xl">
       <DialogHeader>
         <DialogTitle className="text-2xl font-bold">
-          Dr. {provider.first_name} {provider.last_name}
+          {provider.full_name || `Dr. ${provider.first_name || ''} ${provider.last_name || ''}`.trim()}
         </DialogTitle>
       </DialogHeader>
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
-          {provider.profile_photo_url && (
+          {(provider.profile_photo_url || provider.photo_url) && (
             <img
-              src={provider.profile_photo_url}
-              alt={`Dr. ${provider.first_name} ${provider.last_name}`}
+              src={provider.profile_photo_url || provider.photo_url}
+              alt={provider.full_name || `Dr. ${provider.first_name} ${provider.last_name}`}
               className="w-32 h-32 rounded-full object-cover mx-auto md:mx-0"
             />
           )}
           <div>
             <h3 className="font-semibold text-lg mb-2">Practice Information</h3>
-            <p className="text-muted-foreground mb-1">{provider.practice_name}</p>
-            <p className="text-muted-foreground mb-1">{provider.city}, {provider.state}</p>
-            {provider.phone && (
+            <p className="text-muted-foreground mb-1">{provider.practice_name || provider.business_location}</p>
+            <p className="text-muted-foreground mb-1">
+              {provider.city && provider.state ? `${provider.city}, ${provider.state}` : (provider.business_location || 'Location not specified')}
+            </p>
+            {(provider.phone || provider.contact_phone) && (
               <p className="text-muted-foreground flex items-center gap-2">
                 <Phone size={16} />
-                {provider.phone}
+                {provider.phone || provider.contact_phone}
               </p>
             )}
           </div>
@@ -468,10 +473,10 @@ export const ProviderSearch = () => {
                 <Card key={provider.id} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="text-center mb-4">
-                      {provider.profile_photo_url ? (
+                      {(provider.profile_photo_url || provider.photo_url) ? (
                         <img
-                          src={provider.profile_photo_url}
-                          alt={`Dr. ${provider.first_name} ${provider.last_name}`}
+                          src={provider.profile_photo_url || provider.photo_url}
+                          alt={provider.full_name || `Dr. ${provider.first_name} ${provider.last_name}`}
                           className="w-20 h-20 rounded-full object-cover mx-auto mb-4"
                         />
                       ) : (
@@ -480,11 +485,11 @@ export const ProviderSearch = () => {
                         </div>
                       )}
                       <h3 className="font-semibold text-lg">
-                        Dr. {provider.first_name} {provider.last_name}
+                        {provider.full_name || `Dr. ${provider.first_name || ''} ${provider.last_name || ''}`.trim()}
                       </h3>
-                      <p className="text-muted-foreground">{provider.practice_name}</p>
+                      <p className="text-muted-foreground">{provider.practice_name || provider.business_location}</p>
                       <p className="text-sm text-muted-foreground">
-                        {provider.city}, {provider.state}
+                        {provider.city && provider.state ? `${provider.city}, ${provider.state}` : (provider.business_location || 'Location not specified')}
                       </p>
                       {provider.distance && (
                         <p className="text-sm text-primary font-medium">
