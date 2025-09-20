@@ -60,11 +60,17 @@ export const SectionHeader = ({
         
         {/* Main black card - now decorative only */}
         <motion.div 
-          className="relative bg-black/95 backdrop-blur-sm rounded-2xl p-8 md:p-10 border border-white/10 shadow-2xl h-32"
+          className="relative bg-black/95 backdrop-blur-sm rounded-2xl p-8 md:p-10 border border-white/10 shadow-2xl"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
+          <AnimatedText delay={0.6}>
+            <p className="text-base md:text-lg text-white/80 leading-relaxed">
+              Experience the easiest way to finance your dental care
+            </p>
+          </AnimatedText>
+
           {/* Decorative accent line */}
           <motion.div 
             className="absolute bottom-6 left-8 w-12 h-1 bg-dental-blue rounded-full"
