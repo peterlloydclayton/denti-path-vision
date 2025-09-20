@@ -212,15 +212,21 @@ export const ProviderSearch = () => {
   };
 
   const getAddressForGeocoding = (provider: PublicProviderProfile) => {
-    // Use location data if available, otherwise fall back to direct fields
+    // Use business_location as primary source since location table data is not available
+    if (provider.business_location) {
+      // Add a generic location to help with geocoding since business_location is usually just office names
+      return `${provider.business_location}, United States`;
+    }
+    
+    // Fallback to location data if available (though currently null in database)
     const city = provider.location?.city || provider.city;
     const state = provider.location?.state || provider.state;
-    const address = provider.location?.address || provider.address || provider.business_location;
     
     if (city && state) {
-      return address ? `${address}, ${city}, ${state}` : `${city}, ${state}`;
+      return `${city}, ${state}`;
     }
-    return address || '';
+    
+    return '';
   };
 
   const filterProviders = useCallback(() => {
