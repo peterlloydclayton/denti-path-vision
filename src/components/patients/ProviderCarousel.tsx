@@ -69,19 +69,21 @@ export const ProviderCarousel = () => {
                     {/* Information below image */}
                     <div className="p-6">
                       <div className="mb-4">
-                        <h3 className="font-bold text-lg">{provider.name}</h3>
-                        <p className="text-muted-foreground">{provider.specialty}</p>
+                        <h3 className="font-bold text-lg break-words leading-tight">{provider.name}</h3>
+                        <p className="text-muted-foreground text-sm break-words leading-relaxed">{provider.specialty}</p>
                       </div>
                       
-                      <div className="flex items-center gap-2 mb-2">
-                        <MapPin size={16} className="text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground">{provider.location}</span>
+                      <div className="flex items-start gap-2 mb-2">
+                        <MapPin size={16} className="text-muted-foreground flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-muted-foreground break-words leading-relaxed">{provider.location}</span>
                       </div>
                       
-                      <div className="flex items-center gap-2 mb-4">
-                        <Star size={16} className="text-dental-peach fill-current" />
-                        <span className="font-bold text-xl text-slate-600">{provider.rating}</span>
-                        <span className="font-semibold text-slate-600">({provider.reviews} reviews)</span>
+                      <div className="flex items-start gap-2 mb-4 flex-wrap">
+                        <div className="flex items-center gap-1">
+                          <Star size={16} className="text-dental-peach fill-current flex-shrink-0" />
+                          <span className="font-bold text-xl text-slate-600">{provider.rating}</span>
+                        </div>
+                        <span className="font-semibold text-slate-600 text-sm break-words">({provider.reviews} reviews)</span>
                         {provider.verified && (
                           <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full ml-auto">
                             DentiPay Verified ✓

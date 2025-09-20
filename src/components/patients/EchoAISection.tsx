@@ -45,7 +45,7 @@ export const EchoAISection = () => {
               </div>
             )}
           </div>
-          <p className="text-white text-center">{feature}</p>
+          <p className="text-white text-center break-words leading-relaxed px-2 hyphens-auto" style={{ hyphens: 'auto' }}>{feature}</p>
         </CardContent>
       </Card>
     );
