@@ -55,7 +55,7 @@ export const EchoAISection = () => {
   const slides = aiFeatures.map((feature, index) => createCard(feature, index));
 
   return (
-    <section className="py-24 bg-background overflow-visible">
+    <section className="py-16 bg-background overflow-visible">
       <div className="container mx-auto px-6">
         <div className="flex flex-col items-center mb-16">
           <motion.div
@@ -90,7 +90,7 @@ export const EchoAISection = () => {
               </div>
               {/* Outer pulse rings */}
               <motion.div
-                className="absolute w-[1000px] h-[1000px] rounded-full border-2 border-blue-200/30"
+                className="absolute w-[600px] h-[600px] rounded-full border-2 border-blue-200/30"
                 animate={{
                   scale: [1, 1.2, 1],
                   opacity: [0.6, 0.2, 0.6]
@@ -102,7 +102,7 @@ export const EchoAISection = () => {
                 }}
               />
               <motion.div
-                className="absolute w-[800px] h-[800px] rounded-full border-2 border-blue-300/40"
+                className="absolute w-[500px] h-[500px] rounded-full border-2 border-blue-300/40"
                 animate={{
                   scale: [1, 1.3, 1],
                   opacity: [0.4, 0.1, 0.4]
@@ -115,7 +115,7 @@ export const EchoAISection = () => {
                 }}
               />
               <motion.div
-                className="absolute w-[600px] h-[600px] rounded-full border-2 border-blue-400/35"
+                className="absolute w-[400px] h-[400px] rounded-full border-2 border-blue-400/35"
                 animate={{
                   scale: [1, 1.25, 1],
                   opacity: [0.5, 0.15, 0.5]
@@ -128,7 +128,7 @@ export const EchoAISection = () => {
                 }}
               />
               <motion.div
-                className="absolute w-[450px] h-[450px] rounded-full border border-blue-300/25"
+                className="absolute w-[300px] h-[300px] rounded-full border border-blue-300/25"
                 animate={{
                   scale: [1, 1.4, 1],
                   opacity: [0.3, 0.1, 0.3]
@@ -141,7 +141,7 @@ export const EchoAISection = () => {
                 }}
               />
               <motion.div
-                className="absolute w-[300px] h-[300px] rounded-full border border-blue-200/20"
+                className="absolute w-[200px] h-[200px] rounded-full border border-blue-200/20"
                 animate={{
                   scale: [1, 1.5, 1],
                   opacity: [0.2, 0.05, 0.2]
