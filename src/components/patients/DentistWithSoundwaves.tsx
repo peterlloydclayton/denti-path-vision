@@ -11,7 +11,7 @@ export const DentistWithSoundwaves = () => {
       </div>
       
       {/* Main content container with rounded corners and proper clipping */}
-      <div className="relative w-full h-full rounded-2xl overflow-hidden">
+      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white">
         {/* Dentist image overlay */}
         <div className="relative z-10 w-full h-full flex items-center justify-center">
           <img 
@@ -22,7 +22,7 @@ export const DentistWithSoundwaves = () => {
         </div>
         
         {/* Gradient overlay for better contrast */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/20 z-20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/5 via-transparent to-black/10 z-20" />
       </div>
     </div>
   );

@@ -8,10 +8,10 @@ export const AnimatedSoundwaves = () => {
       {waves.map((wave, index) => (
         <motion.div
           key={wave}
-          className="absolute bg-blue-900/30 rounded-full"
+          className="absolute bg-dental-blue/30 rounded-full"
           style={{
-            width: `${120 + index * 40}px`,
-            height: `${120 + index * 40}px`,
+             width: `${60 + index * 20}px`,
+             height: `${60 + index * 20}px`,
           }}
           animate={{
             scale: [1, 1.2, 1],
@@ -31,7 +31,7 @@ export const AnimatedSoundwaves = () => {
         {Array.from({ length: 5 }).map((_, i) => (
           <motion.div
             key={`left-${i}`}
-            className="bg-blue-900/50 w-1 rounded-full"
+            className="bg-dental-blue/50 w-1 rounded-full"
             animate={{
               height: [20, 60, 20],
             }}
@@ -49,7 +49,7 @@ export const AnimatedSoundwaves = () => {
         {Array.from({ length: 5 }).map((_, i) => (
           <motion.div
             key={`right-${i}`}
-            className="bg-blue-900/50 w-1 rounded-full"
+            className="bg-dental-blue/50 w-1 rounded-full"
             animate={{
               height: [20, 60, 20],
             }}
