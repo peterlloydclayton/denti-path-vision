@@ -19,7 +19,7 @@ export const FinancialToolsSection = () => {
       </div>
       
       {/* Approval signal image attached to viewport side */}
-      <div className="absolute bottom-4 right-4 z-10 w-56 h-[500px] md:w-[576px] md:h-[624px] border-2 border-red-500">
+      <div className="absolute bottom-4 right-0 z-10 w-56 h-[500px] md:w-[576px] md:h-[624px] border-2 border-red-500">
         <img 
           src={approvalSignal} 
           alt="Approval signal - dental financing approved" 
