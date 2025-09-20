@@ -54,7 +54,7 @@ export const FinalCTASection = () => {
           </div>
 
           {/* Smile image centered and flush with bottom */}
-          <div className="flex justify-center">
+          <div className="flex justify-center -mb-24">
             <img 
               src={smileImage} 
               alt="Beautiful smile - dental financing success" 
