@@ -68,7 +68,7 @@ export const EchoAISection = () => {
       </div>
 
       {/* Features carousel section */}
-      <section className="py-24 bg-background border-4 border-blue-500 relative z-[1000]">
+      <section className="bg-background border-4 border-blue-500 relative z-[1000]">
         <div className="container mx-auto px-6">
           <EmblaParallaxCarousel 
             slides={slides}
