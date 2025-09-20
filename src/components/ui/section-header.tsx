@@ -31,9 +31,31 @@ export const SectionHeader = ({
       </div>
 
       {/* Horizontal layout for desktop */}
-      <div className="relative md:flex md:items-end md:gap-8">
-        {/* Card section - left side on desktop */}
-        <div className="relative md:flex-1 md:pb-8 order-1 md:order-1">
+      <div className="relative">
+        {/* Image section - right side on desktop */}
+        <motion.div 
+          className="relative h-80 md:h-96 w-full md:w-[50%] md:ml-auto rounded-2xl overflow-hidden mb-8"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {backgroundComponent ? (
+            backgroundComponent
+          ) : (
+            <>
+              <img 
+                src={backgroundImage} 
+                alt={altText} 
+                className="w-full h-full object-contain md:object-cover"
+              />
+              {/* Subtle overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/30" />
+            </>
+          )}
+        </motion.div>
+
+        {/* Card section - below image */}
+        <div className="relative md:w-[60%] md:mx-auto">
           {/* Blue highlight offset */}
           <motion.div 
             className="absolute top-6 left-6 w-full h-full bg-dental-blue rounded-2xl"
@@ -64,28 +86,6 @@ export const SectionHeader = ({
             />
           </motion.div>
         </div>
-
-        {/* Image section - right side on desktop */}
-        <motion.div 
-          className="relative h-80 md:h-96 w-full md:w-[50%] rounded-2xl overflow-hidden mb-8 md:mb-0 order-2 md:order-2"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          {backgroundComponent ? (
-            backgroundComponent
-          ) : (
-            <>
-              <img 
-                src={backgroundImage} 
-                alt={altText} 
-                className="w-full h-full object-contain md:object-cover"
-              />
-              {/* Subtle overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/30" />
-            </>
-          )}
-        </motion.div>
       </div>
     </div>
   );
