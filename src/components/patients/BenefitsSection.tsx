@@ -8,7 +8,7 @@ export const BenefitsSection = () => {
   return (
     <>
       {/* Section Header outside blue area */}
-      <div className="container mx-auto px-6 py-12 mb-16">
+      <div className="container mx-auto px-6 py-12 mb-6">
         <SectionHeader 
           title="Why Patients Love DentiPay"
           subtitle="Experience the easiest way to finance your dental care"
@@ -17,7 +17,7 @@ export const BenefitsSection = () => {
       </div>
 
       {/* Blue section with benefits cards */}
-      <section className="py-24 bg-dental-blue relative overflow-hidden">
+      <section className="pt-10 pb-24 bg-dental-blue relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-20">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto perspective-1000">
             {benefits.map((benefit, index) => (
