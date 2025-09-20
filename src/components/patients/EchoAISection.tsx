@@ -69,7 +69,7 @@ export const EchoAISection = () => {
 
       {/* Features carousel section */}
       <section className="bg-background border-4 border-blue-500 relative z-[1000]">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 border-4 border-green-500">
           <EmblaParallaxCarousel 
             slides={slides}
             className="max-w-6xl mx-auto"
