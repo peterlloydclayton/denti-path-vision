@@ -17,18 +17,12 @@ export const SectionHeader = ({
 }: SectionHeaderProps) => {
   return (
     <div className={`relative max-w-6xl mx-auto ${className}`}>
-      {/* Title and Subtitle above image */}
+      {/* Title above image */}
       <div className="mb-8">
         <AnimatedText delay={0.2}>
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
             {title}
           </h1>
-        </AnimatedText>
-        
-        <AnimatedText delay={0.4}>
-          <h2 className="text-2xl md:text-4xl font-bold text-foreground/80 leading-tight">
-            {subtitle}
-          </h2>
         </AnimatedText>
       </div>
 
