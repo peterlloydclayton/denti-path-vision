@@ -5,7 +5,7 @@ import approvalSignal from '@/assets/approval-signal.jpg';
 export const FinancialToolsSection = () => {
   return (
     <section className="py-24 bg-background relative">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto pl-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Your Dental Financing Payment Calculator
