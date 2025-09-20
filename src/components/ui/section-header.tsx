@@ -36,10 +36,10 @@ export const SectionHeader = ({
       <div className="relative">
         {layout === 'image-left' ? (
           // Layout: Image Left, Card Right
-          <>
+          <div className="flex flex-col md:flex-row md:items-center gap-8">
             {/* Image section - left side */}
             <motion.div 
-              className="relative h-80 md:h-96 w-full md:w-[50%] rounded-2xl overflow-hidden mb-8"
+              className="relative h-80 md:h-96 w-full md:w-[50%] rounded-2xl overflow-hidden"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -60,7 +60,7 @@ export const SectionHeader = ({
             </motion.div>
 
             {/* Card section - right side */}
-            <div className="relative md:w-[42.5%] md:ml-auto">
+            <div className="relative md:w-[42.5%]">
               {/* Blue highlight offset */}
               <motion.div 
                 className="absolute top-6 left-6 w-full h-full bg-dental-blue rounded-2xl"
@@ -91,12 +91,12 @@ export const SectionHeader = ({
                 />
               </motion.div>
             </div>
-          </>
+          </div>
         ) : (
           // Layout: Card Left, Image Right (default)
-          <>
+          <div className="flex flex-col md:flex-row md:items-center gap-8">
             {/* Card section - left side */}
-            <div className="relative md:w-[42.5%] mb-8">
+            <div className="relative md:w-[42.5%]">
               {/* Blue highlight offset */}
               <motion.div 
                 className="absolute top-6 left-6 w-full h-full bg-dental-blue rounded-2xl"
@@ -130,7 +130,7 @@ export const SectionHeader = ({
 
             {/* Image section - right side */}
             <motion.div 
-              className="relative h-80 md:h-96 w-full md:w-[50%] md:ml-auto rounded-2xl overflow-hidden"
+              className="relative h-80 md:h-96 w-full md:w-[50%] rounded-2xl overflow-hidden"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -149,7 +149,7 @@ export const SectionHeader = ({
                 </>
               )}
             </motion.div>
-          </>
+          </div>
         )}
       </div>
     </div>
