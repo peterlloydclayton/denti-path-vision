@@ -1,6 +1,7 @@
 import { CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AnimatedText } from '@/components/ui/animated-text';
+import smileImage from '@/assets/smile.png';
 
 export const FinalCTASection = () => {
   const trustElements = [
@@ -43,13 +44,22 @@ export const FinalCTASection = () => {
             </div>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-8">
             <Button
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300 text-xl px-12 py-4 rounded-xl shadow-elegant font-semibold"
             >
               Get Pre-Approved Now
             </Button>
+          </div>
+
+          {/* Smile image centered and flush with bottom */}
+          <div className="flex justify-center">
+            <img 
+              src={smileImage} 
+              alt="Beautiful smile - dental financing success" 
+              className="w-auto h-auto max-w-md"
+            />
           </div>
         </AnimatedText>
       </div>
