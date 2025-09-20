@@ -44,7 +44,6 @@ export const getActiveProviders = async (searchTerm?: string, city?: string) => 
       location:location_id (
         city,
         state,
-        address,
         zip_code
       )
     `)
