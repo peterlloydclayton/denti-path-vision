@@ -4,12 +4,13 @@ import { Menu, X, Home, Users, Stethoscope, Brain, Building } from 'lucide-react
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { DesktopNav } from './DesktopNav';
+import { DesktopNavWithSubmenu } from './DesktopNavWithSubmenu';
 import dentiPayLogo from '@/assets/dentipay-logo.png';
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/providers', label: 'Providers', icon: Stethoscope },
+  { href: '/provider-search', label: 'Provider Search', icon: Stethoscope },
   { href: '/patients', label: 'Patients', icon: Users },
   { href: '/intelligent-financing', label: 'Intelligence', icon: Brain },
   { href: '/about', label: 'About', icon: Building },
@@ -18,9 +19,9 @@ const navItems = [
 export const FloatingNav = () => {
   const isMobile = useIsMobile();
 
-  // On desktop, show the floating desktop nav
+  // On desktop, show the floating desktop nav with submenu
   if (!isMobile) {
-    return <DesktopNav />;
+    return <DesktopNavWithSubmenu />;
   }
 
   // On mobile and tablet, show the burger menu
@@ -191,7 +192,7 @@ const MobileNav = () => {
               <motion.div variants={itemVariants} className="mt-6 pt-4 border-t">
                 <div className="space-y-2">
                   <a
-                    href="https://dental-docs-hub.lovable.app/"
+                    href="https://dental-docs-hub.lovable.app/login"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full p-3 text-center rounded-xl bg-secondary hover:bg-secondary/80 transition-smooth font-medium"

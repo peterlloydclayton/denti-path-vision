@@ -15,6 +15,7 @@ import About from "./pages/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
 import NotFound from "./pages/NotFound";
+import { ProviderSearch } from "./pages/ProviderSearch";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
               <Route path="/providers" element={<Providers />} />
               <Route path="/patients" element={<Patients />} />
               <Route path="/intelligent-financing" element={<IntelligentFinancing />} />
+              <Route path="/provider-search" element={<ProviderSearch />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-use" element={<TermsOfUse />} />

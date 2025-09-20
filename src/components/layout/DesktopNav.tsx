@@ -93,7 +93,7 @@ export const DesktopNav = () => {
           {/* Login/Signup Links */}
           <div className="flex items-center gap-4">
             <a
-              href="https://dental-docs-hub.lovable.app/"
+              href="https://dental-docs-hub.lovable.app/login"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-smooth font-medium"
