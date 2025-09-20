@@ -153,11 +153,77 @@ export const EchoAISection = () => {
                   delay: 2
                 }}
               />
+              {/* Additional closer circles */}
+              <motion.div
+                className="absolute w-[150px] h-[150px] rounded-full border border-blue-300/30"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.4, 0.1, 0.4]
+                }}
+                transition={{
+                  duration: 2.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.3
+                }}
+              />
+              <motion.div
+                className="absolute w-[120px] h-[120px] rounded-full border border-blue-400/35"
+                animate={{
+                  scale: [1, 1.4, 1],
+                  opacity: [0.5, 0.15, 0.5]
+                }}
+                transition={{
+                  duration: 2.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.8
+                }}
+              />
+              <motion.div
+                className="absolute w-[100px] h-[100px] rounded-full border border-blue-300/40"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.6, 0.2, 0.6]
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.2
+                }}
+              />
+              <motion.div
+                className="absolute w-[80px] h-[80px] rounded-full border border-blue-200/45"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.7, 0.25, 0.7]
+                }}
+                transition={{
+                  duration: 2.0,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.6
+                }}
+              />
+              <motion.div
+                className="absolute w-[60px] h-[60px] rounded-full border border-blue-400/50"
+                animate={{
+                  scale: [1, 1.25, 1],
+                  opacity: [0.8, 0.3, 0.8]
+                }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2.0
+                }}
+              />
             </div>
             <img 
               src={smilingDentist} 
               alt="Smiling female dentist with stethoscope" 
-              className="w-96 h-96 md:w-[28rem] md:h-[28rem] object-contain mx-auto relative z-10"
+              className="w-96 h-96 md:w-[28rem] md:h-[28rem] object-contain mx-auto relative z-20"
             />
           </motion.div>
           <AnimatedText className="text-center">
