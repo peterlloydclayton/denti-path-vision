@@ -17,6 +17,21 @@ export const SectionHeader = ({
 }: SectionHeaderProps) => {
   return (
     <div className={`relative max-w-6xl mx-auto ${className}`}>
+      {/* Title and Subtitle above image */}
+      <div className="mb-8">
+        <AnimatedText delay={0.2}>
+          <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight mb-4">
+            {title}
+          </h1>
+        </AnimatedText>
+        
+        <AnimatedText delay={0.4}>
+          <h2 className="text-2xl md:text-4xl font-bold text-foreground/80 leading-tight">
+            {subtitle}
+          </h2>
+        </AnimatedText>
+      </div>
+
       {/* Full Background Image */}
       <motion.div 
         className="relative h-80 md:h-96 w-full rounded-2xl overflow-hidden"
@@ -33,7 +48,7 @@ export const SectionHeader = ({
         <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/30" />
       </motion.div>
 
-      {/* Overlapping Text Card - Now positioned relative to image bottom */}
+      {/* Decorative Card - Now empty */}
       <div className="relative -mt-16 md:-mt-12 ml-8 mr-8 md:ml-12 md:mr-2/3">
         {/* Blue highlight offset */}
         <motion.div 
@@ -43,25 +58,13 @@ export const SectionHeader = ({
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         />
         
-        {/* Main black card */}
+        {/* Main black card - now decorative only */}
         <motion.div 
-          className="relative bg-black/95 backdrop-blur-sm rounded-2xl p-8 md:p-10 border border-white/10 shadow-2xl"
+          className="relative bg-black/95 backdrop-blur-sm rounded-2xl p-8 md:p-10 border border-white/10 shadow-2xl h-32"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
-          <AnimatedText delay={0.6}>
-            <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight mb-4">
-              {title}
-            </h2>
-          </AnimatedText>
-          
-          <AnimatedText delay={0.8}>
-            <p className="text-base md:text-lg text-white/80 leading-relaxed">
-              {subtitle}
-            </p>
-          </AnimatedText>
-
           {/* Decorative accent line */}
           <motion.div 
             className="absolute bottom-6 left-8 w-12 h-1 bg-dental-blue rounded-full"
