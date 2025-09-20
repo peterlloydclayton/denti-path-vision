@@ -30,30 +30,8 @@ export const SectionHeader = ({
         </AnimatedText>
       </div>
 
-      {/* Full Background Image or Component */}
-      <motion.div 
-        className="relative h-80 md:h-96 w-full rounded-2xl overflow-hidden"
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        {backgroundComponent ? (
-          backgroundComponent
-        ) : (
-          <>
-            <img 
-              src={backgroundImage} 
-              alt={altText} 
-              className="w-full h-full object-cover"
-            />
-            {/* Subtle overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/30" />
-          </>
-        )}
-      </motion.div>
-
-      {/* Decorative Card - Now empty */}
-      <div className="relative -mt-16 md:-mt-12 ml-8 mr-8 md:ml-12 md:mr-2/3">
+      {/* Card positioned above the image */}
+      <div className="mb-8 ml-8 mr-8 md:ml-12 md:mr-2/3">
         {/* Blue highlight offset */}
         <motion.div 
           className="absolute top-6 left-6 w-full h-full bg-dental-blue rounded-2xl"
@@ -62,7 +40,7 @@ export const SectionHeader = ({
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         />
         
-        {/* Main black card - now decorative only */}
+        {/* Main black card */}
         <motion.div 
           className="relative bg-black/95 backdrop-blur-sm rounded-2xl p-8 md:p-10 border border-white/10 shadow-2xl"
           initial={{ opacity: 0, y: 40 }}
@@ -84,6 +62,28 @@ export const SectionHeader = ({
           />
         </motion.div>
       </div>
+
+      {/* Full Background Image or Component */}
+      <motion.div 
+        className="relative h-80 md:h-96 w-full rounded-2xl overflow-hidden"
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        {backgroundComponent ? (
+          backgroundComponent
+        ) : (
+          <>
+            <img 
+              src={backgroundImage} 
+              alt={altText} 
+              className="w-full h-full object-cover"
+            />
+            {/* Subtle overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/30" />
+          </>
+        )}
+      </motion.div>
     </div>
   );
 };
