@@ -97,7 +97,12 @@ export const ProviderSearch = () => {
       ]
     });
 
-    // Note: Google Places autocomplete removed to prevent UI overlay issues
+    // Force map to resize and render
+    setTimeout(() => {
+      if (mapInstance.current) {
+        (window as any).google.maps.event.trigger(mapInstance.current, 'resize');
+      }
+    }, 100);
   };
 
   const loadProviders = async () => {
@@ -533,8 +538,8 @@ export const ProviderSearch = () => {
               <CardContent className="p-0">
                 <div
                   ref={mapRef}
-                  className="w-full h-96 rounded-lg bg-muted"
-                  style={{ minHeight: '400px' }}
+                  className="w-full h-96 rounded-lg bg-muted relative"
+                  style={{ minHeight: '400px', position: 'relative' }}
                 >
                   {!googleMapsLoaded && (
                     <div className="w-full h-full flex items-center justify-center text-center text-muted-foreground">
