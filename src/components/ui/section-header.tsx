@@ -34,7 +34,7 @@ export const SectionHeader = ({
       </motion.div>
 
       {/* Overlapping Text Card */}
-      <div className="absolute -bottom-8 md:-bottom-12 left-8 right-8 md:left-12 md:right-2/3">
+      <div className="absolute bottom-8 md:-bottom-12 left-8 right-8 md:left-12 md:right-2/3">
         {/* Blue highlight offset */}
         <motion.div 
           className="absolute top-6 left-6 w-full h-full bg-dental-blue rounded-2xl"
