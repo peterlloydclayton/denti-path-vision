@@ -63,12 +63,62 @@ export const EchoAISection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-8 overflow-visible"
+            className="mb-8 overflow-visible relative"
           >
+            {/* Pulsing Soundwave Background */}
+            <div className="absolute inset-0 flex items-center justify-center -z-10">
+              <div className="flex items-center justify-center space-x-1">
+                {[...Array(12)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="w-2 bg-gradient-to-t from-blue-200 to-blue-300 rounded-full opacity-60"
+                    style={{
+                      height: `${20 + Math.sin(i * 0.5) * 40}px`
+                    }}
+                    animate={{
+                      scaleY: [0.3, 1, 0.3],
+                      opacity: [0.3, 0.8, 0.3]
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      delay: i * 0.1,
+                      ease: "easeInOut"
+                    }}
+                  />
+                ))}
+              </div>
+              {/* Outer pulse rings */}
+              <motion.div
+                className="absolute w-[500px] h-[500px] rounded-full border-2 border-blue-200/30"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.6, 0.2, 0.6]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <motion.div
+                className="absolute w-[400px] h-[400px] rounded-full border-2 border-blue-300/40"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.4, 0.1, 0.4]
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              />
+            </div>
             <img 
               src={smilingDentist} 
               alt="Smiling female dentist with stethoscope" 
-              className="w-96 h-96 md:w-[28rem] md:h-[28rem] object-contain mx-auto"
+              className="w-96 h-96 md:w-[28rem] md:h-[28rem] object-contain mx-auto relative z-10"
             />
           </motion.div>
           <AnimatedText className="text-center">
