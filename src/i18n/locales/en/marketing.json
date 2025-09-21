@@ -1,8 +1,21 @@
 {
-  "hero": {
-    "title": "Smart Dental Financing Made Simple",
-    "subtitle": "Get approved instantly for dental treatments with flexible payment plans that work for you.",
-    "cta": "Find Your Dentist"
+  "patients": {
+    "hero": {
+      "title": "Making Your Dream Smile Affordable",
+      "subtitle": "Ai Driven Financing For Smarter & More Affordable Payment Options",
+      "cta": "Get Financing"
+    },
+    "benefits": {
+      "title": "Why Patients Love DentiPay",
+      "subtitle": "Experience the easiest way to finance your dental care"
+    }
+  },
+  "providers": {
+    "hero": {
+      "title": "Smart Dental Financing Made Simple",
+      "subtitle": "Get approved instantly for dental treatments with flexible payment plans that work for you.",
+      "cta": "Find Your Dentist"
+    }
   },
   "benefits": {
     "instant": {

@@ -1,7 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { AnimatedText } from '@/components/ui/animated-text';
+import { useTranslation } from 'react-i18next';
 
 export const HeroSection = () => {
+  const { t } = useTranslation('marketing');
   return (
     <section className="h-screen relative z-30 overflow-visible">
       {/* Controlled Background */}
@@ -49,9 +51,7 @@ export const HeroSection = () => {
       <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4 mobile-landscape-title">
         <AnimatedText>
           <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight mobile-landscape-text">
-            Making Your<br />
-            Dream Smile<br />
-            Affordable
+            {t('patients.hero.title')}
           </h1>
         </AnimatedText>
       </div>
@@ -60,9 +60,7 @@ export const HeroSection = () => {
       <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-20 w-1/2">
         <AnimatedText>
           <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-            Making Your<br />
-            Dream Smile<br />
-            Affordable
+            {t('patients.hero.title')}
           </h1>
         </AnimatedText>
       </div>
@@ -71,7 +69,7 @@ export const HeroSection = () => {
       <div className="hidden md:block absolute top-[50%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
           <h2 className="text-xl text-gray-600 font-medium leading-relaxed text-left italic">
-            Ai Driven Financing For Smarter & More Affordable Payment Options
+            {t('patients.hero.subtitle')}
           </h2>
         </AnimatedText>
       </div>
@@ -80,7 +78,7 @@ export const HeroSection = () => {
       <div className="block sm:hidden absolute top-[34%] left-6 z-20 w-1/2 mobile-landscape-subtitle">
         <AnimatedText delay={0.2}>
           <h2 className="text-lg text-gray-600 font-medium leading-relaxed text-left italic">
-            Ai Driven Financing For Smarter & More Affordable Payment Options
+            {t('patients.hero.subtitle')}
           </h2>
         </AnimatedText>
       </div>
@@ -91,7 +89,7 @@ export const HeroSection = () => {
           className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold"
           onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
         >
-          Get Financing
+          {t('patients.hero.cta')}
         </Button>
       </div>
 
@@ -101,7 +99,7 @@ export const HeroSection = () => {
           className="h-12 text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-8 font-semibold"
           onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
         >
-          Get Financing
+          {t('patients.hero.cta')}
         </Button>
       </div>
     </section>

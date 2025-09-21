@@ -2,17 +2,19 @@ import { motion } from 'framer-motion';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Enhanced3DCard } from './Enhanced3DCard';
 import { benefits } from '@/data/patientsData';
+import { useTranslation } from 'react-i18next';
 
 export const BenefitsSection = () => {
+  const { t } = useTranslation('marketing');
   return (
     <section className="py-24 bg-dental-blue relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-20">
         <AnimatedText className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-            Why Patients Love DentiPay
+            {t('patients.benefits.title')}
           </h2>
           <p className="text-xl md:text-2xl text-foreground/80 max-w-4xl mx-auto leading-relaxed">
-            Experience the easiest way to finance your dental care
+            {t('patients.benefits.subtitle')}
           </p>
         </AnimatedText>
 

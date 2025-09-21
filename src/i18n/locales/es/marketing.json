@@ -1,8 +1,21 @@
 {
-  "hero": {
-    "title": "Financiamiento Dental Inteligente y Simple",
-    "subtitle": "Obtén aprobación instantánea para tratamientos dentales con planes de pago flexibles que funcionan para ti.",
-    "cta": "Encuentra Tu Dentista"
+  "patients": {
+    "hero": {
+      "title": "Haciendo Tu Sonrisa Soñada Asequible",
+      "subtitle": "Financiación Impulsada por IA para Opciones de Pago Más Inteligentes y Asequibles",
+      "cta": "Obtener Financiación"
+    },
+    "benefits": {
+      "title": "Por Qué Los Pacientes Aman DentiPay",
+      "subtitle": "Experimenta la forma más fácil de financiar tu cuidado dental"
+    }
+  },
+  "providers": {
+    "hero": {
+      "title": "Financiamiento Dental Inteligente y Simple",
+      "subtitle": "Obtén aprobación instantánea para tratamientos dentales con planes de pago flexibles que funcionan para ti.",
+      "cta": "Encuentra Tu Dentista"
+    }
   },
   "benefits": {
     "instant": {
