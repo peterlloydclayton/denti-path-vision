@@ -3,16 +3,19 @@ import { motion } from 'framer-motion';
 import { Home, Users, Stethoscope, Brain, Building } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
+import { LanguageSelector } from '@/components/ui/language-selector';
 
 const navItems = [
-  { href: '/', label: 'Home', icon: Home },
-  { href: '/providers', label: 'Providers', icon: Stethoscope },
-  { href: '/patients', label: 'Patients', icon: Users },
-  { href: '/intelligent-financing', label: 'Intelligence', icon: Brain },
-  { href: '/about', label: 'About', icon: Building },
+  { href: '/', label: 'navigation.home', icon: Home },
+  { href: '/providers', label: 'navigation.providers', icon: Stethoscope },
+  { href: '/patients', label: 'navigation.patients', icon: Users },
+  { href: '/intelligent-financing', label: 'navigation.intelligence', icon: Brain },
+  { href: '/about', label: 'navigation.about', icon: Building },
 ];
 
 export const DesktopNav = () => {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
 
@@ -80,16 +83,19 @@ export const DesktopNav = () => {
                     : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
                   }
                 `}
-              >
+                >
                 <Icon size={16} />
-                <span>{item.label}</span>
+                <span>{t(item.label)}</span>
               </Link>
             );
           })}
         </div>
 
-        {/* Right Section - Login/Signup */}
+        {/* Right Section - Login/Signup/Language */}
         <div className="flex items-center gap-4">
+          {/* Language Selector */}
+          <LanguageSelector />
+          
           {/* Login/Signup Links */}
           <div className="flex items-center gap-4">
             <a
@@ -98,7 +104,7 @@ export const DesktopNav = () => {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-smooth font-medium"
             >
-              Login
+              {t('navigation.login')}
             </a>
             <a
               href="https://dental-docs-hub.lovable.app/signup"
@@ -106,7 +112,7 @@ export const DesktopNav = () => {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-smooth font-medium"
             >
-              Sign Up
+              {t('navigation.signup')}
             </a>
           </div>
         </div>

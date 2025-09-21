@@ -16,6 +16,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
 import NotFound from "./pages/NotFound";
 import { ProviderSearch } from "./pages/ProviderSearch";
+import './i18n/config';
 
 const queryClient = new QueryClient();
 

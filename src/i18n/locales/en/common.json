@@ -1,0 +1,28 @@
+{
+  "navigation": {
+    "home": "Home",
+    "providers": "Providers",
+    "patients": "Patients",
+    "intelligence": "Intelligence",
+    "about": "About",
+    "login": "Login",
+    "signup": "Sign Up"
+  },
+  "language": {
+    "english": "English",
+    "spanish": "Español"
+  },
+  "buttons": {
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "apply": "Apply Now",
+    "search": "Search",
+    "calculate": "Calculate"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
+  }
+}

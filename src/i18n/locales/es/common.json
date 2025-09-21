@@ -1,0 +1,28 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "providers": "Proveedores",
+    "patients": "Pacientes",
+    "intelligence": "Inteligencia",
+    "about": "Acerca de",
+    "login": "Iniciar Sesión",
+    "signup": "Registrarse"
+  },
+  "language": {
+    "english": "English",
+    "spanish": "Español"
+  },
+  "buttons": {
+    "getStarted": "Comenzar",
+    "learnMore": "Saber Más",
+    "contactUs": "Contáctanos",
+    "apply": "Aplicar Ahora",
+    "search": "Buscar",
+    "calculate": "Calcular"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Uso"
+  }
+}

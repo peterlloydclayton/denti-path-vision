@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "title": "Smart Dental Financing Made Simple",
+    "subtitle": "Get approved instantly for dental treatments with flexible payment plans that work for you.",
+    "cta": "Find Your Dentist"
+  },
+  "benefits": {
+    "instant": {
+      "title": "Instant Approval",
+      "description": "Get approved in seconds, not days"
+    },
+    "flexible": {
+      "title": "Flexible Payments",
+      "description": "Choose payment plans that fit your budget"
+    },
+    "network": {
+      "title": "Trusted Network",
+      "description": "Access thousands of verified dental providers"
+    },
+    "support": {
+      "title": "24/7 Support",
+      "description": "Get help whenever you need it"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "title": "Financiamiento Dental Inteligente y Simple",
+    "subtitle": "Obtén aprobación instantánea para tratamientos dentales con planes de pago flexibles que funcionan para ti.",
+    "cta": "Encuentra Tu Dentista"
+  },
+  "benefits": {
+    "instant": {
+      "title": "Aprobación Instantánea",
+      "description": "Obtén aprobación en segundos, no días"
+    },
+    "flexible": {
+      "title": "Pagos Flexibles",
+      "description": "Elige planes de pago que se ajusten a tu presupuesto"
+    },
+    "network": {
+      "title": "Red Confiable",
+      "description": "Accede a miles de proveedores dentales verificados"
+    },
+    "support": {
+      "title": "Soporte 24/7",
+      "description": "Obtén ayuda cuando la necesites"
+    }
+  }
+}
