@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { getActiveProviders, PublicProviderProfile, supabase } from '@/lib/supabase';
+import { GoogleMap, GoogleMapRef } from '@/components/ui/google-map';
 import { Loader } from '@googlemaps/js-api-loader';
 import { toast } from '@/hooks/use-toast';
 
@@ -25,13 +26,9 @@ export const ProviderSearch = () => {
   const [loading, setLoading] = useState(true);
   const [selectedProvider, setSelectedProvider] = useState<PublicProviderProfile | null>(null);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstance = useRef<any>(null);
-  const markersRef = useRef<any[]>([]);
-  const currentInfoWindowRef = useRef<any>(null);
   const [googleMapsLoaded, setGoogleMapsLoaded] = useState(false);
   const [googleMapsApiKey, setGoogleMapsApiKey] = useState<string>('');
-  const isUnmountingRef = useRef(false);
+  const mapRef = useRef<GoogleMapRef>(null);
 
   useEffect(() => {
     loadGoogleMapsApiKey();
@@ -47,56 +44,6 @@ export const ProviderSearch = () => {
   useEffect(() => {
     filterProviders();
   }, [providers, searchTerm, locationSearch, userLocation, radiusFilter]);
-
-  // Cleanup effect to prevent DOM manipulation errors
-  useEffect(() => {
-    return () => {
-      isUnmountingRef.current = true;
-      
-      // Safely clear all markers
-      if (markersRef.current && Array.isArray(markersRef.current)) {
-        try {
-          markersRef.current.forEach(marker => {
-            if (marker && typeof marker.setMap === 'function') {
-              marker.setMap(null);
-            }
-          });
-        } catch (error) {
-          console.warn('Error clearing markers:', error);
-        }
-        markersRef.current = [];
-      }
-
-      // Safely close info window
-      if (currentInfoWindowRef.current) {
-        try {
-          if (typeof currentInfoWindowRef.current.close === 'function') {
-            currentInfoWindowRef.current.close();
-          }
-        } catch (error) {
-          console.warn('Error closing info window:', error);
-        }
-        currentInfoWindowRef.current = null;
-      }
-
-      // Clear map instance without touching DOM
-      if (mapInstance.current) {
-        mapInstance.current = null;
-      }
-
-      // Clear the map container's innerHTML safely
-      if (mapRef.current) {
-        try {
-          // Only clear if we're actually unmounting and the element still exists
-          if (mapRef.current.parentNode) {
-            mapRef.current.innerHTML = '';
-          }
-        } catch (error) {
-          console.warn('Error clearing map container:', error);
-        }
-      }
-    };
-  }, []);
 
   const loadGoogleMapsApiKey = async () => {
     // Using the provided Google Maps API key directly
@@ -122,7 +69,6 @@ export const ProviderSearch = () => {
 
       await loader.load();
       setGoogleMapsLoaded(true);
-      initializeMap();
     } catch (error) {
       console.error('Error loading Google Maps:', error);
       toast({
@@ -130,51 +76,6 @@ export const ProviderSearch = () => {
         description: "Failed to load Google Maps. Please check your API key.",
         variant: "destructive"
       });
-    }
-  };
-
-  const initializeMap = () => {
-    if (!mapRef.current) return;
-
-    // Wait for Google Maps to be available
-    if (!(window as any).google?.maps) {
-      // Prevent infinite recursion if Google Maps fails to load
-      const retryCount = (initializeMap as any).retryCount || 0;
-      if (retryCount < 50) { // Max 5 seconds of retries
-        (initializeMap as any).retryCount = retryCount + 1;
-        setTimeout(initializeMap, 100);
-      } else {
-        console.error('Google Maps failed to load after multiple attempts');
-      }
-      return;
-    }
-
-    try {
-      // Clear retry counter on success
-      (initializeMap as any).retryCount = 0;
-      
-      mapInstance.current = new (window as any).google.maps.Map(mapRef.current, {
-        center: { lat: 39.8283, lng: -98.5795 }, // Center of US
-        zoom: 4,
-        styles: [
-          {
-            featureType: 'poi',
-            elementType: 'labels',
-            stylers: [{ visibility: 'off' }]
-          }
-        ]
-      });
-
-      // Force map to resize and render after a short delay
-      setTimeout(() => {
-        if (mapInstance.current && mapRef.current) {
-          (window as any).google.maps.event.trigger(mapInstance.current, 'resize');
-        }
-      }, 200);
-      
-      console.log('Map initialized successfully');
-    } catch (error) {
-      console.error('Error initializing map:', error);
     }
   };
 
@@ -322,178 +223,8 @@ export const ProviderSearch = () => {
   }, [providers, searchTerm, locationSearch, userLocation, radiusFilter, googleMapsLoaded]);
 
   const updateMapMarkers = (providersToShow: ProviderWithDistance[]) => {
-    if (!mapInstance.current || !googleMapsLoaded || isUnmountingRef.current) return;
-
-    // Safely clear existing markers
-    try {
-      if (markersRef.current && Array.isArray(markersRef.current)) {
-        markersRef.current.forEach(marker => {
-          if (marker && typeof marker.setMap === 'function') {
-            marker.setMap(null);
-          }
-        });
-      }
-      markersRef.current = [];
-      
-      if (currentInfoWindowRef.current && typeof currentInfoWindowRef.current.close === 'function') {
-        currentInfoWindowRef.current.close();
-        currentInfoWindowRef.current = null;
-      }
-    } catch (error) {
-      console.warn('Error clearing existing markers:', error);
-    }
-
-    // Add new markers
-    const bounds = new (window as any).google.maps.LatLngBounds();
-    let hasValidCoordinates = false;
-
-    providersToShow.forEach(provider => {
-      if (provider.coordinates && !isUnmountingRef.current) {
-        try {
-          const marker = new (window as any).google.maps.Marker({
-            position: provider.coordinates,
-            map: mapInstance.current,
-            title: `Dr. ${provider.first_name} ${provider.last_name}`,
-            icon: {
-              url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="16" cy="16" r="15" fill="#2563eb" stroke="white" stroke-width="2"/>
-                  <path fill="white" d="M16 8c-2.21 0-4 1.79-4 4 0 2.21 1.79 4 4 4s4-1.79 4-4c0-2.21-1.79-4-4-4zm0 6c-1.1 0-2-0.9-2-2s0.9-2 2-2 2 0.9 2 2-0.9 2-2 2z"/>
-                  <path fill="white" d="M16 18c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
-              `),
-              scaledSize: new (window as any).google.maps.Size(32, 32)
-            }
-          });
-
-          const displayName = provider.full_name || `Dr. ${provider.first_name || ''} ${provider.last_name || ''}`.trim();
-          const locationText = getLocationDisplay(provider);
-          const photoUrl = provider.profile_photo_url || provider.photo_url;
-
-          const infoWindow = new (window as any).google.maps.InfoWindow({
-            content: `
-              <div style="padding: 12px; min-width: 280px; max-width: 320px;">
-                <div style="display: flex; align-items: flex-start; gap: 12px;">
-                  ${photoUrl ? `
-                    <img 
-                      src="${photoUrl}" 
-                      alt="${displayName}"
-                      style="
-                        width: 60px; 
-                        height: 60px; 
-                        border-radius: 50%; 
-                        object-fit: cover; 
-                        flex-shrink: 0;
-                        border: 2px solid #e5e7eb;
-                      "
-                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                    />
-                    <div style="
-                      width: 60px; 
-                      height: 60px; 
-                      border-radius: 50%; 
-                      background-color: #f3f4f6; 
-                      display: none; 
-                      align-items: center; 
-                      justify-content: center;
-                      flex-shrink: 0;
-                      border: 2px solid #e5e7eb;
-                    ">
-                      <svg width="24" height="24" fill="#9ca3af" viewBox="0 0 24 24">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                      </svg>
-                    </div>
-                  ` : `
-                    <div style="
-                      width: 60px; 
-                      height: 60px; 
-                      border-radius: 50%; 
-                      background-color: #f3f4f6; 
-                      display: flex; 
-                      align-items: center; 
-                      justify-content: center;
-                      flex-shrink: 0;
-                      border: 2px solid #e5e7eb;
-                    ">
-                      <svg width="24" height="24" fill="#9ca3af" viewBox="0 0 24 24">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                      </svg>
-                    </div>
-                  `}
-                  <div style="flex: 1; min-width: 0;">
-                    <h3 style="margin: 0 0 4px 0; font-weight: bold; font-size: 16px; color: #111827; line-height: 1.2;">${displayName}</h3>
-                    <p style="margin: 0 0 4px 0; color: #6b7280; font-size: 14px; line-height: 1.3;">${provider.practice_name || provider.business_location || ''}</p>
-                    <p style="margin: 0 0 4px 0; color: #6b7280; font-size: 14px; line-height: 1.3;">${locationText}</p>
-                    ${provider.distance ? `<p style="margin: 0 0 8px 0; color: #2563eb; font-weight: 600; font-size: 14px;">${provider.distance} miles away</p>` : ''}
-                    ${provider.specialties && provider.specialties.length > 0 ? `
-                      <div style="margin-top: 8px;">
-                        ${provider.specialties.slice(0, 2).map(specialty => 
-                          `<span style="
-                            display: inline-block; 
-                            background-color: #eff6ff; 
-                            color: #2563eb; 
-                            padding: 2px 8px; 
-                            border-radius: 12px; 
-                            font-size: 12px; 
-                            margin-right: 4px; 
-                            margin-bottom: 4px;
-                            border: 1px solid #dbeafe;
-                            font-weight: 500;
-                          ">${specialty}</span>`
-                        ).join('')}
-                        ${provider.specialties.length > 2 ? `
-                          <span style="
-                            display: inline-block; 
-                            background-color: #f3f4f6; 
-                            color: #6b7280; 
-                            padding: 2px 8px; 
-                            border-radius: 12px; 
-                            font-size: 12px;
-                            border: 1px solid #e5e7eb;
-                            font-weight: 500;
-                          ">+${provider.specialties.length - 2} more</span>
-                        ` : ''}
-                      </div>
-                    ` : ''}
-                  </div>
-                </div>
-              </div>
-            `
-          });
-
-          marker.addListener('click', () => {
-            if (isUnmountingRef.current) return;
-            
-            // Close current info window if it exists
-            if (currentInfoWindowRef.current && typeof currentInfoWindowRef.current.close === 'function') {
-              currentInfoWindowRef.current.close();
-            }
-            
-            // Open new info window and store reference
-            infoWindow.open(mapInstance.current, marker);
-            currentInfoWindowRef.current = infoWindow;
-          });
-
-          markersRef.current.push(marker);
-          bounds.extend(marker.getPosition());
-          hasValidCoordinates = true;
-        } catch (error) {
-          console.warn('Error creating marker:', error);
-        }
-      }
-    });
-
-    // Fit map to show all markers
-    if (hasValidCoordinates && !isUnmountingRef.current) {
-      try {
-        mapInstance.current.fitBounds(bounds);
-        const zoom = mapInstance.current.getZoom();
-        if (zoom > 15) {
-          mapInstance.current.setZoom(15);
-        }
-      } catch (error) {
-        console.warn('Error fitting map bounds:', error);
-      }
+    if (mapRef.current && googleMapsLoaded) {
+      mapRef.current.addMarkers(providersToShow);
     }
   };
 
@@ -630,23 +361,22 @@ export const ProviderSearch = () => {
           <div className="max-w-6xl mx-auto mb-12">
             <Card>
               <CardContent className="p-0">
-                <div
-                  ref={mapRef}
-                  className="w-full h-96 rounded-lg bg-muted relative"
-                  style={{ minHeight: '400px', position: 'relative' }}
-                >
-                  {!googleMapsLoaded && (
-                    <div className="w-full h-full flex items-center justify-center text-center text-muted-foreground">
-                      <div>
-                        <MapPin size={48} className="mx-auto mb-4" />
-                        <p>Loading Google Maps...</p>
-                        <p className="text-sm mt-2">
-                          Note: Google Maps API key required for full functionality
-                        </p>
-                      </div>
+                {googleMapsLoaded ? (
+                  <GoogleMap 
+                    ref={mapRef}
+                    className="w-full h-96 rounded-lg"
+                  />
+                ) : (
+                  <div className="w-full h-96 flex items-center justify-center text-center text-muted-foreground bg-muted rounded-lg">
+                    <div>
+                      <MapPin size={48} className="mx-auto mb-4" />
+                      <p>Loading Google Maps...</p>
+                      <p className="text-sm mt-2">
+                        Note: Google Maps API key required for full functionality
+                      </p>
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
