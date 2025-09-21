@@ -31,6 +31,7 @@ export const ProviderSearch = () => {
   const currentInfoWindowRef = useRef<any>(null);
   const [googleMapsLoaded, setGoogleMapsLoaded] = useState(false);
   const [googleMapsApiKey, setGoogleMapsApiKey] = useState<string>('');
+  const isUnmountingRef = useRef(false);
 
   useEffect(() => {
     loadGoogleMapsApiKey();
@@ -50,25 +51,49 @@ export const ProviderSearch = () => {
   // Cleanup effect to prevent DOM manipulation errors
   useEffect(() => {
     return () => {
-      // Clear all markers
-      if (markersRef.current) {
-        markersRef.current.forEach(marker => {
-          if (marker && marker.setMap) {
-            marker.setMap(null);
-          }
-        });
+      isUnmountingRef.current = true;
+      
+      // Safely clear all markers
+      if (markersRef.current && Array.isArray(markersRef.current)) {
+        try {
+          markersRef.current.forEach(marker => {
+            if (marker && typeof marker.setMap === 'function') {
+              marker.setMap(null);
+            }
+          });
+        } catch (error) {
+          console.warn('Error clearing markers:', error);
+        }
         markersRef.current = [];
       }
 
-      // Close and clear info window
+      // Safely close info window
       if (currentInfoWindowRef.current) {
-        currentInfoWindowRef.current.close();
+        try {
+          if (typeof currentInfoWindowRef.current.close === 'function') {
+            currentInfoWindowRef.current.close();
+          }
+        } catch (error) {
+          console.warn('Error closing info window:', error);
+        }
         currentInfoWindowRef.current = null;
       }
 
-      // Clear map instance
+      // Clear map instance without touching DOM
       if (mapInstance.current) {
         mapInstance.current = null;
+      }
+
+      // Clear the map container's innerHTML safely
+      if (mapRef.current) {
+        try {
+          // Only clear if we're actually unmounting and the element still exists
+          if (mapRef.current.parentNode) {
+            mapRef.current.innerHTML = '';
+          }
+        } catch (error) {
+          console.warn('Error clearing map container:', error);
+        }
       }
     };
   }, []);
@@ -297,14 +322,25 @@ export const ProviderSearch = () => {
   }, [providers, searchTerm, locationSearch, userLocation, radiusFilter, googleMapsLoaded]);
 
   const updateMapMarkers = (providersToShow: ProviderWithDistance[]) => {
-    if (!mapInstance.current || !googleMapsLoaded) return;
+    if (!mapInstance.current || !googleMapsLoaded || isUnmountingRef.current) return;
 
-    // Clear existing markers and close any open info windows
-    markersRef.current.forEach(marker => marker.setMap(null));
-    markersRef.current = [];
-    if (currentInfoWindowRef.current) {
-      currentInfoWindowRef.current.close();
-      currentInfoWindowRef.current = null;
+    // Safely clear existing markers
+    try {
+      if (markersRef.current && Array.isArray(markersRef.current)) {
+        markersRef.current.forEach(marker => {
+          if (marker && typeof marker.setMap === 'function') {
+            marker.setMap(null);
+          }
+        });
+      }
+      markersRef.current = [];
+      
+      if (currentInfoWindowRef.current && typeof currentInfoWindowRef.current.close === 'function') {
+        currentInfoWindowRef.current.close();
+        currentInfoWindowRef.current = null;
+      }
+    } catch (error) {
+      console.warn('Error clearing existing markers:', error);
     }
 
     // Add new markers
@@ -312,141 +348,151 @@ export const ProviderSearch = () => {
     let hasValidCoordinates = false;
 
     providersToShow.forEach(provider => {
-      if (provider.coordinates) {
-        const marker = new (window as any).google.maps.Marker({
-          position: provider.coordinates,
-          map: mapInstance.current,
-          title: `Dr. ${provider.first_name} ${provider.last_name}`,
-          icon: {
-            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="16" cy="16" r="15" fill="#2563eb" stroke="white" stroke-width="2"/>
-                <path fill="white" d="M16 8c-2.21 0-4 1.79-4 4 0 2.21 1.79 4 4 4s4-1.79 4-4c0-2.21-1.79-4-4-4zm0 6c-1.1 0-2-0.9-2-2s0.9-2 2-2 2 0.9 2 2-0.9 2-2 2z"/>
-                <path fill="white" d="M16 18c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-              </svg>
-            `),
-            scaledSize: new (window as any).google.maps.Size(32, 32)
-          }
-        });
+      if (provider.coordinates && !isUnmountingRef.current) {
+        try {
+          const marker = new (window as any).google.maps.Marker({
+            position: provider.coordinates,
+            map: mapInstance.current,
+            title: `Dr. ${provider.first_name} ${provider.last_name}`,
+            icon: {
+              url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="16" cy="16" r="15" fill="#2563eb" stroke="white" stroke-width="2"/>
+                  <path fill="white" d="M16 8c-2.21 0-4 1.79-4 4 0 2.21 1.79 4 4 4s4-1.79 4-4c0-2.21-1.79-4-4-4zm0 6c-1.1 0-2-0.9-2-2s0.9-2 2-2 2 0.9 2 2-0.9 2-2 2z"/>
+                  <path fill="white" d="M16 18c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              `),
+              scaledSize: new (window as any).google.maps.Size(32, 32)
+            }
+          });
 
-        const displayName = provider.full_name || `Dr. ${provider.first_name || ''} ${provider.last_name || ''}`.trim();
-        const locationText = getLocationDisplay(provider);
-        const photoUrl = provider.profile_photo_url || provider.photo_url;
+          const displayName = provider.full_name || `Dr. ${provider.first_name || ''} ${provider.last_name || ''}`.trim();
+          const locationText = getLocationDisplay(provider);
+          const photoUrl = provider.profile_photo_url || provider.photo_url;
 
-        const infoWindow = new (window as any).google.maps.InfoWindow({
-          content: `
-            <div style="padding: 12px; min-width: 280px; max-width: 320px;">
-              <div style="display: flex; align-items: flex-start; gap: 12px;">
-                ${photoUrl ? `
-                  <img 
-                    src="${photoUrl}" 
-                    alt="${displayName}"
-                    style="
+          const infoWindow = new (window as any).google.maps.InfoWindow({
+            content: `
+              <div style="padding: 12px; min-width: 280px; max-width: 320px;">
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                  ${photoUrl ? `
+                    <img 
+                      src="${photoUrl}" 
+                      alt="${displayName}"
+                      style="
+                        width: 60px; 
+                        height: 60px; 
+                        border-radius: 50%; 
+                        object-fit: cover; 
+                        flex-shrink: 0;
+                        border: 2px solid #e5e7eb;
+                      "
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    />
+                    <div style="
                       width: 60px; 
                       height: 60px; 
                       border-radius: 50%; 
-                      object-fit: cover; 
+                      background-color: #f3f4f6; 
+                      display: none; 
+                      align-items: center; 
+                      justify-content: center;
                       flex-shrink: 0;
                       border: 2px solid #e5e7eb;
-                    "
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                  />
-                  <div style="
-                    width: 60px; 
-                    height: 60px; 
-                    border-radius: 50%; 
-                    background-color: #f3f4f6; 
-                    display: none; 
-                    align-items: center; 
-                    justify-content: center;
-                    flex-shrink: 0;
-                    border: 2px solid #e5e7eb;
-                  ">
-                    <svg width="24" height="24" fill="#9ca3af" viewBox="0 0 24 24">
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                    </svg>
-                  </div>
-                ` : `
-                  <div style="
-                    width: 60px; 
-                    height: 60px; 
-                    border-radius: 50%; 
-                    background-color: #f3f4f6; 
-                    display: flex; 
-                    align-items: center; 
-                    justify-content: center;
-                    flex-shrink: 0;
-                    border: 2px solid #e5e7eb;
-                  ">
-                    <svg width="24" height="24" fill="#9ca3af" viewBox="0 0 24 24">
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                    </svg>
-                  </div>
-                `}
-                <div style="flex: 1; min-width: 0;">
-                  <h3 style="margin: 0 0 4px 0; font-weight: bold; font-size: 16px; color: #111827; line-height: 1.2;">${displayName}</h3>
-                  <p style="margin: 0 0 4px 0; color: #6b7280; font-size: 14px; line-height: 1.3;">${provider.practice_name || provider.business_location || ''}</p>
-                  <p style="margin: 0 0 4px 0; color: #6b7280; font-size: 14px; line-height: 1.3;">${locationText}</p>
-                  ${provider.distance ? `<p style="margin: 0 0 8px 0; color: #2563eb; font-weight: 600; font-size: 14px;">${provider.distance} miles away</p>` : ''}
-                  ${provider.specialties && provider.specialties.length > 0 ? `
-                    <div style="margin-top: 8px;">
-                      ${provider.specialties.slice(0, 2).map(specialty => 
-                        `<span style="
-                          display: inline-block; 
-                          background-color: #eff6ff; 
-                          color: #2563eb; 
-                          padding: 2px 8px; 
-                          border-radius: 12px; 
-                          font-size: 12px; 
-                          margin-right: 4px; 
-                          margin-bottom: 4px;
-                          border: 1px solid #dbeafe;
-                          font-weight: 500;
-                        ">${specialty}</span>`
-                      ).join('')}
-                      ${provider.specialties.length > 2 ? `
-                        <span style="
-                          display: inline-block; 
-                          background-color: #f3f4f6; 
-                          color: #6b7280; 
-                          padding: 2px 8px; 
-                          border-radius: 12px; 
-                          font-size: 12px;
-                          border: 1px solid #e5e7eb;
-                          font-weight: 500;
-                        ">+${provider.specialties.length - 2} more</span>
-                      ` : ''}
+                    ">
+                      <svg width="24" height="24" fill="#9ca3af" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                      </svg>
                     </div>
-                  ` : ''}
+                  ` : `
+                    <div style="
+                      width: 60px; 
+                      height: 60px; 
+                      border-radius: 50%; 
+                      background-color: #f3f4f6; 
+                      display: flex; 
+                      align-items: center; 
+                      justify-content: center;
+                      flex-shrink: 0;
+                      border: 2px solid #e5e7eb;
+                    ">
+                      <svg width="24" height="24" fill="#9ca3af" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                      </svg>
+                    </div>
+                  `}
+                  <div style="flex: 1; min-width: 0;">
+                    <h3 style="margin: 0 0 4px 0; font-weight: bold; font-size: 16px; color: #111827; line-height: 1.2;">${displayName}</h3>
+                    <p style="margin: 0 0 4px 0; color: #6b7280; font-size: 14px; line-height: 1.3;">${provider.practice_name || provider.business_location || ''}</p>
+                    <p style="margin: 0 0 4px 0; color: #6b7280; font-size: 14px; line-height: 1.3;">${locationText}</p>
+                    ${provider.distance ? `<p style="margin: 0 0 8px 0; color: #2563eb; font-weight: 600; font-size: 14px;">${provider.distance} miles away</p>` : ''}
+                    ${provider.specialties && provider.specialties.length > 0 ? `
+                      <div style="margin-top: 8px;">
+                        ${provider.specialties.slice(0, 2).map(specialty => 
+                          `<span style="
+                            display: inline-block; 
+                            background-color: #eff6ff; 
+                            color: #2563eb; 
+                            padding: 2px 8px; 
+                            border-radius: 12px; 
+                            font-size: 12px; 
+                            margin-right: 4px; 
+                            margin-bottom: 4px;
+                            border: 1px solid #dbeafe;
+                            font-weight: 500;
+                          ">${specialty}</span>`
+                        ).join('')}
+                        ${provider.specialties.length > 2 ? `
+                          <span style="
+                            display: inline-block; 
+                            background-color: #f3f4f6; 
+                            color: #6b7280; 
+                            padding: 2px 8px; 
+                            border-radius: 12px; 
+                            font-size: 12px;
+                            border: 1px solid #e5e7eb;
+                            font-weight: 500;
+                          ">+${provider.specialties.length - 2} more</span>
+                        ` : ''}
+                      </div>
+                    ` : ''}
+                  </div>
                 </div>
               </div>
-            </div>
-          `
-        });
+            `
+          });
 
-        marker.addListener('click', () => {
-          // Close current info window if it exists
-          if (currentInfoWindowRef.current) {
-            currentInfoWindowRef.current.close();
-          }
-          
-          // Open new info window and store reference
-          infoWindow.open(mapInstance.current, marker);
-          currentInfoWindowRef.current = infoWindow;
-        });
+          marker.addListener('click', () => {
+            if (isUnmountingRef.current) return;
+            
+            // Close current info window if it exists
+            if (currentInfoWindowRef.current && typeof currentInfoWindowRef.current.close === 'function') {
+              currentInfoWindowRef.current.close();
+            }
+            
+            // Open new info window and store reference
+            infoWindow.open(mapInstance.current, marker);
+            currentInfoWindowRef.current = infoWindow;
+          });
 
-        markersRef.current.push(marker);
-        bounds.extend(marker.getPosition());
-        hasValidCoordinates = true;
+          markersRef.current.push(marker);
+          bounds.extend(marker.getPosition());
+          hasValidCoordinates = true;
+        } catch (error) {
+          console.warn('Error creating marker:', error);
+        }
       }
     });
 
     // Fit map to show all markers
-    if (hasValidCoordinates) {
-      mapInstance.current.fitBounds(bounds);
-      const zoom = mapInstance.current.getZoom();
-      if (zoom > 15) {
-        mapInstance.current.setZoom(15);
+    if (hasValidCoordinates && !isUnmountingRef.current) {
+      try {
+        mapInstance.current.fitBounds(bounds);
+        const zoom = mapInstance.current.getZoom();
+        if (zoom > 15) {
+          mapInstance.current.setZoom(15);
+        }
+      } catch (error) {
+        console.warn('Error fitting map bounds:', error);
       }
     }
   };
