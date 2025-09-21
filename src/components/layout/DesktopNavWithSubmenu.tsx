@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Home, Users, Stethoscope, Brain, Building, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
+import { LanguageSelector } from '@/components/ui/language-selector';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,21 +15,22 @@ import {
 } from '@/components/ui/navigation-menu';
 
 const navItems = [
-  { href: '/', label: 'Home', icon: Home },
+  { href: '/', label: 'navigation.home', icon: Home },
   { 
     href: '/providers', 
-    label: 'Providers', 
+    label: 'navigation.providers', 
     icon: Stethoscope,
     submenu: [
       { href: '/provider-search', label: 'Provider Search' }
     ]
   },
-  { href: '/patients', label: 'Patients', icon: Users },
-  { href: '/intelligent-financing', label: 'Intelligence', icon: Brain },
-  { href: '/about', label: 'About', icon: Building },
+  { href: '/patients', label: 'navigation.patients', icon: Users },
+  { href: '/intelligent-financing', label: 'navigation.intelligence', icon: Brain },
+  { href: '/about', label: 'navigation.about', icon: Building },
 ];
 
 export const DesktopNavWithSubmenu = () => {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
 
@@ -97,7 +100,7 @@ export const DesktopNavWithSubmenu = () => {
                       `}
                     >
                       <Icon size={16} />
-                      <span>{item.label}</span>
+                      <span>{t(item.label)}</span>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <div className="w-48 p-2">
@@ -133,7 +136,7 @@ export const DesktopNavWithSubmenu = () => {
                     `}
                   >
                     <Icon size={16} />
-                    <span>{item.label}</span>
+                    <span>{t(item.label)}</span>
                   </Link>
                 </NavigationMenuItem>
               );
@@ -141,8 +144,11 @@ export const DesktopNavWithSubmenu = () => {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* Right Section - Login/Signup */}
+        {/* Right Section - Language/Login/Signup */}
         <div className="flex items-center gap-4">
+          {/* Language Selector */}
+          <LanguageSelector />
+          
           {/* Login/Signup Links */}
           <div className="flex items-center gap-4">
             <a
@@ -151,7 +157,7 @@ export const DesktopNavWithSubmenu = () => {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-smooth font-medium"
             >
-              Login
+              {t('navigation.login')}
             </a>
             <a
               href="https://dental-docs-hub.lovable.app/signup"
@@ -159,7 +165,7 @@ export const DesktopNavWithSubmenu = () => {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-smooth font-medium"
             >
-              Sign Up
+              {t('navigation.signup')}
             </a>
           </div>
         </div>

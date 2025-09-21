@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, Users, Stethoscope, Brain, Building } from 'lucide-react';
+import { Menu, X, Home, Users, Stethoscope, Brain, Building, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useTranslation } from 'react-i18next';
+import { LanguageSelector } from '@/components/ui/language-selector';
 import { DesktopNavWithSubmenu } from './DesktopNavWithSubmenu';
 import dentiPayLogo from '@/assets/dentipay-logo.png';
 
 const navItems = [
-  { href: '/', label: 'Home', icon: Home },
-  { href: '/providers', label: 'Providers', icon: Stethoscope },
+  { href: '/', label: 'navigation.home', icon: Home },
+  { href: '/providers', label: 'navigation.providers', icon: Stethoscope },
   { href: '/provider-search', label: 'Provider Search', icon: Stethoscope },
-  { href: '/patients', label: 'Patients', icon: Users },
-  { href: '/intelligent-financing', label: 'Intelligence', icon: Brain },
-  { href: '/about', label: 'About', icon: Building },
+  { href: '/patients', label: 'navigation.patients', icon: Users },
+  { href: '/intelligent-financing', label: 'navigation.intelligence', icon: Brain },
+  { href: '/about', label: 'navigation.about', icon: Building },
 ];
 
 export const FloatingNav = () => {
@@ -29,6 +31,7 @@ export const FloatingNav = () => {
 };
 
 const MobileNav = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
@@ -182,7 +185,7 @@ const MobileNav = () => {
                         `}
                       >
                         <Icon size={20} />
-                        <span className="font-medium">{item.label}</span>
+                        <span className="font-medium">{item.label.startsWith('navigation.') ? t(item.label) : item.label}</span>
                       </Link>
                     </motion.div>
                   );
@@ -190,6 +193,11 @@ const MobileNav = () => {
               </div>
 
               <motion.div variants={itemVariants} className="mt-6 pt-4 border-t">
+                {/* Language Selector */}
+                <div className="mb-4">
+                  <LanguageSelector />
+                </div>
+                
                 <div className="space-y-2">
                   <a
                     href="https://dental-docs-hub.lovable.app/login"
@@ -198,7 +206,7 @@ const MobileNav = () => {
                     className="block w-full p-3 text-center rounded-xl bg-secondary hover:bg-secondary/80 transition-smooth font-medium"
                     onClick={() => setIsOpen(false)}
                   >
-                    Login
+                    {t('navigation.login')}
                   </a>
                   <a
                     href="https://dental-docs-hub.lovable.app/signup"
@@ -207,7 +215,7 @@ const MobileNav = () => {
                     className="block w-full p-3 text-center rounded-xl bg-secondary hover:bg-secondary/80 transition-smooth font-medium"
                     onClick={() => setIsOpen(false)}
                   >
-                    Sign Up
+                    {t('navigation.signup')}
                   </a>
                 </div>
               </motion.div>
