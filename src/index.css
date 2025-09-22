@@ -21,9 +21,13 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
     
-    /* Brand Colors - Black Primary */
-    --primary: 0 0% 7%;
+    /* Brand Colors - Deep Blue Primary */
+    --primary: 217 91% 40%;  /* Deep blue #1e40af */
     --primary-foreground: 0 0% 100%;
+    
+    /* Teal Accent */
+    --teal: 199 95% 42%;  /* Bright teal #06b6d4 */
+    --teal-foreground: 0 0% 100%;
     
     /* Dental Pastels - Light Accents Only */
     --dental-blue: 208 65% 85%;

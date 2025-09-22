@@ -1,549 +1,721 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Progress } from '@/components/ui/progress';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { AnimatedText } from '@/components/ui/animated-text';
-import { CountUp } from '@/components/ui/micro-interactions';
+import { FloatingNav } from '@/components/layout/FloatingNav';
+import { Footer } from '@/components/layout/Footer';
 import { 
-  Brain, 
+  CheckCircle, 
+  XCircle, 
+  Play, 
   Users, 
   TrendingUp, 
-  Shield, 
   Clock, 
   Zap, 
-  Target, 
-  CheckCircle, 
-  ArrowRight,
+  Brain, 
+  Shield, 
+  Target,
+  ChevronRight,
   Star,
+  Calculator,
   BarChart3,
   MessageSquare,
-  Calendar,
-  Download,
-  Play,
-  Calculator,
-  X,
-  DollarSign,
-  Award,
   Lightbulb,
-  Phone
+  Award,
+  Lock
 } from 'lucide-react';
 
 const Providers = () => {
-  const [roiData, setRoiData] = useState({
-    monthlyPatients: 100,
-    averageCaseValue: 2500,
-    currentAcceptanceRate: 65
-  });
+  const [activeTab, setActiveTab] = useState('pipeline');
+  const [practiceSize, setPracticeSize] = useState(50);
+  const [monthlyPatients, setMonthlyPatients] = useState(200);
+  const [avgTreatmentCost, setAvgTreatmentCost] = useState(3500);
 
+  // ROI Calculator
   const calculateROI = () => {
-    const currentRevenue = roiData.monthlyPatients * roiData.averageCaseValue * (roiData.currentAcceptanceRate / 100);
-    const newAcceptanceRate = Math.min(roiData.currentAcceptanceRate + 40, 94);
-    const newRevenue = roiData.monthlyPatients * roiData.averageCaseValue * (newAcceptanceRate / 100);
-    const increase = newRevenue - currentRevenue;
+    const currentAcceptance = 0.65; // 65% typical acceptance rate
+    const improvedAcceptance = 0.87; // 87% with DentiPay
+    const improvementFactor = improvedAcceptance / currentAcceptance;
+    
+    const monthlyRevenue = monthlyPatients * avgTreatmentCost * currentAcceptance;
+    const improvedRevenue = monthlyPatients * avgTreatmentCost * improvedAcceptance;
+    const monthlyIncrease = improvedRevenue - monthlyRevenue;
+    const annualIncrease = monthlyIncrease * 12;
+    
     return {
-      currentRevenue,
-      newRevenue,
-      increase,
-      percentageIncrease: ((increase / currentRevenue) * 100).toFixed(1)
+      monthlyIncrease: Math.round(monthlyIncrease),
+      annualIncrease: Math.round(annualIncrease),
+      percentIncrease: Math.round((improvementFactor - 1) * 100)
     };
   };
 
-  const roi = calculateROI();
-
-  const heroMetrics = [
-    { value: "94%", label: "Approval Accuracy", icon: Target },
-    { value: "40%", label: "Higher Acceptance", icon: TrendingUp },
-    { value: "<30s", label: "Decision Speed", icon: Clock },
-    { value: "1,200+", label: "Active Providers", icon: Users }
-  ];
-
-  const problemAccordions = [
-    {
-      value: "banks",
-      title: "The Trap: A System Built for Banks",
-      content: "Traditional financing platforms were designed for general consumer lending, not the unique needs of dental care. This mismatch creates systematic failures that hurt both practices and patients."
-    },
-    {
-      value: "stakes", 
-      title: "The Stakes: When Dentistry Loses",
-      content: "Every declined application means delayed care, frustrated patients, and lost revenue. The compounding effect of financing friction can reduce practice growth by 30-50% annually."
-    },
-    {
-      value: "price",
-      title: "The Price Paid for Guesswork",
-      content: "Without intelligent financing, practices operate on hope rather than data. This guesswork approach costs the industry billions in unrealized revenue and millions of patients go without needed care."
-    }
-  ];
-
-  const trinityCards = [
-    {
-      title: "DentiPay",
-      subtitle: "The Brand Layer",
-      tagline: "The trusted face for dentistry finance",
-      points: [
-        "Market leverage through unified brand recognition",
-        "Network effect strengthens with every provider",
-        "Patient trust accelerates decision making",
-        "Reduces hesitation and shortens sales cycles"
-      ],
-      icon: Users
-    },
-    {
-      title: "PATH",
-      subtitle: "The Portal",
-      tagline: "Patient Acceptance Treatment Hub",
-      points: [
-        "2-minute application with instant decisions",
-        "94% approval rates vs 45% industry average",
-        "Transparent terms with no surprises",
-        "Behavioral optimization for higher conversion"
-      ],
-      icon: Target
-    },
-    {
-      title: "SCOPE",
-      subtitle: "The Intelligence Engine",
-      tagline: "Sentient Capable Outcome Predictive Engine",
-      points: [
-        "Clinical decision support in real-time",
-        "30+ data points per financing decision",
-        "Predictive modeling for treatment outcomes",
-        "Personalized recommendations for each patient"
-      ],
-      icon: Brain
-    }
-  ];
-
-  const workflowSteps = {
-    traditional: [
-      "Patient inquiry",
-      "Manual credit application",
-      "Wait 24-72 hours",
-      "Uncertain approval",
-      "Complex paperwork",
-      "Patient anxiety",
-      "Delayed treatment",
-      "Lost revenue"
-    ],
-    dentipay: [
-      "Patient inquiry", 
-      "2-minute PATH application",
-      "Instant SCOPE analysis",
-      "94% pre-approval rate",
-      "Clear options presented",
-      "Patient confidence",
-      "Same-day treatment",
-      "Predictable revenue"
-    ]
-  };
-
-  const testimonials = [
-    {
-      name: "Dr. Sarah Johnson",
-      title: "Cosmetic & General Dentistry",
-      quote: "DentiPay's intelligence system transformed our practice. We see 45% higher case acceptance and 92% patient satisfaction with the financing process.",
-      results: "45% case acceptance increase",
-      rating: 5
-    },
-    {
-      name: "Dr. Michael Chen",
-      title: "Periodontics Specialist",
-      quote: "The predictive analytics help us present treatments at exactly the right moment. Patient retention increased 25% since implementing DentiPay.",
-      results: "25% retention increase", 
-      rating: 5
-    },
-    {
-      name: "Bright Smile Dental Group",
-      title: "Multi-Location Practice",
-      quote: "SCOPE intelligence across all locations gives us unprecedented insights. 28% higher case values practice-wide with better patient outcomes.",
-      results: "28% case value increase",
-      rating: 5
-    }
-  ];
+  const roiResults = calculateROI();
 
   return (
     <div className="min-h-screen bg-background">
+      <FloatingNav />
+      
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-dental-blue pt-24 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/src/assets/hero-dental-office-clean.jpg')] bg-cover bg-center opacity-10" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground">
-              Intelligence That Amplifies Your Practice
-            </h1>
+      <section className="pt-20 pb-16 bg-primary text-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <AnimatedText>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                Intelligence That Amplifies Your Practice
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90">
+                Transform patient acceptance rates with AI-powered financing that understands dental care. 
+                Where traditional financing fails, DentiPay's SCOPE & PATH intelligence delivers.
+              </p>
+            </AnimatedText>
             
-            <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-muted-foreground">
-              Transform patient acceptance rates with AI-powered financing that understands dental care. 
-              Where traditional financing fails, DentiPay's SCOPE & PATH intelligence delivers.
-            </p>
-
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button size="lg" className="text-lg px-8 py-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant">
-                <Calendar className="mr-2 h-5 w-5" />
+              <Button size="lg" variant="secondary" className="text-lg px-8">
                 Get Provider Demo
               </Button>
-              <Button variant="secondary" size="lg" className="text-lg px-8 py-6 bg-white text-foreground hover:bg-gray-50 shadow-soft">
-                <Calculator className="mr-2 h-5 w-5" />
+              <Button size="lg" variant="outline" className="text-lg px-8 text-white border-white hover:bg-white hover:text-primary">
                 Calculate Your ROI
               </Button>
             </div>
 
             {/* Video Placeholder */}
-            <motion.div 
-              className="relative max-w-4xl mx-auto mb-12"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              <div className="aspect-video bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 flex items-center justify-center group cursor-pointer hover:bg-white/20 transition-colors shadow-soft">
-                <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center group-hover:bg-primary/90 transition-colors shadow-elegant">
-                  <Play className="h-8 w-8 text-primary-foreground ml-1" />
-                </div>
+            <div className="relative mb-12 max-w-3xl mx-auto">
+              <div className="video-placeholder">
+                <Button size="lg" variant="secondary" className="rounded-full">
+                  <Play className="h-6 w-6 mr-2" />
+                  Watch Demo
+                </Button>
               </div>
-            </motion.div>
-
-            {/* Animated Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              {heroMetrics.map((metric, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                  className="bg-white/90 backdrop-blur-sm rounded-lg p-4 text-center border border-white/20 shadow-soft"
-                >
-                  <metric.icon className="h-8 w-8 mx-auto mb-2 text-primary" />
-                  <div className="text-2xl font-bold text-foreground">
-                    <CountUp end={parseInt(metric.value.replace(/[^\d]/g, '') || '94')} />
-                    {metric.value.includes('%') && '%'}
-                    {metric.value.includes('+') && '+'}
-                    {metric.value.includes('<') && metric.value.replace(/\d/g, '')}
-                  </div>
-                  <div className="text-sm text-muted-foreground">{metric.label}</div>
-                </motion.div>
-              ))}
             </div>
-          </motion.div>
+
+            {/* Animated Statistics Bar */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="text-4xl font-bold mb-2 text-teal">94%</div>
+                <div className="text-sm text-primary-foreground/80">Approval Accuracy</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold mb-2 text-teal">40%</div>
+                <div className="text-sm text-primary-foreground/80">Higher Acceptance</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold mb-2 text-teal">&lt;30s</div>
+                <div className="text-sm text-primary-foreground/80">Decision Speed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold mb-2 text-teal">1,200+</div>
+                <div className="text-sm text-primary-foreground/80">Active Providers</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Problem Section */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Traditional Financing Wasn't Built for Dental Care
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              The stark reality facing dental practices today demands a financing solution that understands both clinical needs and patient psychology.
-            </p>
-          </div>
+      <section className="py-24 bg-slate-900 text-white">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <AnimatedText>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                  Traditional Financing Wasn't Built for Dental Care
+                </h2>
+                <p className="text-xl mb-8 text-gray-300">
+                  Dental practices face unique challenges that generic financing can't solve. 
+                  The result? Lost patients, reduced treatment acceptance, and missed revenue opportunities.
+                </p>
+              </AnimatedText>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-destructive mt-3 flex-shrink-0" />
-                <p className="text-lg text-muted-foreground">Less than 50% of Americans can afford a $1,000 dental emergency</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-destructive mt-3 flex-shrink-0" />
-                <p className="text-lg text-muted-foreground">Traditional financing takes weeks vs same-day dental needs</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-destructive mt-3 flex-shrink-0" />
-                <p className="text-lg text-muted-foreground">Standard lenders achieve 30-45% lower approval rates</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-destructive mt-3 flex-shrink-0" />
-                <p className="text-lg text-muted-foreground">Generic financing doesn't understand dental procedures or patient psychology</p>
+              <div className="space-y-4">
+                <Card className="bg-red-900/20 border-red-800">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <XCircle className="h-8 w-8 text-red-400 flex-shrink-0" />
+                      <div>
+                        <h3 className="font-semibold mb-2">One-Size-Fits-All Approach</h3>
+                        <p className="text-sm text-gray-300">Generic credit scoring ignores dental-specific patient behavior</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-red-900/20 border-red-800">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <XCircle className="h-8 w-8 text-red-400 flex-shrink-0" />
+                      <div>
+                        <h3 className="font-semibold mb-2">Slow Decision Making</h3>
+                        <p className="text-sm text-gray-300">Patients leave while waiting for approval decisions</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-red-900/20 border-red-800">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <XCircle className="h-8 w-8 text-red-400 flex-shrink-0" />
+                      <div>
+                        <h3 className="font-semibold mb-2">Limited Understanding</h3>
+                        <p className="text-sm text-gray-300">No insight into treatment urgency or patient circumstances</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
 
-            <Card className="bg-card border-border shadow-soft">
-              <CardHeader>
-                <CardTitle className="text-2xl text-foreground">The Financial Care Gap</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Traditional Approval Rate</span>
-                  <Badge variant="destructive">~55%</Badge>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Decision Timeline</span>
-                  <Badge variant="destructive">24-72 hours</Badge>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Clinical Understanding</span>
-                  <Badge variant="destructive">Generic</Badge>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Patient Experience</span>
-                  <Badge variant="destructive">Frustrating</Badge>
-                </div>
-              </CardContent>
-            </Card>
+            <div>
+              <Card className="bg-slate-800 border-slate-700">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6 text-center">Financial Care Gap</h3>
+                  <div className="space-y-6">
+                    <div>
+                      <div className="flex justify-between mb-2">
+                        <span className="text-sm">Traditional Approval Rate</span>
+                        <span className="text-sm">62%</span>
+                      </div>
+                      <Progress value={62} className="h-3" />
+                    </div>
+                    <div>
+                      <div className="flex justify-between mb-2">
+                        <span className="text-sm">DentiPay Approval Rate</span>
+                        <span className="text-sm text-teal">94%</span>
+                      </div>
+                      <Progress value={94} className="h-3" />
+                    </div>
+                    <div className="text-center pt-4">
+                      <div className="text-3xl font-bold text-teal">32%</div>
+                      <div className="text-sm text-gray-400">More Patients Approved</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Deep Dive Problem - Accordion */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Understanding the Core Problems</h2>
-            <p className="text-lg text-muted-foreground">Explore the fundamental issues that traditional financing creates for dental practices.</p>
-          </div>
-          
-          <Accordion type="single" collapsible className="space-y-4">
-            {problemAccordions.map((item) => (
-              <AccordionItem key={item.value} value={item.value} className="border border-border rounded-lg bg-card shadow-soft">
-                <AccordionTrigger className="px-6 py-4 text-foreground hover:text-primary text-left">
-                  <div className="flex items-center gap-3">
-                    <Lightbulb className="h-5 w-5 text-primary" />
-                    <span className="text-lg font-semibold">{item.title}</span>
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              The Hidden Costs of Broken Financing
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Every denied application represents more than just a "no" – it's a cascade of consequences 
+              that undermines your practice's potential.
+            </p>
+          </AnimatedText>
+
+          <div className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem value="trap" className="border rounded-lg">
+                <AccordionTrigger className="px-6 py-4 hover:no-underline">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-red-100 dark:bg-red-900/30 p-3 rounded-full">
+                      <Target className="h-6 w-6 text-red-600" />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="text-xl font-semibold">The Trap: A System Built for Banks</h3>
+                      <p className="text-sm text-muted-foreground">Why traditional financing fails dental practices</p>
+                    </div>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 text-muted-foreground">
-                  {item.content}
+                <AccordionContent className="px-6 pb-6">
+                  <div className="pl-16">
+                    <p className="mb-4 text-muted-foreground">
+                      Traditional financing companies optimize for their bottom line, not yours. They use generic 
+                      credit models that can't distinguish between a patient who needs emergency treatment and 
+                      someone shopping for luxury items.
+                    </p>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li>• Credit scores don't reflect dental treatment urgency</li>
+                      <li>• Rigid algorithms miss nuanced patient circumstances</li>
+                      <li>• Banks profit from higher interest rates, not approval rates</li>
+                      <li>• No understanding of treatment value or necessity</li>
+                    </ul>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
-            ))}
-          </Accordion>
+
+              <AccordionItem value="stakes" className="border rounded-lg">
+                <AccordionTrigger className="px-6 py-4 hover:no-underline">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-orange-100 dark:bg-orange-900/30 p-3 rounded-full">
+                      <TrendingUp className="h-6 w-6 text-orange-600" />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="text-xl font-semibold">The Stakes: When Dentistry Loses</h3>
+                      <p className="text-sm text-muted-foreground">The ripple effects of financing failures</p>
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6">
+                  <div className="pl-16">
+                    <p className="mb-4 text-muted-foreground">
+                      Every financing denial creates a cascade of negative outcomes that extend far beyond 
+                      a single lost case. The compound effect undermines your practice's growth and reputation.
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <h4 className="font-semibold mb-2">Immediate Impact</h4>
+                        <ul className="space-y-1 text-muted-foreground">
+                          <li>• Treatment delays worsen conditions</li>
+                          <li>• Patient trust and confidence eroded</li>
+                          <li>• Lost revenue from declined cases</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">Long-term Damage</h4>
+                        <ul className="space-y-1 text-muted-foreground">
+                          <li>• Negative reviews and referral loss</li>
+                          <li>• Reduced case acceptance rates</li>
+                          <li>• Practice growth stagnation</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="price" className="border rounded-lg">
+                <AccordionTrigger className="px-6 py-4 hover:no-underline">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-red-100 dark:bg-red-900/30 p-3 rounded-full">
+                      <Calculator className="h-6 w-6 text-red-600" />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="text-xl font-semibold">The Price Paid for Guesswork</h3>
+                      <p className="text-sm text-muted-foreground">Quantifying the cost of inefficient financing</p>
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6">
+                  <div className="pl-16">
+                    <p className="mb-4 text-muted-foreground">
+                      The financial impact of traditional financing extends beyond denied applications. 
+                      It's about missed opportunities, inefficient workflows, and compromised patient relationships.
+                    </p>
+                    <div className="bg-muted p-4 rounded-lg">
+                      <h4 className="font-semibold mb-3">Average Practice Losses Per Month</h4>
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <div className="text-2xl font-bold text-red-600">$47,000</div>
+                          <div className="text-muted-foreground">Lost revenue from denials</div>
+                        </div>
+                        <div>
+                          <div className="text-2xl font-bold text-red-600">23hrs</div>
+                          <div className="text-muted-foreground">Staff time on financing issues</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
         </div>
       </section>
 
-      {/* Solution Trinity */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+      {/* Solution Trinity Section */}
+      <section className="py-24 bg-muted/30">
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
               One Brand. One Portal. One Intelligence. One System.
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               The DentiPay Trinity: Brand leverage, patient portal, and intelligence engine working in perfect harmony.
             </p>
+          </AnimatedText>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* DentiPay Brand */}
+            <Card className="group hover:shadow-elegant transition-all duration-300 hover:-translate-y-2">
+              <CardContent className="p-8 text-center">
+                <div className="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                  <Award className="h-8 w-8" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">DentiPay</h3>
+                <p className="text-dental-blue font-semibold mb-4">The Trusted Brand</p>
+                <ul className="text-left space-y-2 text-sm text-muted-foreground">
+                  <li>• Established credibility with patients</li>
+                  <li>• Instant recognition and trust</li>
+                  <li>• Professional branding alignment</li>
+                  <li>• Seamless practice integration</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* PATH Portal */}
+            <Card className="group hover:shadow-peach transition-all duration-300 hover:-translate-y-2">
+              <CardContent className="p-8 text-center">
+                <div className="bg-teal text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                  <Users className="h-8 w-8" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">PATH</h3>
+                <p className="text-dental-peach font-semibold mb-4">Patient Portal</p>
+                <ul className="text-left space-y-2 text-sm text-muted-foreground">
+                  <li>• Intuitive patient experience</li>
+                  <li>• Real-time application processing</li>
+                  <li>• Multiple financing options</li>
+                  <li>• Automated payment scheduling</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* SCOPE Intelligence */}
+            <Card className="group hover:shadow-lavender transition-all duration-300 hover:-translate-y-2">
+              <CardContent className="p-8 text-center">
+                <div className="bg-dental-blue-dark text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                  <Brain className="h-8 w-8" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">SCOPE</h3>
+                <p className="text-dental-lavender font-semibold mb-4">Intelligence Engine</p>
+                <ul className="text-left space-y-2 text-sm text-muted-foreground">
+                  <li>• AI-powered decision making</li>
+                  <li>• Dental-specific algorithms</li>
+                  <li>• Predictive approval modeling</li>
+                  <li>• Continuous learning optimization</li>
+                </ul>
+              </CardContent>
+            </Card>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {trinityCards.map((card, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group"
-              >
-                <Card className="h-full bg-card border-border shadow-soft hover:shadow-elegant transition-all duration-300">
-                  <CardHeader className="text-center pb-4">
-                    <div className="w-16 h-16 mx-auto rounded-full bg-dental-blue flex items-center justify-center mb-4">
-                      <card.icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-2xl text-foreground">{card.title}</CardTitle>
-                    <p className="text-primary font-semibold">{card.subtitle}</p>
-                    <CardDescription className="text-muted-foreground italic">
-                      "{card.tagline}"
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3">
-                      {card.points.map((point, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-muted-foreground">
-                          <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                          <span className="text-sm">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          {/* Connected visualization */}
+          <div className="flex justify-center mt-12">
+            <div className="flex items-center space-x-4 text-muted-foreground">
+              <div className="w-3 h-3 bg-primary rounded-full"></div>
+              <div className="w-8 h-px bg-border"></div>
+              <div className="w-3 h-3 bg-teal rounded-full"></div>
+              <div className="w-8 h-px bg-border"></div>
+              <div className="w-3 h-3 bg-dental-blue-dark rounded-full"></div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Intelligence Features - Tabs */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+      {/* Intelligence Features Section */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Intelligence That Amplifies Your Practice
             </h2>
-          </div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              See how DentiPay's AI-powered platform transforms every aspect of your financing workflow.
+            </p>
+          </AnimatedText>
 
-          <Tabs defaultValue="pipeline" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8 bg-card border shadow-soft">
-              <TabsTrigger value="pipeline" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Patient Pipeline Intelligence</TabsTrigger>
-              <TabsTrigger value="analytics" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Practice Analytics Dashboard</TabsTrigger>
-              <TabsTrigger value="communications" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Patient Communications</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="pipeline" className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h3 className="text-3xl font-bold text-foreground mb-4">Transform Leads into Loyal Patients</h3>
-                  <p className="text-muted-foreground mb-6">Predictive insights that help you identify, prioritize, and convert the right patients at the right time.</p>
-                  <ul className="space-y-3">
-                    <li className="flex items-center gap-2">
-                      <ArrowRight className="h-4 w-4 text-primary" />
-                      <span>Pre-qualified patient matching</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <ArrowRight className="h-4 w-4 text-primary" />
-                      <span>Approval probability scoring</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <ArrowRight className="h-4 w-4 text-primary" />
-                      <span>Optimal scheduling recommendations</span>
-                    </li>
-                  </ul>
-                  <div className="mt-6 p-4 bg-dental-blue-muted rounded-lg border border-dental-blue/20">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Brain className="h-5 w-5 text-primary" />
-                      <span className="font-semibold text-foreground">Echo AI Enhancement</span>
+          <div className="max-w-6xl mx-auto">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+              <TabsList className="grid w-full grid-cols-3 mb-8">
+                <TabsTrigger value="pipeline" className="text-sm md:text-base">
+                  Patient Pipeline Intelligence
+                </TabsTrigger>
+                <TabsTrigger value="analytics" className="text-sm md:text-base">
+                  Practice Analytics Dashboard  
+                </TabsTrigger>
+                <TabsTrigger value="communications" className="text-sm md:text-base">
+                  Patient Communications
+                </TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="pipeline">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4">Predictive Patient Intelligence</h3>
+                    <p className="text-muted-foreground mb-6">
+                      AI algorithms analyze patient behavior, treatment history, and financial patterns to 
+                      predict approval likelihood before they even apply.
+                    </p>
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-success flex-shrink-0" />
+                        <span className="text-sm">Real-time approval probability scoring</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-success flex-shrink-0" />
+                        <span className="text-sm">Treatment urgency assessment</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-success flex-shrink-0" />
+                        <span className="text-sm">Alternative option recommendations</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-success flex-shrink-0" />
+                        <span className="text-sm">Optimal timing predictions</span>
+                      </div>
                     </div>
-                    <p className="text-sm text-muted-foreground">Real-time patient sentiment analysis and behavioral prediction for optimal engagement timing.</p>
+                  </div>
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-medium">High Probability Approvals</span>
+                          <Badge variant="secondary" className="bg-success text-success-foreground">
+                            87%
+                          </Badge>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-medium">Medium Probability</span>
+                          <Badge variant="secondary" className="bg-warning text-warning-foreground">
+                            23%
+                          </Badge>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-medium">Needs Alternative Options</span>
+                          <Badge variant="secondary" className="bg-teal text-teal-foreground">
+                            12%
+                          </Badge>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="analytics">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  <Card>
+                    <CardContent className="p-6">
+                      <h4 className="font-semibold mb-4">Practice Performance Metrics</h4>
+                      <div className="space-y-6">
+                        <div>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-sm">Approval Rate</span>
+                            <span className="text-sm font-semibold">94%</span>
+                          </div>
+                          <Progress value={94} className="h-2" />
+                        </div>
+                        <div>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-sm">Patient Satisfaction</span>
+                            <span className="text-sm font-semibold">96%</span>
+                          </div>
+                          <Progress value={96} className="h-2" />
+                        </div>
+                        <div>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-sm">Processing Speed</span>
+                            <span className="text-sm font-semibold">28s avg</span>
+                          </div>
+                          <Progress value={85} className="h-2" />
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4">Real-Time Practice Insights</h3>
+                    <p className="text-muted-foreground mb-6">
+                      Comprehensive dashboard showing financing performance, patient trends, and 
+                      revenue optimization opportunities across your entire practice.
+                    </p>
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <BarChart3 className="h-5 w-5 text-primary flex-shrink-0" />
+                        <span className="text-sm">Revenue tracking by treatment type</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <TrendingUp className="h-5 w-5 text-primary flex-shrink-0" />
+                        <span className="text-sm">Seasonal trend analysis</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Users className="h-5 w-5 text-primary flex-shrink-0" />
+                        <span className="text-sm">Patient demographic insights</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <Card className="bg-card border-border shadow-soft">
-                  <CardContent className="p-8 text-center">
-                    <div className="text-4xl font-bold text-primary mb-2"><CountUp end={87} />%</div>
-                    <div className="text-muted-foreground">Patient Confidence Improvement</div>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="analytics" className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h3 className="text-3xl font-bold text-foreground mb-4">Real-Time Practice Intelligence</h3>
-                  <p className="text-muted-foreground mb-6">Comprehensive dashboard that gives you visibility into every aspect of your practice performance.</p>
-                  <ul className="space-y-3">
-                    <li className="flex items-center gap-2">
-                      <ArrowRight className="h-4 w-4 text-primary" />
-                      <span>Live revenue tracking</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <ArrowRight className="h-4 w-4 text-primary" />
-                      <span>Acceptance rate monitoring</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <ArrowRight className="h-4 w-4 text-primary" />
-                      <span>Predictive revenue modeling</span>
-                    </li>
-                  </ul>
+              </TabsContent>
+
+              <TabsContent value="communications">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4">Automated Patient Engagement</h3>
+                    <p className="text-muted-foreground mb-6">
+                      Intelligent communication system that keeps patients informed, engaged, and 
+                      confident throughout their financing journey.
+                    </p>
+                    
+                    {/* Echo AI Callout */}
+                    <Card className="border-2 border-teal bg-teal/5 mb-6">
+                      <CardContent className="p-6">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="bg-teal text-white rounded-full p-2">
+                            <MessageSquare className="h-4 w-4" />
+                          </div>
+                          <h4 className="font-semibold text-teal">Echo AI Assistant</h4>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          AI-powered chatbot provides instant answers to patient questions, 
+                          reducing staff workload while improving patient experience.
+                        </p>
+                      </CardContent>
+                    </Card>
+
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-success flex-shrink-0" />
+                        <span className="text-sm">Automated approval notifications</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-success flex-shrink-0" />
+                        <span className="text-sm">Payment reminder system</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="h-5 w-5 text-success flex-shrink-0" />
+                        <span className="text-sm">Treatment follow-up sequences</span>
+                      </div>
+                    </div>
+                  </div>
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="space-y-4">
+                        <div className="bg-muted p-3 rounded-lg">
+                          <div className="text-xs text-muted-foreground mb-1">Patient Message</div>
+                          <div className="text-sm">"What's my payment schedule?"</div>
+                        </div>
+                        <div className="bg-teal text-white p-3 rounded-lg ml-4">
+                          <div className="text-xs mb-1 opacity-80">Echo AI Response</div>
+                          <div className="text-sm">Your next payment of $127 is due on March 15th. Would you like me to send a reminder?</div>
+                        </div>
+                        <div className="text-center">
+                          <Badge variant="outline" className="text-xs">Response time: 0.3s</Badge>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
-                <Card className="bg-card border-border shadow-soft">
-                  <CardContent className="p-8 text-center">
-                    <div className="text-4xl font-bold text-primary mb-2"><CountUp end={23} />%</div>
-                    <div className="text-muted-foreground">Revenue Increase</div>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="communications" className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h3 className="text-3xl font-bold text-foreground mb-4">Automated Patient Engagement</h3>
-                  <p className="text-muted-foreground mb-6">Intelligent communication system that builds trust and drives action at every touchpoint.</p>
-                  <ul className="space-y-3">
-                    <li className="flex items-center gap-2">
-                      <ArrowRight className="h-4 w-4 text-primary" />
-                      <span>Pre-approval notifications</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <ArrowRight className="h-4 w-4 text-primary" />
-                      <span>Treatment plan explanations</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <ArrowRight className="h-4 w-4 text-primary" />
-                      <span>Retention campaigns</span>
-                    </li>
-                  </ul>
-                </div>
-                <Card className="bg-card border-border shadow-soft">
-                  <CardContent className="p-8 text-center">
-                    <div className="text-4xl font-bold text-primary mb-2"><CountUp end={4.5} /></div>
-                    <div className="text-muted-foreground">Hours Saved Daily</div>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-          </Tabs>
+              </TabsContent>
+            </Tabs>
+          </div>
         </div>
       </section>
 
       {/* Workflow Comparison */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              AI Powered Approvals. Instant Decisions
+      <section className="py-24 bg-muted/30">
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              AI Powered Approvals. Instant Decisions.
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              See the dramatic difference between traditional financing friction and DentiPay intelligence.
+              See the dramatic difference between traditional financing workflows and DentiPay's intelligent system.
             </p>
-          </div>
+          </AnimatedText>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Traditional Flow */}
-            <Card className="bg-card border-border shadow-soft">
-              <CardHeader>
-                <CardTitle className="text-2xl text-foreground flex items-center gap-2">
-                  <X className="h-6 w-6 text-destructive" />
-                  Traditional Flow
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  Multiple days → uncertainty → admin burden → delayed revenue
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {workflowSteps.traditional.map((step, index) => (
-                    <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-destructive/10 border border-destructive/20">
-                      <div className="w-8 h-8 rounded-full bg-destructive/20 flex items-center justify-center text-sm font-medium text-destructive">
-                        {index + 1}
-                      </div>
-                      <span className="text-muted-foreground">{step}</span>
+            <Card className="border-red-200 dark:border-red-800">
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold text-red-600 mb-2">Traditional Flow</h3>
+                  <Badge variant="destructive">Slow & Inefficient</Badge>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-red-100 dark:bg-red-900/30 text-red-600 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
+                    <div className="flex-1">
+                      <div className="font-semibold">Manual Application</div>
+                      <div className="text-sm text-muted-foreground">Patient fills lengthy forms</div>
                     </div>
-                  ))}
+                    <XCircle className="h-5 w-5 text-red-500" />
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="bg-red-100 dark:bg-red-900/30 text-red-600 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</div>
+                    <div className="flex-1">
+                      <div className="font-semibold">Credit Check Wait</div>
+                      <div className="text-sm text-muted-foreground">24-48 hour processing time</div>
+                    </div>
+                    <XCircle className="h-5 w-5 text-red-500" />
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="bg-red-100 dark:bg-red-900/30 text-red-600 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</div>
+                    <div className="flex-1">
+                      <div className="font-semibold">Generic Scoring</div>
+                      <div className="text-sm text-muted-foreground">One-size-fits-all decisions</div>
+                    </div>
+                    <XCircle className="h-5 w-5 text-red-500" />
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="bg-red-100 dark:bg-red-900/30 text-red-600 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</div>
+                    <div className="flex-1">
+                      <div className="font-semibold">High Denial Rate</div>
+                      <div className="text-sm text-muted-foreground">62% approval rate</div>
+                    </div>
+                    <XCircle className="h-5 w-5 text-red-500" />
+                  </div>
+
+                  <div className="border-t pt-4 text-center">
+                    <div className="text-2xl font-bold text-red-600">2-3 Days</div>
+                    <div className="text-sm text-muted-foreground">Average Decision Time</div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* DentiPay Flow */}
-            <Card className="bg-card border-border shadow-soft">
-              <CardHeader>
-                <CardTitle className="text-2xl text-foreground flex items-center gap-2">
-                  <CheckCircle className="h-6 w-6 text-primary" />
-                  DentiPay Flow
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  Instant decisions → clear options → immediate confidence → higher conversions
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {workflowSteps.dentipay.map((step, index) => (
-                    <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-dental-blue-muted border border-dental-blue/20">
-                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-medium text-primary">
-                        {index + 1}
-                      </div>
-                      <span className="text-muted-foreground">{step}</span>
+            <Card className="border-success">
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold text-success mb-2">DentiPay Flow</h3>
+                  <Badge className="bg-success text-success-foreground">Fast & Intelligent</Badge>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-success text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
+                    <div className="flex-1">
+                      <div className="font-semibold">Smart Pre-Screen</div>
+                      <div className="text-sm text-muted-foreground">AI predicts approval likelihood</div>
                     </div>
-                  ))}
+                    <CheckCircle className="h-5 w-5 text-success" />
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="bg-success text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</div>
+                    <div className="flex-1">
+                      <div className="font-semibold">Instant Analysis</div>
+                      <div className="text-sm text-muted-foreground">&lt;30 second decisions</div>
+                    </div>
+                    <CheckCircle className="h-5 w-5 text-success" />
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="bg-success text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</div>
+                    <div className="flex-1">
+                      <div className="font-semibold">Dental-Specific AI</div>
+                      <div className="text-sm text-muted-foreground">Treatment-aware algorithms</div>
+                    </div>
+                    <CheckCircle className="h-5 w-5 text-success" />
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="bg-success text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</div>
+                    <div className="flex-1">
+                      <div className="font-semibold">High Approval Rate</div>
+                      <div className="text-sm text-muted-foreground">94% approval rate</div>
+                    </div>
+                    <CheckCircle className="h-5 w-5 text-success" />
+                  </div>
+
+                  <div className="border-t pt-4 text-center">
+                    <div className="text-2xl font-bold text-success">&lt;30 Seconds</div>
+                    <div className="text-sm text-muted-foreground">Average Decision Time</div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -552,275 +724,327 @@ const Providers = () => {
       </section>
 
       {/* Performance Metrics */}
-      <section className="py-20 bg-dental-blue">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-5xl font-bold mb-2 text-foreground"><CountUp end={87} />%</div>
-              <div className="text-xl text-muted-foreground">Patient Confidence</div>
+      <section className="py-24 bg-primary text-white">
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Proven Results Across 1,200+ Practices
+            </h2>
+          </AnimatedText>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="text-center">
+              <div className="text-6xl font-bold mb-4 text-teal">87%</div>
+              <div className="text-xl font-semibold mb-2">Patient Confidence</div>
+              <div className="text-primary-foreground/80">Higher trust in treatment recommendations</div>
             </div>
-            <div>
-              <div className="text-5xl font-bold mb-2 text-foreground"><CountUp end={23} />%</div>
-              <div className="text-xl text-muted-foreground">Revenue Increase</div>
+            <div className="text-center">
+              <div className="text-6xl font-bold mb-4 text-teal">23%</div>
+              <div className="text-xl font-semibold mb-2">Revenue Increase</div>
+              <div className="text-primary-foreground/80">Average monthly revenue growth</div>
             </div>
-            <div>
-              <div className="text-5xl font-bold mb-2 text-foreground"><CountUp end={4.5} /></div>
-              <div className="text-xl text-muted-foreground">Hours Saved Daily</div>
+            <div className="text-center">
+              <div className="text-6xl font-bold mb-4 text-teal">4.5hrs</div>
+              <div className="text-xl font-semibold mb-2">Daily Time Saved</div>
+              <div className="text-primary-foreground/80">Reduced administrative burden</div>
             </div>
           </div>
-          
-          <div className="grid md:grid-cols-4 gap-6 mt-12 text-center">
-            <div>
-              <div className="text-3xl font-bold mb-1 text-foreground"><CountUp end={95} />%</div>
-              <div className="text-sm text-muted-foreground">Approval Rate</div>
+
+          <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-teal">98%</div>
+              <div className="text-sm text-primary-foreground/80">Provider Satisfaction</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold mb-1 text-foreground"><CountUp end={300} />%</div>
-              <div className="text-sm text-muted-foreground">ROI Improvement</div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-teal">32%</div>
+              <div className="text-sm text-primary-foreground/80">More Approvals</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold mb-1 text-foreground"><CountUp end={10000} />+</div>
-              <div className="text-sm text-muted-foreground">Happy Patients</div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-teal">15min</div>
+              <div className="text-sm text-primary-foreground/80">Setup Time</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold mb-1 text-foreground">4.9/5</div>
-              <div className="text-sm text-muted-foreground">Provider Rating</div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-teal">24/7</div>
+              <div className="text-sm text-primary-foreground/80">Support Available</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ROI Calculator */}
-      <section className="py-20 bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+      {/* ROI Calculator Section */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Calculate Your ROI Potential
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              See your potential revenue increase with DentiPay's intelligent financing platform.
+              See how DentiPay's intelligence could transform your practice's financing performance and revenue.
             </p>
-          </div>
+          </AnimatedText>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <Card className="bg-card border-border shadow-soft">
-              <CardHeader>
-                <CardTitle className="text-2xl text-foreground">Practice Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Monthly New Patients</label>
-                  <input
-                    type="number"
-                    value={roiData.monthlyPatients}
-                    onChange={(e) => setRoiData({...roiData, monthlyPatients: parseInt(e.target.value) || 0})}
-                    className="w-full p-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-background text-foreground"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Average Case Value ($)</label>
-                  <input
-                    type="number"
-                    value={roiData.averageCaseValue}
-                    onChange={(e) => setRoiData({...roiData, averageCaseValue: parseInt(e.target.value) || 0})}
-                    className="w-full p-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-background text-foreground"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Current Acceptance Rate (%)</label>
-                  <input
-                    type="number"
-                    value={roiData.currentAcceptanceRate}
-                    onChange={(e) => setRoiData({...roiData, currentAcceptanceRate: parseInt(e.target.value) || 0})}
-                    className="w-full p-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-background text-foreground"
-                  />
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <Card>
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6">Practice Information</h3>
+                <div className="space-y-6">
+                  <div>
+                    <Label htmlFor="practiceSize">Practice Size (providers)</Label>
+                    <Input
+                      id="practiceSize"
+                      type="number"
+                      value={practiceSize}
+                      onChange={(e) => setPracticeSize(Number(e.target.value))}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="monthlyPatients">Monthly Patients</Label>
+                    <Input
+                      id="monthlyPatients"
+                      type="number"
+                      value={monthlyPatients}
+                      onChange={(e) => setMonthlyPatients(Number(e.target.value))}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="avgTreatmentCost">Average Treatment Cost</Label>
+                    <Input
+                      id="avgTreatmentCost"
+                      type="number"
+                      value={avgTreatmentCost}
+                      onChange={(e) => setAvgTreatmentCost(Number(e.target.value))}
+                      className="mt-1"
+                    />
+                  </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-dental-blue-muted border-dental-blue/20 shadow-elegant">
-              <CardHeader>
-                <CardTitle className="text-2xl text-foreground flex items-center gap-2">
-                  <TrendingUp className="h-6 w-6 text-primary" />
-                  Your ROI Projection
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center p-4 bg-card rounded-lg border border-border shadow-soft">
-                    <div className="text-sm text-muted-foreground mb-1">Current Monthly Revenue</div>
-                    <div className="text-2xl font-bold text-foreground">
-                      ${roi.currentRevenue.toLocaleString()}
+            <Card className="border-success">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-success">Your ROI Projection</h3>
+                <div className="space-y-6">
+                  <div className="text-center p-6 bg-success/10 rounded-lg">
+                    <div className="text-4xl font-bold text-success mb-2">
+                      ${roiResults.monthlyIncrease.toLocaleString()}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Additional Monthly Revenue</div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center p-4 bg-muted rounded-lg">
+                      <div className="text-2xl font-bold">{roiResults.percentIncrease}%</div>
+                      <div className="text-sm text-muted-foreground">Revenue Increase</div>
+                    </div>
+                    <div className="text-center p-4 bg-muted rounded-lg">
+                      <div className="text-2xl font-bold">${roiResults.annualIncrease.toLocaleString()}</div>
+                      <div className="text-sm text-muted-foreground">Annual Growth</div>
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-card rounded-lg border border-dental-blue/20 shadow-soft">
-                    <div className="text-sm text-primary mb-1">Projected Monthly Revenue</div>
-                    <div className="text-2xl font-bold text-primary">
-                      ${roi.newRevenue.toLocaleString()}
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="text-center p-6 bg-primary text-primary-foreground rounded-lg shadow-elegant">
-                  <div className="text-sm opacity-90 mb-2">Monthly Revenue Increase</div>
-                  <div className="text-3xl font-bold mb-1">
-                    ${roi.increase.toLocaleString()}
-                  </div>
-                  <div className="text-lg">
-                    (+{roi.percentageIncrease}% improvement)
-                  </div>
-                </div>
 
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary mb-2">
-                    ${(roi.increase * 12).toLocaleString()}
+                  <div className="space-y-3">
+                    <div className="flex justify-between">
+                      <span className="text-sm">Current Approval Rate</span>
+                      <span className="font-semibold">65%</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-sm">DentiPay Approval Rate</span>
+                      <span className="font-semibold text-success">94%</span>
+                    </div>
+                    <div className="flex justify-between border-t pt-2">
+                      <span className="text-sm font-semibold">Improvement</span>
+                      <span className="font-bold text-success">+29%</span>
+                    </div>
                   </div>
-                  <div className="text-muted-foreground">Annual Revenue Increase</div>
+
+                  <Button className="w-full" size="lg">
+                    <Calculator className="h-4 w-4 mr-2" />
+                    Launch Full Calculator
+                  </Button>
                 </div>
               </CardContent>
             </Card>
-          </div>
-
-          <div className="text-center mt-12">
-            <Button size="lg" className="text-lg px-8 py-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant">
-              <Calculator className="mr-2 h-5 w-5" />
-              Launch Full Calculator
-            </Button>
           </div>
         </div>
       </section>
 
       {/* Testimonials Carousel */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+      <section className="py-24 bg-muted/30">
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Join 1,200+ DentiPay-Enabled Providers
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Real results from dental professionals who've transformed their practices with intelligence.
-            </p>
-          </div>
+          </AnimatedText>
 
-          <Carousel className="max-w-5xl mx-auto">
-            <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="h-full bg-card border-border shadow-soft">
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-1 mb-4">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
-                      <blockquote className="text-muted-foreground mb-4">
-                        "{testimonial.quote}"
-                      </blockquote>
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-full bg-dental-blue flex items-center justify-center">
-                          <Users className="h-5 w-5 text-primary" />
-                        </div>
-                        <div>
-                          <div className="font-semibold text-foreground">{testimonial.name}</div>
-                          <div className="text-sm text-muted-foreground">{testimonial.title}</div>
-                        </div>
-                      </div>
-                      <Badge variant="secondary" className="bg-dental-blue-muted text-primary border-dental-blue/20">
-                        {testimonial.results}
-                      </Badge>
-                      <div className="mt-3 flex items-center gap-2">
-                        <Award className="h-4 w-4 text-primary" />
-                        <span className="text-sm text-primary font-medium">DentiPay Verified</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card>
+              <CardContent className="p-8">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <blockquote className="text-lg mb-6">
+                  "DentiPay transformed our practice. We've seen a 40% increase in treatment acceptance 
+                  and patients are happier with the financing process."
+                </blockquote>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-semibold">Dr. Sarah Johnson</div>
+                    <div className="text-sm text-muted-foreground">Cosmetic Dentistry</div>
+                  </div>
+                  <Badge className="bg-primary text-white">
+                    DentiPay Verified
+                  </Badge>
+                </div>
+                <div className="mt-4 text-center">
+                  <div className="text-2xl font-bold text-success">$127K</div>
+                  <div className="text-sm text-muted-foreground">Additional Annual Revenue</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-8">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <blockquote className="text-lg mb-6">
+                  "The AI recommendations are incredibly accurate. Our denial rate dropped from 35% to just 6%. 
+                  It's like having a financing expert on staff."
+                </blockquote>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-semibold">Dr. Michael Chen</div>
+                    <div className="text-sm text-muted-foreground">Periodontics</div>
+                  </div>
+                  <Badge className="bg-primary text-white">
+                    DentiPay Verified
+                  </Badge>
+                </div>
+                <div className="mt-4 text-center">
+                  <div className="text-2xl font-bold text-success">94%</div>
+                  <div className="text-sm text-muted-foreground">Approval Rate</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-8">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <blockquote className="text-lg mb-6">
+                  "Our staff loves how simple it is. Patients get instant decisions and we spend 
+                  less time on paperwork. It's a win-win for everyone."
+                </blockquote>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-semibold">Dr. Lisa Martinez</div>
+                    <div className="text-sm text-muted-foreground">General Practice</div>
+                  </div>
+                  <Badge className="bg-primary text-white">
+                    DentiPay Verified
+                  </Badge>
+                </div>
+                <div className="mt-4 text-center">
+                  <div className="text-2xl font-bold text-success">4.5hrs</div>
+                  <div className="text-sm text-muted-foreground">Daily Time Saved</div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            See DentiPay Intelligence in Your Practice
-          </h2>
-          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Get a customized demo with your practice data, scheduled within 24 hours. 
-            Join the intelligence revolution transforming dental care.
-          </p>
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              See DentiPay Intelligence in Your Practice
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Ready to transform your financing workflow? Get started in three simple steps.
+            </p>
+          </AnimatedText>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="bg-card border-border shadow-soft text-center">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-dental-blue flex items-center justify-center">
-                  <span className="text-2xl font-bold text-primary">1</span>
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
+            <Card className="text-center">
+              <CardContent className="p-8">
+                <div className="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold">1</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-foreground">Schedule Demo</h3>
-                <p className="text-muted-foreground">See DentiPay with your practice data</p>
+                <h3 className="text-xl font-bold mb-4">Schedule Demo</h3>
+                <p className="text-muted-foreground">
+                  Book a personalized demo to see DentiPay in action with your practice data.
+                </p>
               </CardContent>
             </Card>
-            
-            <Card className="bg-card border-border shadow-soft text-center">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-dental-blue flex items-center justify-center">
-                  <span className="text-2xl font-bold text-primary">2</span>
+
+            <Card className="text-center">
+              <CardContent className="p-8">
+                <div className="bg-teal text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold">2</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-foreground">Free Trial</h3>
-                <p className="text-muted-foreground">30-day risk-free implementation</p>
+                <h3 className="text-xl font-bold mb-4">Quick Setup</h3>
+                <p className="text-muted-foreground">
+                  Our team handles integration. Get up and running in under 15 minutes.
+                </p>
               </CardContent>
             </Card>
-            
-            <Card className="bg-card border-border shadow-soft text-center">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-dental-blue flex items-center justify-center">
-                  <span className="text-2xl font-bold text-primary">3</span>
+
+            <Card className="text-center">
+              <CardContent className="p-8">
+                <div className="bg-dental-blue-dark text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold">3</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-foreground">Success Support</h3>
-                <p className="text-muted-foregrounde">Dedicated team ensures your success</p>
+                <h3 className="text-xl font-bold mb-4">Start Approving</h3>
+                <p className="text-muted-foreground">
+                  Begin processing applications with 94% approval rates immediately.
+                </p>
               </CardContent>
             </Card>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="text-lg px-8 py-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant">
-              <Phone className="mr-2 h-5 w-5" />
-              Schedule Your Demo
-            </Button>
-            <Button variant="secondary" size="lg" className="text-lg px-8 py-6 bg-white text-foreground hover:bg-gray-50 shadow-soft">
-              <Zap className="mr-2 h-5 w-5" />
-              Start Free Trial
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-border text-foreground hover:bg-muted shadow-soft">
-              <Download className="mr-2 h-5 w-5" />
-              Download Playbook
-            </Button>
-          </div>
+          <div className="text-center space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="text-lg px-8">
+                Schedule Your Demo
+                <ChevronRight className="h-5 w-5 ml-2" />
+              </Button>
+              <Button size="lg" variant="outline" className="text-lg px-8">
+                Start Free Trial
+              </Button>
+            </div>
 
-          <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-4 w-4 text-primary" />
-              Industry Recognition
-            </div>
-            <div className="flex items-center gap-2">
-              <Star className="h-4 w-4 text-primary" />
-              4.9/5 Provider Rating
-            </div>
-            <div className="flex items-center gap-2">
-              <Shield className="h-4 w-4 text-primary" />
-              Certified Professionals
-            </div>
-            <div className="flex items-center gap-2">
-              <Users className="h-4 w-4 text-primary" />
-              1,200+ Active Providers
+            {/* Trust Badges */}
+            <div className="flex justify-center items-center gap-8 pt-8">
+              <div className="flex items-center gap-2">
+                <Shield className="h-5 w-5 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground">HIPAA Compliant</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Lock className="h-5 w-5 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground">Bank-Level Security</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Award className="h-5 w-5 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground">SOC 2 Certified</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };
