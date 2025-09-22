@@ -110,7 +110,8 @@ const StatsBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(window.scrollY > window.innerHeight);
+      // Show stats bar after scrolling past 80% of the hero section
+      setIsVisible(window.scrollY > window.innerHeight * 0.8);
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -118,7 +119,7 @@ const StatsBar = () => {
   }, []);
 
   return (
-    <div className={`fixed top-20 left-0 right-0 bg-background/95 backdrop-blur-sm border-b transition-transform duration-300 z-40 ${
+    <div className={`fixed top-20 left-0 right-0 bg-background/95 backdrop-blur-sm border-b transition-transform duration-300 z-20 ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     }`}>
       <div className="container mx-auto px-6 py-4">
