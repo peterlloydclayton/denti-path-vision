@@ -9,6 +9,7 @@ import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { Footer } from "@/components/layout/Footer";
 import Index from "./pages/Index";
 import Providers from "./pages/Providers";
+import Providers2 from "./pages/Providers2";
 import Patients from "./pages/Patients";
 import IntelligentFinancing from "./pages/IntelligentFinancing";
 import About from "./pages/About";
@@ -34,6 +35,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/providers" element={<Providers />} />
+              <Route path="/providers-2" element={<Providers2 />} />
               <Route path="/patients" element={<Patients />} />
               <Route path="/intelligent-financing" element={<IntelligentFinancing />} />
               <Route path="/provider-search" element={<ProviderSearch />} />
