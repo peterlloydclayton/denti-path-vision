@@ -4,6 +4,8 @@ import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animatio
 import { Card } from '@/components/ui/card';
 
 export const StatsSection = () => {
+  console.log('StatsSection rendering');
+  
   const stats = [
     { value: 94, suffix: '%', label: 'Approval Accuracy', description: 'Precision in approval decisions' },
     { value: 40, suffix: '%', label: 'Higher Acceptance', description: 'Increase in patient acceptance' },
@@ -12,7 +14,7 @@ export const StatsSection = () => {
   ];
 
   return (
-    <section className="py-32 bg-gradient-to-b from-background to-muted/30 border-b border-dental-blue/10">
+    <section className="py-32 bg-white border-b border-dental-blue/20">
       <div className="container mx-auto px-6">
         <StaggerContainer>
           {/* Section Header */}
@@ -35,7 +37,7 @@ export const StatsSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {stats.map((stat, index) => (
               <StaggerItem key={index}>
-                <Card className="group relative overflow-hidden border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all duration-500 hover:shadow-xl hover:shadow-dental-blue/5">
+                <Card className="group relative overflow-hidden border border-dental-blue/10 bg-white hover:bg-dental-blue/5 transition-all duration-500 hover:shadow-xl hover:shadow-dental-blue/10">
                   <motion.div
                     className="p-8 text-center relative z-10"
                     whileHover={{ y: -2 }}
