@@ -11,6 +11,7 @@ interface VideoSectionProps {
 
 export const VideoSection = ({ imagePosition = 'left', mobileImagePosition = 'top' }: VideoSectionProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [objectPosition, setObjectPosition] = useState('65% center');
 
   useEffect(() => {
@@ -26,7 +27,16 @@ export const VideoSection = ({ imagePosition = 'left', mobileImagePosition = 'to
 
     updateObjectPosition();
     window.addEventListener('resize', updateObjectPosition);
-    return () => window.removeEventListener('resize', updateObjectPosition);
+    
+    // Trigger fade-in animation after component mounts
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+
+    return () => {
+      window.removeEventListener('resize', updateObjectPosition);
+      clearTimeout(timer);
+    };
   }, []);
   
   const handlePlayClick = () => {
@@ -65,7 +75,7 @@ export const VideoSection = ({ imagePosition = 'left', mobileImagePosition = 'to
                     <img 
                       src={networkImage} 
                       alt="DentiPay provider network"
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full object-cover transition-opacity duration-700 ${isLoaded ? 'opacity-100 animate-fade-in' : 'opacity-0'}`}
                       style={{ objectPosition }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-black/40 group-hover:from-primary/30 group-hover:to-black/50 transition-all duration-500" />
