@@ -22,7 +22,7 @@ export const ProviderSearchSection = () => {
         </div>
 
         <AnimatedText className="text-center mb-0">
-          <Button size="lg" variant="outline" className="text-lg px-8">
+          <Button size="lg" variant="outline" className="text-lg px-8 text-white border-white hover:bg-white hover:text-black">
             View All Providers in Your Area
           </Button>
         </AnimatedText>
