@@ -6,24 +6,23 @@ export const VideoSection = () => {
     <section className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Personalized Video For Practitioners</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Intelligence that Drives Approvals</h2>
         </div>
         
         <div className="relative max-w-4xl mx-auto">
-          <div className="aspect-video bg-card rounded-2xl shadow-elegant overflow-hidden group cursor-pointer">
-            <div className="relative h-full bg-muted flex items-center justify-center">
-              <div className="absolute inset-0 bg-black/50"></div>
-              <Button 
-                size="lg" 
-                className="relative z-10 bg-white/20 hover:bg-white/30 border border-white/40 text-white rounded-full p-6 group-hover:scale-110 transition-transform"
-              >
-                <Play className="w-8 h-8" fill="currentColor" />
-              </Button>
-            </div>
+          <div className="aspect-video bg-card rounded-2xl shadow-elegant overflow-hidden">
+            <iframe
+              src="https://www.youtube.com/embed/ADNzL1ZH9Rw"
+              title="Intelligence that Drives Approvals"
+              className="w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
           </div>
           
           <p className="text-center mt-6 text-lg text-muted-foreground">
-            AI-Powered Behavioural Financing - Intelligence that Drives Approvals
+            AI-Powered Behavioural Financing
           </p>
         </div>
       </div>
