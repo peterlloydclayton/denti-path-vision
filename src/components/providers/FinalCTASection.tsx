@@ -1,134 +1,173 @@
+import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Phone, Shield, Lock, TrendingUp, Award } from 'lucide-react';
+import { AnimatedText } from '@/components/ui/animated-text';
+import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 
 export const FinalCTASection = () => {
+  const steps = [
+    { number: 1, title: "Schedule Demo", description: "See DentiPay intelligence in action" },
+    { number: 2, title: "Free Trial", description: "Test with your actual patients" },
+    { number: 3, title: "Success Support", description: "Ongoing training and optimization" }
+  ];
+
+  const features = [
+    "Complete SCOPE & PATH integration",
+    "Echo AI voice assistant", 
+    "Analytics dashboard",
+    "Patient communication tools",
+    "Dedicated success manager",
+    "Staff training program",
+    "Marketing support materials",
+    "No setup or monthly fees"
+  ];
+
+  const securityFeatures = [
+    { icon: Shield, title: "Bank-Level Security" },
+    { icon: Lock, title: "HIPAA Compliant" },
+    { icon: TrendingUp, title: "99.9% Uptime" },
+    { icon: Award, title: "Seamless Integration" }
+  ];
+
   return (
-    <section className="py-24 bg-navy text-white">
+    <section className="py-24 bg-intelligence text-intelligence-foreground">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-8">
             See DentiPay Intelligence in Your Practice
           </h2>
-        </div>
+        </AnimatedText>
 
         {/* Three Steps */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
-          <Card className="bg-white/10 border-white/20 text-white text-center">
-            <CardContent className="p-6">
-              <div className="w-12 h-12 bg-white text-navy rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                1
-              </div>
-              <h3 className="text-xl font-bold mb-2">Schedule Demo</h3>
-              <p className="text-sm opacity-90">See DentiPay intelligence in action</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-white/10 border-white/20 text-white text-center">
-            <CardContent className="p-6">
-              <div className="w-12 h-12 bg-white text-navy rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                2
-              </div>
-              <h3 className="text-xl font-bold mb-2">Free Trial</h3>
-              <p className="text-sm opacity-90">Test with your actual patients</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-white/10 border-white/20 text-white text-center">
-            <CardContent className="p-6">
-              <div className="w-12 h-12 bg-white text-navy rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                3
-              </div>
-              <h3 className="text-xl font-bold mb-2">Success Support</h3>
-              <p className="text-sm opacity-90">Ongoing training and optimization</p>
-            </CardContent>
-          </Card>
-        </div>
+        <StaggerContainer>
+          <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
+            {steps.map((step, index) => (
+              <StaggerItem key={index}>
+                <motion.div
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Card className="bg-intelligence-foreground/10 border-intelligence-foreground/20 text-intelligence-foreground text-center hover:bg-intelligence-foreground/15 transition-all duration-300 hover:shadow-elegant">
+                    <CardContent className="p-6">
+                      <motion.div 
+                        className="w-12 h-12 bg-intelligence-foreground text-intelligence rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {step.number}
+                      </motion.div>
+                      <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                      <p className="text-sm opacity-90">{step.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </div>
+        </StaggerContainer>
 
         {/* Everything You Need */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <h3 className="text-2xl font-bold text-center mb-8">Everything You Need to Succeed</h3>
+        <motion.div 
+          className="max-w-4xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <AnimatedText>
+            <h3 className="text-2xl font-bold text-center mb-8">Everything You Need to Succeed</h3>
+          </AnimatedText>
+          
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Complete SCOPE & PATH integration</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Echo AI voice assistant</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Analytics dashboard</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Patient communication tools</span>
-              </div>
-            </div>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Dedicated success manager</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Staff training program</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Marketing support materials</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>No setup or monthly fees</span>
-              </div>
-            </div>
+            {features.map((feature, index) => (
+              <motion.div 
+                key={index}
+                className="flex items-center gap-3"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ x: 4, scale: 1.02 }}
+              >
+                <CheckCircle className="w-5 h-5 text-success flex-shrink-0" />
+                <span className="hover:text-intelligence-accent transition-colors duration-300">{feature}</span>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Button size="lg" className="bg-white text-navy hover:bg-white/90 px-8">
-            Schedule Your Demo
-          </Button>
-          <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-navy px-8">
-            Start Free Trial
-          </Button>
-          <Button size="lg" variant="ghost" className="text-white hover:bg-white/10 px-8">
-            Download Playbook
-          </Button>
-        </div>
+        <motion.div 
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button size="lg" className="bg-intelligence-foreground text-intelligence hover:bg-intelligence-foreground/90 px-8 shadow-elegant hover:shadow-xl transition-all duration-300">
+              Schedule Your Demo
+            </Button>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button size="lg" variant="outline" className="border-intelligence-foreground text-intelligence-foreground hover:bg-intelligence-foreground hover:text-intelligence px-8 transition-all duration-300">
+              Start Free Trial
+            </Button>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button size="lg" variant="ghost" className="text-intelligence-foreground hover:bg-intelligence-foreground/10 px-8 transition-all duration-300">
+              Download Playbook
+            </Button>
+          </motion.div>
+        </motion.div>
 
         {/* Contact Information */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <Phone className="w-5 h-5" />
-            <span className="text-lg font-semibold">(555) 123-4567</span>
-          </div>
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <motion.div 
+            className="flex items-center justify-center gap-2 mb-2 group"
+            whileHover={{ scale: 1.05 }}
+          >
+            <Phone className="w-5 h-5 group-hover:text-intelligence-accent transition-colors duration-300" />
+            <span className="text-lg font-semibold group-hover:text-intelligence-accent transition-colors duration-300">(555) 123-4567</span>
+          </motion.div>
           <div className="text-sm opacity-90">www.dentipay.com</div>
-        </div>
+        </motion.div>
 
         {/* Security Features */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          <div className="text-center">
-            <Shield className="w-8 h-8 mx-auto mb-2" />
-            <div className="text-sm font-semibold">Bank-Level Security</div>
+        <StaggerContainer>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {securityFeatures.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <StaggerItem key={index}>
+                  <motion.div 
+                    className="text-center group"
+                    whileHover={{ y: -4, scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 5, scale: 1.1 }}
+                      transition={{ duration: 0.2 }}
+                      className="mb-2"
+                    >
+                      <Icon className="w-8 h-8 mx-auto group-hover:text-intelligence-accent transition-colors duration-300" />
+                    </motion.div>
+                    <div className="text-sm font-semibold group-hover:text-intelligence-accent transition-colors duration-300">
+                      {feature.title}
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+              );
+            })}
           </div>
-          <div className="text-center">
-            <Lock className="w-8 h-8 mx-auto mb-2" />
-            <div className="text-sm font-semibold">HIPAA Compliant</div>
-          </div>
-          <div className="text-center">
-            <TrendingUp className="w-8 h-8 mx-auto mb-2" />
-            <div className="text-sm font-semibold">99.9% Uptime</div>
-          </div>
-          <div className="text-center">
-            <Award className="w-8 h-8 mx-auto mb-2" />
-            <div className="text-sm font-semibold">Seamless Integration</div>
-          </div>
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

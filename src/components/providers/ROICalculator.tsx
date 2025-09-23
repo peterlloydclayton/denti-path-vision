@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Calculator } from 'lucide-react';
+import { Calculator, TrendingUp } from 'lucide-react';
+import { AnimatedText } from '@/components/ui/animated-text';
 
 export const ROICalculator = () => {
   const [monthlyPatients, setMonthlyPatients] = useState('50');
@@ -29,83 +31,140 @@ export const ROICalculator = () => {
 
   const roi = calculateROI();
 
+  const inputFields = [
+    { 
+      id: 'patients', 
+      label: 'Monthly Patients', 
+      value: monthlyPatients, 
+      onChange: setMonthlyPatients 
+    },
+    { 
+      id: 'treatment', 
+      label: 'Average Treatment Value ($)', 
+      value: avgTreatment, 
+      onChange: setAvgTreatment 
+    },
+    { 
+      id: 'approval', 
+      label: 'Current Approval Rate (%)', 
+      value: currentApproval, 
+      onChange: setCurrentApproval 
+    }
+  ];
+
+  const results = [
+    {
+      value: roi.monthlyIncrease,
+      label: "Monthly Revenue Increase",
+      color: "success",
+      icon: TrendingUp
+    },
+    {
+      value: roi.annualIncrease,
+      label: "Annual Revenue Increase", 
+      color: "dental-blue-dark",
+      icon: Calculator
+    },
+    {
+      value: roi.approvalImprovement,
+      label: "Approval Rate Improvement",
+      color: "dental-blue",
+      suffix: "%",
+      prefix: "+"
+    }
+  ];
+
   return (
-    <section className="py-24 bg-muted">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Calculate Your ROI Potential</h2>
-        </div>
+          <p className="text-xl text-muted-foreground">See your practice's transformation potential</p>
+        </AnimatedText>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Calculator Inputs */}
-          <Card>
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-6">Practice Information</h3>
-              <div className="space-y-6">
-                <div>
-                  <Label htmlFor="patients">Monthly Patients</Label>
-                  <Input
-                    id="patients"
-                    type="number"
-                    value={monthlyPatients}
-                    onChange={(e) => setMonthlyPatients(e.target.value)}
-                    className="mt-2"
-                  />
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Card className="hover:shadow-elegant transition-all duration-300 border-dental-blue/20">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-dental-blue-dark">Practice Information</h3>
+                <div className="space-y-6">
+                  {inputFields.map((field, index) => (
+                    <motion.div 
+                      key={field.id}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Label htmlFor={field.id} className="font-medium">{field.label}</Label>
+                      <Input
+                        id={field.id}
+                        type="number"
+                        value={field.value}
+                        onChange={(e) => field.onChange(e.target.value)}
+                        className="mt-2 focus:border-dental-blue focus:ring-dental-blue/20 transition-all duration-300"
+                      />
+                    </motion.div>
+                  ))}
                 </div>
-                <div>
-                  <Label htmlFor="treatment">Average Treatment Value ($)</Label>
-                  <Input
-                    id="treatment"
-                    type="number"
-                    value={avgTreatment}
-                    onChange={(e) => setAvgTreatment(e.target.value)}
-                    className="mt-2"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="approval">Current Approval Rate (%)</Label>
-                  <Input
-                    id="approval"
-                    type="number"
-                    value={currentApproval}
-                    onChange={(e) => setCurrentApproval(e.target.value)}
-                    className="mt-2"
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </motion.div>
 
           {/* Results Display */}
-          <Card>
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-6">Projected Outcomes</h3>
-              <div className="space-y-6">
-                <div className="bg-success/10 rounded-lg p-4">
-                  <div className="text-2xl font-bold text-success">
-                    ${roi.monthlyIncrease.toLocaleString()}
-                  </div>
-                  <div className="text-sm text-muted-foreground">Monthly Revenue Increase</div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Card className="hover:shadow-elegant transition-all duration-300 border-dental-blue/20">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-dental-blue-dark">Projected Outcomes</h3>
+                <div className="space-y-6">
+                  {results.map((result, index) => {
+                    const Icon = result.icon;
+                    return (
+                      <motion.div 
+                        key={index}
+                        className={`bg-${result.color}/10 border border-${result.color}/20 rounded-lg p-4 hover:bg-${result.color}/20 transition-all duration-300 group`}
+                        whileHover={{ scale: 1.02, x: 4 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="flex items-center gap-3 mb-2">
+                          {Icon && <Icon className={`w-5 h-5 text-${result.color}`} />}
+                          <div className={`text-2xl font-bold text-${result.color} group-hover:scale-105 transition-transform`}>
+                            {result.prefix || ''}${typeof result.value === 'number' ? result.value.toLocaleString() : result.value}{result.suffix || ''}
+                          </div>
+                        </div>
+                        <div className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                          {result.label}
+                        </div>
+                      </motion.div>
+                    );
+                  })}
                 </div>
-                <div className="bg-navy/10 rounded-lg p-4">
-                  <div className="text-2xl font-bold text-navy">
-                    ${roi.annualIncrease.toLocaleString()}
-                  </div>
-                  <div className="text-sm text-muted-foreground">Annual Revenue Increase</div>
-                </div>
-                <div className="bg-primary/50 rounded-lg p-4">
-                  <div className="text-2xl font-bold text-foreground">
-                    +{roi.approvalImprovement}%
-                  </div>
-                  <div className="text-sm text-muted-foreground">Approval Rate Improvement</div>
-                </div>
-              </div>
-              <Button className="w-full mt-6 bg-navy hover:bg-navy/90" size="lg">
-                <Calculator className="w-5 h-5 mr-2" />
-                Launch Full Calculator
-              </Button>
-            </CardContent>
-          </Card>
+                
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button 
+                    className="w-full mt-6 bg-intelligence hover:bg-intelligence/90 text-intelligence-foreground shadow-elegant hover:shadow-xl transition-all duration-300" 
+                    size="lg"
+                  >
+                    <Calculator className="w-5 h-5 mr-2" />
+                    Launch Full Calculator
+                  </Button>
+                </motion.div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </div>
     </section>
