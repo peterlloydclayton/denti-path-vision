@@ -65,7 +65,7 @@ export const HeroSection = () => {
             <img 
               src={dentistImage}
               alt="Professional dentist providing quality care"
-              className="absolute bottom-0 left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
+              className="absolute bottom-[-15%] left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
             />
           </div>
         </div>
