@@ -54,12 +54,12 @@ export const ProblemSection = () => {
                   >
                     {/* Problem Card */}
                     <Card className="bg-white/10 border-white/20 text-white hover:bg-white/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
-                      <CardContent className="p-8">
+                      <CardContent className="p-10">
                         <div className="flex items-start gap-4">
                           <XCircle className="w-6 h-6 text-destructive mt-1 flex-shrink-0" />
-                          <div>
-                            <h3 className="font-semibold mb-2">{point.title}</h3>
-                            <p className="text-sm opacity-90">{point.description}</p>
+                          <div className="flex-1">
+                            <h3 className="font-semibold mb-3">{point.title}</h3>
+                            <p className="text-sm opacity-90 mb-2">{point.description}</p>
                           </div>
                         </div>
                       </CardContent>
@@ -67,13 +67,13 @@ export const ProblemSection = () => {
 
                     {/* DentiPay Benefit Card - Hidden until hover */}
                     <Card className="absolute inset-0 bg-dental-blue border-dental-blue text-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-green">
-                      <CardContent className="p-8">
+                      <CardContent className="p-10">
                         <div className="flex items-start gap-4">
                           <CheckCircle className="w-6 h-6 text-success mt-1 flex-shrink-0" />
-                          <div>
-                            <div className="text-xs font-medium text-success mb-1">DENTIPAY BENEFIT</div>
-                            <h3 className="font-semibold mb-2">{point.benefit}</h3>
-                            <p className="text-sm opacity-90">{point.benefitDescription}</p>
+                          <div className="flex-1">
+                            <div className="text-xs font-medium text-success mb-2">DENTIPAY BENEFIT</div>
+                            <h3 className="font-semibold mb-3">{point.benefit}</h3>
+                            <p className="text-sm opacity-90 mb-2">{point.benefitDescription}</p>
                           </div>
                         </div>
                       </CardContent>
