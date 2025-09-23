@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { XCircle, CheckCircle } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
+import focusedProfessional from '@/assets/focused-professional.png';
 
 export const ProblemSection = () => {
   const painPoints = [
@@ -33,8 +34,8 @@ export const ProblemSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-900 text-white">
-      <div className="container mx-auto px-6">
+    <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Traditional Financing Wasn't Built for Dental Care
@@ -134,6 +135,21 @@ export const ProblemSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Bottom Right Image */}
+      <motion.div
+        className="absolute bottom-8 right-8 w-48 h-60 opacity-80"
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 0.8, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+      >
+        <img
+          src={focusedProfessional}
+          alt="Focused dental professional"
+          className="w-full h-full object-cover rounded-lg shadow-lg"
+        />
+      </motion.div>
     </section>
   );
 };
