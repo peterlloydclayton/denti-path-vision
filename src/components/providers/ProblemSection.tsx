@@ -54,7 +54,7 @@ export const ProblemSection = () => {
                   >
                     {/* Problem Card */}
                     <Card className="bg-white/10 border-white/20 text-white hover:bg-white/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
-                      <CardContent className="p-10">
+                      <CardContent className="p-12">
                         <div className="flex items-center gap-4">
                           <XCircle className="w-6 h-6 text-destructive flex-shrink-0" />
                           <div className="flex-1">
@@ -67,7 +67,7 @@ export const ProblemSection = () => {
 
                     {/* DentiPay Benefit Card - Hidden until hover */}
                     <Card className="absolute inset-0 bg-dental-blue border-dental-blue text-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-green">
-                      <CardContent className="p-10">
+                      <CardContent className="p-12">
                         <div className="flex items-center gap-4">
                           <CheckCircle className="w-6 h-6 text-success flex-shrink-0" />
                           <div className="flex-1">
