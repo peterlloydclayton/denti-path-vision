@@ -91,7 +91,7 @@ export const ProviderCarousel = () => {
                         )}
                       </div>
                       
-                      <Button className="w-full bg-intelligence hover:bg-intelligence/90">
+                      <Button className="w-full bg-intelligence hover:bg-intelligence/90 text-white">
                         View Profile & Book
                       </Button>
                     </div>
