@@ -68,13 +68,11 @@ export const ProblemSection = () => {
                     {/* DentiPay Benefit Card - Hidden until hover */}
                     <Card className="absolute inset-0 bg-dental-blue border-dental-blue text-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-green">
                       <CardContent className="p-10">
-                        <div className="flex items-start gap-4">
-                          <CheckCircle className="w-6 h-6 text-success mt-1 flex-shrink-0" />
-                          <div className="flex-1">
-                            <div className="text-xs font-medium text-success mb-2">DENTIPAY BENEFIT</div>
-                            <h3 className="font-semibold mb-3">{point.benefit}</h3>
-                            <p className="text-sm opacity-90 mb-2">{point.benefitDescription}</p>
-                          </div>
+                        <div className="flex flex-col items-center text-center h-full justify-center">
+                          <CheckCircle className="w-6 h-6 text-success mb-3" />
+                          <div className="text-xs font-medium text-success mb-2">DENTIPAY BENEFIT</div>
+                          <h3 className="font-semibold mb-3">{point.benefit}</h3>
+                          <p className="text-sm opacity-90 mb-2">{point.benefitDescription}</p>
                         </div>
                       </CardContent>
                     </Card>
