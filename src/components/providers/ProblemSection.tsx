@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { XCircle } from 'lucide-react';
+import { XCircle, CheckCircle } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 
@@ -8,19 +8,27 @@ export const ProblemSection = () => {
   const painPoints = [
     {
       title: "Emergency affordability crisis",
-      description: "Patients face unexpected dental costs without proper financing options"
+      description: "Patients face unexpected dental costs without proper financing options",
+      benefit: "Instant approval available 24/7",
+      benefitDescription: "Get approved within minutes, even during dental emergencies"
     },
     {
       title: "Timeline mismatch", 
-      description: "Traditional approval processes don't align with dental treatment urgency"
+      description: "Traditional approval processes don't align with dental treatment urgency",
+      benefit: "Real-time treatment approval",
+      benefitDescription: "Synchronize financing with treatment schedules for seamless care"
     },
     {
       title: "Low approval rates",
-      description: "Generic underwriting fails to understand dental-specific patient needs"
+      description: "Generic underwriting fails to understand dental-specific patient needs",
+      benefit: "94% approval rate",
+      benefitDescription: "Dental-specialized AI understands treatment value and patient circumstances"
     },
     {
       title: "Generic understanding",
-      description: "Banks don't comprehend the unique value and necessity of dental treatments"
+      description: "Banks don't comprehend the unique value and necessity of dental treatments",
+      benefit: "Dental expertise built-in",
+      benefitDescription: "Native understanding of dental treatment necessity and health impact"
     }
   ];
 
@@ -40,16 +48,32 @@ export const ProblemSection = () => {
               {painPoints.map((point, index) => (
                 <StaggerItem key={index}>
                   <motion.div
+                    className="relative group"
                     whileHover={{ x: 8, scale: 1.02 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Card className="bg-white/10 border-white/20 text-white hover:bg-white/15 transition-all duration-300 hover:shadow-elegant">
+                    {/* Problem Card */}
+                    <Card className="bg-white/10 border-white/20 text-white hover:bg-white/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                           <XCircle className="w-6 h-6 text-destructive mt-1 flex-shrink-0" />
                           <div>
                             <h3 className="font-semibold mb-2">{point.title}</h3>
                             <p className="text-sm opacity-90">{point.description}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* DentiPay Benefit Card - Hidden until hover */}
+                    <Card className="absolute inset-0 bg-dental-blue border-dental-blue text-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-green">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <CheckCircle className="w-6 h-6 text-success mt-1 flex-shrink-0" />
+                          <div>
+                            <div className="text-xs font-medium text-success mb-1">DENTIPAY BENEFIT</div>
+                            <h3 className="font-semibold mb-2">{point.benefit}</h3>
+                            <p className="text-sm opacity-90">{point.benefitDescription}</p>
                           </div>
                         </div>
                       </CardContent>
