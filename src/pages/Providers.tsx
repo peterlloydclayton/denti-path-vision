@@ -104,53 +104,39 @@ const HeroSection = () => {
   );
 };
 
-// Sticky Stats Bar
-const StatsBar = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show stats bar after scrolling past 80% of the hero section
-      setIsVisible(window.scrollY > window.innerHeight * 0.8);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+// Stats Section Component
+const StatsSection = () => {
   return (
-    <div className={`fixed top-20 left-0 right-0 bg-background/95 backdrop-blur-sm border-b transition-transform duration-300 z-20 ${
-      isVisible ? 'translate-y-0' : '-translate-y-full'
-    }`}>
-      <div className="container mx-auto px-6 py-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+    <section className="py-16 bg-background border-b">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
-            <div className="text-2xl font-bold text-navy">
+            <div className="text-4xl md:text-5xl font-bold text-navy mb-2">
               <AnimatedCounter value={94} suffix="%" />
             </div>
-            <div className="text-sm text-muted-foreground">Approval Accuracy</div>
+            <div className="text-muted-foreground">Approval Accuracy</div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-navy">
+            <div className="text-4xl md:text-5xl font-bold text-navy mb-2">
               <AnimatedCounter value={40} suffix="%" />
             </div>
-            <div className="text-sm text-muted-foreground">Higher Acceptance</div>
+            <div className="text-muted-foreground">Higher Acceptance</div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-navy">
+            <div className="text-4xl md:text-5xl font-bold text-navy mb-2">
               <AnimatedCounter value={30} prefix="<" suffix="s" />
             </div>
-            <div className="text-sm text-muted-foreground">Decision Speed</div>
+            <div className="text-muted-foreground">Decision Speed</div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-navy">
+            <div className="text-4xl md:text-5xl font-bold text-navy mb-2">
               <AnimatedCounter value={1200} suffix="+" />
             </div>
-            <div className="text-sm text-muted-foreground">Active Providers</div>
+            <div className="text-muted-foreground">Active Providers</div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -1050,8 +1036,8 @@ const FinalCTASection = () => {
 const Providers = () => {
   return (
     <div className="overflow-x-hidden pt-20">
-      <StatsBar />
       <HeroSection />
+      <StatsSection />
       <VideoSection />
       <ProblemSection />
       <ProblemDeepDive />
