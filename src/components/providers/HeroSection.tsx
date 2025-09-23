@@ -5,7 +5,7 @@ import dentistImage from '@/assets/dentist-male-white-coat.png';
 
 export const HeroSection = () => {
   return (
-    <section className="h-screen relative z-30 overflow-visible">
+    <section className="h-screen relative z-30 overflow-hidden">
       {/* Controlled Background */}
       <div className="absolute inset-0 bg-dental-blue" style={{ height: '100vh' }}></div>
       
