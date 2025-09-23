@@ -47,7 +47,7 @@ export const StatsSection = () => {
                 </div>
                 
                 {/* Glowing underline */}
-                <div className="w-16 h-1 bg-gradient-to-r from-dental-blue to-intelligence mx-auto rounded-full group-hover:w-24 transition-all duration-500" />
+                <div className="w-16 h-1 bg-gradient-to-r from-dental-blue-light to-dental-blue-dark mx-auto rounded-full group-hover:w-24 transition-all duration-500" />
               </div>
               
               {/* Label with enhanced typography */}
