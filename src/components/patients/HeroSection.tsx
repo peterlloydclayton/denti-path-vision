@@ -86,7 +86,7 @@ export const HeroSection = () => {
       {/* Desktop Button */}
       <div className="hidden md:block absolute top-[70%] left-12 z-[120]">
         <Button 
-          className="h-16 text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-12 font-semibold"
+          className="h-16 text-xl bg-black text-white hover:bg-black/80 shadow-elegant px-12 font-semibold"
           onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
         >
           {t('patients.hero.cta')}
@@ -96,7 +96,7 @@ export const HeroSection = () => {
       {/* Mobile Portrait Button - Lower on landscape */}
       <div className="block sm:hidden absolute bottom-[20%] left-6 z-[150] mobile-landscape-button">
         <Button 
-          className="h-12 text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant px-8 font-semibold"
+          className="h-12 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-8 font-semibold"
           onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
         >
           {t('patients.hero.cta')}
