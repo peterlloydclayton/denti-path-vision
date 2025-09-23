@@ -76,7 +76,7 @@ export const HeroSection = () => {
         <AnimatedText>
           <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight mobile-landscape-text">
             The Future of Patient Financing
-            <span className="block text-3xl mt-2 text-intelligence">Built on AI</span>
+            <span className="block text-4xl mt-2 text-intelligence">Built on AI</span>
           </h1>
         </AnimatedText>
       </div>
@@ -104,7 +104,7 @@ export const HeroSection = () => {
       {/* Mobile Portrait Subtitle - Hidden on mobile landscape */}
       <div className="block sm:hidden absolute top-[38%] left-6 z-20 w-1/2 mobile-landscape-subtitle">
         <AnimatedText delay={0.2}>
-          <p className="text-lg text-foreground/80 font-medium leading-relaxed text-left">
+          <p className="text-base text-foreground/80 font-medium leading-relaxed text-left">
             AI-powered financing that understands dental care.
           </p>
         </AnimatedText>
