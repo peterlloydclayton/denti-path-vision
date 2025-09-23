@@ -102,7 +102,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Mobile Portrait Subtitle - Hidden on mobile landscape */}
-      <div className="block sm:hidden absolute top-[34%] left-6 z-20 w-1/2 mobile-landscape-subtitle">
+      <div className="block sm:hidden absolute top-[38%] left-6 z-20 w-1/2 mobile-landscape-subtitle">
         <AnimatedText delay={0.2}>
           <p className="text-lg text-foreground/80 font-medium leading-relaxed text-left">
             AI-powered financing that understands dental care.
