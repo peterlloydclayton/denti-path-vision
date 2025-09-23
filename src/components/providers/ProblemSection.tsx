@@ -25,7 +25,7 @@ export const ProblemSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-intelligence text-intelligence-foreground">
+    <section className="py-24 bg-slate-900 text-white">
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -43,7 +43,7 @@ export const ProblemSection = () => {
                     whileHover={{ x: 8, scale: 1.02 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Card className="bg-intelligence-foreground/10 border-intelligence-foreground/20 text-intelligence-foreground hover:bg-intelligence-foreground/15 transition-all duration-300 hover:shadow-elegant">
+                    <Card className="bg-white/10 border-white/20 text-white hover:bg-white/15 transition-all duration-300 hover:shadow-elegant">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                           <XCircle className="w-6 h-6 text-destructive mt-1 flex-shrink-0" />
@@ -62,33 +62,33 @@ export const ProblemSection = () => {
 
           {/* Comparison Table */}
           <AnimatedText delay={0.3}>
-            <motion.div 
-              className="bg-intelligence-foreground/10 border border-intelligence-foreground/20 rounded-xl p-6 hover:bg-intelligence-foreground/15 transition-all duration-300"
-              whileHover={{ scale: 1.02 }}
-            >
+             <motion.div 
+               className="bg-white/10 border border-white/20 rounded-xl p-6 hover:bg-white/15 transition-all duration-300"
+               whileHover={{ scale: 1.02 }}
+             >
               <h3 className="text-2xl font-bold mb-6 text-center">Financial Care Gap</h3>
               <div className="space-y-4">
-                <motion.div 
-                  className="flex justify-between items-center py-3 border-b border-intelligence-foreground/20"
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.2 }}
-                >
+                 <motion.div 
+                   className="flex justify-between items-center py-3 border-b border-white/20"
+                   whileHover={{ x: 4 }}
+                   transition={{ duration: 0.2 }}
+                 >
                   <span>Traditional Banking</span>
                   <span className="text-destructive font-semibold">20-40% Approval</span>
                 </motion.div>
-                <motion.div 
-                  className="flex justify-between items-center py-3 border-b border-intelligence-foreground/20"
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.2 }}
-                >
+                 <motion.div 
+                   className="flex justify-between items-center py-3 border-b border-white/20"
+                   whileHover={{ x: 4 }}
+                   transition={{ duration: 0.2 }}
+                 >
                   <span>Generic Financing</span>
                   <span className="text-destructive font-semibold">45-60% Approval</span>
                 </motion.div>
-                <motion.div 
-                  className="flex justify-between items-center py-3 border-b border-intelligence-foreground/20"
-                  whileHover={{ x: 4, scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                >
+                 <motion.div 
+                   className="flex justify-between items-center py-3 border-b border-white/20"
+                   whileHover={{ x: 4, scale: 1.05 }}
+                   transition={{ duration: 0.2 }}
+                 >
                   <span className="font-semibold">DentiPay Intelligence</span>
                   <span className="text-success font-bold text-lg">94% Approval</span>
                 </motion.div>
