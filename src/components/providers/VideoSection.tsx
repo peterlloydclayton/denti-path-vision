@@ -2,7 +2,7 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import dentistImage from '@/assets/dentist-male-white-coat.png';
+import networkImage from '@/assets/dentipay-network-effect-crowd.png';
 
 interface VideoSectionProps {
   imagePosition?: 'left' | 'right';
@@ -63,8 +63,8 @@ export const VideoSection = ({ imagePosition = 'left', mobileImagePosition = 'to
                     onClick={handlePlayClick}
                   >
                     <img 
-                      src={dentistImage} 
-                      alt="Dental practitioner using DentiPay"
+                      src={networkImage} 
+                      alt="DentiPay provider network"
                       className="w-full h-full object-cover"
                       style={{ objectPosition }}
                     />
