@@ -13,7 +13,7 @@ import { FinalCTASection } from '@/components/providers/FinalCTASection';
 
 const Providers = () => {
   return (
-    <div className="overflow-x-hidden pt-20">
+    <div className="overflow-x-hidden">
       <HeroSection />
       <StatsSection />
       <VideoSection />

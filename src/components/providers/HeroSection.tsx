@@ -4,7 +4,7 @@ import { AnimatedText } from '@/components/ui/animated-text';
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen bg-dental-blue text-foreground overflow-hidden">
+    <section className="relative h-screen bg-dental-blue text-foreground overflow-hidden">
       {/* Abstract AI Pattern Background */}
       <div className="absolute inset-0 opacity-15">
         <motion.div 
@@ -29,7 +29,7 @@ export const HeroSection = () => {
         />
       </div>
 
-      <div className="relative container mx-auto px-6 pt-32 pb-20">
+      <div className="relative container mx-auto px-6 pt-20 pb-20 h-full flex items-center">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedText>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
