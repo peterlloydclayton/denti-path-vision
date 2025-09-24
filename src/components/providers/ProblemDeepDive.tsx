@@ -173,28 +173,28 @@ export const ProblemDeepDive = () => {
                         </div>
                         
                         {/* Text Content Side */}
-                        <div className={`flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-green-50/50 via-transparent to-green-100/30 ${
-                          section.mobileImagePosition === 'bottom' ? 'order-1' : 'order-2'
-                        } ${
-                          section.imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2'
-                        }`}>
-                          <div>
-                            <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-green-800">DentiPay ANSWER</h4>
-                            <div className="flex items-start gap-3 lg:gap-4">
-                              <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-green-700 mt-0.5 flex-shrink-0" />
-                              <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
-                            </div>
-                          </div>
-                        </div>
+                         <div className={`flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-success/10 via-transparent to-success/20 ${
+                           section.mobileImagePosition === 'bottom' ? 'order-1' : 'order-2'
+                         } ${
+                           section.imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2'
+                         }`}>
+                           <div>
+                             <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-success">DentiPay ANSWER</h4>
+                             <div className="flex items-start gap-3 lg:gap-4">
+                               <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-success mt-0.5 flex-shrink-0" />
+                               <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
+                             </div>
+                           </div>
+                         </div>
                       </div>
                     ) : (
-                      <div className="p-6 rounded-xl">
-                        <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-green-800">DentiPay ANSWER</h4>
-                        <div className="flex items-start gap-3 lg:gap-4">
-                          <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-green-700 mt-0.5 flex-shrink-0" />
-                          <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
-                        </div>
-                      </div>
+                       <div className="p-6 rounded-xl">
+                         <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-success">DentiPay ANSWER</h4>
+                         <div className="flex items-start gap-3 lg:gap-4">
+                           <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-success mt-0.5 flex-shrink-0" />
+                           <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
+                         </div>
+                       </div>
                     )}
                   </CardContent>
                 </Card>
