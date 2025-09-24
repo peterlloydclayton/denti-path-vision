@@ -15,29 +15,29 @@ export const TrinitySection = () => {
   const trinityItems = [
     {
       icon: Cpu,
-      title: "DentiPay (The Brand Layer)",
-      subtitle: "The trusted face for dentistry finance",
+      title: "DentiPay",
+      subtitle: "Brand Layer",
       color: "primary",
       borderColor: "primary/30",
       features: [
-        { label: "Market Leverage:", desc: "A recognizable, unified financial brand increases patient trust and accelerates treatment acceptance." },
-        { label: "Network Effect:", desc: "Every provider on DentiPay strengthens brand equity, creating shared patient familiarity across practices." },
-        { label: "Speed to Adoption:", desc: "Brand credibility reduces patient hesitation and shortens decision cycles, converting more cases faster." }
+        "Trusted dental financing brand",
+        "Provider network leverage", 
+        "Patient confidence builder"
       ],
-      quote: "DentiPay isn't just another payment option—it's the financial face of modern dental care."
+      quote: "The brand patients trust for dental financing"
     },
     {
       icon: Globe,
-      title: "PATH (The Portal)",
-      subtitle: "The Patient Acceptance Treatment Hub", 
+      title: "PATH",
+      subtitle: "Patient Portal", 
       color: "secondary",
       borderColor: "secondary/50",
       features: [
-        { label: "Frictionless Intake:", desc: "A 2-minute application that removes awkward financial conversations and empowers patients to say 'yes' to treatment." },
-        { label: "Smart, Instant Decisions:", desc: "Real-time pre-approvals with clear terms—no uncertainty, no waiting, no embarrassment." },
-        { label: "Higher Case Acceptance:", desc: "Boost approval rates to 80% (vs. 45% industry average), unlocking larger treatment plans and increased revenue." }
+        "94% approval accuracy",
+        "30-second decisions",
+        "Seamless integration"
       ],
-      quote: "PATH eliminates the friction points that historically derail treatment acceptance, creating a direct route from diagnosis to treatment."
+      quote: "Instant financing decisions that work"
     },
     {
       icon: Brain,
