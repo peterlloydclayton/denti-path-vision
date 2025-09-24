@@ -22,7 +22,6 @@ const Providers = () => {
       <ProblemDeepDive />
       <TrinitySection />
       <EchoProviderSection />
-      <IntelligenceSection />
       <WorkflowComparison />
       <PerformanceMetrics />
       <ROICalculator />
