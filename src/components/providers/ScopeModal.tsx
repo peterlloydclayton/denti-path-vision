@@ -95,7 +95,7 @@ export const ScopeModal = ({ isOpen, onClose }: ScopeModalProps) => {
           
           {/* Modal */}
           <motion.div
-            className="relative w-full max-w-5xl mx-4 md:mx-6 bg-gradient-to-br from-white to-gray-50/30 rounded-3xl shadow-2xl max-h-[90vh] overflow-hidden border border-gray-100"
+            className="relative w-full max-w-4xl mx-4 md:mx-6 bg-white rounded-2xl shadow-2xl max-h-[90vh] overflow-hidden"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
@@ -123,13 +123,10 @@ export const ScopeModal = ({ isOpen, onClose }: ScopeModalProps) => {
             </button>
 
             {/* Content */}
-            <div className="p-12 md:p-16">
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-dental-blue-dark rounded-2xl mb-6">
-                  <span className="text-2xl font-bold text-white">S</span>
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-dental-blue-dark mb-4">SCOPE</h2>
-                <p className="text-xl text-gray-600">Intelligence Engine Excellence</p>
+            <div className="p-8 md:p-12">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-dental-blue-dark mb-2">SCOPE</h2>
+                <p className="text-lg text-muted-foreground">Intelligence Engine Excellence</p>
               </div>
 
               <AnimatePresence mode="wait">
@@ -141,40 +138,34 @@ export const ScopeModal = ({ isOpen, onClose }: ScopeModalProps) => {
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 mb-8">
-                    <div className="mb-8">
-                      <h3 className="text-3xl font-bold mb-4 text-dental-blue-dark leading-tight">
-                        {scopeCards[currentCard].title}
-                      </h3>
-                      <p className="text-xl text-gray-600 leading-relaxed">
-                        {scopeCards[currentCard].subtitle}
-                      </p>
-                    </div>
-
-                    <ul className="space-y-5 text-left max-w-3xl mx-auto">
-                      {scopeCards[currentCard].points.map((point, index) => (
-                        <li key={index} className="flex items-start gap-4">
-                          <div className="w-6 h-6 rounded-full bg-gradient-to-r from-dental-blue-dark to-dental-blue-light flex items-center justify-center mt-0.5 flex-shrink-0">
-                            <span className="text-white text-xs font-bold">{index + 1}</span>
-                          </div>
-                          <span className="text-gray-700 text-lg leading-relaxed">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold mb-2 text-dental-blue-dark">
+                      {scopeCards[currentCard].title}
+                    </h3>
+                    <p className="text-lg text-muted-foreground mb-6">
+                      {scopeCards[currentCard].subtitle}
+                    </p>
                   </div>
+
+                  <ul className="space-y-3 text-left max-w-2xl mx-auto">
+                    {scopeCards[currentCard].points.map((point, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               </AnimatePresence>
 
               {/* Dots indicator */}
-              <div className="flex justify-center space-x-3 mt-8">
+              <div className="flex justify-center space-x-2 mt-8">
                 {scopeCards.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToCard(index)}
-                    className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                      index === currentCard 
-                        ? 'bg-dental-blue-dark scale-125' 
-                        : 'bg-gray-300 hover:bg-gray-400'
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      index === currentCard ? 'bg-primary' : 'bg-gray-300'
                     }`}
                   />
                 ))}
