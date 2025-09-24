@@ -228,7 +228,7 @@ export const EchoProviderSection = () => {
           </motion.div>
           <AnimatedText className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Intelligence That Amplifies Your Practice
+              Meet Echo, Your AI Practice Assistant
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our proprietary voice-enabled AI specializes in healthcare financing 
