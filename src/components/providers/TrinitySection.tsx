@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Zap, Globe, Brain } from 'lucide-react';
+import { Cpu, Globe, Brain } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 
 export const TrinitySection = () => {
   const trinityItems = [
     {
-      icon: Brain,
+      icon: Cpu,
       title: "DentiPay",
       subtitle: "Brand Layer",
       color: "dental-blue-dark",
