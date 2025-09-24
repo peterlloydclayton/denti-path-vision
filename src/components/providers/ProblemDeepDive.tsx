@@ -3,6 +3,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { ChevronDown, ChevronRight, CheckCircle } from 'lucide-react';
 
+// Fixed XCircle reference issue
+
 export const ProblemDeepDive = () => {
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [expandedIssues, setExpandedIssues] = useState<Record<string, boolean>>({});
