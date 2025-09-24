@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { ChevronDown, ChevronRight, CheckCircle } from 'lucide-react';
-
-// Fixed XCircle reference issue
+import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
+import chartImprovingImage from '@/assets/chart-improving.jpg';
 
 export const ProblemDeepDive = () => {
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -28,7 +28,10 @@ export const ProblemDeepDive = () => {
         'Providers Losing Revenue: Practices lose $200K+ annually from failed financing',
         'Banks Profit: Financial institutions profit regardless of patient outcomes'
       ],
-      answer: 'Intelligence Revolution: DentiPay\'s AI understands dental care value, not just credit scores'
+      answer: 'Intelligence Revolution: DentiPay\'s AI understands dental care value, not just credit scores',
+      image: chartImprovingImage,
+      imagePosition: 'right' as const,
+      mobileImagePosition: 'bottom' as const
     },
     {
       id: 'stakes',
@@ -41,7 +44,10 @@ export const ProblemDeepDive = () => {
         '3. Strained Relationships: Provider-patient trust erodes with financing failures',
         '4. Internal Risk: Practices absorb financial risk without proper tools'
       ],
-      answer: '80% Approval • 40% Higher Acceptance • $265K Average Revenue Increase'
+      answer: '80% Approval • 40% Higher Acceptance • $265K Average Revenue Increase',
+      image: approvalMobileImage,
+      imagePosition: 'left' as const,
+      mobileImagePosition: 'top' as const
     },
     {
       id: 'price',
@@ -108,10 +114,10 @@ export const ProblemDeepDive = () => {
               </CollapsibleTrigger>
 
               <CollapsibleContent className="mt-4">
-                <Card className="shadow-elegant">
-                  <CardContent className="p-6">
+                <Card className="shadow-elegant bg-card/80 backdrop-blur-sm">
+                  <CardContent className="p-0">
                     {/* Issues Section */}
-                    <div className="mb-8">
+                    <div className="p-6">
                       <h4 className="text-lg font-semibold mb-6">ISSUES</h4>
                       <div className="space-y-4">
                         {section.issues.map((issue, index) => {
@@ -143,16 +149,49 @@ export const ProblemDeepDive = () => {
                     </div>
 
                     {/* Separator */}
-                    <div className="border-t border-border my-6"></div>
+                    <div className="border-t border-border"></div>
 
                     {/* DentiPay Answer */}
-                    <div>
-                      <h4 className="text-lg font-semibold mb-4 text-green-700">DentiPay ANSWER</h4>
-                      <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm font-medium">{section.answer}</span>
+                    {section.image ? (
+                      <div className="grid lg:grid-cols-2 min-h-[400px]">
+                        {/* Image Side */}
+                        <div className={`relative ${
+                          section.mobileImagePosition === 'top' ? 'order-1' : 'order-2'
+                        } ${
+                          section.imagePosition === 'right' ? 'lg:order-2' : 'lg:order-1'
+                        }`}>
+                          <img 
+                            src={section.image} 
+                            alt="DentiPay Solution"
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 via-transparent to-black/20" />
+                        </div>
+                        
+                        {/* Text Content Side */}
+                        <div className={`flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-green-50/50 via-transparent to-green-100/30 ${
+                          section.mobileImagePosition === 'top' ? 'order-2' : 'order-1'
+                        } ${
+                          section.imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2'
+                        }`}>
+                          <div>
+                            <h4 className="text-lg font-semibold mb-4 text-green-800">DentiPay ANSWER</h4>
+                            <div className="flex items-start gap-3">
+                              <CheckCircle className="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" />
+                              <span className="text-base font-medium leading-relaxed">{section.answer}</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="p-6">
+                        <h4 className="text-lg font-semibold mb-4 text-green-800">DentiPay ANSWER</h4>
+                        <div className="flex items-start gap-3">
+                          <CheckCircle className="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" />
+                          <span className="text-base font-medium leading-relaxed">{section.answer}</span>
+                        </div>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </CollapsibleContent>
