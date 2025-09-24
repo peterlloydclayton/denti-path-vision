@@ -34,7 +34,7 @@ export const ProblemSection = () => {
   ];
 
   return (
-    <section className="py-24 pb-72 md:pb-24 bg-dental-blue-darker text-white relative">
+    <section className="py-24 pb-72 md:pb-24 bg-dental-blue-darker text-white relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -138,7 +138,7 @@ export const ProblemSection = () => {
 
       {/* Bottom Right Image */}
       <motion.div
-        className="absolute bottom-0 right-0 w-48 h-60 md:w-96 md:h-120 opacity-80"
+        className="absolute bottom-0 right-0 w-48 h-60 opacity-80"
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 0.8, scale: 1 }}
         viewport={{ once: true }}
