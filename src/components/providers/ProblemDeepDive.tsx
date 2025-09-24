@@ -9,7 +9,8 @@ export const ProblemDeepDive = () => {
   const sections = [
     {
       id: 'trap',
-      title: 'The Trap: A System Built for Banks',
+      title: 'The Trap',
+      subtitle: 'A System Built for Banks',
       teaser: 'Traditional financing systems prioritize bank profits over patient care',
       issues: [
         'Patients Rejected: 60-80% denial rates leave patients without care options',
@@ -20,7 +21,8 @@ export const ProblemDeepDive = () => {
     },
     {
       id: 'stakes',
-      title: 'The Stakes: When Dentistry Loses',
+      title: 'The Stakes',
+      subtitle: 'When Dentistry Loses',
       teaser: 'The cost of inadequate financing extends beyond individual practices',
       issues: [
         '1. No Underwriting Experience: Banks lack dental-specific risk assessment',
@@ -32,7 +34,8 @@ export const ProblemDeepDive = () => {
     },
     {
       id: 'price',
-      title: 'The Price: Paid for Guesswork',
+      title: 'The Price',
+      subtitle: 'Paid for Guesswork',
       teaser: 'Traditional financing guesswork costs practices and patients dearly',
       issues: [
         'Lost Treatment Opportunities: Delayed or denied care affects patient health',
@@ -66,7 +69,8 @@ export const ProblemDeepDive = () => {
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between">
                         <div>
-                          <h3 className="text-xl font-bold mb-2">{section.title}</h3>
+                          <h3 className="text-xl font-bold mb-1">{section.title}</h3>
+                          <h4 className="text-lg font-medium text-muted-foreground mb-2">{section.subtitle}</h4>
                           <p className="text-muted-foreground">{section.teaser}</p>
                         </div>
                         <ChevronDown className={`w-6 h-6 transition-transform ${
@@ -80,7 +84,8 @@ export const ProblemDeepDive = () => {
                   <div className="md:hidden p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="text-xl font-bold mb-2">{section.title}</h3>
+                        <h3 className="text-xl font-bold mb-1">{section.title}</h3>
+                        <h4 className="text-lg font-medium text-muted-foreground mb-2">{section.subtitle}</h4>
                         <p className="text-muted-foreground">{section.teaser}</p>
                       </div>
                       <ChevronDown className={`w-6 h-6 transition-transform ${
