@@ -71,7 +71,7 @@ export const ProblemSection = () => {
                       <div className="flex items-center gap-4">
                         <CheckCircle className="w-6 h-6 text-success flex-shrink-0" />
                         <div className="flex-1">
-                          <div className="text-xs font-medium text-success mb-2">DENTIPAY BENEFIT</div>
+                          <div className="text-xs font-medium text-dental-blue-darker mb-2">DENTIPAY BENEFIT</div>
                           <h3 className="font-semibold mb-3">{point.benefit}</h3>
                           <p className="text-sm opacity-90 mb-2">{point.benefitDescription}</p>
                         </div>
@@ -123,7 +123,7 @@ export const ProblemSection = () => {
                   <CardContent className="p-12">
                     <div className="flex items-center justify-center h-full">
                       <div className="text-center">
-                        <div className="text-xs font-medium text-success mb-2">DENTIPAY SOLUTION</div>
+                        <div className="text-xs font-medium text-dental-blue-darker mb-2">DENTIPAY SOLUTION</div>
                         <h3 className="text-3xl font-bold mb-3">90% Approvals</h3>
                         <p className="text-sm opacity-90">Specialized dental financing that understands your patients' needs</p>
                       </div>
