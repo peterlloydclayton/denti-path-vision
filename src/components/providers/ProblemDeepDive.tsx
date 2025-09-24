@@ -77,15 +77,15 @@ export const ProblemDeepDive = () => {
               </CollapsibleTrigger>
 
               <CollapsibleContent className="mt-4">
-                <Card className="border-l-4 border-l-navy">
+                <Card className="border-l-4 border-l-dental-blue">
                   <CardContent className="p-6">
                     {/* Issues Section */}
                     <div className="mb-8">
-                      <h4 className="text-lg font-semibold mb-4 text-red-600">Issues</h4>
+                      <h4 className="text-lg font-semibold mb-4 text-dental-peach">Issues</h4>
                       <div className="space-y-3">
                         {section.issues.map((issue, index) => (
                           <div key={index} className="flex items-start gap-3">
-                            <XCircle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                            <XCircle className="w-5 h-5 text-dental-peach mt-0.5 flex-shrink-0" />
                             <span className="text-sm">{issue}</span>
                           </div>
                         ))}
@@ -97,9 +97,9 @@ export const ProblemDeepDive = () => {
 
                     {/* DentiPay Answer */}
                     <div>
-                      <h4 className="text-lg font-semibold mb-4 text-green-600">DentiPay Answer</h4>
+                      <h4 className="text-lg font-semibold mb-4 text-dental-green">DentiPay Answer</h4>
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
                         <span className="text-sm font-medium">{section.answer}</span>
                       </div>
                     </div>
