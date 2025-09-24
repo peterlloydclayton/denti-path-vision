@@ -4,6 +4,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { ChevronDown, ChevronRight, CheckCircle } from 'lucide-react';
 import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
 import chartImprovingImage from '@/assets/chart-improving.jpg';
+import dentistOperatingImage from '@/assets/dentist-operating-on-patient.jpg';
 
 export const ProblemDeepDive = () => {
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -29,7 +30,7 @@ export const ProblemDeepDive = () => {
         'Banks Profit: Financial institutions profit regardless of patient outcomes'
       ],
       answer: 'Intelligence Revolution: DentiPay\'s AI understands dental care value, not just credit scores',
-      image: chartImprovingImage,
+      image: dentistOperatingImage,
       imagePosition: 'right' as const,
       mobileImagePosition: 'bottom' as const
     },
@@ -60,7 +61,10 @@ export const ProblemDeepDive = () => {
         'Competitive Disadvantage: Practices without financing solutions lose patients',
         'Revenue Volatility: Unpredictable financing success impacts cash flow'
       ],
-      answer: 'Guesswork Declines. SCOPE Approves. 30+ data points create intelligent decisions'
+      answer: 'Guesswork Declines. SCOPE Approves. 30+ data points create intelligent decisions',
+      image: chartImprovingImage,
+      imagePosition: 'right' as const,
+      mobileImagePosition: 'bottom' as const
     }
   ];
 
