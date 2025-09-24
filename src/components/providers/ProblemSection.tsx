@@ -34,7 +34,7 @@ export const ProblemSection = () => {
   ];
 
   return (
-    <section className="py-24 pb-72 md:pb-24 bg-dental-blue-darker text-white relative overflow-hidden">
+    <section className="py-24 pb-72 md:pb-24 bg-dental-blue-darker text-white relative">
       <div className="container mx-auto px-6 relative z-10">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
