@@ -108,25 +108,11 @@ export const ScopeModal = ({ isOpen, onClose }: ScopeModalProps) => {
               <X className="w-5 h-5" />
             </button>
 
-            {/* Navigation tabs */}
-            <button
-              onClick={prevCard}
-              className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-dental-blue-dark text-white p-3 rounded-r-xl shadow-lg hover:bg-dental-blue-dark/90 transition-colors"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={nextCard}
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-dental-blue-dark text-white p-3 rounded-l-xl shadow-lg hover:bg-dental-blue-dark/90 transition-colors"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
 
             {/* Content */}
             <div className="p-8 md:p-12">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-dental-blue-dark mb-2">SCOPE</h2>
-                <p className="text-lg text-muted-foreground">Intelligence Engine Excellence</p>
+              <div className="text-left mb-8">
+                <h2 className="text-xl font-bold text-black">SCOPE</h2>
               </div>
 
               <AnimatePresence mode="wait">
@@ -158,17 +144,33 @@ export const ScopeModal = ({ isOpen, onClose }: ScopeModalProps) => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Dots indicator */}
-              <div className="flex justify-center space-x-2 mt-8">
-                {scopeCards.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToCard(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      index === currentCard ? 'bg-primary' : 'bg-gray-300'
-                    }`}
-                  />
-                ))}
+              {/* Navigation with dots */}
+              <div className="flex justify-center items-center space-x-4 mt-8">
+                <button
+                  onClick={prevCard}
+                  className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                >
+                  <ChevronLeft className="w-5 h-5 text-gray-600" />
+                </button>
+                
+                <div className="flex space-x-2">
+                  {scopeCards.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToCard(index)}
+                      className={`w-3 h-3 rounded-full transition-colors ${
+                        index === currentCard ? 'bg-primary' : 'bg-gray-300'
+                      }`}
+                    />
+                  ))}
+                </div>
+                
+                <button
+                  onClick={nextCard}
+                  className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                >
+                  <ChevronRight className="w-5 h-5 text-gray-600" />
+                </button>
               </div>
             </div>
           </motion.div>
