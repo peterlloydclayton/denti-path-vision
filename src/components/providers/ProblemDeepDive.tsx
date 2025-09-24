@@ -157,7 +157,7 @@ export const ProblemDeepDive = () => {
 
                     {/* DentiPay Answer */}
                     {section.image ? (
-                      <div className="grid lg:grid-cols-[2fr_1fr] min-h-[400px] rounded-b-xl overflow-hidden">
+                      <div className="grid lg:grid-cols-[3fr_2fr] min-h-[400px] rounded-b-xl overflow-hidden">
                         {/* Image Side */}
                         <div className={`relative ${
                           section.mobileImagePosition === 'bottom' ? 'order-2' : 'order-1'
