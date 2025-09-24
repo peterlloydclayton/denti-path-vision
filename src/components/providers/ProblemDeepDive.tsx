@@ -78,12 +78,12 @@ export const ProblemDeepDive = () => {
         </div>
 
         <div className="max-w-4xl mx-auto space-y-6">
-          {sections.map((section) => (
-            <Collapsible
-              key={section.id}
-              open={openSection === section.id}
-              onOpenChange={() => setOpenSection(openSection === section.id ? null : section.id)}
-            >
+          {sections.map((section, index) => (
+            <div key={section.id}>
+              <Collapsible
+                open={openSection === section.id}
+                onOpenChange={() => setOpenSection(openSection === section.id ? null : section.id)}
+              >
               <CollapsibleTrigger asChild>
                 <div className="cursor-pointer md:hover:shadow-elegant transition-shadow">
                   <Card className="hidden md:block">
@@ -200,6 +200,12 @@ export const ProblemDeepDive = () => {
                 </Card>
               </CollapsibleContent>
             </Collapsible>
+            
+            {/* Add separator between sections, but not after the last one */}
+            {index < sections.length - 1 && (
+              <hr className="my-8 border-t border-border/50" />
+            )}
+          </div>
           ))}
         </div>
       </div>
