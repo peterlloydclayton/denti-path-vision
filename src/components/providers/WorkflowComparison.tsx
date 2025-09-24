@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { XCircle, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const WorkflowComparison = () => {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   
   const traditionalSteps = [
     'Patient inquiry about financing',
@@ -28,6 +30,25 @@ export const WorkflowComparison = () => {
   ];
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
     const interval = setInterval(() => {
       setFlippedCards(prev => {
         const nextIndex = prev.length;
@@ -39,10 +60,10 @@ export const WorkflowComparison = () => {
     }, 1500);
 
     return () => clearInterval(interval);
-  }, [traditionalSteps.length]);
+  }, [traditionalSteps.length, isVisible]);
 
   return (
-    <section className="py-24 bg-background">
+    <section ref={sectionRef} className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
