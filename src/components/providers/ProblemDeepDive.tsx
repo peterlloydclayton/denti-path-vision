@@ -90,7 +90,7 @@ export const ProblemDeepDive = () => {
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between">
                         <div>
-                          <h3 className="text-xl font-bold mb-1">{section.title}</h3>
+                          <h3 className="text-2xl font-bold mb-1 uppercase">{section.title}</h3>
                           <h4 className="text-lg font-medium text-muted-foreground mb-2">{section.subtitle}</h4>
                           <p className="text-muted-foreground">{section.teaser}</p>
                         </div>
@@ -105,7 +105,7 @@ export const ProblemDeepDive = () => {
                   <div className="md:hidden p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="text-xl font-bold mb-1">{section.title}</h3>
+                        <h3 className="text-2xl font-bold mb-1 uppercase">{section.title}</h3>
                         <h4 className="text-lg font-medium text-muted-foreground mb-2">{section.subtitle}</h4>
                         <p className="text-muted-foreground">{section.teaser}</p>
                       </div>
