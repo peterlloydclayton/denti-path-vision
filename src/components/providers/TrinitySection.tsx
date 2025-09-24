@@ -1,10 +1,17 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Cpu, Globe, Brain } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
+import { PathModal } from './PathModal';
+import { ScopeModal } from './ScopeModal';
 
 export const TrinitySection = () => {
+  const [isPathModalOpen, setIsPathModalOpen] = useState(false);
+  const [isScopeModalOpen, setIsScopeModalOpen] = useState(false);
+
   const trinityItems = [
     {
       icon: Cpu,
@@ -60,21 +67,6 @@ export const TrinitySection = () => {
 
         <StaggerContainer>
           <div className="grid md:grid-cols-3 gap-8 relative">
-            {/* Animated Connecting Lines */}
-            <motion.div 
-              className="hidden md:block absolute top-1/2 left-1/3 w-1/3 h-0.5 bg-dental-blue origin-left"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              viewport={{ once: true }}
-            />
-            <motion.div 
-              className="hidden md:block absolute top-1/2 right-1/3 w-1/3 h-0.5 bg-dental-blue origin-right"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              viewport={{ once: true }}
-            />
 
             {trinityItems.map((item, index) => {
               const Icon = item.icon;
@@ -118,11 +110,25 @@ export const TrinitySection = () => {
                         </div>
                         
                         <motion.blockquote 
-                          className="text-sm italic text-muted-foreground pl-4 group-hover:border-l-8 transition-all duration-300 border-l-4 border-primary"
+                          className="text-sm italic text-muted-foreground pl-4 group-hover:border-l-8 transition-all duration-300 border-l-4 border-primary mb-6"
                           whileHover={{ x: 4 }}
                         >
                           "{item.quote}"
                         </motion.blockquote>
+
+                        {/* Learn More button for PATH and SCOPE */}
+                        {(index === 1 || index === 2) && (
+                          <Button
+                            onClick={() => {
+                              if (index === 1) setIsPathModalOpen(true);
+                              if (index === 2) setIsScopeModalOpen(true);
+                            }}
+                            variant="outline"
+                            className="mt-auto"
+                          >
+                            Learn More
+                          </Button>
+                        )}
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -131,6 +137,10 @@ export const TrinitySection = () => {
             })}
           </div>
         </StaggerContainer>
+
+        {/* Modals */}
+        <PathModal isOpen={isPathModalOpen} onClose={() => setIsPathModalOpen(false)} />
+        <ScopeModal isOpen={isScopeModalOpen} onClose={() => setIsScopeModalOpen(false)} />
       </div>
     </section>
   );
