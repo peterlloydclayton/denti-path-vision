@@ -77,7 +77,7 @@ export const ProblemDeepDive = () => {
               </CollapsibleTrigger>
 
               <CollapsibleContent className="mt-4">
-                <Card className="border-l-4 border-l-dental-blue">
+                <Card className="bg-dental-blue border-dental-blue text-foreground shadow-elegant">
                   <CardContent className="p-6">
                     {/* Issues Section */}
                     <div className="mb-8">
