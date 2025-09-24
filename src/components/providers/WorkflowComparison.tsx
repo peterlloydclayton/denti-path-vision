@@ -72,19 +72,13 @@ export const WorkflowComparison = () => {
           <h3 className="text-2xl text-muted-foreground mb-8">
             From Consultation to Payment in Minutes
           </h3>
-          <div className="max-w-2xl mx-auto">
-            <img 
-              src="/src/assets/financing-approved-computer.png" 
-              alt="Financing approval notice displayed on computer screen with approval checkmark"
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
-          </div>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          {/* Traditional Flow that flips to DentiPay */}
-          <div>
-            <h3 className="text-2xl font-bold text-gray-600 mb-8 text-center">From Traditional financing Flow to the Future of Dental Financing</h3>
+        {/* Desktop: Two column layout, Mobile: Stacked */}
+        <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12 max-w-6xl mx-auto">
+          {/* Left Column: Workflow List */}
+          <div className="lg:flex-1 lg:max-w-2xl">
+            <h3 className="text-2xl font-bold text-gray-600 mb-8 text-center lg:text-left">From Traditional financing Flow to the Future of Dental Financing</h3>
             <div className="space-y-4">
               {traditionalSteps.map((step, index) => {
                 const isFlipped = flippedCards.includes(index);
@@ -128,6 +122,17 @@ export const WorkflowComparison = () => {
                   </div>
                 );
               })}
+            </div>
+          </div>
+
+          {/* Right Column: Image */}
+          <div className="mt-12 lg:mt-0 lg:flex-1 lg:max-w-lg lg:sticky lg:top-8">
+            <div className="max-w-2xl mx-auto lg:max-w-none">
+              <img 
+                src="/src/assets/financing-approved-computer.png" 
+                alt="Financing approval notice displayed on computer screen with approval checkmark"
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
             </div>
           </div>
         </div>
