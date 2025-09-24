@@ -108,18 +108,18 @@ export const ScopeModal = ({ isOpen, onClose }: ScopeModalProps) => {
               <X className="w-5 h-5" />
             </button>
 
-            {/* Navigation arrows */}
+            {/* Navigation tabs */}
             <button
               onClick={prevCard}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/80 hover:bg-white transition-colors"
+              className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-dental-blue-dark text-white p-3 rounded-r-xl shadow-lg hover:bg-dental-blue-dark/90 transition-colors"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={nextCard}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/80 hover:bg-white transition-colors"
+              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-dental-blue-dark text-white p-3 rounded-l-xl shadow-lg hover:bg-dental-blue-dark/90 transition-colors"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5" />
             </button>
 
             {/* Content */}
