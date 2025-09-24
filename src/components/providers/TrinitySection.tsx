@@ -93,24 +93,10 @@ export const TrinitySection = () => {
                         <h3 className="text-2xl font-bold mb-2 group-hover:scale-105 transition-transform text-dental-blue-dark">
                           {item.title}
                         </h3>
-                        <p className="text-muted-foreground mb-4">{item.subtitle}</p>
-                        
-                        <div className="space-y-2 text-sm mb-6 flex-grow">
-                          {item.features.map((feature, idx) => (
-                            <div key={idx} className="text-left">
-                              {typeof feature === 'string' ? (
-                                <div>• {feature}</div>
-                              ) : (
-                                <div>
-                                  <strong>{feature.label}</strong> {feature.desc}
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
+                        <p className="text-muted-foreground mb-6">{item.subtitle}</p>
                         
                         <motion.blockquote 
-                          className="text-sm italic text-muted-foreground pl-4 group-hover:border-l-8 transition-all duration-300 border-l-4 border-primary mb-6"
+                          className="text-sm italic text-muted-foreground pl-4 group-hover:border-l-8 transition-all duration-300 border-l-4 border-primary mb-6 flex-grow"
                           whileHover={{ x: 4 }}
                         >
                           "{item.quote}"
