@@ -117,7 +117,7 @@ export const ProblemDeepDive = () => {
                 </div>
               </CollapsibleTrigger>
 
-              <CollapsibleContent className="mt-4">
+              <CollapsibleContent className="mt-4 animate-fade-in">
                 <Card className="shadow-elegant bg-card/80 backdrop-blur-sm">
                   <CardContent className="p-0">
                     {/* Issues Section */}
@@ -140,7 +140,7 @@ export const ProblemDeepDive = () => {
                               </button>
                               
                               <Collapsible open={isExpanded}>
-                                <CollapsibleContent>
+                                <CollapsibleContent className="animate-fade-in">
                                   <div className="ml-8 mt-2 pb-2">
                                     <p className="text-muted-foreground">{description?.trim()}</p>
                                   </div>
