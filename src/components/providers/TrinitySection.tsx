@@ -86,27 +86,19 @@ export const TrinitySection = () => {
                   >
                     <Card className={`group hover:shadow-elegant transition-all duration-300 ${
                       index === 0 ? 'border-primary/30 hover:border-primary' :
-                      index === 1 ? 'border-secondary/50 hover:border-secondary' :
-                      'border-success/50 hover:border-success'
+                      index === 1 ? 'border-primary/30 hover:border-primary' :
+                      'border-primary/30 hover:border-primary'
                     } h-full`}>
                       <CardContent className="p-8 text-center h-full flex flex-col">
                         <motion.div 
-                          className={`w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6 ${
-                            index === 0 ? 'bg-primary text-primary-foreground' :
-                            index === 1 ? 'bg-secondary text-secondary-foreground' :
-                            'bg-success text-success-foreground'
-                          }`}
+                          className="bg-primary text-primary-foreground w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6"
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           transition={{ duration: 0.2 }}
                         >
                           <Icon className="w-8 h-8" />
                         </motion.div>
                         
-                        <h3 className={`text-2xl font-bold mb-2 group-hover:scale-105 transition-transform ${
-                          index === 0 ? 'text-primary' :
-                          index === 1 ? 'text-secondary-foreground' :
-                          'text-success'
-                        }`}>
+                        <h3 className="text-2xl font-bold mb-2 group-hover:scale-105 transition-transform text-primary">
                           {item.title}
                         </h3>
                         <p className="text-muted-foreground mb-4">{item.subtitle}</p>
@@ -126,11 +118,7 @@ export const TrinitySection = () => {
                         </div>
                         
                         <motion.blockquote 
-                          className={`text-sm italic text-muted-foreground pl-4 group-hover:border-l-8 transition-all duration-300 ${
-                            index === 0 ? 'border-l-4 border-primary' :
-                            index === 1 ? 'border-l-4 border-secondary' :
-                            'border-l-4 border-success'
-                          }`}
+                          className="text-sm italic text-muted-foreground pl-4 group-hover:border-l-8 transition-all duration-300 border-l-4 border-primary"
                           whileHover={{ x: 4 }}
                         >
                           "{item.quote}"
