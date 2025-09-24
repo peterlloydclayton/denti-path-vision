@@ -74,8 +74,8 @@ export const WorkflowComparison = () => {
           </h3>
           <div className="max-w-2xl mx-auto">
             <img 
-              src="/src/assets/financing-approval-notice.png" 
-              alt="Financing approval notice on computer screen with green checkmark"
+              src="/src/assets/financing-approved-computer.png" 
+              alt="Financing approval notice displayed on computer screen with approval checkmark"
               className="w-full h-auto rounded-lg shadow-lg"
             />
           </div>
