@@ -21,8 +21,8 @@ const Providers = () => {
       <ProblemSection />
       <ProblemDeepDive />
       <TrinitySection />
-      <IntelligenceSection />
       <EchoProviderSection />
+      <IntelligenceSection />
       <WorkflowComparison />
       <PerformanceMetrics />
       <ROICalculator />
