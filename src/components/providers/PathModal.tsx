@@ -149,10 +149,6 @@ export const PathModal = ({ isOpen, onClose }: PathModalProps) => {
                     </p>
                   </div>
 
-                  <div className="bg-dental-blue-light/10 rounded-xl p-6 mb-6">
-                    <div className="text-4xl mb-4">{pathCards[currentCard].visual}</div>
-                  </div>
-
                   <ul className="space-y-3 text-left max-w-2xl mx-auto">
                     {pathCards[currentCard].points.map((point, index) => (
                       <li key={index} className="flex items-start gap-3">
