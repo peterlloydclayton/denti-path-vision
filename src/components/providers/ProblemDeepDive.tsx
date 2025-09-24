@@ -203,7 +203,7 @@ export const ProblemDeepDive = () => {
             
             {/* Add separator between sections, but not after the last one */}
             {index < sections.length - 1 && (
-              <hr className="my-8 border-t border-border/50" />
+              <hr className="my-8 border-t-2 border-border" />
             )}
           </div>
           ))}
