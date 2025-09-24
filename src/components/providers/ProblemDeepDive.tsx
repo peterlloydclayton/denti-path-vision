@@ -118,7 +118,7 @@ export const ProblemDeepDive = () => {
               </CollapsibleTrigger>
 
               <CollapsibleContent className="mt-4 animate-fade-in">
-                <Card className="shadow-elegant bg-card/80 backdrop-blur-sm">
+                <Card className="shadow-elegant bg-card/80 backdrop-blur-sm rounded-xl">
                   <CardContent className="p-0">
                     {/* Issues Section */}
                     <div className="p-6">
@@ -157,18 +157,18 @@ export const ProblemDeepDive = () => {
 
                     {/* DentiPay Answer */}
                     {section.image ? (
-                      <div className="grid lg:grid-cols-2 min-h-[400px]">
+                      <div className="grid lg:grid-cols-[2fr_1fr] min-h-[400px] rounded-b-xl overflow-hidden">
                         {/* Image Side */}
                         <div className={`relative ${
                           section.mobileImagePosition === 'bottom' ? 'order-2' : 'order-1'
                         } ${
                           section.imagePosition === 'right' ? 'lg:order-2' : 'lg:order-1'
                         }`}>
-                          <img 
-                            src={section.image} 
-                            alt="DentiPay Solution"
-                            className="w-full h-full object-cover"
-                          />
+                           <img 
+                             src={section.image} 
+                             alt="DentiPay Solution"
+                             className="w-full h-full object-cover rounded-lg"
+                           />
                           <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 via-transparent to-black/20" />
                         </div>
                         
@@ -179,20 +179,20 @@ export const ProblemDeepDive = () => {
                           section.imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2'
                         }`}>
                           <div>
-                            <h4 className="text-lg font-semibold mb-4 text-green-800">DentiPay ANSWER</h4>
-                            <div className="flex items-start gap-3">
-                              <CheckCircle className="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" />
-                              <span className="text-base font-medium leading-relaxed">{section.answer}</span>
+                            <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-green-800">DentiPay ANSWER</h4>
+                            <div className="flex items-start gap-3 lg:gap-4">
+                              <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-green-700 mt-0.5 flex-shrink-0" />
+                              <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
                             </div>
                           </div>
                         </div>
                       </div>
                     ) : (
-                      <div className="p-6">
-                        <h4 className="text-lg font-semibold mb-4 text-green-800">DentiPay ANSWER</h4>
-                        <div className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" />
-                          <span className="text-base font-medium leading-relaxed">{section.answer}</span>
+                      <div className="p-6 rounded-xl">
+                        <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-green-800">DentiPay ANSWER</h4>
+                        <div className="flex items-start gap-3 lg:gap-4">
+                          <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-green-700 mt-0.5 flex-shrink-0" />
+                          <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
                         </div>
                       </div>
                     )}
