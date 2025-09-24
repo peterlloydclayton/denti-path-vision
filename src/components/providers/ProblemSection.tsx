@@ -53,7 +53,7 @@ export const ProblemSection = () => {
                   transition={{ duration: 0.2 }}
                 >
                   {/* Problem Card */}
-                  <Card className="bg-card/10 border-card/20 text-card-foreground hover:bg-card/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
+                  <Card className="bg-card/10 border-card/20 text-dental-blue hover:bg-card/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
                     <CardContent className="p-12">
                       <div className="flex items-center gap-4">
                         <XCircle className="w-6 h-6 text-destructive flex-shrink-0" />
@@ -94,7 +94,7 @@ export const ProblemSection = () => {
                 transition={{ duration: 0.2 }}
               >
                 {/* Front Card */}
-                <Card className="bg-card/10 border-card/20 text-card-foreground hover:bg-card/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
+                <Card className="bg-card/10 border-card/20 text-dental-blue hover:bg-card/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
                   <CardContent className="p-12">
                     <h3 className="text-2xl font-bold mb-6 text-center">Financial Care Gap</h3>
                     <div className="space-y-4">
