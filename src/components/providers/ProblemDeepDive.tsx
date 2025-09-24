@@ -81,11 +81,11 @@ export const ProblemDeepDive = () => {
                   <CardContent className="p-6">
                     {/* Issues Section */}
                     <div className="mb-8">
-                      <h4 className="text-lg font-semibold mb-4 text-dental-peach">Issues</h4>
+                      <h4 className="text-lg font-semibold mb-4 text-navy">Issues</h4>
                       <div className="space-y-3">
                         {section.issues.map((issue, index) => (
                           <div key={index} className="flex items-start gap-3">
-                            <XCircle className="w-5 h-5 text-dental-peach mt-0.5 flex-shrink-0" />
+                            <XCircle className="w-5 h-5 text-navy mt-0.5 flex-shrink-0" />
                             <span className="text-sm">{issue}</span>
                           </div>
                         ))}
@@ -97,9 +97,9 @@ export const ProblemDeepDive = () => {
 
                     {/* DentiPay Answer */}
                     <div>
-                      <h4 className="text-lg font-semibold mb-4 text-dental-green">DentiPay Answer</h4>
+                      <h4 className="text-lg font-semibold mb-4 text-success">DentiPay Answer</h4>
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
                         <span className="text-sm font-medium">{section.answer}</span>
                       </div>
                     </div>
