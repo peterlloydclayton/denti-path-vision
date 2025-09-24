@@ -1,10 +1,19 @@
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { ChevronDown, XCircle, CheckCircle } from 'lucide-react';
+import { ChevronDown, ChevronRight, CheckCircle } from 'lucide-react';
 
 export const ProblemDeepDive = () => {
   const [openSection, setOpenSection] = useState<string | null>(null);
+  const [expandedIssues, setExpandedIssues] = useState<Record<string, boolean>>({});
+
+  const toggleIssue = (sectionId: string, issueIndex: number) => {
+    const key = `${sectionId}-${issueIndex}`;
+    setExpandedIssues(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
+  };
 
   const sections = [
     {
@@ -97,18 +106,37 @@ export const ProblemDeepDive = () => {
               </CollapsibleTrigger>
 
               <CollapsibleContent className="mt-4">
-                <Card className="bg-dental-blue border-dental-blue text-foreground shadow-elegant">
+                <Card className="shadow-elegant">
                   <CardContent className="p-6">
                     {/* Issues Section */}
                     <div className="mb-8">
-                      <h4 className="text-lg font-semibold mb-4 text-navy">Issues</h4>
-                      <div className="space-y-3">
-                        {section.issues.map((issue, index) => (
-                          <div key={index} className="flex items-start gap-3">
-                            <XCircle className="w-5 h-5 text-navy mt-0.5 flex-shrink-0" />
-                            <span className="text-sm">{issue}</span>
-                          </div>
-                        ))}
+                      <h4 className="text-lg font-semibold mb-6">ISSUES</h4>
+                      <div className="space-y-4">
+                        {section.issues.map((issue, index) => {
+                          const [title, description] = issue.split(':');
+                          const isExpanded = expandedIssues[`${section.id}-${index}`];
+                          return (
+                            <div key={index}>
+                              <button
+                                onClick={() => toggleIssue(section.id, index)}
+                                className="flex items-center gap-3 w-full text-left hover:opacity-80 transition-opacity"
+                              >
+                                <ChevronRight className={`w-5 h-5 flex-shrink-0 transition-transform ${
+                                  isExpanded ? 'rotate-90' : ''
+                                }`} />
+                                <span className="text-xl font-semibold">{title.trim()}</span>
+                              </button>
+                              
+                              <Collapsible open={isExpanded}>
+                                <CollapsibleContent>
+                                  <div className="ml-8 mt-2 pb-2">
+                                    <p className="text-muted-foreground">{description?.trim()}</p>
+                                  </div>
+                                </CollapsibleContent>
+                              </Collapsible>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
 
@@ -117,9 +145,9 @@ export const ProblemDeepDive = () => {
 
                     {/* DentiPay Answer */}
                     <div>
-                      <h4 className="text-lg font-semibold mb-4 text-success">DentiPay Answer</h4>
+                      <h4 className="text-lg font-semibold mb-4 text-green-700">DentiPay ANSWER</h4>
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" />
                         <span className="text-sm font-medium">{section.answer}</span>
                       </div>
                     </div>
