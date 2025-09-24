@@ -69,9 +69,16 @@ export const WorkflowComparison = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             AI Powered Approvals. Instant Decisions
           </h2>
-          <h3 className="text-2xl text-muted-foreground">
+          <h3 className="text-2xl text-muted-foreground mb-8">
             From Consultation to Payment in Minutes
           </h3>
+          <div className="max-w-2xl mx-auto">
+            <img 
+              src="/src/assets/financing-approval-notice.png" 
+              alt="Financing approval notice on computer screen with green checkmark"
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
         </div>
 
         <div className="max-w-3xl mx-auto">
