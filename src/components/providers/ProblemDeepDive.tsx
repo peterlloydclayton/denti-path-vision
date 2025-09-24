@@ -122,7 +122,6 @@ export const ProblemDeepDive = () => {
                   <CardContent className="p-0">
                     {/* Issues Section */}
                     <div className="p-6">
-                      <h4 className="text-lg font-semibold mb-6">ISSUES</h4>
                       <div className="space-y-4">
                         {section.issues.map((issue, index) => {
                           const [title, description] = issue.split(':');
