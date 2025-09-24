@@ -52,7 +52,7 @@ export const ProblemSection = () => {
                   transition={{ duration: 0.2 }}
                 >
                    {/* Problem Card */}
-                   <Card className="bg-card/10 border-card/20 text-white hover:bg-card/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
+                   <Card className="bg-card/10 border-card/20 text-dental-blue hover:bg-card/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
                      <CardContent className="p-12">
                        <div className="flex items-center gap-4">
                          <div className="flex-1">
@@ -64,11 +64,11 @@ export const ProblemSection = () => {
                    </Card>
 
                    {/* DentiPay Benefit Card - Hidden until hover */}
-                   <Card className="absolute inset-0 bg-gray-700 border-gray-600 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-green">
+                   <Card className="absolute inset-0 bg-primary border-primary text-navy opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-green">
                      <CardContent className="p-12">
                        <div className="flex items-center gap-4">
                          <div className="flex-1">
-                           <div className="text-xs font-medium text-gray-300 mb-2">DENTIPAY BENEFIT</div>
+                           <div className="text-xs font-medium text-navy/70 mb-2">DENTIPAY BENEFIT</div>
                            <h3 className="font-semibold mb-3">{point.benefit}</h3>
                            <p className="text-sm opacity-90 mb-2">{point.benefitDescription}</p>
                          </div>
@@ -91,7 +91,7 @@ export const ProblemSection = () => {
                 transition={{ duration: 0.2 }}
               >
                  {/* Front Card */}
-                 <Card className="bg-card/10 border-card/20 text-white hover:bg-card/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
+                 <Card className="bg-card/10 border-card/20 text-dental-blue hover:bg-card/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
                    <CardContent className="p-12">
                      <h3 className="text-2xl font-bold mb-6 text-center">Financial Care Gap</h3>
                      <div className="space-y-4">
@@ -116,11 +116,11 @@ export const ProblemSection = () => {
                  </Card>
 
                  {/* Back Card - DentiPay Solution */}
-                 <Card className="absolute inset-0 bg-gray-700 border-gray-600 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-green">
+                 <Card className="absolute inset-0 bg-primary border-primary text-navy opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-green">
                    <CardContent className="p-12">
                      <div className="flex items-center justify-center h-full">
                        <div className="text-center">
-                         <div className="text-xs font-medium text-gray-300 mb-2">DENTIPAY SOLUTION</div>
+                         <div className="text-xs font-medium text-navy/70 mb-2">DENTIPAY SOLUTION</div>
                          <h3 className="text-3xl font-bold mb-3">90% Approvals</h3>
                          <p className="text-sm opacity-90">Specialized dental financing that understands your patients' needs</p>
                        </div>
