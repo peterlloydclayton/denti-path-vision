@@ -77,7 +77,7 @@ export const WorkflowComparison = () => {
         <div className="max-w-3xl mx-auto">
           {/* Traditional Flow that flips to DentiPay */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-600 mb-8 text-center">Traditional Financing Flow</h3>
+            <h3 className="text-2xl font-bold text-gray-600 mb-8 text-center">From Traditional financing Flow to the Future of Dental Financing</h3>
             <div className="space-y-4">
               {traditionalSteps.map((step, index) => {
                 const isFlipped = flippedCards.includes(index);
