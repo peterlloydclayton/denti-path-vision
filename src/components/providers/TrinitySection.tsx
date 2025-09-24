@@ -7,7 +7,7 @@ import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animatio
 export const TrinitySection = () => {
   const trinityItems = [
     {
-      icon: Zap,
+      icon: Brain,
       title: "DentiPay",
       subtitle: "Brand Layer",
       color: "dental-blue-dark",
