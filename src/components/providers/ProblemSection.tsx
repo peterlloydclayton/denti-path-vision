@@ -138,11 +138,11 @@ export const ProblemSection = () => {
 
       {/* Bottom Right Image */}
       <motion.div
-        className="absolute bottom-0 right-0 w-48 h-60 opacity-80"
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 0.8, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        className="absolute bottom-0 right-0 w-48 h-60 md:w-96 md:h-120"
+        initial={{ opacity: 0, y: 30, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
       >
         <img
           src={focusedProfessional}
