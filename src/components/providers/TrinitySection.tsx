@@ -7,10 +7,12 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 import { PathModal } from './PathModal';
 import { ScopeModal } from './ScopeModal';
+import { DentiPayModal } from './DentiPayModal';
 
 export const TrinitySection = () => {
   const [isPathModalOpen, setIsPathModalOpen] = useState(false);
   const [isScopeModalOpen, setIsScopeModalOpen] = useState(false);
+  const [isDentiPayModalOpen, setIsDentiPayModalOpen] = useState(false);
 
   const trinityItems = [
     {
@@ -29,7 +31,7 @@ export const TrinitySection = () => {
     {
       icon: Globe,
       title: "PATH",
-      subtitle: "Patient Portal", 
+      subtitle: "The Patient Acceptance Treatment Hub", 
       color: "secondary",
       borderColor: "secondary/50",
       features: [
@@ -58,7 +60,9 @@ export const TrinitySection = () => {
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            One Brand. One Portal. One System.
+            <div>One Brand.</div>
+            <div>One Portal.</div>
+            <div>One System.</div>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             The DentiPay Trinity: Brand leverage, patient portal, and intelligence engine working in perfect harmony.
@@ -116,19 +120,18 @@ export const TrinitySection = () => {
                           "{item.quote}"
                         </motion.blockquote>
 
-                        {/* Learn More button for PATH and SCOPE */}
-                        {(index === 1 || index === 2) && (
-                          <Button
-                            onClick={() => {
-                              if (index === 1) setIsPathModalOpen(true);
-                              if (index === 2) setIsScopeModalOpen(true);
-                            }}
-                            variant="outline"
-                            className="mt-auto"
-                          >
-                            Learn More
-                          </Button>
-                        )}
+                        {/* Learn More button for all cards */}
+                        <Button
+                          onClick={() => {
+                            if (index === 0) setIsDentiPayModalOpen(true);
+                            if (index === 1) setIsPathModalOpen(true);
+                            if (index === 2) setIsScopeModalOpen(true);
+                          }}
+                          variant="outline"
+                          className="mt-auto"
+                        >
+                          Learn More
+                        </Button>
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -139,6 +142,7 @@ export const TrinitySection = () => {
         </StaggerContainer>
 
         {/* Modals */}
+        <DentiPayModal isOpen={isDentiPayModalOpen} onClose={() => setIsDentiPayModalOpen(false)} />
         <PathModal isOpen={isPathModalOpen} onClose={() => setIsPathModalOpen(false)} />
         <ScopeModal isOpen={isScopeModalOpen} onClose={() => setIsScopeModalOpen(false)} />
       </div>

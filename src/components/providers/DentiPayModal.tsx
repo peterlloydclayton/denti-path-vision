@@ -1,78 +1,56 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 
-interface PathModalProps {
+interface DentiPayModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const pathCards = [
+const dentiPayCards = [
   {
-    title: "Frictionless Intake",
-    subtitle: "2-minute application that removes awkward conversations",
+    title: "Market Leverage",
+    subtitle: "The trusted face for dentistry finance",
     points: [
-      "A 2-minute application that removes awkward financial conversations",
-      "Empowers patients to say 'yes' to treatment confidently",
-      "Unified form captures symptoms, financial data, and consent in one flow",
-      "Smart form logic adapts questions based on previous answers"
+      "A recognizable, unified financial brand increases patient trust",
+      "Accelerates treatment acceptance through established credibility",
+      "Patients recognize and trust the DentiPay name across practices"
     ],
-    visual: "📱 Mobile-friendly intake form mockup"
+    visual: "🏆 Brand recognition graphic"
   },
   {
-    title: "Smart, Instant Decisions",
-    subtitle: "Real-time pre-approvals with clear terms",
+    title: "Network Effect",
+    subtitle: "Every provider strengthens the brand",
     points: [
-      "Real-time pre-approvals with clear terms—no uncertainty, no waiting, no embarrassment",
-      "Instant underwriting using 30+ data points (vs traditional 3-5)",
-      "Real-time banking verification through Plaid integration",
-      "94% approval rate in under 30 seconds"
+      "Every provider on DentiPay strengthens brand equity",
+      "Creates shared patient familiarity across practices",
+      "Network growth benefits all participating providers",
+      "Cross-referral opportunities within the trusted network"
     ],
-    visual: "✅ Animation showing APPROVED status"
+    visual: "🌐 Network effect visualization"
   },
   {
-    title: "Higher Case Acceptance",
-    subtitle: "Boost approval rates to 80% vs 45% industry average",
+    title: "Speed to Adoption",
+    subtitle: "Brand credibility accelerates decisions",
     points: [
-      "Boost approval rates to 80% (vs. 45% industry average)",
-      "Unlocking larger treatment plans and increased revenue",
-      "PATH eliminates friction points that historically derail treatment acceptance",
-      "Creates a direct route from diagnosis to treatment"
+      "Brand credibility reduces patient hesitation",
+      "Shortens decision cycles and converts more cases faster",
+      "Pre-established trust eliminates education overhead",
+      "Patients arrive already familiar with financing options"
     ],
-    visual: "📈 Case acceptance rate comparison"
-  },
-  {
-    title: "Psychology-Driven Acceptance",
-    subtitle: "Understanding how patients make financial decisions",
-    points: [
-      "AI presents financing options in order of likelihood to accept",
-      "Customizes payment terms based on individual comfort zones",
-      "Times financing presentation at moment of highest acceptance"
-    ],
-    visual: "🧠 Behavioral pattern visualization"
-  },
-  {
-    title: "Works With Your Existing Systems",
-    subtitle: "API-first design for any practice management software",
-    points: [
-      "Direct integration with 50+ practice management systems",
-      "No double entry - automatic data sync",
-      "HIPAA-compliant with white-label options for DSOs"
-    ],
-    visual: "⚡ Connected software system icons"
+    visual: "⚡ Speed conversion chart"
   }
 ];
 
-export const PathModal = ({ isOpen, onClose }: PathModalProps) => {
+export const DentiPayModal = ({ isOpen, onClose }: DentiPayModalProps) => {
   const [currentCard, setCurrentCard] = useState(0);
 
   const nextCard = () => {
-    setCurrentCard((prev) => (prev + 1) % pathCards.length);
+    setCurrentCard((prev) => (prev + 1) % dentiPayCards.length);
   };
 
   const prevCard = () => {
-    setCurrentCard((prev) => (prev - 1 + pathCards.length) % pathCards.length);
+    setCurrentCard((prev) => (prev - 1 + dentiPayCards.length) % dentiPayCards.length);
   };
 
   const goToCard = (index: number) => {
@@ -112,12 +90,11 @@ export const PathModal = ({ isOpen, onClose }: PathModalProps) => {
               <X className="w-5 h-5" />
             </button>
 
-
             {/* Content */}
             <div className="p-8 md:p-12">
               <div className="text-left mb-8">
-                <h2 className="text-xl font-bold text-black">PATH</h2>
-                <p className="text-lg text-muted-foreground">The Patient Acceptance Treatment Hub</p>
+                <h2 className="text-xl font-bold text-black">DentiPay</h2>
+                <p className="text-lg text-muted-foreground">The Brand Layer</p>
               </div>
 
               <AnimatePresence mode="wait">
@@ -131,21 +108,29 @@ export const PathModal = ({ isOpen, onClose }: PathModalProps) => {
                 >
                   <div className="mb-6">
                     <h3 className="text-2xl font-bold mb-2 text-dental-blue-dark">
-                      {pathCards[currentCard].title}
+                      {dentiPayCards[currentCard].title}
                     </h3>
                     <p className="text-lg text-muted-foreground mb-6">
-                      {pathCards[currentCard].subtitle}
+                      {dentiPayCards[currentCard].subtitle}
                     </p>
                   </div>
 
                   <ul className="space-y-3 text-left max-w-2xl mx-auto">
-                    {pathCards[currentCard].points.map((point, index) => (
+                    {dentiPayCards[currentCard].points.map((point, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
                         <span className="text-muted-foreground">{point}</span>
                       </li>
                     ))}
                   </ul>
+
+                  {currentCard === 2 && (
+                    <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                      <p className="text-sm italic text-muted-foreground">
+                        "DentiPay isn't just another payment option—it's the financial face of modern dental care."
+                      </p>
+                    </div>
+                  )}
                 </motion.div>
               </AnimatePresence>
 
@@ -159,7 +144,7 @@ export const PathModal = ({ isOpen, onClose }: PathModalProps) => {
                 </button>
                 
                 <div className="flex space-x-2">
-                  {pathCards.map((_, index) => (
+                  {dentiPayCards.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => goToCard(index)}
