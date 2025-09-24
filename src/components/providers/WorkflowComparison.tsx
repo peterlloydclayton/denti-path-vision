@@ -53,8 +53,8 @@ export const WorkflowComparison = () => {
           </h3>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Traditional Flow */}
+        <div className="max-w-3xl mx-auto">
+          {/* Traditional Flow that flips to DentiPay */}
           <div>
             <h3 className="text-2xl font-bold text-gray-600 mb-8 text-center">Traditional Financing Flow</h3>
             <div className="space-y-4">
@@ -100,24 +100,6 @@ export const WorkflowComparison = () => {
                   </div>
                 );
               })}
-            </div>
-          </div>
-
-          {/* DentiPay Flow - Reference Column */}
-          <div>
-            <h3 className="text-2xl font-bold text-success mb-8 text-center">DentiPay Intelligence Flow</h3>
-            <div className="space-y-4">
-              {dentipaySteps.map((step, index) => (
-                <div key={index} className="flex items-start gap-4 p-4 bg-green-50 rounded-lg border-l-4 border-success">
-                  <div className="w-8 h-8 bg-success text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                    {index + 1}
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">{step}</span>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
