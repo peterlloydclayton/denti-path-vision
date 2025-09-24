@@ -56,7 +56,7 @@ export const ProblemSection = () => {
                      <CardContent className="p-12">
                        <div className="flex items-center gap-4">
                          <div className="flex-1">
-                           <h3 className="font-semibold mb-3">{point.title}</h3>
+                           <h3 className="text-xl font-semibold mb-3">{point.title}</h3>
                            <p className="text-sm opacity-90 mb-2">{point.description}</p>
                          </div>
                        </div>
@@ -69,7 +69,7 @@ export const ProblemSection = () => {
                        <div className="flex items-center gap-4">
                          <div className="flex-1">
                            <div className="text-xs font-medium text-navy/70 mb-2">DENTIPAY BENEFIT</div>
-                           <h3 className="font-semibold mb-3">{point.benefit}</h3>
+                           <h3 className="text-xl font-semibold mb-3">{point.benefit}</h3>
                            <p className="text-sm opacity-90 mb-2">{point.benefitDescription}</p>
                          </div>
                        </div>
