@@ -61,8 +61,23 @@ export const ProblemDeepDive = () => {
               onOpenChange={() => setOpenSection(openSection === section.id ? null : section.id)}
             >
               <CollapsibleTrigger asChild>
-                <Card className="cursor-pointer hover:shadow-elegant transition-shadow">
-                  <CardContent className="p-6">
+                <div className="cursor-pointer md:hover:shadow-elegant transition-shadow">
+                  <Card className="hidden md:block">
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="text-xl font-bold mb-2">{section.title}</h3>
+                          <p className="text-muted-foreground">{section.teaser}</p>
+                        </div>
+                        <ChevronDown className={`w-6 h-6 transition-transform ${
+                          openSection === section.id ? 'rotate-180' : ''
+                        }`} />
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  {/* Mobile version without card */}
+                  <div className="md:hidden p-4">
                     <div className="flex items-center justify-between">
                       <div>
                         <h3 className="text-xl font-bold mb-2">{section.title}</h3>
@@ -72,8 +87,8 @@ export const ProblemDeepDive = () => {
                         openSection === section.id ? 'rotate-180' : ''
                       }`} />
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </CollapsibleTrigger>
 
               <CollapsibleContent className="mt-4">
