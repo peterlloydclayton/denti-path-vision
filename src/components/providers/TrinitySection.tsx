@@ -10,8 +10,8 @@ export const TrinitySection = () => {
       icon: Cpu,
       title: "DentiPay",
       subtitle: "Brand Layer",
-      color: "dental-blue-dark",
-      borderColor: "dental-blue/30",
+      color: "primary",
+      borderColor: "primary/30",
       features: [
         "Trusted dental financing brand",
         "Provider network leverage", 
@@ -23,8 +23,8 @@ export const TrinitySection = () => {
       icon: Globe,
       title: "PATH",
       subtitle: "Patient Portal", 
-      color: "dental-blue",
-      borderColor: "dental-blue/50",
+      color: "secondary",
+      borderColor: "secondary/50",
       features: [
         "94% approval accuracy",
         "30-second decisions",
@@ -84,17 +84,29 @@ export const TrinitySection = () => {
                     whileHover={{ y: -8, scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Card className={`group hover:shadow-elegant transition-all duration-300 border-${item.borderColor} hover:border-${item.color} h-full`}>
+                    <Card className={`group hover:shadow-elegant transition-all duration-300 ${
+                      index === 0 ? 'border-primary/30 hover:border-primary' :
+                      index === 1 ? 'border-secondary/50 hover:border-secondary' :
+                      'border-success/50 hover:border-success'
+                    } h-full`}>
                       <CardContent className="p-8 text-center h-full flex flex-col">
                         <motion.div 
-                          className={`w-16 h-16 bg-${item.color} text-white rounded-xl flex items-center justify-center mx-auto mb-6`}
+                          className={`w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6 ${
+                            index === 0 ? 'bg-primary text-primary-foreground' :
+                            index === 1 ? 'bg-secondary text-secondary-foreground' :
+                            'bg-success text-success-foreground'
+                          }`}
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           transition={{ duration: 0.2 }}
                         >
                           <Icon className="w-8 h-8" />
                         </motion.div>
                         
-                        <h3 className={`text-2xl font-bold mb-2 text-${item.color} group-hover:scale-105 transition-transform`}>
+                        <h3 className={`text-2xl font-bold mb-2 group-hover:scale-105 transition-transform ${
+                          index === 0 ? 'text-primary' :
+                          index === 1 ? 'text-secondary-foreground' :
+                          'text-success'
+                        }`}>
                           {item.title}
                         </h3>
                         <p className="text-muted-foreground mb-4">{item.subtitle}</p>
@@ -114,7 +126,11 @@ export const TrinitySection = () => {
                         </div>
                         
                         <motion.blockquote 
-                          className={`text-sm italic text-muted-foreground border-l-4 border-${item.color} pl-4 group-hover:border-l-8 transition-all duration-300`}
+                          className={`text-sm italic text-muted-foreground pl-4 group-hover:border-l-8 transition-all duration-300 ${
+                            index === 0 ? 'border-l-4 border-primary' :
+                            index === 1 ? 'border-l-4 border-secondary' :
+                            'border-l-4 border-success'
+                          }`}
                           whileHover={{ x: 4 }}
                         >
                           "{item.quote}"
