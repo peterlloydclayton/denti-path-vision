@@ -47,8 +47,8 @@ export const ProblemDeepDive = () => {
       ],
       answer: '80% Approval • 40% Higher Acceptance • $265K Average Revenue Increase',
       image: approvalMobileImage,
-      imagePosition: 'left' as const,
-      mobileImagePosition: 'top' as const
+      imagePosition: 'right' as const,
+      mobileImagePosition: 'bottom' as const
     },
     {
       id: 'price',
@@ -160,7 +160,7 @@ export const ProblemDeepDive = () => {
                       <div className="grid lg:grid-cols-2 min-h-[400px]">
                         {/* Image Side */}
                         <div className={`relative ${
-                          section.mobileImagePosition === 'top' ? 'order-1' : 'order-2'
+                          section.mobileImagePosition === 'bottom' ? 'order-2' : 'order-1'
                         } ${
                           section.imagePosition === 'right' ? 'lg:order-2' : 'lg:order-1'
                         }`}>
@@ -174,7 +174,7 @@ export const ProblemDeepDive = () => {
                         
                         {/* Text Content Side */}
                         <div className={`flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-green-50/50 via-transparent to-green-100/30 ${
-                          section.mobileImagePosition === 'top' ? 'order-2' : 'order-1'
+                          section.mobileImagePosition === 'bottom' ? 'order-1' : 'order-2'
                         } ${
                           section.imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2'
                         }`}>
