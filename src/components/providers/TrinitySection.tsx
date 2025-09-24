@@ -98,7 +98,7 @@ export const TrinitySection = () => {
                           <Icon className="w-8 h-8" />
                         </motion.div>
                         
-                        <h3 className="text-2xl font-bold mb-2 group-hover:scale-105 transition-transform text-primary">
+                        <h3 className="text-2xl font-bold mb-2 group-hover:scale-105 transition-transform text-dental-blue-dark">
                           {item.title}
                         </h3>
                         <p className="text-muted-foreground mb-4">{item.subtitle}</p>
