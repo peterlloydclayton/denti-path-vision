@@ -15,29 +15,29 @@ export const TrinitySection = () => {
   const trinityItems = [
     {
       icon: Cpu,
-      title: "DentiPay",
-      subtitle: "Brand Layer",
+      title: "DentiPay (The Brand Layer)",
+      subtitle: "The trusted face for dentistry finance",
       color: "primary",
       borderColor: "primary/30",
       features: [
-        "Trusted dental financing brand",
-        "Provider network leverage", 
-        "Patient confidence builder"
+        { label: "Market Leverage:", desc: "A recognizable, unified financial brand increases patient trust and accelerates treatment acceptance." },
+        { label: "Network Effect:", desc: "Every provider on DentiPay strengthens brand equity, creating shared patient familiarity across practices." },
+        { label: "Speed to Adoption:", desc: "Brand credibility reduces patient hesitation and shortens decision cycles, converting more cases faster." }
       ],
-      quote: "The brand patients trust for dental financing"
+      quote: "DentiPay isn't just another payment option—it's the financial face of modern dental care."
     },
     {
       icon: Globe,
-      title: "PATH",
-      subtitle: "Patient Portal", 
+      title: "PATH (The Portal)",
+      subtitle: "The Patient Acceptance Treatment Hub", 
       color: "secondary",
       borderColor: "secondary/50",
       features: [
-        "94% approval accuracy",
-        "30-second decisions",
-        "Seamless integration"
+        { label: "Frictionless Intake:", desc: "A 2-minute application that removes awkward financial conversations and empowers patients to say 'yes' to treatment." },
+        { label: "Smart, Instant Decisions:", desc: "Real-time pre-approvals with clear terms—no uncertainty, no waiting, no embarrassment." },
+        { label: "Higher Case Acceptance:", desc: "Boost approval rates to 80% (vs. 45% industry average), unlocking larger treatment plans and increased revenue." }
       ],
-      quote: "Instant financing decisions that work"
+      quote: "PATH eliminates the friction points that historically derail treatment acceptance, creating a direct route from diagnosis to treatment."
     },
     {
       icon: Brain,
