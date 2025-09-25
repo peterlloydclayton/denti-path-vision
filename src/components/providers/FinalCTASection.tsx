@@ -65,11 +65,40 @@ export const FinalCTASection = () => {
           </div>
         </StaggerContainer>
 
-        {/* CTA Button and Everything You Need - White Background Section */}
+        {/* Everything You Need */}
+        <motion.div 
+          className="max-w-4xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <AnimatedText>
+            <h3 className="text-2xl font-bold text-center mb-8">Everything You Need to Succeed</h3>
+          </AnimatedText>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {features.map((feature, index) => (
+              <motion.div 
+                key={index}
+                className="flex items-center gap-3"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ x: 4, scale: 1.02 }}
+              >
+                <CheckCircle className="w-5 h-5 text-success flex-shrink-0" />
+                <span className="hover:text-primary/80 transition-colors duration-300">{feature}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA Button - White Background Section */}
         <div className="bg-white text-primary py-16 -mx-6 px-6 mb-16">
-          {/* CTA Button */}
           <motion.div 
-            className="flex justify-center mb-12"
+            className="flex justify-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -80,36 +109,6 @@ export const FinalCTASection = () => {
                 Get Started!
               </Button>
             </motion.div>
-          </motion.div>
-
-          {/* Everything You Need */}
-          <motion.div 
-            className="max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <AnimatedText>
-              <h3 className="text-2xl font-bold text-center mb-8">Everything You Need to Succeed</h3>
-            </AnimatedText>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {features.map((feature, index) => (
-                <motion.div 
-                  key={index}
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 4, scale: 1.02 }}
-                >
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0" />
-                  <span className="hover:text-primary/80 transition-colors duration-300">{feature}</span>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
 
