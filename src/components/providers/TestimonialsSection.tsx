@@ -127,20 +127,6 @@ export const TestimonialsSection = () => {
                             <h3 className="font-bold text-lg break-words leading-tight">{testimonial.name}</h3>
                             <p className="text-muted-foreground text-sm break-words leading-relaxed">{testimonial.specialty}</p>
                           </div>
-                          
-                          {/* Metric */}
-                          <div className={`text-sm font-medium text-${testimonial.color} mb-4`}>
-                            {testimonial.metric}
-                          </div>
-                          
-                          {/* Badge */}
-                          <Badge 
-                            variant="outline" 
-                            className={`border-${testimonial.color} text-${testimonial.color} hover:bg-${testimonial.color}/10 transition-colors duration-300`}
-                          >
-                            <CheckCircle className="w-3 h-3 mr-1" />
-                            DentiPay Verified
-                          </Badge>
                         </div>
                       </CardContent>
                     </Card>
