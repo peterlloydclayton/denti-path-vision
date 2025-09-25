@@ -89,9 +89,6 @@ export const WorkflowComparison = () => {
                       style={{ backfaceVisibility: 'hidden' }}
                     >
                       <div className="flex items-start gap-4 p-4 bg-gray-100 rounded-lg border-l-4 border-gray-400 h-full grayscale">
-                        <div className="w-8 h-8 bg-gray-400 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                          {index + 1}
-                        </div>
                         <div className="flex items-start gap-2">
                           <XCircle className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" />
                           <span className="text-sm text-gray-600">{step}</span>
@@ -107,9 +104,6 @@ export const WorkflowComparison = () => {
                       style={{ backfaceVisibility: 'hidden' }}
                     >
                       <div className="flex items-start gap-4 p-4 bg-dental-blue rounded-lg border-l-4 border-navy h-full">
-                        <div className="w-8 h-8 bg-navy text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                          {index + 1}
-                        </div>
                         <div className="flex items-start gap-2">
                           <CheckCircle className="w-5 h-5 text-navy mt-0.5 flex-shrink-0" />
                           <span className="text-sm text-navy">{dentipaySteps[index]}</span>
