@@ -107,7 +107,7 @@ export const EmblaParallaxCarousel: React.FC<EmblaParallaxCarouselProps> = ({
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {slides.map((slide, index) => (
-            <div className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.33%] px-3" key={index}>
+            <div className="flex-[0_0_100%] min-w-0 px-3" key={index}>
               <div className="relative overflow-hidden rounded-lg">
                 <div className="embla__parallax__layer">
                   {slide}

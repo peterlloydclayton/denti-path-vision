@@ -92,7 +92,7 @@ export const WorkflowComparison = () => {
               className="absolute inset-0 w-full"
               style={{ backfaceVisibility: 'hidden' }}
             >
-              <div className="flex flex-col items-center justify-center h-full p-7 bg-gray-100 rounded-lg border-l-4 border-gray-400 grayscale">
+              <div className="flex flex-col items-center justify-center h-full p-7 bg-gray-100 rounded-lg border-l-4 border-gray-400">
                 <XCircle className="w-9 h-9 text-gray-400 mb-4" />
                 <p className="text-center text-gray-600 font-medium leading-relaxed text-base">
                   {step.traditional}
@@ -167,26 +167,28 @@ export const WorkflowComparison = () => {
 
         {/* Desktop/Landscape: Side by side layout */}
         <div className="hidden lg:flex lg:items-center lg:gap-8 max-w-7xl mx-auto">
-          {/* Carousel Section */}
+          {/* Carousel Section - Equal width */}
           <div className="flex-1">
             <EmblaParallaxCarousel 
               slides={slides}
-              className="max-w-4xl"
-              options={{ align: 'start', loop: true }}
+              className="max-w-full"
+              options={{ align: 'center', loop: true }}
               onSlideChange={handleSlideChange}
             />
           </div>
           
-          {/* Image Section */}
-          <div className="flex-shrink-0 w-80">
-            <motion.img 
-              src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758760600/financing-approved-computer_gzdfei.png" 
-              alt="Financing approval notice displayed on computer screen with approval checkmark"
-              className="w-full h-auto rounded-lg shadow-lg"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
-              transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
-            />
+          {/* Image Section - Equal width */}
+          <div className="flex-1 flex justify-center">
+            <div className="max-w-md">
+              <motion.img 
+                src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758760600/financing-approved-computer_gzdfei.png" 
+                alt="Financing approval notice displayed on computer screen with approval checkmark"
+                className="w-full h-auto rounded-lg shadow-lg"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+              />
+            </div>
           </div>
         </div>
       </div>
