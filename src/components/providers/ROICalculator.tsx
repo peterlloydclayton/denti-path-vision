@@ -57,7 +57,7 @@ export const ROICalculator = () => {
     {
       value: roi.monthlyIncrease,
       label: "Monthly Revenue Increase",
-      color: "emerald-600",
+      color: "dental-blue-dark",
       icon: DollarSign
     },
     {
@@ -69,7 +69,7 @@ export const ROICalculator = () => {
     {
       value: roi.approvalImprovement,
       label: "Approval Rate Improvement",
-      color: "orange-600",
+      color: "dental-blue-dark",
       suffix: "%",
       prefix: "+",
       icon: Target
@@ -220,7 +220,6 @@ export const ROICalculator = () => {
                     className="w-full mt-6 bg-intelligence hover:bg-intelligence/90 text-intelligence-foreground shadow-elegant hover:shadow-xl transition-all duration-300" 
                     size="lg"
                   >
-                    <Calculator className="w-5 h-5 mr-2" />
                     Learn More
                   </Button>
                 </motion.div>
