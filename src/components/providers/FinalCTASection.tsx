@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle, Shield, Lock, TrendingUp, Award } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
+import dentistImage from '@/assets/mature-dentist-male-latin.png';
 
 export const FinalCTASection = () => {
   const steps = [
@@ -144,20 +145,44 @@ export const FinalCTASection = () => {
       </section>
 
       {/* CTA Button - White Background Section */}
-      <section className="bg-white text-primary py-16">
+      <section className="bg-white text-primary py-16 relative overflow-hidden">
         <div className="container mx-auto px-6">
           <motion.div 
-            className="flex justify-center"
+            className="flex flex-col items-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mb-6">
               <Button className="bg-black text-white hover:bg-black/90 px-16 py-6 text-2xl font-bold rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300">
                 Get Started!
               </Button>
             </motion.div>
+            <motion.p 
+              className="text-lg text-muted-foreground font-medium"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              Join thousands of dentists already transforming their practice
+            </motion.p>
+          </motion.div>
+          
+          {/* Dentist Image - Left Side, Bottom Aligned */}
+          <motion.div 
+            className="absolute left-0 bottom-0 w-48 h-auto hidden md:block"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            <img 
+              src={dentistImage} 
+              alt="Professional dentist" 
+              className="w-full h-auto object-contain"
+            />
           </motion.div>
         </div>
       </section>
