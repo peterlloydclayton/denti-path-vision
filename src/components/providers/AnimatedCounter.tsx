@@ -40,7 +40,7 @@ export const AnimatedCounter = ({ value, suffix = '', prefix = '' }: AnimatedCou
 
   return (
     <span ref={ref} className="font-bold">
-      {prefix}{count}{suffix}
+      {prefix}{count.toLocaleString()}{suffix}
     </span>
   );
 };

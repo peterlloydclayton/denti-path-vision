@@ -7,10 +7,10 @@ export const StatsSection = () => {
   console.log('StatsSection rendering');
   
   const stats = [
-    { value: 100000, prefix: 'Up To $', suffix: '', label: 'Maximum Financing', description: 'Flexible financing options' },
-    { value: 80, prefix: 'Up to ', suffix: '%', label: 'Approval Rates', description: 'High approval success rates' },
+    { value: 100000, prefix: '$', suffix: '', label: 'Maximum Financing', description: 'Flexible financing options' },
+    { value: 80, prefix: '', suffix: '%', label: 'Approval Rates', description: 'High approval success rates' },
     { value: 18, prefix: '0% up to ', suffix: ' Months', label: 'Interest Rates', description: 'Promotional financing terms' },
-    { value: 32, suffix: '%', label: 'Practice Growth', description: '27 - 32% average growth' }
+    { value: 32, prefix: '', suffix: '%', label: 'Practice Growth', description: '27 - 32% average growth' }
   ];
 
   return (
