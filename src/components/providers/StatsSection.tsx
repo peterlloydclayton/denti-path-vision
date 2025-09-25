@@ -9,7 +9,7 @@ export const StatsSection = () => {
   const stats = [
     { value: 100000, prefix: '$', suffix: '', label: 'Maximum Financing', description: 'Flexible financing options' },
     { value: 80, prefix: '', suffix: '%', label: 'Approval Rates', description: 'High approval success rates' },
-    { value: 18, prefix: '0% up to ', suffix: ' Months', label: 'Interest Rates', description: 'Promotional financing terms' },
+    { value: 18, prefix: '', suffix: ' months', label: 'Interest Rates', description: '0% up to 18 months' },
     { value: 32, prefix: '', suffix: '%', label: 'Practice Growth', description: '27 - 32% average growth' }
   ];
 
