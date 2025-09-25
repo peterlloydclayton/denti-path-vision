@@ -168,39 +168,40 @@ export const FinalCTASection = () => {
             >
               Join thousands of dentists already transforming their practice
             </motion.p>
-            
-            {/* Mobile Image - Bottom Flush */}
-            <motion.div 
-              className="flex justify-center items-end w-full md:hidden absolute bottom-0 left-0 right-0 pb-0"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-            >
-              <img 
-                src={dentistImage} 
-                alt="Professional dentist" 
-                className="w-72 h-auto object-contain block"
-                style={{ marginBottom: 0, paddingBottom: 0 }}
-              />
-            </motion.div>
-          </motion.div>
-          
-          {/* Desktop Image - Left Side, Bottom Aligned */}
-          <motion.div 
-            className="absolute left-0 bottom-0 w-72 h-auto hidden md:block"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            <img 
-              src={dentistImage} 
-              alt="Professional dentist" 
-              className="w-full h-auto object-contain"
-            />
           </motion.div>
         </div>
+        
+        {/* Mobile Image - Completely Flush with Bottom */}
+        <motion.div 
+          className="md:hidden absolute bottom-0 left-0 right-0 flex justify-center"
+          style={{ margin: 0, padding: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+        >
+          <img 
+            src={dentistImage} 
+            alt="Professional dentist" 
+            className="w-72 h-auto object-contain"
+            style={{ margin: 0, padding: 0, display: 'block' }}
+          />
+        </motion.div>
+        
+        {/* Desktop Image - Left Side, Bottom Aligned */}
+        <motion.div 
+          className="absolute left-0 bottom-0 w-72 h-auto hidden md:block"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+        >
+          <img 
+            src={dentistImage} 
+            alt="Professional dentist" 
+            className="w-full h-auto object-contain"
+          />
+        </motion.div>
       </section>
     </>
   );
