@@ -9,7 +9,7 @@ export const FinalCTASection = () => {
   const steps = [
     { number: 1, title: "Schedule Demo", description: "See DentiPay intelligence in action" },
     { number: 2, title: "Free Trial", description: "Test with your actual patients" },
-    { number: 3, title: "Success Support", description: "Ongoing training and optimization" }
+    { number: 3, title: "Boost Treatments", description: "Increase case acceptance and revenue" }
   ];
 
   const features = [
