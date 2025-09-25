@@ -46,13 +46,6 @@ export const StatsSection = () => {
                 
                 {/* Glowing underline */}
                 <div className="w-16 h-1 bg-gradient-to-r from-dental-blue to-dental-blue-dark mx-auto rounded-full group-hover:w-24 transition-all duration-500" />
-                
-                {/* Prefix and Suffix below the line */}
-                {(stat.prefix || stat.suffix) && (
-                  <div className="text-lg font-semibold text-gray-700 mt-2">
-                    {stat.prefix}{stat.suffix}
-                  </div>
-                )}
               </div>
               
               {/* Label with enhanced typography */}
