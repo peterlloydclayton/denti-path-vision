@@ -7,10 +7,10 @@ export const StatsSection = () => {
   console.log('StatsSection rendering');
   
   const stats = [
-    { value: 94, suffix: '%', label: 'Approval Accuracy', description: 'Precision in approval decisions' },
-    { value: 40, suffix: '%', label: 'Higher Acceptance', description: 'Increase in patient acceptance' },
-    { value: 30, prefix: '<', suffix: 's', label: 'Decision Speed', description: 'Average processing time' },
-    { value: 1200, suffix: '+', label: 'Active Providers', description: 'Growing network nationwide' }
+    { value: 100000, prefix: 'Up To $', suffix: '', label: 'Maximum Financing', description: 'Flexible financing options' },
+    { value: 80, prefix: 'Up to ', suffix: '%', label: 'Approval Rates', description: 'High approval success rates' },
+    { value: 18, prefix: '0% up to ', suffix: ' Months', label: 'Interest Rates', description: 'Promotional financing terms' },
+    { value: 32, suffix: '%', label: 'Practice Growth', description: '27 - 32% average growth' }
   ];
 
   return (
@@ -19,7 +19,7 @@ export const StatsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Proven Results Across Our Network
+            DentiPay Transforming Dental Financing One Patient at a Time
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Data-driven outcomes that transform dental practices and patient experiences
