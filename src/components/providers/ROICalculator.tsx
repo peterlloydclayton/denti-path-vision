@@ -111,13 +111,13 @@ export const ROICalculator = () => {
                         value={monthlyPatients}
                         onValueChange={setMonthlyPatients}
                         min={10}
-                        max={500}
+                        max={100}
                         step={10}
                         className="mt-3"
                       />
                       <div className="flex justify-between text-sm text-dental-blue-darker/70 mt-1">
                         <span>10</span>
-                        <span>500</span>
+                        <span>100</span>
                       </div>
                     </div>
                   </motion.div>
@@ -137,13 +137,13 @@ export const ROICalculator = () => {
                         value={avgTreatment}
                         onValueChange={setAvgTreatment}
                         min={1000}
-                        max={10000}
+                        max={100000}
                         step={250}
                         className="mt-3"
                       />
                       <div className="flex justify-between text-sm text-dental-blue-darker/70 mt-1">
                         <span>$1,000</span>
-                        <span>$10,000</span>
+                        <span>$100,000</span>
                       </div>
                     </div>
                   </motion.div>
