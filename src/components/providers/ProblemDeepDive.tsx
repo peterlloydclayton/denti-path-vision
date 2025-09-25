@@ -184,13 +184,6 @@ export const ProblemDeepDive = () => {
                                 <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-success mt-0.5 flex-shrink-0" />
                                 <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
                               </div>
-                              {section.id === 'price' && (
-                                <div className="mt-6">
-                                  <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
-                                    Get Started
-                                  </Button>
-                                </div>
-                              )}
                             </div>
                           </div>
                       </div>
@@ -201,18 +194,20 @@ export const ProblemDeepDive = () => {
                             <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-success mt-0.5 flex-shrink-0" />
                             <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
                           </div>
-                          {section.id === 'price' && (
-                            <div className="mt-6">
-                              <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
-                                Get Started
-                              </Button>
-                            </div>
-                          )}
                         </div>
                       )}
                   </CardContent>
                 </Card>
               </CollapsibleContent>
+              
+              {/* Add Get Started button below The Price card */}
+              {section.id === 'price' && openSection === section.id && (
+                <div className="flex justify-center mt-6">
+                  <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
+                    Get Started
+                  </Button>
+                </div>
+              )}
             </Collapsible>
             
             {/* Add separator between sections, but not after the last one */}
