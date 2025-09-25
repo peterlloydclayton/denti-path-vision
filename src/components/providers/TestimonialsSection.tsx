@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Star, CheckCircle, Quote } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 import {
@@ -182,6 +183,13 @@ export const TestimonialsSection = () => {
               <CarouselNext className="hidden sm:flex z-30" />
             </Carousel>
           </AnimatedText>
+        </div>
+        
+        {/* Join Today button at bottom of section */}
+        <div className="flex justify-center mt-16">
+          <Button className="bg-black text-white hover:bg-black/90 rounded-full px-10 py-3 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+            Join Today
+          </Button>
         </div>
       </div>
     </section>
