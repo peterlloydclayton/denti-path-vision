@@ -33,7 +33,7 @@ export const ProblemSection = () => {
   ];
 
   return (
-    <section className="py-24 pb-96 md:pb-24 bg-gray-800 text-white relative overflow-hidden">
+    <section className="py-24 pb-80 md:pb-24 bg-gray-800 text-white relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
