@@ -69,9 +69,6 @@ export const WorkflowComparison = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             AI Powered Approvals. Instant Decisions
           </h2>
-          <h3 className="text-2xl text-muted-foreground mb-8">
-            From Consultation to Payment in Minutes
-          </h3>
         </div>
 
         {/* Desktop: Two column layout, Mobile: Stacked */}
