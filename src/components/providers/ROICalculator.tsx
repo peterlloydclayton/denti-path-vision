@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Slider } from '@/components/ui/slider';
+import { CustomSlider } from '@/components/ui/custom-slider';
 import { Calculator, TrendingUp } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 
@@ -76,7 +76,7 @@ export const ROICalculator = () => {
   ];
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24">
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Calculate Your ROI Potential</h2>
@@ -101,20 +101,20 @@ export const ROICalculator = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0 * 0.1 }}
                   >
-                    <Label className="font-medium">Monthly Patients</Label>
+                    <Label className="font-medium text-dental-blue-darker">Monthly Patients</Label>
                     <div className="mt-2 space-y-3">
-                      <div className="text-2xl font-bold text-dental-blue-dark">
+                      <div className="text-2xl font-bold text-dental-blue-darker">
                         {monthlyPatients}
                       </div>
-                      <Slider
-                        value={[monthlyPatients]}
-                        onValueChange={(value) => setMonthlyPatients(value[0])}
+                      <CustomSlider
+                        value={monthlyPatients}
+                        onValueChange={setMonthlyPatients}
                         min={10}
                         max={500}
                         step={10}
-                        className="w-full"
+                        className="mt-3"
                       />
-                      <div className="flex justify-between text-sm text-muted-foreground">
+                      <div className="flex justify-between text-sm text-dental-blue-darker/70 mt-1">
                         <span>10</span>
                         <span>500</span>
                       </div>
@@ -127,20 +127,20 @@ export const ROICalculator = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1 * 0.1 }}
                   >
-                    <Label className="font-medium">Average Treatment Value</Label>
+                    <Label className="font-medium text-dental-blue-darker">Average Treatment Value</Label>
                     <div className="mt-2 space-y-3">
-                      <div className="text-2xl font-bold text-dental-blue-dark">
+                      <div className="text-2xl font-bold text-dental-blue-darker">
                         ${avgTreatment.toLocaleString()}
                       </div>
-                      <Slider
-                        value={[avgTreatment]}
-                        onValueChange={(value) => setAvgTreatment(value[0])}
+                      <CustomSlider
+                        value={avgTreatment}
+                        onValueChange={setAvgTreatment}
                         min={1000}
                         max={10000}
                         step={250}
-                        className="w-full"
+                        className="mt-3"
                       />
-                      <div className="flex justify-between text-sm text-muted-foreground">
+                      <div className="flex justify-between text-sm text-dental-blue-darker/70 mt-1">
                         <span>$1,000</span>
                         <span>$10,000</span>
                       </div>
@@ -153,20 +153,20 @@ export const ROICalculator = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 2 * 0.1 }}
                   >
-                    <Label className="font-medium">Current Approval Rate</Label>
+                    <Label className="font-medium text-dental-blue-darker">Current Approval Rate</Label>
                     <div className="mt-2 space-y-3">
-                      <div className="text-2xl font-bold text-dental-blue-dark">
+                      <div className="text-2xl font-bold text-dental-blue-darker">
                         {currentApproval}%
                       </div>
-                      <Slider
-                        value={[currentApproval]}
-                        onValueChange={(value) => setCurrentApproval(value[0])}
+                      <CustomSlider
+                        value={currentApproval}
+                        onValueChange={setCurrentApproval}
                         min={0}
                         max={100}
                         step={5}
-                        className="w-full"
+                        className="mt-3"
                       />
-                      <div className="flex justify-between text-sm text-muted-foreground">
+                      <div className="flex justify-between text-sm text-dental-blue-darker/70 mt-1">
                         <span>0%</span>
                         <span>100%</span>
                       </div>
