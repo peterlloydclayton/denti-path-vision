@@ -92,7 +92,7 @@ export const WorkflowComparison = () => {
               className="absolute inset-0 w-full"
               style={{ backfaceVisibility: 'hidden' }}
             >
-              <div className="flex flex-col items-center justify-center h-full p-7 bg-gray-100 rounded-lg border-l-4 border-gray-400">
+              <div className="flex flex-col items-center justify-center h-full p-7 bg-gray-200 rounded-lg border-l-4 border-gray-400">
                 <XCircle className="w-9 h-9 text-gray-400 mb-4" />
                 <p className="text-center text-gray-600 font-medium leading-relaxed text-base">
                   {step.traditional}
