@@ -135,7 +135,7 @@ export const ProblemSection = () => {
 
       {/* Bottom Right Image */}
       <motion.div
-        className="absolute bottom-0 right-0 w-48 h-60 md:w-96 md:h-120"
+        className="absolute bottom-0 right-0 w-40 h-48 sm:w-48 sm:h-60 md:w-80 md:h-96 lg:w-96 lg:h-120 max-w-[40vw] max-h-[50vh]"
         initial={{ opacity: 0, y: 30, scale: 0.9 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -144,7 +144,7 @@ export const ProblemSection = () => {
         <img
           src={ladyDentistWhiteCoat}
           alt="Professional female dentist in white coat"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </motion.div>
     </section>
