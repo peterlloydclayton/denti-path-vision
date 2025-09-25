@@ -132,7 +132,8 @@ export const WorkflowComparison = () => {
   return (
     <section ref={sectionRef} className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        {/* Mobile: Header above everything */}
+        <div className="text-center mb-16 lg:hidden">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             AI Powered Approvals. Instant Decisions
           </h2>
@@ -166,19 +167,32 @@ export const WorkflowComparison = () => {
         </div>
 
         {/* Desktop/Landscape: Side by side layout */}
-        <div className="hidden lg:flex lg:items-center lg:gap-8 max-w-7xl mx-auto">
-          {/* Carousel Section - Equal width */}
-          <div className="flex-1">
-            <EmblaParallaxCarousel 
-              slides={slides}
-              className="max-w-full"
-              options={{ align: 'center', loop: true }}
-              onSlideChange={handleSlideChange}
-            />
+        <div className="hidden lg:flex lg:items-start lg:gap-8 max-w-7xl mx-auto">
+          {/* Left Section: Header + Carousel - Equal width */}
+          <div className="flex-1 flex flex-col">
+            {/* Header text for landscape only */}
+            <div className="text-center mb-8">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                AI Powered Approvals. Instant Decisions
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Swipe through to see how traditional financing transforms into intelligent solutions
+              </p>
+            </div>
+            
+            {/* Carousel */}
+            <div className="flex-1 flex items-center">
+              <EmblaParallaxCarousel 
+                slides={slides}
+                className="max-w-full w-full"
+                options={{ align: 'center', loop: true }}
+                onSlideChange={handleSlideChange}
+              />
+            </div>
           </div>
           
-          {/* Image Section - Equal width */}
-          <div className="flex-1 flex justify-center">
+          {/* Right Section: Image - Equal width */}
+          <div className="flex-1 flex justify-center items-center">
             <div className="max-w-md">
               <motion.img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758760600/financing-approved-computer_gzdfei.png" 
