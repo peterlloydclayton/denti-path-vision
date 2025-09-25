@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
-import focusedProfessional from '@/assets/focused-professional.png';
+import ladyDentistWhiteCoat from '@/assets/lady-dentist-white-coat-transparent.png';
 
 export const ProblemSection = () => {
   const painPoints = [
@@ -142,8 +142,8 @@ export const ProblemSection = () => {
         transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
       >
         <img
-          src={focusedProfessional}
-          alt="Focused dental professional"
+          src={ladyDentistWhiteCoat}
+          alt="Professional female dentist in white coat"
           className="w-full h-full object-cover"
         />
       </motion.div>
