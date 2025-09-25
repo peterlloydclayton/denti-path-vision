@@ -60,6 +60,11 @@ export const StatsSection = () => {
                 {stat.label}
               </h3>
               
+              {/* Description */}
+              <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                {stat.description}
+              </p>
+              
               {/* Decorative corner elements */}
               <div className="absolute top-4 right-4 w-3 h-3 border-t-2 border-r-2 border-gray-300 group-hover:border-dental-blue transition-colors duration-300" />
               <div className="absolute bottom-4 left-4 w-3 h-3 border-b-2 border-l-2 border-gray-300 group-hover:border-dental-blue transition-colors duration-300" />
