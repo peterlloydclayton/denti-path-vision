@@ -37,6 +37,47 @@ export const FinalCTASection = () => {
           </h2>
         </AnimatedText>
 
+        {/* Trust Based Platform Section */}
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <AnimatedText>
+            <h3 className="text-2xl font-bold mb-12">Trust Based Platform</h3>
+          </AnimatedText>
+          
+          <StaggerContainer>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              {securityFeatures.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <StaggerItem key={index}>
+                    <motion.div 
+                      className="text-center group"
+                      whileHover={{ y: -4, scale: 1.05 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <motion.div
+                        whileHover={{ rotate: 5, scale: 1.1 }}
+                        transition={{ duration: 0.2 }}
+                        className="mb-2"
+                      >
+                        <Icon className="w-8 h-8 mx-auto group-hover:text-primary/80 transition-colors duration-300" />
+                      </motion.div>
+                      <div className="text-sm font-semibold group-hover:text-primary/80 transition-colors duration-300">
+                        {feature.title}
+                      </div>
+                    </motion.div>
+                  </StaggerItem>
+                );
+              })}
+            </div>
+          </StaggerContainer>
+        </motion.div>
+
         {/* Three Steps */}
         <StaggerContainer>
           <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
@@ -112,34 +153,6 @@ export const FinalCTASection = () => {
           </motion.div>
         </div>
 
-        {/* Security Features */}
-        <StaggerContainer>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {securityFeatures.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <StaggerItem key={index}>
-                  <motion.div 
-                    className="text-center group"
-                    whileHover={{ y: -4, scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <motion.div
-                      whileHover={{ rotate: 5, scale: 1.1 }}
-                      transition={{ duration: 0.2 }}
-                      className="mb-2"
-                    >
-                      <Icon className="w-8 h-8 mx-auto group-hover:text-primary/80 transition-colors duration-300" />
-                    </motion.div>
-                    <div className="text-sm font-semibold group-hover:text-primary/80 transition-colors duration-300">
-                      {feature.title}
-                    </div>
-                  </motion.div>
-                </StaggerItem>
-              );
-            })}
-          </div>
-        </StaggerContainer>
       </div>
     </section>
   );
