@@ -19,10 +19,22 @@ import dentist3 from '@/assets/dentist-3.png';
 export const TestimonialsSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const [isLandscape, setIsLandscape] = useState(false);
 
   const onSelect = useCallback((api: CarouselApi) => {
     if (!api) return;
     setCurrent(api.selectedScrollSnap());
+  }, []);
+
+  useEffect(() => {
+    const checkLandscape = () => {
+      setIsLandscape(window.innerWidth >= 1024); // lg breakpoint
+    };
+    
+    checkLandscape();
+    window.addEventListener('resize', checkLandscape);
+    
+    return () => window.removeEventListener('resize', checkLandscape);
   }, []);
 
   useEffect(() => {
@@ -94,14 +106,14 @@ export const TestimonialsSection = () => {
                 {testimonials.map((testimonial, index) => (
                   <CarouselItem key={index} className="pl-2 md:pl-4 basis-4/5 xs:basis-3/5 sm:basis-1/2 md:basis-2/5 lg:basis-1/3">
                     <Card className={`hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 relative ${
-                      index === current 
+                      (isLandscape ? index === 1 : index === current)
                         ? 'scale-110 z-20 shadow-2xl' 
                         : 'scale-100 z-10'
                     }`}>
                       <CardContent className="p-0">
                         {/* Full width image at top */}
                         <div className={`w-full overflow-hidden rounded-t-lg bg-muted transition-all duration-500 ${
-                          index === current ? 'h-56' : 'h-48'
+                          (isLandscape ? index === 1 : index === current) ? 'h-56' : 'h-48'
                         }`}>
                           <img 
                             src={testimonial.image} 
