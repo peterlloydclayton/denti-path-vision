@@ -106,13 +106,13 @@ export const WorkflowComparison = () => {
                       className="absolute inset-0 w-full"
                       style={{ backfaceVisibility: 'hidden' }}
                     >
-                      <div className="flex items-start gap-4 p-4 bg-dental-blue-muted rounded-lg border-l-4 border-navy h-full">
+                      <div className="flex items-start gap-4 p-4 bg-dental-blue rounded-lg border-l-4 border-navy h-full">
                         <div className="w-8 h-8 bg-navy text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
                           {index + 1}
                         </div>
                         <div className="flex items-start gap-2">
                           <CheckCircle className="w-5 h-5 text-navy mt-0.5 flex-shrink-0" />
-                          <span className="text-sm">{dentipaySteps[index]}</span>
+                          <span className="text-sm text-navy">{dentipaySteps[index]}</span>
                         </div>
                       </div>
                     </motion.div>
