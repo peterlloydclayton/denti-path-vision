@@ -202,21 +202,21 @@ export const ProblemDeepDive = () => {
               
             </Collapsible>
             
-            {/* Add Get Started button below The Price card */}
-            {section.id === 'price' && openSection === section.id && (
-              <div className="flex justify-center mt-6">
-                <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
-                  Get Started
-                </Button>
-              </div>
-            )}
-            
             {/* Add separator between sections, but not after the last one */}
             {index < sections.length - 1 && (
               <hr className="my-8 border-t-2 border-border" />
             )}
           </div>
           ))}
+          
+          {/* Get Started button below all sections when The Price is expanded */}
+          {openSection === 'price' && (
+            <div className="flex justify-center mt-12">
+              <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
+                Get Started
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </section>
