@@ -29,54 +29,59 @@ export const FinalCTASection = () => {
   ];
 
   return (
-    <section className="py-24 bg-primary-foreground text-primary">
+    <>
+      {/* Trust Based Platform Section */}
+      <section className="py-24 bg-background text-foreground">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <AnimatedText>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16">Trust Based Platform</h2>
+            </AnimatedText>
+            
+            <StaggerContainer>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                {securityFeatures.map((feature, index) => {
+                  const Icon = feature.icon;
+                  return (
+                    <StaggerItem key={index}>
+                      <motion.div 
+                        className="text-center group"
+                        whileHover={{ y: -4, scale: 1.05 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <motion.div
+                          whileHover={{ rotate: 5, scale: 1.1 }}
+                          transition={{ duration: 0.2 }}
+                          className="mb-4"
+                        >
+                          <Icon className="w-12 h-12 mx-auto group-hover:text-primary transition-colors duration-300" />
+                        </motion.div>
+                        <div className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">
+                          {feature.title}
+                        </div>
+                      </motion.div>
+                    </StaggerItem>
+                  );
+                })}
+              </div>
+            </StaggerContainer>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-primary-foreground text-primary">
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-8">
             See DentiPay Intelligence in Your Practice
           </h2>
         </AnimatedText>
-
-        {/* Trust Based Platform Section */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <AnimatedText>
-            <h3 className="text-2xl font-bold mb-12">Trust Based Platform</h3>
-          </AnimatedText>
-          
-          <StaggerContainer>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              {securityFeatures.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <StaggerItem key={index}>
-                    <motion.div 
-                      className="text-center group"
-                      whileHover={{ y: -4, scale: 1.05 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <motion.div
-                        whileHover={{ rotate: 5, scale: 1.1 }}
-                        transition={{ duration: 0.2 }}
-                        className="mb-2"
-                      >
-                        <Icon className="w-8 h-8 mx-auto group-hover:text-primary/80 transition-colors duration-300" />
-                      </motion.div>
-                      <div className="text-sm font-semibold group-hover:text-primary/80 transition-colors duration-300">
-                        {feature.title}
-                      </div>
-                    </motion.div>
-                  </StaggerItem>
-                );
-              })}
-            </div>
-          </StaggerContainer>
-        </motion.div>
 
         {/* Three Steps */}
         <StaggerContainer>
@@ -155,5 +160,6 @@ export const FinalCTASection = () => {
 
       </div>
     </section>
+    </>
   );
 };
