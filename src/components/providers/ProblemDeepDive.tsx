@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { Button } from '@/components/ui/button';
 import { ChevronDown, ChevronRight, CheckCircle } from 'lucide-react';
 import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
 import chartImprovingImage from '@/assets/chart-improving.jpg';
@@ -171,30 +172,44 @@ export const ProblemDeepDive = () => {
                           <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 via-transparent to-black/20" />
                         </div>
                         
-                        {/* Text Content Side */}
-                         <div className={`flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-success/10 via-transparent to-success/20 ${
-                           section.mobileImagePosition === 'bottom' ? 'order-1' : 'order-2'
-                         } ${
-                           section.imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2'
-                         }`}>
-                           <div>
-                             <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-success">DentiPay ANSWER</h4>
-                             <div className="flex items-start gap-3 lg:gap-4">
-                               <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-success mt-0.5 flex-shrink-0" />
-                               <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
-                             </div>
-                           </div>
-                         </div>
+                         {/* Text Content Side */}
+                          <div className={`flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-success/10 via-transparent to-success/20 ${
+                            section.mobileImagePosition === 'bottom' ? 'order-1' : 'order-2'
+                          } ${
+                            section.imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2'
+                          }`}>
+                            <div>
+                              <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-success">DentiPay ANSWER</h4>
+                              <div className="flex items-start gap-3 lg:gap-4">
+                                <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-success mt-0.5 flex-shrink-0" />
+                                <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
+                              </div>
+                              {section.id === 'price' && (
+                                <div className="mt-6">
+                                  <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
+                                    Get Started
+                                  </Button>
+                                </div>
+                              )}
+                            </div>
+                          </div>
                       </div>
-                    ) : (
-                       <div className="p-6 rounded-xl">
-                         <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-success">DentiPay ANSWER</h4>
-                         <div className="flex items-start gap-3 lg:gap-4">
-                           <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-success mt-0.5 flex-shrink-0" />
-                           <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
-                         </div>
-                       </div>
-                    )}
+                      ) : (
+                        <div className="p-6 rounded-xl">
+                          <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-success">DentiPay ANSWER</h4>
+                          <div className="flex items-start gap-3 lg:gap-4">
+                            <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-success mt-0.5 flex-shrink-0" />
+                            <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
+                          </div>
+                          {section.id === 'price' && (
+                            <div className="mt-6">
+                              <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
+                                Get Started
+                              </Button>
+                            </div>
+                          )}
+                        </div>
+                      )}
                   </CardContent>
                 </Card>
               </CollapsibleContent>
