@@ -16,7 +16,6 @@ const Providers = () => {
   return (
     <div className="overflow-x-hidden">
       <HeroSection />
-      <StatsSection />
       <VideoSection />
       <ProblemSection />
       <ProblemDeepDive />
@@ -24,6 +23,7 @@ const Providers = () => {
       <EchoProviderSection />
       <WorkflowComparison />
       <ROICalculator />
+      <StatsSection />
       <TestimonialsSection />
       <FinalCTASection />
     </div>
