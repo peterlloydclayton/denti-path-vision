@@ -4,18 +4,19 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Slider } from '@/components/ui/slider';
 import { Calculator, TrendingUp } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 
 export const ROICalculator = () => {
   const [monthlyPatients, setMonthlyPatients] = useState('50');
-  const [avgTreatment, setAvgTreatment] = useState('2500');
-  const [currentApproval, setCurrentApproval] = useState('60');
+  const [avgTreatment, setAvgTreatment] = useState(2500);
+  const [currentApproval, setCurrentApproval] = useState(60);
 
   const calculateROI = () => {
     const patients = parseInt(monthlyPatients) || 0;
-    const treatment = parseInt(avgTreatment) || 0;
-    const current = parseInt(currentApproval) || 0;
+    const treatment = avgTreatment || 0;
+    const current = currentApproval || 0;
     
     const currentRevenue = (patients * treatment * current) / 100;
     const newRevenue = (patients * treatment * 94) / 100; // 94% DentiPay approval
@@ -94,23 +95,73 @@ export const ROICalculator = () => {
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6 text-dental-blue-dark">Practice Information</h3>
                 <div className="space-y-6">
-                  {inputFields.map((field, index) => (
-                    <motion.div 
-                      key={field.id}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Label htmlFor={field.id} className="font-medium">{field.label}</Label>
-                      <Input
-                        id={field.id}
-                        type="number"
-                        value={field.value}
-                        onChange={(e) => field.onChange(e.target.value)}
-                        className="mt-2 focus:border-dental-blue focus:ring-dental-blue/20 transition-all duration-300"
+                  {/* Monthly Patients - Regular Input */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0 * 0.1 }}
+                  >
+                    <Label htmlFor="patients" className="font-medium">Monthly Patients</Label>
+                    <Input
+                      id="patients"
+                      type="number"
+                      value={monthlyPatients}
+                      onChange={(e) => setMonthlyPatients(e.target.value)}
+                      className="mt-2 focus:border-dental-blue focus:ring-dental-blue/20 transition-all duration-300"
+                    />
+                  </motion.div>
+
+                  {/* Average Treatment Value - Slider */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1 * 0.1 }}
+                  >
+                    <Label className="font-medium">Average Treatment Value</Label>
+                    <div className="mt-2 space-y-3">
+                      <div className="text-2xl font-bold text-dental-blue-dark">
+                        ${avgTreatment.toLocaleString()}
+                      </div>
+                      <Slider
+                        value={[avgTreatment]}
+                        onValueChange={(value) => setAvgTreatment(value[0])}
+                        min={1000}
+                        max={10000}
+                        step={250}
+                        className="w-full"
                       />
-                    </motion.div>
-                  ))}
+                      <div className="flex justify-between text-sm text-muted-foreground">
+                        <span>$1,000</span>
+                        <span>$10,000</span>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Current Approval Rate - Slider */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 2 * 0.1 }}
+                  >
+                    <Label className="font-medium">Current Approval Rate</Label>
+                    <div className="mt-2 space-y-3">
+                      <div className="text-2xl font-bold text-dental-blue-dark">
+                        {currentApproval}%
+                      </div>
+                      <Slider
+                        value={[currentApproval]}
+                        onValueChange={(value) => setCurrentApproval(value[0])}
+                        min={0}
+                        max={100}
+                        step={5}
+                        className="w-full"
+                      />
+                      <div className="flex justify-between text-sm text-muted-foreground">
+                        <span>0%</span>
+                        <span>100%</span>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
               </CardContent>
             </Card>
