@@ -142,7 +142,7 @@ export const FinalCTASection = () => {
         </motion.div>
 
         {/* CTA Button - White Background Section */}
-        <div className="bg-white text-primary py-16 -mx-6 px-6 mb-16">
+        <div className="bg-white text-primary py-16 -mx-6 px-6">
           <motion.div 
             className="flex justify-center"
             initial={{ opacity: 0, y: 20 }}
