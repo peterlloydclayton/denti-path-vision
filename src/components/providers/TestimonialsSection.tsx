@@ -15,6 +15,9 @@ import { type CarouselApi } from '@/components/ui/carousel';
 import dentist1 from '@/assets/dentist-1.png';
 import dentist2 from '@/assets/dentist-2.png';
 import dentist3 from '@/assets/dentist-3.png';
+import dentist4 from '@/assets/dentist-4.png';
+import dentist5 from '@/assets/dentist-5.png';
+import dentistMale from '@/assets/dentist-male-white-coat.png';
 
 export const TestimonialsSection = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -75,6 +78,33 @@ export const TestimonialsSection = () => {
       rating: "4.8/5", 
       color: "dental-blue-dark",
       image: dentist3
+    },
+    {
+      quote: "DentiPay's intelligent underwriting has completely changed our implant consultations. Patients who were previously declined now get approved for comprehensive treatments.",
+      name: "Dr. Robert Thompson",
+      specialty: "Periodontics & Implantology",
+      metric: "78% increase in implant cases",
+      rating: "4.9/5",
+      color: "dental-blue",
+      image: dentist4
+    },
+    {
+      quote: "The seamless integration with our practice management system saved us hours of administrative work. Our team can focus on patient care instead of financing paperwork.",
+      name: "Dr. Amanda Foster",
+      specialty: "Orthodontics",
+      metric: "$240K additional revenue in 6 months",
+      rating: "5.0/5",
+      color: "success",
+      image: dentist5
+    },
+    {
+      quote: "What impressed me most is how DentiPay's AI understands the complexity of full mouth reconstruction cases. Traditional lenders never got it, but this system does.",
+      name: "Dr. James Williams",
+      specialty: "Prosthodontics",
+      metric: "85% approval rate on complex cases",
+      rating: "4.7/5",
+      color: "dental-blue-dark",
+      image: dentistMale
     }
   ];
 
