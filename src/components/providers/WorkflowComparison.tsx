@@ -5,6 +5,7 @@ import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
 import { Card, CardContent } from '@/components/ui/card';
 
 export const WorkflowComparison = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -61,21 +62,20 @@ export const WorkflowComparison = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Flip card when it becomes the active slide
   useEffect(() => {
-    if (!isVisible) return;
+    if (isVisible && !flippedCards.includes(activeSlide)) {
+      const timer = setTimeout(() => {
+        setFlippedCards(prev => [...prev, activeSlide]);
+      }, 1200);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [activeSlide, isVisible, flippedCards]);
 
-    const interval = setInterval(() => {
-      setFlippedCards(prev => {
-        const nextIndex = prev.length;
-        if (nextIndex < workflowSteps.length) {
-          return [...prev, nextIndex];
-        }
-        return prev;
-      });
-    }, 1200); // Changed to 1200ms as requested
-
-    return () => clearInterval(interval);
-  }, [workflowSteps.length, isVisible]);
+  const handleSlideChange = (slideIndex: number) => {
+    setActiveSlide(slideIndex);
+  };
 
   const createCard = (step: typeof workflowSteps[0], index: number) => {
     const isFlipped = flippedCards.includes(index);
@@ -137,7 +137,7 @@ export const WorkflowComparison = () => {
             AI Powered Approvals. Instant Decisions
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Watch as traditional financing transforms into intelligent, instant solutions
+            Swipe through to see how traditional financing transforms into intelligent solutions
           </p>
         </div>
 
@@ -145,6 +145,7 @@ export const WorkflowComparison = () => {
           slides={slides}
           className="max-w-6xl mx-auto mb-12"
           options={{ align: 'start', loop: true }}
+          onSlideChange={handleSlideChange}
         />
 
         {/* Image Section */}

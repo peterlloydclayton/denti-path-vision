@@ -9,12 +9,14 @@ interface EmblaParallaxCarouselProps {
   slides: React.ReactNode[];
   options?: any;
   className?: string;
+  onSlideChange?: (index: number) => void;
 }
 
 export const EmblaParallaxCarousel: React.FC<EmblaParallaxCarouselProps> = ({ 
   slides, 
   options,
-  className = ""
+  className = "",
+  onSlideChange
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const tweenFactor = useRef(0);
@@ -92,6 +94,13 @@ export const EmblaParallaxCarousel: React.FC<EmblaParallaxCarouselProps> = ({
       .on('scroll', tweenParallax)
       .on('slideFocus', tweenParallax);
   }, [emblaApi, tweenParallax, setTweenNodes, setTweenFactor]);
+
+  // Call onSlideChange when selectedIndex changes
+  useEffect(() => {
+    if (onSlideChange) {
+      onSlideChange(selectedIndex);
+    }
+  }, [selectedIndex, onSlideChange]);
 
   return (
     <div className={`relative ${className}`}>
