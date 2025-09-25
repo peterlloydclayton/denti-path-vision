@@ -128,10 +128,13 @@ export const WorkflowComparison = () => {
           {/* Right Column: Image */}
           <div className="mt-12 lg:mt-0 lg:flex-1 lg:max-w-lg lg:sticky lg:top-8">
             <div className="max-w-2xl mx-auto lg:max-w-none">
-              <img 
+              <motion.img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758760600/financing-approved-computer_gzdfei.png" 
                 alt="Financing approval notice displayed on computer screen with approval checkmark"
                 className="w-full h-auto rounded-lg shadow-lg"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
               />
             </div>
           </div>
