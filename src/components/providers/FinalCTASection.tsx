@@ -169,9 +169,9 @@ export const FinalCTASection = () => {
               Join thousands of dentists already transforming their practice
             </motion.p>
             
-            {/* Mobile Image - Bottom Centered */}
+            {/* Mobile Image - Bottom Flush */}
             <motion.div 
-              className="flex justify-center items-end w-full md:hidden absolute bottom-0 left-0 right-0"
+              className="flex justify-center items-end w-full md:hidden absolute bottom-0 left-0 right-0 pb-0"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -180,7 +180,8 @@ export const FinalCTASection = () => {
               <img 
                 src={dentistImage} 
                 alt="Professional dentist" 
-                className="w-72 h-auto object-contain"
+                className="w-72 h-auto object-contain block"
+                style={{ marginBottom: 0, paddingBottom: 0 }}
               />
             </motion.div>
           </motion.div>
