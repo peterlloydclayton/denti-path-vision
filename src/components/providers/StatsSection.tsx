@@ -40,7 +40,9 @@ export const StatsSection = () => {
               <div className="relative mb-6">
                 <div className="text-4xl md:text-5xl font-black text-gray-900 mb-2 group-hover:text-dental-blue-dark transition-colors duration-300">
                   <AnimatedCounter 
-                    value={stat.value} 
+                    value={stat.value}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
                   />
                 </div>
                 
