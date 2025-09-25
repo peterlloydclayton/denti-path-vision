@@ -116,7 +116,7 @@ export const TestimonialsSection = () => {
             Ready to Join thousands of Providers signing up for DentiPay?
           </h2>
           <p className="text-xl text-muted-foreground">
-            Real results from dental professionals who've transformed their practices with intelligence.
+            Hear from providers transforming their practices and changing the future of dental finance
           </p>
         </AnimatedText>
 
