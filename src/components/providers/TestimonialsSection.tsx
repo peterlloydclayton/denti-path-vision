@@ -12,6 +12,9 @@ import {
 } from '@/components/ui/carousel';
 import { useCallback, useEffect, useState } from 'react';
 import { type CarouselApi } from '@/components/ui/carousel';
+import dentist1 from '@/assets/dentist-1.png';
+import dentist2 from '@/assets/dentist-2.png';
+import dentist3 from '@/assets/dentist-3.png';
 
 export const TestimonialsSection = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -41,7 +44,7 @@ export const TestimonialsSection = () => {
       metric: "$180K additional annual revenue",
       rating: "4.9/5",
       color: "dental-blue",
-      image: "/src/assets/dentist-1.png"
+      image: dentist1
     },
     {
       quote: "The Echo AI integration has revolutionized how we discuss treatment options. Patients feel confident about financing before we even finish the consultation.",
@@ -50,7 +53,7 @@ export const TestimonialsSection = () => {
       metric: "65% faster treatment acceptance",
       rating: "5.0/5",
       color: "success",
-      image: "/src/assets/dentist-2.png"
+      image: dentist2
     },
     {
       quote: "PATH's instant approvals have eliminated the anxiety around financing discussions. Our patients trust the process because it actually works for dental care.",
@@ -59,7 +62,7 @@ export const TestimonialsSection = () => {
       metric: "40% increase in case acceptance",
       rating: "4.8/5", 
       color: "dental-blue-dark",
-      image: "/src/assets/dentist-3.png"
+      image: dentist3
     }
   ];
 
