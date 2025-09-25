@@ -200,18 +200,16 @@ export const ProblemDeepDive = () => {
                 </Card>
               </CollapsibleContent>
               
-              {/* Add Get Started button below The Price card */}
-              {(() => {
-                console.log('Section:', section.id, 'OpenSection:', openSection, 'Match:', section.id === 'price' && openSection === section.id);
-                return section.id === 'price' && openSection === section.id;
-              })() && (
-                <div className="flex justify-center mt-6">
-                  <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
-                    Get Started
-                  </Button>
-                </div>
-              )}
             </Collapsible>
+            
+            {/* Add Get Started button below The Price card */}
+            {section.id === 'price' && openSection === section.id && (
+              <div className="flex justify-center mt-6">
+                <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
+                  Get Started
+                </Button>
+              </div>
+            )}
             
             {/* Add separator between sections, but not after the last one */}
             {index < sections.length - 1 && (
