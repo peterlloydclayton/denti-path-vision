@@ -95,9 +95,9 @@ export const FinalCTASection = () => {
           </div>
         </motion.div>
 
-        {/* CTA Buttons */}
+        {/* CTA Button */}
         <motion.div 
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+          className="flex justify-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -105,17 +105,7 @@ export const FinalCTASection = () => {
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button size="lg" className="bg-intelligence-foreground text-intelligence hover:bg-intelligence-foreground/90 px-8 shadow-elegant hover:shadow-xl transition-all duration-300">
-              Schedule Your Demo
-            </Button>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button size="lg" variant="outline" className="border-intelligence-foreground text-intelligence-foreground hover:bg-intelligence-foreground hover:text-intelligence px-8 transition-all duration-300">
-              Start Free Trial
-            </Button>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button size="lg" variant="ghost" className="text-intelligence-foreground hover:bg-intelligence-foreground/10 px-8 transition-all duration-300">
-              Download Playbook
+              Get Started!
             </Button>
           </motion.div>
         </motion.div>
