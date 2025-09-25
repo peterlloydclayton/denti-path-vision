@@ -209,6 +209,13 @@ export const ProblemDeepDive = () => {
           </div>
           ))}
         </div>
+        
+        {/* Learn More button at bottom of section */}
+        <div className="flex justify-center mt-12">
+          <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
+            Learn More
+          </Button>
+        </div>
       </div>
     </section>
   );
