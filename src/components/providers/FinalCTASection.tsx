@@ -76,73 +76,76 @@ export const FinalCTASection = () => {
       </section>
 
       <section className="py-24 bg-primary-foreground text-primary">
-      <div className="container mx-auto px-6">
-        <AnimatedText className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
-            See DentiPay Intelligence in Your Practice
-          </h2>
-        </AnimatedText>
-
-        {/* Three Steps */}
-        <StaggerContainer>
-          <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
-            {steps.map((step, index) => (
-              <StaggerItem key={index}>
-                <motion.div
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Card className="bg-primary border-primary/20 text-primary-foreground text-center hover:bg-primary/90 transition-all duration-300 hover:shadow-elegant">
-                    <CardContent className="p-6">
-                      <motion.div 
-                        className="w-12 h-12 bg-primary-foreground text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        {step.number}
-                      </motion.div>
-                      <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                      <p className="text-sm opacity-90">{step.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </div>
-        </StaggerContainer>
-
-        {/* Everything You Need */}
-        <motion.div 
-          className="max-w-4xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <AnimatedText>
-            <h3 className="text-2xl font-bold text-center mb-8">Everything You Need to Succeed</h3>
+        <div className="container mx-auto px-6">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8">
+              See DentiPay Intelligence in Your Practice
+            </h2>
           </AnimatedText>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {features.map((feature, index) => (
-              <motion.div 
-                key={index}
-                className="flex items-center gap-3"
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ x: 4, scale: 1.02 }}
-              >
-                <CheckCircle className="w-5 h-5 text-success flex-shrink-0" />
-                <span className="hover:text-primary/80 transition-colors duration-300">{feature}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
 
-        {/* CTA Button - White Background Section */}
-        <div className="bg-white text-primary py-16 -mx-6 px-6">
+          {/* Three Steps */}
+          <StaggerContainer>
+            <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
+              {steps.map((step, index) => (
+                <StaggerItem key={index}>
+                  <motion.div
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Card className="bg-primary border-primary/20 text-primary-foreground text-center hover:bg-primary/90 transition-all duration-300 hover:shadow-elegant">
+                      <CardContent className="p-6">
+                        <motion.div 
+                          className="w-12 h-12 bg-primary-foreground text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {step.number}
+                        </motion.div>
+                        <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                        <p className="text-sm opacity-90">{step.description}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </StaggerItem>
+              ))}
+            </div>
+          </StaggerContainer>
+
+          {/* Everything You Need */}
+          <motion.div 
+            className="max-w-4xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <AnimatedText>
+              <h3 className="text-2xl font-bold text-center mb-8">Everything You Need to Succeed</h3>
+            </AnimatedText>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {features.map((feature, index) => (
+                <motion.div 
+                  key={index}
+                  className="flex items-center gap-3"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ x: 4, scale: 1.02 }}
+                >
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0" />
+                  <span className="hover:text-primary/80 transition-colors duration-300">{feature}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Button - White Background Section */}
+      <section className="bg-white text-primary py-16">
+        <div className="container mx-auto px-6">
           <motion.div 
             className="flex justify-center"
             initial={{ opacity: 0, y: 20 }}
@@ -157,9 +160,7 @@ export const FinalCTASection = () => {
             </motion.div>
           </motion.div>
         </div>
-
-      </div>
-    </section>
+      </section>
     </>
   );
 };
