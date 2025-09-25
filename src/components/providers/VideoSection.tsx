@@ -135,8 +135,8 @@ export const VideoSection = ({ imagePosition = 'left', mobileImagePosition = 'to
                         Watch Product Overview
                       </div>
                     </div>
-                    <div className="flex justify-end mt-6 mr-4">
-                      <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
+                    <div className="flex justify-center md:justify-end mt-6 px-6 md:mr-4">
+                      <Button className="bg-black text-white hover:bg-black/90 rounded-full px-10 py-4 md:px-8 md:py-3 text-base font-medium">
                         Get Started
                       </Button>
                     </div>
