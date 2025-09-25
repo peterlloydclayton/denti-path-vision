@@ -114,7 +114,7 @@ export const FinalCTASection = () => {
 
           {/* Everything You Need */}
           <motion.div 
-            className="max-w-4xl mx-auto mb-16"
+            className="max-w-4xl mx-auto mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -145,7 +145,7 @@ export const FinalCTASection = () => {
       </section>
 
       {/* CTA Button - White Background Section */}
-      <section className="bg-white text-primary py-16 relative overflow-hidden">
+      <section className="bg-white text-primary py-16 md:py-24 relative overflow-hidden min-h-[320px] md:min-h-[400px]">
         <div className="container mx-auto px-6">
           <motion.div 
             className="flex flex-col items-center"
@@ -160,7 +160,7 @@ export const FinalCTASection = () => {
               </Button>
             </motion.div>
             <motion.p 
-              className="text-lg text-muted-foreground font-medium"
+              className="text-lg text-muted-foreground font-medium mb-8 md:mb-0"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -168,9 +168,24 @@ export const FinalCTASection = () => {
             >
               Join thousands of dentists already transforming their practice
             </motion.p>
+            
+            {/* Mobile Image - Below Text */}
+            <motion.div 
+              className="block md:hidden w-48 h-auto mt-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              <img 
+                src={dentistImage} 
+                alt="Professional dentist" 
+                className="w-full h-auto object-contain"
+              />
+            </motion.div>
           </motion.div>
           
-          {/* Dentist Image - Left Side, Bottom Aligned */}
+          {/* Desktop Image - Left Side, Bottom Aligned */}
           <motion.div 
             className="absolute left-0 bottom-0 w-72 h-auto hidden md:block"
             initial={{ opacity: 0, x: -50 }}
