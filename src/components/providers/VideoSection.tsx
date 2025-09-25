@@ -129,11 +129,13 @@ export const VideoSection = ({ imagePosition = 'left', mobileImagePosition = 'to
                       transforms patient approvals and streamlines your practice workflow 
                       for maximum efficiency and revenue growth.
                     </p>
-                    <div className="flex items-center justify-between pt-4">
+                    <div className="flex items-center gap-4 pt-4">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                         Watch Product Overview
                       </div>
+                    </div>
+                    <div className="flex justify-end mt-6 mr-4">
                       <Button className="bg-black text-white hover:bg-black/90 rounded-full px-6 py-2 text-sm font-medium">
                         Get Started
                       </Button>
