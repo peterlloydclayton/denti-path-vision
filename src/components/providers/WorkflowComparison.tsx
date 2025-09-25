@@ -81,9 +81,9 @@ export const WorkflowComparison = () => {
     const isFlipped = flippedCards.includes(index);
     
     return (
-      <Card className="h-full min-h-[280px] bg-background flex items-center justify-center">
-        <CardContent className="p-6 w-full h-full flex flex-col justify-center">
-          <div className="relative h-[200px] w-full">
+      <Card className="h-full min-h-[300px] bg-background flex items-center justify-center">
+        <CardContent className="p-7 w-full h-full flex flex-col justify-center">
+          <div className="relative h-[220px] w-full">
             {/* Traditional Card (Front) */}
             <motion.div
               initial={{ rotateY: 0 }}
@@ -92,9 +92,9 @@ export const WorkflowComparison = () => {
               className="absolute inset-0 w-full"
               style={{ backfaceVisibility: 'hidden' }}
             >
-              <div className="flex flex-col items-center justify-center h-full p-6 bg-gray-100 rounded-lg border-l-4 border-gray-400 grayscale">
-                <XCircle className="w-8 h-8 text-gray-400 mb-4" />
-                <p className="text-center text-gray-600 font-medium leading-relaxed">
+              <div className="flex flex-col items-center justify-center h-full p-7 bg-gray-100 rounded-lg border-l-4 border-gray-400 grayscale">
+                <XCircle className="w-9 h-9 text-gray-400 mb-4" />
+                <p className="text-center text-gray-600 font-medium leading-relaxed text-base">
                   {step.traditional}
                 </p>
                 <div className="mt-4 text-xs text-gray-400 font-semibold uppercase tracking-wide">
@@ -111,9 +111,9 @@ export const WorkflowComparison = () => {
               className="absolute inset-0 w-full"
               style={{ backfaceVisibility: 'hidden' }}
             >
-              <div className="flex flex-col items-center justify-center h-full p-6 bg-dental-blue rounded-lg border-l-4 border-navy">
-                <CheckCircle className="w-8 h-8 text-navy mb-4" />
-                <p className="text-center text-navy font-medium leading-relaxed">
+              <div className="flex flex-col items-center justify-center h-full p-7 bg-dental-blue rounded-lg border-l-4 border-navy">
+                <CheckCircle className="w-9 h-9 text-navy mb-4" />
+                <p className="text-center text-navy font-medium leading-relaxed text-base">
                   {step.dentipay}
                 </p>
                 <div className="mt-4 text-xs text-navy font-semibold uppercase tracking-wide">
@@ -141,16 +141,44 @@ export const WorkflowComparison = () => {
           </p>
         </div>
 
-        <EmblaParallaxCarousel 
-          slides={slides}
-          className="max-w-6xl mx-auto mb-12"
-          options={{ align: 'start', loop: true }}
-          onSlideChange={handleSlideChange}
-        />
+        {/* Mobile: Stacked layout */}
+        <div className="block lg:hidden">
+          <EmblaParallaxCarousel 
+            slides={slides}
+            className="max-w-6xl mx-auto mb-12"
+            options={{ align: 'start', loop: true }}
+            onSlideChange={handleSlideChange}
+          />
+          
+          {/* Image Section for mobile */}
+          <div className="flex justify-center">
+            <div className="max-w-2xl">
+              <motion.img 
+                src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758760600/financing-approved-computer_gzdfei.png" 
+                alt="Financing approval notice displayed on computer screen with approval checkmark"
+                className="w-full h-auto rounded-lg shadow-lg"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+              />
+            </div>
+          </div>
+        </div>
 
-        {/* Image Section */}
-        <div className="flex justify-center mt-16">
-          <div className="max-w-2xl">
+        {/* Desktop/Landscape: Side by side layout */}
+        <div className="hidden lg:flex lg:items-center lg:gap-8 max-w-7xl mx-auto">
+          {/* Carousel Section */}
+          <div className="flex-1">
+            <EmblaParallaxCarousel 
+              slides={slides}
+              className="max-w-4xl"
+              options={{ align: 'start', loop: true }}
+              onSlideChange={handleSlideChange}
+            />
+          </div>
+          
+          {/* Image Section */}
+          <div className="flex-shrink-0 w-80">
             <motion.img 
               src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758760600/financing-approved-computer_gzdfei.png" 
               alt="Financing approval notice displayed on computer screen with approval checkmark"
