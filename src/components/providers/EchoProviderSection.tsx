@@ -1,5 +1,6 @@
 import { Bot } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { motion } from 'framer-motion';
@@ -242,6 +243,19 @@ export const EchoProviderSection = () => {
           className="max-w-6xl mx-auto"
           options={{ align: 'start', loop: true }}
         />
+        
+        {/* Get Started button at bottom of section */}
+        <motion.div 
+          className="flex justify-center mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
+            Get Started
+          </Button>
+        </motion.div>
       </div>
     </section>
   );
