@@ -209,15 +209,6 @@ export const ProblemDeepDive = () => {
           </div>
           ))}
         </div>
-        
-        {/* Get Started button outside all containers when The Price is expanded */}
-        {openSection === 'price' && (
-          <div className="flex justify-center mt-12">
-            <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
-              Get Started
-            </Button>
-          </div>
-        )}
       </div>
     </section>
   );
