@@ -146,9 +146,9 @@ export const FinalCTASection = () => {
 
       {/* CTA Button - White Background Section */}
       <section className="bg-white text-primary py-16 md:py-24 relative overflow-hidden min-h-[500px] md:min-h-[400px]">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 relative flex flex-col items-center justify-between h-full">
           <motion.div 
-            className="flex flex-col items-center"
+            className="flex flex-col items-center z-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -171,7 +171,7 @@ export const FinalCTASection = () => {
             
             {/* Mobile Image - Bottom Centered */}
             <motion.div 
-              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 block md:hidden w-72 h-auto flex justify-center"
+              className="flex justify-center items-end w-full md:hidden absolute bottom-0 left-0 right-0"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -180,7 +180,7 @@ export const FinalCTASection = () => {
               <img 
                 src={dentistImage} 
                 alt="Professional dentist" 
-                className="w-full h-auto object-contain"
+                className="w-72 h-auto object-contain"
               />
             </motion.div>
           </motion.div>
