@@ -9,12 +9,12 @@ import { Calculator, TrendingUp } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 
 export const ROICalculator = () => {
-  const [monthlyPatients, setMonthlyPatients] = useState('50');
+  const [monthlyPatients, setMonthlyPatients] = useState(50);
   const [avgTreatment, setAvgTreatment] = useState(2500);
   const [currentApproval, setCurrentApproval] = useState(60);
 
   const calculateROI = () => {
-    const patients = parseInt(monthlyPatients) || 0;
+    const patients = monthlyPatients || 0;
     const treatment = avgTreatment || 0;
     const current = currentApproval || 0;
     
@@ -95,20 +95,30 @@ export const ROICalculator = () => {
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6 text-dental-blue-dark">Practice Information</h3>
                 <div className="space-y-6">
-                  {/* Monthly Patients - Regular Input */}
+                  {/* Monthly Patients - Slider */}
                   <motion.div 
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0 * 0.1 }}
                   >
-                    <Label htmlFor="patients" className="font-medium">Monthly Patients</Label>
-                    <Input
-                      id="patients"
-                      type="number"
-                      value={monthlyPatients}
-                      onChange={(e) => setMonthlyPatients(e.target.value)}
-                      className="mt-2 focus:border-dental-blue focus:ring-dental-blue/20 transition-all duration-300"
-                    />
+                    <Label className="font-medium">Monthly Patients</Label>
+                    <div className="mt-2 space-y-3">
+                      <div className="text-2xl font-bold text-dental-blue-dark">
+                        {monthlyPatients}
+                      </div>
+                      <Slider
+                        value={[monthlyPatients]}
+                        onValueChange={(value) => setMonthlyPatients(value[0])}
+                        min={10}
+                        max={500}
+                        step={10}
+                        className="w-full"
+                      />
+                      <div className="flex justify-between text-sm text-muted-foreground">
+                        <span>10</span>
+                        <span>500</span>
+                      </div>
+                    </div>
                   </motion.div>
 
                   {/* Average Treatment Value - Slider */}
