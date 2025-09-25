@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { CustomSlider } from '@/components/ui/custom-slider';
-import { Calculator, TrendingUp } from 'lucide-react';
+import { Calculator, TrendingUp, DollarSign, Target, Calendar } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 
 export const ROICalculator = () => {
@@ -57,21 +57,22 @@ export const ROICalculator = () => {
     {
       value: roi.monthlyIncrease,
       label: "Monthly Revenue Increase",
-      color: "success",
-      icon: TrendingUp
+      color: "emerald-600",
+      icon: DollarSign
     },
     {
       value: roi.annualIncrease,
       label: "Annual Revenue Increase", 
       color: "dental-blue-dark",
-      icon: Calculator
+      icon: Calendar
     },
     {
       value: roi.approvalImprovement,
       label: "Approval Rate Improvement",
-      color: "dental-blue",
+      color: "orange-600",
       suffix: "%",
-      prefix: "+"
+      prefix: "+",
+      icon: Target
     }
   ];
 
@@ -220,7 +221,7 @@ export const ROICalculator = () => {
                     size="lg"
                   >
                     <Calculator className="w-5 h-5 mr-2" />
-                    Launch Full Calculator
+                    Learn More
                   </Button>
                 </motion.div>
               </CardContent>
