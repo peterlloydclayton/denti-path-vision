@@ -126,7 +126,7 @@ export const WorkflowComparison = () => {
           </div>
 
           {/* Right Column: Image */}
-          <div className="mt-12 lg:mt-0 lg:flex-1 lg:max-w-lg lg:sticky lg:top-8">
+          <div className="mt-12 lg:mt-20 lg:flex-1 lg:max-w-lg lg:sticky lg:top-8">
             <div className="max-w-2xl mx-auto lg:max-w-none">
               <motion.img 
                 src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758760600/financing-approved-computer_gzdfei.png" 
