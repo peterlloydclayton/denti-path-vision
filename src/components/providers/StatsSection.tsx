@@ -41,13 +41,18 @@ export const StatsSection = () => {
                 <div className="text-6xl md:text-7xl font-black text-gray-900 mb-2 group-hover:text-dental-blue-dark transition-colors duration-300">
                   <AnimatedCounter 
                     value={stat.value} 
-                    suffix={stat.suffix}
-                    prefix={stat.prefix}
                   />
                 </div>
                 
                 {/* Glowing underline */}
                 <div className="w-16 h-1 bg-gradient-to-r from-dental-blue to-dental-blue-dark mx-auto rounded-full group-hover:w-24 transition-all duration-500" />
+                
+                {/* Prefix and Suffix below the line */}
+                {(stat.prefix || stat.suffix) && (
+                  <div className="text-lg font-semibold text-gray-700 mt-2">
+                    {stat.prefix}{stat.suffix}
+                  </div>
+                )}
               </div>
               
               {/* Label with enhanced typography */}
