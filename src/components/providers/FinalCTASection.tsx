@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, Phone, Shield, Lock, TrendingUp, Award } from 'lucide-react';
+import { CheckCircle, Shield, Lock, TrendingUp, Award } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 
@@ -65,6 +65,21 @@ export const FinalCTASection = () => {
           </div>
         </StaggerContainer>
 
+        {/* CTA Button */}
+        <motion.div 
+          className="flex justify-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-16 py-6 text-2xl font-bold rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300">
+              Get Started!
+            </Button>
+          </motion.div>
+        </motion.div>
+
         {/* Everything You Need */}
         <motion.div 
           className="max-w-4xl mx-auto mb-16"
@@ -93,39 +108,6 @@ export const FinalCTASection = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
-
-        {/* CTA Button */}
-        <motion.div 
-          className="flex justify-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-16 py-6 text-2xl font-bold rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300">
-              Get Started!
-            </Button>
-          </motion.div>
-        </motion.div>
-
-        {/* Contact Information */}
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <motion.div 
-            className="flex items-center justify-center gap-2 mb-2 group"
-            whileHover={{ scale: 1.05 }}
-          >
-            <Phone className="w-5 h-5 group-hover:text-primary/80 transition-colors duration-300" />
-            <span className="text-lg font-semibold group-hover:text-primary/80 transition-colors duration-300">(555) 123-4567</span>
-          </motion.div>
-          <div className="text-sm opacity-90">www.dentipay.com</div>
         </motion.div>
 
         {/* Security Features */}
