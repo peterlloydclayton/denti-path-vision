@@ -3,6 +3,7 @@ import { XCircle, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 export const WorkflowComparison = () => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -204,6 +205,13 @@ export const WorkflowComparison = () => {
               />
             </div>
           </div>
+        </div>
+        
+        {/* Get Started button at bottom of section */}
+        <div className="flex justify-center mt-16">
+          <Button className="bg-black text-white hover:bg-black/90 rounded-full px-12 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+            Get Started
+          </Button>
         </div>
       </div>
     </section>

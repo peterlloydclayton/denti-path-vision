@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 import { AnimatedCounter } from './AnimatedCounter';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 import { Card } from '@/components/ui/card';
@@ -65,6 +66,13 @@ export const StatsSection = () => {
               <div className="absolute bottom-4 left-4 w-3 h-3 border-b-2 border-l-2 border-gray-300 group-hover:border-dental-blue transition-colors duration-300" />
             </div>
           ))}
+        </div>
+        
+        {/* Get Started button at bottom of section */}
+        <div className="flex justify-center mt-16">
+          <Button className="bg-black text-white hover:bg-black/90 rounded-full px-12 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+            Get Started
+          </Button>
         </div>
       </div>
     </section>
