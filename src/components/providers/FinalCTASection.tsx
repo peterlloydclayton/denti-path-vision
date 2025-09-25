@@ -190,7 +190,7 @@ export const FinalCTASection = () => {
         
         {/* Desktop Image - Left Side, Bottom Aligned */}
         <motion.div 
-          className="absolute left-0 bottom-0 w-72 h-auto hidden md:block"
+          className="absolute left-0 bottom-0 w-[25rem] h-auto hidden md:block"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
