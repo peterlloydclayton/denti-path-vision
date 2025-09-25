@@ -7,7 +7,7 @@ import { TrinitySection } from '@/components/providers/TrinitySection';
 import { IntelligenceSection } from '@/components/providers/IntelligenceSection';
 import { EchoProviderSection } from '@/components/providers/EchoProviderSection';
 import { WorkflowComparison } from '@/components/providers/WorkflowComparison';
-import { PerformanceMetrics } from '@/components/providers/PerformanceMetrics';
+
 import { ROICalculator } from '@/components/providers/ROICalculator';
 import { TestimonialsSection } from '@/components/providers/TestimonialsSection';
 import { FinalCTASection } from '@/components/providers/FinalCTASection';
@@ -23,7 +23,6 @@ const Providers = () => {
       <TrinitySection />
       <EchoProviderSection />
       <WorkflowComparison />
-      <PerformanceMetrics />
       <ROICalculator />
       <TestimonialsSection />
       <FinalCTASection />
