@@ -169,9 +169,9 @@ export const FinalCTASection = () => {
               Join thousands of dentists already transforming their practice
             </motion.p>
             
-            {/* Mobile Image - Bottom Aligned */}
+            {/* Mobile Image - Bottom Centered */}
             <motion.div 
-              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 block md:hidden w-72 h-auto"
+              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 block md:hidden w-72 h-auto flex justify-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
