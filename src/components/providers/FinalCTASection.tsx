@@ -29,7 +29,7 @@ export const FinalCTASection = () => {
   ];
 
   return (
-    <section className="py-24 bg-primary text-primary-foreground">
+    <section className="py-24 bg-primary-foreground text-primary">
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-8">
@@ -46,7 +46,7 @@ export const FinalCTASection = () => {
                   whileHover={{ y: -4, scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Card className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground text-center hover:bg-primary-foreground/15 transition-all duration-300 hover:shadow-elegant">
+                  <Card className="bg-primary border-primary/20 text-primary-foreground text-center hover:bg-primary/90 transition-all duration-300 hover:shadow-elegant">
                     <CardContent className="p-6">
                       <motion.div 
                         className="w-12 h-12 bg-primary-foreground text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold"
@@ -89,7 +89,7 @@ export const FinalCTASection = () => {
                 whileHover={{ x: 4, scale: 1.02 }}
               >
                 <CheckCircle className="w-5 h-5 text-success flex-shrink-0" />
-                <span className="hover:text-primary-foreground/80 transition-colors duration-300">{feature}</span>
+                <span className="hover:text-primary/80 transition-colors duration-300">{feature}</span>
               </motion.div>
             ))}
           </div>
@@ -104,7 +104,7 @@ export const FinalCTASection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-16 py-6 text-2xl font-bold rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300">
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-16 py-6 text-2xl font-bold rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300">
               Get Started!
             </Button>
           </motion.div>
@@ -122,8 +122,8 @@ export const FinalCTASection = () => {
             className="flex items-center justify-center gap-2 mb-2 group"
             whileHover={{ scale: 1.05 }}
           >
-            <Phone className="w-5 h-5 group-hover:text-primary-foreground/80 transition-colors duration-300" />
-            <span className="text-lg font-semibold group-hover:text-primary-foreground/80 transition-colors duration-300">(555) 123-4567</span>
+            <Phone className="w-5 h-5 group-hover:text-primary/80 transition-colors duration-300" />
+            <span className="text-lg font-semibold group-hover:text-primary/80 transition-colors duration-300">(555) 123-4567</span>
           </motion.div>
           <div className="text-sm opacity-90">www.dentipay.com</div>
         </motion.div>
@@ -145,9 +145,9 @@ export const FinalCTASection = () => {
                       transition={{ duration: 0.2 }}
                       className="mb-2"
                     >
-                      <Icon className="w-8 h-8 mx-auto group-hover:text-primary-foreground/80 transition-colors duration-300" />
+                      <Icon className="w-8 h-8 mx-auto group-hover:text-primary/80 transition-colors duration-300" />
                     </motion.div>
-                    <div className="text-sm font-semibold group-hover:text-primary-foreground/80 transition-colors duration-300">
+                    <div className="text-sm font-semibold group-hover:text-primary/80 transition-colors duration-300">
                       {feature.title}
                     </div>
                   </motion.div>
