@@ -16,11 +16,9 @@ export const FinalCTASection = () => {
     "Complete SCOPE & PATH integration",
     "Echo AI voice assistant", 
     "Analytics dashboard",
-    "Patient communication tools",
     "Dedicated success manager",
     "Staff training program",
-    "Marketing support materials",
-    "No setup or monthly fees"
+    "Marketing support materials"
   ];
 
   const securityFeatures = [
