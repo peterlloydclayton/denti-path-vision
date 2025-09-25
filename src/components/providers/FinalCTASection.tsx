@@ -145,7 +145,7 @@ export const FinalCTASection = () => {
       </section>
 
       {/* CTA Button - White Background Section */}
-      <section className="bg-white text-primary py-16 md:py-24 relative overflow-hidden min-h-[320px] md:min-h-[400px]">
+      <section className="bg-white text-primary py-16 md:py-24 relative overflow-hidden min-h-[500px] md:min-h-[400px]">
         <div className="container mx-auto px-6">
           <motion.div 
             className="flex flex-col items-center"
