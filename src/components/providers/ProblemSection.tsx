@@ -33,7 +33,7 @@ export const ProblemSection = () => {
   ];
 
   return (
-    <section className="py-24 pb-72 md:pb-24 bg-gray-800 text-white relative overflow-hidden">
+    <section className="py-24 pb-0 md:pb-24 bg-gray-800 text-white relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -135,7 +135,7 @@ export const ProblemSection = () => {
 
       {/* Bottom Right Image */}
       <motion.div
-        className="absolute bottom-0 right-0 w-40 h-48 sm:w-48 sm:h-60 md:w-80 md:h-96 lg:w-96 lg:h-120 max-w-[40vw] max-h-[50vh]"
+        className="absolute -bottom-0 right-0 w-40 h-48 sm:w-48 sm:h-60 md:w-80 md:h-96 lg:w-96 lg:h-120 md:bottom-0"
         initial={{ opacity: 0, y: 30, scale: 0.9 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -144,7 +144,7 @@ export const ProblemSection = () => {
         <img
           src={ladyDentistWhiteCoat}
           alt="Professional female dentist in white coat"
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain object-bottom"
         />
       </motion.div>
     </section>
