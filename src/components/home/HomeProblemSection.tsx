@@ -37,7 +37,7 @@ export const HomeProblemSection = () => {
           </motion.h3>
 
           {/* Mobile Layout */}
-          <div className="block lg:hidden">
+          <div className="block lg:hidden mb-12">
             <motion.img 
               src={womanDoctorImage} 
               alt="Professional healthcare provider" 
