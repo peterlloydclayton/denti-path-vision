@@ -106,7 +106,7 @@ export const HomeRevolutionaryResultsSection = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-visible">
-        <div className="order-2 lg:order-1 lg:absolute lg:left-0 lg:bottom-0 lg:z-10 lg:w-2/5 border-2 border-green-500">
+        <div className="absolute left-0 top-80 z-20 w-2/5 lg:bottom-0 lg:z-10 lg:w-2/5 border-2 border-green-500">
           <img 
             src={approvalMobileImage} 
             alt="Mobile approval interface"
