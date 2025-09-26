@@ -185,10 +185,99 @@ export const HomeRevolutionaryResultsSection = () => {
             </StaggerItem>)}
         </StaggerContainer>
 
-        {/* Before vs After Comparison */}
-        <ScrollReveal className="mb-20">
+        {/* Split-Screen Transformation Widget */}
+        <ScrollReveal>
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-foreground mb-4">
+              The Transformation
+            </h3>
+            <p className="text-lg text-muted-foreground">
+              See how we revolutionize every aspect of dental financing
+            </p>
+          </div>
 
-          
+          <div className="space-y-8">
+            {beforeAfterComparisons.map((comparison, index) => (
+              <StaggerItem key={index}>
+                <motion.div 
+                  className="relative overflow-hidden rounded-2xl border border-border bg-background shadow-lg"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  {/* Metric Title */}
+                  <div className="text-center py-6 bg-gradient-to-r from-muted/30 to-primary/10 border-b border-border">
+                    <h4 className="text-2xl font-bold text-foreground">
+                      {comparison.metric}
+                    </h4>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 min-h-[200px]">
+                    {/* Left Side - Old Way (Negative) */}
+                    <div className="relative p-8 bg-gradient-to-br from-muted/20 to-muted/40 flex flex-col justify-center">
+                      {/* Subtle negative pattern overlay */}
+                      <div className="absolute inset-0 opacity-5">
+                        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,hsl(var(--destructive))_0%,transparent_50%)]"></div>
+                      </div>
+                      
+                      <div className="relative z-10 text-center">
+                        <div className="text-4xl md:text-5xl font-bold text-muted-foreground mb-3">
+                          {comparison.before.value}
+                        </div>
+                        <div className="text-lg text-muted-foreground mb-4">
+                          {comparison.before.label}
+                        </div>
+                        <div className="flex items-center justify-center gap-2 text-muted-foreground">
+                          <Clock className="w-5 h-5" />
+                          <span className="text-sm font-medium">Legacy System</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Center Divider with Transformation Arrow */}
+                    <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 hidden md:block">
+                      <motion.div 
+                        className="bg-primary text-primary-foreground p-4 rounded-full shadow-xl border-4 border-background"
+                        animate={{ 
+                          scale: [1, 1.1, 1],
+                          rotate: [0, 5, -5, 0]
+                        }}
+                        transition={{ 
+                          duration: 2, 
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        <Zap className="w-6 h-6" />
+                      </motion.div>
+                    </div>
+
+                    {/* Right Side - New Way (Positive) */}
+                    <div className="relative p-8 bg-gradient-to-br from-primary/10 to-primary/20 flex flex-col justify-center border-l border-border md:border-l-2 md:border-l-primary/30">
+                      {/* Positive pattern overlay */}
+                      <div className="absolute inset-0 opacity-10">
+                        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary))_0%,transparent_50%)]"></div>
+                      </div>
+                      
+                      <div className="relative z-10 text-center">
+                        <div className="text-4xl md:text-5xl font-bold text-slate-800 mb-3">
+                          {comparison.after.value}
+                        </div>
+                        <div className="text-lg text-slate-700 mb-4 font-medium">
+                          {comparison.after.label}
+                        </div>
+                        <div className="flex items-center justify-center gap-2 text-slate-700">
+                          <Sparkles className="w-5 h-5" />
+                          <span className="text-sm font-bold">DentiPay Solution</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </div>
         </ScrollReveal>
 
         {/* Bottom Impact Statement */}
