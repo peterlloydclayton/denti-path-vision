@@ -3,93 +3,27 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { CustomSlider } from '@/components/ui/custom-slider';
 import { 
   Users, 
   Heart, 
-  Calculator, 
   TrendingUp, 
   DollarSign, 
   Target, 
-  Calendar, 
   ArrowRight,
   CheckCircle,
   Stethoscope,
   CreditCard,
   Clock,
-  Zap
+  Zap,
+  Building2,
+  UserCheck,
+  Globe,
+  Shield
 } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 
 export const HomeInteractiveSection = () => {
   const [activeTab, setActiveTab] = useState('providers');
-  
-  // Provider Calculator State
-  const [monthlyPatients, setMonthlyPatients] = useState(50);
-  const [avgTreatment, setAvgTreatment] = useState(2500);
-  const [currentApproval, setCurrentApproval] = useState(60);
-
-  // Patient Calculator State  
-  const [loanAmount, setLoanAmount] = useState(25000);
-  const [interestRate, setInterestRate] = useState(8.5);
-
-  // Provider ROI Calculations
-  const calculateROI = () => {
-    const patients = monthlyPatients || 0;
-    const treatment = avgTreatment || 0;
-    const current = currentApproval || 0;
-    
-    const currentRevenue = (patients * treatment * current) / 100;
-    const newRevenue = (patients * treatment * 94) / 100; // 94% DentiPay approval
-    const increase = newRevenue - currentRevenue;
-    const annualIncrease = increase * 12;
-    
-    return {
-      monthlyIncrease: increase,
-      annualIncrease: annualIncrease,
-      approvalImprovement: 94 - current
-    };
-  };
-
-  // Patient Payment Calculations
-  const calculatePayment = (principal: number, rate: number, months: number) => {
-    const monthlyRate = rate / 100 / 12;
-    let monthlyPayment = 0;
-    
-    if (monthlyRate === 0) {
-      monthlyPayment = principal / months;
-    } else {
-      monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
-    }
-    
-    const totalPayment = monthlyPayment * months;
-    const totalInterest = totalPayment - principal;
-
-    return {
-      term: months,
-      monthlyPayment,
-      totalPayment,
-      totalInterest
-    };
-  };
-
-  const roi = calculateROI();
-  const paymentOptions = [
-    calculatePayment(loanAmount, interestRate, 36),
-    calculatePayment(loanAmount, interestRate, 60),
-    calculatePayment(loanAmount, interestRate, 96)
-  ];
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    }).format(amount);
-  };
 
   const providerBenefits = [
     { icon: TrendingUp, title: "300% Increase", desc: "in treatment acceptance rates" },
@@ -105,25 +39,43 @@ export const HomeInteractiveSection = () => {
     { icon: Zap, title: "Same Day Care", desc: "Start treatment immediately" }
   ];
 
+  const providerFeatures = [
+    "AI-powered pre-qualification system",
+    "Seamless PMS integration", 
+    "Real-time revenue analytics",
+    "Zero recourse financing",
+    "Automated payment processing",
+    "Advanced fraud protection"
+  ];
+
+  const patientFeatures = [
+    "Voice-enabled AI assistant (Echo)",
+    "Instant pre-approval process",
+    "Flexible payment structures",
+    "Provider network access",
+    "Treatment timeline guidance",
+    "24/7 support availability"
+  ];
+
   return (
     <section className="py-24 bg-gradient-to-b from-background to-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 text-primary font-medium text-sm mb-6">
-            <Calculator className="w-4 h-4" />
-            Interactive Experience
+            <Users className="w-4 h-4" />
+            Choose Your Path
           </div>
           
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
             Experience the 
             <span className="bg-gradient-to-r from-primary via-accent to-success bg-clip-text text-transparent block">
-              DentiPay Difference
+              DentiPay Revolution
             </span>
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
-            Discover how DentiPay transforms the financing experience for both providers and patients. 
-            Choose your path and see the revolutionary difference firsthand.
+            Whether you're a dental provider looking to transform your practice or a patient seeking better care options, 
+            DentiPay has a revolutionary solution designed specifically for you.
           </p>
         </ScrollReveal>
 
@@ -158,127 +110,113 @@ export const HomeInteractiveSection = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="grid lg:grid-cols-2 gap-12 items-start">
-                  {/* Provider Calculator */}
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  {/* Provider Value Proposition */}
                   <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
                     <CardContent className="p-8">
                       <div className="flex items-center gap-3 mb-6">
                         <div className="p-3 bg-primary/20 rounded-xl">
-                          <Calculator className="w-6 h-6 text-primary" />
+                          <Building2 className="w-6 h-6 text-primary" />
                         </div>
-                        <h3 className="text-2xl font-bold text-foreground">ROI Calculator</h3>
+                        <h3 className="text-2xl font-bold text-foreground">Transform Your Practice</h3>
                       </div>
 
-                      <div className="space-y-6">
-                        {/* Monthly Patients */}
-                        <div>
-                          <Label className="font-medium text-foreground mb-2 block">
-                            Monthly Patients: {monthlyPatients}
-                          </Label>
-                          <CustomSlider
-                            value={monthlyPatients}
-                            onValueChange={setMonthlyPatients}
-                            min={10}
-                            max={100}
-                            step={10}
-                            className="mt-3"
-                          />
-                          <div className="flex justify-between text-sm text-muted-foreground mt-1">
-                            <span>10</span>
-                            <span>100</span>
-                          </div>
-                        </div>
+                      <p className="text-muted-foreground mb-6 leading-relaxed">
+                        Join thousands of practices that have revolutionized their financing with DentiPay's 
+                        AI-powered platform. See dramatic increases in treatment acceptance while getting paid the same day.
+                      </p>
 
-                        {/* Average Treatment */}
-                        <div>
-                          <Label className="font-medium text-foreground mb-2 block">
-                            Avg Treatment: {formatCurrency(avgTreatment)}
-                          </Label>
-                          <CustomSlider
-                            value={avgTreatment}
-                            onValueChange={setAvgTreatment}
-                            min={1000}
-                            max={50000}
-                            step={250}
-                            className="mt-3"
-                          />
-                          <div className="flex justify-between text-sm text-muted-foreground mt-1">
-                            <span>$1,000</span>
-                            <span>$50,000</span>
-                          </div>
-                        </div>
+                      <div className="space-y-4 mb-8">
+                        {providerFeatures.map((feature, index) => (
+                          <motion.div
+                            key={index}
+                            className="flex items-center gap-3"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.1 }}
+                          >
+                            <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                            <span className="text-foreground">{feature}</span>
+                          </motion.div>
+                        ))}
+                      </div>
 
-                        {/* Current Approval */}
-                        <div>
-                          <Label className="font-medium text-foreground mb-2 block">
-                            Current Approval Rate: {currentApproval}%
-                          </Label>
-                          <CustomSlider
-                            value={currentApproval}
-                            onValueChange={setCurrentApproval}
-                            min={20}
-                            max={90}
-                            step={5}
-                            className="mt-3"
-                          />
-                          <div className="flex justify-between text-sm text-muted-foreground mt-1">
-                            <span>20%</span>
-                            <span>90%</span>
-                          </div>
-                        </div>
+                      <div className="space-y-4">
+                        <Button className="w-full" size="lg">
+                          Learn More About Provider Solutions
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                        <Button variant="outline" className="w-full" size="lg">
+                          Schedule Demo
+                          <Globe className="w-4 h-4 ml-2" />
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
 
-                  {/* Provider Results */}
-                  <div className="space-y-6">
-                    <h3 className="text-2xl font-bold text-foreground mb-6">Your Transformation Potential</h3>
-                    
-                    <div className="grid gap-4">
+                  {/* Provider Stats & Benefits */}
+                  <div className="space-y-8">
+                    <div className="text-center lg:text-left">
+                      <h3 className="text-3xl font-bold text-foreground mb-4">
+                        Results That Transform Practices
+                      </h3>
+                      <p className="text-muted-foreground mb-6">
+                        See the measurable impact DentiPay has on practice revenue, 
+                        patient acceptance, and operational efficiency.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
                       <motion.div
-                        className="p-6 rounded-xl bg-primary/10 border border-primary/20"
-                        whileHover={{ scale: 1.02, x: 4 }}
+                        className="p-6 rounded-xl bg-primary/10 border border-primary/20 text-center"
+                        whileHover={{ scale: 1.05, y: -4 }}
                       >
-                        <div className="flex items-center gap-3 mb-2">
-                          <DollarSign className="w-5 h-5 text-primary" />
-                          <div className="text-2xl font-bold text-primary">
-                            {formatCurrency(roi.monthlyIncrease)}
-                          </div>
-                        </div>
-                        <div className="text-sm text-muted-foreground">Monthly Revenue Increase</div>
+                        <div className="text-3xl font-bold text-primary mb-2">94%</div>
+                        <div className="text-sm text-muted-foreground">Approval Rate</div>
                       </motion.div>
 
                       <motion.div
-                        className="p-6 rounded-xl bg-success/10 border border-success/20"
-                        whileHover={{ scale: 1.02, x: 4 }}
+                        className="p-6 rounded-xl bg-success/10 border border-success/20 text-center"
+                        whileHover={{ scale: 1.05, y: -4 }}
                       >
-                        <div className="flex items-center gap-3 mb-2">
-                          <Calendar className="w-5 h-5 text-success" />
-                          <div className="text-2xl font-bold text-success">
-                            {formatCurrency(roi.annualIncrease)}
-                          </div>
-                        </div>
-                        <div className="text-sm text-muted-foreground">Annual Revenue Increase</div>
+                        <div className="text-3xl font-bold text-success mb-2">300%</div>
+                        <div className="text-sm text-muted-foreground">Acceptance Increase</div>
                       </motion.div>
 
                       <motion.div
-                        className="p-6 rounded-xl bg-accent/10 border border-accent/20"
-                        whileHover={{ scale: 1.02, x: 4 }}
+                        className="p-6 rounded-xl bg-accent/10 border border-accent/20 text-center"
+                        whileHover={{ scale: 1.05, y: -4 }}
                       >
-                        <div className="flex items-center gap-3 mb-2">
-                          <Target className="w-5 h-5 text-accent" />
-                          <div className="text-2xl font-bold text-accent">
-                            +{roi.approvalImprovement}%
-                          </div>
-                        </div>
-                        <div className="text-sm text-muted-foreground">Approval Rate Improvement</div>
+                        <div className="text-3xl font-bold text-accent mb-2">30 sec</div>
+                        <div className="text-sm text-muted-foreground">Decision Time</div>
+                      </motion.div>
+
+                      <motion.div
+                        className="p-6 rounded-xl bg-primary/10 border border-primary/20 text-center"
+                        whileHover={{ scale: 1.05, y: -4 }}
+                      >
+                        <div className="text-3xl font-bold text-primary mb-2">$0</div>
+                        <div className="text-sm text-muted-foreground">Setup Costs</div>
                       </motion.div>
                     </div>
 
-                    <Button className="w-full" size="lg">
-                      Transform My Practice
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
+                    <motion.div
+                      className="p-6 rounded-xl bg-gradient-to-r from-primary/10 to-success/10 border border-primary/20"
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="p-2 bg-primary/20 rounded-lg">
+                          <Shield className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-foreground mb-2">Risk-Free Guarantee</h4>
+                          <p className="text-sm text-muted-foreground">
+                            Zero recourse financing means you get paid upfront regardless of patient defaults. 
+                            Your practice is completely protected.
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
 
@@ -313,104 +251,113 @@ export const HomeInteractiveSection = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="grid lg:grid-cols-2 gap-12 items-start">
-                  {/* Patient Calculator */}
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  {/* Patient Value Proposition */}
                   <Card className="border-accent/30 bg-gradient-to-br from-accent/5 to-accent/10">
                     <CardContent className="p-8">
                       <div className="flex items-center gap-3 mb-6">
                         <div className="p-3 bg-accent/20 rounded-xl">
-                          <CreditCard className="w-6 h-6 text-accent" />
+                          <UserCheck className="w-6 h-6 text-accent" />
                         </div>
-                        <h3 className="text-2xl font-bold text-foreground">Payment Calculator</h3>
+                        <h3 className="text-2xl font-bold text-foreground">Access Better Care</h3>
                       </div>
 
-                      <div className="space-y-6">
-                        {/* Loan Amount */}
-                        <div>
-                          <Label className="font-medium text-foreground mb-2 block">
-                            Treatment Cost: {formatCurrency(loanAmount)}
-                          </Label>
-                          <CustomSlider
-                            value={loanAmount}
-                            onValueChange={setLoanAmount}
-                            min={1000}
-                            max={100000}
-                            step={1000}
-                            className="mt-3"
-                          />
-                          <div className="flex justify-between text-sm text-muted-foreground mt-1">
-                            <span>$1,000</span>
-                            <span>$100,000</span>
-                          </div>
-                        </div>
+                      <p className="text-muted-foreground mb-6 leading-relaxed">
+                        Don't let finances delay your dental health. DentiPay's revolutionary AI makes 
+                        quality dental care accessible with instant approvals and flexible payment solutions designed for you.
+                      </p>
 
-                        {/* Interest Rate */}
-                        <div>
-                          <Label className="font-medium text-foreground mb-2 block">
-                            Interest Rate: {interestRate.toFixed(1)}%
-                          </Label>
-                          <CustomSlider
-                            value={interestRate}
-                            onValueChange={setInterestRate}
-                            min={0}
-                            max={20}
-                            step={0.1}
-                            className="mt-3"
-                          />
-                          <div className="flex justify-between text-sm text-muted-foreground mt-1">
-                            <span>0%</span>
-                            <span>20%</span>
-                          </div>
-                        </div>
+                      <div className="space-y-4 mb-8">
+                        {patientFeatures.map((feature, index) => (
+                          <motion.div
+                            key={index}
+                            className="flex items-center gap-3"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.1 }}
+                          >
+                            <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
+                            <span className="text-foreground">{feature}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+
+                      <div className="space-y-4">
+                        <Button className="w-full bg-accent hover:bg-accent/90" size="lg">
+                          Learn More About Patient Benefits
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                        <Button variant="outline" className="w-full" size="lg">
+                          Find Providers Near You
+                          <Globe className="w-4 h-4 ml-2" />
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
 
-                  {/* Patient Payment Options */}
-                  <div className="space-y-6">
-                    <h3 className="text-2xl font-bold text-foreground mb-6">Your Payment Options</h3>
-                    
-                    <div className="grid gap-4">
-                      {paymentOptions.map((option, index) => (
-                        <motion.div
-                          key={index}
-                          className={`p-6 rounded-xl border-2 transition-all duration-300 ${
-                            index === 1 
-                              ? 'bg-accent/10 border-accent/30 ring-2 ring-accent/20' 
-                              : 'bg-accent/5 border-accent/20 hover:border-accent/30'
-                          }`}
-                          whileHover={{ scale: 1.02, x: 4 }}
-                        >
-                          <div className="flex justify-between items-start mb-3">
-                            <div>
-                              <h4 className="font-bold text-accent">{option.term} Months</h4>
-                              {index === 1 && <span className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full">Most Popular</span>}
-                            </div>
-                            <div className="text-right">
-                              <div className="text-2xl font-bold text-accent">
-                                {formatCurrency(option.monthlyPayment)}
-                              </div>
-                              <div className="text-xs text-muted-foreground">per month</div>
-                            </div>
-                          </div>
-                          <div className="text-sm text-muted-foreground space-y-1">
-                            <div className="flex justify-between">
-                              <span>Total Payment:</span>
-                              <span>{formatCurrency(option.totalPayment)}</span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span>Total Interest:</span>
-                              <span>{formatCurrency(option.totalInterest)}</span>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
+                  {/* Patient Benefits & Features */}
+                  <div className="space-y-8">
+                    <div className="text-center lg:text-left">
+                      <h3 className="text-3xl font-bold text-foreground mb-4">
+                        Healthcare Financing Reimagined
+                      </h3>
+                      <p className="text-muted-foreground mb-6">
+                        Experience the future of dental financing with AI that understands 
+                        your needs and provides instant, personalized solutions.
+                      </p>
                     </div>
 
-                    <Button className="w-full bg-accent hover:bg-accent/90" size="lg">
-                      Get Pre-Approved Now
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
+                    <div className="grid grid-cols-2 gap-4">
+                      <motion.div
+                        className="p-6 rounded-xl bg-accent/10 border border-accent/20 text-center"
+                        whileHover={{ scale: 1.05, y: -4 }}
+                      >
+                        <div className="text-3xl font-bold text-accent mb-2">95%</div>
+                        <div className="text-sm text-muted-foreground">Approval Rate</div>
+                      </motion.div>
+
+                      <motion.div
+                        className="p-6 rounded-xl bg-success/10 border border-success/20 text-center"
+                        whileHover={{ scale: 1.05, y: -4 }}
+                      >
+                        <div className="text-3xl font-bold text-success mb-2">30 sec</div>
+                        <div className="text-sm text-muted-foreground">To Approval</div>
+                      </motion.div>
+
+                      <motion.div
+                        className="p-6 rounded-xl bg-primary/10 border border-primary/20 text-center"
+                        whileHover={{ scale: 1.05, y: -4 }}
+                      >
+                        <div className="text-3xl font-bold text-primary mb-2">$100K</div>
+                        <div className="text-sm text-muted-foreground">Max Financing</div>
+                      </motion.div>
+
+                      <motion.div
+                        className="p-6 rounded-xl bg-accent/10 border border-accent/20 text-center"
+                        whileHover={{ scale: 1.05, y: -4 }}
+                      >
+                        <div className="text-3xl font-bold text-accent mb-2">8 Years</div>
+                        <div className="text-sm text-muted-foreground">Payment Terms</div>
+                      </motion.div>
+                    </div>
+
+                    <motion.div
+                      className="p-6 rounded-xl bg-gradient-to-r from-accent/10 to-success/10 border border-accent/20"
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="p-2 bg-accent/20 rounded-lg">
+                          <Heart className="w-5 h-5 text-accent" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-foreground mb-2">No Credit Score Impact</h4>
+                          <p className="text-sm text-muted-foreground">
+                            Our soft credit check process means checking your eligibility won't affect your credit score. 
+                            Get approved risk-free.
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
 
