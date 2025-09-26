@@ -44,7 +44,7 @@ export const HomeHeroSection = () => {
             <img 
               src={dentistImage}
               alt="Intelligence reshaping dental finance"
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full object-cover object-bottom z-[110] h-[85vh]"
+              className="absolute top-[70%] left-1/2 -translate-x-1/2 w-full object-cover object-top z-[110] h-[85vh]"
             />
           </div>
         </div>
@@ -55,7 +55,7 @@ export const HomeHeroSection = () => {
             <img 
               src={dentistImage}
               alt="Intelligence reshaping dental finance"
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full object-cover object-bottom z-[110] h-[85vh]"
+              className="absolute top-[70%] left-1/2 -translate-x-1/2 w-full object-cover object-top z-[110] h-[85vh]"
             />
           </div>
         </div>
