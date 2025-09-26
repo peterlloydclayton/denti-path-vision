@@ -61,13 +61,30 @@ export function HomeFinalCTASection() {
         {/* Benefits Grid */}
         <ScrollReveal>
           <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16" staggerDelay={0.1}>
-            {benefits.map((benefit, index) => <StaggerItem key={index}>
-                 <motion.div className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 h-full min-h-[180px] justify-center" whileHover={{
-              y: -5,
-              scale: 1.02
-            }} transition={{
-              duration: 0.3
-            }}>
+             {benefits.map((benefit, index) => <StaggerItem key={index}>
+                 <motion.div 
+                   className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 h-full min-h-[180px] justify-center" 
+                   initial={{ 
+                     opacity: 0, 
+                     y: 50, 
+                     scale: 0.8 
+                   }}
+                   whileInView={{ 
+                     opacity: 1, 
+                     y: 0, 
+                     scale: 1 
+                   }}
+                   transition={{ 
+                     duration: 0.6, 
+                     delay: index * 0.15,
+                     ease: "easeOut"
+                   }}
+                   whileHover={{
+                     y: -5,
+                     scale: 1.02
+                   }}
+                   viewport={{ once: true }}
+                 >
                    <motion.div className="p-3 bg-blue-500/20 rounded-2xl mb-4" whileHover={{
                 rotate: 360
               }} transition={{
@@ -86,16 +103,14 @@ export function HomeFinalCTASection() {
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">Learn More</h3>
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
             <MagneticButton>
-              <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl">
+              <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-64">
                 Practices & Providers
-                <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
             </MagneticButton>
             
             <MagneticButton>
-              <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl">
+              <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-64">
                 Patients
-                <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
             </MagneticButton>
           </div>
