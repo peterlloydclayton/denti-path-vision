@@ -105,33 +105,38 @@ export const HomeRevolutionaryResultsSection = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-visible">
-        <div className="absolute left-0 top-80 z-20 w-full lg:left-0 lg:top-16 lg:z-10 lg:w-2/5 border-2 border-green-500">
-          <img 
-            src={approvalMobileImage} 
-            alt="Mobile approval interface"
-            className="max-w-md w-full h-auto mx-auto lg:mx-0 lg:ml-0 border-2 border-blue-500"
-          />
-        </div>
-        
-        <div className="absolute top-96 right-0 w-full lg:right-0 lg:top-16 lg:w-2/5 flex flex-col items-start gap-12 border-2 border-red-500">
-          <div className="text-center lg:text-right lg:w-full">
-            <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Results That 
-              <span className="text-foreground block">
-                Redefine Possible
-              </span>
-            </h2>
-            
-            <p className="text-xl text-muted-foreground mb-8">
-              These aren't just improvements—they're revolutionary leaps that transform 
-              entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.
-            </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Image and Text Container - Above Cards */}
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 mb-16">
+          {/* Image Container */}
+          <div className="w-full lg:w-2/5 border-2 border-green-500">
+            <img 
+              src={approvalMobileImage} 
+              alt="Mobile approval interface"
+              className="max-w-md w-full h-auto mx-auto lg:mx-0 border-2 border-blue-500"
+            />
+          </div>
+          
+          {/* Text Container */}
+          <div className="w-full lg:w-3/5 flex flex-col justify-start gap-4 border-2 border-red-500">
+            <div className="text-center lg:text-right">
+              <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+                Results That 
+                <span className="text-foreground block">
+                  Redefine Possible
+                </span>
+              </h2>
+              
+              <p className="text-xl text-muted-foreground mb-8">
+                These aren't just improvements—they're revolutionary leaps that transform 
+                entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Revolutionary Stats Grid - Add top margin to make room for mobile image */}
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-112 lg:mt-96" staggerDelay={0.1}>
+        {/* Revolutionary Stats Grid */}
+        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.1}>
           {revolutionaryStats.map((stat, index) => <StaggerItem key={index}>
               <motion.div className="group relative" whileHover={{
             y: -8
