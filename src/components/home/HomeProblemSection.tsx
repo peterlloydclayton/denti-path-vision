@@ -21,126 +21,131 @@ export const HomeProblemSection = () => {
 
         <HomeProblemCards />
 
-        {/* Image with Subtitle Section */}
-        <ScrollReveal className="mt-16 mb-16 text-center">
-          <div className="max-w-4xl mx-auto">
-            <motion.img 
-              src={womanDoctorImage} 
-              alt="Professional healthcare provider" 
-              className="w-96 h-96 mx-auto mb-6 object-contain"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            />
-            <motion.h3 
-              className="text-2xl md:text-3xl font-semibold text-slate-600"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Transforming a future where financing never limits dental care
-            </motion.h3>
-          </div>
-        </ScrollReveal>
-
         {/* Fighting For Impact Summary */}
         <ScrollReveal className="mt-16 text-center">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <motion.div 
-                className="text-center"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                initial={{ opacity: 0, x: -30 }}
+          <div className="max-w-7xl mx-auto">
+            {/* Mobile Layout */}
+            <div className="block lg:hidden">
+              <motion.img 
+                src={womanDoctorImage} 
+                alt="Professional healthcare provider" 
+                className="w-96 h-96 mx-auto mb-6 object-contain"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              />
+              <motion.h3 
+                className="text-2xl md:text-3xl font-semibold text-slate-600 mb-8"
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -30 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
               >
+                Transforming a future where financing never limits dental care
+              </motion.h3>
+              <div className="grid gap-8">
                 <motion.div 
-                  className="text-4xl font-bold text-foreground mb-2"
-                  initial={{ opacity: 0, y: -10 }}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                  Patients
+                  <div className="text-4xl font-bold text-foreground mb-2">Patients</div>
+                  <div className="text-sm text-slate-600">No longer denied care due to traditional limits</div>
                 </motion.div>
                 <motion.div 
-                  className="text-sm text-slate-600"
-                  initial={{ opacity: 0, y: 10 }}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  No longer denied care due to traditional limits
+                  <div className="text-4xl font-bold text-foreground mb-2">Providers</div>
+                  <div className="text-sm text-slate-600">Get paid immediately, no more financing delays</div>
                 </motion.div>
-              </motion.div>
-              <motion.div 
-                className="text-center"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                initial={{ opacity: 0, y: -30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-              >
                 <motion.div 
-                  className="text-4xl font-bold text-foreground mb-2"
-                  initial={{ opacity: 0, y: -10 }}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  Providers
+                  <div className="text-4xl font-bold text-foreground mb-2">Access</div>
+                  <div className="text-sm text-slate-600">Intelligent matching of need with capability</div>
                 </motion.div>
-                <motion.div 
-                  className="text-sm text-slate-600"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                >
-                  Get paid immediately, no more financing delays
-                </motion.div>
-              </motion.div>
+              </div>
+            </div>
+
+            {/* Landscape Layout */}
+            <div className="hidden lg:flex lg:items-center lg:gap-16">
+              {/* Image on Left */}
               <motion.div 
-                className="text-center"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                initial={{ opacity: 0, x: 30 }}
+                className="flex-shrink-0"
+                initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 30 }}
+                transition={{ duration: 0.6 }}
               >
-                <motion.div 
-                  className="text-4xl font-bold text-foreground mb-2"
-                  initial={{ opacity: 0, y: -10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                >
-                  Access
-                </motion.div>
-                <motion.div 
-                  className="text-sm text-slate-600"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                >
-                  Intelligent matching of need with capability
-                </motion.div>
+                <img 
+                  src={womanDoctorImage} 
+                  alt="Professional healthcare provider" 
+                  className="w-96 h-96 object-contain"
+                />
               </motion.div>
+
+              {/* Content on Right */}
+              <div className="flex-1 text-left space-y-8">
+                <motion.h3 
+                  className="text-2xl md:text-3xl font-semibold text-slate-600 mb-8"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  Transforming a future where financing never limits dental care
+                </motion.h3>
+                
+                <div className="space-y-6">
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                  >
+                    <div className="text-3xl font-bold text-foreground mb-2">Patients</div>
+                    <div className="text-base text-slate-600">No longer denied care due to traditional limits</div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                  >
+                    <div className="text-3xl font-bold text-foreground mb-2">Providers</div>
+                    <div className="text-base text-slate-600">Get paid immediately, no more financing delays</div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                  >
+                    <div className="text-3xl font-bold text-foreground mb-2">Access</div>
+                    <div className="text-base text-slate-600">Intelligent matching of need with capability</div>
+                  </motion.div>
+                </div>
+              </div>
             </div>
             
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold">
-              <Zap className="w-5 h-5" />
-              Powered by Intelligent Finance Solutions
+            <div className="mt-8 text-center">
+              <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold">
+                <Zap className="w-5 h-5" />
+                Powered by Intelligent Finance Solutions
+              </div>
             </div>
           </div>
         </ScrollReveal>
