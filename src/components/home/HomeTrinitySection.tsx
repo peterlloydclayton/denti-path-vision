@@ -121,11 +121,10 @@ export const HomeTrinitySection = () => {
         {/* Impact Statement */}
         <ScrollReveal className="mt-16 text-center">
           <motion.div 
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-foreground/10 to-foreground/5 border border-foreground/20"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <Brain className="w-6 h-6 text-foreground" />
             <span className="text-foreground font-semibold text-lg">
               Pre-Cognitive AI • Millisecond Processing • 3X Smarter Intelligence
             </span>
