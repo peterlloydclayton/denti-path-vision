@@ -61,12 +61,12 @@ export const HomeHeroSection = () => {
         </div>
 
         {/* Mobile Portrait Layout */}
-        <div className="flex sm:hidden justify-start items-start pt-20 h-[calc(100vh-5rem)] ml-[25%]">
-          <div className="w-full max-w-md h-[calc(100vh-5rem)] relative z-[100]">
+        <div className="flex sm:hidden justify-center items-start pt-20 h-[calc(100vh-5rem)]">
+          <div className="w-full h-[calc(100vh-5rem)] relative z-[100]">
             <img 
               src={dentistImage}
               alt="Intelligence reshaping dental finance"
-              className="absolute bottom-[-15%] left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
+              className="absolute bottom-[-15%] left-1/2 -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
             />
           </div>
         </div>
