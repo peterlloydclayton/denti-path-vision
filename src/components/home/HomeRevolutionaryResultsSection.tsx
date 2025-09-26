@@ -269,7 +269,7 @@ export const HomeRevolutionaryResultsSection = () => {
                         </div>
                         <div className="flex items-center justify-center gap-2 text-slate-700">
                           <Sparkles className="w-5 h-5" />
-                          <span className="text-sm font-bold">DentiPay Revolution</span>
+                          <span className="text-sm font-bold">DentiPay Solution</span>
                         </div>
                       </div>
                     </div>
