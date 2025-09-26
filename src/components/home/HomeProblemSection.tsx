@@ -27,7 +27,7 @@ export const HomeProblemSection = () => {
             <img 
               src={womanDoctorImage} 
               alt="Professional healthcare provider" 
-              className="w-64 h-64 mx-auto mb-6 object-contain"
+              className="w-96 h-96 mx-auto mb-6 object-contain"
             />
             <h3 className="text-2xl md:text-3xl font-semibold text-foreground">
               Transforming a future where financing never limits dental care
