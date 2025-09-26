@@ -110,7 +110,7 @@ export const HomeRevolutionaryResultsSection = () => {
           
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
             Results That 
-            <span className="bg-gradient-to-r from-success via-primary to-accent bg-clip-text text-transparent block">
+            <span className="text-foreground block">
               Redefine Possible
             </span>
           </h2>
