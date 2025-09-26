@@ -300,51 +300,11 @@ export const HomeRevolutionaryResultsSection = () => {
                           const IconComponent = getComparisonIcon(comparison.metric);
                           return <IconComponent className="w-6 h-6" />;
                         })()}
-                        
-                        {/* Glowing Arrow - Landscape (Down Arrow below icon) */}
-                        <motion.div 
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 hidden md:block"
-                          animate={{ 
-                            y: [0, 8, 0],
-                            opacity: [0.6, 1, 0.6]
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        >
-                          <div className="relative">
-                            {/* Glow effect */}
-                            <div className="absolute inset-0 bg-blue-500 rounded-full blur-lg opacity-50 scale-150"></div>
-                            <ArrowDown className="w-6 h-6 text-blue-400 relative z-10 drop-shadow-lg" />
-                          </div>
-                        </motion.div>
-
-                        {/* Glowing Arrow - Portrait (Down Arrow) */}
-                        <motion.div 
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 md:hidden"
-                          animate={{ 
-                            y: [0, 8, 0],
-                            opacity: [0.6, 1, 0.6]
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        >
-                          <div className="relative">
-                            {/* Glow effect */}
-                            <div className="absolute inset-0 bg-blue-500 rounded-full blur-lg opacity-50 scale-150"></div>
-                            <ArrowDown className="w-6 h-6 text-blue-400 relative z-10 drop-shadow-lg" />
-                          </div>
-                        </motion.div>
                       </motion.div>
                     </div>
 
                     {/* Right Side - New Way (Positive) */}
-                    <div className="relative p-8 bg-gradient-to-br from-primary/20 to-primary/30 flex flex-col justify-center border-l border-border md:border-l-2 md:border-l-primary/30">
+                    <div className="relative p-8 bg-gradient-to-br from-primary/30 to-primary/40 flex flex-col justify-center border-l border-border md:border-l-2 md:border-l-primary/30">
                       {/* Positive pattern overlay */}
                       <div className="absolute inset-0 opacity-10">
                         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary))_0%,transparent_50%)]"></div>
