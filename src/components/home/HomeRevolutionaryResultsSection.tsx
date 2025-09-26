@@ -109,16 +109,16 @@ export const HomeRevolutionaryResultsSection = () => {
         {/* Image and Text Container - Above Cards */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 mb-16">
           {/* Image Container */}
-          <div className="w-full lg:w-2/5 border-2 border-green-500">
+          <div className="w-full lg:w-2/5">
             <img 
               src={approvalMobileImage} 
               alt="Mobile approval interface"
-              className="max-w-md w-full h-auto mx-auto lg:mx-0 border-2 border-blue-500"
+              className="max-w-md w-full h-auto mx-auto lg:mx-0"
             />
           </div>
           
           {/* Text Container */}
-          <div className="w-full lg:w-3/5 flex flex-col justify-start gap-4 border-2 border-red-500">
+          <div className="w-full lg:w-3/5 flex flex-col justify-start gap-4">
             <div className="text-center lg:text-right">
               <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
                 Results That 
