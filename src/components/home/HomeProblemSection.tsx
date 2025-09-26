@@ -23,7 +23,7 @@ export const HomeProblemSection = () => {
       </div>
 
       {/* Fighting For Impact Summary - Outside padded container */}
-      <ScrollReveal className="mt-16 text-center">
+      <ScrollReveal className="mt-8 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Heading */}
           <motion.h3 
