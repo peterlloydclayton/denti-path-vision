@@ -358,19 +358,19 @@ export const HomeRevolutionaryResultsSection = () => {
                   Every metric represents lives changed, practices transformed, and barriers eliminated.
                 </p>
                 
-                <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground px-6 sm:px-8 lg:px-0">
+                <div className="flex flex-wrap items-center gap-6 text-lg text-foreground px-6 sm:px-8 lg:px-0">
                   <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-success" />
+                    <Users className="w-5 h-5 text-foreground" />
                     <span>Real Patients</span>
                   </div>
                   <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
                   <div className="flex items-center gap-2">
-                    <Building2 className="w-4 h-4 text-primary" />
+                    <Building2 className="w-5 h-5 text-foreground" />
                     <span>Real Practices</span>
                   </div>
                   <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-accent" />
+                    <Sparkles className="w-5 h-5 text-foreground" />
                     <span>Real Revolution</span>
                   </div>
                 </div>
