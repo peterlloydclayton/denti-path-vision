@@ -242,15 +242,15 @@ export const HomeRevolutionaryResultsSection = () => {
                       </div>
                       
                       <div className="relative z-10 text-center">
+                        <div className="flex items-center justify-center gap-2 text-muted-foreground mb-4">
+                          <Clock className="w-5 h-5" />
+                          <span className="text-sm font-medium">Legacy Systems</span>
+                        </div>
                         <div className="text-4xl md:text-5xl font-bold text-muted-foreground mb-3">
                           {comparison.before.value}
                         </div>
-                        <div className="text-lg text-muted-foreground mb-4">
+                        <div className="text-lg text-muted-foreground">
                           {comparison.before.label}
-                        </div>
-                        <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                          <Clock className="w-5 h-5" />
-                          <span className="text-sm font-medium">Legacy System</span>
                         </div>
                       </div>
                     </div>
@@ -284,15 +284,15 @@ export const HomeRevolutionaryResultsSection = () => {
                       </div>
                       
                       <div className="relative z-10 text-center">
+                        <div className="flex items-center justify-center gap-2 text-slate-700 mb-4">
+                          <Sparkles className="w-5 h-5" />
+                          <span className="text-sm font-bold">DentiPay Solution</span>
+                        </div>
                         <div className="text-4xl md:text-5xl font-bold text-slate-800 mb-3">
                           {comparison.after.value}
                         </div>
-                        <div className="text-lg text-slate-700 mb-4 font-medium">
+                        <div className="text-lg text-slate-700 font-medium">
                           {comparison.after.label}
-                        </div>
-                        <div className="flex items-center justify-center gap-2 text-slate-700">
-                          <Sparkles className="w-5 h-5" />
-                          <span className="text-sm font-bold">DentiPay Solution</span>
                         </div>
                       </div>
                     </div>
