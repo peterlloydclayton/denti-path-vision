@@ -114,7 +114,7 @@ export const HomeRevolutionaryResultsSection = () => {
           />
         </div>
         
-        <div className="absolute top-80 left-0 right-0 flex flex-col lg:flex-row lg:justify-end lg:relative lg:top-0 items-center gap-12 mb-16 lg:mb-0 lg:w-2/5 lg:ml-auto border-2 border-red-500">
+        <div className="absolute top-80 left-0 right-0 flex flex-col lg:flex-row lg:justify-end lg:relative lg:top-0 items-start gap-12 mb-16 lg:mb-0 lg:w-2/5 lg:ml-auto border-2 border-red-500">
           <div className="text-center lg:text-right lg:w-full">
             <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Results That 
