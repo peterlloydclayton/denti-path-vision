@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { TrendingUp, Clock, Users, DollarSign, Target, Zap, Award, Building2, ArrowUp, Sparkles, CheckCircle, Brain, ArrowRight, ArrowDown } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
+import maleDentistImage from '@/assets/male-dentist-white.png';
 interface AnimatedCounterProps {
   value: number;
   suffix?: string;
@@ -330,39 +331,52 @@ export const HomeRevolutionaryResultsSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Bottom Impact Statement */}
-        <ScrollReveal className="text-center">
-          <motion.div className="max-w-4xl mx-auto p-8 rounded-2xl bg-gradient-to-r from-primary/10 via-accent/10 to-success/10 border border-primary/20" whileHover={{
-          scale: 1.02
-        }} transition={{
-          duration: 0.3
-        }}>
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-foreground">
-                Industry-Defining Impact
-              </h3>
+        {/* Bottom Impact Statement with Image */}
+        <ScrollReveal>
+          <div className="flex flex-col lg:flex-row items-center lg:items-center mt-16">
+            {/* Image Container - Left Side */}
+            <div className="w-full lg:w-2/5 lg:pl-0 order-2 lg:order-1">
+              <img 
+                src={maleDentistImage} 
+                alt="Professional male dentist"
+                className="max-w-md w-full h-auto lg:ml-0"
+              />
             </div>
-            <p className="text-lg text-foreground leading-relaxed mb-6">
-              These results don't just improve dental financing—they revolutionize it. 
-              Every metric represents lives changed, practices transformed, and barriers eliminated.
-            </p>
-            <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-success" />
-                <span>Real Patients</span>
-              </div>
-              <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-              <div className="flex items-center gap-2">
-                <Building2 className="w-4 h-4 text-primary" />
-                <span>Real Practices</span>
-              </div>
-              <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-accent" />
-                <span>Real Revolution</span>
+            
+            {/* Text Container - Right Side */}
+            <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pr-8 order-1 lg:order-2 flex items-center">
+              <div className="text-left px-4 sm:px-6 lg:px-0">
+                <h3 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+                  Industry-Defining
+                  <span className="text-foreground block">
+                    Impact
+                  </span>
+                </h3>
+                
+                <p className="text-xl text-muted-foreground mb-8 px-6 sm:px-8 lg:px-0">
+                  These results don't just improve dental financing—they revolutionize it. 
+                  Every metric represents lives changed, practices transformed, and barriers eliminated.
+                </p>
+                
+                <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground px-6 sm:px-8 lg:px-0">
+                  <div className="flex items-center gap-2">
+                    <Users className="w-4 h-4 text-success" />
+                    <span>Real Patients</span>
+                  </div>
+                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+                  <div className="flex items-center gap-2">
+                    <Building2 className="w-4 h-4 text-primary" />
+                    <span>Real Practices</span>
+                  </div>
+                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-accent" />
+                    <span>Real Revolution</span>
+                  </div>
+                </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </ScrollReveal>
       </div>
     </section>;
