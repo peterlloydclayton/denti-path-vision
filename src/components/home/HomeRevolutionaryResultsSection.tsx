@@ -105,17 +105,17 @@ export const HomeRevolutionaryResultsSection = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
-          <div className="absolute left-0 flex justify-start lg:relative lg:flex-1 lg:overflow-hidden -ml-4 sm:-ml-6 lg:ml-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-visible">
+        <div className="flex flex-col lg:flex-row items-center gap-12 mb-16 relative">
+          <div className="lg:absolute lg:-left-48 xl:-left-64 lg:top-0 lg:z-10 lg:w-1/2">
             <img 
               src={approvalMobileImage} 
               alt="Mobile approval interface"
-              className="max-w-md w-full h-auto lg:-translate-x-12"
+              className="max-w-md w-full h-auto mx-auto lg:mx-0"
             />
           </div>
           
-          <div className="flex-1 text-right lg:pl-12">
+          <div className="flex-1 text-center lg:text-right lg:ml-auto lg:w-1/2">
             <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Results That 
               <span className="text-foreground block">
