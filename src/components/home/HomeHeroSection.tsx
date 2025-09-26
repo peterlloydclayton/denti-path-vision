@@ -68,7 +68,7 @@ export const HomeHeroSection = () => {
             <img 
               src={heroImage}
               alt="Professional dental provider"
-              className="absolute bottom-0 left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
+              className="absolute bottom-[-5%] left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
             />
           </div>
         </div>
