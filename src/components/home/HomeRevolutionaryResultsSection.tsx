@@ -131,7 +131,7 @@ export const HomeRevolutionaryResultsSection = () => {
           
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
             These aren't just improvements—they're revolutionary leaps that transform 
-            entire industries. See the measurable impact of pre-cognitive intelligence.
+            entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.
           </p>
         </ScrollReveal>
 
