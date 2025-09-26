@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import networkImage from '@/assets/dentipay-network-effect-crowd.png';
 
 interface HomeVideoSectionProps {
@@ -12,6 +13,7 @@ interface HomeVideoSectionProps {
 
 export const HomeVideoSection = ({ imagePosition = 'left', mobileImagePosition = 'top' }: HomeVideoSectionProps) => {
   const { t } = useTranslation('marketing');
+  const navigate = useNavigate();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [objectPosition, setObjectPosition] = useState('65% center');
@@ -132,10 +134,16 @@ export const HomeVideoSection = ({ imagePosition = 'left', mobileImagePosition =
                       </div>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-end mt-6 px-6 md:mr-4">
-                      <Button className="bg-foreground text-background rounded-full hover:bg-foreground/90 px-8 py-3 text-base font-medium">
+                      <Button 
+                        className="bg-foreground text-background rounded-full hover:bg-foreground/90 px-8 py-3 text-base font-medium"
+                        onClick={() => navigate('/patients')}
+                      >
                         {t('home.video.ctaPatients', 'For Patients')}
                       </Button>
-                      <Button className="bg-foreground text-background rounded-full hover:bg-foreground/90 px-8 py-3 text-base font-medium">
+                      <Button 
+                        className="bg-foreground text-background rounded-full hover:bg-foreground/90 px-8 py-3 text-base font-medium"
+                        onClick={() => navigate('/providers')}
+                      >
                         {t('home.video.ctaProviders', 'For Providers')}
                       </Button>
                     </div>

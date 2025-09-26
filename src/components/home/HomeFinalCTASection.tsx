@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Zap, Users, TrendingUp } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, MagneticButton } from "@/components/ui/enhanced-animations";
 import { ParallaxSection } from "@/components/ui/parallax-section";
+import { useNavigate } from 'react-router-dom';
 import dentistWomanImage from '@/assets/dentist-woman-white-transparent.png';
 export function HomeFinalCTASection() {
+  const navigate = useNavigate();
+  
   const benefits = [{
     icon: Users,
     text: "Patients get the care they need"
@@ -96,14 +99,22 @@ export function HomeFinalCTASection() {
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">Learn More</h3>
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
             <MagneticButton>
-              <Button size="lg" className="text-2xl px-20 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
+              <Button 
+                size="lg" 
+                className="text-2xl px-20 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72"
+                onClick={() => navigate('/patients')}
+              >
                 For Patients
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
             </MagneticButton>
             
             <MagneticButton>
-              <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
+              <Button 
+                size="lg" 
+                className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72"
+                onClick={() => navigate('/providers')}
+              >
                 For Providers
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
