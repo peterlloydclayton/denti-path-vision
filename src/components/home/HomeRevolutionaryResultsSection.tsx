@@ -122,7 +122,7 @@ export const HomeRevolutionaryResultsSection = () => {
         </ScrollReveal>
 
         {/* Revolutionary Stats Grid */}
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20" staggerDelay={0.1}>
+        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.1}>
           {revolutionaryStats.map((stat, index) => <StaggerItem key={index}>
               <motion.div className="group relative" whileHover={{
             y: -8
