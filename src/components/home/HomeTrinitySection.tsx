@@ -13,54 +13,24 @@ export const HomeTrinitySection = () => {
   const [isPathModalOpen, setIsPathModalOpen] = useState(false);
   const [isScopeModalOpen, setIsScopeModalOpen] = useState(false);
 
-  const trinityItems = [
+  const trinityPoints = [
     {
       icon: Mic,
-      title: "ECHO",
-      subtitle: "Voice-Enabled AI Assistant",
-      description: "24/7 patient interaction with natural voice processing",
-      features: [
-        "Natural language patient consultations",
-        "Real-time symptom analysis & triage", 
-        "Pre-visit anxiety reduction"
-      ],
-      stat: "24/7",
-      statLabel: "Patient Support",
-      color: "primary",
-      gradientFrom: "primary/20",
-      gradientTo: "primary/5"
+      title: "ECHO: Voice-Enabled AI Assistant",
+      description: "24/7 patient interaction with natural voice processing and real-time symptom analysis",
+      stat: "24/7 Patient Support"
     },
     {
       icon: Target,
-      title: "PATH",
-      subtitle: "Patient Acceptance Treatment Hub", 
-      description: "Pre-cognitive intelligence that predicts treatment acceptance",
-      features: [
-        "95% approval accuracy predictions",
-        "Pre-treatment financing decisions",
-        "Behavioral pattern recognition"
-      ],
-      stat: "95%",
-      statLabel: "Prediction Accuracy",
-      color: "accent",
-      gradientFrom: "accent/20",
-      gradientTo: "accent/5"
+      title: "PATH: Patient Acceptance Treatment Hub",
+      description: "Pre-cognitive intelligence with 95% approval accuracy predictions and behavioral pattern recognition",
+      stat: "95% Prediction Accuracy"
     },
     {
       icon: Brain,
-      title: "SCOPE",
-      subtitle: "Strategic Clinical Operations Engine",
-      description: "Intelligence that understands dental practice dynamics",
-      features: [
-        "50+ data point analysis",
-        "Clinical necessity assessment",
-        "Revenue optimization algorithms"
-      ],
-      stat: "50+",
-      statLabel: "Data Points",
-      color: "success",
-      gradientFrom: "success/20", 
-      gradientTo: "success/5"
+      title: "SCOPE: Strategic Clinical Operations Engine",
+      description: "Intelligence that analyzes 50+ data points for clinical necessity assessment and revenue optimization",
+      stat: "50+ Data Points"
     }
   ];
 
@@ -98,130 +68,54 @@ export const HomeTrinitySection = () => {
           </div>
         </ScrollReveal>
 
-        <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.3}>
-          {trinityItems.map((item, index) => {
-            const Icon = item.icon;
+        <StaggerContainer className="max-w-4xl mx-auto space-y-8" staggerDelay={0.2}>
+          {trinityPoints.map((point, index) => {
+            const Icon = point.icon;
             return (
               <StaggerItem key={index}>
                 <motion.div
-                  whileHover={{ y: -12, scale: 1.02 }}
-                  transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
-                  className="h-full"
+                  className="flex items-start gap-6 p-6 rounded-2xl bg-gradient-to-r from-background/50 to-surface/50 border border-primary/10 hover:border-primary/20 transition-all duration-300"
+                  whileHover={{ x: 8, scale: 1.01 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <Card className={`group hover:shadow-2xl hover:shadow-${item.color}/20 transition-all duration-500 border-${item.color}/20 hover:border-${item.color}/40 h-full bg-gradient-to-br from-${item.gradientFrom} to-${item.gradientTo}`}>
-                    <CardContent className="p-8 text-center h-full flex flex-col">
-                      {/* Animated Icon */}
-                      <motion.div 
-                        className={`bg-${item.color} text-${item.color}-foreground w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 relative overflow-hidden`}
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <motion.div
-                          className="absolute inset-0 bg-white/20 rounded-2xl"
-                          whileHover={{ scale: 1.5, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                        />
-                        <Icon className="w-10 h-10 relative z-10" />
-                      </motion.div>
-                      
-                      {/* Title & Subtitle */}
-                      <h3 className={`text-2xl font-bold mb-2 group-hover:scale-105 transition-transform text-${item.color}`}>
-                        {item.title}
-                      </h3>
-                      <p className="text-muted-foreground font-medium mb-4">{item.subtitle}</p>
-                      <p className="text-sm text-muted-foreground mb-6">{item.description}</p>
-                      
-                      {/* Key Features */}
-                      <div className="space-y-3 text-sm mb-6 flex-grow">
-                        {item.features.map((feature, idx) => (
-                          <motion.div 
-                            key={idx} 
-                            className="flex items-center gap-3 text-left"
-                            whileHover={{ x: 4 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <div className={`w-2 h-2 rounded-full bg-${item.color} flex-shrink-0`} />
-                            <span className="text-foreground">{feature}</span>
-                          </motion.div>
-                        ))}
-                      </div>
-                      
-                      {/* Stat Display */}
-                      <motion.div 
-                        className="mb-6 p-4 rounded-xl bg-background/50 border border-primary/10"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className={`text-3xl font-bold text-${item.color} mb-1`}>
-                          {item.stat}
-                        </div>
-                        <div className="text-xs text-muted-foreground font-medium">
-                          {item.statLabel}
-                        </div>
-                      </motion.div>
-
-                      {/* Learn More Button */}
-                      <Button
-                        onClick={() => {
-                          if (index === 0) setIsEchoModalOpen(true);
-                          if (index === 1) setIsPathModalOpen(true);
-                          if (index === 2) setIsScopeModalOpen(true);
-                        }}
-                        variant="outline"
-                        className={`mt-auto group-hover:bg-${item.color} group-hover:text-${item.color}-foreground group-hover:border-${item.color} transition-all duration-300`}
-                      >
-                        Explore Intelligence
-                        <Zap className="w-4 h-4 ml-2" />
-                      </Button>
-                    </CardContent>
-                  </Card>
+                  <motion.div 
+                    className="bg-primary text-primary-foreground w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0"
+                    whileHover={{ rotate: 5, scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Icon className="w-8 h-8" />
+                  </motion.div>
+                  
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-xl font-bold text-foreground mb-3">
+                      {point.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {point.description}
+                    </p>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+                      <Zap className="w-4 h-4 text-primary" />
+                      <span className="text-primary font-medium text-sm">{point.stat}</span>
+                    </div>
+                  </div>
                 </motion.div>
               </StaggerItem>
             );
           })}
         </StaggerContainer>
 
-        {/* Revolutionary Impact Summary */}
-        <ScrollReveal className="mt-20 text-center">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <motion.div 
-                className="text-center p-6 rounded-2xl bg-primary/5 border border-primary/20"
-                whileHover={{ scale: 1.05, y: -4 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="text-4xl font-bold text-primary mb-2">Pre-Cognitive</div>
-                <div className="text-sm text-muted-foreground">AI thinks before you ask</div>
-              </motion.div>
-              <motion.div 
-                className="text-center p-6 rounded-2xl bg-accent/5 border border-accent/20"
-                whileHover={{ scale: 1.05, y: -4 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="text-4xl font-bold text-accent mb-2">Milliseconds</div>
-                <div className="text-sm text-muted-foreground">Real-time intelligence processing</div>
-              </motion.div>
-              <motion.div 
-                className="text-center p-6 rounded-2xl bg-success/5 border border-success/20"
-                whileHover={{ scale: 1.05, y: -4 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="text-4xl font-bold text-success mb-2">3X Smarter</div>
-                <div className="text-sm text-muted-foreground">Than traditional systems</div>
-              </motion.div>
-            </div>
-            
-            <motion.div 
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Brain className="w-6 h-6 text-primary" />
-              <span className="text-primary font-semibold text-lg">
-                This is intelligence beyond traditional AI
-              </span>
-            </motion.div>
-          </div>
+        {/* Impact Statement */}
+        <ScrollReveal className="mt-16 text-center">
+          <motion.div 
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Brain className="w-6 h-6 text-primary" />
+            <span className="text-primary font-semibold text-lg">
+              Pre-Cognitive AI • Millisecond Processing • 3X Smarter Intelligence
+            </span>
+          </motion.div>
         </ScrollReveal>
 
         {/* Enhanced Modals */}
