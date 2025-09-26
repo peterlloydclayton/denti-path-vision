@@ -93,7 +93,7 @@ export function HomeFinalCTASection() {
             
             <MagneticButton>
               <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl">
-                Transform for Patients
+                Patients
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
             </MagneticButton>
