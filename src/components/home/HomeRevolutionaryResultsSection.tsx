@@ -300,6 +300,11 @@ export const HomeRevolutionaryResultsSection = () => {
                           const IconComponent = getComparisonIcon(comparison.metric);
                           return <IconComponent className="w-6 h-6" />;
                         })()}
+                        
+                        {/* Simple right arrow below icon */}
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-3">
+                          <ArrowRight className="w-5 h-5 text-primary" />
+                        </div>
                       </motion.div>
                     </div>
 
