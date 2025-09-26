@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { TrendingUp, Clock, Users, DollarSign, Target, Zap, Award, Building2, ArrowUp, Sparkles, CheckCircle, Brain } from 'lucide-react';
+import { TrendingUp, Clock, Users, DollarSign, Target, Zap, Award, Building2, ArrowUp, Sparkles, CheckCircle, Brain, ChevronRight } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
 interface AnimatedCounterProps {
@@ -301,6 +301,28 @@ export const HomeRevolutionaryResultsSection = () => {
                           return <IconComponent className="w-6 h-6" />;
                         })()}
                       </motion.div>
+                      
+                      {/* Subtle directional chevrons */}
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 flex items-center gap-1">
+                        {[0, 1, 2].map((chevronIndex) => (
+                          <motion.div
+                            key={chevronIndex}
+                            initial={{ opacity: 0 }}
+                            animate={{ 
+                              opacity: [0, 0.4, 0],
+                              x: [0, 8, 16]
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: chevronIndex * 0.3,
+                              ease: "easeInOut"
+                            }}
+                          >
+                            <ChevronRight className="w-3 h-3 text-primary/60" />
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
 
                     {/* Right Side - New Way (Positive) */}
