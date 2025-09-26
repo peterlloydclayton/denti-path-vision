@@ -80,7 +80,7 @@ export const HomeProblemSection = () => {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Transforming Dental Financing for Providers & Patients
+            Transforming Dental Finance
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
             Traditional financing creates walls between patients and dental care, and between providers and fair compensation. 
