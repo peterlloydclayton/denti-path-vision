@@ -27,39 +27,39 @@ export const HomeProblemSection = () => {
       icon: AlertTriangle,
       traditional: {
         stat: '<50%',
-        problem: 'Financial Barriers',
-        description: 'of Americans can afford a $1,000 dental emergency, leaving critical care delayed or avoided entirely'
+        problem: 'Financial Barriers Block Care',
+        description: 'Less than half of Americans can afford a $1,000 dental emergency. Traditional banks use generic criteria that ignore dental care urgency, forcing patients to delay or skip treatment entirely.'
       },
       dentipay: {
         stat: '95%',
-        solution: 'Instant Access',
-        description: 'approval rate with AI-powered pre-qualification that understands dental care urgency and necessity'
+        solution: 'AI-Powered Pre-Qualification',
+        description: 'Our dental-specialized AI analyzes treatment necessity, patient capacity, and provider relationships to approve financing that traditional systems would reject.'
       }
     },
     {
       icon: Clock,
       traditional: {
         stat: '2-4 Weeks',
-        problem: 'Approval Delays',
-        description: 'Traditional financing takes weeks while dental conditions worsen and patient motivation decreases'
+        problem: 'Outdated Approval Process',
+        description: 'Traditional lenders require extensive paperwork, manual underwriting, and multiple verification steps. Meanwhile, dental conditions worsen and patient motivation fades.'
       },
       dentipay: {
         stat: '30 Seconds',
-        solution: 'Real-Time Decisions',
-        description: 'AI processes 50+ data points instantly, providing immediate financing decisions when patients need them most'
+        solution: 'Pre-Cognitive Intelligence',
+        description: 'AI processes patient history, treatment urgency, and 50+ behavioral indicators instantly. Decisions are made before patients even complete applications.'
       }
     },
     {
       icon: TrendingUp,
       traditional: {
         stat: '20-40%',
-        problem: 'Low Approval Rates',
-        description: 'Generic banking algorithms reject patients who could easily afford dental payments with proper structuring'
+        problem: 'Generic Banking Logic',
+        description: 'Standard credit algorithms were built for cars and houses, not healthcare. They miss qualified patients who could easily afford structured dental payments.'
       },
       dentipay: {
         stat: '300%',
-        solution: 'Higher Acceptance',
-        description: 'increase in treatment acceptance rates through intelligent financing that matches patient capacity and preferences'
+        solution: 'Healthcare-Specialized AI',
+        description: 'Our AI understands dental payment patterns, seasonal capacity, and treatment timing. It approves patients others reject and structures payments that work.'
       }
     }
   ];
@@ -107,17 +107,17 @@ export const HomeProblemSection = () => {
                   style={{ transformStyle: 'preserve-3d' }}
                 >
                   {/* Front Card - Traditional Problem */}
-                  <Card className="absolute inset-0 backface-hidden border-destructive/30 bg-background hover:shadow-lg transition-all duration-300">
+                  <Card className="absolute inset-0 backface-hidden border-muted-foreground/20 bg-background hover:shadow-lg transition-all duration-300">
                     <CardContent className="p-8 h-full flex flex-col justify-center text-center">
                       <motion.div 
-                        className="p-4 bg-destructive/10 rounded-xl mx-auto mb-6 w-fit"
+                        className="p-4 bg-muted/20 rounded-xl mx-auto mb-6 w-fit"
                         whileHover={{ rotate: [0, -10, 10, -10, 0] }}
                         transition={{ duration: 0.5 }}
                       >
-                        <card.icon className="h-12 w-12 text-destructive" />
+                        <card.icon className="h-12 w-12 text-muted-foreground" />
                       </motion.div>
                       
-                      <div className="text-3xl font-bold text-destructive mb-2">
+                      <div className="text-3xl font-bold text-muted-foreground mb-2">
                         {card.traditional.stat}
                       </div>
                       
@@ -136,7 +136,7 @@ export const HomeProblemSection = () => {
                   </Card>
 
                   {/* Back Card - DentiPay Solution */}
-                  <Card className="absolute inset-0 backface-hidden rotate-y-180 border-primary/50 bg-gradient-to-br from-primary/5 to-success/5 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300">
+                  <Card className="absolute inset-0 backface-hidden rotate-y-180 border-primary/30 bg-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300">
                     <CardContent className="p-8 h-full flex flex-col justify-center text-center">
                       <motion.div 
                         className="p-4 bg-primary/20 rounded-xl mx-auto mb-6 w-fit"
@@ -155,7 +155,7 @@ export const HomeProblemSection = () => {
                         {card.dentipay.solution}
                       </h3>
                       
-                      <p className="text-muted-foreground leading-relaxed flex-grow">
+                      <p className="text-foreground leading-relaxed flex-grow">
                         {card.dentipay.description}
                       </p>
                       
@@ -187,7 +187,7 @@ export const HomeProblemSection = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="text-4xl font-bold text-accent mb-2">30 sec</div>
+                <div className="text-4xl font-bold text-primary mb-2">30 sec</div>
                 <div className="text-sm text-muted-foreground">vs 2-4 weeks traditional process</div>
               </motion.div>
               <motion.div 
@@ -195,7 +195,7 @@ export const HomeProblemSection = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="text-4xl font-bold text-success mb-2">300%</div>
+                <div className="text-4xl font-bold text-primary mb-2">300%</div>
                 <div className="text-sm text-muted-foreground">increase in treatment acceptance</div>
               </motion.div>
             </div>
