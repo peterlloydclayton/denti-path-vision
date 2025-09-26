@@ -108,7 +108,7 @@ export const HomeRevolutionaryResultsSection = () => {
       {/* Image and Text Container - Above Cards - Full Width Layout */}
       <div className="flex flex-col lg:flex-row items-center lg:items-start mb-16">
         {/* Image Container - Full Width to Left Edge */}
-        <div className="w-full lg:w-2/5 lg:pl-0">
+        <div className="w-full lg:w-2/5 lg:pl-0 order-2 lg:order-1">
           <img 
             src={approvalMobileImage} 
             alt="Mobile approval interface"
@@ -117,7 +117,7 @@ export const HomeRevolutionaryResultsSection = () => {
         </div>
         
         {/* Text Container - Properly Constrained */}
-        <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pr-8">
+        <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pr-8 order-1 lg:order-2">
           <div className="text-center lg:text-right px-4 sm:px-6 lg:px-0">
             <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Results That 
