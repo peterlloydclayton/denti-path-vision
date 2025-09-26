@@ -318,20 +318,20 @@ export const HomePreCognitiveSection = () => {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className={`border-${preCognitiveFeatures[activeFeature].color}/30 bg-gradient-to-br from-${preCognitiveFeatures[activeFeature].color}/5 to-${preCognitiveFeatures[activeFeature].color}/10`}>
+                <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4 mb-6">
-                      <div className={`p-3 bg-${preCognitiveFeatures[activeFeature].color}/20 rounded-xl`}>
-                        {activeFeature === 0 && <Brain className={`w-8 h-8 text-${preCognitiveFeatures[activeFeature].color}`} />}
-                        {activeFeature === 1 && <Eye className={`w-8 h-8 text-${preCognitiveFeatures[activeFeature].color}`} />}
-                        {activeFeature === 2 && <Zap className={`w-8 h-8 text-${preCognitiveFeatures[activeFeature].color}`} />}
-                        {activeFeature === 3 && <Clock className={`w-8 h-8 text-${preCognitiveFeatures[activeFeature].color}`} />}
+                      <div className="p-3 bg-primary/20 rounded-xl">
+                        {activeFeature === 0 && <Brain className="w-8 h-8 text-primary" />}
+                        {activeFeature === 1 && <Eye className="w-8 h-8 text-accent" />}
+                        {activeFeature === 2 && <Zap className="w-8 h-8 text-success" />}
+                        {activeFeature === 3 && <Clock className="w-8 h-8 text-primary" />}
                       </div>
                       <div className="flex-1">
                         <h4 className="text-xl font-bold text-foreground mb-2">
                           {preCognitiveFeatures[activeFeature].title}
                         </h4>
-                        <p className={`text-${preCognitiveFeatures[activeFeature].color} font-medium mb-3`}>
+                        <p className="text-primary font-medium mb-3">
                           {preCognitiveFeatures[activeFeature].subtitle}
                         </p>
                         <p className="text-muted-foreground leading-relaxed">
@@ -349,15 +349,15 @@ export const HomePreCognitiveSection = () => {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.3, delay: index * 0.1 }}
                         >
-                          <div className={`w-2 h-2 rounded-full bg-${preCognitiveFeatures[activeFeature].color}`} />
+                          <div className="w-2 h-2 rounded-full bg-primary" />
                           <span className="text-foreground text-sm">{capability}</span>
                         </motion.div>
                       ))}
                     </div>
 
-                    <div className={`flex items-center justify-center p-4 rounded-xl bg-${preCognitiveFeatures[activeFeature].color}/10 border border-${preCognitiveFeatures[activeFeature].color}/20`}>
+                    <div className="flex items-center justify-center p-4 rounded-xl bg-primary/10 border border-primary/20">
                       <div className="text-center">
-                        <div className={`text-2xl font-bold text-${preCognitiveFeatures[activeFeature].color} mb-1`}>
+                        <div className="text-2xl font-bold text-primary mb-1">
                           {preCognitiveFeatures[activeFeature].stat}
                         </div>
                         <div className="text-xs text-muted-foreground font-medium">
@@ -378,7 +378,7 @@ export const HomePreCognitiveSection = () => {
                   onClick={() => setActiveFeature(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === activeFeature 
-                      ? `bg-${preCognitiveFeatures[activeFeature].color}` 
+                      ? 'bg-primary' 
                       : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                   }`}
                 />
