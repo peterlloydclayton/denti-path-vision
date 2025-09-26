@@ -49,30 +49,30 @@ export const HomeProblemSection = () => {
               <div className="grid gap-8">
                 <motion.div 
                   className="text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
+                  transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
                 >
                   <div className="text-4xl font-bold text-foreground mb-2">Patients</div>
                   <div className="text-sm text-slate-600">No longer denied care due to traditional limits</div>
                 </motion.div>
                 <motion.div 
                   className="text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
+                  transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
                 >
                   <div className="text-4xl font-bold text-foreground mb-2">Providers</div>
                   <div className="text-sm text-slate-600">Get paid immediately, no more financing delays</div>
                 </motion.div>
                 <motion.div 
                   className="text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
+                  transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
                 >
                   <div className="text-4xl font-bold text-foreground mb-2">Access</div>
                   <div className="text-sm text-slate-600">Intelligent matching of need with capability</div>
@@ -100,30 +100,30 @@ export const HomeProblemSection = () => {
               {/* Content Column - 50% width */}
               <div className="text-left space-y-8">
                 <motion.div 
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
+                  transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                 >
                   <div className="text-3xl font-bold text-foreground mb-2">Patients</div>
                   <div className="text-base text-slate-600">No longer denied care due to traditional limits</div>
                 </motion.div>
                 
                 <motion.div 
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
+                  transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
                 >
                   <div className="text-3xl font-bold text-foreground mb-2">Providers</div>
                   <div className="text-base text-slate-600">Get paid immediately, no more financing delays</div>
                 </motion.div>
                 
                 <motion.div 
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
+                  transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
                 >
                   <div className="text-3xl font-bold text-foreground mb-2">Access</div>
                   <div className="text-base text-slate-600">Intelligent matching of need with capability</div>
