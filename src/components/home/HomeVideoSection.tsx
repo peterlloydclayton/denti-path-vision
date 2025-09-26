@@ -119,9 +119,6 @@ export const HomeVideoSection = ({ imagePosition = 'left', mobileImagePosition =
               <div className={`flex flex-col justify-center p-8 lg:p-12 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 ${getMobileOrder(false)} ${imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2'}`}>
                 <AnimatedText>
                   <div className="space-y-6">
-                     <div className="inline-flex items-center px-4 py-2 rounded-full bg-dental-blue text-dental-blue-dark text-sm font-medium">
-                      {t('home.video.badge')}
-                    </div>
                     <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
                       {t('home.video.title')}
                     </h2>
