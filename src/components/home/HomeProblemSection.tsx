@@ -29,7 +29,7 @@ export const HomeProblemSection = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="text-4xl font-bold text-primary mb-2">Patients</div>
+                <div className="text-4xl font-bold text-foreground mb-2">Patients</div>
                 <div className="text-sm text-muted-foreground">No longer denied care due to traditional limits</div>
               </motion.div>
               <motion.div 
@@ -37,7 +37,7 @@ export const HomeProblemSection = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="text-4xl font-bold text-primary mb-2">Providers</div>
+                <div className="text-4xl font-bold text-foreground mb-2">Providers</div>
                 <div className="text-sm text-muted-foreground">Get paid immediately, no more financing delays</div>
               </motion.div>
               <motion.div 
@@ -45,7 +45,7 @@ export const HomeProblemSection = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="text-4xl font-bold text-primary mb-2">Access</div>
+                <div className="text-4xl font-bold text-foreground mb-2">Access</div>
                 <div className="text-sm text-muted-foreground">Intelligent matching of need with capability</div>
               </motion.div>
             </div>
