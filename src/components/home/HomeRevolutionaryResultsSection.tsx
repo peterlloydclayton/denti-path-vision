@@ -114,9 +114,8 @@ export const HomeRevolutionaryResultsSection = () => {
           />
         </div>
         
-        <div className="flex flex-col lg:flex-row lg:justify-between items-center gap-12 mb-16 lg:mb-0 relative border-2 border-red-500">
-          <div className="lg:w-2/5"></div> {/* Spacer for image */}
-          <div className="text-center lg:text-right lg:w-2/5">
+        <div className="flex flex-col lg:flex-row lg:justify-end items-center gap-12 mb-16 lg:mb-0 lg:w-2/5 lg:ml-auto relative border-2 border-red-500">
+          <div className="text-center lg:text-right lg:w-full">
             <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Results That 
               <span className="text-foreground block">
