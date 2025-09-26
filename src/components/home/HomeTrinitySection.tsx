@@ -70,48 +70,134 @@ export const HomeTrinitySection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {trinityPoints.map((point, index) => {
             const Icon = point.icon;
+            
+            // Different entrance directions for each card
+            const entranceVariants = [
+              { opacity: 0, x: -100, y: 50, rotate: -15, scale: 0.8 },
+              { opacity: 0, y: -100, scale: 0.5, rotate: 10 },
+              { opacity: 0, x: 100, y: 50, rotate: 15, scale: 0.8 }
+            ];
+
+            const finalVariants = { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 };
+
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                initial={entranceVariants[index]}
+                whileInView={finalVariants}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{
-                  duration: 0.6,
-                  delay: index * 0.15,
-                  ease: [0.25, 0.25, 0.25, 0.75]
+                  duration: 0.8,
+                  delay: index * 0.2,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15
                 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="relative h-full cursor-pointer"
+                whileHover={{ 
+                  y: -12, 
+                  scale: 1.05,
+                  rotateY: 5,
+                  transition: { duration: 0.3 }
+                }}
+                className="relative h-full cursor-pointer perspective-1000"
               >
-                <Card className="text-center h-full bg-card border-2 border-border/10 hover:border-primary/30 transition-all duration-500 shadow-lg hover:shadow-2xl group">
-                  <CardContent className="p-8 h-full flex flex-col justify-between">
-                    <div>
+                <Card className="text-center h-full bg-card border-2 border-border/10 hover:border-foreground/30 transition-all duration-500 shadow-lg hover:shadow-2xl group overflow-hidden">
+                  <CardContent className="p-8 h-full flex flex-col justify-between relative">
+                    {/* Animated background effect */}
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-br from-foreground/5 to-transparent opacity-0 group-hover:opacity-100"
+                      transition={{ duration: 0.5 }}
+                    />
+                    
+                    <div className="relative z-10">
                       <motion.div 
-                        className="w-20 h-20 rounded-3xl bg-foreground/10 flex items-center justify-center mx-auto mb-6"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ duration: 0.3 }}
+                        className="w-20 h-20 rounded-3xl bg-foreground/10 flex items-center justify-center mx-auto mb-6 relative overflow-hidden"
+                        whileHover={{ 
+                          scale: 1.2, 
+                          rotate: [0, -10, 10, 0],
+                          transition: { duration: 0.6 }
+                        }}
+                        initial={{ scale: 0, rotate: 180 }}
+                        whileInView={{ scale: 1, rotate: 0 }}
+                        transition={{ 
+                          delay: index * 0.2 + 0.4,
+                          duration: 0.6,
+                          type: "spring",
+                          stiffness: 200
+                        }}
+                        viewport={{ once: true }}
                       >
-                        <Icon size={36} className="text-foreground" />
+                        {/* Ripple effect on icon hover */}
+                        <motion.div
+                          className="absolute inset-0 bg-foreground/20 rounded-full"
+                          initial={{ scale: 0, opacity: 1 }}
+                          whileHover={{ 
+                            scale: 2, 
+                            opacity: 0,
+                            transition: { duration: 0.6 }
+                          }}
+                        />
+                        <Icon size={36} className="text-foreground relative z-10" />
                       </motion.div>
                       
-                      <h3 className="text-2xl font-bold mb-4 text-foreground">
+                      <motion.h3 
+                        className="text-2xl font-bold mb-4 text-foreground"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.2 + 0.6, duration: 0.5 }}
+                        viewport={{ once: true }}
+                      >
                         {point.title}
-                      </h3>
+                      </motion.h3>
                       
-                      <p className="text-foreground/70 mb-6 leading-relaxed">
+                      <motion.p 
+                        className="text-foreground/70 mb-6 leading-relaxed"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.2 + 0.8, duration: 0.5 }}
+                        viewport={{ once: true }}
+                      >
                         {point.description}
-                      </p>
+                      </motion.p>
                     </div>
                   </CardContent>
                 </Card>
 
-                {/* Floating glow effect */}
+                {/* Enhanced floating glow effect */}
                 <motion.div
-                  className="absolute inset-0 rounded-lg bg-primary/5 -z-10"
-                  initial={{ opacity: 0, scale: 1 }}
-                  whileHover={{ opacity: 1, scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 rounded-lg bg-foreground/10 -z-10 blur-xl"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileHover={{ 
+                    opacity: 0.8, 
+                    scale: 1.1,
+                    transition: { duration: 0.3 }
+                  }}
+                />
+
+                {/* Particle effects */}
+                <motion.div
+                  className="absolute -top-2 -right-2 w-2 h-2 bg-foreground/30 rounded-full"
+                  animate={{
+                    y: [0, -10, 0],
+                    opacity: [0.3, 0.8, 0.3]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: index * 0.5
+                  }}
+                />
+                <motion.div
+                  className="absolute -bottom-2 -left-2 w-1.5 h-1.5 bg-foreground/20 rounded-full"
+                  animate={{
+                    y: [0, 8, 0],
+                    opacity: [0.2, 0.6, 0.2]
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    delay: index * 0.7 + 0.5
+                  }}
                 />
               </motion.div>
             );
