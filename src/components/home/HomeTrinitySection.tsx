@@ -39,27 +39,27 @@ export const HomeTrinitySection = () => {
         <ScrollReveal className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
             Three Layers of 
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent block">
+            <span className="text-foreground block">
               Revolutionary Intelligence
             </span>
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
+          <p className="text-xl text-foreground/80 max-w-4xl mx-auto mb-8">
             DentiPay's Trinity System thinks before you need it to. Our AI doesn't just respond to requests—
             it predicts needs, analyzes patterns, and makes decisions at the speed of thought.
           </p>
 
-          <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
+          <div className="flex items-center justify-center gap-4 text-sm text-foreground/70">
             <div className="flex items-center gap-2">
               <Eye className="w-4 h-4" />
               <span>Predictive Analysis</span>
             </div>
-            <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+            <div className="w-1 h-1 bg-foreground/50 rounded-full"></div>
             <div className="flex items-center gap-2">
               <Zap className="w-4 h-4" />
               <span>Real-Time Processing</span>
             </div>
-            <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+            <div className="w-1 h-1 bg-foreground/50 rounded-full"></div>
             <div className="flex items-center gap-2">
               <Network className="w-4 h-4" />
               <span>Integrated Intelligence</span>
@@ -88,18 +88,18 @@ export const HomeTrinitySection = () => {
                   <CardContent className="p-8 h-full flex flex-col justify-between">
                     <div>
                       <motion.div 
-                        className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center mx-auto mb-6"
+                        className="w-20 h-20 rounded-3xl bg-foreground/10 flex items-center justify-center mx-auto mb-6"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <Icon size={36} className="text-primary" />
+                        <Icon size={36} className="text-foreground" />
                       </motion.div>
                       
-                      <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
+                      <h3 className="text-2xl font-bold mb-4 text-foreground">
                         {point.title}
                       </h3>
                       
-                      <p className="text-muted-foreground mb-6 leading-relaxed">
+                      <p className="text-foreground/70 mb-6 leading-relaxed">
                         {point.description}
                       </p>
                     </div>
@@ -125,17 +125,17 @@ export const HomeTrinitySection = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <Brain className="w-6 h-6 text-primary" />
-            <span className="text-primary font-semibold text-lg">
+            <Brain className="w-6 h-6 text-foreground" />
+            <span className="text-foreground font-semibold text-lg">
               Pre-Cognitive AI • Millisecond Processing • 3X Smarter Intelligence
             </span>
           </motion.div>
         </ScrollReveal>
 
         {/* Decorative elements */}
-        <div className="absolute top-1/2 left-4 w-2 h-2 bg-primary/30 rounded-full animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-primary/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-primary/25 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-4 w-2 h-2 bg-foreground/30 rounded-full animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-foreground/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-foreground/25 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
 
         {/* Enhanced Modals */}
         <HomeEchoModal isOpen={isEchoModalOpen} onClose={() => setIsEchoModalOpen(false)} />
