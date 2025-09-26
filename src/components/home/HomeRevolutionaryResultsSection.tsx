@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { TrendingUp, Clock, Users, DollarSign, Target, Zap, Award, Building2, ArrowUp, Sparkles } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
-import dentistWomanImage from '@/assets/dentist-woman-white-transparent.png';
+import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
 interface AnimatedCounterProps {
   value: number;
   suffix?: string;
@@ -121,11 +121,12 @@ export const HomeRevolutionaryResultsSection = () => {
             </p>
           </div>
           
-          <div className="flex-1 flex justify-end">
+          <div className="absolute right-0 flex justify-end lg:relative lg:flex-1">
             <img 
-              src={dentistWomanImage} 
-              alt="Professional dentist"
-              className="max-w-md w-full h-auto"
+              src={approvalMobileImage} 
+              alt="Mobile approval interface"
+              className="max-w-md w-full h-auto transform scale-x-[-1]"
+              style={{ marginRight: '-2rem' }}
             />
           </div>
         </div>
