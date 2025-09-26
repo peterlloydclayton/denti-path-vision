@@ -40,7 +40,7 @@ export const HomeProblemSection = () => {
               <motion.img 
                 src={womanDoctorImage} 
                 alt="Professional healthcare provider" 
-                className="w-96 h-96 mx-auto mb-8 object-contain"
+                className="w-96 h-96 mx-auto object-contain scale-150 self-end"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -84,7 +84,7 @@ export const HomeProblemSection = () => {
             <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
               {/* Image Column - 50% width */}
               <motion.div 
-                className="flex justify-center"
+                className="flex justify-center items-end"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -93,7 +93,7 @@ export const HomeProblemSection = () => {
                 <img 
                   src={womanDoctorImage} 
                   alt="Professional healthcare provider" 
-                  className="w-96 h-96 object-contain"
+                  className="w-96 h-96 object-contain scale-150"
                 />
               </motion.div>
 
