@@ -211,15 +211,6 @@ export const HomeRevolutionaryResultsSection = () => {
 
         {/* Before vs After Comparison */}
         <ScrollReveal className="mb-20">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-foreground mb-4">
-              The Revolutionary Difference
-            </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              See how DentiPay's pre-cognitive intelligence completely transforms 
-              traditional financing metrics across every dimension.
-            </p>
-          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {beforeAfterComparisons.map((comparison, index) => (
