@@ -106,7 +106,7 @@ export const HomeRevolutionaryResultsSection = () => {
       </div>
 
       {/* Image and Text Container - Above Cards - Full Width Layout */}
-      <div className="flex flex-col lg:flex-row items-center lg:items-start mb-4">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start">
         {/* Image Container - Full Width to Left Edge */}
         <div className="w-full lg:w-2/5 lg:pl-0 order-2 lg:order-1">
           <img 
