@@ -24,26 +24,28 @@ export const HomeProblemSection = () => {
         {/* Fighting For Impact Summary */}
         <ScrollReveal className="mt-16 text-center">
           <div className="max-w-7xl mx-auto">
+            {/* Main Heading */}
+            <motion.h3 
+              className="text-2xl md:text-3xl font-semibold text-slate-600 mb-12"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Transforming a future where financing never limits dental care
+            </motion.h3>
+
             {/* Mobile Layout */}
             <div className="block lg:hidden">
               <motion.img 
                 src={womanDoctorImage} 
                 alt="Professional healthcare provider" 
-                className="w-96 h-96 mx-auto mb-6 object-contain"
+                className="w-96 h-96 mx-auto mb-8 object-contain"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              />
-              <motion.h3 
-                className="text-2xl md:text-3xl font-semibold text-slate-600 mb-8"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                Transforming a future where financing never limits dental care
-              </motion.h3>
+              />
               <div className="grid gap-8">
                 <motion.div 
                   className="text-center"
@@ -78,15 +80,15 @@ export const HomeProblemSection = () => {
               </div>
             </div>
 
-            {/* Landscape Layout */}
-            <div className="hidden lg:flex lg:items-center lg:gap-16">
-              {/* Image on Left */}
+            {/* Landscape Layout - Equal Width Columns */}
+            <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
+              {/* Image Column - 50% width */}
               <motion.div 
-                className="flex-shrink-0"
+                className="flex justify-center"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <img 
                   src={womanDoctorImage} 
@@ -95,49 +97,37 @@ export const HomeProblemSection = () => {
                 />
               </motion.div>
 
-              {/* Content on Right */}
-              <div className="flex-1 text-left space-y-8">
-                <motion.h3 
-                  className="text-2xl md:text-3xl font-semibold text-slate-600 mb-8"
+              {/* Content Column - 50% width */}
+              <div className="text-left space-y-8">
+                <motion.div 
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  Transforming a future where financing never limits dental care
-                </motion.h3>
+                  <div className="text-3xl font-bold text-foreground mb-2">Patients</div>
+                  <div className="text-base text-slate-600">No longer denied care due to traditional limits</div>
+                </motion.div>
                 
-                <div className="space-y-6">
-                  <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                  >
-                    <div className="text-3xl font-bold text-foreground mb-2">Patients</div>
-                    <div className="text-base text-slate-600">No longer denied care due to traditional limits</div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                  >
-                    <div className="text-3xl font-bold text-foreground mb-2">Providers</div>
-                    <div className="text-base text-slate-600">Get paid immediately, no more financing delays</div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                  >
-                    <div className="text-3xl font-bold text-foreground mb-2">Access</div>
-                    <div className="text-base text-slate-600">Intelligent matching of need with capability</div>
-                  </motion.div>
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <div className="text-3xl font-bold text-foreground mb-2">Providers</div>
+                  <div className="text-base text-slate-600">Get paid immediately, no more financing delays</div>
+                </motion.div>
+                
+                <motion.div 
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                >
+                  <div className="text-3xl font-bold text-foreground mb-2">Access</div>
+                  <div className="text-base text-slate-600">Intelligent matching of need with capability</div>
+                </motion.div>
               </div>
             </div>
           </div>
