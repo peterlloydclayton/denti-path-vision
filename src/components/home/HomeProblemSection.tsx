@@ -33,7 +33,7 @@ export const HomeProblemSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Transforming a future where financing never limits dental care
+            Where financing never limits dental care
           </motion.h3>
 
           {/* Mobile Layout */}
