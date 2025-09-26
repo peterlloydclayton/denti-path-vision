@@ -5,7 +5,7 @@ import { AnimatedText, SplitText } from '@/components/ui/animated-text';
 import { ScrollReveal, MagneticButton, FloatingElements } from '@/components/ui/enhanced-animations';
 import { GlowButton, ProgressiveImage } from '@/components/ui/micro-interactions';
 import { PulseRipples } from '@/components/ui/pulse-ripples';
-import dentistImage from '@/assets/dentists-group.png';
+import dentistImage from '@/assets/group-dentists-women-men.png';
 
 export const HomeHeroSection = () => {
   return (
