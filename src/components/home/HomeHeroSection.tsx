@@ -111,32 +111,32 @@ export const HomeHeroSection = () => {
         </AnimatedText>
       </div>
       
-      {/* Desktop Buttons - Patient Left, Provider Right */}
-      <div className="hidden md:block absolute top-[70%] left-12 z-[120]">
+      {/* Desktop Buttons - Upper Right */}
+      <div className="hidden md:block absolute top-[20%] right-12 z-[120]">
         <div className="flex gap-4">
           <Button 
-            className="h-16 text-xl bg-dental-blue hover:bg-dental-blue-dark text-foreground shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
           >
             For Patients
           </Button>
           <Button 
-            className="h-16 text-xl bg-navy hover:bg-navy/90 text-navy-foreground shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
           >
             For Providers
           </Button>
         </div>
       </div>
 
-      {/* Mobile Portrait Button */}
-      <div className="block sm:hidden absolute bottom-[20%] left-6 z-[150] mobile-landscape-button">
+      {/* Mobile Portrait Button - Between text and image */}
+      <div className="block sm:hidden absolute top-[50%] left-6 z-[150] mobile-landscape-button">
         <div className="flex flex-col gap-3">
           <Button 
-            className="h-12 text-lg bg-dental-blue hover:bg-dental-blue-dark text-foreground shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-12 text-lg bg-black hover:bg-black/90 text-white shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
           >
             For Patients
           </Button>
           <Button 
-            className="h-12 text-lg bg-navy hover:bg-navy/90 text-navy-foreground shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-12 text-lg bg-black hover:bg-black/90 text-white shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
           >
             For Providers
           </Button>
