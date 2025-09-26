@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { AlertTriangle, TrendingUp, Clock, XCircle, CheckCircle } from 'lucide-react';
@@ -20,6 +20,8 @@ interface ProblemCard {
 
 export const HomeProblemCards = () => {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const problemCards: ProblemCard[] = [
     {
@@ -63,16 +65,36 @@ export const HomeProblemCards = () => {
     }
   ];
 
-  // Auto-flip cards with staggered timing
+  // Intersection observer to detect when cards come into view
   useEffect(() => {
-    problemCards.forEach((_, index) => {
-      const timer = setTimeout(() => {
-        setFlippedCards(prev => [...prev, index]);
-      }, 1000 + (index * 300)); // Stagger by 300ms each
-      
-      return () => clearTimeout(timer);
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
+
+  // Auto-flip cards with staggered timing when visible
+  useEffect(() => {
+    if (isVisible) {
+      problemCards.forEach((_, index) => {
+        const timer = setTimeout(() => {
+          setFlippedCards(prev => [...prev, index]);
+        }, 500 + (index * 300)); // Stagger by 300ms each
+        
+        return () => clearTimeout(timer);
+      });
+    }
+  }, [isVisible]);
 
   const handleCardClick = (index: number) => {
     if (!flippedCards.includes(index)) {
@@ -81,7 +103,8 @@ export const HomeProblemCards = () => {
   };
 
   return (
-    <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.2}>
+    <div ref={sectionRef}>
+      <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.2}>
       {problemCards.map((card, index) => {
         const isFlipped = flippedCards.includes(index);
         
@@ -148,6 +171,7 @@ export const HomeProblemCards = () => {
           </StaggerItem>
         );
       })}
-    </StaggerContainer>
+      </StaggerContainer>
+    </div>
   );
 };
