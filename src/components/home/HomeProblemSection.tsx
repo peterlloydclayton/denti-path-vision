@@ -80,11 +80,11 @@ export const HomeProblemSection = () => {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            The Barriers We're Fighting
+            Pioneering a New Path Forward
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
             Traditional financing creates walls between patients and dental care, and between providers and fair compensation. 
-            We're tearing down every barrier with intelligent, dental-specific solutions.
+            We're pioneering intelligent, dental-specific solutions that open new possibilities.
           </p>
           
           <div className="text-sm text-muted-foreground">
@@ -202,7 +202,7 @@ export const HomeProblemSection = () => {
             
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold">
               <Zap className="w-5 h-5" />
-              We're fighting for a future where financing never limits dental care
+              Pioneering a future where financing never limits dental care
             </div>
           </div>
         </ScrollReveal>

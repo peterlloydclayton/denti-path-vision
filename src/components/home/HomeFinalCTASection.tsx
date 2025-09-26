@@ -70,14 +70,14 @@ export function HomeFinalCTASection() {
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-tight">
             <span className="block">Ready to</span>
             <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-300% animate-gradient">
-              Join the Fight
+              Pioneer the Future
             </span>
-            <span className="block">for Better Access?</span>
+            <span className="block">of Dental Access?</span>
           </h2>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-12">
-            Be part of the movement eliminating financial barriers in dental care. 
-            Choose your path and start making a difference today.
+            Be part of the innovation reshaping how dental care gets financed. 
+            Choose your path and start pioneering change today.
           </p>
         </ScrollReveal>
 
@@ -113,7 +113,7 @@ export function HomeFinalCTASection() {
                 size="lg" 
                 className="text-lg px-12 py-6 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground border-0 shadow-2xl hover:shadow-primary/25 transition-all duration-300"
               >
-                Fight for Providers
+                Pioneer for Providers
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </MagneticButton>
@@ -124,7 +124,7 @@ export function HomeFinalCTASection() {
                 size="lg" 
                 className="text-lg px-12 py-6 border-2 border-primary/20 hover:border-primary bg-background/50 backdrop-blur-sm hover:bg-primary/5 transition-all duration-300"
               >
-                Fight for Patients
+                Pioneer for Patients
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </MagneticButton>
