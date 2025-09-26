@@ -23,7 +23,7 @@ export const HomeTrinitySection = () => {
       icon: Target,
       title: "PATH: Patient Acceptance Treatment Hub",
       description: "Pre-cognitive intelligence with 95% approval accuracy predictions and behavioral pattern recognition",
-      stat: "300% Patient Acceptance"
+      stat: "95% Prediction Accuracy"
     },
     {
       icon: Brain,
