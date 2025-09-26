@@ -106,15 +106,15 @@ export const HomeRevolutionaryResultsSection = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-visible">
+        <div className="order-2 lg:order-1 lg:absolute lg:left-0 lg:bottom-0 lg:z-10 lg:w-2/5 border-2 border-green-500">
+          <img 
+            src={approvalMobileImage} 
+            alt="Mobile approval interface"
+            className="max-w-md w-full h-auto mx-auto lg:mx-0 border-2 border-blue-500"
+          />
+        </div>
+        
         <div className="flex flex-col lg:flex-row items-center gap-12 mb-16 relative border-2 border-red-500">
-          <div className="order-2 lg:order-1 lg:absolute lg:-left-8 lg:bottom-0 lg:z-10 lg:w-2/5 border-2 border-green-500">
-            <img 
-              src={approvalMobileImage} 
-              alt="Mobile approval interface"
-              className="max-w-md w-full h-auto mx-auto lg:mx-0 border-2 border-blue-500"
-            />
-          </div>
-          
           <div className="order-1 lg:order-2 flex-1 text-center lg:text-right lg:ml-auto lg:w-3/5">
             <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Results That 
