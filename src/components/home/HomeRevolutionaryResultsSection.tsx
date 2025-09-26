@@ -332,11 +332,11 @@ export const HomeRevolutionaryResultsSection = () => {
         </ScrollReveal>
 
         {/* Bottom Impact Statement with Image */}
-        <div className="mt-auto pt-16">
+        <div className="mt-auto pt-16 min-h-[500px]">
           <ScrollReveal>
             <div className="flex flex-col lg:flex-row items-end">
               {/* Text Container - Left Side - Positioned higher */}
-              <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pl-8 order-1 lg:order-1 flex items-start pt-8 min-h-[400px]">
+              <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pl-8 order-1 lg:order-1 flex items-start pt-8 min-h-[400px] pb-16">
                 <div className="text-left px-4 sm:px-6 lg:px-0">
                   <h3 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
                     Industry-Defining
@@ -350,20 +350,20 @@ export const HomeRevolutionaryResultsSection = () => {
                     Every metric represents lives changed, practices transformed, and barriers eliminated.
                   </p>
                   
-                  <div className="flex flex-wrap items-center gap-6 text-lg text-foreground px-6 sm:px-8 lg:px-0">
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-6 text-lg text-foreground px-6 sm:px-8 lg:px-0">
                     <div className="flex items-center gap-2">
                       <Users className="w-5 h-5 text-foreground" />
                       <span>Real Patients</span>
                     </div>
-                    <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+                    <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
                     <div className="flex items-center gap-2">
                       <Building2 className="w-5 h-5 text-foreground" />
                       <span>Real Practices</span>
                     </div>
-                    <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+                    <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
                     <div className="flex items-center gap-2">
                       <Sparkles className="w-5 h-5 text-foreground" />
-                      <span>Real Revolution</span>
+                      <span>Real Transformation</span>
                     </div>
                   </div>
                 </div>
