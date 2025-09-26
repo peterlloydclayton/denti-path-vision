@@ -229,27 +229,40 @@ export const HomeRevolutionaryResultsSection = () => {
                   {/* Flowing background animation */}
                   <div className="absolute inset-0 overflow-hidden">
                     <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent"
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/15 to-transparent w-[200%]"
                       animate={{
-                        x: ['-100%', '100%']
+                        x: ['-100%', '50%']
                       }}
                       transition={{
-                        duration: 4,
+                        duration: 3,
                         repeat: Infinity,
-                        ease: "linear",
+                        ease: "easeInOut",
                         delay: index * 0.5
                       }}
                     />
                     <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/3 to-transparent"
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/10 to-transparent w-[150%]"
                       animate={{
-                        x: ['-100%', '100%']
+                        x: ['-75%', '75%']
                       }}
                       transition={{
-                        duration: 6,
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: index * 0.7 + 1
+                      }}
+                    />
+                    {/* Subtle shimmer effect */}
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent w-[300%]"
+                      animate={{
+                        x: ['-200%', '100%']
+                      }}
+                      transition={{
+                        duration: 2,
                         repeat: Infinity,
                         ease: "linear",
-                        delay: index * 0.7 + 1
+                        delay: index * 0.3
                       }}
                     />
                   </div>
