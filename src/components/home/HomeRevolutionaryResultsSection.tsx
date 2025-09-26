@@ -260,7 +260,7 @@ export const HomeRevolutionaryResultsSection = () => {
                     </h4>
                   </div>
 
-                  <div className="grid md:grid-cols-2 min-h-[200px]">
+                  <div className="grid md:grid-cols-2 min-h-[200px] relative">
                     {/* Left Side - Old Way (Negative) */}
                     <div className="relative p-8 bg-gradient-to-br from-muted/20 to-muted/40 flex flex-col justify-center">
                       {/* Subtle negative pattern overlay */}
