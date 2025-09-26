@@ -98,9 +98,15 @@ export const DesktopNavWithSubmenu = () => {
                           : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
                         }
                       `}
+                      asChild
                     >
-                      <Icon size={16} />
-                      <span>{t(item.label)}</span>
+                      <Link
+                        to={item.href}
+                        onClick={() => setCurrentPath(item.href)}
+                      >
+                        <Icon size={16} />
+                        <span>{t(item.label)}</span>
+                      </Link>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <div className="w-48 p-2">
