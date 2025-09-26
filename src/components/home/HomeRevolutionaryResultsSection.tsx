@@ -135,14 +135,14 @@ export const HomeRevolutionaryResultsSection = () => {
         {/* Text Container - Properly Constrained */}
         <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pr-8 order-1 lg:order-2 flex items-center">
           <div className="text-left px-4 sm:px-6 lg:px-0">
-            <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
+            <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-2">
               Results That 
               <span className="text-foreground block">
                 Redefine Possible
               </span>
             </h2>
             
-            <p className="text-xl text-muted-foreground mb-6 px-6 sm:px-8 lg:px-0">
+            <p className="text-xl text-muted-foreground mb-12 px-6 sm:px-8 lg:px-0">
               These aren't just improvements—they're revolutionary leaps that transform 
               entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.
             </p>
