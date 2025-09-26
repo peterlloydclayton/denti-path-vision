@@ -77,6 +77,14 @@
         "intelligence": "IA inteligente y específica para el sector dental",
         "barriers": "Barreras eliminadas, acceso expandido"
       }
+    },
+    "video": {
+      "badge": "Demo de la Plataforma",
+      "title": "Ve la Inteligencia en Acción",
+      "description": "Mira cómo la plataforma revolucionaria de IA de DentiPay transforma el financiamiento dental con inteligencia pre-cognitiva, decisiones instantáneas e integración perfecta que beneficia tanto a pacientes como a proveedores.",
+      "overlayTitle": "Experimenta el futuro del financiamiento dental",
+      "watchText": "Ver Demo de la Plataforma",
+      "cta": "Comenzar"
     }
   },
   "patients": {

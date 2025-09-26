@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { HomeHeroSection } from '@/components/home/HomeHeroSection';
 import { HomeProblemSection } from '@/components/home/HomeProblemSection';
 import { HomeTrinitySection } from '@/components/home/HomeTrinitySection';
-
+import { HomeVideoSection } from '@/components/home/HomeVideoSection';
 import { HomeRevolutionaryResultsSection } from '@/components/home/HomeRevolutionaryResultsSection';
 import { HomeFinalCTASection } from '@/components/home/HomeFinalCTASection';
 
@@ -18,8 +18,8 @@ const Index = () => {
       {/* Trinity Intelligence System */}
       <HomeTrinitySection />
 
-
-      {/* Interactive Journey & Tools - Removed to reduce repetition */}
+      {/* Video Platform Demo */}
+      <HomeVideoSection />
 
       {/* Revolutionary Results */}
       <HomeRevolutionaryResultsSection />
