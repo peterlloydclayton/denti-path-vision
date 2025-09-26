@@ -1,74 +1,9 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { AlertTriangle, TrendingUp, Clock, Zap, Target, CheckCircle2 } from 'lucide-react';
-import { AnimatedText } from '@/components/ui/animated-text';
-import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
-
-interface ProblemCard {
-  icon: any;
-  traditional: {
-    stat: string;
-    problem: string;
-    description: string;
-  };
-  dentipay: {
-    stat: string;
-    solution: string;
-    description: string;
-  };
-}
+import { Zap } from 'lucide-react';
+import { ScrollReveal } from '@/components/ui/enhanced-animations';
+import { HomeProblemCards } from './HomeProblemCards';
 
 export const HomeProblemSection = () => {
-  const [flippedCards, setFlippedCards] = useState<number[]>([]);
-
-  const problemCards: ProblemCard[] = [
-    {
-      icon: AlertTriangle,
-      traditional: {
-        stat: '<50%',
-        problem: 'Financial Barriers',
-        description: 'Less than half of Americans can afford a $1,000 dental emergency, forcing treatment delays.'
-      },
-      dentipay: {
-        stat: '95%',
-        solution: 'AI Pre-Qualification',
-        description: 'Dental-specialized AI approves financing that traditional systems would reject.'
-      }
-    },
-    {
-      icon: Clock,
-      traditional: {
-        stat: '2-4 Weeks',
-        problem: 'Approval Delays',
-        description: 'Traditional lenders require extensive paperwork while conditions worsen.'
-      },
-      dentipay: {
-        stat: '30 Seconds',
-        solution: 'Instant Decisions',
-        description: 'AI processes 50+ behavioral indicators for immediate financing decisions.'
-      }
-    },
-    {
-      icon: TrendingUp,
-      traditional: {
-        stat: '20-40%',
-        problem: 'Generic Banking',
-        description: 'Standard algorithms built for cars and houses miss qualified dental patients.'
-      },
-      dentipay: {
-        stat: '300%',
-        solution: 'Healthcare AI',
-        description: 'Specialized AI understands dental patterns and structures payments that work.'
-      }
-    }
-  ];
-
-  const handleCardHover = (index: number, isHovered: boolean) => {
-    if (isHovered && !flippedCards.includes(index)) {
-      setFlippedCards(prev => [...prev, index]);
-    }
-  };
 
   return (
     <section className="py-24 bg-gradient-to-b from-surface to-background">
@@ -83,83 +18,7 @@ export const HomeProblemSection = () => {
           </p>
         </ScrollReveal>
 
-        <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.2}>
-          {problemCards.map((card, index) => (
-            <StaggerItem key={index}>
-              <div 
-                className="relative h-96 perspective-1000"
-                onMouseEnter={() => handleCardHover(index, true)}
-              >
-                <motion.div
-                  className="relative w-full h-full transition-transform duration-700 preserve-3d"
-                  animate={{ 
-                    rotateY: flippedCards.includes(index) ? 180 : 0 
-                  }}
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                  {/* Front Card - Traditional Problem */}
-                  <Card className="absolute inset-0 backface-hidden border-muted-foreground/20 bg-background hover:shadow-lg transition-all duration-300">
-                    <CardContent className="p-6 h-full flex flex-col justify-center text-center">
-                      <motion.div 
-                        className="p-3 bg-muted/20 rounded-xl mx-auto mb-4 w-fit"
-                        whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <card.icon className="h-10 w-10 text-muted-foreground" />
-                      </motion.div>
-                      
-                      <div className="text-2xl font-bold text-muted-foreground mb-3">
-                        {card.traditional.stat}
-                      </div>
-                      
-                      <h3 className="text-lg font-semibold text-foreground mb-4">
-                        {card.traditional.problem}
-                      </h3>
-                      
-                      <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
-                        {card.traditional.description}
-                      </p>
-                      
-                      <div className="mt-4 text-xs text-muted-foreground font-medium">
-                        Traditional Banking
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Back Card - DentiPay Solution */}
-                  <Card className="absolute inset-0 backface-hidden rotate-y-180 border-primary/30 bg-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300">
-                    <CardContent className="p-6 h-full flex flex-col justify-center text-center">
-                      <motion.div 
-                        className="p-3 bg-primary/20 rounded-xl mx-auto mb-4 w-fit"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: flippedCards.includes(index) ? 1 : 0 }}
-                        transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-                      >
-                        <CheckCircle2 className="h-10 w-10 text-primary" />
-                      </motion.div>
-                      
-                      <div className="text-2xl font-bold text-primary mb-3">
-                        {card.dentipay.stat}
-                      </div>
-                      
-                      <h3 className="text-lg font-semibold text-foreground mb-4">
-                        {card.dentipay.solution}
-                      </h3>
-                      
-                      <p className="text-sm text-foreground leading-relaxed flex-grow">
-                        {card.dentipay.description}
-                      </p>
-                      
-                      <div className="mt-4 text-xs font-medium">
-                        <span className="text-primary">DentiPay Intelligence</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        <HomeProblemCards />
 
         {/* Fighting For Impact Summary */}
         <ScrollReveal className="mt-16 text-center">
