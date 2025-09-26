@@ -67,12 +67,7 @@ export const HomeTrinitySection = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-background to-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-sm mb-6">
-            <Brain className="w-4 h-4" />
-            Pre-Cognitive Intelligence System
-          </div>
-          
+        <ScrollReveal className="text-center">
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
             Three Layers of 
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent block">
