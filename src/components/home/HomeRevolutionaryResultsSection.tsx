@@ -333,7 +333,7 @@ export const HomeRevolutionaryResultsSection = () => {
 
         {/* Bottom Impact Statement with Image */}
         <ScrollReveal>
-          <div className="flex flex-col lg:flex-row items-center lg:items-center mt-16">
+          <div className="flex flex-col lg:flex-row items-center lg:items-end mt-16">
             {/* Text Container - Left Side */}
             <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pl-8 order-1 lg:order-1 flex items-center">
               <div className="text-left px-4 sm:px-6 lg:px-0">
@@ -368,12 +368,12 @@ export const HomeRevolutionaryResultsSection = () => {
               </div>
             </div>
             
-            {/* Image Container - Right Side */}
-            <div className="w-full lg:w-2/5 lg:pr-0 order-2 lg:order-2">
+            {/* Image Container - Right Side - Flush with bottom */}
+            <div className="w-full lg:w-2/5 lg:pr-0 order-2 lg:order-2 flex items-end">
               <img 
                 src={maleDentistImage} 
                 alt="Professional male dentist"
-                className="max-w-md w-full h-auto lg:mr-0 transform scale-x-[-1]"
+                className="max-w-md w-full h-auto lg:mr-0 transform scale-x-[-1] block"
               />
             </div>
           </div>
