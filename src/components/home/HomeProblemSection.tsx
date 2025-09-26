@@ -27,7 +27,7 @@ export const HomeProblemSection = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Heading */}
           <motion.h3 
-            className="text-2xl md:text-3xl font-semibold text-slate-600 mb-12"
+            className="text-4xl md:text-5xl font-bold text-foreground mb-12"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
