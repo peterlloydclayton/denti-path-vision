@@ -80,11 +80,11 @@ export const HomeProblemSection = () => {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Why Traditional Financing Fails Dental Care
+            The Barriers We're Fighting
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
-            Banking systems designed decades ago can't handle the unique needs of dental care. 
-            This creates barriers that hurt both providers and patients - until now.
+            Traditional financing creates walls between patients and dental care, and between providers and fair compensation. 
+            We're tearing down every barrier with intelligent, dental-specific solutions.
           </p>
           
           <div className="text-sm text-muted-foreground">
@@ -170,7 +170,7 @@ export const HomeProblemSection = () => {
           ))}
         </StaggerContainer>
 
-        {/* Revolutionary Impact Summary */}
+        {/* Fighting For Impact Summary */}
         <ScrollReveal className="mt-16 text-center">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -179,30 +179,30 @@ export const HomeProblemSection = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="text-4xl font-bold text-primary mb-2">95%</div>
-                <div className="text-sm text-muted-foreground">vs 40% traditional approval rate</div>
+                <div className="text-4xl font-bold text-primary mb-2">Patients</div>
+                <div className="text-sm text-muted-foreground">No longer denied care due to traditional limits</div>
               </motion.div>
               <motion.div 
                 className="text-center"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="text-4xl font-bold text-primary mb-2">30 sec</div>
-                <div className="text-sm text-muted-foreground">vs 2-4 weeks traditional process</div>
+                <div className="text-4xl font-bold text-primary mb-2">Providers</div>
+                <div className="text-sm text-muted-foreground">Get paid immediately, no more financing delays</div>
               </motion.div>
               <motion.div 
                 className="text-center"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="text-4xl font-bold text-primary mb-2">300%</div>
-                <div className="text-sm text-muted-foreground">increase in treatment acceptance</div>
+                <div className="text-4xl font-bold text-primary mb-2">Access</div>
+                <div className="text-sm text-muted-foreground">Intelligent matching of need with capability</div>
               </motion.div>
             </div>
             
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold">
               <Zap className="w-5 h-5" />
-              This is the financing revolution dental care has been waiting for
+              We're fighting for a future where financing never limits dental care
             </div>
           </div>
         </ScrollReveal>

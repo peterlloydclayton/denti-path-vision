@@ -52,16 +52,17 @@ export const HomeHeroSection = () => {
           </motion.div>
 
           <SplitText 
-            text="The Future of Dental Financing: AI That Thinks Before You Need It" 
+            text="Fighting for Better Dental Care Access" 
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight"
             wordDelay={0.1}
           />
           
           <AnimatedText delay={0.5} className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-4xl mx-auto">
-            Revolutionary AI that predicts treatment needs and approves financing before traditional systems even start
+            We're using cutting-edge dental intelligence to eliminate financing barriers 
+            between patients and the care they need, and providers and the revenue they deserve.
           </AnimatedText>
 
-          {/* Key value propositions */}
+          {/* Core Value Props - Non-repetitive */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -70,20 +71,20 @@ export const HomeHeroSection = () => {
           >
             <div className="flex items-center gap-3 text-left">
               <div className="p-2 bg-primary/10 rounded-lg">
-                <Target className="w-5 h-5 text-primary" />
+                <Shield className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <div className="font-semibold text-foreground">95% Approval Rates</div>
-                <div className="text-sm text-muted-foreground">vs 40% traditional banking</div>
+                <div className="font-semibold text-foreground">Fighting Financial Barriers</div>
+                <div className="text-sm text-muted-foreground">Revolutionary AI eliminates traditional limits</div>
               </div>
             </div>
             <div className="flex items-center gap-3 text-left">
               <div className="p-2 bg-accent/10 rounded-lg">
-                <Zap className="w-5 h-5 text-accent" />
+                <Target className="w-5 h-5 text-accent" />
               </div>
               <div>
-                <div className="font-semibold text-foreground">30-Second Decisions</div>
-                <div className="text-sm text-muted-foreground">vs weeks of traditional approval</div>
+                <div className="font-semibold text-foreground">Dental Intelligence</div>
+                <div className="text-sm text-muted-foreground">Specialized AI built for dental care</div>
               </div>
             </div>
             <div className="flex items-center gap-3 text-left">
@@ -91,8 +92,8 @@ export const HomeHeroSection = () => {
                 <Brain className="w-5 h-5 text-success" />
               </div>
               <div>
-                <div className="font-semibold text-foreground">300% Increase</div>
-                <div className="text-sm text-muted-foreground">in treatment acceptance rates</div>
+                <div className="font-semibold text-foreground">Greater Access</div>
+                <div className="text-sm text-muted-foreground">Connecting patients with providers seamlessly</div>
               </div>
             </div>
           </motion.div>
@@ -104,7 +105,7 @@ export const HomeHeroSection = () => {
             transition={{ delay: 1, duration: 0.8 }}
             className="mb-8"
           >
-            <div className="text-lg font-medium text-foreground mb-6">Choose Your Revolutionary Path:</div>
+            <div className="text-lg font-medium text-foreground mb-6">Choose Your Path to Better Dental Care:</div>
             <div className="flex flex-col lg:flex-row gap-6 justify-center items-center">
               {/* Provider Path */}
               <div className="relative group">

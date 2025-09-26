@@ -7,20 +7,20 @@ import { ParallaxSection } from "@/components/ui/parallax-section";
 export function HomeFinalCTASection() {
   const benefits = [
     {
-      icon: Zap,
-      text: "Same-day approvals & payments"
+      icon: Users,
+      text: "Patients get the care they need"
     },
     {
       icon: TrendingUp,
-      text: "300% higher acceptance rates"
-    },
-    {
-      icon: Users,
-      text: "Better patient experiences"
+      text: "Providers get immediate payment"
     },
     {
       icon: Sparkles,
-      text: "AI-powered intelligence"
+      text: "Intelligent, dental-specific AI"
+    },
+    {
+      icon: Zap,
+      text: "Barriers eliminated, access expanded"
     }
   ];
 
@@ -70,14 +70,14 @@ export function HomeFinalCTASection() {
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-tight">
             <span className="block">Ready to</span>
             <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-300% animate-gradient">
-              Transform
+              Join the Fight
             </span>
-            <span className="block">Your Practice?</span>
+            <span className="block">for Better Access?</span>
           </h2>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-12">
-            Join thousands of dental practices already using DentiPay's AI-powered platform 
-            to revolutionize patient financing and accelerate growth.
+            Be part of the movement eliminating financial barriers in dental care. 
+            Choose your path and start making a difference today.
           </p>
         </ScrollReveal>
 
@@ -113,7 +113,7 @@ export function HomeFinalCTASection() {
                 size="lg" 
                 className="text-lg px-12 py-6 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground border-0 shadow-2xl hover:shadow-primary/25 transition-all duration-300"
               >
-                Get Started for Providers
+                Fight for Providers
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </MagneticButton>
@@ -124,7 +124,7 @@ export function HomeFinalCTASection() {
                 size="lg" 
                 className="text-lg px-12 py-6 border-2 border-primary/20 hover:border-primary bg-background/50 backdrop-blur-sm hover:bg-primary/5 transition-all duration-300"
               >
-                Explore for Patients
+                Fight for Patients
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </MagneticButton>

@@ -3,7 +3,6 @@ import { HomeHeroSection } from '@/components/home/HomeHeroSection';
 import { HomeProblemSection } from '@/components/home/HomeProblemSection';
 import { HomeTrinitySection } from '@/components/home/HomeTrinitySection';
 import { HomePreCognitiveSection } from '@/components/home/HomePreCognitiveSection';
-import { HomeInteractiveSection } from '@/components/home/HomeInteractiveSection';
 import { HomeRevolutionaryResultsSection } from '@/components/home/HomeRevolutionaryResultsSection';
 import { HomeFinalCTASection } from '@/components/home/HomeFinalCTASection';
 
@@ -22,8 +21,7 @@ const Index = () => {
       {/* Pre-Cognitive Intelligence Showcase */}
       <HomePreCognitiveSection />
 
-      {/* Interactive Journey & Tools */}
-      <HomeInteractiveSection />
+      {/* Interactive Journey & Tools - Removed to reduce repetition */}
 
       {/* Revolutionary Results */}
       <HomeRevolutionaryResultsSection />
