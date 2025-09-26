@@ -121,11 +121,11 @@ export const HomeRevolutionaryResultsSection = () => {
             </p>
           </div>
           
-          <div className="absolute right-0 flex justify-end lg:relative lg:flex-1">
+          <div className="absolute right-0 flex justify-end lg:relative lg:flex-1 lg:overflow-hidden">
             <img 
               src={approvalMobileImage} 
               alt="Mobile approval interface"
-              className="max-w-md w-full h-auto transform scale-x-[-1]"
+              className="max-w-md w-full h-auto transform scale-x-[-1] lg:translate-x-12"
               style={{ marginRight: '-2rem' }}
             />
           </div>
