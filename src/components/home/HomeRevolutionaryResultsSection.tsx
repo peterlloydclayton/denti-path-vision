@@ -107,7 +107,7 @@ export const HomeRevolutionaryResultsSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-visible">
         <div className="flex flex-col lg:flex-row items-center gap-12 mb-16 relative">
-          <div className="order-2 lg:order-1 lg:fixed lg:left-0 lg:top-0 lg:z-10 lg:w-2/5">
+          <div className="order-2 lg:order-1 lg:absolute lg:left-0 lg:top-16 lg:z-10 lg:w-2/5">
             <img 
               src={approvalMobileImage} 
               alt="Mobile approval interface"
