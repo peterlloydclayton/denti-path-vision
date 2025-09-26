@@ -81,7 +81,7 @@ export const HomeProblemSection = () => {
             </div>
 
             {/* Landscape Layout - Equal Width Columns */}
-            <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
+            <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-end">
               {/* Image Column - 50% width */}
               <motion.div 
                 className="flex justify-center items-end"
