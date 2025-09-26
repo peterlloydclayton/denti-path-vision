@@ -107,7 +107,16 @@ export const HomeRevolutionaryResultsSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
-          <div className="flex-1 text-left">
+          <div className="absolute left-0 flex justify-start lg:relative lg:flex-1 lg:overflow-hidden">
+            <img 
+              src={approvalMobileImage} 
+              alt="Mobile approval interface"
+              className="max-w-md w-full h-auto lg:-translate-x-12"
+              style={{ marginLeft: '-2rem' }}
+            />
+          </div>
+          
+          <div className="flex-1 text-right">
             <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Results That 
               <span className="text-foreground block">
@@ -119,15 +128,6 @@ export const HomeRevolutionaryResultsSection = () => {
               These aren't just improvements—they're revolutionary leaps that transform 
               entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.
             </p>
-          </div>
-          
-          <div className="absolute right-0 flex justify-end lg:relative lg:flex-1 lg:overflow-hidden">
-            <img 
-              src={approvalMobileImage} 
-              alt="Mobile approval interface"
-              className="max-w-md w-full h-auto transform scale-x-[-1] lg:translate-x-12"
-              style={{ marginRight: '-2rem' }}
-            />
           </div>
         </div>
 
