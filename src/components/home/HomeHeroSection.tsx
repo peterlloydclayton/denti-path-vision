@@ -6,7 +6,7 @@ import { ScrollReveal, MagneticButton, FloatingElements } from '@/components/ui/
 import { GlowButton, ProgressiveImage } from '@/components/ui/micro-interactions';
 import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { useTranslation } from 'react-i18next';
-import dentistImage from '@/assets/group-dentists-women-men.png';
+import heroImage from '@/assets/hero-dentist-woman-white-transparent.png';
 
 export const HomeHeroSection = () => {
   const { t } = useTranslation('marketing');
@@ -42,33 +42,33 @@ export const HomeHeroSection = () => {
       <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop Layout */}
         <div className="hidden lg:flex justify-center items-center min-h-screen">
-          <div className="w-full min-h-screen relative z-[100]">
+          <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-xl min-h-screen relative z-[100]">
             <img 
-              src={dentistImage}
-              alt="Intelligence reshaping dental finance"
-              className="absolute top-[35%] left-1/2 -translate-x-1/2 w-full object-cover object-top z-[110] h-[85vh]"
+              src={heroImage}
+              alt="Professional dental provider"
+              className="absolute bottom-0 left-1/2 xl:left-[60%] 2xl:left-[60%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
             />
           </div>
         </div>
 
         {/* Tablet Layout */}
         <div className="hidden sm:flex lg:hidden justify-center items-center min-h-screen">
-          <div className="w-full min-h-screen relative z-[100]">
+          <div className="w-full max-w-md min-h-screen relative z-[100]">
             <img 
-              src={dentistImage}
-              alt="Intelligence reshaping dental finance"
-              className="absolute top-[35%] left-1/2 -translate-x-1/2 w-full object-cover object-top z-[110] h-[85vh]"
+              src={heroImage}
+              alt="Professional dental provider"
+              className="absolute bottom-0 left-[50%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
             />
           </div>
         </div>
 
         {/* Mobile Portrait Layout */}
-        <div className="flex sm:hidden justify-center items-start pt-20 h-[calc(100vh-5rem)]">
-          <div className="w-full h-[calc(100vh-5rem)] relative z-[100]">
+        <div className="flex sm:hidden justify-start items-start pt-20 h-[calc(100vh-5rem)] ml-[25%]">
+          <div className="w-full max-w-md h-[calc(100vh-5rem)] relative z-[100]">
             <img 
-              src={dentistImage}
-              alt="Intelligence reshaping dental finance"
-              className="absolute bottom-[-15%] left-1/2 -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
+              src={heroImage}
+              alt="Professional dental provider"
+              className="absolute bottom-0 left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
             />
           </div>
         </div>
