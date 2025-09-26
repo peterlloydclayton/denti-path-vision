@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { HomeHeroSection } from '@/components/home/HomeHeroSection';
 import { HomeProblemSection } from '@/components/home/HomeProblemSection';
 import { HomeTrinitySection } from '@/components/home/HomeTrinitySection';
+import { HomePreCognitiveSection } from '@/components/home/HomePreCognitiveSection';
 import { HomeRevolutionaryResultsSection } from '@/components/home/HomeRevolutionaryResultsSection';
 import { HomeFinalCTASection } from '@/components/home/HomeFinalCTASection';
 
@@ -16,6 +17,11 @@ const Index = () => {
 
       {/* Trinity Intelligence System */}
       <HomeTrinitySection />
+
+      {/* Pre-Cognitive Intelligence Showcase */}
+      <HomePreCognitiveSection />
+
+      {/* Interactive Journey & Tools - Removed to reduce repetition */}
 
       {/* Revolutionary Results */}
       <HomeRevolutionaryResultsSection />
