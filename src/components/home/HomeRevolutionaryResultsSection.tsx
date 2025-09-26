@@ -279,12 +279,10 @@ export const HomeRevolutionaryResultsSection = () => {
         }} transition={{
           duration: 0.3
         }}>
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <Award className="w-8 h-8 text-primary" />
+            <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-foreground">
                 Industry-Defining Impact
               </h3>
-              <Award className="w-8 h-8 text-primary" />
             </div>
             <p className="text-lg text-foreground leading-relaxed mb-6">
               These results don't just improve dental financing—they revolutionize it. 
