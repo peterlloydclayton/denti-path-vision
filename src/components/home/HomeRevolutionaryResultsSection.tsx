@@ -131,7 +131,7 @@ export const HomeRevolutionaryResultsSection = () => {
         </div>
 
         {/* Revolutionary Stats Grid - Add top margin to make room for mobile image */}
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-80 lg:mt-0" staggerDelay={0.1}>
+        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-80 lg:mt-64" staggerDelay={0.1}>
           {revolutionaryStats.map((stat, index) => <StaggerItem key={index}>
               <motion.div className="group relative" whileHover={{
             y: -8
