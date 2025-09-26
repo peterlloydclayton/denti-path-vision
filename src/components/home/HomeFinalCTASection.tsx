@@ -83,6 +83,7 @@ export function HomeFinalCTASection() {
 
         {/* CTA Buttons */}
         <ScrollReveal className="text-center">
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">Learn More</h3>
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
             <MagneticButton>
               <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl">
