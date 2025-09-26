@@ -131,7 +131,7 @@ export const HomeHeroSection = () => {
       </div>
 
       {/* Mobile Portrait Buttons - Stacked vertically */}
-      <div className="block sm:hidden absolute top-[50%] left-6 z-[150] mobile-landscape-button">
+      <div className="block sm:hidden absolute top-[55%] left-6 z-[150] mobile-landscape-button">
         <div className="flex flex-col gap-3">
           <Button 
             className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
