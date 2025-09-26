@@ -204,6 +204,27 @@ export const HomeTrinitySection = () => {
           })}
         </div>
 
+        {/* CTA Buttons */}
+        <ScrollReveal className="mt-16 text-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+            <motion.button 
+              className="text-xl px-12 py-4 bg-white hover:bg-gray-100 text-black border-0 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl w-64 flex items-center justify-center gap-3 font-semibold"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              For Practices & Providers
+            </motion.button>
+            
+            <motion.button 
+              className="text-xl px-12 py-4 bg-white hover:bg-gray-100 text-black border-0 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl w-64 flex items-center justify-center gap-3 font-semibold"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              For Patients
+            </motion.button>
+          </div>
+        </ScrollReveal>
+
         {/* Impact Statement */}
         <ScrollReveal className="mt-16 text-center">
           <motion.div 
