@@ -24,14 +24,24 @@ export const HomeProblemSection = () => {
         {/* Image with Subtitle Section */}
         <ScrollReveal className="mt-16 mb-16 text-center">
           <div className="max-w-4xl mx-auto">
-            <img 
+            <motion.img 
               src={womanDoctorImage} 
               alt="Professional healthcare provider" 
               className="w-96 h-96 mx-auto mb-6 object-contain"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             />
-            <h3 className="text-2xl md:text-3xl font-semibold text-foreground">
+            <motion.h3 
+              className="text-2xl md:text-3xl font-semibold text-slate-600"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               Transforming a future where financing never limits dental care
-            </h3>
+            </motion.h3>
           </div>
         </ScrollReveal>
 
@@ -43,25 +53,88 @@ export const HomeProblemSection = () => {
                 className="text-center"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -30 }}
               >
-                <div className="text-4xl font-bold text-foreground mb-2">Patients</div>
-                <div className="text-sm text-muted-foreground">No longer denied care due to traditional limits</div>
+                <motion.div 
+                  className="text-4xl font-bold text-foreground mb-2"
+                  initial={{ opacity: 0, y: -10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                >
+                  Patients
+                </motion.div>
+                <motion.div 
+                  className="text-sm text-slate-600"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  No longer denied care due to traditional limits
+                </motion.div>
               </motion.div>
               <motion.div 
                 className="text-center"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                initial={{ opacity: 0, y: -30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
               >
-                <div className="text-4xl font-bold text-foreground mb-2">Providers</div>
-                <div className="text-sm text-muted-foreground">Get paid immediately, no more financing delays</div>
+                <motion.div 
+                  className="text-4xl font-bold text-foreground mb-2"
+                  initial={{ opacity: 0, y: -10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  Providers
+                </motion.div>
+                <motion.div 
+                  className="text-sm text-slate-600"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  Get paid immediately, no more financing delays
+                </motion.div>
               </motion.div>
               <motion.div 
                 className="text-center"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 30 }}
               >
-                <div className="text-4xl font-bold text-foreground mb-2">Access</div>
-                <div className="text-sm text-muted-foreground">Intelligent matching of need with capability</div>
+                <motion.div 
+                  className="text-4xl font-bold text-foreground mb-2"
+                  initial={{ opacity: 0, y: -10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                >
+                  Access
+                </motion.div>
+                <motion.div 
+                  className="text-sm text-slate-600"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                  Intelligent matching of need with capability
+                </motion.div>
               </motion.div>
             </div>
             
