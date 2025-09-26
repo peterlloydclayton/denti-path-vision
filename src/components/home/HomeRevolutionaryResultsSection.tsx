@@ -335,8 +335,8 @@ export const HomeRevolutionaryResultsSection = () => {
         <div className="mt-auto pt-16">
           <ScrollReveal>
             <div className="flex flex-col lg:flex-row items-end">
-              {/* Text Container - Left Side - Vertically centered */}
-              <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pl-8 order-1 lg:order-1 flex items-center min-h-[400px]">
+              {/* Text Container - Left Side - Positioned higher */}
+              <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pl-8 order-1 lg:order-1 flex items-start pt-8 min-h-[400px]">
                 <div className="text-left px-4 sm:px-6 lg:px-0">
                   <h3 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
                     Industry-Defining
