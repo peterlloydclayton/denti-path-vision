@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Mic, Target, Brain, Zap, Eye, Network } from 'lucide-react';
+import { Mic, Target, Brain, Zap, Eye, Network, ArrowRight } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import { HomeEchoModal } from './HomeEchoModal';
 import { HomePathModal } from './HomePathModal';
 import { HomeScopeModal } from './HomeScopeModal';
@@ -215,6 +217,28 @@ export const HomeTrinitySection = () => {
               Pre-Cognitive AI • Millisecond Processing • 3X Smarter Intelligence
             </span>
           </motion.div>
+        </ScrollReveal>
+
+        {/* CTA Buttons */}
+        <ScrollReveal className="mt-8">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <Link to="/providers">
+              <Button
+                className="w-72 h-14 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-lg px-20 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
+                <span>For Providers</span>
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link to="/patients">
+              <Button
+                className="w-72 h-14 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-lg px-16 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
+                <span>For Patients</span>
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
         </ScrollReveal>
 
         {/* Decorative elements */}
