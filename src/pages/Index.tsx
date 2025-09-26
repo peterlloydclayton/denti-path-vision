@@ -32,6 +32,7 @@ import { HoverCard, CountUp, ProgressiveImage, GlowButton } from "@/components/u
 import { HomeHeroSection } from '@/components/home/HomeHeroSection';
 import { HomeProblemSection } from '@/components/home/HomeProblemSection';
 import { HomeTrinitySection } from '@/components/home/HomeTrinitySection';
+import { HomePreCognitiveSection } from '@/components/home/HomePreCognitiveSection';
 import heroImage from "@/assets/hero-dental-office-clean.jpg";
 import teamImage from "@/assets/dental-team.jpg";
 import patientImage from "@/assets/happy-patient.jpg";
@@ -146,6 +147,9 @@ const Index = () => {
 
       {/* Trinity Intelligence System */}
       <HomeTrinitySection />
+
+      {/* Pre-Cognitive Intelligence Showcase */}
+      <HomePreCognitiveSection />
 
       {/* Stats Section */}
       <ParallaxSection className="py-20">
