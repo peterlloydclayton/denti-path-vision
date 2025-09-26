@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Mic, Target, Brain, Zap, Eye, Network } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 import { HomeEchoModal } from './HomeEchoModal';
@@ -35,9 +34,9 @@ export const HomeTrinitySection = () => {
   ];
 
   return (
-    <section className="py-12 bg-gradient-to-b from-background to-surface">
+    <section className="py-12 bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal className="text-center">
+        <ScrollReveal className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
             Three Layers of 
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent block">
@@ -68,41 +67,61 @@ export const HomeTrinitySection = () => {
           </div>
         </ScrollReveal>
 
-        <StaggerContainer className="max-w-4xl mx-auto space-y-8" staggerDelay={0.2}>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {trinityPoints.map((point, index) => {
             const Icon = point.icon;
             return (
-              <StaggerItem key={index}>
-                <motion.div
-                  className="flex items-start gap-6 p-6 rounded-2xl bg-gradient-to-r from-background/50 to-surface/50 border border-primary/10 hover:border-primary/20 transition-all duration-300"
-                  whileHover={{ x: 8, scale: 1.01 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <motion.div 
-                    className="bg-primary text-primary-foreground w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0"
-                    whileHover={{ rotate: 5, scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Icon className="w-8 h-8" />
-                  </motion.div>
-                  
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-xl font-bold text-foreground mb-3">
-                      {point.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      {point.description}
-                    </p>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                  ease: [0.25, 0.25, 0.25, 0.75]
+                }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="relative h-full cursor-pointer"
+              >
+                <Card className="text-center h-full bg-card border-2 border-border/10 hover:border-primary/30 transition-all duration-500 shadow-lg hover:shadow-2xl group">
+                  <CardContent className="p-8 h-full flex flex-col justify-between">
+                    <div>
+                      <motion.div 
+                        className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center mx-auto mb-6"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <Icon size={36} className="text-primary" />
+                      </motion.div>
+                      
+                      <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
+                        {point.title}
+                      </h3>
+                      
+                      <p className="text-muted-foreground mb-6 leading-relaxed">
+                        {point.description}
+                      </p>
+                    </div>
+                    
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mx-auto">
                       <Zap className="w-4 h-4 text-primary" />
                       <span className="text-primary font-medium text-sm">{point.stat}</span>
                     </div>
-                  </div>
-                </motion.div>
-              </StaggerItem>
+                  </CardContent>
+                </Card>
+
+                {/* Floating glow effect */}
+                <motion.div
+                  className="absolute inset-0 rounded-lg bg-primary/5 -z-10"
+                  initial={{ opacity: 0, scale: 1 }}
+                  whileHover={{ opacity: 1, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
             );
           })}
-        </StaggerContainer>
+        </div>
 
         {/* Impact Statement */}
         <ScrollReveal className="mt-16 text-center">
@@ -117,6 +136,11 @@ export const HomeTrinitySection = () => {
             </span>
           </motion.div>
         </ScrollReveal>
+
+        {/* Decorative elements */}
+        <div className="absolute top-1/2 left-4 w-2 h-2 bg-primary/30 rounded-full animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-primary/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-primary/25 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
 
         {/* Enhanced Modals */}
         <HomeEchoModal isOpen={isEchoModalOpen} onClose={() => setIsEchoModalOpen(false)} />
