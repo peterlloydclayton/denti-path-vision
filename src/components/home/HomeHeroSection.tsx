@@ -112,8 +112,8 @@ export const HomeHeroSection = () => {
         </AnimatedText>
       </div>
       
-      {/* Desktop Buttons - Upper Right */}
-      <div className="hidden md:block absolute top-[40%] right-12 z-[120]">
+      {/* Desktop Buttons - 3em below subtitle */}
+      <div className="hidden md:block absolute top-[58%] right-12 z-[120]">
         <div className="flex gap-4">
           <Button 
             className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
@@ -128,9 +128,9 @@ export const HomeHeroSection = () => {
         </div>
       </div>
 
-      {/* Mobile Portrait Button - Between text and image */}
+      {/* Mobile Portrait Buttons - Stacked vertically */}
       <div className="block sm:hidden absolute top-[50%] left-6 z-[150] mobile-landscape-button">
-        <div className="flex gap-3">
+        <div className="flex flex-col gap-3">
           <Button 
             className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
           >
