@@ -220,7 +220,7 @@ export const HomeRevolutionaryResultsSection = () => {
             {beforeAfterComparisons.map((comparison, index) => (
               <StaggerItem key={index}>
                 <motion.div 
-                  className="relative overflow-hidden rounded-2xl border border-border bg-background shadow-lg"
+                  className="relative rounded-2xl border border-border bg-background shadow-lg"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -301,11 +301,11 @@ export const HomeRevolutionaryResultsSection = () => {
                           return <IconComponent className="w-6 h-6" />;
                         })()}
                         
-                        {/* Glowing Arrow - Landscape (Right Arrow) */}
+                        {/* Glowing Arrow - Landscape (Down Arrow below icon) */}
                         <motion.div 
-                          className="absolute left-full top-1/2 transform -translate-y-1/2 ml-6 hidden md:block"
+                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 hidden md:block"
                           animate={{ 
-                            x: [0, 8, 0],
+                            y: [0, 8, 0],
                             opacity: [0.6, 1, 0.6]
                           }}
                           transition={{
@@ -317,13 +317,13 @@ export const HomeRevolutionaryResultsSection = () => {
                           <div className="relative">
                             {/* Glow effect */}
                             <div className="absolute inset-0 bg-blue-500 rounded-full blur-lg opacity-50 scale-150"></div>
-                            <ArrowRight className="w-6 h-6 text-blue-400 relative z-10 drop-shadow-lg" />
+                            <ArrowDown className="w-6 h-6 text-blue-400 relative z-10 drop-shadow-lg" />
                           </div>
                         </motion.div>
 
                         {/* Glowing Arrow - Portrait (Down Arrow) */}
                         <motion.div 
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-6 md:hidden"
+                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 md:hidden"
                           animate={{ 
                             y: [0, 8, 0],
                             opacity: [0.6, 1, 0.6]
@@ -344,7 +344,7 @@ export const HomeRevolutionaryResultsSection = () => {
                     </div>
 
                     {/* Right Side - New Way (Positive) */}
-                    <div className="relative p-8 bg-gradient-to-br from-primary/10 to-primary/20 flex flex-col justify-center border-l border-border md:border-l-2 md:border-l-primary/30">
+                    <div className="relative p-8 bg-gradient-to-br from-primary/20 to-primary/30 flex flex-col justify-center border-l border-border md:border-l-2 md:border-l-primary/30">
                       {/* Positive pattern overlay */}
                       <div className="absolute inset-0 opacity-10">
                         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary))_0%,transparent_50%)]"></div>
