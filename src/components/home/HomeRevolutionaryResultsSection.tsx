@@ -69,70 +69,7 @@ const AnimatedCounter = ({ value, suffix = '', prefix = '', decimals = 0 }: Anim
 };
 
 export const HomeRevolutionaryResultsSection = () => {
-  const revolutionaryStats = [
-    {
-      icon: Target,
-      value: 95,
-      suffix: '%',
-      label: 'Approval Rate',
-      comparison: 'vs 40% traditional',
-      description: 'Revolutionary AI achieves what banking algorithms cannot',
-      color: 'primary',
-      improvement: '+137%'
-    },
-    {
-      icon: TrendingUp,
-      value: 300,
-      suffix: '%',
-      label: 'Treatment Acceptance',
-      comparison: 'increase over traditional',
-      description: 'Patients say YES when financing removes barriers',
-      color: 'success',
-      improvement: '+300%'
-    },
-    {
-      icon: Clock,
-      value: 30,
-      suffix: ' sec',
-      label: 'Decision Time',
-      comparison: 'vs 2-4 weeks traditional',
-      description: 'From application to approval in the time it takes to smile',
-      color: 'accent',
-      improvement: '99.9% faster'
-    },
-    {
-      icon: DollarSign,
-      value: 50,
-      suffix: 'M+',
-      prefix: '$',
-      label: 'Treatments Financed',
-      comparison: 'and growing exponentially',
-      description: 'Real impact on real people accessing real care',
-      color: 'primary',
-      improvement: 'Exponential'
-    },
-    {
-      icon: Building2,
-      value: 10000,
-      suffix: '+',
-      label: 'Practices Transformed',
-      comparison: 'across North America',
-      description: 'Every practice sees immediate revenue transformation',
-      color: 'success',
-      improvement: 'Revolutionary'
-    },
-    {
-      icon: Zap,
-      value: 99.9,
-      suffix: '%',
-      decimals: 1,
-      label: 'Uptime Reliability',
-      comparison: 'enterprise-grade infrastructure',
-      description: 'AI that never sleeps, never fails, never lets you down',
-      color: 'accent',
-      improvement: 'Bulletproof'
-    }
-  ];
+  const revolutionaryStats: any[] = [];
 
   const beforeAfterComparisons = [
     {
