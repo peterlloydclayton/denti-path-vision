@@ -29,8 +29,9 @@ import { AnimatedText, SplitText } from "@/components/ui/animated-text";
 import { VideoSection } from "@/components/ui/video-section";
 import { ScrollReveal, StaggerContainer, StaggerItem, MagneticButton, FloatingElements } from "@/components/ui/enhanced-animations";
 import { HoverCard, CountUp, ProgressiveImage, GlowButton } from "@/components/ui/micro-interactions";
-import { HomeHeroSection } from "@/components/home/HomeHeroSection";
-import { HomeProblemSection } from "@/components/home/HomeProblemSection";
+import { HomeHeroSection } from '@/components/home/HomeHeroSection';
+import { HomeProblemSection } from '@/components/home/HomeProblemSection';
+import { HomeTrinitySection } from '@/components/home/HomeTrinitySection';
 import heroImage from "@/assets/hero-dental-office-clean.jpg";
 import teamImage from "@/assets/dental-team.jpg";
 import patientImage from "@/assets/happy-patient.jpg";
@@ -142,6 +143,9 @@ const Index = () => {
 
       {/* Problem/Solution Section */}
       <HomeProblemSection />
+
+      {/* Trinity Intelligence System */}
+      <HomeTrinitySection />
 
       {/* Stats Section */}
       <ParallaxSection className="py-20">
