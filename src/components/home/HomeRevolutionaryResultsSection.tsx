@@ -106,7 +106,7 @@ export const HomeRevolutionaryResultsSection = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-visible">
-        <div className="absolute left-0 top-80 z-20 w-full lg:left-0 lg:top-40 lg:z-10 lg:w-2/5 border-2 border-green-500">
+        <div className="absolute left-0 top-80 z-20 w-full lg:left-0 lg:top-16 lg:z-10 lg:w-2/5 border-2 border-green-500">
           <img 
             src={approvalMobileImage} 
             alt="Mobile approval interface"
@@ -114,7 +114,7 @@ export const HomeRevolutionaryResultsSection = () => {
           />
         </div>
         
-        <div className="absolute top-96 right-0 w-full lg:right-0 lg:top-40 lg:w-2/5 flex flex-col items-start gap-12 border-2 border-red-500">
+        <div className="absolute top-96 right-0 w-full lg:right-0 lg:top-16 lg:w-2/5 flex flex-col items-start gap-12 border-2 border-red-500">
           <div className="text-center lg:text-right lg:w-full">
             <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Results That 
