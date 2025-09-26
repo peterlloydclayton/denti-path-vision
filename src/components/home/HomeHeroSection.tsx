@@ -5,6 +5,7 @@ import { AnimatedText, SplitText } from '@/components/ui/animated-text';
 import { ScrollReveal, MagneticButton, FloatingElements } from '@/components/ui/enhanced-animations';
 import { GlowButton, ProgressiveImage } from '@/components/ui/micro-interactions';
 import { PulseRipples } from '@/components/ui/pulse-ripples';
+import { FloatingIcons } from '@/components/ui/floating-icons';
 import { useTranslation } from 'react-i18next';
 import heroImage from '@/assets/hero-dentist-woman-white-transparent.png';
 
@@ -15,29 +16,8 @@ export const HomeHeroSection = () => {
       {/* Background */}
       <div className="absolute inset-0 bg-dental-blue" style={{ height: '100vh' }}></div>
       
-      {/* Abstract AI Pattern Background */}
-      <div className="absolute inset-0 opacity-15">
-        <motion.div 
-          className="absolute top-20 left-20 w-32 h-32 border border-foreground rounded-full"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div 
-          className="absolute top-40 right-40 w-24 h-24 border border-foreground rotate-45"
-          animate={{ rotate: [45, 405] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-40 left-1/3 w-16 h-16 border border-foreground rounded-full"
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-20 right-20 w-20 h-20 border border-foreground"
-          animate={{ rotate: [0, 180, 360] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
+      {/* Floating Icons Background */}
+      <FloatingIcons />
       
       <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop Layout */}
