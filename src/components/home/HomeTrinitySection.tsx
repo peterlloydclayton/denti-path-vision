@@ -34,7 +34,7 @@ export const HomeTrinitySection = () => {
   ];
 
   return (
-    <section className="py-12 bg-background relative overflow-hidden">
+    <section className="py-12 bg-dental-blue relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
@@ -102,11 +102,6 @@ export const HomeTrinitySection = () => {
                       <p className="text-muted-foreground mb-6 leading-relaxed">
                         {point.description}
                       </p>
-                    </div>
-                    
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mx-auto">
-                      <Zap className="w-4 h-4 text-primary" />
-                      <span className="text-primary font-medium text-sm">{point.stat}</span>
                     </div>
                   </CardContent>
                 </Card>
