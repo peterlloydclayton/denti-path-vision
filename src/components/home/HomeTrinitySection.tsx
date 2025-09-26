@@ -35,7 +35,7 @@ export const HomeTrinitySection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-surface">
+    <section className="py-12 bg-gradient-to-b from-background to-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center">
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
