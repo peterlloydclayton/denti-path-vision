@@ -139,10 +139,25 @@ export const HomeRevolutionaryResultsSection = () => {
               </span>
             </h2>
             
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-xl text-muted-foreground mb-6">
               These aren't just improvements—they're revolutionary leaps that transform 
               entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.
             </p>
+            
+            <ul className="text-xl text-muted-foreground mb-8 space-y-2">
+              <li className="flex items-center justify-center lg:justify-end gap-3">
+                <span className="w-2 h-2 bg-primary rounded-full"></span>
+                <span>95% approval rate vs 20-40% traditional banking</span>
+              </li>
+              <li className="flex items-center justify-center lg:justify-end gap-3">
+                <span className="w-2 h-2 bg-primary rounded-full"></span>
+                <span>30-second decisions vs 2-4 week manual process</span>
+              </li>
+              <li className="flex items-center justify-center lg:justify-end gap-3">
+                <span className="w-2 h-2 bg-primary rounded-full"></span>
+                <span>50+ data points vs 3-5 basic credit checks</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
