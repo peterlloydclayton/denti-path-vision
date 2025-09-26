@@ -103,17 +103,17 @@ export function HomeFinalCTASection() {
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">Learn More</h3>
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
             <MagneticButton>
-              <Button size="lg" className="text-2xl px-20 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
-                Practices & Providers
-                <ArrowRight className="ml-3 w-6 h-6" />
-              </Button>
+               <Button size="lg" className="text-2xl px-20 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
+                 For Providers
+                 <ArrowRight className="ml-3 w-6 h-6" />
+               </Button>
             </MagneticButton>
             
             <MagneticButton>
-              <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
-                Patients
-                <ArrowRight className="ml-3 w-6 h-6" />
-              </Button>
+               <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
+                 For Patients
+                 <ArrowRight className="ml-3 w-6 h-6" />
+               </Button>
             </MagneticButton>
           </div>
           
@@ -127,35 +127,6 @@ export function HomeFinalCTASection() {
         }}>
             No setup fees • No monthly minimums • Integration in under 24 hours
           </motion.p>
-        </ScrollReveal>
-
-        {/* Social Proof */}
-        <ScrollReveal className="text-center mt-20">
-          <motion.div className="inline-flex items-center space-x-8 text-blue-200" initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          delay: 0.8,
-          duration: 0.8
-        }}>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-300">10,000+</div>
-              <div className="text-sm">Happy Practices</div>
-            </div>
-            <div className="w-px h-12 bg-white/30" />
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-300">$2B+</div>
-              <div className="text-sm">Financed</div>
-            </div>
-            <div className="w-px h-12 bg-white/30" />
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-300">99.9%</div>
-              <div className="text-sm">Uptime</div>
-            </div>
-          </motion.div>
         </ScrollReveal>
       </div>
     </ParallaxSection>;
