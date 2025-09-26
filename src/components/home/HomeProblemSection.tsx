@@ -140,13 +140,6 @@ export const HomeProblemSection = () => {
                 </div>
               </div>
             </div>
-            
-            <div className="mt-8 text-center">
-              <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold">
-                <Zap className="w-5 h-5" />
-                Powered by Intelligent Finance Solutions
-              </div>
-            </div>
           </div>
         </ScrollReveal>
       </div>
