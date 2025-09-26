@@ -106,7 +106,7 @@ export const HomeRevolutionaryResultsSection = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-visible">
-        <div className="absolute left-0 top-80 z-20 w-full lg:bottom-0 lg:z-10 lg:w-2/5 border-2 border-green-500">
+        <div className="absolute left-0 top-80 z-20 w-full lg:top-[32rem] lg:z-10 lg:w-2/5 border-2 border-green-500">
           <img 
             src={approvalMobileImage} 
             alt="Mobile approval interface"
@@ -131,7 +131,7 @@ export const HomeRevolutionaryResultsSection = () => {
         </div>
 
         {/* Revolutionary Stats Grid - Add top margin to make room for mobile image */}
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-80 lg:mt-64" staggerDelay={0.1}>
+        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-80 lg:mt-0" staggerDelay={0.1}>
           {revolutionaryStats.map((stat, index) => <StaggerItem key={index}>
               <motion.div className="group relative" whileHover={{
             y: -8
