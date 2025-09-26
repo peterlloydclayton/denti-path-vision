@@ -283,9 +283,9 @@ export const HomeRevolutionaryResultsSection = () => {
                     </div>
 
                     {/* Center Divider with Transformation Arrow */}
-                    <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 hidden md:block">
+                    <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 hidden md:block">
                       <motion.div 
-                        className="bg-primary text-primary-foreground p-4 rounded-full shadow-xl border-4 border-background"
+                        className="bg-primary text-primary-foreground p-4 rounded-full shadow-xl border-4 border-background relative"
                         animate={{ 
                           scale: [1, 1.1, 1],
                           rotate: [0, 5, -5, 0]
@@ -300,29 +300,29 @@ export const HomeRevolutionaryResultsSection = () => {
                           const IconComponent = getComparisonIcon(comparison.metric);
                           return <IconComponent className="w-6 h-6" />;
                         })()}
+                        
+                        {/* Subtle directional chevrons positioned to the right */}
+                        <div className="absolute left-full top-1/2 transform -translate-y-1/2 ml-3 flex items-center gap-1 z-40">
+                          {[0, 1, 2].map((chevronIndex) => (
+                            <motion.div
+                              key={chevronIndex}
+                              initial={{ opacity: 0 }}
+                              animate={{ 
+                                opacity: [0, 0.6, 0],
+                                x: [0, 4, 8]
+                              }}
+                              transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                delay: chevronIndex * 0.2,
+                                ease: "easeInOut"
+                              }}
+                            >
+                              <ChevronRight className="w-3 h-3 text-primary/70" />
+                            </motion.div>
+                          ))}
+                        </div>
                       </motion.div>
-                      
-                      {/* Subtle directional chevrons */}
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 flex items-center gap-1">
-                        {[0, 1, 2].map((chevronIndex) => (
-                          <motion.div
-                            key={chevronIndex}
-                            initial={{ opacity: 0 }}
-                            animate={{ 
-                              opacity: [0, 0.4, 0],
-                              x: [0, 8, 16]
-                            }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              delay: chevronIndex * 0.3,
-                              ease: "easeInOut"
-                            }}
-                          >
-                            <ChevronRight className="w-3 h-3 text-primary/60" />
-                          </motion.div>
-                        ))}
-                      </div>
                     </div>
 
                     {/* Right Side - New Way (Positive) */}
