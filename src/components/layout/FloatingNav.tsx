@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, Users, Stethoscope, Brain, Building, Globe } from 'lucide-react';
+import { Menu, X, Home, Users, Stethoscope, Building, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -14,7 +14,6 @@ const navItems = [
   { href: '/providers', label: 'navigation.providers', icon: Stethoscope },
   { href: '/provider-search', label: 'Provider Search', icon: Stethoscope },
   { href: '/patients', label: 'navigation.patients', icon: Users },
-  { href: '/intelligent-financing', label: 'navigation.intelligence', icon: Brain },
   { href: '/about', label: 'navigation.about', icon: Building },
 ];
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Users, Stethoscope, Brain, Building, ChevronDown } from 'lucide-react';
+import { Home, Users, Stethoscope, Building, ChevronDown } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
@@ -25,7 +25,6 @@ const navItems = [
     ]
   },
   { href: '/patients', label: 'navigation.patients', icon: Users },
-  { href: '/intelligent-financing', label: 'navigation.intelligence', icon: Brain },
   { href: '/about', label: 'navigation.about', icon: Building },
 ];
 
