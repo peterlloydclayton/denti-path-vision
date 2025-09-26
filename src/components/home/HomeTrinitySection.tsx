@@ -3,11 +3,13 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mic, Target, Brain, Zap, Eye, Network } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
+import { useTranslation } from 'react-i18next';
 import { HomeEchoModal } from './HomeEchoModal';
 import { HomePathModal } from './HomePathModal';
 import { HomeScopeModal } from './HomeScopeModal';
 
 export const HomeTrinitySection = () => {
+  const { t } = useTranslation('marketing');
   const [isEchoModalOpen, setIsEchoModalOpen] = useState(false);
   const [isPathModalOpen, setIsPathModalOpen] = useState(false);
   const [isScopeModalOpen, setIsScopeModalOpen] = useState(false);
@@ -15,21 +17,21 @@ export const HomeTrinitySection = () => {
   const trinityPoints = [
     {
       icon: Mic,
-      title: "ECHO: Voice-Enabled AI Assistant",
-      description: "24/7 patient interaction with natural voice processing and real-time symptom analysis",
-      stat: "24/7 Patient Support"
+      title: t('home.trinity.echo.title'),
+      description: t('home.trinity.echo.description'),
+      stat: t('home.trinity.echo.stat')
     },
     {
       icon: Target,
-      title: "PATH: Patient Acceptance Treatment Hub",
-      description: "Pre-cognitive intelligence with 95% approval accuracy predictions and behavioral pattern recognition",
-      stat: "95% Prediction Accuracy"
+      title: t('home.trinity.path.title'),
+      description: t('home.trinity.path.description'),
+      stat: t('home.trinity.path.stat')
     },
     {
       icon: Brain,
-      title: "SCOPE: Strategic Clinical Operations Engine",
-      description: "Intelligence that analyzes 50+ data points for clinical necessity assessment and revenue optimization",
-      stat: "300% Patient Acceptance"
+      title: t('home.trinity.scope.title'),
+      description: t('home.trinity.scope.description'),
+      stat: t('home.trinity.scope.stat')
     }
   ];
 
@@ -38,31 +40,27 @@ export const HomeTrinitySection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Three Layers of 
-            <span className="text-foreground block">
-              Revolutionary Intelligence
-            </span>
+            {t('home.trinity.title')}
           </h2>
           
           <p className="text-xl text-foreground/80 max-w-4xl mx-auto mb-8">
-            DentiPay's Trinity System thinks before you need it to. Our AI doesn't just respond to requests—
-            it predicts needs, analyzes patterns, and makes decisions at the speed of thought.
+            {t('home.trinity.description')}
           </p>
 
           <div className="flex items-center justify-center gap-4 text-sm text-foreground/70">
             <div className="flex items-center gap-2">
               <Eye className="w-4 h-4" />
-              <span>Predictive Analysis</span>
+              <span>{t('home.trinity.predictive')}</span>
             </div>
             <div className="w-1 h-1 bg-foreground/50 rounded-full"></div>
             <div className="flex items-center gap-2">
               <Zap className="w-4 h-4" />
-              <span>Real-Time Processing</span>
+              <span>{t('home.trinity.realTime')}</span>
             </div>
             <div className="w-1 h-1 bg-foreground/50 rounded-full"></div>
             <div className="flex items-center gap-2">
               <Network className="w-4 h-4" />
-              <span>Integrated Intelligence</span>
+              <span>{t('home.trinity.integrated')}</span>
             </div>
           </div>
         </ScrollReveal>
@@ -212,7 +210,7 @@ export const HomeTrinitySection = () => {
             transition={{ duration: 0.3 }}
           >
             <span className="text-foreground font-semibold text-lg">
-              Pre-Cognitive AI • Millisecond Processing • 3X Smarter Intelligence
+              {t('home.trinity.impactStatement')}
             </span>
           </motion.div>
         </ScrollReveal>

@@ -5,6 +5,7 @@ import { TrendingUp, Clock, Users, DollarSign, Target, Zap, Award, Building2, Ar
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
 import maleDentistImage from '@/assets/male-dentist-white.png';
 interface AnimatedCounterProps {
@@ -56,49 +57,49 @@ const AnimatedCounter = ({
     </span>;
 };
 export const HomeRevolutionaryResultsSection = () => {
+  const { t } = useTranslation('marketing');
   const revolutionaryStats: any[] = [];
   const beforeAfterComparisons = [{
-    metric: 'Approval Rate',
+    metric: t('home.results.approvalRate'),
     before: {
       value: '20-40%',
-      label: 'Traditional Banking'
+      label: t('home.results.traditional')
     },
     after: {
       value: '95%',
-      label: 'DentiPay AI'
+      label: t('home.results.dentiPayAI')
     }
   }, {
-    metric: 'Decision Time',
+    metric: t('home.results.decisionTime'),
     before: {
       value: '2-4 Weeks',
-      label: 'Manual Process'
+      label: t('home.results.manual')
     },
     after: {
       value: '30 Seconds',
-      label: 'Pre-Cognitive AI'
+      label: t('home.results.preCognitive')
     }
   }, {
-    metric: 'Data Points',
+    metric: t('home.results.dataPoints'),
     before: {
       value: '3-5',
-      label: 'Basic Credit Check'
+      label: t('home.results.basic')
     },
     after: {
       value: '50+',
-      label: 'Comprehensive Analysis'
+      label: t('home.results.comprehensive')
     }
   }];
 
   const getComparisonIcon = (metric: string) => {
-    switch (metric) {
-      case 'Approval Rate':
-        return CheckCircle;
-      case 'Decision Time':
-        return Zap;
-      case 'Data Points':
-        return Brain;
-      default:
-        return Zap;
+    if (metric === t('home.results.approvalRate')) {
+      return CheckCircle;
+    } else if (metric === t('home.results.decisionTime')) {
+      return Zap;
+    } else if (metric === t('home.results.dataPoints')) {
+      return Brain;
+    } else {
+      return Zap;
     }
   };
   return <section className="pt-24 pb-0 bg-gradient-to-b from-surface to-background relative overflow-hidden min-h-screen flex flex-col">
@@ -136,15 +137,11 @@ export const HomeRevolutionaryResultsSection = () => {
         <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pr-8 order-1 lg:order-2 flex items-center">
           <div className="text-left px-4 sm:px-6 lg:px-0">
             <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-2">
-              Results That 
-              <span className="text-foreground block">
-                Redefine Possible
-              </span>
+              {t('home.results.title')}
             </h2>
             
             <p className="text-xl text-muted-foreground mb-12 px-6 sm:px-8 lg:px-0">
-              These aren't just improvements—they're revolutionary leaps that transform 
-              entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.
+              {t('home.results.description')}
             </p>
 
             {/* CTA Buttons */}
@@ -153,7 +150,7 @@ export const HomeRevolutionaryResultsSection = () => {
                 <Button
                   className="w-64 h-12 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-base px-16 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
-                  <span>For Providers</span>
+                  <span>{t('home.results.ctaProviders')}</span>
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -161,7 +158,7 @@ export const HomeRevolutionaryResultsSection = () => {
                 <Button
                   className="w-64 h-12 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-base px-16 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
-                  <span>For Patients</span>
+                  <span>{t('home.results.ctaPatients')}</span>
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -294,7 +291,7 @@ export const HomeRevolutionaryResultsSection = () => {
                       <div className="relative z-10 text-center">
                         <div className="flex items-center justify-center gap-2 text-muted-foreground mb-4">
                           <Clock className="w-5 h-5" />
-                          <span className="text-sm font-medium">Legacy Systems</span>
+                          <span className="text-sm font-medium">{t('home.results.legacy')}</span>
                         </div>
                         <div className="text-4xl md:text-5xl font-bold text-muted-foreground mb-3">
                           {comparison.before.value}
@@ -336,7 +333,7 @@ export const HomeRevolutionaryResultsSection = () => {
                       <div className="relative z-10 text-center">
                         <div className="flex items-center justify-center gap-2 text-slate-700 mb-4">
                           <Sparkles className="w-5 h-5" />
-                          <span className="text-sm font-bold">DentiPay Solution</span>
+                          <span className="text-sm font-bold">{t('home.results.dentiPaySolution')}</span>
                         </div>
                         <div className="text-4xl md:text-5xl font-bold text-slate-800 mb-3">
                           {comparison.after.value}
@@ -361,31 +358,27 @@ export const HomeRevolutionaryResultsSection = () => {
               <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pl-8 order-1 lg:order-1 flex items-start pt-8 min-h-[400px] pb-16">
                 <div className="text-left px-4 sm:px-6 lg:px-0">
                   <h3 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-                    Industry-Defining
-                    <span className="text-foreground block">
-                      Impact
-                    </span>
+                    {t('home.results.industryTitle')}
                   </h3>
                   
                   <p className="text-xl text-muted-foreground mb-8 px-6 sm:px-8 lg:px-0">
-                    These results don't just improve dental financing—they revolutionize it. 
-                    Every metric represents lives changed, practices transformed, and barriers eliminated.
+                    {t('home.results.industryDescription')}
                   </p>
                   
                   <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-6 text-lg text-foreground px-6 sm:px-8 lg:px-0">
                     <div className="flex items-center gap-2">
                       <Users className="w-5 h-5 text-foreground" />
-                      <span>Real Patients</span>
+                      <span>{t('home.results.realPatients')}</span>
                     </div>
                     <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
                     <div className="flex items-center gap-2">
                       <Building2 className="w-5 h-5 text-foreground" />
-                      <span>Real Practices</span>
+                      <span>{t('home.results.realPractices')}</span>
                     </div>
                     <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
                     <div className="flex items-center gap-2">
                       <Sparkles className="w-5 h-5 text-foreground" />
-                      <span>Real Transformation</span>
+                      <span>{t('home.results.realTransformation')}</span>
                     </div>
                   </div>
                 </div>

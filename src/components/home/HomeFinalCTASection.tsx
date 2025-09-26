@@ -3,20 +3,22 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Zap, Users, TrendingUp } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, MagneticButton } from "@/components/ui/enhanced-animations";
 import { ParallaxSection } from "@/components/ui/parallax-section";
+import { useTranslation } from 'react-i18next';
 import dentistWomanImage from '@/assets/dentist-woman-white-transparent.png';
 export function HomeFinalCTASection() {
+  const { t } = useTranslation('marketing');
   const benefits = [{
     icon: Users,
-    text: "Patients get the care they need"
+    text: t('home.finalCTA.benefits.patients')
   }, {
     icon: TrendingUp,
-    text: "Providers get immediate payment"
+    text: t('home.finalCTA.benefits.providers')
   }, {
     icon: Sparkles,
-    text: "Intelligent, dental-specific AI"
+    text: t('home.finalCTA.benefits.intelligence')
   }, {
     icon: Zap,
-    text: "Barriers eliminated, access expanded"
+    text: t('home.finalCTA.benefits.barriers')
   }];
   return <ParallaxSection className="py-32 bg-slate-900 relative overflow-hidden">
       {/* Background Elements */}
@@ -45,16 +47,11 @@ export function HomeFinalCTASection() {
           
           
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-            <span className="block">Ready to</span>
-            <span className="block bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 bg-clip-text text-transparent bg-300% animate-gradient">
-              Transform the Future
-            </span>
-            <span className="block">of Dental Access?</span>
+            {t('home.finalCTA.title')}
           </h2>
           
           <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed mb-12">
-            Be part of the innovation transforming how dental care gets financed. 
-            Choose your path and start creating change today.
+            {t('home.finalCTA.description')}
           </p>
         </ScrollReveal>
 
@@ -100,18 +97,18 @@ export function HomeFinalCTASection() {
 
         {/* CTA Buttons */}
         <ScrollReveal className="text-center">
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">Learn More</h3>
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">{t('home.finalCTA.learnMore')}</h3>
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
             <MagneticButton>
                <Button size="lg" className="text-2xl px-20 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
-                 For Providers
+                 {t('home.finalCTA.ctaProviders', 'For Providers')}
                  <ArrowRight className="ml-3 w-6 h-6" />
                </Button>
             </MagneticButton>
             
             <MagneticButton>
                <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
-                 For Patients
+                 {t('home.finalCTA.ctaPatients', 'For Patients')}
                  <ArrowRight className="ml-3 w-6 h-6" />
                </Button>
             </MagneticButton>
@@ -125,7 +122,7 @@ export function HomeFinalCTASection() {
           delay: 0.5,
           duration: 0.8
         }}>
-            No setup fees • No monthly minimums • Integration in under 24 hours
+            {t('home.finalCTA.guarantee')}
           </motion.p>
         </ScrollReveal>
       </div>

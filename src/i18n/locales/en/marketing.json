@@ -1,4 +1,86 @@
 {
+  "home": {
+    "hero": {
+      "title": "Intelligence Reshaping Dental Finance",
+      "subtitle": "Where Patients & Providers Win",
+      "description": "AI-powered solutions that understand dental care, creating instant approvals for patients and guaranteed revenue for providers.",
+      "mobileDescription": "AI-powered financing that works for everyone.",
+      "ctaPatients": "For Patients",
+      "ctaProviders": "For Providers"
+    },
+    "problem": {
+      "title": "Transforming Dental Finance",
+      "description": "Traditional financing creates walls between patients and dental care, and between providers and fair compensation. We're transforming the landscape with intelligent, dental-specific solutions that open new possibilities.",
+      "ctaProviders": "For Providers",
+      "ctaPatients": "For Patients",
+      "impactTitle": "Where financing never limits dental care",
+      "impactPatients": "Patients",
+      "impactPatientsDesc": "No longer denied care due to traditional limits",
+      "impactProviders": "Providers", 
+      "impactProvidersDesc": "Get paid immediately, no more financing delays",
+      "impactAccess": "Access",
+      "impactAccessDesc": "Intelligent matching of need with capability"
+    },
+    "trinity": {
+      "title": "Three Layers of Revolutionary Intelligence",
+      "description": "DentiPay's Trinity System thinks before you need it to. Our AI doesn't just respond to requests—it predicts needs, analyzes patterns, and makes decisions at the speed of thought.",
+      "predictive": "Predictive Analysis",
+      "realTime": "Real-Time Processing", 
+      "integrated": "Integrated Intelligence",
+      "echo": {
+        "title": "ECHO: Voice-Enabled AI Assistant",
+        "description": "24/7 patient interaction with natural voice processing and real-time symptom analysis",
+        "stat": "24/7 Patient Support"
+      },
+      "path": {
+        "title": "PATH: Patient Acceptance Treatment Hub", 
+        "description": "Pre-cognitive intelligence with 95% approval accuracy predictions and behavioral pattern recognition",
+        "stat": "95% Prediction Accuracy"
+      },
+      "scope": {
+        "title": "SCOPE: Strategic Clinical Operations Engine",
+        "description": "Intelligence that analyzes 50+ data points for clinical necessity assessment and revenue optimization", 
+        "stat": "300% Patient Acceptance"
+      },
+      "impactStatement": "Pre-Cognitive AI • Millisecond Processing • 3X Smarter Intelligence"
+    },
+    "results": {
+      "title": "Results That Redefine Possible",
+      "description": "These aren't just improvements—they're revolutionary leaps that transform entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.",
+      "ctaProviders": "For Providers",
+      "ctaPatients": "For Patients",
+      "approvalRate": "Approval Rate",
+      "decisionTime": "Decision Time", 
+      "dataPoints": "Data Points",
+      "traditional": "Traditional Banking",
+      "manual": "Manual Process",
+      "basic": "Basic Credit Check",
+      "dentiPayAI": "DentiPay AI",
+      "preCognitive": "Pre-Cognitive AI",
+      "comprehensive": "Comprehensive Analysis",
+      "legacy": "Legacy Systems",
+      "dentiPaySolution": "DentiPay Solution",
+      "industryTitle": "Industry-Defining Impact",
+      "industryDescription": "These results don't just improve dental financing—they revolutionize it. Every metric represents lives changed, practices transformed, and barriers eliminated.",
+      "realPatients": "Real Patients",
+      "realPractices": "Real Practices", 
+      "realTransformation": "Real Transformation"
+    },
+    "finalCTA": {
+      "title": "Ready to Transform the Future of Dental Access?",
+      "description": "Be part of the innovation transforming how dental care gets financed. Choose your path and start creating change today.",
+      "learnMore": "Learn More",
+      "ctaProviders": "For Providers",
+      "ctaPatients": "For Patients",
+      "guarantee": "No setup fees • No monthly minimums • Integration in under 24 hours",
+      "benefits": {
+        "patients": "Patients get the care they need",
+        "providers": "Providers get immediate payment", 
+        "intelligence": "Intelligent, dental-specific AI",
+        "barriers": "Barriers eliminated, access expanded"
+      }
+    }
+  },
   "patients": {
     "hero": {
       "title": "Making Your Dream Smile Affordable",

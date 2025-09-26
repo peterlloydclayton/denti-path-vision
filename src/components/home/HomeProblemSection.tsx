@@ -4,20 +4,21 @@ import { ScrollReveal } from '@/components/ui/enhanced-animations';
 import { HomeProblemCards } from './HomeProblemCards';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import womanDoctorImage from '@/assets/woman-doctor-african-transparent.png';
 
 export const HomeProblemSection = () => {
+  const { t } = useTranslation('marketing');
 
   return (
     <section className="pt-24 bg-gradient-to-b from-surface to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <ScrollReveal className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Transforming Dental Finance
+            {t('home.problem.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
-            Traditional financing creates walls between patients and dental care, and between providers and fair compensation. 
-            We're transforming the landscape with intelligent, dental-specific solutions that open new possibilities.
+            {t('home.problem.description')}
           </p>
         </ScrollReveal>
 
@@ -30,7 +31,7 @@ export const HomeProblemSection = () => {
               <Button
                 className="w-72 h-14 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-lg px-20 transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
-                <span>For Providers</span>
+                <span>{t('home.problem.ctaProviders')}</span>
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -38,7 +39,7 @@ export const HomeProblemSection = () => {
               <Button
                 className="w-72 h-14 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-lg px-16 transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
-                <span>For Patients</span>
+                <span>{t('home.problem.ctaPatients')}</span>
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -57,7 +58,7 @@ export const HomeProblemSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Where financing never limits dental care
+            {t('home.problem.impactTitle')}
           </motion.h3>
 
           {/* Mobile Layout */}
@@ -79,8 +80,8 @@ export const HomeProblemSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
               >
-                <div className="text-4xl font-bold text-foreground mb-2">Patients</div>
-                <div className="text-sm text-slate-600">No longer denied care due to traditional limits</div>
+                <div className="text-4xl font-bold text-foreground mb-2">{t('home.problem.impactPatients')}</div>
+                <div className="text-sm text-slate-600">{t('home.problem.impactPatientsDesc')}</div>
               </motion.div>
               <motion.div 
                 className="text-center"
@@ -89,8 +90,8 @@ export const HomeProblemSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
               >
-                <div className="text-4xl font-bold text-foreground mb-2">Providers</div>
-                <div className="text-sm text-slate-600">Get paid immediately, no more financing delays</div>
+                <div className="text-4xl font-bold text-foreground mb-2">{t('home.problem.impactProviders')}</div>
+                <div className="text-sm text-slate-600">{t('home.problem.impactProvidersDesc')}</div>
               </motion.div>
               <motion.div 
                 className="text-center"
@@ -99,8 +100,8 @@ export const HomeProblemSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
               >
-                <div className="text-4xl font-bold text-foreground mb-2">Access</div>
-                <div className="text-sm text-slate-600">Intelligent matching of need with capability</div>
+                <div className="text-4xl font-bold text-foreground mb-2">{t('home.problem.impactAccess')}</div>
+                <div className="text-sm text-slate-600">{t('home.problem.impactAccessDesc')}</div>
               </motion.div>
             </div>
           </div>
@@ -118,8 +119,8 @@ export const HomeProblemSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                 >
-                  <div className="text-3xl font-bold text-foreground mb-2">Patients</div>
-                  <div className="text-base text-slate-600">No longer denied care due to traditional limits</div>
+                  <div className="text-3xl font-bold text-foreground mb-2">{t('home.problem.impactPatients')}</div>
+                  <div className="text-base text-slate-600">{t('home.problem.impactPatientsDesc')}</div>
                 </motion.div>
                 
                 <motion.div 
@@ -128,8 +129,8 @@ export const HomeProblemSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
                 >
-                  <div className="text-3xl font-bold text-foreground mb-2">Providers</div>
-                  <div className="text-base text-slate-600">Get paid immediately, no more financing delays</div>
+                  <div className="text-3xl font-bold text-foreground mb-2">{t('home.problem.impactProviders')}</div>
+                  <div className="text-base text-slate-600">{t('home.problem.impactProvidersDesc')}</div>
                 </motion.div>
                 
                 <motion.div 
@@ -138,8 +139,8 @@ export const HomeProblemSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
                 >
-                  <div className="text-3xl font-bold text-foreground mb-2">Access</div>
-                  <div className="text-base text-slate-600">Intelligent matching of need with capability</div>
+                  <div className="text-3xl font-bold text-foreground mb-2">{t('home.problem.impactAccess')}</div>
+                  <div className="text-base text-slate-600">{t('home.problem.impactAccessDesc')}</div>
                 </motion.div>
               </div>
 

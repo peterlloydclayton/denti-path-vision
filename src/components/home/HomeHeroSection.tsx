@@ -5,9 +5,11 @@ import { AnimatedText, SplitText } from '@/components/ui/animated-text';
 import { ScrollReveal, MagneticButton, FloatingElements } from '@/components/ui/enhanced-animations';
 import { GlowButton, ProgressiveImage } from '@/components/ui/micro-interactions';
 import { PulseRipples } from '@/components/ui/pulse-ripples';
+import { useTranslation } from 'react-i18next';
 import dentistImage from '@/assets/group-dentists-women-men.png';
 
 export const HomeHeroSection = () => {
+  const { t } = useTranslation('marketing');
   return (
     <section className="h-screen relative z-30 overflow-hidden">
       {/* Background */}
@@ -76,8 +78,8 @@ export const HomeHeroSection = () => {
       <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4 mobile-landscape-title">
         <AnimatedText>
           <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight mobile-landscape-text">
-            Intelligence Reshaping Dental Finance
-            <span className="block text-3xl mt-2 text-navy">Where Patients & Providers Win</span>
+            {t('home.hero.title')}
+            <span className="block text-3xl mt-2 text-navy">{t('home.hero.subtitle')}</span>
           </h1>
         </AnimatedText>
       </div>
@@ -86,8 +88,8 @@ export const HomeHeroSection = () => {
       <div className="hidden md:block absolute top-[5%] lg:top-[17%] left-12 z-20 w-1/2">
         <AnimatedText>
           <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-            Intelligence Reshaping Dental Finance
-            <span className="block text-4xl lg:text-5xl mt-2 text-navy">Where Patients & Providers Win</span>
+            {t('home.hero.title')}
+            <span className="block text-4xl lg:text-5xl mt-2 text-navy">{t('home.hero.subtitle')}</span>
           </h1>
         </AnimatedText>
       </div>
@@ -96,8 +98,7 @@ export const HomeHeroSection = () => {
       <div className="hidden md:block absolute top-[50%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
-            AI-powered solutions that understand dental care, creating instant approvals 
-            for patients and guaranteed revenue for providers.
+            {t('home.hero.description')}
           </p>
         </AnimatedText>
       </div>
@@ -106,7 +107,7 @@ export const HomeHeroSection = () => {
       <div className="block sm:hidden absolute top-[38%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
         <AnimatedText delay={0.2}>
           <p className="text-base text-foreground/80 font-medium leading-relaxed text-left">
-            AI-powered financing that works for everyone.
+            {t('home.hero.mobileDescription')}
           </p>
         </AnimatedText>
       </div>
@@ -117,12 +118,12 @@ export const HomeHeroSection = () => {
           <Button 
             className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
           >
-            For Patients
+            {t('home.hero.ctaPatients')}
           </Button>
           <Button 
             className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
           >
-            For Providers
+            {t('home.hero.ctaProviders')}
           </Button>
         </div>
       </div>
@@ -133,12 +134,12 @@ export const HomeHeroSection = () => {
           <Button 
             className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
           >
-            For Patients
+            {t('home.hero.ctaPatients')}
           </Button>
           <Button 
             className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
           >
-            For Providers
+            {t('home.hero.ctaProviders')}
           </Button>
         </div>
       </div>

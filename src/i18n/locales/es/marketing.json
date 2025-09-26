@@ -1,4 +1,84 @@
 {
+  "home": {
+    "hero": {
+      "title": "Inteligencia que Remodela las Finanzas Dentales",
+      "subtitle": "Donde Pacientes y Proveedores Ganan",
+      "description": "Soluciones impulsadas por IA que entienden el cuidado dental, creando aprobaciones instantáneas para pacientes e ingresos garantizados para proveedores.",
+      "mobileDescription": "Financiamiento impulsado por IA que funciona para todos.",
+      "ctaPatients": "Para Pacientes",
+      "ctaProviders": "Para Proveedores"
+    },
+    "problem": {
+      "title": "Transformando las Finanzas Dentales",
+      "description": "El financiamiento tradicional crea barreras entre los pacientes y la atención dental, y entre los proveedores y la compensación justa. Estamos transformando el panorama con soluciones inteligentes y específicas para el sector dental que abren nuevas posibilidades.",
+      "ctaProviders": "Para Proveedores",
+      "ctaPatients": "Para Pacientes",
+      "impactTitle": "Donde el financiamiento nunca limita la atención dental",
+      "impactPatients": "Pacientes",
+      "impactPatientsDesc": "Ya no se les niega atención debido a limitaciones tradicionales",
+      "impactProviders": "Proveedores", 
+      "impactProvidersDesc": "Reciben pago inmediato, sin más demoras de financiamiento",
+      "impactAccess": "Acceso",
+      "impactAccessDesc": "Coincidencia inteligente de necesidad con capacidad"
+    },
+    "trinity": {
+      "title": "Tres Capas de Inteligencia Revolucionaria",
+      "description": "El Sistema Trinity de DentiPay piensa antes de que lo necesites. Nuestra IA no solo responde a solicitudes—predice necesidades, analiza patrones y toma decisiones a la velocidad del pensamiento.",
+      "predictive": "Análisis Predictivo",
+      "realTime": "Procesamiento en Tiempo Real", 
+      "integrated": "Inteligencia Integrada",
+      "echo": {
+        "title": "ECHO: Asistente IA Habilitado por Voz",
+        "description": "Interacción con pacientes 24/7 con procesamiento de voz natural y análisis de síntomas en tiempo real",
+        "stat": "Soporte al Paciente 24/7"
+      },
+      "path": {
+        "title": "PATH: Centro de Tratamiento de Aceptación del Paciente", 
+        "description": "Inteligencia pre-cognitiva con predicciones de precisión del 95% y reconocimiento de patrones de comportamiento",
+        "stat": "95% Precisión de Predicción"
+      },
+      "scope": {
+        "title": "SCOPE: Motor de Operaciones Clínicas Estratégicas",
+        "description": "Inteligencia que analiza más de 50 puntos de datos para evaluación de necesidad clínica y optimización de ingresos", 
+        "stat": "300% Aceptación del Paciente"
+      },
+      "impactStatement": "IA Pre-Cognitiva • Procesamiento en Milisegundos • Inteligencia 3X Más Inteligente"
+    },
+    "results": {
+      "title": "Resultados que Redefinen lo Posible",
+      "description": "Estas no son solo mejoras—son saltos revolucionarios que transforman industrias enteras. Ve cómo la inteligencia pre-cognitiva de DentiPay transforma completamente las métricas tradicionales de financiamiento en todas las dimensiones.",
+      "approvalRate": "Tasa de Aprobación",
+      "decisionTime": "Tiempo de Decisión", 
+      "dataPoints": "Puntos de Datos",
+      "traditional": "Banca Tradicional",
+      "manual": "Proceso Manual",
+      "basic": "Verificación de Crédito Básica",
+      "dentiPayAI": "IA de DentiPay",
+      "preCognitive": "IA Pre-Cognitiva",
+      "comprehensive": "Análisis Integral",
+      "legacy": "Sistemas Heredados",
+      "dentiPaySolution": "Solución DentiPay",
+      "industryTitle": "Impacto que Define la Industria",
+      "industryDescription": "Estos resultados no solo mejoran el financiamiento dental—lo revolucionan. Cada métrica representa vidas cambiadas, prácticas transformadas y barreras eliminadas.",
+      "realPatients": "Pacientes Reales",
+      "realPractices": "Prácticas Reales", 
+      "realTransformation": "Transformación Real"
+    },
+    "finalCTA": {
+      "title": "¿Listo para Transformar el Futuro del Acceso Dental?",
+      "description": "Sé parte de la innovación que transforma cómo se financia la atención dental. Elige tu camino y comienza a crear el cambio hoy.",
+      "learnMore": "Aprende Más",
+      "ctaProviders": "Para Proveedores", 
+      "ctaPatients": "Para Pacientes",
+      "guarantee": "Sin tarifas de configuración • Sin mínimos mensuales • Integración en menos de 24 horas",
+      "benefits": {
+        "patients": "Los pacientes obtienen la atención que necesitan",
+        "providers": "Los proveedores reciben pago inmediato", 
+        "intelligence": "IA inteligente y específica para el sector dental",
+        "barriers": "Barreras eliminadas, acceso expandido"
+      }
+    }
+  },
   "patients": {
     "hero": {
       "title": "Haciendo Tu Sonrisa Soñada Asequible",
