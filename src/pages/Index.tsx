@@ -35,6 +35,7 @@ import { HomeTrinitySection } from '@/components/home/HomeTrinitySection';
 import { HomePreCognitiveSection } from '@/components/home/HomePreCognitiveSection';
 import { HomeInteractiveSection } from '@/components/home/HomeInteractiveSection';
 import { HomeRevolutionaryResultsSection } from '@/components/home/HomeRevolutionaryResultsSection';
+import { HomeFinalCTASection } from '@/components/home/HomeFinalCTASection';
 import heroImage from "@/assets/hero-dental-office-clean.jpg";
 import teamImage from "@/assets/dental-team.jpg";
 import patientImage from "@/assets/happy-patient.jpg";
@@ -158,6 +159,9 @@ const Index = () => {
 
       {/* Revolutionary Results */}
       <HomeRevolutionaryResultsSection />
+
+      {/* Final Call to Action */}
+      <HomeFinalCTASection />
 
       {/* Stats Section */}
       <ParallaxSection className="py-20">
