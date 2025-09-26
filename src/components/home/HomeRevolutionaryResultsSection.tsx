@@ -273,17 +273,6 @@ export const HomeRevolutionaryResultsSection = () => {
                         </div>
                       </div>
                     </div>
-
-                    {/* Mobile transformation indicator */}
-                    <div className="md:hidden absolute left-1/2 bottom-4 transform -translate-x-1/2 z-20">
-                      <motion.div 
-                        className="bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-lg text-sm font-bold"
-                        animate={{ y: [0, -2, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >
-                        TRANSFORMED
-                      </motion.div>
-                    </div>
                   </div>
                 </motion.div>
               </StaggerItem>
