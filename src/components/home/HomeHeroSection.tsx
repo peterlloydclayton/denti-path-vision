@@ -106,10 +106,8 @@ export const HomeHeroSection = () => {
       {/* Mobile Portrait Subtitle */}
       <div className="block sm:hidden absolute top-[40%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
         <AnimatedText delay={0.2}>
-          <p className="text-base text-foreground/80 font-medium leading-relaxed text-left">
-            AI-powered financing<br />
-            that works for<br />
-            everyone
+          <p className="text-base text-foreground/80 font-medium leading-relaxed text-left whitespace-pre-line">
+            {t('home.hero.mobileDescription')}
           </p>
         </AnimatedText>
       </div>
