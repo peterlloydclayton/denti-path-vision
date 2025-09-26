@@ -44,11 +44,11 @@ export const FloatingIcons = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden opacity-8 pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
       {floatingIcons.map((item) => (
         <motion.div
           key={item.id}
-          className="absolute text-white/10"
+          className="absolute text-white/30"
           style={{
             left: `${item.x}%`,
             top: `${item.y}%`,
