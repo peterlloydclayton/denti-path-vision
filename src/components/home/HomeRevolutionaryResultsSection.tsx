@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { TrendingUp, Clock, Users, DollarSign, Target, Zap, Award, Building2, ArrowUp, Sparkles } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
+import dentistWomanImage from '@/assets/dentist-woman-white-transparent.png';
 interface AnimatedCounterProps {
   value: number;
   suffix?: string;
@@ -105,21 +106,29 @@ export const HomeRevolutionaryResultsSection = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <ScrollReveal className="text-center">
+        <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
+          <div className="flex-1 text-left">
+            <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+              Results That 
+              <span className="text-foreground block">
+                Redefine Possible
+              </span>
+            </h2>
+            
+            <p className="text-xl text-muted-foreground mb-8">
+              These aren't just improvements—they're revolutionary leaps that transform 
+              entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.
+            </p>
+          </div>
           
-          
-          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Results That 
-            <span className="text-foreground block">
-              Redefine Possible
-            </span>
-          </h2>
-          
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
-            These aren't just improvements—they're revolutionary leaps that transform 
-            entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.
-          </p>
-        </ScrollReveal>
+          <div className="flex-1 flex justify-end">
+            <img 
+              src={dentistWomanImage} 
+              alt="Professional dentist"
+              className="max-w-md w-full h-auto"
+            />
+          </div>
+        </div>
 
         {/* Revolutionary Stats Grid */}
         <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.1}>
