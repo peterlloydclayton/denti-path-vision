@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Zap, Users, TrendingUp } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, MagneticButton } from "@/components/ui/enhanced-animations";
 import { ParallaxSection } from "@/components/ui/parallax-section";
+import dentistWomanImage from '@/assets/dentist-woman-white-transparent.png';
 
 export function HomeFinalCTASection() {
   const benefits = [
@@ -25,7 +26,7 @@ export function HomeFinalCTASection() {
   ];
 
   return (
-    <ParallaxSection className="py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5 relative overflow-hidden">
+    <ParallaxSection className="py-32 bg-slate-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
       <motion.div 
@@ -61,21 +62,21 @@ export function HomeFinalCTASection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-medium mb-6"
+            className="inline-flex items-center px-4 py-2 bg-blue-500/20 rounded-full text-blue-300 font-medium mb-6"
           >
             <Sparkles className="w-4 h-4 mr-2" />
             The Future of Dental Financing is Here
           </motion.div>
           
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-tight">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
             <span className="block">Ready to</span>
-            <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-300% animate-gradient">
+            <span className="block bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 bg-clip-text text-transparent bg-300% animate-gradient">
               Transform the Future
             </span>
             <span className="block">of Dental Access?</span>
           </h2>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-12">
+          <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed mb-12">
             Be part of the innovation transforming how dental care gets financed. 
             Choose your path and start creating change today.
           </p>
@@ -86,20 +87,20 @@ export function HomeFinalCTASection() {
           <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16" staggerDelay={0.1}>
             {benefits.map((benefit, index) => (
               <StaggerItem key={index}>
-                <motion.div 
-                  className="flex flex-col items-center text-center p-6 rounded-2xl bg-background/50 backdrop-blur-sm border border-border/50"
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <motion.div 
-                    className="p-3 bg-primary/10 rounded-2xl mb-4"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <benefit.icon className="w-6 h-6 text-primary" />
-                  </motion.div>
-                  <p className="font-semibold text-foreground">{benefit.text}</p>
-                </motion.div>
+                 <motion.div 
+                   className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20"
+                   whileHover={{ y: -5, scale: 1.02 }}
+                   transition={{ duration: 0.3 }}
+                 >
+                   <motion.div 
+                     className="p-3 bg-blue-500/20 rounded-2xl mb-4"
+                     whileHover={{ rotate: 360 }}
+                     transition={{ duration: 0.5 }}
+                   >
+                     <benefit.icon className="w-6 h-6 text-blue-300" />
+                   </motion.div>
+                   <p className="font-semibold text-white">{benefit.text}</p>
+                 </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -107,14 +108,14 @@ export function HomeFinalCTASection() {
 
         {/* CTA Buttons */}
         <ScrollReveal className="text-center">
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
             <MagneticButton>
               <Button 
                 size="lg" 
-                className="text-lg px-12 py-6 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground border-0 shadow-2xl hover:shadow-primary/25 transition-all duration-300"
+                className="text-2xl px-16 py-8 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white border-0 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 rounded-xl"
               >
                 Transform for Providers
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
             </MagneticButton>
             
@@ -122,16 +123,16 @@ export function HomeFinalCTASection() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="text-lg px-12 py-6 border-2 border-primary/20 hover:border-primary bg-background/50 backdrop-blur-sm hover:bg-primary/5 transition-all duration-300"
+                className="text-2xl px-16 py-8 border-3 border-white/30 hover:border-white bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white transition-all duration-300 rounded-xl"
               >
                 Transform for Patients
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
             </MagneticButton>
           </div>
           
           <motion.p 
-            className="text-muted-foreground"
+            className="text-blue-200"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -143,23 +144,23 @@ export function HomeFinalCTASection() {
         {/* Social Proof */}
         <ScrollReveal className="text-center mt-20">
           <motion.div
-            className="inline-flex items-center space-x-8 text-muted-foreground"
+            className="inline-flex items-center space-x-8 text-blue-200"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
           >
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">10,000+</div>
+              <div className="text-3xl font-bold text-blue-300">10,000+</div>
               <div className="text-sm">Happy Practices</div>
             </div>
-            <div className="w-px h-12 bg-border" />
+            <div className="w-px h-12 bg-white/30" />
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">$2B+</div>
+              <div className="text-3xl font-bold text-blue-300">$2B+</div>
               <div className="text-sm">Financed</div>
             </div>
-            <div className="w-px h-12 bg-border" />
+            <div className="w-px h-12 bg-white/30" />
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">99.9%</div>
+              <div className="text-3xl font-bold text-blue-300">99.9%</div>
               <div className="text-sm">Uptime</div>
             </div>
           </motion.div>
