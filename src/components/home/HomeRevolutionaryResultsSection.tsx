@@ -107,16 +107,15 @@ export const HomeRevolutionaryResultsSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
-          <div className="absolute left-0 flex justify-start lg:relative lg:flex-1 lg:overflow-hidden">
+          <div className="absolute left-0 flex justify-start lg:relative lg:flex-1 lg:overflow-hidden -ml-4 sm:-ml-6 lg:ml-0">
             <img 
               src={approvalMobileImage} 
               alt="Mobile approval interface"
               className="max-w-md w-full h-auto lg:-translate-x-12"
-              style={{ marginLeft: '-2rem' }}
             />
           </div>
           
-          <div className="flex-1 text-right">
+          <div className="flex-1 text-right lg:pl-12">
             <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Results That 
               <span className="text-foreground block">
