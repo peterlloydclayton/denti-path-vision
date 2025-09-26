@@ -104,9 +104,19 @@
   },
   "providers": {
     "hero": {
-      "title": "Smart Dental Financing Made Simple",
-      "subtitle": "Get approved instantly for dental treatments with flexible payment plans that work for you.",
-      "cta": "Find Your Dentist"
+      "title": "The Future of Patient Financing",
+      "subtitle": "Built on AI",
+      "description": "Transform patient acceptance rates with AI-powered financing that understands dental care. Where traditional financing fails, DentiPay's SCOPE & PATH intelligence delivers.",
+      "mobileDescription": "AI-powered financing that understands dental care.",
+      "cta": "Get Started"
+    },
+    "video": {
+      "badge": "Product Overview",
+      "title": "See how DentiPay transforms your practice",
+      "titleMain": "Intelligence that drives approvals",
+      "description": "See how our AI-powered behavioural financing platform transforms patient approvals and streamlines your practice workflow for maximum efficiency and revenue growth.",
+      "watchText": "Watch Product Overview",
+      "cta": "Get Started"
     }
   },
   "benefits": {

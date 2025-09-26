@@ -1,9 +1,11 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { AnimatedText } from '@/components/ui/animated-text';
+import { useTranslation } from 'react-i18next';
 import dentistImage from '@/assets/dentist-male-white-coat.png';
 
 export const HeroSection = () => {
+  const { t } = useTranslation('marketing');
   return (
     <section className="h-screen relative z-30 overflow-hidden">
       {/* Controlled Background */}
@@ -75,8 +77,8 @@ export const HeroSection = () => {
       <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4 mobile-landscape-title">
         <AnimatedText>
           <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight mobile-landscape-text">
-            The Future of Patient Financing
-            <span className="block text-4xl mt-2 text-intelligence">Built on AI</span>
+            {t('providers.hero.title')}
+            <span className="block text-4xl mt-2 text-intelligence">{t('providers.hero.subtitle')}</span>
           </h1>
         </AnimatedText>
       </div>
@@ -85,8 +87,8 @@ export const HeroSection = () => {
       <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-20 w-1/2">
         <AnimatedText>
           <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-            The Future of Patient Financing
-            <span className="block text-4xl lg:text-6xl mt-2 text-intelligence">Built on AI</span>
+            {t('providers.hero.title')}
+            <span className="block text-4xl lg:text-6xl mt-2 text-intelligence">{t('providers.hero.subtitle')}</span>
           </h1>
         </AnimatedText>
       </div>
@@ -95,8 +97,7 @@ export const HeroSection = () => {
       <div className="hidden md:block absolute top-[50%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
-            Transform patient acceptance rates with AI-powered financing that understands dental care. 
-            Where traditional financing fails, DentiPay's SCOPE & PATH intelligence delivers.
+            {t('providers.hero.description')}
           </p>
         </AnimatedText>
       </div>
@@ -105,7 +106,7 @@ export const HeroSection = () => {
       <div className="block sm:hidden absolute top-[38%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
         <AnimatedText delay={0.2}>
           <p className="text-base text-foreground/80 font-medium leading-relaxed text-left">
-            AI-powered financing that understands dental care.
+            {t('providers.hero.mobileDescription')}
           </p>
         </AnimatedText>
       </div>
@@ -115,7 +116,7 @@ export const HeroSection = () => {
         <Button 
           className="h-16 text-xl bg-intelligence hover:bg-intelligence/90 text-intelligence-foreground shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
-          Get Started
+          {t('providers.hero.cta')}
         </Button>
       </div>
 
@@ -124,7 +125,7 @@ export const HeroSection = () => {
         <Button 
           className="h-12 text-lg bg-intelligence hover:bg-intelligence/90 text-intelligence-foreground shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
-          Get Started
+          {t('providers.hero.cta')}
         </Button>
       </div>
     </section>

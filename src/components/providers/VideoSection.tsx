@@ -2,6 +2,7 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import networkImage from '@/assets/group-dentists-women-men-tp.png';
 
 interface VideoSectionProps {
@@ -10,6 +11,7 @@ interface VideoSectionProps {
 }
 
 export const VideoSection = ({ imagePosition = 'left', mobileImagePosition = 'top' }: VideoSectionProps) => {
+  const { t } = useTranslation('marketing');
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [objectPosition, setObjectPosition] = useState('65% center');
@@ -96,8 +98,8 @@ export const VideoSection = ({ imagePosition = 'left', mobileImagePosition = 'to
                     {/* Bottom Overlay Text */}
                     <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                       <div className="text-white">
-                        <p className="text-sm opacity-90 mb-2">Product Overview</p>
-                        <h3 className="text-lg font-semibold">See how DentiPay transforms your practice</h3>
+                        <p className="text-sm opacity-90 mb-2">{t('providers.video.badge')}</p>
+                        <h3 className="text-lg font-semibold">{t('providers.video.title')}</h3>
                       </div>
                     </div>
                   </div>
@@ -118,26 +120,23 @@ export const VideoSection = ({ imagePosition = 'left', mobileImagePosition = 'to
                 <AnimatedText>
                   <div className="space-y-6">
                      <div className="inline-flex items-center px-4 py-2 rounded-full bg-dental-blue text-dental-blue-dark text-sm font-medium">
-                      Product Overview
+                      {t('providers.video.badge')}
                     </div>
                     <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                      Intelligence that<br />
-                      <span className="text-black">drives approvals</span>
+                      {t('providers.video.titleMain')}
                     </h2>
                     <p className="text-xl text-muted-foreground leading-relaxed">
-                      See how our AI-powered behavioural financing platform 
-                      transforms patient approvals and streamlines your practice workflow 
-                      for maximum efficiency and revenue growth.
+                      {t('providers.video.description')}
                     </p>
                     <div className="flex items-center gap-4 pt-4">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        Watch Product Overview
+                        {t('providers.video.watchText')}
                       </div>
                     </div>
                     <div className="flex justify-center md:justify-end mt-6 px-6 md:mr-4">
                       <Button className="bg-black text-white hover:bg-black/90 rounded-full px-10 py-4 md:px-8 md:py-3 text-base font-medium">
-                        Get Started
+                        {t('providers.video.cta')}
                       </Button>
                     </div>
                   </div>
