@@ -187,14 +187,6 @@ export const HomeRevolutionaryResultsSection = () => {
 
         {/* Split-Screen Transformation Widget */}
         <ScrollReveal>
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-foreground mb-4">
-              The Transformation
-            </h3>
-            <p className="text-lg text-muted-foreground">
-              See how we revolutionize every aspect of dental financing
-            </p>
-          </div>
 
           <div className="space-y-8">
             {beforeAfterComparisons.map((comparison, index) => (
