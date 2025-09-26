@@ -30,6 +30,7 @@ import { VideoSection } from "@/components/ui/video-section";
 import { ScrollReveal, StaggerContainer, StaggerItem, MagneticButton, FloatingElements } from "@/components/ui/enhanced-animations";
 import { HoverCard, CountUp, ProgressiveImage, GlowButton } from "@/components/ui/micro-interactions";
 import { HomeHeroSection } from "@/components/home/HomeHeroSection";
+import { HomeProblemSection } from "@/components/home/HomeProblemSection";
 import heroImage from "@/assets/hero-dental-office-clean.jpg";
 import teamImage from "@/assets/dental-team.jpg";
 import patientImage from "@/assets/happy-patient.jpg";
@@ -140,45 +141,7 @@ const Index = () => {
       <HomeHeroSection />
 
       {/* Problem/Solution Section */}
-      <section className="py-20 bg-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Traditional Financing Wasn't Built for Dental Care
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-12">
-              Traditional lenders don't understand dental procedures, patient needs, or practice workflows. 
-              This creates barriers that hurt both providers and patients.
-            </p>
-          </ScrollReveal>
-
-          <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.1}>
-            {challenges.map((challenge, index) => (
-              <StaggerItem key={index}>
-                <HoverCard>
-                  <Card className="h-full border-border bg-background">
-                    <CardContent className="p-6 text-center">
-                      <motion.div 
-                        className="p-3 bg-destructive/10 rounded-lg mx-auto mb-4 w-fit"
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <challenge.icon className="h-8 w-8 text-destructive" />
-                      </motion.div>
-                      <div className="text-2xl font-bold text-foreground mb-2">
-                        {challenge.stat}
-                      </div>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {challenge.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </HoverCard>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
+      <HomeProblemSection />
 
       {/* Stats Section */}
       <ParallaxSection className="py-20">
