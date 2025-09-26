@@ -74,11 +74,6 @@ export const HomeProblemSection = () => {
     <section className="py-24 bg-gradient-to-b from-surface to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-destructive/10 border border-destructive/20 text-destructive font-medium text-sm mb-6">
-            <AlertTriangle className="w-4 h-4" />
-            The Traditional Financing Crisis
-          </div>
-          
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Transforming Dental Finance
           </h2>
