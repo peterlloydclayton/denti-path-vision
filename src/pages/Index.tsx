@@ -12,14 +12,14 @@ const Index = () => {
       {/* Hero Section */}
       <HomeHeroSection />
 
+      {/* Video Platform Demo */}
+      <HomeVideoSection />
+
       {/* Problem/Solution Section */}
       <HomeProblemSection />
 
       {/* Trinity Intelligence System */}
       <HomeTrinitySection />
-
-      {/* Video Platform Demo */}
-      <HomeVideoSection />
 
       {/* Revolutionary Results */}
       <HomeRevolutionaryResultsSection />
