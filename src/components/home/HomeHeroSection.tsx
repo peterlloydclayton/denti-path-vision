@@ -112,8 +112,8 @@ export const HomeHeroSection = () => {
         </AnimatedText>
       </div>
       
-      {/* Desktop Buttons - 3em below subtitle, aligned with text */}
-      <div className="hidden md:block absolute top-[58%] left-12 z-[120]">
+      {/* Desktop Buttons - moved down 15% more, aligned with text */}
+      <div className="hidden md:block absolute top-[73%] left-12 z-[120]">
         <div className="flex gap-4">
           <Button 
             className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
