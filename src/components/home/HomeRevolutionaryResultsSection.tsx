@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { TrendingUp, Clock, Users, DollarSign, Target, Zap, Award, Building2, ArrowUp, Sparkles } from 'lucide-react';
+import { TrendingUp, Clock, Users, DollarSign, Target, Zap, Award, Building2, ArrowUp, Sparkles, CheckCircle, Brain } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
 interface AnimatedCounterProps {
@@ -85,6 +85,19 @@ export const HomeRevolutionaryResultsSection = () => {
       label: 'Comprehensive Analysis'
     }
   }];
+
+  const getComparisonIcon = (metric: string) => {
+    switch (metric) {
+      case 'Approval Rate':
+        return CheckCircle;
+      case 'Decision Time':
+        return Zap;
+      case 'Data Points':
+        return Brain;
+      default:
+        return Zap;
+    }
+  };
   return <section className="py-24 bg-gradient-to-b from-surface to-background relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0">
@@ -256,7 +269,10 @@ export const HomeRevolutionaryResultsSection = () => {
                           ease: "easeInOut"
                         }}
                       >
-                        <Zap className="w-6 h-6" />
+                        {(() => {
+                          const IconComponent = getComparisonIcon(comparison.metric);
+                          return <IconComponent className="w-6 h-6" />;
+                        })()}
                       </motion.div>
                     </div>
 
