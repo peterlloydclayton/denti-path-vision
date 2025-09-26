@@ -29,7 +29,7 @@ export const HomeTrinitySection = () => {
       icon: Brain,
       title: "SCOPE: Strategic Clinical Operations Engine",
       description: "Intelligence that analyzes 50+ data points for clinical necessity assessment and revenue optimization",
-      stat: "50+ Data Points"
+      stat: "300% Patient Acceptance"
     }
   ];
 
