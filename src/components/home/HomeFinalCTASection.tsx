@@ -122,34 +122,6 @@ export function HomeFinalCTASection() {
           </motion.p>
         </ScrollReveal>
 
-        {/* Social Proof */}
-        <ScrollReveal className="text-center mt-20">
-          <motion.div className="inline-flex items-center space-x-8 text-blue-200" initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          delay: 0.8,
-          duration: 0.8
-        }}>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-300">10,000+</div>
-              <div className="text-sm">Happy Practices</div>
-            </div>
-            <div className="w-px h-12 bg-white/30" />
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-300">$2B+</div>
-              <div className="text-sm">Financed</div>
-            </div>
-            <div className="w-px h-12 bg-white/30" />
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-300">99.9%</div>
-              <div className="text-sm">Uptime</div>
-            </div>
-          </motion.div>
-        </ScrollReveal>
       </div>
     </ParallaxSection>;
 }
