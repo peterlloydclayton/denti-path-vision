@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { TrendingUp, Clock, Users, DollarSign, Target, Zap, Award, Building2, ArrowUp, Sparkles, CheckCircle, Brain, ArrowRight, ArrowDown } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
 import maleDentistImage from '@/assets/male-dentist-white.png';
 interface AnimatedCounterProps {
@@ -133,17 +135,37 @@ export const HomeRevolutionaryResultsSection = () => {
         {/* Text Container - Properly Constrained */}
         <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pr-8 order-1 lg:order-2 flex items-center">
           <div className="text-left px-4 sm:px-6 lg:px-0">
-            <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
               Results That 
               <span className="text-foreground block">
                 Redefine Possible
               </span>
             </h2>
             
-            <p className="text-xl text-muted-foreground mb-8 px-6 sm:px-8 lg:px-0">
+            <p className="text-xl text-muted-foreground mb-6 px-6 sm:px-8 lg:px-0">
               These aren't just improvements—they're revolutionary leaps that transform 
               entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.
             </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-start items-start mb-8 px-6 sm:px-8 lg:px-0">
+              <Link to="/providers">
+                <Button
+                  className="w-64 h-12 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-base px-16 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
+                  <span>For Providers</span>
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link to="/patients">
+                <Button
+                  className="w-64 h-12 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-base px-16 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
+                  <span>For Patients</span>
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
