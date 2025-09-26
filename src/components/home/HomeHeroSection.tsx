@@ -40,22 +40,22 @@ export const HomeHeroSection = () => {
       <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop Layout */}
         <div className="hidden lg:flex justify-center items-center min-h-screen">
-          <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-xl min-h-screen relative z-[100]">
+          <div className="w-full min-h-screen relative z-[100]">
             <img 
               src={dentistImage}
               alt="Intelligence reshaping dental finance"
-              className="absolute bottom-0 left-1/2 xl:left-[40%] 2xl:left-[40%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full object-cover object-bottom z-[110] h-[85vh]"
             />
           </div>
         </div>
 
         {/* Tablet Layout */}
         <div className="hidden sm:flex lg:hidden justify-center items-center min-h-screen">
-          <div className="w-full max-w-md min-h-screen relative z-[100]">
+          <div className="w-full min-h-screen relative z-[100]">
             <img 
               src={dentistImage}
               alt="Intelligence reshaping dental finance"
-              className="absolute bottom-0 left-[5%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full object-cover object-bottom z-[110] h-[85vh]"
             />
           </div>
         </div>
