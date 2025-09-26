@@ -27,19 +27,19 @@ export const HomeProblemSection = () => {
         {/* CTA Buttons */}
         <ScrollReveal className="mt-16">
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link to="/providers">
-              <Button
-                className="w-72 h-14 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-lg px-20 transition-all duration-300 hover:scale-105 hover:shadow-lg"
-              >
-                <span>{t('home.problem.ctaProviders')}</span>
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
             <Link to="/patients">
               <Button
                 className="w-72 h-14 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-lg px-16 transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
                 <span>{t('home.problem.ctaPatients')}</span>
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link to="/providers">
+              <Button
+                className="w-72 h-14 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-lg px-20 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
+                <span>{t('home.problem.ctaProviders')}</span>
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>

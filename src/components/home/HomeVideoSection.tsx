@@ -134,9 +134,12 @@ export const HomeVideoSection = ({ imagePosition = 'left', mobileImagePosition =
                         {t('home.video.watchText')}
                       </div>
                     </div>
-                    <div className="flex justify-center md:justify-end mt-6 px-6 md:mr-4">
-                      <Button className="bg-black text-white hover:bg-black/90 rounded-full px-10 py-4 md:px-8 md:py-3 text-base font-medium">
-                        {t('home.video.cta')}
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-end mt-6 px-6 md:mr-4">
+                      <Button className="bg-foreground text-background rounded-full hover:bg-foreground/90 px-8 py-3 text-base font-medium">
+                        {t('home.video.ctaPatients', 'For Patients')}
+                      </Button>
+                      <Button className="bg-foreground text-background rounded-full hover:bg-foreground/90 px-8 py-3 text-base font-medium">
+                        {t('home.video.ctaProviders', 'For Providers')}
                       </Button>
                     </div>
                   </div>

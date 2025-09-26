@@ -100,15 +100,15 @@ export function HomeFinalCTASection() {
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">{t('home.finalCTA.learnMore')}</h3>
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
             <MagneticButton>
-               <Button size="lg" className="text-2xl px-20 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
-                 {t('home.finalCTA.ctaProviders', 'For Providers')}
+               <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
+                 {t('home.finalCTA.ctaPatients', 'For Patients')}
                  <ArrowRight className="ml-3 w-6 h-6" />
                </Button>
             </MagneticButton>
             
             <MagneticButton>
-               <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
-                 {t('home.finalCTA.ctaPatients', 'For Patients')}
+               <Button size="lg" className="text-2xl px-20 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72">
+                 {t('home.finalCTA.ctaProviders', 'For Providers')}
                  <ArrowRight className="ml-3 w-6 h-6" />
                </Button>
             </MagneticButton>

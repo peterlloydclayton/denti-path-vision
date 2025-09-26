@@ -86,7 +86,9 @@
       "description": "Watch how DentiPay's revolutionary AI platform transforms dental financing with pre-cognitive intelligence, instant decisions, and seamless integration that benefits both patients and providers.",
       "overlayTitle": "Experience the future of dental financing",
       "watchText": "Watch Platform Demo",
-      "cta": "Get Started"
+      "cta": "Get Started",
+      "ctaPatients": "For Patients",
+      "ctaProviders": "For Providers"
     }
   },
   "patients": {

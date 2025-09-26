@@ -146,19 +146,19 @@ export const HomeRevolutionaryResultsSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-start items-start mb-8 px-6 sm:px-8 lg:px-0">
-              <Link to="/providers">
-                <Button
-                  className="w-64 h-12 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-base px-16 transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                >
-                  <span>{t('home.results.ctaProviders')}</span>
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
               <Link to="/patients">
                 <Button
                   className="w-64 h-12 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-base px-16 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   <span>{t('home.results.ctaPatients')}</span>
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link to="/providers">
+                <Button
+                  className="w-64 h-12 bg-foreground text-background rounded-full hover:bg-foreground/90 font-semibold text-base px-16 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
+                  <span>{t('home.results.ctaProviders')}</span>
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
