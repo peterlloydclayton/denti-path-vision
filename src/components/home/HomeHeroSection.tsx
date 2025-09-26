@@ -129,14 +129,14 @@ export const HomeHeroSection = () => {
 
       {/* Mobile Portrait Button - Between text and image */}
       <div className="block sm:hidden absolute top-[50%] left-6 z-[150] mobile-landscape-button">
-        <div className="flex flex-col gap-3">
+        <div className="flex gap-3">
           <Button 
-            className="h-12 text-lg bg-black hover:bg-black/90 text-white shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
           >
             For Patients
           </Button>
           <Button 
-            className="h-12 text-lg bg-black hover:bg-black/90 text-white shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
           >
             For Providers
           </Button>
