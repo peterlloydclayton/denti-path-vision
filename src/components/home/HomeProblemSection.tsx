@@ -40,7 +40,7 @@ export const HomeProblemSection = () => {
               <motion.img 
                 src={womanDoctorImage} 
                 alt="Professional healthcare provider" 
-                className="w-96 h-96 mx-auto object-contain scale-150 self-end"
+                className="w-96 h-96 mx-auto object-contain scale-[1.275] self-end"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -93,7 +93,7 @@ export const HomeProblemSection = () => {
                 <img 
                   src={womanDoctorImage} 
                   alt="Professional healthcare provider" 
-                  className="w-96 h-96 object-contain scale-150"
+                  className="w-96 h-96 object-contain scale-[1.275]"
                 />
               </motion.div>
 
