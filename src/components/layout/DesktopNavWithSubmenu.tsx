@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Home, Users, Stethoscope, Brain, Building, ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
 import { LanguageSelector } from '@/components/ui/language-selector';
@@ -31,6 +31,7 @@ const navItems = [
 
 export const DesktopNavWithSubmenu = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
 
@@ -98,15 +99,13 @@ export const DesktopNavWithSubmenu = () => {
                           : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
                         }
                       `}
-                      asChild
+                      onClick={() => {
+                        setCurrentPath(item.href);
+                        navigate(item.href);
+                      }}
                     >
-                      <Link
-                        to={item.href}
-                        onClick={() => setCurrentPath(item.href)}
-                      >
-                        <Icon size={16} />
-                        <span>{t(item.label)}</span>
-                      </Link>
+                      <Icon size={16} />
+                      <span>{t(item.label)}</span>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <div className="w-48 p-2">
