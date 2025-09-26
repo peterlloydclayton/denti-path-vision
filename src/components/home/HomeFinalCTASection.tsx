@@ -4,69 +4,45 @@ import { ArrowRight, Sparkles, Zap, Users, TrendingUp } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, MagneticButton } from "@/components/ui/enhanced-animations";
 import { ParallaxSection } from "@/components/ui/parallax-section";
 import dentistWomanImage from '@/assets/dentist-woman-white-transparent.png';
-
 export function HomeFinalCTASection() {
-  const benefits = [
-    {
-      icon: Users,
-      text: "Patients get the care they need"
-    },
-    {
-      icon: TrendingUp,
-      text: "Providers get immediate payment"
-    },
-    {
-      icon: Sparkles,
-      text: "Intelligent, dental-specific AI"
-    },
-    {
-      icon: Zap,
-      text: "Barriers eliminated, access expanded"
-    }
-  ];
-
-  return (
-    <ParallaxSection className="py-32 bg-slate-900 relative overflow-hidden">
+  const benefits = [{
+    icon: Users,
+    text: "Patients get the care they need"
+  }, {
+    icon: TrendingUp,
+    text: "Providers get immediate payment"
+  }, {
+    icon: Sparkles,
+    text: "Intelligent, dental-specific AI"
+  }, {
+    icon: Zap,
+    text: "Barriers eliminated, access expanded"
+  }];
+  return <ParallaxSection className="py-32 bg-slate-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
-      <motion.div 
-        className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
-        animate={{ 
-          x: [0, 50, 0],
-          y: [0, -30, 0],
-          scale: [1, 1.1, 1]
-        }}
-        transition={{ 
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div 
-        className="absolute bottom-1/4 -right-32 w-64 h-64 bg-accent/10 rounded-full blur-3xl"
-        animate={{ 
-          x: [0, -50, 0],
-          y: [0, 30, 0],
-          scale: [1.1, 1, 1.1]
-        }}
-        transition={{ 
-          duration: 25,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
+      <motion.div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl" animate={{
+      x: [0, 50, 0],
+      y: [0, -30, 0],
+      scale: [1, 1.1, 1]
+    }} transition={{
+      duration: 20,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }} />
+      <motion.div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-accent/10 rounded-full blur-3xl" animate={{
+      x: [0, -50, 0],
+      y: [0, 30, 0],
+      scale: [1.1, 1, 1.1]
+    }} transition={{
+      duration: 25,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center px-4 py-2 bg-blue-500/20 rounded-full text-blue-300 font-medium mb-6"
-          >
-            <Sparkles className="w-4 h-4 mr-2" />
-            The Future of Dental Financing is Here
-          </motion.div>
+          
           
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
             <span className="block">Ready to</span>
@@ -85,24 +61,23 @@ export function HomeFinalCTASection() {
         {/* Benefits Grid */}
         <ScrollReveal>
           <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16" staggerDelay={0.1}>
-            {benefits.map((benefit, index) => (
-              <StaggerItem key={index}>
-                 <motion.div 
-                   className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20"
-                   whileHover={{ y: -5, scale: 1.02 }}
-                   transition={{ duration: 0.3 }}
-                 >
-                   <motion.div 
-                     className="p-3 bg-blue-500/20 rounded-2xl mb-4"
-                     whileHover={{ rotate: 360 }}
-                     transition={{ duration: 0.5 }}
-                   >
+            {benefits.map((benefit, index) => <StaggerItem key={index}>
+                 <motion.div className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20" whileHover={{
+              y: -5,
+              scale: 1.02
+            }} transition={{
+              duration: 0.3
+            }}>
+                   <motion.div className="p-3 bg-blue-500/20 rounded-2xl mb-4" whileHover={{
+                rotate: 360
+              }} transition={{
+                duration: 0.5
+              }}>
                      <benefit.icon className="w-6 h-6 text-blue-300" />
                    </motion.div>
                    <p className="font-semibold text-white">{benefit.text}</p>
                  </motion.div>
-              </StaggerItem>
-            ))}
+              </StaggerItem>)}
           </StaggerContainer>
         </ScrollReveal>
 
@@ -110,45 +85,44 @@ export function HomeFinalCTASection() {
         <ScrollReveal className="text-center">
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
             <MagneticButton>
-              <Button 
-                size="lg" 
-                className="text-2xl px-16 py-8 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white border-0 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 rounded-xl"
-              >
+              <Button size="lg" className="text-2xl px-16 py-8 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white border-0 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 rounded-xl">
                 Transform for Providers
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
             </MagneticButton>
             
             <MagneticButton>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="text-2xl px-16 py-8 border-3 border-white/30 hover:border-white bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white transition-all duration-300 rounded-xl"
-              >
+              <Button variant="outline" size="lg" className="text-2xl px-16 py-8 border-3 border-white/30 hover:border-white bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white transition-all duration-300 rounded-xl">
                 Transform for Patients
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
             </MagneticButton>
           </div>
           
-          <motion.p 
-            className="text-blue-200"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
+          <motion.p className="text-blue-200" initial={{
+          opacity: 0
+        }} whileInView={{
+          opacity: 1
+        }} transition={{
+          delay: 0.5,
+          duration: 0.8
+        }}>
             No setup fees • No monthly minimums • Integration in under 24 hours
           </motion.p>
         </ScrollReveal>
 
         {/* Social Proof */}
         <ScrollReveal className="text-center mt-20">
-          <motion.div
-            className="inline-flex items-center space-x-8 text-blue-200"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-          >
+          <motion.div className="inline-flex items-center space-x-8 text-blue-200" initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.8,
+          duration: 0.8
+        }}>
             <div className="text-center">
               <div className="text-3xl font-bold text-blue-300">10,000+</div>
               <div className="text-sm">Happy Practices</div>
@@ -166,6 +140,5 @@ export function HomeFinalCTASection() {
           </motion.div>
         </ScrollReveal>
       </div>
-    </ParallaxSection>
-  );
+    </ParallaxSection>;
 }
