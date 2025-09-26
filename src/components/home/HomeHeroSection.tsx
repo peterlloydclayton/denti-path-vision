@@ -75,7 +75,7 @@ export const HomeHeroSection = () => {
       </div>
       
       {/* Mobile Portrait Title */}
-      <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4 mobile-landscape-title">
+      <div className="block sm:hidden absolute top-[12%] left-6 z-20 w-3/4 mobile-landscape-title">
         <AnimatedText>
           <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight mobile-landscape-text">
             {t('home.hero.title')}
@@ -104,10 +104,12 @@ export const HomeHeroSection = () => {
       </div>
       
       {/* Mobile Portrait Subtitle */}
-      <div className="block sm:hidden absolute top-[38%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
+      <div className="block sm:hidden absolute top-[40%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
         <AnimatedText delay={0.2}>
           <p className="text-base text-foreground/80 font-medium leading-relaxed text-left">
-            {t('home.hero.mobileDescription')}
+            AI-powered financing<br />
+            that works for<br />
+            everyone
           </p>
         </AnimatedText>
       </div>
