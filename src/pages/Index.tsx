@@ -33,6 +33,7 @@ import { HomeHeroSection } from '@/components/home/HomeHeroSection';
 import { HomeProblemSection } from '@/components/home/HomeProblemSection';
 import { HomeTrinitySection } from '@/components/home/HomeTrinitySection';
 import { HomePreCognitiveSection } from '@/components/home/HomePreCognitiveSection';
+import { HomeInteractiveSection } from '@/components/home/HomeInteractiveSection';
 import heroImage from "@/assets/hero-dental-office-clean.jpg";
 import teamImage from "@/assets/dental-team.jpg";
 import patientImage from "@/assets/happy-patient.jpg";
@@ -150,6 +151,9 @@ const Index = () => {
 
       {/* Pre-Cognitive Intelligence Showcase */}
       <HomePreCognitiveSection />
+
+      {/* Interactive Journey & Tools */}
+      <HomeInteractiveSection />
 
       {/* Stats Section */}
       <ParallaxSection className="py-20">
