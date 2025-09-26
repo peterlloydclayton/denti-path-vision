@@ -139,7 +139,7 @@ export const HomeRevolutionaryResultsSection = () => {
               </span>
             </h2>
             
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-xl text-muted-foreground mb-8 px-6 sm:px-8 lg:px-0">
               These aren't just improvements—they're revolutionary leaps that transform 
               entire industries. See how DentiPay's pre-cognitive intelligence completely transforms traditional financing metrics across every dimension.
             </p>
