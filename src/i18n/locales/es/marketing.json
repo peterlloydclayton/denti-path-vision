@@ -98,6 +98,17 @@
     "benefits": {
       "title": "Por Qué Los Pacientes Aman DentiPay",
       "subtitle": "Experimenta la forma más fácil de financiar tu cuidado dental"
+    },
+    "finalCTA": {
+      "title": "Tu Sonrisa Perfecta Te Espera",
+      "description": "No permitas que el costo sea una barrera para la atención dental que mereces. Más de 1,200 proveedores a nivel nacional con opciones de financiamiento disponibles en tu primera visita.",
+      "cta": "Pre-Calificar Ahora",
+      "imageAlt": "Hermosa sonrisa - éxito del financiamiento dental",
+      "trustElements": {
+        "creditScore": "Sin impacto en el puntaje crediticio para la precalificación",
+        "instantDecisions": "Decisiones instantáneas en menos de 60 segundos",
+        "support": "Soporte al paciente 24/7"
+      }
     }
   },
   "providers": {

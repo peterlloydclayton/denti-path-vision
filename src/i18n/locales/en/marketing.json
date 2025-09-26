@@ -100,6 +100,17 @@
     "benefits": {
       "title": "Why Patients Love DentiPay",
       "subtitle": "Experience the easiest way to finance your dental care"
+    },
+    "finalCTA": {
+      "title": "Your Perfect Smile Awaits",
+      "description": "Don't let cost be a barrier to the dental care you deserve. Over 1,200 providers nationwide with financing options available at your first visit.",
+      "cta": "Get Pre-Approved Now",
+      "imageAlt": "Beautiful smile - dental financing success",
+      "trustElements": {
+        "creditScore": "No impact to credit score for pre-qualification",
+        "instantDecisions": "Instant decisions in under 60 seconds",
+        "support": "24/7 patient support"
+      }
     }
   },
   "providers": {

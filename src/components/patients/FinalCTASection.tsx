@@ -1,13 +1,16 @@
 import { CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AnimatedText } from '@/components/ui/animated-text';
+import { useTranslation } from 'react-i18next';
 import smileImage from '@/assets/smile.png';
 
 export const FinalCTASection = () => {
+  const { t } = useTranslation('marketing');
+
   const trustElements = [
-    'No impact to credit score for pre-qualification',
-    'Instant decisions in under 60 seconds',
-    '24/7 patient support'
+    t('patients.finalCTA.trustElements.creditScore'),
+    t('patients.finalCTA.trustElements.instantDecisions'),
+    t('patients.finalCTA.trustElements.support')
   ];
 
   return (
@@ -15,33 +18,22 @@ export const FinalCTASection = () => {
       <div className="container mx-auto px-6 text-center">
         <AnimatedText>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Your Perfect Smile Awaits
+            {t('patients.finalCTA.title')}
           </h2>
           <p className="text-xl mb-8 text-muted-foreground max-w-3xl mx-auto">
-            Don't let cost be a barrier to the dental care you deserve. Over 1,200 providers 
-            nationwide with financing options available at your first visit.
+            {t('patients.finalCTA.description')}
           </p>
           
           {/* Final Trust Elements */}
           <div className="grid gap-6 max-w-2xl mx-auto mb-12">
-            <div className="flex items-start gap-4 text-left">
-              <CheckCircle size={28} className="text-dental-blue flex-shrink-0 mt-1" />
-              <span className="text-xl font-semibold text-slate-600 leading-tight">
-                No impact to credit score for pre-qualification
-              </span>
-            </div>
-            <div className="flex items-start gap-4 text-left">
-              <CheckCircle size={28} className="text-dental-blue flex-shrink-0 mt-1" />
-              <span className="text-xl font-semibold text-slate-600 leading-tight">
-                Instant decisions in under 60 seconds
-              </span>
-            </div>
-            <div className="flex items-start gap-4 text-left">
-              <CheckCircle size={28} className="text-dental-blue flex-shrink-0 mt-1" />
-              <span className="text-xl font-semibold text-slate-600 leading-tight">
-                24/7 patient support
-              </span>
-            </div>
+            {trustElements.map((element, index) => (
+              <div key={index} className="flex items-start gap-4 text-left">
+                <CheckCircle size={28} className="text-dental-blue flex-shrink-0 mt-1" />
+                <span className="text-xl font-semibold text-slate-600 leading-tight">
+                  {element}
+                </span>
+              </div>
+            ))}
           </div>
 
           <div className="flex justify-center mb-8">
@@ -50,7 +42,7 @@ export const FinalCTASection = () => {
               className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300 text-xl px-12 py-4 rounded-xl shadow-elegant font-semibold"
               onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
             >
-              Get Pre-Approved Now
+              {t('patients.finalCTA.cta')}
             </Button>
           </div>
 
@@ -58,7 +50,7 @@ export const FinalCTASection = () => {
           <div className="flex justify-center -mb-24">
             <img 
               src={smileImage} 
-              alt="Beautiful smile - dental financing success" 
+              alt={t('patients.finalCTA.imageAlt')}
               className="w-auto h-auto max-w-[16rem]"
             />
           </div>
