@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { TrendingUp, Clock, Users, DollarSign, Target, Zap, Award, Building2, ArrowUp, Sparkles, CheckCircle, Brain } from 'lucide-react';
+import { TrendingUp, Clock, Users, DollarSign, Target, Zap, Award, Building2, ArrowUp, Sparkles } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
 interface AnimatedCounterProps {
@@ -53,44 +53,7 @@ const AnimatedCounter = ({
     </span>;
 };
 export const HomeRevolutionaryResultsSection = () => {
-  const revolutionaryStats = [
-    {
-      icon: CheckCircle,
-      value: 95,
-      suffix: '%',
-      prefix: '',
-      decimals: 0,
-      label: 'Approval Rate',
-      comparison: 'vs 20-40% Traditional',
-      description: 'Revolutionary pre-cognitive analysis achieves industry-leading approval rates by understanding patient intent before traditional metrics.',
-      improvement: '+237% vs Industry',
-      color: 'emerald'
-    },
-    {
-      icon: Zap,
-      value: 30,
-      suffix: ' Sec',
-      prefix: '',
-      decimals: 0,
-      label: 'Decision Time',
-      comparison: 'vs 2-4 Weeks Manual',
-      description: 'Lightning-fast AI processing eliminates waiting periods, providing instant financing decisions that transform the patient experience.',
-      improvement: '40,000x Faster',
-      color: 'amber'
-    },
-    {
-      icon: Brain,
-      value: 50,
-      suffix: '+',
-      prefix: '',
-      decimals: 0,
-      label: 'Data Points',
-      comparison: 'vs 3-5 Basic Credit',
-      description: 'Comprehensive AI analysis processes dozens of behavioral, financial, and contextual signals for superior decision accuracy.',
-      improvement: '10x More Insights',
-      color: 'violet'
-    }
-  ];
+  const revolutionaryStats: any[] = [];
   const beforeAfterComparisons = [{
     metric: 'Approval Rate',
     before: {
