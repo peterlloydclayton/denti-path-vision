@@ -282,7 +282,7 @@ export const HomeRevolutionaryResultsSection = () => {
                       </div>
                     </div>
 
-                    {/* Center Divider with Transformation Arrow */}
+                    {/* Center Divider with Transformation Icon */}
                     <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 hidden md:block">
                       <motion.div 
                         className="bg-primary text-primary-foreground p-4 rounded-full shadow-xl border-4 border-background relative"
@@ -300,11 +300,6 @@ export const HomeRevolutionaryResultsSection = () => {
                           const IconComponent = getComparisonIcon(comparison.metric);
                           return <IconComponent className="w-6 h-6" />;
                         })()}
-                        
-                        {/* Simple right arrow below icon */}
-                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-6">
-                          <ArrowRight className="w-8 h-8 text-primary" strokeWidth={3} />
-                        </div>
                       </motion.div>
                     </div>
 
