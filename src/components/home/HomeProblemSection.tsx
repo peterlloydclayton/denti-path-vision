@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Zap } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/enhanced-animations';
 import { HomeProblemCards } from './HomeProblemCards';
+import womanDoctorImage from '@/assets/woman-doctor-african-transparent.png';
 
 export const HomeProblemSection = () => {
 
@@ -19,6 +20,20 @@ export const HomeProblemSection = () => {
         </ScrollReveal>
 
         <HomeProblemCards />
+
+        {/* Image with Subtitle Section */}
+        <ScrollReveal className="mt-16 mb-16 text-center">
+          <div className="max-w-4xl mx-auto">
+            <img 
+              src={womanDoctorImage} 
+              alt="Professional healthcare provider" 
+              className="w-64 h-64 mx-auto mb-6 object-contain"
+            />
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground">
+              Transforming a future where financing never limits dental care
+            </h3>
+          </div>
+        </ScrollReveal>
 
         {/* Fighting For Impact Summary */}
         <ScrollReveal className="mt-16 text-center">
@@ -52,7 +67,7 @@ export const HomeProblemSection = () => {
             
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold">
               <Zap className="w-5 h-5" />
-              Transforming a future where financing never limits dental care
+              Powered by Intelligent Finance Solutions
             </div>
           </div>
         </ScrollReveal>
