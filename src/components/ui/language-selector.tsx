@@ -34,6 +34,7 @@ export const LanguageSelector = () => {
           className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-smooth"
         >
           <Globe size={16} />
+          <span className="sm:hidden">Language</span>
           <span className="hidden sm:inline">{currentLanguage.flag}</span>
         </Button>
       </DropdownMenuTrigger>
