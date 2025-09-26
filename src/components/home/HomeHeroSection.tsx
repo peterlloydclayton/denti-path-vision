@@ -7,10 +7,12 @@ import { GlowButton, ProgressiveImage } from '@/components/ui/micro-interactions
 import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { FloatingIcons } from '@/components/ui/floating-icons';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import heroImage from '@/assets/hero-dentist-woman-white-transparent.png';
 
 export const HomeHeroSection = () => {
   const { t } = useTranslation('marketing');
+  const navigate = useNavigate();
   return (
     <section className="h-screen relative z-30 overflow-hidden">
       {/* Background */}
@@ -97,11 +99,13 @@ export const HomeHeroSection = () => {
         <div className="flex gap-4">
           <Button 
             className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            onClick={() => navigate('/patients')}
           >
             {t('home.hero.ctaPatients')}
           </Button>
           <Button 
             className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            onClick={() => navigate('/providers')}
           >
             {t('home.hero.ctaProviders')}
           </Button>
@@ -113,11 +117,13 @@ export const HomeHeroSection = () => {
         <div className="flex flex-col gap-3">
           <Button 
             className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            onClick={() => navigate('/patients')}
           >
             {t('home.hero.ctaPatients')}
           </Button>
           <Button 
             className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            onClick={() => navigate('/providers')}
           >
             {t('home.hero.ctaProviders')}
           </Button>
