@@ -104,8 +104,8 @@ export const HomeRevolutionaryResultsSection = () => {
   };
   return <section className="pt-24 pb-0 bg-gradient-to-b from-surface to-background relative overflow-hidden min-h-screen flex flex-col">
       {/* Background Pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
           <div className="grid grid-cols-8 gap-4 h-full">
             {Array.from({
             length: 64
@@ -246,10 +246,10 @@ export const HomeRevolutionaryResultsSection = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  {/* Flowing background animation */}
-                  <div className="absolute inset-0 overflow-hidden">
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent"
+                   {/* Flowing background animation */}
+                   <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                     <motion.div 
+                       className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent pointer-events-none"
                       animate={{
                         x: ['-100%', '100%']
                       }}
@@ -260,8 +260,8 @@ export const HomeRevolutionaryResultsSection = () => {
                         delay: index * 0.5
                       }}
                     />
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/3 to-transparent"
+                     <motion.div 
+                       className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/3 to-transparent pointer-events-none"
                       animate={{
                         x: ['-100%', '100%']
                       }}
