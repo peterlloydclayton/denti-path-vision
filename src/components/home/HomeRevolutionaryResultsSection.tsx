@@ -226,6 +226,33 @@ export const HomeRevolutionaryResultsSection = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
+                  {/* Flowing background animation */}
+                  <div className="absolute inset-0 overflow-hidden">
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent"
+                      animate={{
+                        x: ['-100%', '100%']
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "linear",
+                        delay: index * 0.5
+                      }}
+                    />
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/3 to-transparent"
+                      animate={{
+                        x: ['-100%', '100%']
+                      }}
+                      transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "linear",
+                        delay: index * 0.7 + 1
+                      }}
+                    />
+                  </div>
                   {/* Metric Title */}
                   <div className="text-center py-6 bg-gradient-to-r from-muted/30 to-primary/10 border-b border-border">
                     <h4 className="text-2xl font-bold text-foreground">
