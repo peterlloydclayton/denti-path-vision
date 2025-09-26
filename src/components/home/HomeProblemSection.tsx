@@ -81,10 +81,6 @@ export const HomeProblemSection = () => {
             Traditional financing creates walls between patients and dental care, and between providers and fair compensation. 
             We're transforming the landscape with intelligent, dental-specific solutions that open new possibilities.
           </p>
-          
-          <div className="text-sm text-muted-foreground">
-            <span className="font-medium">Hover to see the DentiPay revolution</span>
-          </div>
         </ScrollReveal>
 
         <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.2}>
