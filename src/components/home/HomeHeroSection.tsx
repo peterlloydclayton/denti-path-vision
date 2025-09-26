@@ -83,7 +83,7 @@ export const HomeHeroSection = () => {
       </div>
       
       {/* Desktop & Tablet Title */}
-      <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[5%] lg:top-[17%] left-12 z-20 w-1/2">
         <AnimatedText>
           <h1 className="text-6xl lg:text-7xl font-bold text-foreground leading-tight">
             Intelligence Reshaping Dental Finance
