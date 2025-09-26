@@ -59,7 +59,7 @@ export const HomeProblemCards = () => {
       },
       dentipay: {
         stat: '300%',
-        solution: 'Healthcare AI',
+        solution: 'Patient Acceptance',
         description: 'Specialized AI understands dental patterns and structures payments that work.'
       }
     }
