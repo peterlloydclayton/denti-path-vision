@@ -261,13 +261,13 @@ export const HomeRevolutionaryResultsSection = () => {
                       </div>
                       
                       <div className="relative z-10 text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-primary mb-3">
+                        <div className="text-4xl md:text-5xl font-bold text-slate-800 mb-3">
                           {comparison.after.value}
                         </div>
-                        <div className="text-lg text-primary mb-4 font-medium">
+                        <div className="text-lg text-slate-700 mb-4 font-medium">
                           {comparison.after.label}
                         </div>
-                        <div className="flex items-center justify-center gap-2 text-primary">
+                        <div className="flex items-center justify-center gap-2 text-slate-700">
                           <Sparkles className="w-5 h-5" />
                           <span className="text-sm font-bold">DentiPay Revolution</span>
                         </div>
@@ -284,18 +284,6 @@ export const HomeRevolutionaryResultsSection = () => {
                         TRANSFORMED
                       </motion.div>
                     </div>
-                  </div>
-
-                  {/* Improvement Badge */}
-                  <div className="absolute top-4 right-4 z-30">
-                    <motion.div 
-                      className="bg-success text-success-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg"
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ delay: 0.3 + index * 0.1, type: "spring" }}
-                    >
-                      REVOLUTIONARY
-                    </motion.div>
                   </div>
                 </motion.div>
               </StaggerItem>
