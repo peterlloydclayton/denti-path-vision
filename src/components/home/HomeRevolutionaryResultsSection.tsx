@@ -99,7 +99,7 @@ export const HomeRevolutionaryResultsSection = () => {
         return Zap;
     }
   };
-  return <section className="py-24 bg-gradient-to-b from-surface to-background relative overflow-hidden">
+  return <section className="pt-24 pb-0 bg-gradient-to-b from-surface to-background relative overflow-hidden min-h-screen flex flex-col">
       {/* Background Pattern */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-5">
@@ -332,52 +332,55 @@ export const HomeRevolutionaryResultsSection = () => {
         </ScrollReveal>
 
         {/* Bottom Impact Statement with Image */}
-        <ScrollReveal>
-          <div className="flex flex-col lg:flex-row items-center lg:items-end mt-16">
-            {/* Text Container - Left Side */}
-            <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pl-8 order-1 lg:order-1 flex items-center">
-              <div className="text-left px-4 sm:px-6 lg:px-0">
-                <h3 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-                  Industry-Defining
-                  <span className="text-foreground block">
-                    Impact
-                  </span>
-                </h3>
-                
-                <p className="text-xl text-muted-foreground mb-8 px-6 sm:px-8 lg:px-0">
-                  These results don't just improve dental financing—they revolutionize it. 
-                  Every metric represents lives changed, practices transformed, and barriers eliminated.
-                </p>
-                
-                <div className="flex flex-wrap items-center gap-6 text-lg text-foreground px-6 sm:px-8 lg:px-0">
-                  <div className="flex items-center gap-2">
-                    <Users className="w-5 h-5 text-foreground" />
-                    <span>Real Patients</span>
-                  </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                  <div className="flex items-center gap-2">
-                    <Building2 className="w-5 h-5 text-foreground" />
-                    <span>Real Practices</span>
-                  </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-foreground" />
-                    <span>Real Revolution</span>
+        <div className="mt-auto">
+          <ScrollReveal>
+            <div className="flex flex-col lg:flex-row items-end">
+              {/* Text Container - Left Side */}
+              <div className="w-full lg:w-3/5 max-w-7xl lg:px-4 lg:pl-8 order-1 lg:order-1 flex items-end pb-8">
+                <div className="text-left px-4 sm:px-6 lg:px-0">
+                  <h3 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+                    Industry-Defining
+                    <span className="text-foreground block">
+                      Impact
+                    </span>
+                  </h3>
+                  
+                  <p className="text-xl text-muted-foreground mb-8 px-6 sm:px-8 lg:px-0">
+                    These results don't just improve dental financing—they revolutionize it. 
+                    Every metric represents lives changed, practices transformed, and barriers eliminated.
+                  </p>
+                  
+                  <div className="flex flex-wrap items-center gap-6 text-lg text-foreground px-6 sm:px-8 lg:px-0">
+                    <div className="flex items-center gap-2">
+                      <Users className="w-5 h-5 text-foreground" />
+                      <span>Real Patients</span>
+                    </div>
+                    <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+                    <div className="flex items-center gap-2">
+                      <Building2 className="w-5 h-5 text-foreground" />
+                      <span>Real Practices</span>
+                    </div>
+                    <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="w-5 h-5 text-foreground" />
+                      <span>Real Revolution</span>
+                    </div>
                   </div>
                 </div>
               </div>
+              
+              {/* Image Container - Right Side - Flush with bottom */}
+              <div className="w-full lg:w-2/5 lg:pr-0 order-2 lg:order-2 flex items-end justify-end">
+                <img 
+                  src={maleDentistImage} 
+                  alt="Professional male dentist"
+                  className="max-w-md w-full h-auto transform scale-x-[-1] block object-bottom"
+                  style={{ marginBottom: '0px' }}
+                />
+              </div>
             </div>
-            
-            {/* Image Container - Right Side - Flush with bottom */}
-            <div className="w-full lg:w-2/5 lg:pr-0 order-2 lg:order-2 flex items-end">
-              <img 
-                src={maleDentistImage} 
-                alt="Professional male dentist"
-                className="max-w-md w-full h-auto lg:mr-0 transform scale-x-[-1] block"
-              />
-            </div>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
+        </div>
       </div>
     </section>;
 };
