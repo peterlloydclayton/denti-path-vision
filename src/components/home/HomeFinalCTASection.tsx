@@ -62,7 +62,7 @@ export function HomeFinalCTASection() {
         <ScrollReveal>
           <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16" staggerDelay={0.1}>
             {benefits.map((benefit, index) => <StaggerItem key={index}>
-                 <motion.div className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20" whileHover={{
+                 <motion.div className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 h-full min-h-[180px] justify-center" whileHover={{
               y: -5,
               scale: 1.02
             }} transition={{
@@ -85,14 +85,14 @@ export function HomeFinalCTASection() {
         <ScrollReveal className="text-center">
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
             <MagneticButton>
-              <Button size="lg" className="text-2xl px-16 py-8 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white border-0 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 rounded-xl">
+              <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl">
                 Transform for Providers
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
             </MagneticButton>
             
             <MagneticButton>
-              <Button variant="outline" size="lg" className="text-2xl px-16 py-8 border-3 border-white/30 hover:border-white bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white transition-all duration-300 rounded-xl">
+              <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl">
                 Transform for Patients
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
