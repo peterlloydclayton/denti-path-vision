@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 interface CustomSliderProps {
@@ -19,10 +19,12 @@ export const CustomSlider = ({
   className
 }: CustomSliderProps) => {
   const [isDragging, setIsDragging] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const percentage = ((value - min) / (max - min)) * 100;
 
   const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
     setIsDragging(true);
     const rect = e.currentTarget.getBoundingClientRect();
     const newPercentage = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
@@ -31,6 +33,7 @@ export const CustomSlider = ({
   }, [min, max, step, onValueChange]);
 
   const handleTouchStart = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
+    e.preventDefault();
     setIsDragging(true);
     const rect = e.currentTarget.getBoundingClientRect();
     const touch = e.touches[0];
@@ -40,24 +43,18 @@ export const CustomSlider = ({
   }, [min, max, step, onValueChange]);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (!isDragging) return;
+    if (!isDragging || !trackRef.current) return;
     
-    const slider = document.querySelector('[data-slider-track]') as HTMLElement;
-    if (!slider) return;
-    
-    const rect = slider.getBoundingClientRect();
+    const rect = trackRef.current.getBoundingClientRect();
     const newPercentage = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
     const newValue = Math.round((min + (newPercentage / 100) * (max - min)) / step) * step;
     onValueChange(Math.max(min, Math.min(max, newValue)));
   }, [isDragging, min, max, step, onValueChange]);
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
-    if (!isDragging) return;
+    if (!isDragging || !trackRef.current) return;
     
-    const slider = document.querySelector('[data-slider-track]') as HTMLElement;
-    if (!slider) return;
-    
-    const rect = slider.getBoundingClientRect();
+    const rect = trackRef.current.getBoundingClientRect();
     const touch = e.touches[0];
     const newPercentage = Math.max(0, Math.min(100, ((touch.clientX - rect.left) / rect.width) * 100));
     const newValue = Math.round((min + (newPercentage / 100) * (max - min)) / step) * step;
@@ -92,7 +89,7 @@ export const CustomSlider = ({
     <div className={cn("relative flex items-center w-full h-6 cursor-pointer", className)}>
       {/* Track */}
       <div
-        data-slider-track
+        ref={trackRef}
         className="relative w-full h-2 bg-dental-blue-light/30 rounded-full"
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
