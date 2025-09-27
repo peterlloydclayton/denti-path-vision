@@ -483,7 +483,7 @@ export const ProviderSearch = () => {
                         <Dialog>
                           <DialogTrigger asChild>
                             <Button 
-                              className="w-full bg-intelligence hover:bg-intelligence/90"
+                              className="w-full bg-intelligence hover:bg-intelligence/90 text-white"
                               onClick={() => setSelectedProvider(provider)}
                             >
                               View Profile
