@@ -38,7 +38,16 @@ export const PaymentCalculator = () => {
     };
   };
 
-  const results = [
+  const allResults = [
+    calculatePayment(loanAmount, interestRate, 36),
+    calculatePayment(loanAmount, interestRate, 48),
+    calculatePayment(loanAmount, interestRate, 60),
+    calculatePayment(loanAmount, interestRate, 72),
+    calculatePayment(loanAmount, interestRate, 84),
+    calculatePayment(loanAmount, interestRate, 96)
+  ];
+
+  const mobileResults = [
     calculatePayment(loanAmount, interestRate, 36),
     calculatePayment(loanAmount, interestRate, 60),
     calculatePayment(loanAmount, interestRate, 96)
@@ -117,51 +126,103 @@ export const PaymentCalculator = () => {
 
       {/* Results Cards */}
       <div className="relative">
-        <Carousel 
-          className="w-full max-w-3xl mx-auto"
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-        >
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {results.map((result, index) => (
-              <CarouselItem key={result.term} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                <AnimatedText delay={index * 0.1}>
-                  <Card className="text-center hover:shadow-elegant transition-smooth hover:-translate-y-1 bg-gradient-to-br from-dental-blue-darker/5 to-dental-blue-light/5 border-dental-blue/30">
-                    <CardHeader className="pb-3 bg-dental-blue-darker/10 rounded-t-lg">
-                      <CardTitle className="text-lg font-bold text-dental-blue-darker">
-                        {result.term} Months
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3 pt-4">
-                      <div>
-                        <p className="text-sm font-semibold text-dental-blue-darker/80">Monthly Payment</p>
-                        <p className="text-2xl font-bold text-dental-blue-darker">
-                          {formatCurrency(result.monthlyPayment)}
-                        </p>
-                      </div>
-                      <div className="pt-3 border-t border-dental-blue/30 space-y-2">
-                        <div className="flex justify-between text-sm">
-                          <span className="text-dental-blue-darker/80 font-medium">Total Payment:</span>
-                          <span className="font-semibold text-dental-blue-darker">{formatCurrency(result.totalPayment)}</span>
+        {/* Mobile/Portrait View - 3 terms */}
+        <div className="block lg:hidden">
+          <Carousel 
+            className="w-full max-w-3xl mx-auto"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {mobileResults.map((result, index) => (
+                <CarouselItem key={result.term} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <AnimatedText delay={index * 0.1}>
+                    <Card className="text-center hover:shadow-elegant transition-smooth hover:-translate-y-1 bg-gradient-to-br from-dental-blue-darker/5 to-dental-blue-light/5 border-dental-blue/30">
+                      <CardHeader className="pb-3 bg-dental-blue-darker/10 rounded-t-lg">
+                        <CardTitle className="text-lg font-bold text-dental-blue-darker">
+                          {result.term} Months
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3 pt-4">
+                        <div>
+                          <p className="text-sm font-semibold text-dental-blue-darker/80">Monthly Payment</p>
+                          <p className="text-2xl font-bold text-dental-blue-darker">
+                            {formatCurrency(result.monthlyPayment)}
+                          </p>
                         </div>
-                        <div className="flex justify-between text-sm">
-                          <span className="text-dental-blue-darker/80 font-medium">Total Interest:</span>
-                          <span className="font-semibold text-dental-blue-darker">
-                            {formatCurrency(result.totalInterest)}
-                          </span>
+                        <div className="pt-3 border-t border-dental-blue/30 space-y-2">
+                          <div className="flex justify-between text-sm">
+                            <span className="text-dental-blue-darker/80 font-medium">Total Payment:</span>
+                            <span className="font-semibold text-dental-blue-darker">{formatCurrency(result.totalPayment)}</span>
+                          </div>
+                          <div className="flex justify-between text-sm">
+                            <span className="text-dental-blue-darker/80 font-medium">Total Interest:</span>
+                            <span className="font-semibold text-dental-blue-darker">
+                              {formatCurrency(result.totalInterest)}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </AnimatedText>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="bg-dental-blue border-dental-blue text-white hover:bg-dental-blue-darker hover:text-white shadow-md" />
-          <CarouselNext className="bg-dental-blue border-dental-blue text-white hover:bg-dental-blue-darker hover:text-white shadow-md" />
-        </Carousel>
+                      </CardContent>
+                    </Card>
+                  </AnimatedText>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="bg-dental-blue border-dental-blue text-white hover:bg-dental-blue-darker hover:text-white shadow-md" />
+            <CarouselNext className="bg-dental-blue border-dental-blue text-white hover:bg-dental-blue-darker hover:text-white shadow-md" />
+          </Carousel>
+        </div>
+
+        {/* Landscape/Desktop View - 6 terms */}
+        <div className="hidden lg:block">
+          <Carousel 
+            className="w-full max-w-5xl mx-auto"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {allResults.map((result, index) => (
+                <CarouselItem key={result.term} className="pl-2 md:pl-4 basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                  <AnimatedText delay={index * 0.1}>
+                    <Card className="text-center hover:shadow-elegant transition-smooth hover:-translate-y-1 bg-gradient-to-br from-dental-blue-darker/5 to-dental-blue-light/5 border-dental-blue/30">
+                      <CardHeader className="pb-3 bg-dental-blue-darker/10 rounded-t-lg">
+                        <CardTitle className="text-lg font-bold text-dental-blue-darker">
+                          {result.term} Months
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3 pt-4">
+                        <div>
+                          <p className="text-sm font-semibold text-dental-blue-darker/80">Monthly Payment</p>
+                          <p className="text-2xl font-bold text-dental-blue-darker">
+                            {formatCurrency(result.monthlyPayment)}
+                          </p>
+                        </div>
+                        <div className="pt-3 border-t border-dental-blue/30 space-y-2">
+                          <div className="flex justify-between text-sm">
+                            <span className="text-dental-blue-darker/80 font-medium">Total Payment:</span>
+                            <span className="font-semibold text-dental-blue-darker">{formatCurrency(result.totalPayment)}</span>
+                          </div>
+                          <div className="flex justify-between text-sm">
+                            <span className="text-dental-blue-darker/80 font-medium">Total Interest:</span>
+                            <span className="font-semibold text-dental-blue-darker">
+                              {formatCurrency(result.totalInterest)}
+                            </span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </AnimatedText>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="bg-dental-blue border-dental-blue text-white hover:bg-dental-blue-darker hover:text-white shadow-md" />
+            <CarouselNext className="bg-dental-blue border-dental-blue text-white hover:bg-dental-blue-darker hover:text-white shadow-md" />
+          </Carousel>
+        </div>
       </div>
 
       <div className="text-center text-sm text-muted-foreground">
