@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import dentistWomanImage from '@/assets/dentist-woman-white-transparent.png';
 export function HomeFinalCTASection() {
   const navigate = useNavigate();
-  
   const benefits = [{
     icon: Users,
     text: "Patients get the care they need"
@@ -48,9 +47,9 @@ export function HomeFinalCTASection() {
           
           
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-            <span className="block">Ready to</span>
+            
             <span className="block bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 bg-clip-text text-transparent bg-300% animate-gradient">Ready to Access the Future of Dental Financing?</span>
-            <span className="block">of Dental Access?</span>
+            
           </h2>
           
           <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed mb-12">
@@ -99,22 +98,14 @@ export function HomeFinalCTASection() {
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">Learn More</h3>
           <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
             <MagneticButton>
-              <Button 
-                size="lg" 
-                className="text-2xl px-20 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72"
-                onClick={() => navigate('/patients')}
-              >
+              <Button size="lg" className="text-2xl px-20 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72" onClick={() => navigate('/patients')}>
                 For Patients
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
             </MagneticButton>
             
             <MagneticButton>
-              <Button 
-                size="lg" 
-                className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72"
-                onClick={() => navigate('/providers')}
-              >
+              <Button size="lg" className="text-2xl px-16 py-8 bg-white hover:bg-gray-100 text-black border-0 shadow-2xl hover:shadow-gray-500/25 transition-all duration-300 rounded-xl w-72" onClick={() => navigate('/providers')}>
                 For Providers
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
