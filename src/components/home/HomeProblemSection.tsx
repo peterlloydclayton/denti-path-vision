@@ -5,7 +5,7 @@ import { HomeProblemCards } from './HomeProblemCards';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import womanDoctorImage from '@/assets/woman-doctor-african-transparent.png';
+const womanDoctorImage = 'https://res.cloudinary.com/drxvhwze4/image/upload/v1759199954/dentist-male-indian_jhg1h1.png';
 
 export const HomeProblemSection = () => {
   const { t } = useTranslation('marketing');
