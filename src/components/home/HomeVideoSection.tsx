@@ -4,7 +4,7 @@ import { Play } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-const networkImage = 'https://res.cloudinary.com/drxvhwze4/image/upload/v1759199955/dental-network-community_gdikrs.png';
+const networkVideo = 'https://res.cloudinary.com/drxvhwze4/video/upload/v1759200702/social_peterclayton_intelligence._ai._dentists._--ar_11_--motion_hig_4c9b2c9f-312c-434d-be44-1461b642501f_2_znuvvr.mp4';
 
 interface HomeVideoSectionProps {
   imagePosition?: 'left' | 'right';
@@ -76,9 +76,12 @@ export const HomeVideoSection = ({ imagePosition = 'left', mobileImagePosition =
                     className="relative w-full h-full min-h-[400px] lg:min-h-full"
                     onClick={handlePlayClick}
                   >
-                    <img 
-                      src={networkImage} 
-                      alt="DentiPay Intelligence Platform"
+                    <video 
+                      src={networkVideo} 
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
                       className={`w-full h-full object-cover transition-opacity duration-700 ${isLoaded ? 'opacity-100 animate-fade-in' : 'opacity-0'}`}
                       style={{ objectPosition }}
                     />
