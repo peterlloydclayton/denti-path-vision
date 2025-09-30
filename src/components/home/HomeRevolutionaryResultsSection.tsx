@@ -128,7 +128,7 @@ export const HomeRevolutionaryResultsSection = () => {
           <img 
             src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759275988/approval-on-cellphone_tmrtqp.png" 
             alt="Mobile approval interface"
-            className="max-w-md w-full h-auto lg:ml-0 translate-y-[15%]"
+            className="max-w-md w-full h-auto lg:ml-0 translate-y-[15%] -translate-x-[15%]"
           />
         </div>
         
