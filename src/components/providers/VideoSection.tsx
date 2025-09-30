@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import networkImage from '@/assets/group-dentists-women-men-tp.png';
 
 interface VideoSectionProps {
   imagePosition?: 'left' | 'right';
@@ -75,7 +74,7 @@ export const VideoSection = ({ imagePosition = 'left', mobileImagePosition = 'to
                     onClick={handlePlayClick}
                   >
                     <img 
-                      src={networkImage} 
+                      src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759199955/dental-network-community_gdikrs.png" 
                       alt="Group of dental professionals"
                       className={`w-full h-full object-cover transition-opacity duration-700 ${isLoaded ? 'opacity-100 animate-fade-in' : 'opacity-0'}`}
                       style={{ objectPosition }}
