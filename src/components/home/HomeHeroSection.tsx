@@ -28,7 +28,7 @@ export const HomeHeroSection = () => {
             <img 
               src={heroImage}
               alt="Professional dental provider"
-              className="absolute bottom-0 left-1/2 xl:left-[60%] 2xl:left-[60%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              className="absolute bottom-0 left-1/2 xl:left-[50%] 2xl:left-[50%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
             />
           </div>
         </div>
@@ -39,7 +39,7 @@ export const HomeHeroSection = () => {
             <img 
               src={heroImage}
               alt="Professional dental provider"
-              className="absolute bottom-0 left-[30%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              className="absolute bottom-0 left-[20%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
             />
           </div>
         </div>
@@ -50,7 +50,7 @@ export const HomeHeroSection = () => {
             <img 
               src={heroImage}
               alt="Professional dental provider"
-              className="absolute bottom-[-5%] left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
+              className="absolute bottom-[-5%] left-[-160px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
             />
           </div>
         </div>
