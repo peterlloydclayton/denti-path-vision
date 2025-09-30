@@ -6,7 +6,6 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/enh
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
 import maleDentistImage from '@/assets/male-dentist-white.png';
 interface AnimatedCounterProps {
   value: number;
@@ -127,7 +126,7 @@ export const HomeRevolutionaryResultsSection = () => {
         {/* Image Container - Full Width to Left Edge */}
         <div className="w-full lg:w-2/5 lg:pl-0 order-2 lg:order-1">
           <img 
-            src={approvalMobileImage} 
+            src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759275988/approval-on-cellphone_tmrtqp.png" 
             alt="Mobile approval interface"
             className="max-w-md w-full h-auto lg:ml-0"
           />
