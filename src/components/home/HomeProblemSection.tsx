@@ -155,7 +155,7 @@ export const HomeProblemSection = () => {
                 <img 
                   src={womanDoctorImage} 
                   alt="Professional healthcare provider" 
-                  className="w-96 h-96 object-contain scale-[1.275] translate-y-8"
+                  className="w-96 h-96 object-contain scale-[1.275] -translate-y-[10%]"
                 />
               </motion.div>
             </div>
