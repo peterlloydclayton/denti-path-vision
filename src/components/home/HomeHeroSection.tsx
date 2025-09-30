@@ -8,7 +8,7 @@ import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { FloatingIcons } from '@/components/ui/floating-icons';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import heroImage from '@/assets/hero-dentist-woman-white-transparent.png';
+const heroImage = 'https://res.cloudinary.com/drxvhwze4/image/upload/v1759199954/Dentist-female-african_nefprl.png';
 
 export const HomeHeroSection = () => {
   const { t } = useTranslation('marketing');
