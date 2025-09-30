@@ -4,7 +4,7 @@ import { Play } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import networkImage from '@/assets/dentipay-network-effect-crowd.png';
+const networkImage = 'https://res.cloudinary.com/drxvhwze4/image/upload/v1759199955/dental-network-community_gdikrs.png';
 
 interface HomeVideoSectionProps {
   imagePosition?: 'left' | 'right';
