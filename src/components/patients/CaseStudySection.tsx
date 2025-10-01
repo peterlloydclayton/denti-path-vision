@@ -118,7 +118,7 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
                         Watch Success Stories
                       </div>
                     </div>
-                    <div className="pt-6">
+                    <div className="pt-6 flex justify-center lg:justify-start">
                       <Button 
                         className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
                         onClick={() => navigate('/patient-financing-application')}
