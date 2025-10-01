@@ -3,9 +3,36 @@ import { Button } from '@/components/ui/button';
 import { AnimatedCounter } from './AnimatedCounter';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 import { Card } from '@/components/ui/card';
+import { 
+  Heart, 
+  Shield, 
+  Smile, 
+  Activity, 
+  Stethoscope,
+  Plus,
+  Star,
+  Sparkles
+} from 'lucide-react';
+import { useMemo } from 'react';
 
 export const StatsSection = () => {
   console.log('StatsSection rendering');
+  
+  const dentalIcons = [
+    Smile, Heart, Shield, Activity, Stethoscope, Plus, Star, Sparkles
+  ];
+
+  const floatingIcons = useMemo(() => {
+    return Array.from({ length: 12 }, (_, i) => ({
+      id: i,
+      Icon: dentalIcons[i % dentalIcons.length],
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 24 + 20, // 20-44px
+      duration: Math.random() * 25 + 15, // 15-40s
+      delay: Math.random() * 5, // 0-5s delay
+    }));
+  }, []);
   
   const stats = [
     { value: 100000, prefix: '$', suffix: '', label: 'Maximum Financing', description: 'Flexible financing options' },
@@ -17,18 +44,47 @@ export const StatsSection = () => {
   return (
     <section className="pt-8 pb-32 bg-white border-b border-dental-blue/20">
       <div className="container mx-auto px-6">
-        {/* Image above section */}
+        {/* Image above section with floating icons */}
         <motion.div 
-          className="flex justify-center mb-8"
+          className="flex justify-center mb-8 relative"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
+          {/* Floating dental icons */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {floatingIcons.map((item) => (
+              <motion.div
+                key={item.id}
+                className="absolute text-dental-blue/20"
+                style={{
+                  left: `${item.x}%`,
+                  top: `${item.y}%`,
+                }}
+                animate={{
+                  x: [0, Math.random() * 100 - 50, 0],
+                  y: [0, Math.random() * 100 - 50, 0],
+                  rotate: [0, 360],
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: item.duration,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: item.delay,
+                }}
+              >
+                <item.Icon size={item.size} />
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Image */}
           <img 
             src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759280638/child-dental-bib_tcauhp.png"
             alt="Child with dental bib"
-            className="max-w-md w-full h-auto object-contain"
+            className="max-w-md w-full h-auto object-contain relative z-10"
           />
         </motion.div>
 
