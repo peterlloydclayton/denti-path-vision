@@ -107,7 +107,7 @@ const AppContent = () => {
           </Routes>
         </main>
         <Footer />
-        {!showSplash && <PlayIntroButton onClick={handlePlayIntro} />}
+        {!showSplash && location.pathname === '/' && <PlayIntroButton onClick={handlePlayIntro} />}
       </div>
     </>
   );
