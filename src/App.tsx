@@ -25,6 +25,21 @@ const queryClient = new QueryClient();
 const AnimatedRoutes = () => {
   const location = useLocation();
 
+  const getPageTitle = (pathname: string) => {
+    switch (pathname) {
+      case '/': return 'Home';
+      case '/providers': return 'Providers';
+      case '/providers-2': return 'Providers';
+      case '/patients': return 'Patients';
+      case '/intelligent-financing': return 'Intelligent Financing';
+      case '/provider-search': return 'Provider Search';
+      case '/about': return 'About';
+      case '/privacy-policy': return 'Privacy Policy';
+      case '/terms-of-use': return 'Terms of Use';
+      default: return 'Page Not Found';
+    }
+  };
+
   return (
     <>
       <ScrollToTop />
@@ -51,15 +66,28 @@ const AnimatedRoutes = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname + '-curtain'}
-              className="fixed inset-0 z-[100] bg-dental-blue pointer-events-none"
+              className="fixed inset-0 z-[100] bg-dental-blue pointer-events-none flex items-center justify-center"
               initial={{ x: '100%' }}
               animate={{ x: '-100%' }}
               transition={{ 
-                duration: 1.2, 
+                duration: 1.8, 
                 ease: [0.65, 0, 0.35, 1],
                 delay: 0.1
               }}
-            />
+            >
+              <motion.h1
+                className="text-6xl md:text-8xl font-bold text-white"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.6,
+                  delay: 0.3,
+                  ease: [0.65, 0, 0.35, 1]
+                }}
+              >
+                {getPageTitle(location.pathname)}
+              </motion.h1>
+            </motion.div>
           </AnimatePresence>
         </main>
         <Footer />
