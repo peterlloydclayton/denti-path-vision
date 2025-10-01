@@ -3,9 +3,13 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { Enhanced3DCard } from './Enhanced3DCard';
 import { benefits } from '@/data/patientsData';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 export const BenefitsSection = () => {
   const { t } = useTranslation('marketing');
+  const navigate = useNavigate();
+  
   return (
     <section className="py-24 bg-dental-blue relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-20">
@@ -26,6 +30,15 @@ export const BenefitsSection = () => {
               index={index} 
             />
           ))}
+        </div>
+
+        <div className="flex justify-center mt-12">
+          <Button 
+            className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
+            onClick={() => navigate('/patient-financing-application')}
+          >
+            Get Financing
+          </Button>
         </div>
 
         {/* Decorative elements */}
