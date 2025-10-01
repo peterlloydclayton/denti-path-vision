@@ -9,6 +9,7 @@ import { getUserIP, getUserAgent } from '@/utils/auditUtils';
 import { FormData } from '../MultiStepPatientForm';
 import { useToast } from '@/hooks/use-toast';
 import { CheckCircle } from 'lucide-react';
+import { supabase } from '@/lib/supabase';
 
 interface ComplianceSignatureStepProps {
   formData: FormData;
@@ -73,22 +74,74 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
 
       const base64Pdf = btoa(String.fromCharCode(...pdfBytes));
 
-      // Simulate submission for now since we don't have Supabase enabled
-      // In production, this would submit to Supabase edge function
-      console.log('Application data prepared:', {
-        formData,
-        signature: {
+      // Prepare application data matching the edge function's ApplicationData interface
+      const applicationData = {
+        first_name: formData.first_name,
+        middle_name: formData.middle_name,
+        last_name: formData.last_name,
+        email: formData.email,
+        mobile_phone: formData.primary_phone,
+        secondary_phone: formData.secondary_phone,
+        date_of_birth: `${formData.date_of_birth.year}-${formData.date_of_birth.month.padStart(2, '0')}-${formData.date_of_birth.day.padStart(2, '0')}`,
+        sex: formData.sex,
+        ssn: formData.ssn,
+        drivers_license: formData.drivers_license,
+        marital_status: formData.marital_status,
+        home_street_address: formData.street_address,
+        home_city: formData.city,
+        home_state: formData.state,
+        home_zip: formData.zip_code,
+        time_at_address: formData.time_at_address,
+        rent_or_own: formData.rent_or_own,
+        previous_address: formData.previous_address,
+        emergency_contact_name: formData.emergency_contact_name,
+        emergency_contact_relationship: formData.emergency_contact_relationship,
+        emergency_contact_phone: formData.emergency_contact_phone,
+        employer_name: formData.current_employer,
+        job_title: formData.job_title,
+        employment_status: formData.employment_type,
+        length_of_employment: formData.length_of_employment,
+        monthly_income: formData.monthly_gross_income ? parseFloat(formData.monthly_gross_income) : undefined,
+        monthly_net_income: formData.monthly_net_income ? parseFloat(formData.monthly_net_income) : undefined,
+        pay_frequency: formData.pay_frequency,
+        secondary_income_sources: formData.secondary_income_sources,
+        household_total_income: formData.household_total_income ? parseFloat(formData.household_total_income) : undefined,
+        spouse_employer: formData.spouse_employer,
+        spouse_income: formData.spouse_income ? parseFloat(formData.spouse_income) : undefined,
+        checking_balance: formData.checking_balance ? parseFloat(formData.checking_balance) : undefined,
+        savings_balance: formData.savings_balance ? parseFloat(formData.savings_balance) : undefined,
+        retirement_accounts: formData.retirement_accounts ? parseFloat(formData.retirement_accounts) : undefined,
+        investments: formData.investment_accounts ? parseFloat(formData.investment_accounts) : undefined,
+        monthly_housing_cost: formData.mortgage_rent_payment ? parseFloat(formData.mortgage_rent_payment) : undefined,
+        credit_score: formData.credit_score_unknown ? undefined : (formData.credit_score ? parseInt(formData.credit_score) : undefined),
+        considering_treatment_time: formData.considering_treatment_time,
+        priority_preference: formData.priority_preference,
+        primary_reason: formData.treatment_reason.join(', '),
+        timeline_urgency: formData.urgency_scale,
+        ready_to_proceed: formData.ready_to_proceed,
+        consent_credit_pull: formData.authorize_credit_report,
+        signature_data: {
           signer_name: signerName,
           signer_email: signerEmail,
+          consent_given: consentGiven,
           ip_address: ipAddress,
           user_agent: userAgent,
           document_hash: documentHash,
+          document_id: document.id,
           pdf_base64: base64Pdf
         }
+      };
+
+      // Submit to edge function
+      const { data, error } = await supabase.functions.invoke('submit-patient-application', {
+        body: applicationData
       });
 
-      // Simulate successful submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      if (error) throw error;
+
+      if (!data?.success) {
+        throw new Error(data?.error || 'Submission failed');
+      }
       
       setSuccess(true);
       
