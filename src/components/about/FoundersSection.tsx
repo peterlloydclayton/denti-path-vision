@@ -101,9 +101,7 @@ export const FoundersSection = () => {
               <CarouselContent className="-ml-4 py-8">
                 {founders.map((founder, index) => (
                   <CarouselItem key={index} className="pl-4 basis-1/2 lg:basis-1/3">
-                    <Card className={`hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 relative ${
-                      index === 1 ? 'scale-110 z-20 shadow-2xl' : 'scale-100 z-10'
-                    }`}>
+                    <Card className="hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 relative shadow-lg">
                       <CardContent className="p-8">
                         <div className="flex flex-col items-center text-center mb-6">
                           <img 
