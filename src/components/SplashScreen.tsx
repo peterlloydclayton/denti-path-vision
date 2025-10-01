@@ -41,11 +41,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          className="space-y-2"
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-            DentiPay
-          </h1>
           <p className="text-lg md:text-xl text-muted-foreground">
             Transforming Dental Finance Through Intelligence
           </p>
