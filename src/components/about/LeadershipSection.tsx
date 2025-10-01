@@ -90,14 +90,13 @@ export const LeadershipSection = () => {
           <div className="flex gap-4 justify-center mt-12">
             <Button 
               onClick={() => navigate('/patients')}
-              className="px-8 py-6 text-lg"
+              className="px-8 py-6 text-lg bg-black text-white hover:bg-black/90"
             >
               For Patients
             </Button>
             <Button 
               onClick={() => navigate('/providers')}
-              variant="outline"
-              className="px-8 py-6 text-lg"
+              className="px-8 py-6 text-lg bg-white text-black border-2 border-black hover:bg-black/5"
             >
               For Providers
             </Button>
