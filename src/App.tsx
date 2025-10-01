@@ -11,6 +11,7 @@ import Index from "./pages/Index";
 import Providers from "./pages/Providers";
 import Providers2 from "./pages/Providers2";
 import Patients from "./pages/Patients";
+import Patients2 from "./pages/Patients2";
 import IntelligentFinancing from "./pages/IntelligentFinancing";
 import About from "./pages/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -37,6 +38,7 @@ const App = () => (
               <Route path="/providers" element={<Providers />} />
               <Route path="/providers-2" element={<Providers2 />} />
               <Route path="/patients" element={<Patients />} />
+              <Route path="/patient-financing-application" element={<Patients2 />} />
               <Route path="/intelligent-financing" element={<IntelligentFinancing />} />
               <Route path="/provider-search" element={<ProviderSearch />} />
               <Route path="/about" element={<About />} />
