@@ -24,5 +24,122 @@
     "rights": "Todos los derechos reservados",
     "privacy": "Política de Privacidad",
     "terms": "Términos de Uso"
+  },
+  "form": {
+    "buttons": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "submit": "Enviar Solicitud"
+    },
+    "personal": {
+      "title": "Información Personal",
+      "description": "Por favor proporcione su información básica",
+      "firstName": "Nombre",
+      "middleName": "Segundo Nombre",
+      "lastName": "Apellido",
+      "email": "Correo Electrónico",
+      "phone": "Número de Teléfono",
+      "dob": "Fecha de Nacimiento",
+      "month": "Mes",
+      "day": "Día",
+      "year": "Año",
+      "ssn": "Número de Seguro Social",
+      "address": "Dirección",
+      "city": "Ciudad",
+      "state": "Estado",
+      "zip": "Código Postal"
+    },
+    "employment": {
+      "title": "Empleo e Ingresos",
+      "description": "Cuéntenos sobre su empleo e ingresos",
+      "status": "Estado de Empleo",
+      "employerName": "Nombre del Empleador",
+      "jobTitle": "Título del Trabajo",
+      "workPhone": "Teléfono del Trabajo",
+      "yearsEmployed": "Años Empleado",
+      "monthsEmployed": "Meses Empleado",
+      "grossIncome": "Ingreso Mensual Bruto",
+      "payFrequency": "Frecuencia de Pago",
+      "additionalIncome": "Ingreso Mensual Adicional",
+      "additionalIncomeSource": "Fuente de Ingreso Adicional",
+      "statuses": {
+        "fullTime": "Empleado a Tiempo Completo",
+        "partTime": "Empleado a Tiempo Parcial",
+        "selfEmployed": "Trabajador Autónomo",
+        "retired": "Jubilado",
+        "other": "Otro"
+      },
+      "frequencies": {
+        "weekly": "Semanal",
+        "biweekly": "Quincenal",
+        "semimonthly": "Dos veces al mes",
+        "monthly": "Mensual"
+      }
+    },
+    "financial": {
+      "title": "Resumen Financiero",
+      "description": "Ayúdenos a entender su situación financiera",
+      "bankName": "Nombre del Banco",
+      "accountType": "Tipo de Cuenta",
+      "monthlyRent": "Renta/Hipoteca Mensual",
+      "creditScore": "Puntaje de Crédito Estimado",
+      "outstandingDebts": "Deudas Pendientes",
+      "bankruptcyHistory": "Historial de Bancarrota",
+      "bankruptcyYear": "Año de Bancarrota",
+      "accountTypes": {
+        "checking": "Corriente",
+        "savings": "Ahorros",
+        "both": "Ambos"
+      },
+      "creditRanges": {
+        "excellent": "Excelente (750+)",
+        "good": "Bueno (700-749)",
+        "fair": "Aceptable (650-699)",
+        "poor": "Malo (600-649)",
+        "veryPoor": "Muy Malo (<600)",
+        "unknown": "No lo sé"
+      },
+      "yes": "Sí",
+      "no": "No"
+    },
+    "emotional": {
+      "title": "Información sobre Decisión de Tratamiento",
+      "description": "Ayúdenos a entender sus necesidades de tratamiento",
+      "consideringTime": "¿Cuánto tiempo ha estado considerando este tratamiento?",
+      "priorityPreference": "¿Cuál es su prioridad?",
+      "treatmentReason": "¿Qué impulsa su decisión de tratamiento?",
+      "urgencyScale": "En una escala del 1 al 10, ¿qué tan urgente es este tratamiento?",
+      "readyToProceed": "¿Está listo para proceder si es aprobado?",
+      "lessThan1Month": "Menos de 1 mes",
+      "1To3Months": "1-3 meses",
+      "3To6Months": "3-6 meses",
+      "6To12Months": "6-12 meses",
+      "moreThan1Year": "Más de 1 año",
+      "severalYears": "Varios años",
+      "lowestPayment": "Pago mensual más bajo",
+      "fastestApproval": "Aprobación más rápida",
+      "minimizingCost": "Minimizar costo total",
+      "urgencyLevel": "Seleccione nivel de urgencia",
+      "notUrgent": "(No Urgente)",
+      "extremelyUrgent": "(Extremadamente Urgente)",
+      "yes": "Sí",
+      "no": "No",
+      "reasons": {
+        "confidence": "Confianza / Apariencia",
+        "pain": "Alivio del Dolor",
+        "abilityToEat": "Capacidad para Comer Normalmente",
+        "workSocial": "Impacto Laboral / Social"
+      }
+    },
+    "compliance": {
+      "title": "Cumplimiento y Firma",
+      "description": "Revise y firme la solicitud",
+      "termsAgreement": "Acepto los Términos y Condiciones",
+      "creditCheck": "Autorizo una verificación de crédito",
+      "accuracyConfirm": "Confirmo que toda la información es precisa",
+      "signature": "Firma Digital",
+      "signaturePlaceholder": "Escriba su nombre legal completo",
+      "date": "Fecha"
+    }
   }
 }

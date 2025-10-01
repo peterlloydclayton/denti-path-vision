@@ -24,5 +24,122 @@
     "rights": "All rights reserved",
     "privacy": "Privacy Policy",
     "terms": "Terms of Use"
+  },
+  "form": {
+    "buttons": {
+      "previous": "Previous",
+      "next": "Next",
+      "submit": "Submit Application"
+    },
+    "personal": {
+      "title": "Personal Information",
+      "description": "Please provide your basic information",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "dob": "Date of Birth",
+      "month": "Month",
+      "day": "Day",
+      "year": "Year",
+      "ssn": "Social Security Number",
+      "address": "Street Address",
+      "city": "City",
+      "state": "State",
+      "zip": "ZIP Code"
+    },
+    "employment": {
+      "title": "Employment & Income",
+      "description": "Tell us about your employment and income",
+      "status": "Employment Status",
+      "employerName": "Employer Name",
+      "jobTitle": "Job Title",
+      "workPhone": "Work Phone",
+      "yearsEmployed": "Years Employed",
+      "monthsEmployed": "Months Employed",
+      "grossIncome": "Gross Monthly Income",
+      "payFrequency": "Pay Frequency",
+      "additionalIncome": "Additional Monthly Income",
+      "additionalIncomeSource": "Additional Income Source",
+      "statuses": {
+        "fullTime": "Full-Time Employed",
+        "partTime": "Part-Time Employed",
+        "selfEmployed": "Self-Employed",
+        "retired": "Retired",
+        "other": "Other"
+      },
+      "frequencies": {
+        "weekly": "Weekly",
+        "biweekly": "Bi-weekly",
+        "semimonthly": "Semi-monthly",
+        "monthly": "Monthly"
+      }
+    },
+    "financial": {
+      "title": "Financial Overview",
+      "description": "Help us understand your financial situation",
+      "bankName": "Bank Name",
+      "accountType": "Account Type",
+      "monthlyRent": "Monthly Rent/Mortgage",
+      "creditScore": "Estimated Credit Score",
+      "outstandingDebts": "Outstanding Debts",
+      "bankruptcyHistory": "Bankruptcy History",
+      "bankruptcyYear": "Year of Bankruptcy",
+      "accountTypes": {
+        "checking": "Checking",
+        "savings": "Savings",
+        "both": "Both"
+      },
+      "creditRanges": {
+        "excellent": "Excellent (750+)",
+        "good": "Good (700-749)",
+        "fair": "Fair (650-699)",
+        "poor": "Poor (600-649)",
+        "veryPoor": "Very Poor (<600)",
+        "unknown": "I don't know"
+      },
+      "yes": "Yes",
+      "no": "No"
+    },
+    "emotional": {
+      "title": "Treatment Decision Insights",
+      "description": "Help us understand your treatment needs",
+      "consideringTime": "How long have you been considering this treatment?",
+      "priorityPreference": "What's your priority?",
+      "treatmentReason": "What's driving your treatment decision?",
+      "urgencyScale": "On a scale of 1-10, how urgent is this treatment?",
+      "readyToProceed": "Are you ready to proceed if approved?",
+      "lessThan1Month": "Less than 1 month",
+      "1To3Months": "1-3 months",
+      "3To6Months": "3-6 months",
+      "6To12Months": "6-12 months",
+      "moreThan1Year": "More than 1 year",
+      "severalYears": "Several years",
+      "lowestPayment": "Lowest monthly payment",
+      "fastestApproval": "Fastest approval",
+      "minimizingCost": "Minimizing overall cost",
+      "urgencyLevel": "Select urgency level",
+      "notUrgent": "(Not Urgent)",
+      "extremelyUrgent": "(Extremely Urgent)",
+      "yes": "Yes",
+      "no": "No",
+      "reasons": {
+        "confidence": "Confidence / Appearance",
+        "pain": "Pain Relief",
+        "abilityToEat": "Ability to Eat Normally",
+        "workSocial": "Work / Social Impact"
+      }
+    },
+    "compliance": {
+      "title": "Compliance & Signature",
+      "description": "Review and sign the application",
+      "termsAgreement": "I agree to the Terms and Conditions",
+      "creditCheck": "I authorize a credit check",
+      "accuracyConfirm": "I confirm all information is accurate",
+      "signature": "Digital Signature",
+      "signaturePlaceholder": "Type your full legal name",
+      "date": "Date"
+    }
   }
 }
