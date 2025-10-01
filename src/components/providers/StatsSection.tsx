@@ -23,12 +23,12 @@ export const StatsSection = () => {
   ];
 
   const floatingIcons = useMemo(() => {
-    return Array.from({ length: 12 }, (_, i) => ({
+    return Array.from({ length: 24 }, (_, i) => ({
       id: i,
       Icon: dentalIcons[i % dentalIcons.length],
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 24 + 20, // 20-44px
+      size: Math.random() * 28 + 24, // 24-52px
       duration: Math.random() * 25 + 15, // 15-40s
       delay: Math.random() * 5, // 0-5s delay
     }));
