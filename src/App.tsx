@@ -2,8 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FloatingNav } from "@/components/layout/FloatingNav";
 import { GDPRBanner } from "@/components/layout/GDPRBanner";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
@@ -22,113 +21,33 @@ import './i18n/config';
 
 const queryClient = new QueryClient();
 
-const AnimatedRoutes = () => {
-  const location = useLocation();
-
-  const getPageTitle = (pathname: string) => {
-    switch (pathname) {
-      case '/': return 'Home';
-      case '/providers': return 'Providers';
-      case '/providers-2': return 'Providers';
-      case '/patients': return 'Patients';
-      case '/intelligent-financing': return 'Intelligent Financing';
-      case '/provider-search': return 'Provider Search';
-      case '/about': return 'About';
-      case '/privacy-policy': return 'Privacy Policy';
-      case '/terms-of-use': return 'Terms of Use';
-      default: return 'Page Not Found';
-    }
-  };
-
-  return (
-    <>
-      <ScrollToTop />
-      <div className="relative min-h-screen flex flex-col bg-dental-blue">
-        <FloatingNav />
-        <GDPRBanner />
-        <main className="flex-1 bg-dental-blue">
-          <AnimatePresence mode="wait" initial={false}>
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
-              <Route path="/providers" element={<PageWrapper><Providers /></PageWrapper>} />
-              <Route path="/providers-2" element={<PageWrapper><Providers2 /></PageWrapper>} />
-              <Route path="/patients" element={<PageWrapper><Patients /></PageWrapper>} />
-              <Route path="/intelligent-financing" element={<PageWrapper><IntelligentFinancing /></PageWrapper>} />
-              <Route path="/provider-search" element={<PageWrapper><ProviderSearch /></PageWrapper>} />
-              <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
-              <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
-              <Route path="/terms-of-use" element={<PageWrapper><TermsOfUse /></PageWrapper>} />
-              <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
-            </Routes>
-          </AnimatePresence>
-
-          {/* Background transition */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname + '-bg'}
-              className="fixed inset-0 z-[99] bg-dental-blue pointer-events-none"
-              initial={{ opacity: 1 }}
-              animate={{ opacity: 0 }}
-              transition={{ 
-                duration: 0.6,
-                delay: 2.0,
-                ease: [0.65, 0, 0.35, 1]
-              }}
-            />
-          </AnimatePresence>
-
-          {/* Page transition curtain */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname + '-curtain'}
-              className="fixed inset-0 z-[100] bg-dental-blue pointer-events-none flex items-center justify-center"
-              initial={{ x: 0 }}
-              animate={{ x: '-100%' }}
-              transition={{ 
-                duration: 1.5, 
-                ease: [0.65, 0, 0.35, 1],
-                delay: 0.8
-              }}
-            >
-              <motion.h1
-                className="text-6xl md:text-8xl font-bold text-white"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: [0, 1, 1, 0] }}
-                transition={{ 
-                  duration: 1.2,
-                  times: [0, 0.2, 0.6, 1],
-                  ease: [0.65, 0, 0.35, 1]
-                }}
-              >
-                {getPageTitle(location.pathname)}
-              </motion.h1>
-            </motion.div>
-          </AnimatePresence>
-        </main>
-        <Footer />
-      </div>
-    </>
-  );
-};
-
-const PageWrapper = ({ children }: { children: React.ReactNode }) => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.25, ease: [0.65, 0, 0.35, 1] }}
-  >
-    {children}
-  </motion.div>
-);
-
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AnimatedRoutes />
+        <ScrollToTop />
+        <div className="relative min-h-screen flex flex-col">
+          <FloatingNav />
+          <GDPRBanner />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/providers" element={<Providers />} />
+              <Route path="/providers-2" element={<Providers2 />} />
+              <Route path="/patients" element={<Patients />} />
+              <Route path="/intelligent-financing" element={<IntelligentFinancing />} />
+              <Route path="/provider-search" element={<ProviderSearch />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-use" element={<TermsOfUse />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
