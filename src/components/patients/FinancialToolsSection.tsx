@@ -22,17 +22,8 @@ export const FinancialToolsSection = () => {
         <PaymentCalculator />
       </div>
       
-      {/* Get Financing Button - Left side on desktop, below calculator on mobile */}
+      {/* Get Financing Button - Left side on desktop */}
       <div className="absolute bottom-[400px] left-8 z-10 hidden md:block">
-        <Button 
-          className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
-          onClick={() => navigate('/patient-financing-application')}
-        >
-          Get Financing
-        </Button>
-      </div>
-      
-      <div className="container mx-auto px-6 md:hidden mt-4 mb-1 flex justify-center">
         <Button 
           className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
           onClick={() => navigate('/patient-financing-application')}
@@ -48,6 +39,16 @@ export const FinancialToolsSection = () => {
           alt="Approval signal - dental financing approved" 
           className="w-full h-[374px] md:h-[718px] object-cover drop-shadow-lg"
         />
+      </div>
+      
+      {/* Mobile button - below image */}
+      <div className="container mx-auto px-6 md:hidden mt-4 mb-1 flex justify-center">
+        <Button 
+          className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
+          onClick={() => navigate('/patient-financing-application')}
+        >
+          Get Financing
+        </Button>
       </div>
     </section>
   );
