@@ -21,7 +21,7 @@ const navItems = [
     label: 'navigation.providers', 
     icon: Stethoscope,
     submenu: [
-      { href: '/provider-search', label: 'Provider Search' }
+      { href: '/provider-search', label: 'Provider Search', icon: Search }
     ]
   },
   { href: '/patients', label: 'navigation.patients', icon: Users },
@@ -107,19 +107,22 @@ export const DesktopNavWithSubmenu = () => {
                       <span>{t(item.label)}</span>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-48 p-2 bg-background border shadow-lg rounded-md -ml-6">
-                        {item.submenu.map((subItem) => (
-                          <NavigationMenuLink key={subItem.href} asChild>
-                            <Link
-                              to={subItem.href}
-                              onClick={() => setCurrentPath(subItem.href)}
-                              className="flex items-center gap-2 p-3 rounded-md hover:bg-secondary transition-smooth"
-                            >
-                              <Search size={16} />
-                              <span>{subItem.label}</span>
-                            </Link>
-                          </NavigationMenuLink>
-                        ))}
+                      <div className="w-48 p-1 bg-background border shadow-lg rounded-lg -ml-4">
+                        {item.submenu.map((subItem) => {
+                          const SubIcon = subItem.icon;
+                          return (
+                            <NavigationMenuLink key={subItem.href} asChild>
+                              <Link
+                                to={subItem.href}
+                                onClick={() => setCurrentPath(subItem.href)}
+                                className="flex items-center gap-2 px-3 py-2 mx-1 rounded-md text-sm hover:bg-secondary transition-smooth"
+                              >
+                                <SubIcon size={16} className="text-muted-foreground" />
+                                <span>{subItem.label}</span>
+                              </Link>
+                            </NavigationMenuLink>
+                          );
+                        })}
                       </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
