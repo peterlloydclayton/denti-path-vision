@@ -110,7 +110,7 @@ export const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-background">
+    <section className="pt-24 pb-8 bg-background">
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">

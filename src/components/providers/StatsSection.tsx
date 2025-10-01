@@ -15,11 +15,11 @@ export const StatsSection = () => {
   ];
 
   return (
-    <section className="py-32 bg-white border-b border-dental-blue/20">
+    <section className="pt-8 pb-32 bg-white border-b border-dental-blue/20">
       <div className="container mx-auto px-6">
         {/* Image above section */}
         <motion.div 
-          className="flex justify-center mb-12"
+          className="flex justify-center mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
