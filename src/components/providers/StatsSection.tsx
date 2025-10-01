@@ -42,7 +42,7 @@ export const StatsSection = () => {
   ];
 
   return (
-    <section className="pt-8 pb-32 bg-white border-b border-dental-blue/20">
+    <section className="pt-4 pb-32 bg-white border-b border-dental-blue/20">
       <div className="container mx-auto px-6">
         {/* Image above section with floating icons */}
         <div className="flex justify-center mb-8 relative">
