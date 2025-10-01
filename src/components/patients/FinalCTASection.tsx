@@ -2,10 +2,12 @@ import { CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import smileImage from '@/assets/smile.png';
 
 export const FinalCTASection = () => {
   const { t } = useTranslation('marketing');
+  const navigate = useNavigate();
 
   const trustElements = [
     t('patients.finalCTA.trustElements.creditScore'),
@@ -40,7 +42,7 @@ export const FinalCTASection = () => {
             <Button
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300 text-xl px-12 py-4 rounded-xl shadow-elegant font-semibold"
-              onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
+              onClick={() => navigate('/patient-financing-application')}
             >
               {t('patients.finalCTA.cta')}
             </Button>
