@@ -55,7 +55,7 @@ const AnimatedRoutes = () => {
               initial={{ x: '100%' }}
               animate={{ x: '-100%' }}
               transition={{ 
-                duration: 0.8, 
+                duration: 1.2, 
                 ease: [0.65, 0, 0.35, 1],
                 delay: 0.1
               }}
