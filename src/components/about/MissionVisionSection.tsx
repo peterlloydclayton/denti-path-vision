@@ -3,6 +3,7 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { motion } from 'framer-motion';
 import { Users, Brain, TrendingUp, Heart, Shield, Smile, Star, Sparkles, Zap, CheckCircle } from 'lucide-react';
 import { useMemo } from 'react';
+import diversePractitioners from '@/assets/diverse-practitioners.png';
 
 export const MissionVisionSection = () => {
   // Floating dental icons for Mission section
@@ -85,7 +86,7 @@ export const MissionVisionSection = () => {
                 transition={{ duration: 0.8 }}
               >
                 <img 
-                  src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759199954/group-dentists-women-men-tp_wt70fz.png"
+                  src={diversePractitioners}
                   alt="Diverse team of dental professionals"
                   className="w-full h-auto object-contain"
                 />
