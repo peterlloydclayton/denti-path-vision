@@ -1,5 +1,8 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedText } from '@/components/ui/animated-text';
+import charlesZahedi from '@/assets/profiles/charles-zahedi.png';
+import emilioArguello from '@/assets/profiles/emilio-arguello.jpg';
+import drCarmy from '@/assets/profiles/dr-carmy.jpeg';
 
 export const FoundersSection = () => {
   return (
@@ -20,9 +23,14 @@ export const FoundersSection = () => {
             <AnimatedText delay={0.1}>
               <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
                 <CardContent className="p-8">
-                  <div className="mb-6">
+                  <div className="flex flex-col items-center text-center mb-6">
+                    <img 
+                      src={charlesZahedi} 
+                      alt="Dr. Charles Zahédi"
+                      className="w-48 h-48 object-cover rounded-full ring-4 ring-primary/20 mb-6"
+                    />
                     <h3 className="text-2xl font-bold mb-2 text-black">Dr. Charles Zahédi</h3>
-                    <p className="text-lg text-intelligence font-medium">Co-Founder</p>
+                    <p className="text-lg font-medium text-black">Co-Founder</p>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
                     Dr. Charles Zahédi is an accomplished clinician, innovator, and business strategist with over 34 years of experience in dentistry and healthcare systems. After earning his dental degree, he built a reputation for developing advanced treatment protocols and scalable care delivery models that improve patient outcomes while expanding access to care.
@@ -41,9 +49,14 @@ export const FoundersSection = () => {
             <AnimatedText delay={0.2}>
               <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
                 <CardContent className="p-8">
-                  <div className="mb-6">
+                  <div className="flex flex-col items-center text-center mb-6">
+                    <img 
+                      src={emilioArguello} 
+                      alt="Dr. Emilio Argüello"
+                      className="w-48 h-48 object-cover rounded-full ring-4 ring-primary/20 mb-6"
+                    />
                     <h3 className="text-2xl font-bold mb-2 text-black">Dr. Emilio Argüello</h3>
-                    <p className="text-lg text-intelligence font-medium">Co-Founder</p>
+                    <p className="text-lg font-medium text-black">Co-Founder</p>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
                     Dr. Emilio Argüello was born and raised in Mexico City. After graduating from dental school at the Universidad Autónoma Metropolitana, he moved to the U.S. in 1998 following time abroad as a competitive fencer. He earned his dental degree and specialty training in Periodontics at Tufts University and is now a Board-Certified Periodontist.
@@ -62,9 +75,14 @@ export const FoundersSection = () => {
             <AnimatedText delay={0.3}>
               <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
                 <CardContent className="p-8">
-                  <div className="mb-6">
+                  <div className="flex flex-col items-center text-center mb-6">
+                    <img 
+                      src={drCarmy} 
+                      alt="Dr. Carmy Michael"
+                      className="w-48 h-48 object-cover rounded-full ring-4 ring-primary/20 mb-6"
+                    />
                     <h3 className="text-2xl font-bold mb-2 text-black">Dr. Carmy Michael</h3>
-                    <p className="text-lg text-intelligence font-medium">Co-Founder</p>
+                    <p className="text-lg font-medium text-black">Co-Founder</p>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
                     Dr. Carmy Michael began his dental career in 1993 at Cairo University, completing a one-year residency before relocating to Canada. He later earned his Doctor of Dental Surgery (DDS) from the University of Western Ontario – Schulich School of Medicine & Dentistry, followed by a six-month clinical residency focused on oral rehabilitation and sedation dentistry.
