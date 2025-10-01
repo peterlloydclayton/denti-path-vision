@@ -1,40 +1,271 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { ParallaxSection } from '@/components/ui/parallax-section';
 import { AnimatedText } from '@/components/ui/animated-text';
+import { motion } from 'framer-motion';
+import { Users, Brain, TrendingUp, Heart, Shield, Smile, Star, Sparkles, Zap, CheckCircle } from 'lucide-react';
+import { useMemo } from 'react';
 
 export const MissionVisionSection = () => {
-  return (
-    <ParallaxSection className="py-24 bg-background" offset={30}>
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <AnimatedText>
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">Our Mission</h2>
-                <p className="text-xl leading-relaxed text-black mb-8">
-                  To eliminate financial barriers in dental care by creating the most 
-                  intelligent, patient-centered financing platform in healthcare. 
-                  We believe everyone deserves access to quality dental treatment, 
-                  regardless of their financial situation.
-                </p>
-              </AnimatedText>
-            </div>
+  // Floating dental icons for Mission section
+  const dentalIcons = [Heart, Shield, Smile, Star, Sparkles, Zap];
+  
+  const floatingIcons = useMemo(() => {
+    return Array.from({ length: 24 }, (_, i) => ({
+      id: i,
+      Icon: dentalIcons[i % dentalIcons.length],
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 20 + 20,
+      duration: Math.random() * 20 + 15,
+      delay: Math.random() * 5,
+    }));
+  }, []);
 
-            <AnimatedText delay={0.2} from="right">
-              <Card className="shadow-elegant">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-                  <p className="text-lg leading-relaxed text-muted-foreground">
-                    A world where dental health is never compromised by financial constraints — 
-                    where advanced AI technology seamlessly connects patients with the care 
-                    they need and providers with the growth they deserve.
+  const visionPillars = [
+    {
+      icon: Users,
+      title: 'Universal Access',
+      description: 'Every patient approved, regardless of credit history. We believe financial circumstances should never prevent access to quality dental care.',
+      color: 'dental-blue'
+    },
+    {
+      icon: Brain,
+      title: 'AI-First Healthcare',
+      description: 'Predictive, not reactive financing powered by intelligent algorithms that understand patient needs before they ask.',
+      color: 'dental-lavender'
+    },
+    {
+      icon: TrendingUp,
+      title: 'Provider Empowerment',
+      description: 'Practice growth through intelligence. We give dentists the tools to say yes more often and grow their business sustainably.',
+      color: 'dental-peach'
+    }
+  ];
+
+  return (
+    <>
+      {/* MISSION SECTION */}
+      <section className="py-24 bg-background relative overflow-hidden">
+        {/* Floating Icons Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+          {floatingIcons.map((item) => (
+            <motion.div
+              key={item.id}
+              className="absolute text-dental-blue"
+              style={{
+                left: `${item.x}%`,
+                top: `${item.y}%`,
+              }}
+              animate={{
+                x: [0, Math.random() * 100 - 50, 0],
+                y: [0, Math.random() * 100 - 50, 0],
+                rotate: [0, 360],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: item.duration,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: item.delay,
+              }}
+            >
+              <item.Icon size={item.size} />
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row items-center gap-16">
+              {/* Image - Left Side */}
+              <motion.div 
+                className="w-full lg:w-2/5"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <img 
+                  src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759199954/group-dentists-women-men-tp_wt70fz.png"
+                  alt="Diverse team of dental professionals"
+                  className="w-full h-auto object-contain"
+                />
+              </motion.div>
+
+              {/* Content - Right Side */}
+              <div className="w-full lg:w-3/5">
+                <AnimatedText>
+                  <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+                    Our Mission
+                  </h2>
+                  <p className="text-2xl leading-relaxed text-foreground mb-6">
+                    To eliminate financial barriers in dental care by creating the most 
+                    intelligent, patient-centered financing platform in healthcare.
                   </p>
-                </CardContent>
-              </Card>
-            </AnimatedText>
+                  <p className="text-xl leading-relaxed text-muted-foreground">
+                    We believe everyone deserves access to quality dental treatment, 
+                    regardless of their financial situation. Through advanced AI and 
+                    compassionate design, we're making that belief a reality—one smile at a time.
+                  </p>
+                </AnimatedText>
+
+                {/* Mission Pillars */}
+                <motion.div 
+                  className="mt-12 space-y-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  {['Patient-First Always', 'Intelligence Meets Compassion', 'Growth Through Innovation'].map((pillar, index) => (
+                    <motion.div 
+                      key={index}
+                      className="flex items-center gap-3"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 + index * 0.1 }}
+                      whileHover={{ x: 8 }}
+                    >
+                      <CheckCircle className="w-6 h-6 text-dental-blue flex-shrink-0" />
+                      <span className="text-lg font-medium text-foreground">{pillar}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </ParallaxSection>
+      </section>
+
+      {/* VISION SECTION */}
+      <section className="py-24 bg-dental-blue relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <AnimatedText className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+              Our Vision for Healthcare Finance
+            </h2>
+            <p className="text-2xl text-foreground/80 max-w-4xl mx-auto leading-relaxed">
+              A world where AI-powered intelligence removes every barrier between patients 
+              and the care they deserve
+            </p>
+          </AnimatedText>
+
+          {/* Vision Callout Card */}
+          <motion.div
+            className="max-w-3xl mx-auto mb-20"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Card className="bg-intelligence text-intelligence-foreground border-0 shadow-elegant hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-8 md:p-12 text-center">
+                  <blockquote className="text-xl md:text-2xl font-medium leading-relaxed italic">
+                    "We envision a healthcare system where financial stress is eliminated, 
+                    where every patient receives a 'yes,' and where providers can focus on 
+                    what they do best—delivering exceptional care."
+                  </blockquote>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
+
+          {/* Vision Pillars - 3 Cards */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {visionPillars.map((pillar, index) => {
+              const Icon = pillar.icon;
+              
+              const entranceVariants = [
+                { opacity: 0, x: -100, rotate: -15, scale: 0.8 },
+                { opacity: 0, y: -100, scale: 0.5, rotate: 10 },
+                { opacity: 0, x: 100, rotate: 15, scale: 0.8 }
+              ];
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={entranceVariants[index]}
+                  whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{
+                    duration: 0.8,
+                    delay: index * 0.2,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15
+                  }}
+                  whileHover={{ 
+                    y: -12, 
+                    scale: 1.05,
+                    transition: { duration: 0.3 }
+                  }}
+                  className="relative h-full cursor-pointer"
+                >
+                  <Card className="h-full bg-card border-2 border-border/10 hover:border-foreground/30 transition-all duration-500 shadow-lg hover:shadow-2xl group overflow-hidden">
+                    <CardContent className="p-8 h-full flex flex-col relative">
+                      {/* Animated background effect */}
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-br from-foreground/5 to-transparent opacity-0 group-hover:opacity-100"
+                        transition={{ duration: 0.5 }}
+                      />
+                      
+                      <div className="relative z-10">
+                        <motion.div 
+                          className="w-20 h-20 rounded-3xl bg-foreground/10 flex items-center justify-center mx-auto mb-6"
+                          whileHover={{ 
+                            scale: 1.2, 
+                            rotate: [0, -10, 10, 0],
+                            transition: { duration: 0.6 }
+                          }}
+                          initial={{ scale: 0, rotate: 180 }}
+                          whileInView={{ scale: 1, rotate: 0 }}
+                          transition={{ 
+                            delay: index * 0.2 + 0.4,
+                            duration: 0.6,
+                            type: "spring",
+                            stiffness: 200
+                          }}
+                          viewport={{ once: true }}
+                        >
+                          <Icon size={36} className="text-foreground" />
+                        </motion.div>
+                        
+                        <h3 className="text-2xl font-bold mb-4 text-foreground text-center">
+                          {pillar.title}
+                        </h3>
+                        
+                        <p className="text-foreground/70 leading-relaxed text-center">
+                          {pillar.description}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Floating glow effect */}
+                  <motion.div
+                    className="absolute inset-0 rounded-lg bg-foreground/10 -z-10 blur-xl"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileHover={{ 
+                      opacity: 0.8, 
+                      scale: 1.1,
+                      transition: { duration: 0.3 }
+                    }}
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Decorative elements */}
+          <div className="absolute top-1/2 left-4 w-2 h-2 bg-foreground/30 rounded-full animate-pulse" />
+          <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-foreground/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-foreground/25 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+        </div>
+      </section>
+    </>
   );
 };
