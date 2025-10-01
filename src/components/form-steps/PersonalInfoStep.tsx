@@ -1,289 +1,676 @@
-import React from 'react';
-import { FormData } from '../MultiStepPatientForm';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ChevronRight } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Form } from '@/components/ui/form';
+import { FormData } from '../MultiStepPatientForm';
 
-interface StepProps {
+interface PersonalInfoStepProps {
   formData: FormData;
   updateFormData: (data: Partial<FormData>) => void;
   onNext: () => void;
   onPrev: () => void;
-  isSubmitting: boolean;
-  setIsSubmitting: (val: boolean) => void;
+  isSubmitting?: boolean;
+  setIsSubmitting?: (value: boolean) => void;
 }
 
-const PersonalInfoStep: React.FC<StepProps> = ({ formData, updateFormData, onNext }) => {
+const personalInfoSchema = z.object({
+  first_name: z.string().min(1, "First name is required"),
+  middle_name: z.string().optional(),
+  last_name: z.string().min(1, "Last name is required"),
+  date_of_birth: z.object({
+    day: z.string().min(1, "Day is required"),
+    month: z.string().min(1, "Month is required"),
+    year: z.string().min(1, "Year is required"),
+  }),
+  ssn: z.string().regex(/^\d{9}$/, "Social Security Number must be exactly 9 digits"),
+  drivers_license: z.string().min(1, "Driver's License/State ID is required"),
+  sex: z.string().min(1, "Sex (Assigned At Birth) is required"),
+  marital_status: z.string().min(1, "Marital status is required"),
+  primary_phone: z.string().min(10, "Valid phone number is required"),
+  secondary_phone: z.string().optional(),
+  email: z.string().email("Valid email is required"),
+  street_address: z.string().min(1, "Street address is required"),
+  city: z.string().min(1, "City is required"),
+  state: z.string().min(1, "State is required"),
+  zip_code: z.string().min(5, "Valid ZIP code is required"),
+  time_at_address: z.string().min(1, "Time at address is required"),
+  rent_or_own: z.string().min(1, "Please specify if you rent or own"),
+  previous_address: z.string().optional(),
+  emergency_contact_name: z.string().min(1, "Emergency contact name is required"),
+  emergency_contact_relationship: z.string().min(1, "Emergency contact relationship is required"),
+  emergency_contact_phone: z.string().min(10, "Valid emergency contact phone is required"),
+});
+
+const isLeapYear = (year: number): boolean => {
+  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+};
+
+const getDaysInMonth = (month: number, year: number): number => {
+  const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if (month === 2 && isLeapYear(year)) {
+    return 29;
+  }
+  return daysInMonth[month - 1];
+};
+
+const generateYears = (): string[] => {
+  const currentYear = new Date().getFullYear();
+  const years = [];
+  for (let year = currentYear; year >= currentYear - 100; year--) {
+    years.push(year.toString());
+  }
+  return years;
+};
+
+const getMonths = (t: any) => [
+  { value: '01', label: 'January' },
+  { value: '02', label: 'February' },
+  { value: '03', label: 'March' },
+  { value: '04', label: 'April' },
+  { value: '05', label: 'May' },
+  { value: '06', label: 'June' },
+  { value: '07', label: 'July' },
+  { value: '08', label: 'August' },
+  { value: '09', label: 'September' },
+  { value: '10', label: 'October' },
+  { value: '11', label: 'November' },
+  { value: '12', label: 'December' },
+];
+
+const US_STATES = [
+  { value: "AL", label: "Alabama" },
+  { value: "AK", label: "Alaska" },
+  { value: "AZ", label: "Arizona" },
+  { value: "AR", label: "Arkansas" },
+  { value: "CA", label: "California" },
+  { value: "CO", label: "Colorado" },
+  { value: "CT", label: "Connecticut" },
+  { value: "DE", label: "Delaware" },
+  { value: "FL", label: "Florida" },
+  { value: "GA", label: "Georgia" },
+  { value: "HI", label: "Hawaii" },
+  { value: "ID", label: "Idaho" },
+  { value: "IL", label: "Illinois" },
+  { value: "IN", label: "Indiana" },
+  { value: "IA", label: "Iowa" },
+  { value: "KS", label: "Kansas" },
+  { value: "KY", label: "Kentucky" },
+  { value: "LA", label: "Louisiana" },
+  { value: "ME", label: "Maine" },
+  { value: "MD", label: "Maryland" },
+  { value: "MA", label: "Massachusetts" },
+  { value: "MI", label: "Michigan" },
+  { value: "MN", label: "Minnesota" },
+  { value: "MS", label: "Mississippi" },
+  { value: "MO", label: "Missouri" },
+  { value: "MT", label: "Montana" },
+  { value: "NE", label: "Nebraska" },
+  { value: "NV", label: "Nevada" },
+  { value: "NH", label: "New Hampshire" },
+  { value: "NJ", label: "New Jersey" },
+  { value: "NM", label: "New Mexico" },
+  { value: "NY", label: "New York" },
+  { value: "NC", label: "North Carolina" },
+  { value: "ND", label: "North Dakota" },
+  { value: "OH", label: "Ohio" },
+  { value: "OK", label: "Oklahoma" },
+  { value: "OR", label: "Oregon" },
+  { value: "PA", label: "Pennsylvania" },
+  { value: "RI", label: "Rhode Island" },
+  { value: "SC", label: "South Carolina" },
+  { value: "SD", label: "South Dakota" },
+  { value: "TN", label: "Tennessee" },
+  { value: "TX", label: "Texas" },
+  { value: "UT", label: "Utah" },
+  { value: "VT", label: "Vermont" },
+  { value: "VA", label: "Virginia" },
+  { value: "WA", label: "Washington" },
+  { value: "WV", label: "West Virginia" },
+  { value: "WI", label: "Wisconsin" },
+  { value: "WY", label: "Wyoming" },
+];
+
+const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({ 
+  formData, 
+  updateFormData, 
+  onNext,
+  onPrev
+}) => {
+  const { t } = useTranslation();
+  const [showErrors, setShowErrors] = useState(false);
+  const [availableDays, setAvailableDays] = useState<string[]>([]);
+  
+  const form = useForm({
+    resolver: zodResolver(personalInfoSchema),
+    defaultValues: formData,
+  });
+
+  const watchedMonth = form.watch('date_of_birth.month');
+  const watchedYear = form.watch('date_of_birth.year');
+
+  useEffect(() => {
+    if (watchedMonth && watchedYear) {
+      const month = parseInt(watchedMonth);
+      const year = parseInt(watchedYear);
+      const daysInMonth = getDaysInMonth(month, year);
+      
+      const days = [];
+      for (let i = 1; i <= daysInMonth; i++) {
+        days.push(i.toString().padStart(2, '0'));
+      }
+      setAvailableDays(days);
+    } else {
+      const defaultDays = [];
+      for (let i = 1; i <= 31; i++) {
+        defaultDays.push(i.toString().padStart(2, '0'));
+      }
+      setAvailableDays(defaultDays);
+    }
+  }, [watchedMonth, watchedYear]);
+
+  const onSubmit = (data: any) => {
+    updateFormData(data);
+    onNext();
+  };
+
+  const handleNext = () => {
+    setShowErrors(true);
+    form.handleSubmit(onSubmit)();
+  };
+
+  const getRelationshipOptions = () => [
+    { value: "Spouse", label: t('form.personal.spouse') },
+    { value: "Family Member", label: t('form.personal.familyMember') },
+    { value: "Friend", label: t('form.personal.friend') },
+    { value: "Colleague", label: t('form.personal.colleague') },
+    { value: "Neighbor", label: t('form.personal.neighbor') },
+    { value: "Other", label: t('form.personal.other') },
+  ];
+
   return (
-    <div className="space-y-6">
-      {/* Name Fields */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="first_name">First Name *</Label>
-          <Input
-            id="first_name"
-            value={formData.first_name}
-            onChange={(e) => updateFormData({ first_name: e.target.value })}
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="middle_name">Middle Name</Label>
-          <Input
-            id="middle_name"
-            value={formData.middle_name}
-            onChange={(e) => updateFormData({ middle_name: e.target.value })}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="last_name">Last Name *</Label>
-          <Input
-            id="last_name"
-            value={formData.last_name}
-            onChange={(e) => updateFormData({ last_name: e.target.value })}
-            required
-          />
-        </div>
-      </div>
-
-      {/* Date of Birth */}
-      <div className="space-y-2">
-        <Label>Date of Birth *</Label>
-        <div className="grid grid-cols-3 gap-4">
-          <Input
-            placeholder="MM"
-            value={formData.date_of_birth.month}
-            onChange={(e) => updateFormData({ date_of_birth: { ...formData.date_of_birth, month: e.target.value } })}
-            maxLength={2}
-          />
-          <Input
-            placeholder="DD"
-            value={formData.date_of_birth.day}
-            onChange={(e) => updateFormData({ date_of_birth: { ...formData.date_of_birth, day: e.target.value } })}
-            maxLength={2}
-          />
-          <Input
-            placeholder="YYYY"
-            value={formData.date_of_birth.year}
-            onChange={(e) => updateFormData({ date_of_birth: { ...formData.date_of_birth, year: e.target.value } })}
-            maxLength={4}
-          />
-        </div>
-      </div>
-
-      {/* SSN and Driver's License */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="ssn">Social Security Number *</Label>
-          <Input
-            id="ssn"
-            type="password"
-            value={formData.ssn}
-            onChange={(e) => updateFormData({ ssn: e.target.value })}
-            placeholder="XXX-XX-XXXX"
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="drivers_license">Driver's License</Label>
-          <Input
-            id="drivers_license"
-            value={formData.drivers_license}
-            onChange={(e) => updateFormData({ drivers_license: e.target.value })}
-          />
-        </div>
-      </div>
-
-      {/* Sex and Marital Status */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="sex">Sex *</Label>
-          <Select value={formData.sex} onValueChange={(value) => updateFormData({ sex: value })}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select sex" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="male">Male</SelectItem>
-              <SelectItem value="female">Female</SelectItem>
-              <SelectItem value="other">Other</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="marital_status">Marital Status *</Label>
-          <Select value={formData.marital_status} onValueChange={(value) => updateFormData({ marital_status: value })}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select status" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="single">Single</SelectItem>
-              <SelectItem value="married">Married</SelectItem>
-              <SelectItem value="divorced">Divorced</SelectItem>
-              <SelectItem value="widowed">Widowed</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-
-      {/* Contact Information */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="primary_phone">Primary Phone *</Label>
-          <Input
-            id="primary_phone"
-            type="tel"
-            value={formData.primary_phone}
-            onChange={(e) => updateFormData({ primary_phone: e.target.value })}
-            placeholder="(XXX) XXX-XXXX"
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="secondary_phone">Secondary Phone</Label>
-          <Input
-            id="secondary_phone"
-            type="tel"
-            value={formData.secondary_phone}
-            onChange={(e) => updateFormData({ secondary_phone: e.target.value })}
-            placeholder="(XXX) XXX-XXXX"
-          />
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="email">Email Address *</Label>
-        <Input
-          id="email"
-          type="email"
-          value={formData.email}
-          onChange={(e) => updateFormData({ email: e.target.value })}
-          required
-        />
-      </div>
-
-      {/* Address */}
-      <div className="space-y-2">
-        <Label htmlFor="street_address">Street Address *</Label>
-        <Input
-          id="street_address"
-          value={formData.street_address}
-          onChange={(e) => updateFormData({ street_address: e.target.value })}
-          required
-        />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="city">City *</Label>
-          <Input
-            id="city"
-            value={formData.city}
-            onChange={(e) => updateFormData({ city: e.target.value })}
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="state">State *</Label>
-          <Input
-            id="state"
-            value={formData.state}
-            onChange={(e) => updateFormData({ state: e.target.value })}
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="zip_code">Zip Code *</Label>
-          <Input
-            id="zip_code"
-            value={formData.zip_code}
-            onChange={(e) => updateFormData({ zip_code: e.target.value })}
-            required
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="time_at_address">Time at Address *</Label>
-          <Select value={formData.time_at_address} onValueChange={(value) => updateFormData({ time_at_address: value })}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select time" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="less_than_1">Less than 1 year</SelectItem>
-              <SelectItem value="1_3">1-3 years</SelectItem>
-              <SelectItem value="3_5">3-5 years</SelectItem>
-              <SelectItem value="more_than_5">More than 5 years</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="rent_or_own">Rent or Own *</Label>
-          <Select value={formData.rent_or_own} onValueChange={(value) => updateFormData({ rent_or_own: value })}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select option" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="rent">Rent</SelectItem>
-              <SelectItem value="own">Own</SelectItem>
-              <SelectItem value="other">Other</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="previous_address">Previous Address (if less than 2 years)</Label>
-        <Input
-          id="previous_address"
-          value={formData.previous_address}
-          onChange={(e) => updateFormData({ previous_address: e.target.value })}
-        />
-      </div>
-
-      {/* Emergency Contact */}
-      <div className="border-t pt-6 mt-6">
-        <h3 className="text-lg font-semibold mb-4">Emergency Contact</h3>
+    <Form {...form}>
+      <form className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="space-y-2">
-            <Label htmlFor="emergency_contact_name">Name *</Label>
-            <Input
-              id="emergency_contact_name"
-              value={formData.emergency_contact_name}
-              onChange={(e) => updateFormData({ emergency_contact_name: e.target.value })}
-              required
+          <FormField
+            control={form.control}
+            name="first_name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.firstName')} *</FormLabel>
+                <FormControl>
+                  <Input placeholder="John" {...field} />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="middle_name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.middleName')}</FormLabel>
+                <FormControl>
+                  <Input placeholder="Michael" {...field} />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="last_name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.lastName')} *</FormLabel>
+                <FormControl>
+                  <Input placeholder="Doe" {...field} />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div>
+          <FormLabel className="text-sm font-medium">{t('form.personal.dateOfBirth')} *</FormLabel>
+          <div className="grid grid-cols-3 gap-4 mt-2">
+            <FormField
+              control={form.control}
+              name="date_of_birth.month"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger>
+                        <SelectValue placeholder={t('form.personal.month')} />
+                      </SelectTrigger>
+                      <SelectContent className="bg-popover">
+                        {getMonths(t).map((month) => (
+                          <SelectItem key={month.value} value={month.value}>
+                            {month.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  {showErrors && <FormMessage />}
+                </FormItem>
+              )}
             />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="emergency_contact_relationship">Relationship *</Label>
-            <Input
-              id="emergency_contact_relationship"
-              value={formData.emergency_contact_relationship}
-              onChange={(e) => updateFormData({ emergency_contact_relationship: e.target.value })}
-              required
+            
+            <FormField
+              control={form.control}
+              name="date_of_birth.day"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger>
+                        <SelectValue placeholder={t('form.personal.day')} />
+                      </SelectTrigger>
+                      <SelectContent className="bg-popover">
+                        {availableDays.map((day) => (
+                          <SelectItem key={day} value={day}>
+                            {day}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  {showErrors && <FormMessage />}
+                </FormItem>
+              )}
             />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="emergency_contact_phone">Phone *</Label>
-            <Input
-              id="emergency_contact_phone"
-              type="tel"
-              value={formData.emergency_contact_phone}
-              onChange={(e) => updateFormData({ emergency_contact_phone: e.target.value })}
-              required
+            
+            <FormField
+              control={form.control}
+              name="date_of_birth.year"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger>
+                        <SelectValue placeholder={t('form.personal.year')} />
+                      </SelectTrigger>
+                      <SelectContent className="bg-popover">
+                        {generateYears().map((year) => (
+                          <SelectItem key={year} value={year}>
+                            {year}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  {showErrors && <FormMessage />}
+                </FormItem>
+              )}
             />
           </div>
         </div>
-      </div>
 
-      <div className="flex justify-end pt-6">
-        <Button onClick={onNext} className="gap-2">
-          Next <ChevronRight className="h-4 w-4" />
-        </Button>
-      </div>
-    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="ssn"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.ssn')} *</FormLabel>
+                <FormControl>
+                  <Input 
+                    placeholder="123-45-6789" 
+                    value={field.value ? field.value.replace(/(\d{3})(\d{2})(\d{4})/, '$1-$2-$3') : ''}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, '');
+                      if (value.length <= 9) {
+                        field.onChange(value);
+                      }
+                    }}
+                  />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="drivers_license"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.driversLicense')} *</FormLabel>
+                <FormControl>
+                  <Input placeholder="DL123456789" {...field} />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="sex"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.sex')} *</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="bg-popover">
+                      <SelectItem value="Male">{t('form.personal.male')}</SelectItem>
+                      <SelectItem value="Female">{t('form.personal.female')}</SelectItem>
+                      <SelectItem value="Prefer Not To Answer">{t('form.personal.preferNotToAnswer')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                {showErrors && <FormMessage />}
+                <p className="text-xs text-muted-foreground mt-1">
+                  *{t('form.personal.sexDisclaimer')}
+                </p>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="marital_status"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.maritalStatus')} *</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="bg-popover">
+                      <SelectItem value="Single">{t('form.personal.single')}</SelectItem>
+                      <SelectItem value="Married">{t('form.personal.married')}</SelectItem>
+                      <SelectItem value="Divorced">{t('form.personal.divorced')}</SelectItem>
+                      <SelectItem value="Widowed">{t('form.personal.widowed')}</SelectItem>
+                      <SelectItem value="Separated">{t('form.personal.separated')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="primary_phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.primaryPhone')} *</FormLabel>
+                <FormControl>
+                  <Input type="tel" placeholder="(555) 123-4567" {...field} />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="secondary_phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.secondaryPhone')}</FormLabel>
+                <FormControl>
+                  <Input type="tel" placeholder="(555) 123-4567" {...field} />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.email')} *</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="john@example.com" {...field} />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <FormField
+          control={form.control}
+          name="street_address"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t('form.personal.streetAddress')} *</FormLabel>
+              <FormControl>
+                <Input placeholder="123 Main Street" {...field} />
+              </FormControl>
+              {showErrors && <FormMessage />}
+            </FormItem>
+          )}
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <FormField
+            control={form.control}
+            name="city"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.city')} *</FormLabel>
+                <FormControl>
+                  <Input placeholder="Anytown" {...field} />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="state"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.state')} *</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="bg-popover">
+                      {US_STATES.map((state) => (
+                        <SelectItem key={state.value} value={state.value}>
+                          {state.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="zip_code"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.zipCode')} *</FormLabel>
+                <FormControl>
+                  <Input placeholder="12345" maxLength={5} {...field} />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="time_at_address"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.timeAtAddress')} *</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="bg-popover">
+                      <SelectItem value="Less than 6 months">Less than 6 months</SelectItem>
+                      <SelectItem value="6 months - 1 year">6 months - 1 year</SelectItem>
+                      <SelectItem value="1 - 2 years">1 - 2 years</SelectItem>
+                      <SelectItem value="2 - 5 years">2 - 5 years</SelectItem>
+                      <SelectItem value="5+ years">5+ years</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="rent_or_own"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.rentOrOwn')} *</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="bg-popover">
+                      <SelectItem value="Rent">{t('form.personal.rent')}</SelectItem>
+                      <SelectItem value="Own">{t('form.personal.own')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <FormField
+          control={form.control}
+          name="previous_address"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t('form.personal.previousAddress')}</FormLabel>
+              <FormControl>
+                <Input placeholder="456 Previous St, Old City, ST 67890" {...field} />
+              </FormControl>
+              {showErrors && <FormMessage />}
+            </FormItem>
+          )}
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <FormField
+            control={form.control}
+            name="emergency_contact_name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.emergencyContactName')} *</FormLabel>
+                <FormControl>
+                  <Input placeholder="Jane Doe" {...field} />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="emergency_contact_relationship"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.emergencyContactRelationship')} *</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="bg-popover">
+                      {getRelationshipOptions().map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="emergency_contact_phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.personal.emergencyContactPhone')} *</FormLabel>
+                <FormControl>
+                  <Input type="tel" placeholder="(555) 123-4567" {...field} />
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="flex justify-between pt-6">
+          <Button
+            type="button"
+            onClick={onPrev}
+            variant="outline"
+            disabled
+          >
+            <ChevronLeft className="mr-2 h-4 w-4" />
+            {t('form.buttons.previous')}
+          </Button>
+          
+          <Button
+            type="button"
+            onClick={handleNext}
+          >
+            {t('form.buttons.next')}
+            <ChevronRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+
+        {showErrors && Object.keys(form.formState.errors).length > 0 && (
+          <div className="mt-4 p-4 bg-destructive/10 border border-destructive/20 rounded-md">
+            <h4 className="text-sm font-medium text-destructive mb-2">Please fix the following errors:</h4>
+            <ul className="text-sm text-destructive space-y-1">
+              {Object.entries(form.formState.errors).map(([key, error]) => (
+                <li key={key}>
+                  {typeof error?.message === 'string' ? error.message : 'This field is required'}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </form>
+    </Form>
   );
 };
 
