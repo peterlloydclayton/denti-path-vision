@@ -57,6 +57,27 @@ export const FoundersSection = () => {
                 </CardContent>
               </Card>
             </AnimatedText>
+
+            {/* Dr. Carmy Michael */}
+            <AnimatedText delay={0.3}>
+              <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
+                <CardContent className="p-8">
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold mb-2 text-black">Dr. Carmy Michael</h3>
+                    <p className="text-lg text-intelligence font-medium">Co-Founder</p>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Dr. Carmy Michael began his dental career in 1993 at Cairo University, completing a one-year residency before relocating to Canada. He later earned his Doctor of Dental Surgery (DDS) from the University of Western Ontario – Schulich School of Medicine & Dentistry, followed by a six-month clinical residency focused on oral rehabilitation and sedation dentistry.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed mt-4">
+                    With over 20 years of advanced training in implantology, digital workflow, and full-arch restoration, Dr. Michael is certified in oral and IV conscious sedation. He holds a Fellowship with the Global Dental Implant Academy (GDIA) and is an active member of the Academy of Osseointegration (AO), ICOI, and other leading implantology and surgical societies.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed mt-4">
+                    In addition to co-founding the OC Surgical Institute, Dr. Michael leads a high-volume private practice in Southern California focused on full-arch procedures, complex grafting, and advanced oral rehabilitation. He now works closely with DentiPay's SCOPE AI platform, integrating surgical intelligence, real-time patient approvals, and precision case planning to transform how care is delivered.
+                  </p>
+                </CardContent>
+              </Card>
+            </AnimatedText>
           </div>
         </div>
       </div>
