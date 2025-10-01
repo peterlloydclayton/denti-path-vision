@@ -127,8 +127,7 @@ export const JourneySection = () => {
             transition={{ delay: 0.5 }}
           >
             <Button 
-              size="lg" 
-              className="bg-foreground hover:bg-foreground/90 text-background font-semibold px-12 py-4 text-lg rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
+              className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
               onClick={() => navigate('/patient-financing-application')}
             >
               Get Financing
@@ -201,13 +200,12 @@ export const JourneySection = () => {
                          viewport={{ once: true }}
                          transition={{ delay: 0.5 }}
                        >
-                           <Button 
-                             size="lg" 
-                             className="bg-foreground hover:bg-foreground/90 text-background font-semibold px-12 py-4 text-lg rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
-                             onClick={() => navigate('/patient-financing-application')}
-                           >
-                             Get Financing
-                           </Button>
+                            <Button 
+                              className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
+                              onClick={() => navigate('/patient-financing-application')}
+                            >
+                              Get Financing
+                            </Button>
                        </motion.div>
                      </div>
                    </StaggerItem>
