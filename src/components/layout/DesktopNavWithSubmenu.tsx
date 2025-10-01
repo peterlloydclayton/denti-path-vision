@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Users, Stethoscope, Building, ChevronDown } from 'lucide-react';
+import { Home, Users, Stethoscope, Building, ChevronDown, Search } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
@@ -107,15 +107,16 @@ export const DesktopNavWithSubmenu = () => {
                       <span>{t(item.label)}</span>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-48 p-2 bg-background border shadow-lg rounded-md -ml-2">
+                      <div className="w-48 p-2 bg-background border shadow-lg rounded-md -ml-6">
                         {item.submenu.map((subItem) => (
                           <NavigationMenuLink key={subItem.href} asChild>
                             <Link
                               to={subItem.href}
                               onClick={() => setCurrentPath(subItem.href)}
-                              className="block p-3 rounded-md hover:bg-secondary transition-smooth"
+                              className="flex items-center gap-2 p-3 rounded-md hover:bg-secondary transition-smooth"
                             >
-                              {subItem.label}
+                              <Search size={16} />
+                              <span>{subItem.label}</span>
                             </Link>
                           </NavigationMenuLink>
                         ))}
