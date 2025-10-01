@@ -151,8 +151,6 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
       });
       
     } catch (err: any) {
-      console.error('Submission error:', err);
-      
       const errorMessage = err?.message || 'Unknown error occurred';
       setError(errorMessage);
       

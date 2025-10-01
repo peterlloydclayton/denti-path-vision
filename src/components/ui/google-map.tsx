@@ -165,9 +165,9 @@ export const GoogleMap = forwardRef<GoogleMapRef, GoogleMapProps>(({ onMapReady,
           onMapReady(mapRef.current);
         }
 
-        console.log('Map initialized successfully');
+        // Map initialized successfully
       } catch (error) {
-        console.error('Error initializing map:', error);
+        // Error initializing map
       }
     };
 

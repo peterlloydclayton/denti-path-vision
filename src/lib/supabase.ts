@@ -60,7 +60,6 @@ export const getActiveProviders = async (searchTerm?: string, city?: string) => 
   const { data, error } = await query;
   
   if (error) {
-    console.error('Error fetching providers:', error);
     return [];
   }
   

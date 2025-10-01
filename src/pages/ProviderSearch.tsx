@@ -70,7 +70,6 @@ export const ProviderSearch = () => {
       await loader.load();
       setGoogleMapsLoaded(true);
     } catch (error) {
-      console.error('Error loading Google Maps:', error);
       toast({
         title: "Maps Loading Error",
         description: "Failed to load Google Maps. Please check your API key.",
@@ -94,7 +93,6 @@ export const ProviderSearch = () => {
       setProviders(providersWithCoords);
       setFilteredProviders(providersWithCoords);
     } catch (error) {
-      console.error('Error loading providers:', error);
       toast({
         title: "Error",
         description: "Failed to load providers. Please try again.",
@@ -124,7 +122,6 @@ export const ProviderSearch = () => {
       });
       return result as { lat: number; lng: number } | null;
     } catch (error) {
-      console.error('Geocoding error:', error);
       return null;
     }
   };

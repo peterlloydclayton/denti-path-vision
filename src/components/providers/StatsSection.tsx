@@ -16,8 +16,6 @@ import {
 import { useMemo } from 'react';
 
 export const StatsSection = () => {
-  console.log('StatsSection rendering');
-  
   const dentalIcons = [
     Smile, Heart, Shield, Activity, Stethoscope, Plus, Star, Sparkles
   ];
