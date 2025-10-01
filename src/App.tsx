@@ -67,21 +67,21 @@ const AnimatedRoutes = () => {
             <motion.div
               key={location.pathname + '-curtain'}
               className="fixed inset-0 z-[100] bg-dental-blue pointer-events-none flex items-center justify-center"
-              initial={{ x: '100%' }}
+              initial={{ x: 0 }}
               animate={{ x: '-100%' }}
               transition={{ 
-                duration: 3, 
+                duration: 1.5, 
                 ease: [0.65, 0, 0.35, 1],
-                delay: 0.1
+                delay: 0.8
               }}
             >
               <motion.h1
                 className="text-6xl md:text-8xl font-bold text-white"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={{ opacity: [0, 1, 1, 0] }}
                 transition={{ 
-                  duration: 0.6,
-                  delay: 0.3,
+                  duration: 1.2,
+                  times: [0, 0.2, 0.6, 1],
                   ease: [0.65, 0, 0.35, 1]
                 }}
               >
