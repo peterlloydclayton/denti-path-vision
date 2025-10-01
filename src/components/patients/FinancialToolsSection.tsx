@@ -23,7 +23,7 @@ export const FinancialToolsSection = () => {
       </div>
       
       {/* Get Financing Button - Left side on desktop */}
-      <div className="absolute bottom-[400px] left-32 z-10 hidden md:block">
+      <div className="absolute bottom-[400px] left-48 z-10 hidden md:block">
         <Button 
           className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
           onClick={() => navigate('/patient-financing-application')}
