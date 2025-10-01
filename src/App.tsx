@@ -56,8 +56,9 @@ const AnimatedRoutes = () => {
               animate={{ x: '-100%' }}
               exit={{ x: 0 }}
               transition={{ 
-                duration: 0.6, 
-                ease: [0.77, 0, 0.18, 1]
+                duration: 0.8, 
+                ease: [0.65, 0, 0.35, 1],
+                delay: 0.1
               }}
             />
           </AnimatePresence>
@@ -73,7 +74,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    transition={{ duration: 0.3, ease: 'easeInOut' }}
+    transition={{ duration: 0.4, ease: [0.65, 0, 0.35, 1] }}
   >
     {children}
   </motion.div>
