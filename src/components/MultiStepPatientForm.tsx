@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import PersonalInfoStep from './form-steps/PersonalInfoStep';
 import EmploymentIncomeStep from './form-steps/EmploymentIncomeStep';
@@ -9,7 +8,6 @@ import FinancialOverviewStep from './form-steps/FinancialOverviewStep';
 import EmotionalDecisionStep from './form-steps/EmotionalDecisionStep';
 import ComplianceSignatureStep from './form-steps/ComplianceSignatureStep';
 import LanguageSwitcher from './LanguageSwitcher';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export interface FormData {
   // Section 1 - Personal Information
@@ -145,7 +143,6 @@ const MultiStepPatientForm: React.FC = () => {
   const nextStep = () => {
     if (currentStep < STEPS.length - 1) {
       setCurrentStep(currentStep + 1);
-      // Scroll to top of form when moving to next step
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -153,7 +150,6 @@ const MultiStepPatientForm: React.FC = () => {
   const prevStep = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
-      // Scroll to top of form when moving to previous step
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -162,7 +158,7 @@ const MultiStepPatientForm: React.FC = () => {
   const CurrentStepComponent = STEPS[currentStep].component;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 pt-24">
+    <div className="min-h-screen bg-muted py-8 pt-24">
       <div className="max-w-4xl mx-auto px-4">
         <Card className="p-8">
           <div className="mb-8">
