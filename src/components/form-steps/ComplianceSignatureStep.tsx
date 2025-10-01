@@ -282,9 +282,9 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
               
               <Button
                 type="submit"
-                disabled={isSubmitting || !consentGiven || !formData.authorize_credit_report || 
-                         !formData.consent_communications || !formData.understand_no_credit_impact || 
-                         !formData.confirm_information_accurate}
+                disabled={isSubmitting || !consentGiven || !signerName || !signerEmail || 
+                         !formData.authorize_credit_report || !formData.consent_communications || 
+                         !formData.understand_no_credit_impact || !formData.confirm_information_accurate}
                 className="px-8"
               >
                 {isSubmitting ? t('form.compliance.submitting') : t('form.compliance.signAndSubmit')}
