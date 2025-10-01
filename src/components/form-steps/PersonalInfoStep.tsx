@@ -70,18 +70,18 @@ const generateYears = (): string[] => {
 };
 
 const getMonths = (t: any) => [
-  { value: '01', label: 'January' },
-  { value: '02', label: 'February' },
-  { value: '03', label: 'March' },
-  { value: '04', label: 'April' },
-  { value: '05', label: 'May' },
-  { value: '06', label: 'June' },
-  { value: '07', label: 'July' },
-  { value: '08', label: 'August' },
-  { value: '09', label: 'September' },
-  { value: '10', label: 'October' },
-  { value: '11', label: 'November' },
-  { value: '12', label: 'December' },
+  { value: '01', label: t('form.months.january') },
+  { value: '02', label: t('form.months.february') },
+  { value: '03', label: t('form.months.march') },
+  { value: '04', label: t('form.months.april') },
+  { value: '05', label: t('form.months.may') },
+  { value: '06', label: t('form.months.june') },
+  { value: '07', label: t('form.months.july') },
+  { value: '08', label: t('form.months.august') },
+  { value: '09', label: t('form.months.september') },
+  { value: '10', label: t('form.months.october') },
+  { value: '11', label: t('form.months.november') },
+  { value: '12', label: t('form.months.december') },
 ];
 
 const US_STATES = [
