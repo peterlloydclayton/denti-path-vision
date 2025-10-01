@@ -3,8 +3,11 @@ import { ParallaxSection } from '@/components/ui/parallax-section';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { peaceOfMindFeatures } from '@/data/patientsData';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 export const PeaceOfMindSection = () => {
+  const navigate = useNavigate();
   const iconMap = {
     Zap,
     CreditCard,
@@ -95,6 +98,15 @@ export const PeaceOfMindSection = () => {
               );
             })}
           </Accordion>
+        </div>
+
+        <div className="flex justify-center mt-12">
+          <Button 
+            className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
+            onClick={() => navigate('/patient-financing-application')}
+          >
+            Get Financing
+          </Button>
         </div>
       </div>
     </ParallaxSection>
