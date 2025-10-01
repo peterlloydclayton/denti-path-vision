@@ -97,7 +97,7 @@ export const JourneySection = () => {
                         </h3>
                       </div>
                       
-                      <div className="h-[80px] flex items-center">
+                      <div className="h-[80px]">
                         <p className="text-foreground/70 text-sm leading-relaxed">
                           {item.desc}
                         </p>
