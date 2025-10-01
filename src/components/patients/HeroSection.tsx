@@ -1,9 +1,11 @@
 import { Button } from '@/components/ui/button';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 export const HeroSection = () => {
   const { t } = useTranslation('marketing');
+  const navigate = useNavigate();
   return (
     <section className="h-screen relative z-30 overflow-visible">
       {/* Controlled Background */}
@@ -87,7 +89,7 @@ export const HeroSection = () => {
       <div className="hidden md:block absolute top-[70%] left-12 z-[120]">
         <Button 
           className="h-16 text-xl bg-black text-white hover:bg-black/80 shadow-elegant px-12 font-semibold"
-          onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
+          onClick={() => navigate('/patient-financing-application')}
         >
           {t('patients.hero.cta')}
         </Button>
@@ -97,7 +99,7 @@ export const HeroSection = () => {
       <div className="block sm:hidden absolute bottom-[20%] left-6 z-[150] mobile-landscape-button">
         <Button 
           className="h-12 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-8 font-semibold"
-          onClick={() => window.open('https://dental-docs-hub.lovable.app/signup', '_blank')}
+          onClick={() => navigate('/patient-financing-application')}
         >
           {t('patients.hero.cta')}
         </Button>
