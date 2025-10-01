@@ -81,10 +81,14 @@ export const StatsSection = () => {
           </div>
           
           {/* Image */}
-          <img 
+          <motion.img 
             src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759280638/child-dental-bib_tcauhp.png"
             alt="Child with dental bib"
             className="max-w-md w-full h-auto object-contain relative z-10"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           />
         </motion.div>
 
