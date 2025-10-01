@@ -8,44 +8,32 @@ export const ValuesSection = () => {
     {
       icon: Heart,
       title: 'Patient-First',
-      description: 'Every decision we make prioritizes patient access to quality dental care. We design our technology and processes to remove barriers, reduce stress, and create pathways to treatment that traditional systems ignore.',
-      gradient: 'from-red-50 to-pink-50',
-      iconColor: 'text-red-500'
+      description: 'Every decision we make prioritizes patient access to quality dental care. We design our technology and processes to remove barriers, reduce stress, and create pathways to treatment that traditional systems ignore.'
     },
     {
       icon: Lightbulb,
       title: 'Innovation',
-      description: 'Pioneering AI-driven solutions that reshape healthcare finance. We continuously push boundaries, explore emerging technologies, and challenge conventional wisdom to build the future of patient financing.',
-      gradient: 'from-yellow-50 to-amber-50',
-      iconColor: 'text-yellow-600'
+      description: 'Pioneering AI-driven solutions that reshape healthcare finance. We continuously push boundaries, explore emerging technologies, and challenge conventional wisdom to build the future of patient financing.'
     },
     {
       icon: Target,
       title: 'Excellence',
-      description: 'Delivering unparalleled service and outcomes for providers and patients alike. Our commitment to quality extends from our AI algorithms to our customer support, ensuring every interaction exceeds expectations.',
-      gradient: 'from-blue-50 to-cyan-50',
-      iconColor: 'text-blue-600'
+      description: 'Delivering unparalleled service and outcomes for providers and patients alike. Our commitment to quality extends from our AI algorithms to our customer support, ensuring every interaction exceeds expectations.'
     },
     {
       icon: Users,
       title: 'Partnership',
-      description: 'Building lasting relationships based on trust, transparency, and mutual success. We view every dental practice and patient as a long-term partner in transforming healthcare access.',
-      gradient: 'from-green-50 to-emerald-50',
-      iconColor: 'text-green-600'
+      description: 'Building lasting relationships based on trust, transparency, and mutual success. We view every dental practice and patient as a long-term partner in transforming healthcare access.'
     },
     {
       icon: Shield,
       title: 'Integrity',
-      description: 'Operating with unwavering ethical standards and transparency. We protect patient data, honor our commitments, and maintain the highest standards of business conduct in every transaction.',
-      gradient: 'from-purple-50 to-violet-50',
-      iconColor: 'text-purple-600'
+      description: 'Operating with unwavering ethical standards and transparency. We protect patient data, honor our commitments, and maintain the highest standards of business conduct in every transaction.'
     },
     {
       icon: Sparkles,
       title: 'Impact',
-      description: 'Measuring success by the lives we improve and the barriers we remove. Every approval, every smile, every practice we help grow represents our commitment to creating meaningful change.',
-      gradient: 'from-indigo-50 to-blue-50',
-      iconColor: 'text-indigo-600'
+      description: 'Measuring success by the lives we improve and the barriers we remove. Every approval, every smile, every practice we help grow represents our commitment to creating meaningful change.'
     }
   ];
 
@@ -105,18 +93,18 @@ export const ValuesSection = () => {
                 }}
                 className="relative h-full"
               >
-                <Card className="h-full bg-card border-2 border-border/10 hover:border-foreground/20 transition-all duration-500 shadow-lg hover:shadow-2xl group overflow-hidden">
+                <Card className="h-full bg-card border-2 border-border/10 hover:border-dental-blue/50 transition-all duration-500 shadow-lg hover:shadow-2xl group overflow-hidden">
                   <CardContent className="p-8 h-full flex flex-col relative">
-                    {/* Gradient background on hover */}
+                    {/* Dental blue gradient background on hover */}
                     <motion.div 
-                      className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-100`}
+                      className="absolute inset-0 bg-gradient-to-br from-dental-blue/20 to-dental-blue/10 opacity-0 group-hover:opacity-100"
                       transition={{ duration: 0.4 }}
                     />
                     
                     <div className="relative z-10 flex flex-col h-full">
                       {/* Icon with pulse effect */}
                       <motion.div 
-                        className="w-20 h-20 rounded-3xl bg-foreground/10 group-hover:bg-white/80 flex items-center justify-center mb-6 mx-auto relative overflow-hidden transition-colors duration-300"
+                        className="w-20 h-20 rounded-3xl bg-black flex items-center justify-center mb-6 mx-auto relative overflow-hidden transition-colors duration-300"
                         whileHover={{ 
                           scale: 1.15, 
                           rotate: [0, -8, 8, 0],
@@ -134,7 +122,7 @@ export const ValuesSection = () => {
                       >
                         {/* Ripple effect */}
                         <motion.div
-                          className={`absolute inset-0 ${value.iconColor} opacity-20 rounded-full`}
+                          className="absolute inset-0 bg-dental-blue/30 rounded-full"
                           initial={{ scale: 0, opacity: 0.5 }}
                           whileHover={{ 
                             scale: 2, 
@@ -142,7 +130,7 @@ export const ValuesSection = () => {
                             transition: { duration: 0.6 }
                           }}
                         />
-                        <Icon size={36} className={`${value.iconColor} relative z-10 transition-colors duration-300`} />
+                        <Icon size={36} className="text-dental-blue relative z-10 transition-colors duration-300" />
                       </motion.div>
                       
                       <motion.h3 
