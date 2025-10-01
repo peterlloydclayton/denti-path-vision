@@ -32,7 +32,7 @@ export const FinancialToolsSection = () => {
         </Button>
       </div>
       
-      <div className="container mx-auto px-6 md:hidden mt-8 mb-8 flex justify-center">
+      <div className="container mx-auto px-6 md:hidden mt-4 mb-4 flex justify-center">
         <Button 
           className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
           onClick={() => navigate('/patient-financing-application')}
