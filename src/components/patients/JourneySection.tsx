@@ -94,13 +94,15 @@ export const JourneySection = () => {
                       <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-dental-blue transition-colors">
                         {item.title}
                       </h3>
-                      <p className="text-foreground/70 mb-4 text-sm leading-relaxed flex-grow">
-                        {item.desc}
-                      </p>
+                      <div className="flex-grow flex items-center">
+                        <p className="text-foreground/70 text-sm leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
                       
                       {/* Benefit Badge */}
                       <motion.div 
-                        className="bg-dental-lavender/20 border border-dental-lavender/30 rounded-lg p-3 group-hover:bg-dental-lavender/30 transition-colors"
+                        className="bg-dental-lavender/20 border border-dental-lavender/30 rounded-lg p-3 group-hover:bg-dental-lavender/30 transition-colors mt-3"
                         initial={{ opacity: 0.8 }}
                         whileHover={{ opacity: 1 }}
                       >
