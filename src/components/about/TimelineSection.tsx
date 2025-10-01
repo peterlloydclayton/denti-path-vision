@@ -24,7 +24,7 @@ export const TimelineSection = () => {
       description: 'Reached 10,000+ dental practices nationwide, processing over $1B in patient financing'
     },
     {
-      year: '2024',
+      year: '2025',
       title: 'AI Enhancement',
       description: 'Advanced our AI capabilities with machine learning models achieving 97%+ predictive accuracy'
     }
