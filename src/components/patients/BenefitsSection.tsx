@@ -11,7 +11,7 @@ export const BenefitsSection = () => {
   const navigate = useNavigate();
   
   return (
-    <section className="py-24 bg-dental-blue relative overflow-hidden">
+    <section className="pt-24 pb-16 bg-dental-blue relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-20">
         <AnimatedText className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
