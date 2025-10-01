@@ -57,7 +57,7 @@ export const StatsSection = () => {
             {floatingIcons.map((item) => (
               <motion.div
                 key={item.id}
-                className="absolute text-dental-blue/20"
+                className="absolute text-dental-blue/50"
                 style={{
                   left: `${item.x}%`,
                   top: `${item.y}%`,
