@@ -45,7 +45,7 @@ export const MissionVisionSection = () => {
   return (
     <>
       {/* MISSION SECTION */}
-      <section className="py-24 bg-background relative overflow-hidden">
+      <section className="pt-24 pb-0 bg-background relative overflow-hidden">
         {/* Floating Icons Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
           {floatingIcons.map((item) => (
@@ -74,12 +74,12 @@ export const MissionVisionSection = () => {
           ))}
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 pb-0 relative z-10">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="flex flex-col lg:flex-row items-end gap-16">
               {/* Image - Left Side */}
               <motion.div 
-                className="w-full lg:w-2/5"
+                className="w-full lg:w-2/5 mb-0"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -88,12 +88,12 @@ export const MissionVisionSection = () => {
                 <img 
                   src={diversePractitioners}
                   alt="Diverse team of dental professionals"
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-contain object-bottom"
                 />
               </motion.div>
 
               {/* Content - Right Side */}
-              <div className="w-full lg:w-3/5">
+              <div className="w-full lg:w-3/5 pb-12 lg:pb-16">
                 <AnimatedText>
                   <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
                     Our Mission
