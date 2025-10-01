@@ -1,6 +1,5 @@
 import { HeroSection } from '@/components/about/HeroSection';
 import { MissionVisionSection } from '@/components/about/MissionVisionSection';
-import { StatsSection } from '@/components/about/StatsSection';
 import { ValuesSection } from '@/components/about/ValuesSection';
 import { TimelineSection } from '@/components/about/TimelineSection';
 import { FoundersSection } from '@/components/about/FoundersSection';
@@ -13,7 +12,6 @@ const About = () => {
     <div className="pt-24 overflow-x-hidden">
       <HeroSection />
       <MissionVisionSection />
-      <StatsSection />
       <ValuesSection />
       <TimelineSection />
       <FoundersSection />
