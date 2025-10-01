@@ -43,10 +43,10 @@ const AnimatedRoutes = () => {
   return (
     <>
       <ScrollToTop />
-      <div className="relative min-h-screen flex flex-col">
+      <div className="relative min-h-screen flex flex-col bg-dental-blue">
         <FloatingNav />
         <GDPRBanner />
-        <main className="flex-1">
+        <main className="flex-1 bg-dental-blue">
           <AnimatePresence mode="wait" initial={false}>
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
@@ -98,20 +98,12 @@ const AnimatedRoutes = () => {
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   <motion.div
-    className="bg-dental-blue"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
+    transition={{ duration: 0.25, ease: [0.65, 0, 0.35, 1] }}
   >
-    <motion.div
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2, ease: [0.65, 0, 0.35, 1] }}
-    >
-      {children}
-    </motion.div>
+    {children}
   </motion.div>
 );
 
