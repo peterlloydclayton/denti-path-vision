@@ -7,8 +7,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 import { useCallback, useEffect, useState } from 'react';
 import { type CarouselApi } from '@/components/ui/carousel';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import adamZuckerman from '@/assets/profiles/adam-zuckerman.png';
 import charlesZahedi from '@/assets/profiles/charles-zahedi.png';
 import emilioArguello from '@/assets/profiles/emilio-arguello.jpg';
@@ -18,6 +26,8 @@ export const FoundersSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [isLandscape, setIsLandscape] = useState(false);
+  const [selectedFounder, setSelectedFounder] = useState<typeof founders[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onSelect = useCallback((api: CarouselApi) => {
     if (!api) return;
@@ -45,6 +55,11 @@ export const FoundersSection = () => {
       api.off('select', () => onSelect(api));
     };
   }, [api, onSelect]);
+
+  const openModal = (founder: typeof founders[0]) => {
+    setSelectedFounder(founder);
+    setIsModalOpen(true);
+  };
 
   const founders = [
     {
@@ -112,16 +127,27 @@ export const FoundersSection = () => {
                           <h3 className="text-2xl font-bold mb-2 text-black">{founder.name}</h3>
                           <p className="text-lg font-medium text-black mb-4">{founder.role}</p>
                         </div>
-                        <p className="text-muted-foreground leading-relaxed text-sm">
+                        <p className="text-muted-foreground leading-relaxed text-sm line-clamp-6">
                           {founder.description}
                         </p>
+                        <Button
+                          variant="link"
+                          onClick={() => openModal(founder)}
+                          className="mt-2 text-primary"
+                        >
+                          Read More
+                        </Button>
                       </CardContent>
                     </Card>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="z-30" />
-              <CarouselNext className="z-30" />
+              <CarouselPrevious className="z-30 -left-12 h-12 w-12 bg-black text-white hover:bg-black/90 border-none">
+                <ChevronLeft className="h-6 w-6" />
+              </CarouselPrevious>
+              <CarouselNext className="z-30 -right-12 h-12 w-12 bg-black text-white hover:bg-black/90 border-none">
+                <ChevronRight className="h-6 w-6" />
+              </CarouselNext>
             </Carousel>
           </AnimatedText>
         </div>
@@ -142,15 +168,47 @@ export const FoundersSection = () => {
                       <h3 className="text-2xl font-bold mb-2 text-black">{founder.name}</h3>
                       <p className="text-lg font-medium text-black">{founder.role}</p>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed line-clamp-6">
                       {founder.description}
                     </p>
+                    <Button
+                      variant="link"
+                      onClick={() => openModal(founder)}
+                      className="mt-2 text-primary"
+                    >
+                      Read More
+                    </Button>
                   </CardContent>
                 </Card>
               </AnimatedText>
             ))}
           </div>
         </div>
+
+        {/* Modal for full profile */}
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+            {selectedFounder && (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="sr-only">{selectedFounder.name}</DialogTitle>
+                </DialogHeader>
+                <div className="flex flex-col items-center text-center">
+                  <img 
+                    src={selectedFounder.image} 
+                    alt={selectedFounder.name}
+                    className="w-64 h-80 object-cover rounded-lg ring-4 ring-primary/20 mb-6"
+                  />
+                  <h3 className="text-3xl font-bold mb-2 text-black">{selectedFounder.name}</h3>
+                  <p className="text-xl font-medium text-black mb-6">{selectedFounder.role}</p>
+                  <p className="text-muted-foreground leading-relaxed text-left">
+                    {selectedFounder.description}
+                  </p>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
