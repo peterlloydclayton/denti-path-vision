@@ -3,7 +3,6 @@ import { ParallaxSection } from '@/components/ui/parallax-section';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
-import adamZuckerman from '@/assets/profiles/adam-zuckerman.png';
 import jayOku from '@/assets/profiles/jay-oku.png';
 import donaldThorne from '@/assets/profiles/donald-thorne.png';
 import nuttalyaReussi from '@/assets/profiles/nuttalya-reussi.png';
@@ -13,13 +12,6 @@ import colinDedely from '@/assets/profiles/colin-dedely.png';
 export const LeadershipSection = () => {
   const navigate = useNavigate();
   const leaders = [
-    {
-      name: 'Adam Zuckerman',
-      role: 'Founder/CEO',
-      color: 'dental-peach',
-      description: 'Adam Zuckerman is the Founder and CEO of DentiPay, an AI-powered behavioral financing platform revolutionizing patient approvals and provider profitability. A proven fintech innovator and strategic operator, Adam specializes in building high-growth ventures at the intersection of AI, finance, and healthcare. His leadership has consistently driven rapid expansion and strategic partnerships across multiple ventures in these sectors.',
-      image: adamZuckerman
-    },
     {
       name: 'Jay Oku',
       role: 'Chief Business Officer',
@@ -64,24 +56,9 @@ export const LeadershipSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
             Leadership That Builds Revolutions
           </h2>
-          <p className="text-xl text-black max-w-4xl mx-auto mb-8">
+          <p className="text-xl text-black max-w-4xl mx-auto">
             Where innovation meets execution — and disruption becomes inevitable.
           </p>
-          <div className="flex gap-4 justify-center">
-            <Button 
-              onClick={() => navigate('/patients')}
-              className="px-8 py-6 text-lg"
-            >
-              For Patients
-            </Button>
-            <Button 
-              onClick={() => navigate('/providers')}
-              variant="outline"
-              className="px-8 py-6 text-lg"
-            >
-              For Providers
-            </Button>
-          </div>
         </AnimatedText>
 
         <div className="max-w-6xl mx-auto">
@@ -107,6 +84,23 @@ export const LeadershipSection = () => {
                 </Card>
               </AnimatedText>
             ))}
+          </div>
+          
+          {/* Buttons below bios */}
+          <div className="flex gap-4 justify-center mt-12">
+            <Button 
+              onClick={() => navigate('/patients')}
+              className="px-8 py-6 text-lg"
+            >
+              For Patients
+            </Button>
+            <Button 
+              onClick={() => navigate('/providers')}
+              variant="outline"
+              className="px-8 py-6 text-lg"
+            >
+              For Providers
+            </Button>
           </div>
         </div>
       </div>
