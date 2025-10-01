@@ -135,7 +135,7 @@ export const ProblemSection = () => {
 
       {/* Bottom Right Image */}
       <motion.div
-        className="absolute -bottom-0 right-0 w-80 h-96 sm:w-96 sm:h-[30rem] md:w-[16rem] md:h-[24rem] lg:w-[24rem] lg:h-[30rem] md:-bottom-8"
+        className="absolute -bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:right-0 md:translate-x-0 w-80 h-96 sm:w-96 sm:h-[30rem] md:w-[16rem] md:h-[24rem] lg:w-[24rem] lg:h-[30rem] md:-bottom-8"
         initial={{ opacity: 0, y: 30, scale: 0.9 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: "-100px" }}
