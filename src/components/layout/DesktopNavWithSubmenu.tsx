@@ -107,7 +107,7 @@ export const DesktopNavWithSubmenu = () => {
                       <span>{t(item.label)}</span>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-48 p-2 bg-background border shadow-lg rounded-md">
+                      <div className="w-48 p-2 bg-background border shadow-lg rounded-md -ml-2">
                         {item.submenu.map((subItem) => (
                           <NavigationMenuLink key={subItem.href} asChild>
                             <Link
