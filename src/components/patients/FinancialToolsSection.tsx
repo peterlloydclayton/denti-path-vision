@@ -8,7 +8,7 @@ export const FinancialToolsSection = () => {
   const navigate = useNavigate();
   
   return (
-    <section className="pt-24 pb-[520px] md:pb-[644px] bg-background relative">
+    <section className="pt-24 pb-[420px] md:pb-[644px] bg-background relative">
       <div className="container mx-auto pl-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
