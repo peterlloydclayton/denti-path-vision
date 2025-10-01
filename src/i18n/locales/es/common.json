@@ -90,7 +90,14 @@
       "friend": "Amigo/a",
       "colleague": "Colega",
       "neighbor": "Vecino/a",
-      "other": "Otro"
+      "other": "Otro",
+      "rent": "Renta",
+      "own": "Propietario",
+      "lessThan6Months": "Menos de 6 meses",
+      "6MonthsTo1Year": "6 meses - 1 año",
+      "1To2Years": "1 - 2 años",
+      "2To5Years": "2 - 5 años",
+      "5PlusYears": "5+ años"
     },
     "employment": {
       "title": "Empleo e Ingresos",
@@ -180,7 +187,9 @@
       "submitting": "Enviando...",
       "signAndSubmit": "Firmar y Enviar Solicitud",
       "successTitle": "¡Solicitud Enviada Exitosamente!",
-      "successMessage": "Su solicitud de financiamiento ha sido recibida. Revisaremos su información y nos pondremos en contacto con usted en breve con los resultados de su precalificación."
+      "successMessage": "Su solicitud de financiamiento ha sido recibida. Revisaremos su información y nos pondremos en contacto con usted en breve con los resultados de su precalificación.",
+      "agreementTitle": "Acuerdo de Financiamiento del Paciente",
+      "agreementContent": "ACUERDO DE FINANCIAMIENTO DEL PACIENTE\n\nAl firmar este documento, reconozco que he leído y entiendo los términos y condiciones del acuerdo de financiamiento.\n\n1. Autorización para Verificación de Crédito\nAutorizo a DentiPay y sus socios a obtener mi informe de crédito con el propósito de evaluar mi solicitud de financiamiento.\n\n2. Consentimiento para Comunicaciones\nConsiento recibir comunicaciones por correo electrónico, teléfono y SMS con respecto a mi solicitud y opciones de financiamiento.\n\n3. Comprensión del Proceso\nEntiendo que esta verificación de precalificación no afectará mi puntaje de crédito.\n\n4. Exactitud de la Información\nConfirmo que toda la información proporcionada en esta solicitud es precisa y completa según mi mejor conocimiento."
     }
   }
 }

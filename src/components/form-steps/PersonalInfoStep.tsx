@@ -33,8 +33,8 @@ const personalInfoSchema = z.object({
   drivers_license: z.string().min(1, "Driver's License/State ID is required"),
   sex: z.string().min(1, "Sex (Assigned At Birth) is required"),
   marital_status: z.string().min(1, "Marital status is required"),
-  primary_phone: z.string().min(10, "Valid phone number is required"),
-  secondary_phone: z.string().optional(),
+  primary_phone: z.string().regex(/^\d{10}$/, "Phone number must be exactly 10 digits"),
+  secondary_phone: z.string().regex(/^\d{10}$/, "Phone number must be exactly 10 digits").optional().or(z.literal('')),
   email: z.string().email("Valid email is required"),
   street_address: z.string().min(1, "Street address is required"),
   city: z.string().min(1, "City is required"),
@@ -45,7 +45,7 @@ const personalInfoSchema = z.object({
   previous_address: z.string().optional(),
   emergency_contact_name: z.string().min(1, "Emergency contact name is required"),
   emergency_contact_relationship: z.string().min(1, "Emergency contact relationship is required"),
-  emergency_contact_phone: z.string().min(10, "Valid emergency contact phone is required"),
+  emergency_contact_phone: z.string().regex(/^\d{10}$/, "Emergency contact phone must be exactly 10 digits"),
 });
 
 const isLeapYear = (year: number): boolean => {
@@ -414,7 +414,16 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               <FormItem>
                 <FormLabel>{t('form.personal.primaryPhone')} *</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="(555) 123-4567" {...field} />
+                  <Input 
+                    type="tel" 
+                    placeholder="5551234567" 
+                    maxLength={10}
+                    value={field.value || ''}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, '');
+                      field.onChange(value);
+                    }}
+                  />
                 </FormControl>
                 {showErrors && <FormMessage />}
               </FormItem>
@@ -428,7 +437,16 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               <FormItem>
                 <FormLabel>{t('form.personal.secondaryPhone')}</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="(555) 123-4567" {...field} />
+                  <Input 
+                    type="tel" 
+                    placeholder="5551234567" 
+                    maxLength={10}
+                    value={field.value || ''}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, '');
+                      field.onChange(value);
+                    }}
+                  />
                 </FormControl>
                 {showErrors && <FormMessage />}
               </FormItem>
@@ -532,11 +550,11 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-popover">
-                      <SelectItem value="Less than 6 months">Less than 6 months</SelectItem>
-                      <SelectItem value="6 months - 1 year">6 months - 1 year</SelectItem>
-                      <SelectItem value="1 - 2 years">1 - 2 years</SelectItem>
-                      <SelectItem value="2 - 5 years">2 - 5 years</SelectItem>
-                      <SelectItem value="5+ years">5+ years</SelectItem>
+                      <SelectItem value="Less than 6 months">{t('form.personal.lessThan6Months')}</SelectItem>
+                      <SelectItem value="6 months - 1 year">{t('form.personal.6MonthsTo1Year')}</SelectItem>
+                      <SelectItem value="1 - 2 years">{t('form.personal.1To2Years')}</SelectItem>
+                      <SelectItem value="2 - 5 years">{t('form.personal.2To5Years')}</SelectItem>
+                      <SelectItem value="5+ years">{t('form.personal.5PlusYears')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormControl>
@@ -629,7 +647,16 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               <FormItem>
                 <FormLabel>{t('form.personal.emergencyContactPhone')} *</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="(555) 123-4567" {...field} />
+                  <Input 
+                    type="tel" 
+                    placeholder="5551234567" 
+                    maxLength={10}
+                    value={field.value || ''}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, '');
+                      field.onChange(value);
+                    }}
+                  />
                 </FormControl>
                 {showErrors && <FormMessage />}
               </FormItem>

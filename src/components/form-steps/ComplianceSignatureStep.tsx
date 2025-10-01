@@ -44,24 +44,10 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
   useEffect(() => {
     setDocument({
       id: 'patient-financing-agreement',
-      title: 'Patient Financing Agreement',
-      content: `PATIENT FINANCING AGREEMENT
-
-By signing this document, I acknowledge that I have read and understand the terms and conditions of the financing agreement.
-
-1. Authorization for Credit Check
-I authorize DentiPay and its partners to obtain my credit report for the purpose of evaluating my financing application.
-
-2. Consent to Communications
-I consent to receive communications via email, phone, and SMS regarding my application and financing options.
-
-3. Understanding of Process
-I understand that this pre-qualification check will not impact my credit score.
-
-4. Accuracy of Information
-I confirm that all information provided in this application is accurate and complete to the best of my knowledge.`
+      title: t('form.compliance.agreementTitle'),
+      content: t('form.compliance.agreementContent')
     });
-  }, []);
+  }, [t]);
 
   const handleSign = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -90,7 +90,14 @@
       "friend": "Friend",
       "colleague": "Colleague",
       "neighbor": "Neighbor",
-      "other": "Other"
+      "other": "Other",
+      "rent": "Rent",
+      "own": "Own",
+      "lessThan6Months": "Less than 6 months",
+      "6MonthsTo1Year": "6 months - 1 year",
+      "1To2Years": "1 - 2 years",
+      "2To5Years": "2 - 5 years",
+      "5PlusYears": "5+ years"
     },
     "employment": {
       "title": "Employment & Income",
@@ -180,7 +187,9 @@
       "submitting": "Submitting...",
       "signAndSubmit": "Sign and Submit Application",
       "successTitle": "Application Submitted Successfully!",
-      "successMessage": "Your financing application has been received. We'll review your information and contact you shortly with your pre-qualification results."
+      "successMessage": "Your financing application has been received. We'll review your information and contact you shortly with your pre-qualification results.",
+      "agreementTitle": "Patient Financing Agreement",
+      "agreementContent": "PATIENT FINANCING AGREEMENT\n\nBy signing this document, I acknowledge that I have read and understand the terms and conditions of the financing agreement.\n\n1. Authorization for Credit Check\nI authorize DentiPay and its partners to obtain my credit report for the purpose of evaluating my financing application.\n\n2. Consent to Communications\nI consent to receive communications via email, phone, and SMS regarding my application and financing options.\n\n3. Understanding of Process\nI understand that this pre-qualification check will not impact my credit score.\n\n4. Accuracy of Information\nI confirm that all information provided in this application is accurate and complete to the best of my knowledge."
     }
   }
 }
