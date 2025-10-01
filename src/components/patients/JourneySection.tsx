@@ -88,16 +88,16 @@ export const JourneySection = () => {
 
                     {/* Step Card */}
                     <motion.div 
-                      className="bg-card rounded-2xl p-6 shadow-lg border border-border group-hover:shadow-elegant group-hover:border-dental-blue transition-all duration-300 h-[280px] flex flex-col justify-between"
+                      className="bg-card rounded-2xl p-6 shadow-lg border border-border group-hover:shadow-elegant group-hover:border-dental-blue transition-all duration-300 h-[280px] flex flex-col"
                       whileHover={{ scale: 1.02 }}
                     >
-                      <div className="h-[80px] flex items-start">
+                      <div className="h-[65px]">
                         <h3 className="text-xl font-bold text-foreground group-hover:text-dental-blue transition-colors leading-tight">
                           {item.title}
                         </h3>
                       </div>
                       
-                      <div className="h-[65px]">
+                      <div className="h-[70px] mb-4">
                         <p className="text-foreground/70 text-sm leading-relaxed">
                           {item.desc}
                         </p>
