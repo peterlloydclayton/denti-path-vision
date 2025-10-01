@@ -54,7 +54,6 @@ const AnimatedRoutes = () => {
               className="fixed inset-0 z-[100] bg-dental-blue pointer-events-none"
               initial={{ x: '100%' }}
               animate={{ x: '-100%' }}
-              exit={{ x: 0 }}
               transition={{ 
                 duration: 0.8, 
                 ease: [0.65, 0, 0.35, 1],
