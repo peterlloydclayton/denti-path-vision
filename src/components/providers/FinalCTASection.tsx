@@ -92,9 +92,10 @@ export const FinalCTASection = () => {
                   <motion.div
                     whileHover={{ y: -4, scale: 1.02 }}
                     transition={{ duration: 0.3 }}
+                    className="h-full"
                   >
-                    <Card className="bg-primary border-primary/20 text-primary-foreground text-center hover:bg-primary/90 transition-all duration-300 hover:shadow-elegant">
-                      <CardContent className="p-6">
+                    <Card className="bg-primary border-primary/20 text-primary-foreground text-center hover:bg-primary/90 transition-all duration-300 hover:shadow-elegant h-full">
+                      <CardContent className="p-6 flex flex-col h-full">
                         <motion.div 
                           className="w-12 h-12 bg-primary-foreground text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold"
                           whileHover={{ scale: 1.1, rotate: 5 }}
