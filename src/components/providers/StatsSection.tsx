@@ -17,6 +17,21 @@ export const StatsSection = () => {
   return (
     <section className="py-32 bg-white border-b border-dental-blue/20">
       <div className="container mx-auto px-6">
+        {/* Image above section */}
+        <motion.div 
+          className="flex justify-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <img 
+            src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759280638/child-dental-bib_tcauhp.png"
+            alt="Child with dental bib"
+            className="max-w-md w-full h-auto object-contain"
+          />
+        </motion.div>
+
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
