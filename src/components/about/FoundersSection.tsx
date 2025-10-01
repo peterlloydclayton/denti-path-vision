@@ -109,9 +109,7 @@ export const FoundersSection = () => {
                           <img 
                             src={founder.image} 
                             alt={founder.name}
-                            className={`object-cover rounded-lg ring-4 ring-primary/20 mb-6 transition-all duration-500 ${
-                              index === 1 ? 'w-64 h-80' : 'w-56 h-72'
-                            }`}
+                            className="w-64 h-80 object-cover rounded-lg ring-4 ring-primary/20 mb-6"
                           />
                           <h3 className="text-2xl font-bold mb-2 text-black">{founder.name}</h3>
                           <p className="text-lg font-medium text-black mb-4">{founder.role}</p>
