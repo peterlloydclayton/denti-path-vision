@@ -107,7 +107,7 @@ export const DesktopNavWithSubmenu = () => {
                       <span>{t(item.label)}</span>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-48 p-1 bg-background border shadow-lg rounded-lg -ml-4">
+                      <div className="w-48 p-2 bg-background border shadow-lg rounded-lg -ml-4">
                         {item.submenu.map((subItem) => {
                           const SubIcon = subItem.icon;
                           return (
@@ -115,7 +115,7 @@ export const DesktopNavWithSubmenu = () => {
                               <Link
                                 to={subItem.href}
                                 onClick={() => setCurrentPath(subItem.href)}
-                                className="flex items-center gap-2 px-3 py-2 mx-1 rounded-md text-sm hover:bg-secondary transition-smooth"
+                                className="flex items-center gap-2 px-4 py-3 rounded-md text-sm hover:bg-secondary transition-smooth"
                               >
                                 <SubIcon size={16} className="text-muted-foreground" />
                                 <span>{subItem.label}</span>
