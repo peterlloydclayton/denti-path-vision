@@ -1,166 +1,258 @@
-import React from 'react';
-import { FormData } from '../MultiStepPatientForm';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Slider } from '@/components/ui/slider';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Form } from '@/components/ui/form';
+import { FormData } from '../MultiStepPatientForm';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface StepProps {
+interface EmotionalDecisionStepProps {
   formData: FormData;
   updateFormData: (data: Partial<FormData>) => void;
   onNext: () => void;
   onPrev: () => void;
-  isSubmitting: boolean;
-  setIsSubmitting: (val: boolean) => void;
+  isSubmitting?: boolean;
+  setIsSubmitting?: (value: boolean) => void;
 }
 
-const EmotionalDecisionStep: React.FC<StepProps> = ({ formData, updateFormData, onNext, onPrev }) => {
-  const treatmentReasons = [
-    'Pain or Discomfort',
-    'Cosmetic Improvement',
-    'Preventive Care',
-    'Restore Functionality',
-    'Doctor Recommendation',
-    'Other'
-  ];
+const emotionalDecisionSchema = z.object({
+  considering_treatment_time: z.string().min(1, "Please specify how long you've been considering treatment"),
+  priority_preference: z.string().min(1, "Please select your priority"),
+  treatment_reason: z.array(z.string()).min(1, "Please select at least one reason"),
+  urgency_scale: z.string().min(1, "Please rate the urgency"),
+  ready_to_proceed: z.string().min(1, "Please specify if you're ready to proceed"),
+});
 
-  const toggleReason = (reason: string) => {
-    const current = formData.treatment_reason || [];
-    const updated = current.includes(reason)
-      ? current.filter(r => r !== reason)
-      : [...current, reason];
-    updateFormData({ treatment_reason: updated });
+const EmotionalDecisionStep: React.FC<EmotionalDecisionStepProps> = ({ 
+  formData, 
+  updateFormData, 
+  onNext,
+  onPrev
+}) => {
+  const { t } = useTranslation();
+  const [showErrors, setShowErrors] = useState(false);
+  
+  const form = useForm({
+    resolver: zodResolver(emotionalDecisionSchema),
+    defaultValues: formData,
+  });
+
+  const onSubmit = (data: any) => {
+    updateFormData(data);
+    onNext();
   };
 
+  const handleNext = () => {
+    setShowErrors(true);
+    form.handleSubmit(onSubmit)();
+  };
+
+  const getConsideringTimeOptions = () => [
+    { value: "Less than 1 month", label: t('form.emotional.lessThan1Month') },
+    { value: "1-3 months", label: t('form.emotional.1To3Months') },
+    { value: "3-6 months", label: t('form.emotional.3To6Months') },
+    { value: "6-12 months", label: t('form.emotional.6To12Months') },
+    { value: "More than 1 year", label: t('form.emotional.moreThan1Year') },
+    { value: "Several years", label: t('form.emotional.severalYears') },
+  ];
+
+  const getTreatmentReasons = () => [
+    { id: "confidence-appearance", label: t('form.emotional.reasons.confidence'), value: "Confidence / Appearance" },
+    { id: "pain-relief", label: t('form.emotional.reasons.pain'), value: "Pain Relief" },
+    { id: "ability-eat", label: t('form.emotional.reasons.abilityToEat'), value: "Ability to Eat Normally" },
+    { id: "work-social", label: t('form.emotional.reasons.workSocial'), value: "Work / Social Impact" },
+  ];
+
   return (
-    <div className="space-y-6">
-      {/* Time Considering Treatment */}
-      <div className="space-y-3">
-        <Label>How long have you been considering this dental treatment? *</Label>
-        <RadioGroup value={formData.considering_treatment_time} onValueChange={(value) => updateFormData({ considering_treatment_time: value })}>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="less_than_1_month" id="time1" />
-            <Label htmlFor="time1" className="cursor-pointer font-normal">Less than 1 month</Label>
+    <Form {...form}>
+      <form className="space-y-8">
+        <div className="space-y-6">
+          <div className="text-center">
+            <h3 className="text-lg font-semibold mb-2">{t('form.emotional.title')}</h3>
+            <p className="text-muted-foreground">
+              {t('form.emotional.description')}
+            </p>
           </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="1_3_months" id="time2" />
-            <Label htmlFor="time2" className="cursor-pointer font-normal">1-3 months</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="3_6_months" id="time3" />
-            <Label htmlFor="time3" className="cursor-pointer font-normal">3-6 months</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="6_12_months" id="time4" />
-            <Label htmlFor="time4" className="cursor-pointer font-normal">6-12 months</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="more_than_1_year" id="time5" />
-            <Label htmlFor="time5" className="cursor-pointer font-normal">More than 1 year</Label>
-          </div>
-        </RadioGroup>
-      </div>
 
-      {/* Priority Preference */}
-      <div className="space-y-3 border-t pt-6">
-        <Label>What matters most to you in your financing decision? *</Label>
-        <RadioGroup value={formData.priority_preference} onValueChange={(value) => updateFormData({ priority_preference: value })}>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="lowest_payment" id="priority1" />
-            <Label htmlFor="priority1" className="cursor-pointer font-normal">Lowest monthly payment</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="lowest_interest" id="priority2" />
-            <Label htmlFor="priority2" className="cursor-pointer font-normal">Lowest interest rate</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="fastest_approval" id="priority3" />
-            <Label htmlFor="priority3" className="cursor-pointer font-normal">Fastest approval time</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="shortest_term" id="priority4" />
-            <Label htmlFor="priority4" className="cursor-pointer font-normal">Shortest loan term</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="flexible_payment" id="priority5" />
-            <Label htmlFor="priority5" className="cursor-pointer font-normal">Flexible payment options</Label>
-          </div>
-        </RadioGroup>
-      </div>
-
-      {/* Treatment Reason */}
-      <div className="space-y-3 border-t pt-6">
-        <Label>Why are you seeking this treatment? (Select all that apply) *</Label>
-        <div className="space-y-2">
-          {treatmentReasons.map((reason) => (
-            <div key={reason} className="flex items-center space-x-2">
-              <Checkbox
-                id={reason}
-                checked={formData.treatment_reason?.includes(reason)}
-                onCheckedChange={() => toggleReason(reason)}
-              />
-              <Label htmlFor={reason} className="cursor-pointer font-normal">
-                {reason}
-              </Label>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Urgency Scale */}
-      <div className="space-y-3 border-t pt-6">
-        <Label>How urgent is this treatment for you? *</Label>
-        <div className="space-y-4">
-          <Slider
-            value={[parseInt(formData.urgency_scale) || 5]}
-            onValueChange={(value) => updateFormData({ urgency_scale: value[0].toString() })}
-            min={1}
-            max={10}
-            step={1}
-            className="w-full"
+          <FormField
+            control={form.control}
+            name="considering_treatment_time"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.emotional.consideringTime')} *</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select time period" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-popover">
+                      {getConsideringTimeOptions().map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
           />
-          <div className="flex justify-between text-sm text-muted-foreground">
-            <span>Not Urgent (1)</span>
-            <span className="font-medium text-foreground">{formData.urgency_scale || 5}</span>
-            <span>Very Urgent (10)</span>
-          </div>
+
+          <FormField
+            control={form.control}
+            name="priority_preference"
+            render={({ field }) => (
+              <FormItem className="space-y-3">
+                <FormLabel>{t('form.emotional.priorityPreference')} *</FormLabel>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    className="space-y-2"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="Lowest monthly payment" id="lowest-payment" />
+                      <label htmlFor="lowest-payment">{t('form.emotional.lowestPayment')}</label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="Fastest approval" id="fastest-approval" />
+                      <label htmlFor="fastest-approval">{t('form.emotional.fastestApproval')}</label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="Minimizing overall cost" id="minimizing-cost" />
+                      <label htmlFor="minimizing-cost">{t('form.emotional.minimizingCost')}</label>
+                    </div>
+                  </RadioGroup>
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="treatment_reason"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.emotional.treatmentReason')} *</FormLabel>
+                <div className="space-y-2">
+                  {getTreatmentReasons().map((reason) => (
+                    <div key={reason.id} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={reason.id}
+                        checked={field.value?.includes(reason.value) || false}
+                        onCheckedChange={(checked) => {
+                          if (checked) {
+                            field.onChange([...(field.value || []), reason.value]);
+                          } else {
+                            field.onChange(field.value?.filter((v: string) => v !== reason.value) || []);
+                          }
+                        }}
+                      />
+                      <label htmlFor={reason.id} className="text-sm">
+                        {reason.label}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="urgency_scale"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('form.emotional.urgencyScale')} *</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue placeholder={t('form.emotional.urgencyLevel')} />
+                    </SelectTrigger>
+                    <SelectContent className="bg-popover">
+                      {[1,2,3,4,5,6,7,8,9,10].map(num => (
+                        <SelectItem key={num} value={num.toString()}>
+                          {num} {num === 1 ? t('form.emotional.notUrgent') : num === 10 ? t('form.emotional.extremelyUrgent') : ''}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="ready_to_proceed"
+            render={({ field }) => (
+              <FormItem className="space-y-3">
+                <FormLabel>{t('form.emotional.readyToProceed')} *</FormLabel>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    className="flex flex-row space-x-6"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="Yes" id="ready-yes" />
+                      <label htmlFor="ready-yes">{t('form.emotional.yes')}</label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="No" id="ready-no" />
+                      <label htmlFor="ready-no">{t('form.emotional.no')}</label>
+                    </div>
+                  </RadioGroup>
+                </FormControl>
+                {showErrors && <FormMessage />}
+              </FormItem>
+            )}
+          />
         </div>
-      </div>
-
-      {/* Ready to Proceed */}
-      <div className="space-y-3 border-t pt-6">
-        <Label>Are you ready to proceed with treatment if approved? *</Label>
-        <RadioGroup value={formData.ready_to_proceed} onValueChange={(value) => updateFormData({ ready_to_proceed: value })}>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="immediately" id="ready1" />
-            <Label htmlFor="ready1" className="cursor-pointer font-normal">Yes, immediately</Label>
+        
+        <div className="flex justify-between pt-6">
+          <Button
+            type="button"
+            onClick={onPrev}
+            variant="outline"
+          >
+            <ChevronLeft className="mr-2 h-4 w-4" />
+            {t('form.buttons.previous')}
+          </Button>
+          
+          <Button
+            type="button"
+            onClick={handleNext}
+          >
+            {t('form.buttons.next')}
+            <ChevronRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+        
+        {showErrors && Object.keys(form.formState.errors).length > 0 && (
+          <div className="mt-4 p-4 bg-destructive/10 border border-destructive/20 rounded-md">
+            <h4 className="text-sm font-medium text-destructive mb-2">Please fix the following errors:</h4>
+            <ul className="text-sm text-destructive space-y-1">
+              {Object.entries(form.formState.errors).map(([key, error]) => (
+                <li key={key}>
+                  {typeof error?.message === 'string' ? error.message : 'This field is required'}
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="within_month" id="ready2" />
-            <Label htmlFor="ready2" className="cursor-pointer font-normal">Within the next month</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="within_3_months" id="ready3" />
-            <Label htmlFor="ready3" className="cursor-pointer font-normal">Within 3 months</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="still_deciding" id="ready4" />
-            <Label htmlFor="ready4" className="cursor-pointer font-normal">Still deciding</Label>
-          </div>
-        </RadioGroup>
-      </div>
-
-      <div className="flex justify-between pt-6">
-        <Button onClick={onPrev} variant="outline" className="gap-2">
-          <ChevronLeft className="h-4 w-4" /> Previous
-        </Button>
-        <Button onClick={onNext} className="gap-2">
-          Next <ChevronRight className="h-4 w-4" />
-        </Button>
-      </div>
-    </div>
+        )}
+      </form>
+    </Form>
   );
 };
 

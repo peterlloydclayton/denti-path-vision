@@ -1,100 +1,166 @@
-import React, { useState } from 'react';
-import { FormData } from '../MultiStepPatientForm';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ChevronLeft, FileText } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { createSignedPDF, generateDocumentHash } from '@/utils/pdfUtils';
+import { getUserIP, getUserAgent } from '@/utils/auditUtils';
+import { FormData } from '../MultiStepPatientForm';
 import { useToast } from '@/hooks/use-toast';
+import { CheckCircle } from 'lucide-react';
 
-interface StepProps {
+interface ComplianceSignatureStepProps {
   formData: FormData;
   updateFormData: (data: Partial<FormData>) => void;
   onNext: () => void;
   onPrev: () => void;
   isSubmitting: boolean;
-  setIsSubmitting: (val: boolean) => void;
+  setIsSubmitting: (value: boolean) => void;
 }
 
-const ComplianceSignatureStep: React.FC<StepProps> = ({ 
+interface Document {
+  id: string;
+  title: string;
+  content: string;
+}
+
+const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({ 
   formData, 
-  updateFormData, 
-  onPrev, 
+  updateFormData,
+  onPrev,
   isSubmitting,
-  setIsSubmitting 
+  setIsSubmitting
 }) => {
+  const { t } = useTranslation();
   const { toast } = useToast();
-  const [signature, setSignature] = useState('');
-  const [signatureDate] = useState(new Date().toLocaleDateString());
+  const [document, setDocument] = useState<Document | null>(null);
+  const [signerName, setSignerName] = useState('');
+  const [signerEmail, setSignerEmail] = useState('');
+  const [consentGiven, setConsentGiven] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
 
-  const allConsentsChecked = 
-    formData.authorize_credit_report &&
-    formData.consent_communications &&
-    formData.understand_no_credit_impact &&
-    formData.confirm_information_accurate;
+  useEffect(() => {
+    setDocument({
+      id: 'patient-financing-agreement',
+      title: 'Patient Financing Agreement',
+      content: `PATIENT FINANCING AGREEMENT
 
-  const handleSubmit = async () => {
-    if (!allConsentsChecked) {
-      toast({
-        title: "Required Consents",
-        description: "Please check all required consent boxes to proceed.",
-        variant: "destructive"
-      });
-      return;
-    }
+By signing this document, I acknowledge that I have read and understand the terms and conditions of the financing agreement.
 
-    if (!signature.trim()) {
-      toast({
-        title: "Signature Required",
-        description: "Please enter your full name as your signature.",
-        variant: "destructive"
-      });
+1. Authorization for Credit Check
+I authorize DentiPay and its partners to obtain my credit report for the purpose of evaluating my financing application.
+
+2. Consent to Communications
+I consent to receive communications via email, phone, and SMS regarding my application and financing options.
+
+3. Understanding of Process
+I understand that this pre-qualification check will not impact my credit score.
+
+4. Accuracy of Information
+I confirm that all information provided in this application is accurate and complete to the best of my knowledge.`
+    });
+  }, []);
+
+  const handleSign = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!consentGiven || !signerName || !signerEmail || !document) {
+      setError('Please complete all required fields and provide consent');
       return;
     }
 
     setIsSubmitting(true);
+    setError('');
 
     try {
-      // Simulate submission - replace with actual API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      toast({
-        title: "Application Submitted!",
-        description: "Your financing application has been successfully submitted. You'll receive a response within 24 hours.",
+      const ipAddress = await getUserIP();
+      const userAgent = getUserAgent();
+      const documentHash = await generateDocumentHash(document.content);
+
+      const pdfBytes = await createSignedPDF(
+        document.content,
+        signerName,
+        new Date().toLocaleDateString()
+      );
+
+      const base64Pdf = btoa(String.fromCharCode(...pdfBytes));
+
+      // Simulate submission for now since we don't have Supabase enabled
+      // In production, this would submit to Supabase edge function
+      console.log('Application data prepared:', {
+        formData,
+        signature: {
+          signer_name: signerName,
+          signer_email: signerEmail,
+          ip_address: ipAddress,
+          user_agent: userAgent,
+          document_hash: documentHash,
+          pdf_base64: base64Pdf
+        }
       });
 
-      // Here you would normally handle the form submission
-      console.log('Form Data:', formData);
-      console.log('Signature:', signature);
+      // Simulate successful submission
+      await new Promise(resolve => setTimeout(resolve, 2000));
       
-    } catch (error) {
+      setSuccess(true);
+      
       toast({
-        title: "Submission Failed",
-        description: "There was an error submitting your application. Please try again.",
-        variant: "destructive"
+        title: t('form.compliance.successTitle'),
+        description: t('form.compliance.successMessage'),
+      });
+      
+    } catch (err: any) {
+      console.error('Submission error:', err);
+      
+      const errorMessage = err?.message || 'Unknown error occurred';
+      setError(errorMessage);
+      
+      toast({
+        title: "Submission Error",
+        description: errorMessage,
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  if (success) {
+    return (
+      <div className="text-center space-y-6">
+        <CheckCircle className="mx-auto h-16 w-16 text-green-500" />
+        <div>
+          <h3 className="text-2xl font-semibold text-green-700 mb-2">
+            {t('form.compliance.successTitle')}
+          </h3>
+          <p className="text-muted-foreground">
+            {t('form.compliance.successMessage')}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
-      {/* Consent Statements */}
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Required Authorizations & Consents</h3>
-        
-        <div className="space-y-4 border rounded-lg p-4 bg-muted/50">
+      <Card>
+        <CardHeader>
+          <CardTitle>{t('form.compliance.title')}</CardTitle>
+          <p className="text-muted-foreground">{t('form.compliance.description')}</p>
+        </CardHeader>
+        <CardContent className="space-y-4">
           <div className="flex items-start space-x-3">
             <Checkbox
-              id="authorize_credit"
+              id="authorize_credit_report"
               checked={formData.authorize_credit_report}
               onCheckedChange={(checked) => updateFormData({ authorize_credit_report: checked as boolean })}
+              required
             />
-            <Label htmlFor="authorize_credit" className="cursor-pointer font-normal leading-relaxed">
-              I authorize DentiPay to obtain my credit report and verify information provided in this application. 
-              I understand this is necessary to determine my financing options.
-            </Label>
+            <label htmlFor="authorize_credit_report" className="text-sm leading-relaxed">
+              {t('form.compliance.authorizeCreditReport')}
+            </label>
           </div>
 
           <div className="flex items-start space-x-3">
@@ -102,90 +168,145 @@ const ComplianceSignatureStep: React.FC<StepProps> = ({
               id="consent_communications"
               checked={formData.consent_communications}
               onCheckedChange={(checked) => updateFormData({ consent_communications: checked as boolean })}
+              required
             />
-            <Label htmlFor="consent_communications" className="cursor-pointer font-normal leading-relaxed">
-              I consent to receive communications from DentiPay via phone, email, or text message regarding my 
-              application and financing options.
-            </Label>
+            <label htmlFor="consent_communications" className="text-sm leading-relaxed">
+              {t('form.compliance.consentCommunications')}
+            </label>
           </div>
 
           <div className="flex items-start space-x-3">
             <Checkbox
-              id="no_credit_impact"
+              id="understand_no_credit_impact"
               checked={formData.understand_no_credit_impact}
               onCheckedChange={(checked) => updateFormData({ understand_no_credit_impact: checked as boolean })}
+              required
             />
-            <Label htmlFor="no_credit_impact" className="cursor-pointer font-normal leading-relaxed">
-              I understand that this initial application uses a soft credit inquiry which will NOT impact my credit score. 
-              A hard inquiry will only occur if I choose to proceed with a financing offer.
-            </Label>
+            <label htmlFor="understand_no_credit_impact" className="text-sm leading-relaxed">
+              {t('form.compliance.understandNoCredit')}
+            </label>
           </div>
 
           <div className="flex items-start space-x-3">
             <Checkbox
-              id="confirm_accuracy"
+              id="confirm_information_accurate"
               checked={formData.confirm_information_accurate}
               onCheckedChange={(checked) => updateFormData({ confirm_information_accurate: checked as boolean })}
+              required
             />
-            <Label htmlFor="confirm_accuracy" className="cursor-pointer font-normal leading-relaxed">
-              I certify that all information provided in this application is true, accurate, and complete to the 
-              best of my knowledge. I understand that providing false information may result in denial of financing.
-            </Label>
+            <label htmlFor="confirm_information_accurate" className="text-sm leading-relaxed">
+              {t('form.compliance.confirmAccurate')}
+            </label>
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
 
-      {/* Electronic Signature */}
-      <div className="border-t pt-6 space-y-4">
-        <h3 className="text-lg font-semibold">Electronic Signature</h3>
-        
-        <div className="space-y-2">
-          <Label htmlFor="signature">Full Legal Name (Type to Sign) *</Label>
-          <Input
-            id="signature"
-            value={signature}
-            onChange={(e) => setSignature(e.target.value)}
-            placeholder="Type your full legal name"
-            className="font-serif text-lg"
-          />
-          <p className="text-sm text-muted-foreground">
-            By typing your name above, you are providing an electronic signature that is legally binding 
-            and equivalent to a handwritten signature.
-          </p>
-        </div>
+      {document && (
+        <Card>
+          <CardHeader>
+            <CardTitle>{document.title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="max-h-96 overflow-y-auto bg-muted p-4 rounded-lg text-sm leading-relaxed whitespace-pre-wrap">
+              {document.content}
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
-        <div className="bg-muted rounded-lg p-4">
-          <div className="flex items-center gap-2 text-sm">
-            <FileText className="h-4 w-4" />
-            <span className="font-medium">Date:</span>
-            <span>{signatureDate}</span>
-          </div>
-        </div>
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>{t('form.compliance.digitalSignature')}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSign} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="signerName" className="block text-sm font-medium mb-2">
+                  {t('form.compliance.fullLegalName')} *
+                </label>
+                <Input
+                  id="signerName"
+                  type="text"
+                  value={signerName}
+                  onChange={(e) => setSignerName(e.target.value)}
+                  placeholder="John Michael Doe"
+                  required
+                />
+                {signerName && (
+                  <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg text-center dark:bg-blue-950 dark:border-blue-800">
+                    <div className="text-blue-900 dark:text-blue-100 font-cursive text-xl">
+                      {signerName}
+                    </div>
+                    <div className="text-xs text-blue-600 dark:text-blue-400 mt-1">{t('form.compliance.signaturePreview')}</div>
+                  </div>
+                )}
+              </div>
 
-      {/* Privacy Notice */}
-      <div className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-        <h4 className="font-semibold mb-2">Privacy & Security Notice</h4>
-        <p className="text-sm text-muted-foreground">
-          Your information is encrypted and securely stored. We comply with all federal privacy regulations 
-          including HIPAA and GLBA. Your data will only be used to process your financing application and 
-          will never be sold to third parties.
-        </p>
-      </div>
+              <div>
+                <label htmlFor="signerEmail" className="block text-sm font-medium mb-2">
+                  {t('form.compliance.emailAddress')} *
+                </label>
+                <Input
+                  id="signerEmail"
+                  type="email"
+                  value={signerEmail}
+                  onChange={(e) => setSignerEmail(e.target.value)}
+                  placeholder="john@example.com"
+                  required
+                />
+              </div>
+            </div>
 
-      <div className="flex justify-between pt-6">
-        <Button onClick={onPrev} variant="outline" className="gap-2" disabled={isSubmitting}>
-          <ChevronLeft className="h-4 w-4" /> Previous
-        </Button>
-        <Button 
-          onClick={handleSubmit} 
-          disabled={isSubmitting || !allConsentsChecked || !signature.trim()}
-          className="gap-2"
-        >
-          {isSubmitting ? 'Submitting...' : 'Submit Application'}
-          {!isSubmitting && <FileText className="h-4 w-4" />}
-        </Button>
-      </div>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <Checkbox
+                  id="final_consent"
+                  checked={consentGiven}
+                  onCheckedChange={(checked) => setConsentGiven(checked as boolean)}
+                  required
+                />
+                <label htmlFor="final_consent" className="text-sm leading-relaxed">
+                  {t('form.compliance.finalConsent')}
+                </label>
+              </div>
+            </div>
+
+            {error && (
+              <div className="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-lg">
+                {error}
+              </div>
+            )}
+
+            <div className="bg-muted p-4 rounded-lg">
+              <p className="text-xs text-muted-foreground">
+                {t('form.compliance.auditNotice')}
+              </p>
+            </div>
+
+            <div className="flex justify-between">
+              <Button
+                type="button"
+                onClick={onPrev}
+                variant="outline"
+                disabled={isSubmitting}
+              >
+                {t('form.buttons.previous')}
+              </Button>
+              
+              <Button
+                type="submit"
+                disabled={isSubmitting || !consentGiven || !formData.authorize_credit_report || 
+                         !formData.consent_communications || !formData.understand_no_credit_impact || 
+                         !formData.confirm_information_accurate}
+                className="px-8"
+              >
+                {isSubmitting ? t('form.compliance.submitting') : t('form.compliance.signAndSubmit')}
+              </Button>
+            </div>
+          </form>
+        </CardContent>
+      </Card>
     </div>
   );
 };
