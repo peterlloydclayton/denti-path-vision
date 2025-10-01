@@ -22,23 +22,14 @@ export const FinancialToolsSection = () => {
         <PaymentCalculator />
       </div>
       
-      {/* Get Financing Button - Right side on desktop, below image on mobile */}
-      <div className="absolute bottom-[400px] right-8 z-10 hidden md:block">
+      {/* Get Financing Button - Left side on desktop, below calculator on mobile */}
+      <div className="absolute bottom-[400px] left-8 z-10 hidden md:block">
         <Button 
           className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
           onClick={() => navigate('/patient-financing-application')}
         >
           Get Financing
         </Button>
-      </div>
-      
-      {/* Approval signal image attached to viewport side */}
-      <div className="absolute bottom-0 left-0 z-10 w-screen h-[374px] md:w-[576px] md:h-[718px]">
-        <img 
-          src={approvalSignal} 
-          alt="Approval signal - dental financing approved" 
-          className="w-full h-[374px] md:h-[718px] object-cover drop-shadow-lg"
-        />
       </div>
       
       <div className="container mx-auto px-6 md:hidden mt-4 mb-1 flex justify-center">
@@ -48,6 +39,15 @@ export const FinancialToolsSection = () => {
         >
           Get Financing
         </Button>
+      </div>
+      
+      {/* Approval signal image attached to viewport side */}
+      <div className="absolute bottom-0 right-0 z-10 w-screen h-[374px] md:w-[576px] md:h-[718px]">
+        <img 
+          src={approvalSignal} 
+          alt="Approval signal - dental financing approved" 
+          className="w-full h-[374px] md:h-[718px] object-cover drop-shadow-lg"
+        />
       </div>
     </section>
   );
