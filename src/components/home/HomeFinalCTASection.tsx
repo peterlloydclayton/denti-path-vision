@@ -47,9 +47,7 @@ export function HomeFinalCTASection() {
           
           
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-            <span className="block">Ready to</span>
             <span className="block text-white">Ready to Access the Future of Dental Financing?</span>
-            
           </h2>
           
           <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed mb-12">
