@@ -2,6 +2,7 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import caseStudyImage from '@/assets/case-study-patient.jpg';
 
 interface CaseStudySectionProps {
@@ -9,6 +10,7 @@ interface CaseStudySectionProps {
 }
 
 export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionProps) => {
+  const navigate = useNavigate();
   const [isPlaying, setIsPlaying] = useState(false);
   const [objectPosition, setObjectPosition] = useState('65% center');
 
@@ -115,6 +117,14 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                         Watch Success Stories
                       </div>
+                    </div>
+                    <div className="pt-6">
+                      <Button 
+                        className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
+                        onClick={() => navigate('/patient-financing-application')}
+                      >
+                        Get Financing
+                      </Button>
                     </div>
                   </div>
                 </AnimatedText>
