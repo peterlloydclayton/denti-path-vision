@@ -62,6 +62,21 @@ const AnimatedRoutes = () => {
             </Routes>
           </AnimatePresence>
 
+          {/* Background transition */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={location.pathname + '-bg'}
+              className="fixed inset-0 z-[99] bg-dental-blue pointer-events-none"
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 0 }}
+              transition={{ 
+                duration: 0.6,
+                delay: 2.0,
+                ease: [0.65, 0, 0.35, 1]
+              }}
+            />
+          </AnimatePresence>
+
           {/* Page transition curtain */}
           <AnimatePresence mode="wait">
             <motion.div
