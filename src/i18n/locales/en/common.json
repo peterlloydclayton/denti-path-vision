@@ -26,6 +26,7 @@
     "terms": "Terms of Use"
   },
   "form": {
+    "title": "Patient Financing Application",
     "buttons": {
       "previous": "Previous",
       "next": "Next",
@@ -46,8 +47,11 @@
       "december": "December"
     },
     "steps": {
+      "personal": "Personal Information",
       "employment": "Employment Information",
-      "financial": "Financial Overview"
+      "financial": "Financial Overview",
+      "emotional": "Treatment Decision Insights",
+      "compliance": "Compliance & Signature"
     },
     "personal": {
       "title": "Personal Information",

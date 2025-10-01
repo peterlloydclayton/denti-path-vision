@@ -26,6 +26,7 @@
     "terms": "Términos de Uso"
   },
   "form": {
+    "title": "Solicitud de Financiamiento para Pacientes",
     "buttons": {
       "previous": "Anterior",
       "next": "Siguiente",
@@ -46,8 +47,11 @@
       "december": "Diciembre"
     },
     "steps": {
+      "personal": "Información Personal",
       "employment": "Información de Empleo",
-      "financial": "Resumen Financiero"
+      "financial": "Resumen Financiero",
+      "emotional": "Información sobre Decisión de Tratamiento",
+      "compliance": "Cumplimiento y Firma"
     },
     "personal": {
       "title": "Información Personal",
