@@ -142,10 +142,10 @@ export const FoundersSection = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="z-30 -left-4 h-12 w-12 bg-black text-white hover:bg-black/90 border-none">
+              <CarouselPrevious className="z-30 -left-4 h-12 w-12 bg-navy text-dental-blue hover:bg-navy/90 border-none">
                 <ChevronLeft className="h-6 w-6" />
               </CarouselPrevious>
-              <CarouselNext className="z-30 -right-4 h-12 w-12 bg-black text-white hover:bg-black/90 border-none">
+              <CarouselNext className="z-30 -right-4 h-12 w-12 bg-navy text-dental-blue hover:bg-navy/90 border-none">
                 <ChevronRight className="h-6 w-6" />
               </CarouselNext>
             </Carousel>

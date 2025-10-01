@@ -23,7 +23,7 @@ export const PartnershipSection = () => {
               <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
                 <CardContent className="p-8">
                   <div className="mb-6">
-                    <TrendingUp className="w-12 h-12 text-intelligence mb-4" />
+                    <TrendingUp className="w-12 h-12 text-dental-blue-darker mb-4" />
                     <h3 className="text-3xl font-bold mb-4 text-black">For Strategic Investors</h3>
                   </div>
                   <p className="text-muted-foreground leading-relaxed mb-6">
@@ -61,7 +61,7 @@ export const PartnershipSection = () => {
               <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
                 <CardContent className="p-8">
                   <div className="mb-6">
-                    <Users className="w-12 h-12 text-dental-peach mb-4" />
+                    <Users className="w-12 h-12 text-dental-blue-dark mb-4" />
                     <h3 className="text-3xl font-bold mb-4 text-black">For Network Partners</h3>
                   </div>
                   <p className="text-muted-foreground leading-relaxed mb-6">

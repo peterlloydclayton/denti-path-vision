@@ -20,7 +20,7 @@ export const FutureVisionSection = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Card className="bg-background/95 backdrop-blur border-border shadow-soft">
               <CardContent className="p-6 text-center">
-                <TrendingUp className="mx-auto mb-3 text-accent-peach" size={32} />
+                <TrendingUp className="mx-auto mb-3 text-dental-blue-darker" size={32} />
                 <div className="font-bold text-foreground">Global Expansion</div>
                 <div className="text-sm text-muted-foreground">Bringing intelligent financing worldwide</div>
               </CardContent>
@@ -28,7 +28,7 @@ export const FutureVisionSection = () => {
             
             <Card className="bg-background/95 backdrop-blur border-border shadow-soft">
               <CardContent className="p-6 text-center">
-                <Award className="mx-auto mb-3 text-accent-lavender" size={32} />
+                <Award className="mx-auto mb-3 text-dental-blue-dark" size={32} />
                 <div className="font-bold text-foreground">Healthcare Integration</div>
                 <div className="text-sm text-muted-foreground">Expanding beyond dental to all healthcare</div>
               </CardContent>
