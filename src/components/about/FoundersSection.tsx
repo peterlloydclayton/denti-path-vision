@@ -27,7 +27,7 @@ export const FoundersSection = () => {
                     <img 
                       src={charlesZahedi} 
                       alt="Dr. Charles Zahédi"
-                      className="w-48 h-48 object-cover rounded-full ring-4 ring-primary/20 mb-6"
+                      className="w-full h-64 object-cover rounded-lg ring-4 ring-primary/20 mb-6"
                     />
                     <h3 className="text-2xl font-bold mb-2 text-black">Dr. Charles Zahédi</h3>
                     <p className="text-lg font-medium text-black">Co-Founder</p>
@@ -53,7 +53,7 @@ export const FoundersSection = () => {
                     <img 
                       src={emilioArguello} 
                       alt="Dr. Emilio Argüello"
-                      className="w-48 h-48 object-cover rounded-full ring-4 ring-primary/20 mb-6"
+                      className="w-full h-64 object-cover rounded-lg ring-4 ring-primary/20 mb-6"
                     />
                     <h3 className="text-2xl font-bold mb-2 text-black">Dr. Emilio Argüello</h3>
                     <p className="text-lg font-medium text-black">Co-Founder</p>
@@ -79,7 +79,7 @@ export const FoundersSection = () => {
                     <img 
                       src={drCarmy} 
                       alt="Dr. Carmy Michael"
-                      className="w-48 h-48 object-cover rounded-full ring-4 ring-primary/20 mb-6"
+                      className="w-full h-64 object-cover rounded-lg ring-4 ring-primary/20 mb-6"
                     />
                     <h3 className="text-2xl font-bold mb-2 text-black">Dr. Carmy Michael</h3>
                     <p className="text-lg font-medium text-black">Co-Founder</p>
