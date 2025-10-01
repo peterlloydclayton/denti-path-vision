@@ -45,13 +45,7 @@ export const StatsSection = () => {
     <section className="pt-8 pb-32 bg-white border-b border-dental-blue/20">
       <div className="container mx-auto px-6">
         {/* Image above section with floating icons */}
-        <motion.div 
-          className="flex justify-center mb-8 relative"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="flex justify-center mb-8 relative">
           {/* Floating dental icons */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {floatingIcons.map((item) => (
@@ -85,12 +79,12 @@ export const StatsSection = () => {
             src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759280638/child-dental-bib_tcauhp.png"
             alt="Child with dental bib"
             className="max-w-md w-full h-auto object-contain relative z-10"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           />
-        </motion.div>
+        </div>
 
         {/* Section Header */}
         <div className="text-center mb-16">
