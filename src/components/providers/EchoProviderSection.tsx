@@ -6,7 +6,7 @@ import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { motion } from 'framer-motion';
 import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
 import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
-import smilingDentist from '@/assets/smiling-woman-dentist-transparent.png';
+
 
 export const EchoProviderSection = () => {
   const aiFeatures = [
@@ -222,7 +222,7 @@ export const EchoProviderSection = () => {
               />
             </div>
             <img 
-              src={smilingDentist} 
+              src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759199954/dentist-female-white_idx9ob.png" 
               alt="Smiling female dentist with stethoscope" 
               className="w-96 h-96 md:w-[28rem] md:h-[28rem] object-contain mx-auto relative z-20"
             />
