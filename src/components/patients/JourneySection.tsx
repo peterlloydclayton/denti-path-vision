@@ -88,13 +88,16 @@ export const JourneySection = () => {
 
                     {/* Step Card */}
                     <motion.div 
-                      className="bg-card rounded-2xl p-6 shadow-lg border border-border group-hover:shadow-elegant group-hover:border-dental-blue transition-all duration-300 h-[280px] flex flex-col"
+                      className="bg-card rounded-2xl p-6 shadow-lg border border-border group-hover:shadow-elegant group-hover:border-dental-blue transition-all duration-300 h-[280px] flex flex-col justify-between"
                       whileHover={{ scale: 1.02 }}
                     >
-                      <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-dental-blue transition-colors">
-                        {item.title}
-                      </h3>
-                      <div className="flex-grow flex items-center">
+                      <div className="h-[60px]">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-dental-blue transition-colors">
+                          {item.title}
+                        </h3>
+                      </div>
+                      
+                      <div className="h-[80px] flex items-center">
                         <p className="text-foreground/70 text-sm leading-relaxed">
                           {item.desc}
                         </p>
@@ -102,7 +105,7 @@ export const JourneySection = () => {
                       
                       {/* Benefit Badge */}
                       <motion.div 
-                        className="bg-dental-lavender/20 border border-dental-lavender/30 rounded-lg p-3 group-hover:bg-dental-lavender/30 transition-colors mt-3"
+                        className="bg-dental-lavender/20 border border-dental-lavender/30 rounded-lg p-3 group-hover:bg-dental-lavender/30 transition-colors"
                         initial={{ opacity: 0.8 }}
                         whileHover={{ opacity: 1 }}
                       >
