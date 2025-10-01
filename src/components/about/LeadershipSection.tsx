@@ -1,8 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { ParallaxSection } from '@/components/ui/parallax-section';
 import { AnimatedText } from '@/components/ui/animated-text';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { useState } from 'react';
 import adamZuckerman from '@/assets/profiles/adam-zuckerman.png';
 import jayOku from '@/assets/profiles/jay-oku.png';
 import donaldThorne from '@/assets/profiles/donald-thorne.png';
@@ -11,7 +9,6 @@ import michaelWeydemuller from '@/assets/profiles/michael-weydemuller.png';
 import colinDedely from '@/assets/profiles/colin-dedely.png';
 
 export const LeadershipSection = () => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const leaders = [
     {
       name: 'Adam Zuckerman',
@@ -75,29 +72,15 @@ export const LeadershipSection = () => {
               <AnimatedText key={index} delay={index * 0.1}>
                 <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
                   <CardContent className="p-8">
-                    <div className="flex items-start gap-6 mb-6">
-                      <Avatar 
-                        className="h-24 w-24 ring-2 ring-primary/20 cursor-pointer hover:ring-primary/40 transition-all shrink-0"
-                        onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
-                      >
-                        <AvatarImage src={leader.image} alt={leader.name} />
-                        <AvatarFallback>{leader.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                      </Avatar>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold mb-2 text-black">{leader.name}</h3>
-                        <p className="text-lg font-medium text-black">{leader.role}</p>
-                      </div>
+                    <div className="flex flex-col items-center text-center mb-6">
+                      <img 
+                        src={leader.image} 
+                        alt={leader.name}
+                        className="w-48 h-48 object-cover rounded-full ring-4 ring-primary/20 mb-6"
+                      />
+                      <h3 className="text-2xl font-bold mb-2 text-black">{leader.name}</h3>
+                      <p className="text-lg font-medium text-black">{leader.role}</p>
                     </div>
-                    
-                    {expandedIndex === index && (
-                      <div className="mb-6 flex justify-center animate-scale-in">
-                        <img 
-                          src={leader.image} 
-                          alt={leader.name}
-                          className="w-48 h-48 object-cover rounded-full ring-4 ring-primary/30"
-                        />
-                      </div>
-                    )}
                     
                     <p className="text-muted-foreground leading-relaxed">
                       {leader.description}
