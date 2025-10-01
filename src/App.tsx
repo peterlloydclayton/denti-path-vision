@@ -98,12 +98,20 @@ const AnimatedRoutes = () => {
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   <motion.div
+    className="bg-dental-blue"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    transition={{ duration: 0.4, ease: [0.65, 0, 0.35, 1] }}
+    transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
   >
-    {children}
+    <motion.div
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2, ease: [0.65, 0, 0.35, 1] }}
+    >
+      {children}
+    </motion.div>
   </motion.div>
 );
 
