@@ -2,7 +2,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { FloatingNav } from "@/components/layout/FloatingNav";
 import { GDPRBanner } from "@/components/layout/GDPRBanner";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
@@ -21,33 +22,70 @@ import './i18n/config';
 
 const queryClient = new QueryClient();
 
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <>
+      <ScrollToTop />
+      <div className="relative min-h-screen flex flex-col">
+        <FloatingNav />
+        <GDPRBanner />
+        <main className="flex-1">
+          <AnimatePresence mode="wait" initial={false}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
+              <Route path="/providers" element={<PageWrapper><Providers /></PageWrapper>} />
+              <Route path="/providers-2" element={<PageWrapper><Providers2 /></PageWrapper>} />
+              <Route path="/patients" element={<PageWrapper><Patients /></PageWrapper>} />
+              <Route path="/intelligent-financing" element={<PageWrapper><IntelligentFinancing /></PageWrapper>} />
+              <Route path="/provider-search" element={<PageWrapper><ProviderSearch /></PageWrapper>} />
+              <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
+              <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
+              <Route path="/terms-of-use" element={<PageWrapper><TermsOfUse /></PageWrapper>} />
+              <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
+            </Routes>
+          </AnimatePresence>
+
+          {/* Page transition curtain */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={location.pathname + '-curtain'}
+              className="fixed inset-0 z-[100] bg-dental-blue pointer-events-none"
+              initial={{ x: '100%' }}
+              animate={{ x: '-100%' }}
+              exit={{ x: 0 }}
+              transition={{ 
+                duration: 0.6, 
+                ease: [0.77, 0, 0.18, 1]
+              }}
+            />
+          </AnimatePresence>
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+};
+
+const PageWrapper = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.3, ease: 'easeInOut' }}
+  >
+    {children}
+  </motion.div>
+);
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ScrollToTop />
-        <div className="relative min-h-screen flex flex-col">
-          <FloatingNav />
-          <GDPRBanner />
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/providers" element={<Providers />} />
-              <Route path="/providers-2" element={<Providers2 />} />
-              <Route path="/patients" element={<Patients />} />
-              <Route path="/intelligent-financing" element={<IntelligentFinancing />} />
-              <Route path="/provider-search" element={<ProviderSearch />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms-of-use" element={<TermsOfUse />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+        <AnimatedRoutes />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
