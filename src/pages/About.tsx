@@ -9,7 +9,7 @@ import { FutureVisionSection } from '@/components/about/FutureVisionSection';
 
 const About = () => {
   return (
-    <div className="pt-24 overflow-x-hidden">
+    <div className="overflow-x-hidden">
       <HeroSection />
       <MissionVisionSection />
       <ValuesSection />
