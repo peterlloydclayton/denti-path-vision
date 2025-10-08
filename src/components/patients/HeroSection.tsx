@@ -52,7 +52,7 @@ export const HeroSection = () => {
       {/* Mobile Portrait Title */}
       <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4 mobile-landscape-title">
         <AnimatedText>
-          <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight mobile-landscape-text">
+          <h1 className="text-5xl font-bold mb-6 text-foreground leading-none mobile-landscape-text">
             {t('patients.hero.title')}
           </h1>
         </AnimatedText>
