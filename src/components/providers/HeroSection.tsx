@@ -73,59 +73,63 @@ export const HeroSection = () => {
       </div>
       
       {/* Mobile Portrait Title */}
-      <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4 mobile-landscape-title">
+      <div className="block sm:hidden absolute top-[12%] left-6 z-20 w-3/4 mobile-landscape-title">
         <AnimatedText>
-          <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight mobile-landscape-text">
+          <h1 className="text-4xl font-bold mb-2 text-foreground leading-tight mobile-landscape-text">
             {t('providers.hero.title')}
-            <span className="block text-4xl mt-2 text-intelligence">{t('providers.hero.subtitle')}</span>
           </h1>
+          <h2 className="block text-4xl text-intelligence font-semibold mb-6">
+            {t('providers.hero.subtitle')}
+          </h2>
         </AnimatedText>
       </div>
       
-      {/* Desktop & Tablet Title - positioned where subtitle was on mobile */}
-      <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-20 w-1/2">
+      {/* Desktop & Tablet Title */}
+      <div className="hidden md:block absolute top-[5%] lg:top-[17%] left-12 z-20 w-1/2">
         <AnimatedText>
           <h1 className="text-hero-mobile md:text-hero font-bold text-foreground">
             {t('providers.hero.title')}
-            <span className="block text-hero-mobile md:text-hero mt-2 text-intelligence">{t('providers.hero.subtitle')}</span>
           </h1>
+          <h2 className="block text-5xl mt-8 text-intelligence font-semibold">
+            {t('providers.hero.subtitle')}
+          </h2>
         </AnimatedText>
       </div>
       
-      {/* Desktop Subtitle - positioned below title */}
-      <div className="hidden md:block absolute top-[50%] left-12 z-20 w-1/2">
+      {/* Desktop Button */}
+      <div className="hidden md:block absolute top-[65%] left-12 z-[120]">
+        <Button 
+          className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+        >
+          {t('providers.hero.cta')}
+        </Button>
+      </div>
+      
+      {/* Desktop Subtitle */}
+      <div className="hidden md:block absolute bottom-[8%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
             {t('providers.hero.description')}
           </p>
         </AnimatedText>
       </div>
+
+      {/* Mobile Portrait Button */}
+      <div className="block sm:hidden absolute top-[55%] left-6 z-[150] mobile-landscape-button">
+        <Button 
+          className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+        >
+          {t('providers.hero.cta')}
+        </Button>
+      </div>
       
-      {/* Mobile Portrait Subtitle - Hidden on mobile landscape */}
-      <div className="block sm:hidden absolute top-[38%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
+      {/* Mobile Portrait Subtitle */}
+      <div className="block sm:hidden absolute bottom-[15%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
         <AnimatedText delay={0.2}>
-          <p className="text-base text-foreground/80 font-medium leading-relaxed text-left">
+          <p className="text-base text-foreground/80 font-medium leading-relaxed text-left whitespace-pre-line">
             {t('providers.hero.mobileDescription')}
           </p>
         </AnimatedText>
-      </div>
-      
-      {/* Desktop Button */}
-      <div className="hidden md:block absolute top-[70%] left-12 z-[120]">
-        <Button 
-          className="h-16 text-xl bg-intelligence hover:bg-intelligence/90 text-intelligence-foreground shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
-        >
-          {t('providers.hero.cta')}
-        </Button>
-      </div>
-
-      {/* Mobile Portrait Button - Lower on landscape */}
-      <div className="block sm:hidden absolute bottom-[20%] left-6 z-[150] mobile-landscape-button">
-        <Button 
-          className="h-12 text-lg bg-intelligence hover:bg-intelligence/90 text-intelligence-foreground shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
-        >
-          {t('providers.hero.cta')}
-        </Button>
       </div>
     </section>
   );
