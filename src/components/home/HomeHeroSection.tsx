@@ -75,14 +75,14 @@ export const HomeHeroSection = () => {
           <h1 className="text-hero-mobile md:text-hero font-bold text-foreground">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-5xl mt-4 text-navy font-semibold">
+          <h2 className="block text-5xl mt-8 text-navy font-semibold">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
       </div>
       
       {/* Desktop Buttons - moved down 15% more, aligned with text */}
-      <div className="hidden md:block absolute top-[73%] left-12 z-[120]">
+      <div className="hidden md:block absolute top-[65%] left-12 z-[120]">
         <div className="flex gap-4">
           <Button 
             className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
