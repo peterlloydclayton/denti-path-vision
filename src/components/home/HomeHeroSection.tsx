@@ -62,7 +62,7 @@ export const HomeHeroSection = () => {
           <h1 className="text-4xl font-bold mb-2 text-foreground leading-tight mobile-landscape-text">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-2xl text-navy font-semibold mb-6">
+          <h2 className="block text-4xl text-navy font-semibold mb-6">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
@@ -83,7 +83,7 @@ export const HomeHeroSection = () => {
           <h1 className="text-hero-mobile md:text-hero font-bold text-foreground">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-2xl mt-4 text-navy font-semibold">
+          <h2 className="block text-5xl mt-4 text-navy font-semibold">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
