@@ -100,9 +100,9 @@ export const HomeHeroSection = () => {
       </div>
       
       {/* Desktop Subtitle */}
-      <div className="hidden md:block absolute top-[85%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute bottom-[8%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
-          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left mt-4">
+          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
             {t('home.hero.description')}
           </p>
         </AnimatedText>
@@ -127,7 +127,7 @@ export const HomeHeroSection = () => {
       </div>
       
       {/* Mobile Portrait Subtitle */}
-      <div className="block sm:hidden absolute top-[67%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
+      <div className="block sm:hidden absolute bottom-[15%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
         <AnimatedText delay={0.2}>
           <p className="text-base text-foreground/80 font-medium leading-relaxed text-left whitespace-pre-line">
             {t('home.hero.mobileDescription')}
