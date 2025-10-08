@@ -66,7 +66,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Subtitle */}
-      <div className="hidden md:block absolute top-[50%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[50%] left-12 z-20 w-2/5">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
             DentiPay is pioneering a new category of healthcare finance — 
