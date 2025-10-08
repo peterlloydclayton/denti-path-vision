@@ -33,7 +33,7 @@ export const HeroSection = () => {
               loop
               muted
               playsInline
-              className="absolute bottom-[-10%] left-1/2 xl:left-[25%] 2xl:left-[25%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[72vh]"
+              className="absolute bottom-[-10%] left-1/2 xl:left-[25%] 2xl:left-[25%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[61vh]"
             />
           </div>
         </div>
@@ -49,7 +49,7 @@ export const HeroSection = () => {
               loop
               muted
               playsInline
-              className="absolute bottom-[-10%] left-[-10%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[72vh]"
+              className="absolute bottom-[-10%] left-[-10%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[61vh]"
             />
           </div>
         </div>
@@ -65,7 +65,7 @@ export const HeroSection = () => {
               loop
               muted
               playsInline
-              className="absolute bottom-[-5%] left-[45%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(65vh-12rem)]"
+              className="absolute bottom-[-5%] left-[45%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(55vh-12rem)]"
             />
           </div>
         </div>
@@ -91,7 +91,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Subtitle */}
-      <div className="hidden md:block absolute top-[35%] lg:top-[50%] left-12 z-[130] w-2/5">
+      <div className="hidden md:block absolute top-[40%] lg:top-[50%] left-12 z-[130] w-2/5">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-dental-blue/80 font-medium leading-relaxed text-left">
             DentiPay is pioneering a new category of healthcare finance — 
