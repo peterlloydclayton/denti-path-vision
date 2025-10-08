@@ -46,6 +46,17 @@ export const MissionVisionSection = () => {
     <>
       {/* MISSION SECTION */}
       <section className="pt-24 pb-0 bg-background relative overflow-hidden">
+        {/* Mobile Subtitle - Only visible on mobile */}
+        <div className="block md:hidden container mx-auto px-6 pb-8 relative z-10">
+          <AnimatedText>
+            <p className="text-lg text-foreground/80 font-medium leading-relaxed">
+              DentiPay is pioneering a new category of healthcare finance — 
+              where artificial intelligence meets human compassion to make 
+              dental care accessible to everyone
+            </p>
+          </AnimatedText>
+        </div>
+
         {/* Floating Icons Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
           {floatingIcons.map((item) => (
