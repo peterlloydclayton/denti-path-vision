@@ -4,11 +4,11 @@ import diversePractitioners from '@/assets/diverse-practitioners.png';
 
 export const HeroSection = () => {
   return (
-    <section className="h-screen relative z-30 overflow-visible">
+    <section className="h-screen relative z-30 overflow-hidden">
       {/* Controlled Background */}
       <div className="absolute inset-0 bg-dental-blue" style={{ height: '100vh' }}></div>
       
-      <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
+      <div className="container mx-auto px-2 md:px-6 h-screen overflow-hidden relative">
         {/* Desktop Layout */}
         <div className="hidden lg:flex justify-center items-center min-h-screen">
           {/* Right Hero Image - Centered */}
