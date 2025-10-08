@@ -72,7 +72,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Mobile Portrait Title */}
-      <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4 mobile-landscape-title">
+      <div className="block sm:hidden absolute top-[15%] left-6 z-[130] w-3/4 mobile-landscape-title">
         <AnimatedText>
           <h1 className="text-5xl font-bold mb-6 text-dental-blue leading-none mobile-landscape-text">
             Transforming Dental Finance Through Intelligence
@@ -81,7 +81,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop & Tablet Title */}
-      <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-[130] w-1/2">
         <AnimatedText>
           <h1 className="text-hero-mobile md:text-hero font-bold text-dental-blue">
             Transforming Dental Finance{' '}
@@ -91,7 +91,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Subtitle */}
-      <div className="hidden md:block absolute top-[50%] left-12 z-20 w-2/5">
+      <div className="hidden md:block absolute top-[50%] left-12 z-[130] w-2/5">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-dental-blue/80 font-medium leading-relaxed text-left">
             DentiPay is pioneering a new category of healthcare finance — 
