@@ -1,8 +1,21 @@
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Button } from '@/components/ui/button';
 import heroNeuralNetwork from '@/assets/hero-neural-network.mp4';
+import { useEffect, useRef } from 'react';
 
 export const HeroSection = () => {
+  const videoRef1 = useRef<HTMLVideoElement>(null);
+  const videoRef2 = useRef<HTMLVideoElement>(null);
+  const videoRef3 = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    [videoRef1, videoRef2, videoRef3].forEach(ref => {
+      if (ref.current) {
+        ref.current.playbackRate = 0.5;
+      }
+    });
+  }, []);
+
   return (
     <section className="h-screen relative z-30 overflow-hidden">
       {/* Controlled Background */}
@@ -14,6 +27,7 @@ export const HeroSection = () => {
           {/* Right Hero Video - Centered */}
           <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-xl min-h-screen relative z-[100]">
             <video 
+              ref={videoRef1}
               src={heroNeuralNetwork}
               autoPlay
               loop
@@ -29,6 +43,7 @@ export const HeroSection = () => {
           {/* Right Hero Video - Centered */}
           <div className="w-full max-w-md min-h-screen relative z-[100]">
             <video 
+              ref={videoRef2}
               src={heroNeuralNetwork}
               autoPlay
               loop
@@ -44,6 +59,7 @@ export const HeroSection = () => {
           {/* Right Hero Video - Centered */}
           <div className="w-full max-w-md h-[calc(100vh-5rem)] relative z-[100]">
             <video 
+              ref={videoRef3}
               src={heroNeuralNetwork}
               autoPlay
               loop
