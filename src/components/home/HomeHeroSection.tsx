@@ -59,10 +59,10 @@ export const HomeHeroSection = () => {
       {/* Mobile Portrait Title */}
       <div className="block sm:hidden absolute top-[12%] left-6 z-20 w-3/4 mobile-landscape-title">
         <AnimatedText>
-          <h1 className="text-4xl font-bold mb-2 text-foreground leading-tight mobile-landscape-text">
+          <h1 className="text-5xl font-bold mb-2 text-foreground leading-tight mobile-landscape-text">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-4xl text-navy font-semibold mb-6">
+          <h2 className="block text-3xl text-navy font-semibold mb-6">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
@@ -72,10 +72,10 @@ export const HomeHeroSection = () => {
       {/* Desktop & Tablet Title */}
       <div className="hidden md:block absolute top-[5%] lg:top-[17%] left-12 z-20 w-1/2">
         <AnimatedText>
-          <h1 className="text-hero-mobile md:text-hero font-bold text-foreground">
+          <h1 className="text-6xl md:text-7xl font-bold text-foreground">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-5xl mt-8 text-navy font-semibold">
+          <h2 className="block text-4xl mt-8 text-navy font-semibold">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
