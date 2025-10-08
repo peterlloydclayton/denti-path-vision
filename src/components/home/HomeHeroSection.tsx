@@ -98,9 +98,9 @@ export const HomeHeroSection = () => {
 
       {/* Additional text below buttons - Desktop only */}
       <div className="hidden md:block absolute top-[85%] left-12 z-[120] w-1/2">
-        <p className="text-xl text-muted-foreground font-medium leading-relaxed">
+        <h2 className="text-xl text-muted-foreground font-medium leading-relaxed">
           AI-powered solutions that understand dental care, creating instant approvals for patients and guaranteed
-        </p>
+        </h2>
       </div>
 
       {/* Mobile Portrait Buttons - Stacked vertically */}
