@@ -3,7 +3,7 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { motion } from 'framer-motion';
 import { Users, Brain, TrendingUp, Heart, Shield, Smile, Star, Sparkles, Zap, CheckCircle } from 'lucide-react';
 import { useMemo } from 'react';
-import diversePractitioners from '@/assets/girl-patient-african.png';
+import diversePractitioners from '@/assets/diverse-practitioners-new.png';
 
 export const MissionVisionSection = () => {
   // Floating dental icons for Mission section
