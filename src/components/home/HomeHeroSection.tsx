@@ -59,7 +59,7 @@ export const HomeHeroSection = () => {
       {/* Mobile Portrait Title */}
       <div className="block sm:hidden absolute top-[12%] left-6 z-20 w-3/4 mobile-landscape-title">
         <AnimatedText>
-          <h1 className="text-5xl font-bold mb-2 text-foreground leading-none mobile-landscape-text">
+          <h1 className="text-5xl font-bold mb-6 text-foreground leading-none mobile-landscape-text">
             {t('home.hero.title')}
           </h1>
           <h2 className="block text-3xl text-navy font-semibold mb-6">
