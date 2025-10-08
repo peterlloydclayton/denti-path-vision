@@ -41,7 +41,7 @@ export const HeroSection = () => {
         {/* Tablet Layout */}
         <div className="hidden sm:flex lg:hidden justify-center items-center min-h-screen">
           {/* Right Hero Video - Centered */}
-          <div className="w-full max-w-md min-h-screen relative z-[100]">
+          <div className="w-full max-w-xs min-h-screen relative z-[100]">
             <video 
               ref={videoRef2}
               src={heroNeuralNetwork}
