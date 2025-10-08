@@ -49,7 +49,7 @@ export const MissionVisionSection = () => {
         {/* Mobile Subtitle - Only visible on mobile */}
         <div className="block md:hidden container mx-auto px-6 pb-8 relative z-10">
           <AnimatedText>
-            <p className="text-lg text-foreground/80 font-medium leading-relaxed">
+            <p className="text-lg text-foreground/80 font-medium leading-relaxed italic">
               DentiPay is pioneering a new category of healthcare finance — 
               where artificial intelligence meets human compassion to make 
               dental care accessible to everyone
