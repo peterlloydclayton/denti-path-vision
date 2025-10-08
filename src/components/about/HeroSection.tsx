@@ -1,6 +1,6 @@
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Button } from '@/components/ui/button';
-import diversePractitioners from '@/assets/diverse-practitioners.png';
+import heroNeuralNetwork from '@/assets/hero-neural-network.mp4';
 
 export const HeroSection = () => {
   return (
@@ -11,11 +11,14 @@ export const HeroSection = () => {
       <div className="container mx-auto px-2 md:px-6 h-screen overflow-hidden relative">
         {/* Desktop Layout */}
         <div className="hidden lg:flex justify-center items-center min-h-screen">
-          {/* Right Hero Image - Centered */}
+          {/* Right Hero Video - Centered */}
           <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-xl min-h-screen relative z-[100]">
-            <img 
-              src={diversePractitioners}
-              alt="Diverse team of dental professionals"
+            <video 
+              src={heroNeuralNetwork}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="absolute bottom-[-10%] left-1/2 xl:left-[40%] 2xl:left-[40%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
             />
           </div>
@@ -23,11 +26,14 @@ export const HeroSection = () => {
 
         {/* Tablet Layout */}
         <div className="hidden sm:flex lg:hidden justify-center items-center min-h-screen">
-          {/* Right Hero Image - Centered */}
+          {/* Right Hero Video - Centered */}
           <div className="w-full max-w-md min-h-screen relative z-[100]">
-            <img 
-              src={diversePractitioners}
-              alt="Diverse team of dental professionals"
+            <video 
+              src={heroNeuralNetwork}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="absolute bottom-[-10%] left-[5%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
             />
           </div>
@@ -35,11 +41,14 @@ export const HeroSection = () => {
 
         {/* Mobile Portrait Layout */}
         <div className="flex sm:hidden justify-start items-start pt-20 h-[calc(100vh-5rem)] ml-[25%]">
-          {/* Right Hero Image - Centered */}
+          {/* Right Hero Video - Centered */}
           <div className="w-full max-w-md h-[calc(100vh-5rem)] relative z-[100]">
-            <img 
-              src={diversePractitioners}
-              alt="Diverse team of dental professionals"
+            <video 
+              src={heroNeuralNetwork}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="absolute bottom-[-10%] left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
             />
           </div>
