@@ -49,7 +49,7 @@ export const HeroSection = () => {
               loop
               muted
               playsInline
-              className="absolute bottom-[-10%] left-[-10%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[61vh]"
+              className="absolute bottom-[-10%] left-[-10%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[31vh]"
             />
           </div>
         </div>
