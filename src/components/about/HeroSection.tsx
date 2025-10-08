@@ -16,7 +16,7 @@ export const HeroSection = () => {
             <img 
               src={diversePractitioners}
               alt="Diverse team of dental professionals"
-              className="absolute bottom-0 left-1/2 xl:left-[40%] 2xl:left-[40%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              className="absolute bottom-[-20%] left-1/2 xl:left-[40%] 2xl:left-[40%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
             />
           </div>
         </div>
@@ -28,7 +28,7 @@ export const HeroSection = () => {
             <img 
               src={diversePractitioners}
               alt="Diverse team of dental professionals"
-              className="absolute bottom-0 left-[5%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              className="absolute bottom-[-20%] left-[5%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
             />
           </div>
         </div>
@@ -40,7 +40,7 @@ export const HeroSection = () => {
             <img 
               src={diversePractitioners}
               alt="Diverse team of dental professionals"
-              className="absolute bottom-0 left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
+              className="absolute bottom-[-20%] left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
             />
           </div>
         </div>
