@@ -5,7 +5,7 @@ import { AnimatedText } from '@/components/ui/animated-text';
 
 export const FutureVisionSection = () => {
   return (
-    <ParallaxSection className="py-24 bg-intelligence text-intelligence-foreground" offset={-30}>
+    <ParallaxSection className="py-24 bg-navy text-white" offset={-30}>
       <div className="container mx-auto px-6 text-center">
         <AnimatedText>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
