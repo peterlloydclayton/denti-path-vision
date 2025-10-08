@@ -65,7 +65,7 @@ export const HeroSection = () => {
               loop
               muted
               playsInline
-              className="absolute bottom-[-5%] left-[-180px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(65vh-12rem)]"
+              className="absolute bottom-[-5%] left-1/2 -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(65vh-12rem)]"
             />
           </div>
         </div>
