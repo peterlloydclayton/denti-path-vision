@@ -59,10 +59,21 @@ export const HomeHeroSection = () => {
       {/* Mobile Portrait Title */}
       <div className="block sm:hidden absolute top-[12%] left-6 z-20 w-3/4 mobile-landscape-title">
         <AnimatedText>
-          <h1 className="text-4xl font-bold mb-6 text-foreground leading-tight mobile-landscape-text">
+          <h1 className="text-4xl font-bold mb-2 text-foreground leading-tight mobile-landscape-text">
             {t('home.hero.title')}
-            <span className="block text-3xl mt-2 text-navy">{t('home.hero.subtitle')}</span>
           </h1>
+          <h2 className="block text-2xl text-navy font-semibold mb-6">
+            {t('home.hero.subtitle')}
+          </h2>
+        </AnimatedText>
+      </div>
+      
+      {/* Mobile Portrait Subtitle */}
+      <div className="block sm:hidden absolute top-[40%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
+        <AnimatedText delay={0.2}>
+          <p className="text-base text-foreground/80 font-medium leading-relaxed text-left whitespace-pre-line">
+            {t('home.hero.mobileDescription')}
+          </p>
         </AnimatedText>
       </div>
       
@@ -71,8 +82,19 @@ export const HomeHeroSection = () => {
         <AnimatedText>
           <h1 className="text-hero-mobile md:text-hero font-bold text-foreground">
             {t('home.hero.title')}
-            <span className="block text-hero-mobile md:text-hero mt-2 text-navy">{t('home.hero.subtitle')}</span>
           </h1>
+          <h2 className="block text-2xl mt-4 text-navy font-semibold">
+            {t('home.hero.subtitle')}
+          </h2>
+        </AnimatedText>
+      </div>
+      
+      {/* Desktop Subtitle */}
+      <div className="hidden md:block absolute top-[55%] left-12 z-20 w-1/2">
+        <AnimatedText delay={0.2}>
+          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left mt-4">
+            {t('home.hero.description')}
+          </p>
         </AnimatedText>
       </div>
       
@@ -94,13 +116,6 @@ export const HomeHeroSection = () => {
             {t('home.hero.ctaProviders')}
           </Button>
         </div>
-      </div>
-
-      {/* Additional text below buttons - Desktop only */}
-      <div className="hidden md:block absolute top-[85%] left-12 z-[120] w-1/2">
-        <h2 className="text-sm text-muted-foreground font-medium leading-relaxed">
-          AI-powered solutions that understand dental care, creating instant approvals for patients and guaranteed
-        </h2>
       </div>
 
       {/* Mobile Portrait Buttons - Stacked vertically */}
