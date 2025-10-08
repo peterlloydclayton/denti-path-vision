@@ -68,14 +68,6 @@ export const HomeHeroSection = () => {
         </AnimatedText>
       </div>
       
-      {/* Mobile Portrait Subtitle */}
-      <div className="block sm:hidden absolute top-[40%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
-        <AnimatedText delay={0.2}>
-          <p className="text-base text-foreground/80 font-medium leading-relaxed text-left whitespace-pre-line">
-            {t('home.hero.mobileDescription')}
-          </p>
-        </AnimatedText>
-      </div>
       
       {/* Desktop & Tablet Title */}
       <div className="hidden md:block absolute top-[5%] lg:top-[17%] left-12 z-20 w-1/2">
@@ -88,17 +80,6 @@ export const HomeHeroSection = () => {
           </h2>
         </AnimatedText>
       </div>
-      
-      {/* Desktop Subtitle */}
-      <div className="hidden md:block absolute top-[55%] left-12 z-20 w-1/2">
-        <AnimatedText delay={0.2}>
-          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left mt-4">
-            {t('home.hero.description')}
-          </p>
-        </AnimatedText>
-      </div>
-      
-      
       
       {/* Desktop Buttons - moved down 15% more, aligned with text */}
       <div className="hidden md:block absolute top-[73%] left-12 z-[120]">
@@ -117,6 +98,15 @@ export const HomeHeroSection = () => {
           </Button>
         </div>
       </div>
+      
+      {/* Desktop Subtitle */}
+      <div className="hidden md:block absolute top-[85%] left-12 z-20 w-1/2">
+        <AnimatedText delay={0.2}>
+          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left mt-4">
+            {t('home.hero.description')}
+          </p>
+        </AnimatedText>
+      </div>
 
       {/* Mobile Portrait Buttons - Stacked vertically */}
       <div className="block sm:hidden absolute top-[55%] left-6 z-[150] mobile-landscape-button">
@@ -134,6 +124,15 @@ export const HomeHeroSection = () => {
             {t('home.hero.ctaProviders')}
           </Button>
         </div>
+      </div>
+      
+      {/* Mobile Portrait Subtitle */}
+      <div className="block sm:hidden absolute top-[67%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
+        <AnimatedText delay={0.2}>
+          <p className="text-base text-foreground/80 font-medium leading-relaxed text-left whitespace-pre-line">
+            {t('home.hero.mobileDescription')}
+          </p>
+        </AnimatedText>
       </div>
     </section>
   );
