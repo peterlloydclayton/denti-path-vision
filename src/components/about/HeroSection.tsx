@@ -6,7 +6,7 @@ export const HeroSection = () => {
   return (
     <section className="h-screen relative z-30 overflow-hidden">
       {/* Controlled Background */}
-      <div className="absolute inset-0 bg-dental-blue" style={{ height: '100vh' }}></div>
+      <div className="absolute inset-0 bg-black" style={{ height: '100vh' }}></div>
       
       <div className="container mx-auto px-2 md:px-6 h-screen overflow-hidden relative">
         {/* Desktop Layout */}
@@ -49,7 +49,7 @@ export const HeroSection = () => {
       {/* Mobile Portrait Title */}
       <div className="block sm:hidden absolute top-[15%] left-6 z-20 w-3/4 mobile-landscape-title">
         <AnimatedText>
-          <h1 className="text-5xl font-bold mb-6 text-foreground leading-none mobile-landscape-text">
+          <h1 className="text-5xl font-bold mb-6 text-dental-blue leading-none mobile-landscape-text">
             Transforming Dental Finance Through Intelligence
           </h1>
         </AnimatedText>
@@ -58,9 +58,9 @@ export const HeroSection = () => {
       {/* Desktop & Tablet Title */}
       <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-20 w-1/2">
         <AnimatedText>
-          <h1 className="text-hero-mobile md:text-hero font-bold text-foreground">
+          <h1 className="text-hero-mobile md:text-hero font-bold text-dental-blue">
             Transforming Dental Finance{' '}
-            <span className="text-navy">Through Intelligence</span>
+            <span className="text-dental-blue">Through Intelligence</span>
           </h1>
         </AnimatedText>
       </div>
@@ -68,7 +68,7 @@ export const HeroSection = () => {
       {/* Desktop Subtitle */}
       <div className="hidden md:block absolute top-[50%] left-12 z-20 w-2/5">
         <AnimatedText delay={0.2}>
-          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
+          <p className="text-xl text-dental-blue/80 font-medium leading-relaxed text-left">
             DentiPay is pioneering a new category of healthcare finance — 
             where artificial intelligence meets human compassion to make 
             dental care accessible to everyone
@@ -80,7 +80,7 @@ export const HeroSection = () => {
       {/* Desktop Button */}
       <div className="hidden md:block absolute top-[70%] left-12 z-[120]">
         <Button 
-          className="h-16 text-xl bg-black text-white hover:bg-black/80 shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+          className="h-16 text-xl bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
           Learn Our Story
         </Button>
@@ -89,7 +89,7 @@ export const HeroSection = () => {
       {/* Mobile Portrait Button */}
       <div className="block sm:hidden absolute bottom-[20%] left-6 z-[150] mobile-landscape-button">
         <Button 
-          className="h-12 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+          className="h-12 text-lg bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
           Learn Our Story
         </Button>
