@@ -65,7 +65,7 @@ export const HeroSection = () => {
               loop
               muted
               playsInline
-              className="absolute bottom-[-10%] left-[-180px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(76vh-12rem)]"
+              className="absolute bottom-[-5%] left-[-180px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(65vh-12rem)]"
             />
           </div>
         </div>
@@ -112,7 +112,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Mobile Portrait Button */}
-      <div className="block sm:hidden absolute bottom-[20%] left-6 z-[150] mobile-landscape-button">
+      <div className="block sm:hidden absolute top-[38%] left-6 z-[150] mobile-landscape-button">
         <Button 
           className="h-12 text-lg bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
