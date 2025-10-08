@@ -85,7 +85,7 @@ export const HeroSection = () => {
       {/* Desktop & Tablet Title - positioned where subtitle was on mobile */}
       <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-20 w-1/2">
         <AnimatedText>
-          <h1 className="text-hero-mobile md:text-hero font-bold text-foreground leading-tight">
+          <h1 className="text-hero-mobile md:text-hero font-bold text-foreground">
             {t('providers.hero.title')}
             <span className="block text-hero-mobile md:text-hero mt-2 text-intelligence">{t('providers.hero.subtitle')}</span>
           </h1>
