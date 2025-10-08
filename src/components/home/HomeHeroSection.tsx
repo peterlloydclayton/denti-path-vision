@@ -76,23 +76,7 @@ export const HomeHeroSection = () => {
         </AnimatedText>
       </div>
       
-      {/* Desktop Subtitle */}
-      <div className="hidden md:block absolute top-[55%] left-12 z-20 w-1/2">
-        <AnimatedText delay={0.2}>
-          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left mt-4">
-            {t('home.hero.description')}
-          </p>
-        </AnimatedText>
-      </div>
       
-      {/* Mobile Portrait Subtitle */}
-      <div className="block sm:hidden absolute top-[40%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
-        <AnimatedText delay={0.2}>
-          <p className="text-base text-foreground/80 font-medium leading-relaxed text-left whitespace-pre-line">
-            {t('home.hero.mobileDescription')}
-          </p>
-        </AnimatedText>
-      </div>
       
       {/* Desktop Buttons - moved down 15% more, aligned with text */}
       <div className="hidden md:block absolute top-[73%] left-12 z-[120]">
@@ -114,7 +98,7 @@ export const HomeHeroSection = () => {
 
       {/* Additional text below buttons - Desktop only */}
       <div className="hidden md:block absolute top-[85%] left-12 z-[120] w-1/2">
-        <p className="text-base text-foreground/70 font-medium leading-relaxed">
+        <p className="text-xl text-foreground/80 font-medium leading-relaxed">
           AI-powered solutions that understand dental care, creating instant approvals for patients and guaranteed
         </p>
       </div>
