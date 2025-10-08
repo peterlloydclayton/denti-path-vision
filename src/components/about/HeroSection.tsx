@@ -81,7 +81,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop & Tablet Title */}
-      <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-[130] w-3/4 lg:w-1/2">
+      <div className="hidden md:block absolute top-[8%] lg:top-[20%] left-12 z-[130] w-[90%] lg:w-1/2">
         <AnimatedText>
           <h1 className="text-hero-mobile md:text-hero font-bold text-dental-blue">
             Transforming Dental Finance<br className="md:block lg:hidden" />{' '}
