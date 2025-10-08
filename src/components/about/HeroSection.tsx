@@ -33,7 +33,7 @@ export const HeroSection = () => {
               loop
               muted
               playsInline
-              className="absolute bottom-[-10%] left-1/2 xl:left-[40%] 2xl:left-[40%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              className="absolute bottom-[-10%] left-1/2 xl:left-[40%] 2xl:left-[40%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[72vh]"
             />
           </div>
         </div>
@@ -49,7 +49,7 @@ export const HeroSection = () => {
               loop
               muted
               playsInline
-              className="absolute bottom-[-10%] left-[5%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              className="absolute bottom-[-10%] left-[5%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[72vh]"
             />
           </div>
         </div>
@@ -65,7 +65,7 @@ export const HeroSection = () => {
               loop
               muted
               playsInline
-              className="absolute bottom-[-10%] left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
+              className="absolute bottom-[-10%] left-[-120px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(76vh-12rem)]"
             />
           </div>
         </div>
