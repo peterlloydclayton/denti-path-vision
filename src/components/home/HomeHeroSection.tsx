@@ -112,6 +112,13 @@ export const HomeHeroSection = () => {
         </div>
       </div>
 
+      {/* Additional text below buttons - Desktop only */}
+      <div className="hidden md:block absolute top-[85%] left-12 z-[120] w-1/2">
+        <p className="text-base text-foreground/70 font-medium leading-relaxed">
+          AI-powered solutions that understand dental care, creating instant approvals for patients and guaranteed
+        </p>
+      </div>
+
       {/* Mobile Portrait Buttons - Stacked vertically */}
       <div className="block sm:hidden absolute top-[55%] left-6 z-[150] mobile-landscape-button">
         <div className="flex flex-col gap-3">
