@@ -68,7 +68,7 @@ export const HeroSection = () => {
       {/* Desktop Subtitle */}
       <div className="hidden md:block absolute top-[50%] left-12 z-20 w-2/5">
         <AnimatedText delay={0.2}>
-          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
+          <p className="text-xl text-navy font-medium leading-relaxed text-left">
             DentiPay is pioneering a new category of healthcare finance — 
             where artificial intelligence meets human compassion to make 
             dental care accessible to everyone
@@ -79,7 +79,7 @@ export const HeroSection = () => {
       {/* Mobile Portrait Subtitle */}
       <div className="block sm:hidden absolute top-[34%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
         <AnimatedText delay={0.2}>
-          <p className="text-base text-foreground/80 font-medium leading-relaxed text-left">
+          <p className="text-base text-navy font-medium leading-relaxed text-left">
             DentiPay is pioneering a new category of healthcare finance — 
             where artificial intelligence meets human compassion to make 
             dental care accessible to everyone
