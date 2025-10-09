@@ -40,15 +40,15 @@ const MobileNav = () => {
   
   // Logo logic: 
   // - Home/Providers/Patients: transparent at rest, regular on scroll
-  // - About: dark at rest, transparent on scroll
+  // - About: dark at rest, regular on scroll
   const logoSrc = isHamburgerMenuPage 
     ? (scrolled ? dentiPayLogo : "https://res.cloudinary.com/drxvhwze4/image/upload/v1760037579/dentipay-logo-tp_q7ylxc.png")
-    : (isAboutPage && !scrolled 
-      ? "https://res.cloudinary.com/drxvhwze4/image/upload/v1760029328/dentipay-logo-dark-tp_mi7atx.png"
+    : (isAboutPage 
+      ? (scrolled ? dentiPayLogo : "https://res.cloudinary.com/drxvhwze4/image/upload/v1760029328/dentipay-logo-dark-tp_mi7atx.png")
       : "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png");
   
-  // Show white pill only after scrolling on hamburger menu pages
-  const showWhitePill = isHamburgerMenuPage && scrolled;
+  // Show white pill after scrolling on hamburger menu pages and About page
+  const showWhitePill = scrolled && (isHamburgerMenuPage || isAboutPage);
 
   useEffect(() => {
     const updatePath = () => {
