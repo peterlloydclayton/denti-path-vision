@@ -4,13 +4,18 @@ export const MissionStatementSection = () => {
   return (
     <section className="py-20 md:py-24 bg-dental-blue">
       <div className="container mx-auto px-6">
-        <AnimatedText>
-          <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              To eliminate financial barriers in dental care by creating the most intelligent, patient-centered financing platform in healthcare.
+        <div className="max-w-5xl mx-auto text-center">
+          <AnimatedText>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Our Mission
             </h2>
-          </div>
-        </AnimatedText>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-lg md:text-xl lg:text-2xl text-foreground/90 leading-relaxed">
+              To eliminate financial barriers in dental care by creating the most intelligent, patient-centered financing platform in healthcare.
+            </p>
+          </AnimatedText>
+        </div>
       </div>
     </section>
   );
