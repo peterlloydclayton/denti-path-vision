@@ -38,11 +38,13 @@ const MobileNav = () => {
   const isAboutPage = currentPath === '/about';
   const isHamburgerMenuPage = ['/', '/providers', '/patients'].includes(currentPath);
   
+  // Use dark logo for About page at rest, regular transparent logo otherwise
   const logoSrc = isAboutPage && !scrolled 
     ? "https://res.cloudinary.com/drxvhwze4/image/upload/v1760029328/dentipay-logo-dark-tp_mi7atx.png"
     : "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png";
   
-  const showWhitePill = isHamburgerMenuPage ? scrolled : scrolled;
+  // Show white pill only after scrolling (on all pages)
+  const showWhitePill = scrolled;
 
   useEffect(() => {
     const updatePath = () => {
