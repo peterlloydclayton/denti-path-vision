@@ -57,7 +57,7 @@ export const DesktopNavWithSubmenu = () => {
 
   const isAboutPage = currentPath === '/about';
   const logoSrc = isAboutPage && isMobile && !scrolled 
-    ? "/lovable-uploads/dentipay-logo-dark.png"
+    ? "https://res.cloudinary.com/drxvhwze4/image/upload/v1760029328/dentipay-logo-dark-tp_mi7atx.png"
     : "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png";
 
   return (
