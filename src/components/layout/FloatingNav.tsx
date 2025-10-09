@@ -36,9 +36,13 @@ const MobileNav = () => {
   const [currentPath, setCurrentPath] = useState('/');
 
   const isAboutPage = currentPath === '/about';
+  const isHamburgerMenuPage = ['/', '/providers', '/patients'].includes(currentPath);
+  
   const logoSrc = isAboutPage && !scrolled 
     ? "https://res.cloudinary.com/drxvhwze4/image/upload/v1760029328/dentipay-logo-dark-tp_mi7atx.png"
     : "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png";
+  
+  const showWhitePill = isHamburgerMenuPage ? scrolled : scrolled;
 
   useEffect(() => {
     const updatePath = () => {
@@ -92,7 +96,7 @@ const MobileNav = () => {
       {/* Logo - Fixed upper left */}
       <motion.div
         className={`fixed top-6 left-6 z-50 transition-smooth rounded-xl ${
-          scrolled ? 'bg-white shadow-soft px-3 py-2' : ''
+          showWhitePill ? 'bg-white shadow-soft px-3 py-2' : ''
         }`}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
