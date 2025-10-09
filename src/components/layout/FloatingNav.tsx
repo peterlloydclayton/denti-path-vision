@@ -42,7 +42,7 @@ const MobileNav = () => {
   // - Home/Providers/Patients: transparent at rest, regular on scroll
   // - About: dark at rest, transparent on scroll
   const logoSrc = isHamburgerMenuPage 
-    ? (scrolled ? dentiPayLogo : "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png")
+    ? (scrolled ? dentiPayLogo : "https://res.cloudinary.com/drxvhwze4/image/upload/v1760037579/dentipay-logo-tp_q7ylxc.png")
     : (isAboutPage && !scrolled 
       ? "https://res.cloudinary.com/drxvhwze4/image/upload/v1760029328/dentipay-logo-dark-tp_mi7atx.png"
       : "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png");
