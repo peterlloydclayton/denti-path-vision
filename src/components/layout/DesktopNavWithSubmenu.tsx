@@ -53,6 +53,11 @@ export const DesktopNavWithSubmenu = () => {
     };
   }, []);
 
+  const isAboutPage = currentPath === '/about';
+  const logoSrc = isAboutPage && !scrolled 
+    ? "/lovable-uploads/dentipay-logo-dark.png"
+    : "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png";
+
   return (
     <motion.nav
       className={`
@@ -73,10 +78,7 @@ export const DesktopNavWithSubmenu = () => {
           onClick={() => setCurrentPath('/')}
         >
           <img 
-            src={scrolled 
-              ? "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png"
-              : "/lovable-uploads/dentipay-logo-dark.png"
-            }
+            src={logoSrc}
             alt="DentiPay" 
             className="h-12 w-auto"
           />
