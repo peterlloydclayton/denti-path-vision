@@ -45,7 +45,7 @@ export const MissionVisionSection = () => {
   return (
     <>
       {/* MISSION SECTION */}
-      <section className="pt-24 pb-0 bg-background relative overflow-hidden">
+      <section className="pt-24 md:pt-12 lg:pt-24 pb-0 bg-background relative overflow-hidden">
         {/* Mobile Subtitle - Only visible on mobile */}
         <div className="block md:hidden container mx-auto px-6 pb-8 relative z-10">
           <AnimatedText>
