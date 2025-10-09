@@ -47,8 +47,8 @@ const MobileNav = () => {
       ? "https://res.cloudinary.com/drxvhwze4/image/upload/v1760029328/dentipay-logo-dark-tp_mi7atx.png"
       : "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png");
   
-  // Show white pill only after scrolling (on all pages)
-  const showWhitePill = scrolled;
+  // Show white pill only after scrolling on hamburger menu pages
+  const showWhitePill = isHamburgerMenuPage && scrolled;
 
   useEffect(() => {
     const updatePath = () => {
