@@ -73,7 +73,7 @@ export const DesktopNavWithSubmenu = () => {
           onClick={() => setCurrentPath('/')}
         >
           <img 
-            src="/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png" 
+            src={scrolled ? "/lovable-uploads/dentipay-logo-dark-scrolled.png" : "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png"}
             alt="DentiPay" 
             className="h-12 w-auto"
           />
