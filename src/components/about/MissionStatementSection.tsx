@@ -2,7 +2,7 @@ import { AnimatedText } from '@/components/ui/animated-text';
 
 export const MissionStatementSection = () => {
   return (
-    <section className="py-20 md:py-24 bg-dental-blue">
+    <section className="py-12 md:py-16 bg-dental-blue">
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto text-center">
           <AnimatedText>
