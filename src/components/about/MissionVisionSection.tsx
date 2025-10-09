@@ -109,10 +109,6 @@ export const MissionVisionSection = () => {
                   <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
                     Our Mission
                   </h2>
-                  <p className="text-2xl leading-relaxed text-foreground mb-6">
-                    To eliminate financial barriers in dental care by creating the most 
-                    intelligent, patient-centered financing platform in healthcare.
-                  </p>
                   <p className="text-xl leading-relaxed text-muted-foreground">
                     We believe everyone deserves access to quality dental treatment, 
                     regardless of their financial situation. Through advanced AI and 
