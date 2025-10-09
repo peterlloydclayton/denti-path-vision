@@ -35,6 +35,11 @@ const MobileNav = () => {
   const [scrolled, setScrolled] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
 
+  const isAboutPage = currentPath === '/about';
+  const logoSrc = isAboutPage && !scrolled 
+    ? "https://res.cloudinary.com/drxvhwze4/image/upload/v1760029328/dentipay-logo-dark-tp_mi7atx.png"
+    : "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png";
+
   useEffect(() => {
     const updatePath = () => {
       setCurrentPath(window.location.pathname);
@@ -95,7 +100,7 @@ const MobileNav = () => {
       >
         <Link to="/">
           <img 
-            src={dentiPayLogo}
+            src={logoSrc}
             alt="DentiPay" 
             className="h-11 w-auto"
           />
