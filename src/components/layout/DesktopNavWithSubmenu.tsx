@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
 import { LanguageSelector } from '@/components/ui/language-selector';
+import { useIsMobile } from '@/hooks/use-mobile';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -31,6 +32,7 @@ const navItems = [
 export const DesktopNavWithSubmenu = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
   const [scrolled, setScrolled] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
 
@@ -54,7 +56,7 @@ export const DesktopNavWithSubmenu = () => {
   }, []);
 
   const isAboutPage = currentPath === '/about';
-  const logoSrc = isAboutPage && scrolled 
+  const logoSrc = isAboutPage && isMobile && !scrolled 
     ? "/lovable-uploads/dentipay-logo-dark.png"
     : "/lovable-uploads/174d7e2f-f31a-4e96-b02e-b5ae61fff9a9.png";
 
