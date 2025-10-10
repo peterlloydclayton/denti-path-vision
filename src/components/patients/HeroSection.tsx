@@ -9,7 +9,7 @@ export const HeroSection = () => {
   return (
     <section className="h-screen relative z-30 overflow-visible">
       {/* Controlled Background */}
-      <div className="absolute inset-0 bg-dental-blue" style={{ height: '100vh' }}></div>
+      <div className="absolute inset-0 bg-primary" style={{ height: '100vh' }}></div>
       
       <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop Layout */}
