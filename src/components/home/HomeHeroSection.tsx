@@ -39,7 +39,7 @@ export const HomeHeroSection = () => {
             <img 
               src={heroImage}
               alt="Professional dental provider"
-              className="absolute bottom-0 left-[20%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              className="absolute bottom-0 left-[20%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[72vh]"
             />
           </div>
         </div>
@@ -70,7 +70,7 @@ export const HomeHeroSection = () => {
       
       
       {/* Desktop & Tablet Title */}
-      <div className="hidden md:block absolute top-[5%] lg:top-[17%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[20%] lg:top-[17%] left-12 z-20 w-1/2">
         <AnimatedText>
           <h1 className="text-6xl md:text-7xl font-bold text-foreground">
             {t('home.hero.title')}
