@@ -70,7 +70,7 @@ export const HomeHeroSection = () => {
       
       
       {/* Desktop & Tablet Title */}
-      <div className="hidden md:block absolute top-[20%] lg:top-[17%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[10%] lg:top-[17%] left-12 z-20 w-1/2">
         <AnimatedText>
           <h1 className="text-6xl md:text-7xl font-bold text-foreground">
             {t('home.hero.title')}
