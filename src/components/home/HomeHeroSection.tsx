@@ -35,7 +35,7 @@ export const HomeHeroSection = () => {
 
         {/* Tablet Layout */}
         <div className="hidden sm:flex lg:hidden justify-center items-center min-h-screen">
-          <div className="w-full max-w-md min-h-screen relative z-[100]">
+          <div className="w-full max-w-sm min-h-screen relative z-[100]">
             <img 
               src={heroImage}
               alt="Professional dental provider"
