@@ -100,7 +100,7 @@ export const HomeHeroSection = () => {
       </div>
       
       {/* Desktop Subtitle */}
-      <div className="hidden md:block absolute bottom-[8%] left-12 z-20 w-1/2">
+      <div className="hidden lg:block absolute bottom-[8%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
             {t('home.hero.description')}
