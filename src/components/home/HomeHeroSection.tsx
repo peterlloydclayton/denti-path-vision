@@ -75,7 +75,7 @@ export const HomeHeroSection = () => {
           <h1 className="text-6xl md:text-7xl font-bold text-foreground">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-4xl mt-8 text-navy font-semibold">
+          <h2 className="block text-4xl mt-8 md:mt-20 lg:mt-8 text-navy font-semibold">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
