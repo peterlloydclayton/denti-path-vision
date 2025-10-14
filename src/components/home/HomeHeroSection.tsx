@@ -34,12 +34,12 @@ export const HomeHeroSection = () => {
         </div>
 
         {/* Tablet Layout */}
-        <div className="hidden sm:flex lg:hidden justify-center items-center min-h-screen">
+        <div className="hidden sm:flex lg:hidden justify-start items-center min-h-screen ml-[10%]">
           <div className="w-full max-w-sm min-h-screen relative z-[100]">
             <img 
               src={heroImage}
               alt="Professional dental provider"
-              className="absolute bottom-0 left-[15%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[52vh]"
+              className="absolute bottom-0 left-[20%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[52vh]"
             />
           </div>
         </div>
