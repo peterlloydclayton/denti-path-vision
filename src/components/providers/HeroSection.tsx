@@ -85,7 +85,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop & Tablet Title */}
-      <div className="hidden md:block absolute top-[5%] lg:top-[17%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[15%] lg:top-[17%] left-12 z-20 w-1/2">
         <AnimatedText>
           <h1 className="text-6xl md:text-7xl font-bold text-foreground">
             {t('providers.hero.title')}
@@ -106,7 +106,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Subtitle */}
-      <div className="hidden md:block absolute bottom-[8%] left-12 z-20 w-1/2">
+      <div className="hidden lg:block absolute bottom-[8%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
             {t('providers.hero.description')}
