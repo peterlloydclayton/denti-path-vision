@@ -34,7 +34,7 @@ export const HomeHeroSection = () => {
         </div>
 
         {/* Tablet Layout */}
-        <div className="hidden sm:flex lg:hidden justify-start items-center min-h-screen ml-[10%]">
+        <div className="hidden sm:flex lg:hidden justify-start items-center min-h-screen ml-[20%]">
           <div className="w-full max-w-sm min-h-screen relative z-[100]">
             <img 
               src={heroImage}
