@@ -183,6 +183,118 @@
         "title": "Impacto",
         "description": "Midiendo el éxito por las vidas que mejoramos y las barreras que eliminamos. Cada aprobación, cada sonrisa, cada práctica que ayudamos a crecer representa nuestro compromiso de crear un cambio significativo."
       }
+    },
+    "missionVision": {
+      "mobileSubtitle": "DentiPay está siendo pionero en una nueva categoría de financiamiento de atención médica — donde la inteligencia artificial se encuentra con la compasión humana para hacer que la atención dental sea accesible para todos",
+      "missionTitle": "Nuestra Misión",
+      "missionDescription": "Creemos que todos merecen acceso a tratamiento dental de calidad, independientemente de su situación financiera. A través de IA avanzada y diseño compasivo, estamos haciendo realidad esa creencia—una sonrisa a la vez.",
+      "missionPillars": {
+        "patientFirst": "Siempre Primero el Paciente",
+        "intelligence": "La Inteligencia se Encuentra con la Compasión",
+        "growth": "Crecimiento a Través de la Innovación"
+      },
+      "visionTitle": "Nuestra Visión para el Financiamiento de la Atención Médica",
+      "visionSubtitle": "Un mundo donde la inteligencia impulsada por IA elimina todas las barreras entre los pacientes y la atención que merecen",
+      "visionQuote": "Imaginamos un sistema de atención médica donde se elimina el estrés financiero, donde cada paciente recibe un 'sí', y donde los proveedores pueden enfocarse en lo que mejor hacen—brindar atención excepcional.",
+      "visionPillars": {
+        "universalAccess": {
+          "title": "Acceso Universal",
+          "description": "Cada paciente aprobado, independientemente de su historial crediticio. Creemos que las circunstancias financieras nunca deben impedir el acceso a atención dental de calidad."
+        },
+        "aiFirst": {
+          "title": "Atención Médica con IA Primero",
+          "description": "Financiamiento predictivo, no reactivo, impulsado por algoritmos inteligentes que entienden las necesidades del paciente antes de que pregunten."
+        },
+        "providerEmpowerment": {
+          "title": "Empoderamiento del Proveedor",
+          "description": "Crecimiento de la práctica a través de la inteligencia. Les damos a los dentistas las herramientas para decir sí más a menudo y hacer crecer su negocio de manera sostenible."
+        }
+      }
+    },
+    "timeline": {
+      "title": "Nuestro Recorrido",
+      "subtitle": "Hitos clave en nuestra misión de transformar el financiamiento dental",
+      "milestones": {
+        "2020": {
+          "title": "Fundación de la Empresa",
+          "description": "DentiPay fue fundada con la misión de democratizar el acceso a la atención dental a través del financiamiento inteligente"
+        },
+        "2021": {
+          "title": "Lanzamiento de la Tecnología PATH",
+          "description": "Introdujimos nuestro revolucionario Centro de Tecnología de Aprobación Predictiva, transformando los procesos de aprobación"
+        },
+        "2022": {
+          "title": "Integración SCOPE",
+          "description": "Lanzamos el Motor de Plataforma de Optimización de Atención Estratégica para inteligencia integral de práctica"
+        },
+        "2023": {
+          "title": "Expansión Nacional",
+          "description": "Alcanzamos más de 10,000 prácticas dentales a nivel nacional, procesando más de $1B en financiamiento de pacientes"
+        },
+        "2025": {
+          "title": "Mejora de IA",
+          "description": "Mejoramos nuestras capacidades de IA con modelos de aprendizaje automático logrando más del 97% de precisión predictiva"
+        }
+      }
+    },
+    "founders": {
+      "title": "Círculo de Fundadores: De la Visión a la Velocidad",
+      "subtitle": "Rompiendo Barreras en Innovación, Acceso y Rentabilidad",
+      "readMore": "Leer Más"
+    },
+    "leadership": {
+      "title": "Liderazgo que Construye Revoluciones",
+      "subtitle": "Donde la innovación se encuentra con la ejecución — y la disrupción se vuelve inevitable.",
+      "forPatients": "Para Pacientes",
+      "forProviders": "Para Proveedores"
+    },
+    "partnership": {
+      "title": "Oportunidades de Asociación e Inversión",
+      "subtitle": "Únete a la revolución en el financiamiento de la atención médica y sé parte de una red que está transformando el acceso a la atención del paciente",
+      "investors": {
+        "title": "Para Inversores Estratégicos",
+        "description": "DentiPay representa una oportunidad única para invertir en el futuro del financiamiento de la atención médica. Nuestra plataforma impulsada por IA está disrumpiendo un mercado de más de $50 mil millones con tecnología probada, liderazgo excepcional y potencial de crecimiento exponencial.",
+        "scalable": {
+          "title": "Plataforma Tecnológica Escalable",
+          "description": "Soluciones impulsadas por IA con más del 97% de precisión predictiva"
+        },
+        "proven": {
+          "title": "Tracción de Mercado Comprobada",
+          "description": "Más de 10,000 prácticas, más de $1.5B en financiamiento procesado"
+        },
+        "expansion": {
+          "title": "Lista para Expansión en Atención Médica",
+          "description": "Plataforma diseñada para crecimiento multiespecialidad"
+        }
+      },
+      "partners": {
+        "title": "Para Socios de Red",
+        "description": "Únete a nuestra red exclusiva de prácticas dentales, socios tecnológicos e instituciones financieras. Experimenta el poder del financiamiento inteligente que aumenta la aceptación de casos mientras mejora la satisfacción del paciente.",
+        "revenue": {
+          "title": "Crecimiento de Ingresos",
+          "description": "Promedio de 40% de aumento en las tasas de aceptación de casos"
+        },
+        "operational": {
+          "title": "Excelencia Operacional",
+          "description": "Flujos de trabajo optimizados y automatización inteligente"
+        },
+        "success": {
+          "title": "Éxito del Paciente",
+          "description": "Acceso mejorado a la atención con financiamiento personalizado"
+        }
+      }
+    },
+    "futureVision": {
+      "title": "El Futuro que Estamos Construyendo",
+      "description": "Apenas estamos comenzando. Nuestra visión se extiende más allá del financiamiento dental para revolucionar la accesibilidad de la atención médica a través de tecnología inteligente, servicio compasivo y compromiso inquebrantable con la atención del paciente.",
+      "globalExpansion": {
+        "title": "Expansión Global",
+        "description": "Llevando el financiamiento inteligente a todo el mundo"
+      },
+      "healthcareIntegration": {
+        "title": "Integración de Atención Médica",
+        "description": "Expandiéndose más allá de lo dental a toda la atención médica"
+      }
     }
   }
 }

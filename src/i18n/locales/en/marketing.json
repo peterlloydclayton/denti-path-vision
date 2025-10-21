@@ -185,6 +185,118 @@
         "title": "Impact",
         "description": "Measuring success by the lives we improve and the barriers we remove. Every approval, every smile, every practice we help grow represents our commitment to creating meaningful change."
       }
+    },
+    "missionVision": {
+      "mobileSubtitle": "DentiPay is pioneering a new category of healthcare finance — where artificial intelligence meets human compassion to make dental care accessible to everyone",
+      "missionTitle": "Our Mission",
+      "missionDescription": "We believe everyone deserves access to quality dental treatment, regardless of their financial situation. Through advanced AI and compassionate design, we're making that belief a reality—one smile at a time.",
+      "missionPillars": {
+        "patientFirst": "Patient-First Always",
+        "intelligence": "Intelligence Meets Compassion",
+        "growth": "Growth Through Innovation"
+      },
+      "visionTitle": "Our Vision for Healthcare Finance",
+      "visionSubtitle": "A world where AI-powered intelligence removes every barrier between patients and the care they deserve",
+      "visionQuote": "We envision a healthcare system where financial stress is eliminated, where every patient receives a 'yes,' and where providers can focus on what they do best—delivering exceptional care.",
+      "visionPillars": {
+        "universalAccess": {
+          "title": "Universal Access",
+          "description": "Every patient approved, regardless of credit history. We believe financial circumstances should never prevent access to quality dental care."
+        },
+        "aiFirst": {
+          "title": "AI-First Healthcare",
+          "description": "Predictive, not reactive financing powered by intelligent algorithms that understand patient needs before they ask."
+        },
+        "providerEmpowerment": {
+          "title": "Provider Empowerment",
+          "description": "Practice growth through intelligence. We give dentists the tools to say yes more often and grow their business sustainably."
+        }
+      }
+    },
+    "timeline": {
+      "title": "Our Journey",
+      "subtitle": "Key milestones in our mission to transform dental finance",
+      "milestones": {
+        "2020": {
+          "title": "Company Founded",
+          "description": "DentiPay was founded with a mission to democratize access to dental care through intelligent financing"
+        },
+        "2021": {
+          "title": "PATH Technology Launch",
+          "description": "Introduced our revolutionary Predictive Approval Technology Hub, transforming approval processes"
+        },
+        "2022": {
+          "title": "SCOPE Integration",
+          "description": "Launched Strategic Care Optimization Platform Engine for comprehensive practice intelligence"
+        },
+        "2023": {
+          "title": "National Expansion",
+          "description": "Reached 10,000+ dental practices nationwide, processing over $1B in patient financing"
+        },
+        "2025": {
+          "title": "AI Enhancement",
+          "description": "Advanced our AI capabilities with machine learning models achieving 97%+ predictive accuracy"
+        }
+      }
+    },
+    "founders": {
+      "title": "Founder's Circle: From Vision to Velocity",
+      "subtitle": "Breaking Barriers in Innovation, Access, and Profitability",
+      "readMore": "Read More"
+    },
+    "leadership": {
+      "title": "Leadership That Builds Revolutions",
+      "subtitle": "Where innovation meets execution — and disruption becomes inevitable.",
+      "forPatients": "For Patients",
+      "forProviders": "For Providers"
+    },
+    "partnership": {
+      "title": "Partnership & Investment Opportunities",
+      "subtitle": "Join the revolution in healthcare finance and be part of a network that's transforming patient care access",
+      "investors": {
+        "title": "For Strategic Investors",
+        "description": "DentiPay represents a unique opportunity to invest in the future of healthcare finance. Our AI-powered platform is disrupting a $50+ billion market with proven technology, exceptional leadership, and exponential growth potential.",
+        "scalable": {
+          "title": "Scalable Technology Platform",
+          "description": "AI-driven solutions with 97%+ predictive accuracy"
+        },
+        "proven": {
+          "title": "Proven Market Traction",
+          "description": "10,000+ practices, $1.5B+ in financing processed"
+        },
+        "expansion": {
+          "title": "Healthcare Expansion Ready",
+          "description": "Platform architected for multi-specialty growth"
+        }
+      },
+      "partners": {
+        "title": "For Network Partners",
+        "description": "Join our exclusive network of dental practices, technology partners, and financial institutions. Experience the power of intelligent financing that increases case acceptance while improving patient satisfaction.",
+        "revenue": {
+          "title": "Revenue Growth",
+          "description": "Average 40% increase in case acceptance rates"
+        },
+        "operational": {
+          "title": "Operational Excellence",
+          "description": "Streamlined workflows and intelligent automation"
+        },
+        "success": {
+          "title": "Patient Success",
+          "description": "Enhanced access to care with personalized financing"
+        }
+      }
+    },
+    "futureVision": {
+      "title": "The Future We're Building",
+      "description": "We're just getting started. Our vision extends beyond dental finance to revolutionize healthcare accessibility through intelligent technology, compassionate service, and unwavering commitment to patient care.",
+      "globalExpansion": {
+        "title": "Global Expansion",
+        "description": "Bringing intelligent financing worldwide"
+      },
+      "healthcareIntegration": {
+        "title": "Healthcare Integration",
+        "description": "Expanding beyond dental to all healthcare"
+      }
     }
   }
 }

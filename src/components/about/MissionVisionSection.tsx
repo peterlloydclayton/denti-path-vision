@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import { Users, Brain, TrendingUp, Heart, Shield, Smile, Star, Sparkles, Zap, CheckCircle } from 'lucide-react';
 import { useMemo } from 'react';
 import diversePractitioners from '@/assets/diverse-practitioners-new.png';
+import { useTranslation } from 'react-i18next';
 
 export const MissionVisionSection = () => {
+  const { t } = useTranslation('marketing');
   // Floating dental icons for Mission section
   const dentalIcons = [Heart, Shield, Smile, Star, Sparkles, Zap];
   
@@ -24,20 +26,20 @@ export const MissionVisionSection = () => {
   const visionPillars = [
     {
       icon: Users,
-      title: 'Universal Access',
-      description: 'Every patient approved, regardless of credit history. We believe financial circumstances should never prevent access to quality dental care.',
+      title: t('about.missionVision.visionPillars.universalAccess.title'),
+      description: t('about.missionVision.visionPillars.universalAccess.description'),
       color: 'dental-blue'
     },
     {
       icon: Brain,
-      title: 'AI-First Healthcare',
-      description: 'Predictive, not reactive financing powered by intelligent algorithms that understand patient needs before they ask.',
+      title: t('about.missionVision.visionPillars.aiFirst.title'),
+      description: t('about.missionVision.visionPillars.aiFirst.description'),
       color: 'dental-lavender'
     },
     {
       icon: TrendingUp,
-      title: 'Provider Empowerment',
-      description: 'Practice growth through intelligence. We give dentists the tools to say yes more often and grow their business sustainably.',
+      title: t('about.missionVision.visionPillars.providerEmpowerment.title'),
+      description: t('about.missionVision.visionPillars.providerEmpowerment.description'),
       color: 'dental-peach'
     }
   ];
@@ -50,9 +52,7 @@ export const MissionVisionSection = () => {
         <div className="block md:hidden container mx-auto px-6 pb-8 relative z-10">
           <AnimatedText>
             <p className="text-lg text-foreground/80 font-medium leading-relaxed italic">
-              DentiPay is pioneering a new category of healthcare finance — 
-              where artificial intelligence meets human compassion to make 
-              dental care accessible to everyone
+              {t('about.missionVision.mobileSubtitle')}
             </p>
           </AnimatedText>
         </div>
@@ -107,12 +107,10 @@ export const MissionVisionSection = () => {
               <div className="w-full lg:w-3/5 pb-12 lg:pb-16">
                 <AnimatedText>
                   <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
-                    Our Mission
+                    {t('about.missionVision.missionTitle')}
                   </h2>
                   <p className="text-xl leading-relaxed text-muted-foreground">
-                    We believe everyone deserves access to quality dental treatment, 
-                    regardless of their financial situation. Through advanced AI and 
-                    compassionate design, we're making that belief a reality—one smile at a time.
+                    {t('about.missionVision.missionDescription')}
                   </p>
                 </AnimatedText>
 
@@ -124,7 +122,7 @@ export const MissionVisionSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                  {['Patient-First Always', 'Intelligence Meets Compassion', 'Growth Through Innovation'].map((pillar, index) => (
+                  {[t('about.missionVision.missionPillars.patientFirst'), t('about.missionVision.missionPillars.intelligence'), t('about.missionVision.missionPillars.growth')].map((pillar, index) => (
                     <motion.div 
                       key={index}
                       className="flex items-center gap-3"
@@ -150,11 +148,10 @@ export const MissionVisionSection = () => {
         <div className="container mx-auto px-6 relative z-10">
           <AnimatedText className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
-              Our Vision for Healthcare Finance
+              {t('about.missionVision.visionTitle')}
             </h2>
             <p className="text-2xl text-foreground/80 max-w-4xl mx-auto leading-relaxed">
-              A world where AI-powered intelligence removes every barrier between patients 
-              and the care they deserve
+              {t('about.missionVision.visionSubtitle')}
             </p>
           </AnimatedText>
 
@@ -173,9 +170,7 @@ export const MissionVisionSection = () => {
               <Card className="bg-intelligence text-intelligence-foreground border-0 shadow-elegant hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8 md:p-12 text-center">
                   <blockquote className="text-xl md:text-2xl font-medium leading-relaxed italic">
-                    "We envision a healthcare system where financial stress is eliminated, 
-                    where every patient receives a 'yes,' and where providers can focus on 
-                    what they do best—delivering exceptional care."
+                    "{t('about.missionVision.visionQuote')}"
                   </blockquote>
                 </CardContent>
               </Card>

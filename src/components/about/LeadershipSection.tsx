@@ -8,8 +8,10 @@ import donaldThorne from '@/assets/profiles/donald-thorne.png';
 import nuttalyaReussi from '@/assets/profiles/nuttalya-reussi.png';
 import michaelWeydemuller from '@/assets/profiles/michael-weydemuller.png';
 import colinDedely from '@/assets/profiles/colin-dedely.png';
+import { useTranslation } from 'react-i18next';
 
 export const LeadershipSection = () => {
+  const { t } = useTranslation('marketing');
   const navigate = useNavigate();
   const leaders = [
     {
@@ -54,10 +56,10 @@ export const LeadershipSection = () => {
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
-            Leadership That Builds Revolutions
+            {t('about.leadership.title')}
           </h2>
           <p className="text-xl text-black max-w-4xl mx-auto">
-            Where innovation meets execution — and disruption becomes inevitable.
+            {t('about.leadership.subtitle')}
           </p>
         </AnimatedText>
 
@@ -92,13 +94,13 @@ export const LeadershipSection = () => {
               onClick={() => navigate('/patients')}
               className="px-8 py-6 text-lg bg-black text-white hover:bg-black/90"
             >
-              For Patients
+              {t('about.leadership.forPatients')}
             </Button>
             <Button 
               onClick={() => navigate('/providers')}
               className="px-8 py-6 text-lg bg-white text-black border-2 border-black hover:bg-black/5"
             >
-              For Providers
+              {t('about.leadership.forProviders')}
             </Button>
           </div>
         </div>

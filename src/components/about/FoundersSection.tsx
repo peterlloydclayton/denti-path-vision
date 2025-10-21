@@ -21,8 +21,10 @@ import adamZuckerman from '@/assets/profiles/adam-zuckerman.png';
 import charlesZahedi from '@/assets/profiles/charles-zahedi.png';
 import emilioArguello from '@/assets/profiles/emilio-arguello.jpg';
 import drCarmy from '@/assets/profiles/dr-carmy.jpeg';
+import { useTranslation } from 'react-i18next';
 
 export const FoundersSection = () => {
+  const { t } = useTranslation('marketing');
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [isLandscape, setIsLandscape] = useState(false);
@@ -93,10 +95,10 @@ export const FoundersSection = () => {
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
-            Founder's Circle: From Vision to Velocity
+            {t('about.founders.title')}
           </h2>
           <p className="text-xl text-black max-w-4xl mx-auto">
-            Breaking Barriers in Innovation, Access, and Profitability
+            {t('about.founders.subtitle')}
           </p>
         </AnimatedText>
 
@@ -135,7 +137,7 @@ export const FoundersSection = () => {
                           onClick={() => openModal(founder)}
                           className="mt-2 text-black hover:text-black/80 font-semibold"
                         >
-                          Read More
+                          {t('about.founders.readMore')}
                         </Button>
                       </CardContent>
                     </Card>
@@ -176,7 +178,7 @@ export const FoundersSection = () => {
                       onClick={() => openModal(founder)}
                       className="mt-2 text-black hover:text-black/80 font-semibold"
                     >
-                      Read More
+                      {t('about.founders.readMore')}
                     </Button>
                   </CardContent>
                 </Card>

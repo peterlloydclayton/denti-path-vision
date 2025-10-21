@@ -1,32 +1,35 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedText } from '@/components/ui/animated-text';
+import { useTranslation } from 'react-i18next';
 
 export const TimelineSection = () => {
+  const { t } = useTranslation('marketing');
+  
   const milestones = [
     {
       year: '2020',
-      title: 'Company Founded',
-      description: 'DentiPay was founded with a mission to democratize access to dental care through intelligent financing'
+      title: t('about.timeline.milestones.2020.title'),
+      description: t('about.timeline.milestones.2020.description')
     },
     {
       year: '2021',
-      title: 'PATH Technology Launch',
-      description: 'Introduced our revolutionary Predictive Approval Technology Hub, transforming approval processes'
+      title: t('about.timeline.milestones.2021.title'),
+      description: t('about.timeline.milestones.2021.description')
     },
     {
       year: '2022',
-      title: 'SCOPE Integration',
-      description: 'Launched Strategic Care Optimization Platform Engine for comprehensive practice intelligence'
+      title: t('about.timeline.milestones.2022.title'),
+      description: t('about.timeline.milestones.2022.description')
     },
     {
       year: '2023',
-      title: 'National Expansion',
-      description: 'Reached 10,000+ dental practices nationwide, processing over $1B in patient financing'
+      title: t('about.timeline.milestones.2023.title'),
+      description: t('about.timeline.milestones.2023.description')
     },
     {
       year: '2025',
-      title: 'AI Enhancement',
-      description: 'Advanced our AI capabilities with machine learning models achieving 97%+ predictive accuracy'
+      title: t('about.timeline.milestones.2025.title'),
+      description: t('about.timeline.milestones.2025.description')
     }
   ];
 
@@ -35,10 +38,10 @@ export const TimelineSection = () => {
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
-            Our Journey
+            {t('about.timeline.title')}
           </h2>
           <p className="text-xl text-black">
-            Key milestones in our mission to transform dental finance
+            {t('about.timeline.subtitle')}
           </p>
         </AnimatedText>
 
