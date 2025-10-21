@@ -39,7 +39,7 @@ export const HomeHeroSection = () => {
             <img 
               src={heroImage}
               alt="Professional dental provider"
-              className="absolute bottom-0 left-[30%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[52vh]"
+              className="absolute bottom-0 left-[40%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[52vh]"
             />
           </div>
         </div>
