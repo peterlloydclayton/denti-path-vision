@@ -29,7 +29,7 @@ const ProviderScheduling = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dental-blue mb-6">
               Schedule Your Consultation
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
