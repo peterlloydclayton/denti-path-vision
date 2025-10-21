@@ -5,7 +5,8 @@ import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const HeroSection = () => {
-  const { t } = useTranslation('marketing');
+  const { t, i18n } = useTranslation('marketing');
+  const isSpanish = i18n.language === 'es';
   const videoRef1 = useRef<HTMLVideoElement>(null);
   const videoRef2 = useRef<HTMLVideoElement>(null);
   const videoRef3 = useRef<HTMLVideoElement>(null);
@@ -92,7 +93,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Subtitle */}
-      <div className="hidden md:block absolute top-[40%] lg:top-[50%] left-12 z-[130] w-2/5">
+      <div className={`hidden md:block absolute ${isSpanish ? 'top-[45%] lg:top-[55%]' : 'top-[40%] lg:top-[50%]'} left-12 z-[130] w-2/5`}>
         <AnimatedText delay={0.2}>
           <p className="text-xl text-dental-blue/80 font-medium leading-relaxed text-left">
             {t('about.hero.subtitle')}
@@ -102,7 +103,7 @@ export const HeroSection = () => {
       
       
       {/* Desktop Button */}
-      <div className="hidden md:block absolute top-[70%] left-12 z-[120]">
+      <div className={`hidden md:block absolute ${isSpanish ? 'top-[75%]' : 'top-[70%]'} left-12 z-[120]`}>
         <Button 
           className="h-16 text-xl bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
@@ -111,7 +112,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Mobile Portrait Button */}
-      <div className="block sm:hidden absolute top-[52%] left-6 z-[150] mobile-landscape-button">
+      <div className={`block sm:hidden absolute ${isSpanish ? 'top-[57%]' : 'top-[52%]'} left-6 z-[150] mobile-landscape-button`}>
         <Button 
           className="h-12 text-lg bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
