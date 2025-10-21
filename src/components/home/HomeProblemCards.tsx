@@ -20,7 +20,8 @@ interface ProblemCard {
 }
 
 export const HomeProblemCards = () => {
-  const { t } = useTranslation('marketing');
+  const { t, i18n } = useTranslation('marketing');
+  const isSpanish = i18n.language === 'es';
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -113,11 +114,11 @@ export const HomeProblemCards = () => {
         return (
           <StaggerItem key={index}>
             <Card 
-              className="h-full min-h-[350px] bg-background flex items-center justify-center cursor-pointer"
+              className={`h-full ${isSpanish ? 'min-h-[400px]' : 'min-h-[350px]'} bg-background flex items-center justify-center cursor-pointer`}
               onClick={() => handleCardClick(index)}
             >
               <CardContent className="p-7 w-full h-full flex flex-col justify-center">
-                <div className="relative h-[280px] w-full">
+                <div className={`relative ${isSpanish ? 'h-[320px]' : 'h-[280px]'} w-full`}>
                   {/* Traditional Card (Front) */}
                   <motion.div
                     initial={{ rotateY: 0 }}
