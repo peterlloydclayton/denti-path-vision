@@ -54,7 +54,7 @@ export const HeroSection = () => {
             <img 
               src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759199955/dentist-male-asian_upscayl_2x_upscayl-standard-4x_sn0djl.png"
               alt="Professional dentist providing quality care"
-              className="absolute bottom-0 left-[5%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              className="absolute bottom-0 left-[15%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
             />
           </div>
         </div>
