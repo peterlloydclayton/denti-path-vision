@@ -2,8 +2,10 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { Button } from '@/components/ui/button';
 import heroNeuralNetwork from '@/assets/hero-neural-network.mp4';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const HeroSection = () => {
+  const { t } = useTranslation('marketing');
   const videoRef1 = useRef<HTMLVideoElement>(null);
   const videoRef2 = useRef<HTMLVideoElement>(null);
   const videoRef3 = useRef<HTMLVideoElement>(null);
@@ -75,7 +77,7 @@ export const HeroSection = () => {
       <div className="block sm:hidden absolute top-[15%] left-6 z-[130] w-3/4 mobile-landscape-title">
         <AnimatedText>
           <h1 className="text-5xl font-bold mb-6 text-dental-blue leading-none mobile-landscape-text">
-            Transforming Dental Finance Through Intelligence
+            {t('about.hero.title')}
           </h1>
         </AnimatedText>
       </div>
@@ -84,8 +86,7 @@ export const HeroSection = () => {
       <div className="hidden md:block absolute top-[13%] lg:top-[20%] left-12 z-[130] w-[90%] lg:w-1/2">
         <AnimatedText>
           <h1 className="text-hero-mobile md:text-hero font-bold text-dental-blue">
-            Transforming Dental Finance<br className="md:block lg:hidden" />{' '}
-            <span className="text-dental-blue">Through Intelligence</span>
+            {t('about.hero.title')}
           </h1>
         </AnimatedText>
       </div>
@@ -94,9 +95,7 @@ export const HeroSection = () => {
       <div className="hidden md:block absolute top-[40%] lg:top-[50%] left-12 z-[130] w-2/5">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-dental-blue/80 font-medium leading-relaxed text-left">
-            DentiPay is pioneering a new category of healthcare finance — 
-            where artificial intelligence meets human compassion to make 
-            dental care accessible to everyone
+            {t('about.hero.subtitle')}
           </p>
         </AnimatedText>
       </div>
@@ -107,7 +106,7 @@ export const HeroSection = () => {
         <Button 
           className="h-16 text-xl bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
-          Learn Our Story
+          {t('about.hero.cta')}
         </Button>
       </div>
 
@@ -116,7 +115,7 @@ export const HeroSection = () => {
         <Button 
           className="h-12 text-lg bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
-          Learn Our Story
+          {t('about.hero.cta')}
         </Button>
       </div>
     </section>

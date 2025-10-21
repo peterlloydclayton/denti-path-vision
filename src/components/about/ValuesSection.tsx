@@ -2,38 +2,40 @@ import { Users, Heart, Target, Lightbulb, Shield, Sparkles } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 export const ValuesSection = () => {
+  const { t } = useTranslation('marketing');
   const values = [
     {
       icon: Heart,
-      title: 'Patient-First',
-      description: 'Every decision we make prioritizes patient access to quality dental care. We design our technology and processes to remove barriers, reduce stress, and create pathways to treatment that traditional systems ignore.'
+      title: t('about.values.patientFirst.title'),
+      description: t('about.values.patientFirst.description')
     },
     {
       icon: Lightbulb,
-      title: 'Innovation',
-      description: 'Pioneering AI-driven solutions that reshape healthcare finance. We continuously push boundaries, explore emerging technologies, and challenge conventional wisdom to build the future of patient financing.'
+      title: t('about.values.innovation.title'),
+      description: t('about.values.innovation.description')
     },
     {
       icon: Target,
-      title: 'Excellence',
-      description: 'Delivering unparalleled service and outcomes for providers and patients alike. Our commitment to quality extends from our AI algorithms to our customer support, ensuring every interaction exceeds expectations.'
+      title: t('about.values.excellence.title'),
+      description: t('about.values.excellence.description')
     },
     {
       icon: Users,
-      title: 'Partnership',
-      description: 'Building lasting relationships based on trust, transparency, and mutual success. We view every dental practice and patient as a long-term partner in transforming healthcare access.'
+      title: t('about.values.partnership.title'),
+      description: t('about.values.partnership.description')
     },
     {
       icon: Shield,
-      title: 'Integrity',
-      description: 'Operating with unwavering ethical standards and transparency. We protect patient data, honor our commitments, and maintain the highest standards of business conduct in every transaction.'
+      title: t('about.values.integrity.title'),
+      description: t('about.values.integrity.description')
     },
     {
       icon: Sparkles,
-      title: 'Impact',
-      description: 'Measuring success by the lives we improve and the barriers we remove. Every approval, every smile, every practice we help grow represents our commitment to creating meaningful change.'
+      title: t('about.values.impact.title'),
+      description: t('about.values.impact.description')
     }
   ];
 
@@ -62,10 +64,10 @@ export const ValuesSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <AnimatedText className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
-            Our Core Values
+            {t('about.values.title')}
           </h2>
           <p className="text-2xl text-foreground/80 max-w-4xl mx-auto leading-relaxed">
-            The principles that guide every decision, innovation, and relationship we build
+            {t('about.values.subtitle')}
           </p>
         </AnimatedText>
 

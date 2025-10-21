@@ -147,5 +147,44 @@
       "title": "24/7 Support",
       "description": "Get help whenever you need it"
     }
+  },
+  "about": {
+    "hero": {
+      "title": "Transforming Dental Finance Through Intelligence",
+      "subtitle": "DentiPay is pioneering a new category of healthcare finance — where artificial intelligence meets human compassion to make dental care accessible to everyone",
+      "cta": "Learn Our Story"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To eliminate financial barriers in dental care by creating the most intelligent, patient-centered financing platform in healthcare."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "subtitle": "The principles that guide every decision, innovation, and relationship we build",
+      "patientFirst": {
+        "title": "Patient-First",
+        "description": "Every decision we make prioritizes patient access to quality dental care. We design our technology and processes to remove barriers, reduce stress, and create pathways to treatment that traditional systems ignore."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Pioneering AI-driven solutions that reshape healthcare finance. We continuously push boundaries, explore emerging technologies, and challenge conventional wisdom to build the future of patient financing."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "Delivering unparalleled service and outcomes for providers and patients alike. Our commitment to quality extends from our AI algorithms to our customer support, ensuring every interaction exceeds expectations."
+      },
+      "partnership": {
+        "title": "Partnership",
+        "description": "Building lasting relationships based on trust, transparency, and mutual success. We view every dental practice and patient as a long-term partner in transforming healthcare access."
+      },
+      "integrity": {
+        "title": "Integrity",
+        "description": "Operating with unwavering ethical standards and transparency. We protect patient data, honor our commitments, and maintain the highest standards of business conduct in every transaction."
+      },
+      "impact": {
+        "title": "Impact",
+        "description": "Measuring success by the lives we improve and the barriers we remove. Every approval, every smile, every practice we help grow represents our commitment to creating meaningful change."
+      }
+    }
   }
 }

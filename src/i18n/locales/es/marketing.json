@@ -145,5 +145,44 @@
       "title": "Soporte 24/7",
       "description": "Obtén ayuda cuando la necesites"
     }
+  },
+  "about": {
+    "hero": {
+      "title": "Transformando las Finanzas Dentales A Través de la Inteligencia",
+      "subtitle": "DentiPay está siendo pionero en una nueva categoría de financiamiento de atención médica — donde la inteligencia artificial se encuentra con la compasión humana para hacer que la atención dental sea accesible para todos",
+      "cta": "Conoce Nuestra Historia"
+    },
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Eliminar las barreras financieras en la atención dental creando la plataforma de financiamiento más inteligente y centrada en el paciente en el sector de la salud."
+    },
+    "values": {
+      "title": "Nuestros Valores Fundamentales",
+      "subtitle": "Los principios que guían cada decisión, innovación y relación que construimos",
+      "patientFirst": {
+        "title": "Primero el Paciente",
+        "description": "Cada decisión que tomamos prioriza el acceso del paciente a atención dental de calidad. Diseñamos nuestra tecnología y procesos para eliminar barreras, reducir el estrés y crear caminos hacia el tratamiento que los sistemas tradicionales ignoran."
+      },
+      "innovation": {
+        "title": "Innovación",
+        "description": "Siendo pioneros en soluciones impulsadas por IA que remodelan el financiamiento de la atención médica. Continuamente empujamos límites, exploramos tecnologías emergentes y desafiamos la sabiduría convencional para construir el futuro del financiamiento de pacientes."
+      },
+      "excellence": {
+        "title": "Excelencia",
+        "description": "Entregando un servicio y resultados sin igual para proveedores y pacientes por igual. Nuestro compromiso con la calidad se extiende desde nuestros algoritmos de IA hasta nuestro soporte al cliente, asegurando que cada interacción supere las expectativas."
+      },
+      "partnership": {
+        "title": "Asociación",
+        "description": "Construyendo relaciones duraderas basadas en confianza, transparencia y éxito mutuo. Vemos a cada práctica dental y paciente como un socio a largo plazo en la transformación del acceso a la atención médica."
+      },
+      "integrity": {
+        "title": "Integridad",
+        "description": "Operando con estándares éticos inquebrantables y transparencia. Protegemos los datos de los pacientes, honramos nuestros compromisos y mantenemos los más altos estándares de conducta empresarial en cada transacción."
+      },
+      "impact": {
+        "title": "Impacto",
+        "description": "Midiendo el éxito por las vidas que mejoramos y las barreras que eliminamos. Cada aprobación, cada sonrisa, cada práctica que ayudamos a crecer representa nuestro compromiso de crear un cambio significativo."
+      }
+    }
   }
 }
