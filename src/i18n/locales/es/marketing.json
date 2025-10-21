@@ -240,13 +240,62 @@
     "founders": {
       "title": "Círculo de Fundadores: De la Visión a la Velocidad",
       "subtitle": "Rompiendo Barreras en Innovación, Acceso y Rentabilidad",
-      "readMore": "Leer Más"
+      "readMore": "Leer Más",
+      "bios": {
+        "adamZuckerman": {
+          "name": "Adam Zuckerman",
+          "role": "Fundador/CEO",
+          "description": "Adam Zuckerman es el Fundador y CEO de DentiPay, una plataforma de financiamiento conductual impulsada por IA que revoluciona las aprobaciones de pacientes y la rentabilidad de los proveedores. Un innovador de fintech comprobado y operador estratégico, Adam se especializa en construir empresas de alto crecimiento en la intersección de IA, finanzas y atención médica. Su liderazgo ha impulsado consistentemente la expansión rápida y asociaciones estratégicas en múltiples empresas en estos sectores."
+        },
+        "charlesZahedi": {
+          "name": "Dr. Charles Zahédi",
+          "role": "Cofundador",
+          "description": "El Dr. Charles Zahédi es un clínico consumado, innovador y estratega empresarial con más de 34 años de experiencia en odontología y sistemas de atención médica. Después de obtener su título de odontólogo, construyó una reputación por desarrollar protocolos de tratamiento avanzados y modelos de prestación de atención escalables que mejoran los resultados de los pacientes mientras expanden el acceso a la atención. A lo largo de su carrera, el Dr. Zahédi ha combinado experiencia clínica con una pasión por la innovación, integrando tecnologías como planificación de tratamiento impulsada por IA, flujos de trabajo de laboratorio interno y modelos de financiamiento amigables para el paciente. Ha servido a poblaciones de pacientes diversas, con un enfoque en comunidades desatendidas y de edad avanzada, y ha capacitado equipos para brindar atención a escala sin sacrificar la calidad. El trabajo del Dr. Zahédi refleja un compromiso de por vida para transformar la atención dental cerrando la brecha entre la excelencia clínica, la asequibilidad del paciente y la eficiencia operativa."
+        },
+        "emilioArguello": {
+          "name": "Dr. Emilio Argüello",
+          "role": "Cofundador",
+          "description": "El Dr. Emilio Argüello nació y creció en la Ciudad de México. Después de graduarse de la escuela de odontología en la Universidad Autónoma Metropolitana, se mudó a los EE.UU. en 1998 después de tiempo en el extranjero como esgrimista competitivo. Obtuvo su título de odontólogo y capacitación especializada en Periodoncia en la Universidad Tufts y ahora es un Periodoncista Certificado por la Junta. Durante casi 20 años, el Dr. Argüello ha servido como facultad principal e investigador en la Universidad de Harvard, coautor de libros de texto y numerosas publicaciones revisadas por pares. En los últimos 15 años, ha construido y transicionado múltiples compañías dentales, asesorado a organizaciones líderes y servido en juntas académicas e industriales. Más recientemente, cofundó Mexico Dental Implants, brindando servicios avanzados de rehabilitación oral a pacientes internacionales en clínicas certificadas en México. También mantiene una práctica privada en Altura Periodontics en Denver, mientras que su esposa, la Dra. Caitlin White, practica en Foundations Orthodontics."
+        },
+        "carmyMichael": {
+          "name": "Dr. Carmy Michael",
+          "role": "Cofundador",
+          "description": "El Dr. Carmy Michael comenzó su carrera dental en 1993 en la Universidad de El Cairo, completando una residencia de un año antes de trasladarse a Canadá. Más tarde obtuvo su Doctorado en Cirugía Dental (DDS) de la Universidad de Western Ontario – Schulich School of Medicine & Dentistry, seguido de una residencia clínica de seis meses enfocada en rehabilitación oral y odontología de sedación. Con más de 20 años de capacitación avanzada en implantología, flujo de trabajo digital y restauración de arco completo, el Dr. Michael está certificado en sedación oral y consciente IV. Posee una Beca con la Academia Global de Implantes Dentales (GDIA) y es miembro activo de la Academia de Osteointegración (AO), ICOI y otras sociedades líderes de implantología y quirúrgicas. Además de cofundar el Instituto Quirúrgico OC, el Dr. Michael lidera una práctica privada de alto volumen en el sur de California enfocada en procedimientos de arco completo, injertos complejos y rehabilitación oral avanzada. Ahora trabaja estrechamente con la plataforma SCOPE AI de DentiPay, integrando inteligencia quirúrgica, aprobaciones de pacientes en tiempo real y planificación de casos de precisión para transformar cómo se brinda la atención."
+        }
+      }
     },
     "leadership": {
       "title": "Liderazgo que Construye Revoluciones",
       "subtitle": "Donde la innovación se encuentra con la ejecución — y la disrupción se vuelve inevitable.",
       "forPatients": "Para Pacientes",
-      "forProviders": "Para Proveedores"
+      "forProviders": "Para Proveedores",
+      "bios": {
+        "jayOku": {
+          "name": "Jay Oku",
+          "role": "Director de Negocios",
+          "description": "Como Director de Negocios de DentiPay, Jay Oku lidera la estrategia empresarial, el crecimiento de proveedores y las asociaciones de capital. Con más de 15 años en finanzas inmobiliarias, es conocido por su suscripción innovadora y originación ética. Jay ha lanzado y escalado con éxito empresas impulsadas por un propósito, expandiendo marcas a 38 mercados internacionales. Aplica su base de integridad y disciplina para alinear fintech con resultados humanos en DentiPay, haciendo que el financiamiento de pacientes sea inteligente, ético y accesible para todos."
+        },
+        "donaldThorne": {
+          "name": "Dr. Donald R. Thorne",
+          "role": "Cofundador y Presidente",
+          "description": "El Dr. Thorne es Cofundador y Presidente de DentiPay. Un emprendedor en serie veterano, aporta décadas de experiencia en marketing, finanzas, distribución y M&A. Cofundó NAID e Instashred, liderando Instashred a una salida histórica en 2000 por casi $100 millones. Hoy, Don invierte y asesora empresas en tecnología, atención médica y fintech, acelerando el crecimiento a través de capital estratégico y excelencia operativa."
+        },
+        "nuttalyaReussi": {
+          "name": "Nuttalya Reussi",
+          "role": "Directora de Operaciones",
+          "description": "La Sra. Reussi es la Directora de Operaciones de DentiPay, supervisando la estrategia operativa y la expansión del mercado. Una mercadóloga estratégica experimentada, sobresale en la construcción de campañas de alto impacto que impulsan el compromiso del proveedor y la visibilidad de la marca. Con experiencia en comunicaciones globales y colaboraciones entre mercados, Nuttayla tiene una maestría de la Universidad Lingüística Nacional de Kiev en Ucrania."
+        },
+        "michaelWeydemuller": {
+          "name": "Michael Weydemuller",
+          "role": "Crecimiento y Capital",
+          "description": "Michael Weydemuller es el Socio Fundador de Crecimiento y Capital en DentiPay, liderando la adquisición de proveedores, estrategia de capital y expansión del mercado. Con más de 25 años de experiencia en tributación, cumplimiento y mercados de capital, es instrumental en impulsar la rápida escala de DentiPay a través de disciplina operativa e instinto empresarial."
+        },
+        "colinDedely": {
+          "name": "Colin Dedely",
+          "role": "Tecnología y Sistemas de Crédito",
+          "description": "Colin Dedely es el Socio Fundador de Tecnología y Sistemas de Crédito en DentiPay, donde lidera el desarrollo de la arquitectura fintech de la plataforma, el motor de preaprobación de pacientes y los sistemas de optimización de crédito del proveedor. Con un historial comprobado de asegurar más de $80 millones en financiamiento al consumidor con una tasa de aprobación líder en la industria del 90%."
+        }
+      }
     },
     "partnership": {
       "title": "Oportunidades de Asociación e Inversión",

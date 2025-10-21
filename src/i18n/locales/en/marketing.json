@@ -242,13 +242,62 @@
     "founders": {
       "title": "Founder's Circle: From Vision to Velocity",
       "subtitle": "Breaking Barriers in Innovation, Access, and Profitability",
-      "readMore": "Read More"
+      "readMore": "Read More",
+      "bios": {
+        "adamZuckerman": {
+          "name": "Adam Zuckerman",
+          "role": "Founder/CEO",
+          "description": "Adam Zuckerman is the Founder and CEO of DentiPay, an AI-powered behavioral financing platform revolutionizing patient approvals and provider profitability. A proven fintech innovator and strategic operator, Adam specializes in building high-growth ventures at the intersection of AI, finance, and healthcare. His leadership has consistently driven rapid expansion and strategic partnerships across multiple ventures in these sectors."
+        },
+        "charlesZahedi": {
+          "name": "Dr. Charles Zahédi",
+          "role": "Co-Founder",
+          "description": "Dr. Charles Zahédi is an accomplished clinician, innovator, and business strategist with over 34 years of experience in dentistry and healthcare systems. After earning his dental degree, he built a reputation for developing advanced treatment protocols and scalable care delivery models that improve patient outcomes while expanding access to care. Throughout his career, Dr. Zahédi has combined clinical expertise with a passion for innovation, integrating technologies like AI-driven treatment planning, in-house lab workflows, and patient-friendly financing models. He has served diverse patient populations, with a focus on underserved and aging communities, and has trained teams to deliver care at scale without sacrificing quality. Dr. Zahédi's work reflects a lifelong commitment to transforming dental care by bridging the gap between clinical excellence, patient affordability, and operational efficiency."
+        },
+        "emilioArguello": {
+          "name": "Dr. Emilio Argüello",
+          "role": "Co-Founder",
+          "description": "Dr. Emilio Argüello was born and raised in Mexico City. After graduating from dental school at the Universidad Autónoma Metropolitana, he moved to the U.S. in 1998 following time abroad as a competitive fencer. He earned his dental degree and specialty training in Periodontics at Tufts University and is now a Board-Certified Periodontist. For nearly 20 years, Dr. Argüello has served as core faculty and researcher at Harvard University, co-authoring textbooks and numerous peer-reviewed publications. Over the last 15 years, he has built and transitioned multiple dental companies, advised leading organizations, and served on academic and industry boards. Most recently, he co-founded Mexico Dental Implants, delivering advanced oral rehabilitation services to international patients across certified clinics in Mexico. He also maintains a private practice at Altura Periodontics in Denver, while his wife, Dr. Caitlin White, practices at Foundations Orthodontics."
+        },
+        "carmyMichael": {
+          "name": "Dr. Carmy Michael",
+          "role": "Co-Founder",
+          "description": "Dr. Carmy Michael began his dental career in 1993 at Cairo University, completing a one-year residency before relocating to Canada. He later earned his Doctor of Dental Surgery (DDS) from the University of Western Ontario – Schulich School of Medicine & Dentistry, followed by a six-month clinical residency focused on oral rehabilitation and sedation dentistry. With over 20 years of advanced training in implantology, digital workflow, and full-arch restoration, Dr. Michael is certified in oral and IV conscious sedation. He holds a Fellowship with the Global Dental Implant Academy (GDIA) and is an active member of the Academy of Osseointegration (AO), ICOI, and other leading implantology and surgical societies. In addition to co-founding the OC Surgical Institute, Dr. Michael leads a high-volume private practice in Southern California focused on full-arch procedures, complex grafting, and advanced oral rehabilitation. He now works closely with DentiPay's SCOPE AI platform, integrating surgical intelligence, real-time patient approvals, and precision case planning to transform how care is delivered."
+        }
+      }
     },
     "leadership": {
       "title": "Leadership That Builds Revolutions",
       "subtitle": "Where innovation meets execution — and disruption becomes inevitable.",
       "forPatients": "For Patients",
-      "forProviders": "For Providers"
+      "forProviders": "For Providers",
+      "bios": {
+        "jayOku": {
+          "name": "Jay Oku",
+          "role": "Chief Business Officer",
+          "description": "As DentiPay's Chief Business Officer, Jay Oku leads business strategy, provider growth, and capital partnerships. With over 15 years in real estate finance, he is known for innovative underwriting and ethical origination. Jay has successfully launched and scaled purpose-driven ventures, expanding brands into 38 international markets. He applies his foundation of integrity and discipline to align fintech with human outcomes at DentiPay, making patient financing intelligent, ethical, and accessible for all."
+        },
+        "donaldThorne": {
+          "name": "Dr. Donald R. Thorne",
+          "role": "Co-Founder & Chairman",
+          "description": "Dr. Thorne is DentiPay's Co-Founder and Chairman. A veteran serial entrepreneur, he brings decades of expertise in marketing, finance, distribution, and M&A. He co-founded NAID and Instashred, leading Instashred to a landmark exit in 2000 for nearly $100 million. Today, Don invests in and advises ventures across technology, healthcare, and fintech, accelerating growth through strategic capital and operational excellence."
+        },
+        "nuttalyaReussi": {
+          "name": "Nuttalya Reussi",
+          "role": "Chief Operating Officer",
+          "description": "Ms. Reussi is DentiPay's Chief Operating Officer, overseeing operational strategy and market expansion. A seasoned strategic marketer, she excels in building high-impact campaigns that drive provider engagement and brand visibility. With expertise in global communications and cross-market collaborations, Nuttayla holds a master's degree from Kyiv National Linguistic University in Ukraine."
+        },
+        "michaelWeydemuller": {
+          "name": "Michael Weydemuller",
+          "role": "Growth & Capital",
+          "description": "Michael Weydemuller is the Founding Partner of Growth & Capital at DentiPay, leading provider acquisition, capital strategy, and market expansion. With over 25 years of experience in taxation, compliance, and capital markets, he is instrumental in fueling DentiPay's rapid scale through operational discipline and entrepreneurial instinct."
+        },
+        "colinDedely": {
+          "name": "Colin Dedely",
+          "role": "Technology & Credit Systems",
+          "description": "Colin Dedely is the Founding Partner of Technology & Credit Systems at DentiPay, where he leads the development of the platform's fintech architecture, patient pre-approval engine, and provider credit optimization systems. With a proven track record of securing more than $80 million in consumer financing at an industry-leading 90% approval rate."
+        }
+      }
     },
     "partnership": {
       "title": "Partnership & Investment Opportunities",
