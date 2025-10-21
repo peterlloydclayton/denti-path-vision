@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { AlertTriangle, TrendingUp, Clock, XCircle, CheckCircle } from 'lucide-react';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
+import { useTranslation } from 'react-i18next';
 
 interface ProblemCard {
   icon: any;
@@ -19,6 +20,7 @@ interface ProblemCard {
 }
 
 export const HomeProblemCards = () => {
+  const { t } = useTranslation('marketing');
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -27,40 +29,40 @@ export const HomeProblemCards = () => {
     {
       icon: AlertTriangle,
       traditional: {
-        stat: '<50%',
-        problem: 'Financial Barriers',
-        description: 'Less than half of Americans can afford a $1,000 dental emergency, forcing treatment delays.'
+        stat: t('home.problem.cards.card1.traditionalStat'),
+        problem: t('home.problem.cards.card1.traditionalProblem'),
+        description: t('home.problem.cards.card1.traditionalDescription')
       },
       dentipay: {
-        stat: '95%',
-        solution: 'AI Pre-Qualification',
-        description: 'Dental-specialized AI approves financing that traditional systems would reject.'
+        stat: t('home.problem.cards.card1.dentipayStat'),
+        solution: t('home.problem.cards.card1.dentipaySolution'),
+        description: t('home.problem.cards.card1.dentipayDescription')
       }
     },
     {
       icon: Clock,
       traditional: {
-        stat: '2-4 Weeks',
-        problem: 'Approval Delays',
-        description: 'Traditional lenders require extensive paperwork while conditions worsen.'
+        stat: t('home.problem.cards.card2.traditionalStat'),
+        problem: t('home.problem.cards.card2.traditionalProblem'),
+        description: t('home.problem.cards.card2.traditionalDescription')
       },
       dentipay: {
-        stat: '30 Seconds',
-        solution: 'Instant Decisions',
-        description: 'AI processes 50+ behavioral indicators for immediate financing decisions.'
+        stat: t('home.problem.cards.card2.dentipayStat'),
+        solution: t('home.problem.cards.card2.dentipaySolution'),
+        description: t('home.problem.cards.card2.dentipayDescription')
       }
     },
     {
       icon: TrendingUp,
       traditional: {
-        stat: '20-40%',
-        problem: 'Generic Banking',
-        description: 'Standard algorithms built for cars and houses miss qualified dental patients.'
+        stat: t('home.problem.cards.card3.traditionalStat'),
+        problem: t('home.problem.cards.card3.traditionalProblem'),
+        description: t('home.problem.cards.card3.traditionalDescription')
       },
       dentipay: {
-        stat: '300%',
-        solution: 'Patient Acceptance',
-        description: 'Specialized AI understands dental patterns and structures payments that work.'
+        stat: t('home.problem.cards.card3.dentipayStat'),
+        solution: t('home.problem.cards.card3.dentipaySolution'),
+        description: t('home.problem.cards.card3.dentipayDescription')
       }
     }
   ];
@@ -136,7 +138,7 @@ export const HomeProblemCards = () => {
                         {card.traditional.description}
                       </p>
                       <div className="mt-4 text-xs text-gray-400 font-semibold uppercase tracking-wide">
-                        Traditional Banking
+                        {t('home.problem.traditionalBanking')}
                       </div>
                     </div>
                   </motion.div>
@@ -161,7 +163,7 @@ export const HomeProblemCards = () => {
                         {card.dentipay.description}
                       </p>
                       <div className="mt-4 text-xs text-[hsl(var(--navy))] font-semibold uppercase tracking-wide">
-                        DentiPay Intelligence
+                        {t('home.problem.dentipayIntelligence')}
                       </div>
                     </div>
                   </motion.div>

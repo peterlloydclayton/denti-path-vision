@@ -19,7 +19,35 @@
       "impactProviders": "Proveedores", 
       "impactProvidersDesc": "Reciben pago inmediato, sin más demoras de financiamiento",
       "impactAccess": "Acceso",
-      "impactAccessDesc": "Coincidencia inteligente de necesidad con capacidad"
+      "impactAccessDesc": "Coincidencia inteligente de necesidad con capacidad",
+      "cards": {
+        "card1": {
+          "traditionalStat": "<50%",
+          "traditionalProblem": "Barreras Financieras",
+          "traditionalDescription": "Menos de la mitad de los estadounidenses pueden pagar una emergencia dental de $1,000, forzando retrasos en el tratamiento.",
+          "dentipayStat": "95%",
+          "dentipaySolution": "Precalificación IA",
+          "dentipayDescription": "IA especializada en odontología aprueba financiamiento que los sistemas tradicionales rechazarían."
+        },
+        "card2": {
+          "traditionalStat": "2-4 Semanas",
+          "traditionalProblem": "Demoras de Aprobación",
+          "traditionalDescription": "Los prestamistas tradicionales requieren papeleo extenso mientras las condiciones empeoran.",
+          "dentipayStat": "30 Segundos",
+          "dentipaySolution": "Decisiones Instantáneas",
+          "dentipayDescription": "IA procesa más de 50 indicadores conductuales para decisiones de financiamiento inmediatas."
+        },
+        "card3": {
+          "traditionalStat": "20-40%",
+          "traditionalProblem": "Banca Genérica",
+          "traditionalDescription": "Algoritmos estándar construidos para autos y casas pierden pacientes dentales calificados.",
+          "dentipayStat": "300%",
+          "dentipaySolution": "Aceptación del Paciente",
+          "dentipayDescription": "IA especializada entiende los patrones dentales y estructura pagos que funcionan."
+        }
+      },
+      "traditionalBanking": "Banca Tradicional",
+      "dentipayIntelligence": "Inteligencia DentiPay"
     },
     "trinity": {
       "title": "Tres Capas de Inteligencia Revolucionaria",

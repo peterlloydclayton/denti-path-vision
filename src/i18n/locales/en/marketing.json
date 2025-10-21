@@ -19,7 +19,35 @@
       "impactProviders": "Providers", 
       "impactProvidersDesc": "Get paid immediately, no more financing delays",
       "impactAccess": "Access",
-      "impactAccessDesc": "Intelligent matching of need with capability"
+      "impactAccessDesc": "Intelligent matching of need with capability",
+      "cards": {
+        "card1": {
+          "traditionalStat": "<50%",
+          "traditionalProblem": "Financial Barriers",
+          "traditionalDescription": "Less than half of Americans can afford a $1,000 dental emergency, forcing treatment delays.",
+          "dentipayStat": "95%",
+          "dentipaySolution": "AI Pre-Qualification",
+          "dentipayDescription": "Dental-specialized AI approves financing that traditional systems would reject."
+        },
+        "card2": {
+          "traditionalStat": "2-4 Weeks",
+          "traditionalProblem": "Approval Delays",
+          "traditionalDescription": "Traditional lenders require extensive paperwork while conditions worsen.",
+          "dentipayStat": "30 Seconds",
+          "dentipaySolution": "Instant Decisions",
+          "dentipayDescription": "AI processes 50+ behavioral indicators for immediate financing decisions."
+        },
+        "card3": {
+          "traditionalStat": "20-40%",
+          "traditionalProblem": "Generic Banking",
+          "traditionalDescription": "Standard algorithms built for cars and houses miss qualified dental patients.",
+          "dentipayStat": "300%",
+          "dentipaySolution": "Patient Acceptance",
+          "dentipayDescription": "Specialized AI understands dental patterns and structures payments that work."
+        }
+      },
+      "traditionalBanking": "Traditional Banking",
+      "dentipayIntelligence": "DentiPay Intelligence"
     },
     "trinity": {
       "title": "Three Layers of Revolutionary Intelligence",
