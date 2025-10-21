@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Users, Stethoscope, Building, ChevronDown, Search } from 'lucide-react';
+import { Home, Users, Stethoscope, Building, ChevronDown, Search, Calendar } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
@@ -22,7 +22,8 @@ const navItems = [
     label: 'navigation.providers', 
     icon: Stethoscope,
     submenu: [
-      { href: '/provider-search', label: 'Provider Search', icon: Search }
+      { href: '/provider-search', label: 'Provider Search', icon: Search },
+      { href: '/provider-scheduling', label: 'Schedule Consultation', icon: Calendar }
     ]
   },
   { href: '/patients', label: 'navigation.patients', icon: Users },

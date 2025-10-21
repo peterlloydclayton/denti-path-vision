@@ -21,6 +21,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
 import NotFound from "./pages/NotFound";
 import { ProviderSearch } from "./pages/ProviderSearch";
+import ProviderScheduling from "./pages/ProviderScheduling";
 import './i18n/config';
 import { useState, useEffect } from "react";
 
@@ -99,6 +100,7 @@ const AppContent = () => {
             <Route path="/patient-financing-application" element={<Patients2 />} />
             <Route path="/intelligent-financing" element={<IntelligentFinancing />} />
             <Route path="/provider-search" element={<ProviderSearch />} />
+            <Route path="/provider-scheduling" element={<ProviderScheduling />} />
             <Route path="/about" element={<About />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
