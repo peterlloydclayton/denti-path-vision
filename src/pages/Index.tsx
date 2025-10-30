@@ -6,11 +6,15 @@ import { HomeVideoSection } from '@/components/home/HomeVideoSection';
 import { HomeRevolutionaryResultsSection } from '@/components/home/HomeRevolutionaryResultsSection';
 import { HomeFinalCTASection } from '@/components/home/HomeFinalCTASection';
 
-const Index = () => {
+interface IndexProps {
+  onPlayIntro?: () => void;
+}
+
+const Index = ({ onPlayIntro }: IndexProps) => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <HomeHeroSection />
+      <HomeHeroSection onPlayIntro={onPlayIntro} />
 
       {/* Video Platform Demo */}
       <HomeVideoSection />

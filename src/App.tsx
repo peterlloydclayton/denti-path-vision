@@ -8,7 +8,6 @@ import { GDPRBanner } from "@/components/layout/GDPRBanner";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { Footer } from "@/components/layout/Footer";
 import { SplashScreen } from "@/components/SplashScreen";
-import { PlayIntroButton } from "@/components/PlayIntroButton";
 import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import Providers from "./pages/Providers";
@@ -93,7 +92,7 @@ const AppContent = () => {
         <GDPRBanner />
         <main className="flex-1">
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<Index onPlayIntro={!showSplash ? handlePlayIntro : undefined} />} />
             <Route path="/providers" element={<Providers />} />
             <Route path="/providers-2" element={<Providers2 />} />
             <Route path="/patients" element={<Patients />} />
@@ -109,7 +108,6 @@ const AppContent = () => {
           </Routes>
         </main>
         <Footer />
-        {!showSplash && location.pathname === '/' && <PlayIntroButton onClick={handlePlayIntro} />}
       </div>
     </>
   );

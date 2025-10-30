@@ -8,9 +8,14 @@ import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { FloatingIcons } from '@/components/ui/floating-icons';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { PlayIntroButton } from '@/components/PlayIntroButton';
 const heroImage = 'https://res.cloudinary.com/drxvhwze4/image/upload/v1759199954/Dentist-female-african_nefprl.png';
 
-export const HomeHeroSection = () => {
+interface HomeHeroSectionProps {
+  onPlayIntro?: () => void;
+}
+
+export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
   const { t } = useTranslation('marketing');
   const navigate = useNavigate();
   return (
@@ -134,6 +139,9 @@ export const HomeHeroSection = () => {
           </p>
         </AnimatedText>
       </div>
+
+      {/* Play Intro Button */}
+      {onPlayIntro && <PlayIntroButton onClick={onPlayIntro} />}
     </section>
   );
 };
