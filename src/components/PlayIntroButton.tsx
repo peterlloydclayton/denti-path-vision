@@ -11,7 +11,7 @@ export const PlayIntroButton = ({ onClick }: PlayIntroButtonProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.5 }}
       onClick={onClick}
-      className="absolute bottom-6 right-6 z-[150] text-white hover:text-white/80 transition-colors text-sm font-medium"
+      className="absolute bottom-6 right-[16%] z-[150] text-white hover:text-white/80 transition-colors text-sm font-medium"
     >
       [play intro]
     </motion.button>
