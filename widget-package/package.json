@@ -1,0 +1,36 @@
+{
+  "name": "@dentipay/chat-widget",
+  "version": "0.1.0",
+  "description": "Dentipay floating chat widget bundle",
+  "type": "module",
+  "main": "dist/dentipay-chat-widget.umd.js",
+  "module": "dist/dentipay-chat-widget.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/dentipay-chat-widget.es.js",
+      "require": "./dist/dentipay-chat-widget.umd.js"
+    },
+    "./styles.css": "./dist/frontend.css"
+  },
+  "files": [
+    "dist/dentipay-chat-widget.es.js",
+    "dist/dentipay-chat-widget.umd.js",
+    "dist/frontend.css",
+    "README.md"
+  ],
+  "sideEffects": [
+    "./dist/frontend.css"
+  ],
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "license": "MIT",
+  "keywords": [
+    "dentipay",
+    "chat",
+    "widget",
+    "react"
+  ]
+}
+
