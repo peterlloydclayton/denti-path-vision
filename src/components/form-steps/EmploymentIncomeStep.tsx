@@ -23,6 +23,7 @@ interface EmploymentIncomeStepProps {
 
 const employmentIncomeSchema = z.object({
   current_employer: z.string().min(1, "Current employer is required"),
+  employer_address: z.string().min(1, "Employer address is required"),
   job_title: z.string().min(1, "Job title is required"),
   employment_type: z.string().min(1, "Employment type is required"),
   length_of_employment: z.string().min(1, "Length of employment is required"),
@@ -98,6 +99,20 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                   <FormLabel>{t('form.employment.currentEmployer')} *</FormLabel>
                   <FormControl>
                     <Input placeholder="Company Name" {...field} />
+                  </FormControl>
+                  {showErrors && <FormMessage />}
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="employer_address"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Employer Address *</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Street Address, City, State, ZIP" {...field} />
                   </FormControl>
                   {showErrors && <FormMessage />}
                 </FormItem>

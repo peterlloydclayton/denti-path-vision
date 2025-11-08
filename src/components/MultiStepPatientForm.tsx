@@ -43,6 +43,7 @@ export interface FormData {
   
   // Section 2 - Employment & Income
   current_employer: string;
+  employer_address: string;
   job_title: string;
   employment_type: string;
   length_of_employment: string;
@@ -105,6 +106,7 @@ const INITIAL_FORM_DATA: FormData = {
   referring_provider_email: '',
   estimated_treatment_cost: '',
   current_employer: '',
+  employer_address: '',
   job_title: '',
   employment_type: '',
   length_of_employment: '',
