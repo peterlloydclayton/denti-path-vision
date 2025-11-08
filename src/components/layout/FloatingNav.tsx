@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, Users, Stethoscope, Building, Globe } from 'lucide-react';
+import { Menu, X, Home, Users, Stethoscope, Building, Globe, ChevronDown, Search, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -11,8 +11,15 @@ import dentiPayLogo from '@/assets/dentipay-logo.png';
 
 const navItems = [
   { href: '/', label: 'navigation.home', icon: Home },
-  { href: '/providers', label: 'navigation.providers', icon: Stethoscope },
-  { href: '/provider-search', label: 'Provider Search', icon: Stethoscope },
+  { 
+    href: '/providers', 
+    label: 'navigation.providers', 
+    icon: Stethoscope,
+    submenu: [
+      { href: '/provider-search', label: 'Provider Search', icon: Search },
+      { href: '/provider-scheduling', label: 'Schedule Consultation', icon: Calendar }
+    ]
+  },
   { href: '/patients', label: 'navigation.patients', icon: Users },
   { href: '/about', label: 'navigation.about', icon: Building },
 ];
@@ -34,6 +41,7 @@ const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
 
   const isAboutPage = currentPath === '/about';
   const isHamburgerMenuPage = ['/', '/providers', '/patients'].includes(currentPath);
@@ -178,7 +186,77 @@ const MobileNav = () => {
               <div className="space-y-2">
                 {navItems.map((item) => {
                   const Icon = item.icon;
-                  const isActive = currentPath === item.href;
+                  const isActive = currentPath === item.href || (item.submenu && item.submenu.some(sub => currentPath === sub.href));
+                  const isExpanded = expandedItem === item.href;
+                  
+                  if (item.submenu) {
+                    return (
+                      <motion.div key={item.href} variants={itemVariants}>
+                        <button
+                          onClick={() => setExpandedItem(isExpanded ? null : item.href)}
+                          className={`
+                            w-full flex items-center justify-between gap-4 p-4 rounded-xl
+                            transition-smooth hover:bg-card-hover
+                            ${isActive 
+                              ? 'bg-primary text-primary-foreground shadow-soft' 
+                              : 'text-card-foreground hover:text-primary'
+                            }
+                          `}
+                        >
+                          <div className="flex items-center gap-4">
+                            <Icon size={20} />
+                            <span className="font-medium">{t(item.label)}</span>
+                          </div>
+                          <motion.div
+                            animate={{ rotate: isExpanded ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <ChevronDown size={16} />
+                          </motion.div>
+                        </button>
+                        <AnimatePresence>
+                          {isExpanded && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="ml-4 mt-2 space-y-2">
+                                {item.submenu.map((subItem) => {
+                                  const SubIcon = subItem.icon;
+                                  const isSubActive = currentPath === subItem.href;
+                                  
+                                  return (
+                                    <Link
+                                      key={subItem.href}
+                                      to={subItem.href}
+                                      onClick={() => {
+                                        setIsOpen(false);
+                                        setCurrentPath(subItem.href);
+                                      }}
+                                      className={`
+                                        flex items-center gap-4 p-3 rounded-xl
+                                        transition-smooth hover:bg-card-hover
+                                        ${isSubActive 
+                                          ? 'bg-secondary text-secondary-foreground' 
+                                          : 'text-card-foreground hover:text-primary'
+                                        }
+                                      `}
+                                    >
+                                      <SubIcon size={18} />
+                                      <span className="font-medium">{subItem.label}</span>
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    );
+                  }
                   
                   return (
                     <motion.div key={item.href} variants={itemVariants}>
