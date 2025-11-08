@@ -190,6 +190,11 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
     );
   }
 
+  const allComplianceChecked = formData.authorize_credit_report && 
+                                formData.consent_communications && 
+                                formData.understand_no_credit_impact && 
+                                formData.confirm_information_accurate;
+
   return (
     <div className="space-y-6">
       <Card>
@@ -198,6 +203,12 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
           <p className="text-muted-foreground">{t('form.compliance.description')}</p>
         </CardHeader>
         <CardContent className="space-y-4">
+          {!allComplianceChecked && (
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm dark:bg-red-950/30 dark:border-red-900 dark:text-red-400">
+              We need your consent to process your application
+            </div>
+          )}
+          
           <div className="flex items-start space-x-3">
             <Checkbox
               id="authorize_credit_report"
