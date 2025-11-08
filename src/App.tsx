@@ -25,9 +25,7 @@ import Apply from "./pages/Apply";
 import './i18n/config';
 import { useState, useEffect } from "react";
 import { initGA, trackPageView } from "./lib/analytics";
-// @ts-ignore
-import { mountDentipayChatWidget } from '../widget-package/dist/dentipay-chat-widget.es.js';
-import '../widget-package/dist/frontend.css';
+import { mountDentipayChatWidget } from "./lib/widget/dentipay-chat-widget.es.js";
 
 const queryClient = new QueryClient();
 
