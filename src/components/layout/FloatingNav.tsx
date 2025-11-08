@@ -132,10 +132,10 @@ const MobileNav = () => {
           size="lg"
           className={`
             relative rounded-full w-14 h-14 p-0 
-            bg-primary text-primary-foreground
-            hover:bg-primary/90 hover:shadow-peach
-            transition-smooth border-2 border-dental-blue/20
-            ${scrolled ? 'backdrop-blur-md bg-primary/90' : ''}
+            bg-dental-blue text-white
+            hover:bg-dental-blue/90 hover:shadow-peach
+            transition-smooth border-2 border-white/20
+            ${scrolled ? 'backdrop-blur-md bg-dental-blue/90' : ''}
           `}
         >
           <motion.div
