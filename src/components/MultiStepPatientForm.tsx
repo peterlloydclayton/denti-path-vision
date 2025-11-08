@@ -196,7 +196,7 @@ const MultiStepPatientForm: React.FC = () => {
   const CurrentStepComponent = STEPS[currentStep].component;
 
   return (
-    <div className="min-h-screen bg-background py-8">
+    <div className="min-h-screen bg-background pt-24 pb-8">
       <div className="max-w-4xl mx-auto px-4">
         <Card className="p-6 md:p-8">
           <div className="mb-8">
