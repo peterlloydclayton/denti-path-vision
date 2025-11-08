@@ -33,9 +33,9 @@ export const LanguageSelector = () => {
           size="sm" 
           className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-smooth"
         >
-          <Globe size={16} />
+          <Globe size={20} />
           <span className="sm:hidden">Language</span>
-          <span className="hidden sm:inline">{currentLanguage.flag}</span>
+          <span className="hidden sm:inline text-xl">{currentLanguage.flag}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
@@ -47,7 +47,7 @@ export const LanguageSelector = () => {
               i18n.language === language.code ? 'bg-secondary' : ''
             }`}
           >
-            <span className="text-lg">{language.flag}</span>
+            <span className="text-xl">{language.flag}</span>
             <span>{language.name}</span>
           </DropdownMenuItem>
         ))}
