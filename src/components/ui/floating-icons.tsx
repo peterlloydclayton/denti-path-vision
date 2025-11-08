@@ -66,7 +66,12 @@ export const FloatingIcons = () => {
             delay: item.delay,
           }}
         >
-          <item.Icon size={item.size} />
+          <item.Icon 
+            size={item.size} 
+            strokeWidth={2.5}
+            strokeLinecap="square"
+            strokeLinejoin="miter"
+          />
         </motion.div>
       ))}
     </div>
