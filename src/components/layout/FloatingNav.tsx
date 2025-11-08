@@ -128,13 +128,12 @@ const MobileNav = () => {
       >
         <Button
           onClick={() => setIsOpen(!isOpen)}
-          variant="default"
           size="lg"
           className={`
             relative rounded-full w-14 h-14 p-0 
             bg-dental-blue text-white
             hover:bg-dental-blue/90 hover:shadow-peach
-            transition-smooth border-2 border-white/20
+            transition-smooth border-0
             ${scrolled ? 'backdrop-blur-md bg-dental-blue/90' : ''}
           `}
         >
