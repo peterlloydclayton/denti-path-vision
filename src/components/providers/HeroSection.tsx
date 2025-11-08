@@ -106,7 +106,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Button */}
-      <div className="hidden md:block absolute top-[65%] left-12 z-[120]">
+      <div className="hidden md:block absolute top-[70%] left-12 z-[120]">
         <Button 
           className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
