@@ -4,9 +4,11 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle, Shield, Lock, TrendingUp, Award } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
+import { useNavigate } from 'react-router-dom';
 import dentistImage from '@/assets/mature-dentist-male-latin.png';
 
 export const FinalCTASection = () => {
+  const navigate = useNavigate();
   const steps = [
     { number: 1, title: "Schedule Demo", description: "See DentiPay intelligence in action" },
     { number: 2, title: "Free Trial", description: "Test with your actual patients" },
@@ -156,7 +158,10 @@ export const FinalCTASection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mb-6">
-              <Button className="bg-black text-white hover:bg-black/90 px-16 py-6 text-2xl font-bold rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300">
+              <Button 
+                onClick={() => navigate('/patient-financing-application')}
+                className="bg-black text-white hover:bg-black/90 px-16 py-6 text-2xl font-bold rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
+              >
                 Get Started!
               </Button>
             </motion.div>
