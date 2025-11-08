@@ -111,12 +111,11 @@ const AppContent = () => {
             <Route path="/providers" element={<Providers />} />
             <Route path="/providers-2" element={<Providers2 />} />
             <Route path="/patients" element={<Patients />} />
-            <Route path="/patient-financing-application" element={<Patients2 />} />
+            <Route path="/patient-financing-application" element={<Apply />} />
             <Route path="/intelligent-financing" element={<IntelligentFinancing />} />
             <Route path="/provider-search" element={<ProviderSearch />} />
             <Route path="/provider-scheduling" element={<ProviderScheduling />} />
             <Route path="/about" element={<About />} />
-            <Route path="/apply" element={<Apply />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
