@@ -268,7 +268,9 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
 
   /* Mobile Landscape - Height-based with orientation check */
   @media screen and (max-height: 600px) and (orientation: landscape) {
+    /* Force mobile layout to show in landscape */
     .mobile-landscape-title {
+      display: block !important;
       top: 8% !important;
       transform: translateY(0em) !important;
     }
@@ -288,6 +290,7 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
     
     .mobile-landscape-button {
+      display: flex !important;
       bottom: 10% !important;
       right: 6% !important;
       left: auto !important;
@@ -305,6 +308,7 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
   /* Mobile Landscape - Narrower Heights */
   @media screen and (max-height: 500px) and (orientation: landscape) {
     .mobile-landscape-title {
+      display: block !important;
       top: 5% !important;
       transform: translateY(0em) !important;
     }
@@ -316,6 +320,7 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
     
     .mobile-landscape-button {
+      display: flex !important;
       bottom: 8% !important;
       right: 6% !important;
       left: auto !important;
@@ -333,6 +338,7 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
   /* Mobile Landscape - Very Narrow Heights */
   @media screen and (max-height: 400px) and (orientation: landscape) {
     .mobile-landscape-title {
+      display: block !important;
       top: 3% !important;
     }
     
@@ -343,6 +349,7 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
     
     .mobile-landscape-button {
+      display: flex !important;
       bottom: 5% !important;
     }
     
