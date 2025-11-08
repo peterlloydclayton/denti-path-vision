@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cookie, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { initGA, disableGA } from '@/lib/analytics';
 
 export const GDPRBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,11 +17,13 @@ export const GDPRBanner = () => {
 
   const acceptAll = () => {
     localStorage.setItem('gdpr-accepted', 'true');
+    initGA(true);
     setIsVisible(false);
   };
 
   const acceptNecessary = () => {
     localStorage.setItem('gdpr-accepted', 'necessary-only');
+    disableGA();
     setIsVisible(false);
   };
 

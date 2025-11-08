@@ -23,6 +23,7 @@ import { ProviderSearch } from "./pages/ProviderSearch";
 import ProviderScheduling from "./pages/ProviderScheduling";
 import './i18n/config';
 import { useState, useEffect } from "react";
+import { initGA, trackPageView } from "./lib/analytics";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,19 @@ const AppContent = () => {
     if (!lastVisit || now - parseInt(lastVisit) > SPLASH_TIMEOUT_MS) {
       setShowSplash(true);
     }
+  }, [location]);
+
+  // Initialize GA if consent was previously given
+  useEffect(() => {
+    const consent = localStorage.getItem('gdpr-accepted');
+    if (consent === 'true') {
+      initGA(true);
+    }
+  }, []);
+
+  // Track page views
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
   }, [location]);
 
   const handleSplashComplete = () => {
