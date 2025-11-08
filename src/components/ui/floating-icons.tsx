@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion';
 import { 
-  Heart, 
+  Smile, 
   Shield, 
   Sparkles, 
-  Users, 
-  Brain, 
-  Zap, 
-  Target, 
-  CreditCard,
-  Activity,
-  Star,
-  CheckCircle,
-  TrendingUp
+  Heart, 
+  Star, 
+  CheckCircle, 
+  Stethoscope,
+  Cross,
+  Award,
+  BadgeCheck,
+  Gem,
+  Crown
 } from 'lucide-react';
 import { useMemo } from 'react';
 
@@ -27,8 +27,8 @@ interface FloatingIcon {
 
 export const FloatingIcons = () => {
   const icons = [
-    Heart, Shield, Sparkles, Users, Brain, Zap, 
-    Target, CreditCard, Activity, Star, CheckCircle, TrendingUp
+    Smile, Heart, Shield, Sparkles, Star, CheckCircle, 
+    Stethoscope, Cross, Award, BadgeCheck, Gem, Crown
   ];
 
   const floatingIcons = useMemo(() => {
