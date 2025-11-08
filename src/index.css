@@ -274,7 +274,7 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
     
     .mobile-landscape-text {
-      font-size: 2.1rem !important;
+      font-size: 1.47rem !important;
       margin-bottom: 0.5rem !important;
       line-height: 1.1 !important;
     }
@@ -295,8 +295,8 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
     
     .mobile-landscape-button button {
-      height: 1.75rem !important;
-      font-size: 0.7rem !important;
+      height: 1.225rem !important;
+      font-size: 0.49rem !important;
       padding-left: 0.7rem !important;
       padding-right: 0.7rem !important;
     }
