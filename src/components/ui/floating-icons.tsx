@@ -3,15 +3,16 @@ import {
   Smile, 
   Shield, 
   Sparkles, 
-  Heart, 
   Star, 
   CheckCircle, 
   Stethoscope,
   Cross,
   Award,
   BadgeCheck,
-  Gem,
-  Crown
+  Activity,
+  Pill,
+  Syringe,
+  ClipboardList
 } from 'lucide-react';
 import { useMemo } from 'react';
 
@@ -27,8 +28,8 @@ interface FloatingIcon {
 
 export const FloatingIcons = () => {
   const icons = [
-    Smile, Heart, Shield, Sparkles, Star, CheckCircle, 
-    Stethoscope, Cross, Award, BadgeCheck, Gem, Crown
+    Smile, Shield, Sparkles, Star, CheckCircle, 
+    Stethoscope, Cross, Award, BadgeCheck, Activity, Pill, Syringe, ClipboardList
   ];
 
   const floatingIcons = useMemo(() => {
