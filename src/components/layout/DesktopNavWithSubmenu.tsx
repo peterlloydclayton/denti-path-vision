@@ -100,7 +100,7 @@ export const DesktopNavWithSubmenu = () => {
                     <NavigationMenuTrigger
                       className={`
                         flex items-center gap-2 px-4 py-2 rounded-xl
-                        transition-smooth font-medium text-base
+                        transition-smooth font-medium text-sm
                         ${isActive 
                           ? 'bg-primary text-primary-foreground shadow-soft' 
                           : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
@@ -123,7 +123,7 @@ export const DesktopNavWithSubmenu = () => {
                               <Link
                                 to={subItem.href}
                                 onClick={() => setCurrentPath(subItem.href)}
-                                className="flex items-center gap-2 px-4 py-3 rounded-md text-base hover:bg-secondary transition-smooth"
+                                className="flex items-center gap-2 px-4 py-3 rounded-md text-sm hover:bg-secondary transition-smooth"
                               >
                                 <SubIcon size={16} className="text-muted-foreground" />
                                 <span>{subItem.label}</span>
@@ -144,7 +144,7 @@ export const DesktopNavWithSubmenu = () => {
                     onClick={() => setCurrentPath(item.href)}
                     className={`
                       flex items-center gap-2 px-4 py-2 rounded-xl
-                      transition-smooth font-medium text-base
+                      transition-smooth font-medium text-sm
                       ${isActive 
                         ? 'bg-primary text-primary-foreground shadow-soft' 
                         : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
@@ -171,7 +171,7 @@ export const DesktopNavWithSubmenu = () => {
               href="https://dental-docs-hub.lovable.app/login"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base text-muted-foreground hover:text-primary transition-smooth font-medium"
+              className="text-muted-foreground hover:text-primary transition-smooth font-medium"
             >
               {t('navigation.login')}
             </a>
@@ -179,7 +179,7 @@ export const DesktopNavWithSubmenu = () => {
               href="https://dental-docs-hub.lovable.app/signup"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base text-muted-foreground hover:text-primary transition-smooth font-medium"
+              className="text-muted-foreground hover:text-primary transition-smooth font-medium"
             >
               {t('navigation.signup')}
             </a>
