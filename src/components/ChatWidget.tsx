@@ -1,9 +1,11 @@
-import { useState } from 'react';
-import { MessageCircle, X, Send } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { chatService } from '@/lib/chatService';
+import { useToast } from '@/hooks/use-toast';
 
 interface Message {
   id: string;
@@ -23,9 +25,55 @@ export const ChatWidget = () => {
     },
   ]);
   const [inputValue, setInputValue] = useState('');
+  const [isConnected, setIsConnected] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const handleSend = () => {
-    if (!inputValue.trim()) return;
+  useEffect(() => {
+    // Initialize chat service when component mounts
+    const initChat = async () => {
+      try {
+        await chatService.initialize();
+        setIsConnected(true);
+
+        // Listen for bot messages
+        chatService.onMessage((message) => {
+          const botResponse: Message = {
+            id: Date.now().toString(),
+            text: message,
+            sender: 'bot',
+            timestamp: new Date(),
+          };
+          setMessages((prev) => [...prev, botResponse]);
+          setIsLoading(false);
+        });
+      } catch (error) {
+        console.error('Failed to initialize chat:', error);
+        toast({
+          title: 'Connection Error',
+          description: 'Unable to connect to chat service. Please try again later.',
+          variant: 'destructive',
+        });
+      }
+    };
+
+    initChat();
+
+    return () => {
+      chatService.disconnect();
+    };
+  }, [toast]);
+
+  useEffect(() => {
+    // Auto-scroll to bottom when new messages arrive
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
+
+  const handleSend = async () => {
+    if (!inputValue.trim() || !isConnected) return;
 
     const newMessage: Message = {
       id: Date.now().toString(),
@@ -36,17 +84,19 @@ export const ChatWidget = () => {
 
     setMessages([...messages, newMessage]);
     setInputValue('');
+    setIsLoading(true);
 
-    // Simulate bot response
-    setTimeout(() => {
-      const botResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        text: 'Thanks for your message! Our team will respond shortly.',
-        sender: 'bot',
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, botResponse]);
-    }, 1000);
+    try {
+      await chatService.sendMessage(inputValue);
+    } catch (error) {
+      console.error('Failed to send message:', error);
+      setIsLoading(false);
+      toast({
+        title: 'Send Error',
+        description: 'Failed to send message. Please try again.',
+        variant: 'destructive',
+      });
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -145,6 +195,18 @@ export const ChatWidget = () => {
                     </div>
                   </motion.div>
                 ))}
+                {isLoading && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex justify-start"
+                  >
+                    <div className="bg-dental-blue text-foreground border-2 border-foreground rounded-2xl px-4 py-3">
+                      <Loader2 className="animate-spin" size={20} />
+                    </div>
+                  </motion.div>
+                )}
+                <div ref={scrollRef} />
               </div>
             </ScrollArea>
 
@@ -156,18 +218,20 @@ export const ChatWidget = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Type your message..."
-                  className="flex-1 border-2 border-foreground focus:border-dental-blue transition-smooth"
+                  disabled={!isConnected || isLoading}
+                  className="flex-1 border-2 border-foreground focus:border-dental-blue transition-smooth disabled:opacity-50"
                 />
                 <Button
                   onClick={handleSend}
                   size="icon"
-                  className="bg-dental-blue hover:bg-dental-blue-dark text-foreground border-2 border-foreground transition-smooth"
+                  disabled={!isConnected || isLoading}
+                  className="bg-dental-blue hover:bg-dental-blue-dark text-foreground border-2 border-foreground transition-smooth disabled:opacity-50"
                 >
-                  <Send size={20} />
+                  {isLoading ? <Loader2 className="animate-spin" size={20} /> : <Send size={20} />}
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground mt-2 text-center">
-                Powered by DentiPay AI
+                {isConnected ? 'Powered by DentiPay AI' : 'Connecting...'}
               </p>
             </div>
           </motion.div>
