@@ -266,7 +266,7 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
   }
 
-  /* Mobile Landscape - iPhone 14 Pro Max and similar */
+  /* Mobile Landscape - Catchall for all mobile devices */
   @media screen and (max-width: 932px) and (max-height: 450px) and (orientation: landscape) {
     .mobile-landscape-title {
       top: 8% !important;
@@ -297,58 +297,6 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     .mobile-landscape-button button {
       height: 1.75rem !important;
       font-size: 0.7rem !important;
-      padding-left: 0.7rem !important;
-      padding-right: 0.7rem !important;
-    }
-  }
-
-  /* Mobile Landscape - Samsung Galaxy S10+ and similar */
-  @media screen and (max-width: 800px) and (max-height: 380px) and (orientation: landscape) {
-    .mobile-landscape-title {
-      top: 5% !important;
-      transform: translateY(0em) !important;
-    }
-    
-    .mobile-landscape-text {
-      font-size: 1.8rem !important;
-      margin-bottom: 0.25rem !important;
-      line-height: 1.05 !important;
-    }
-    
-    .mobile-landscape-button {
-      bottom: 8% !important;
-      right: 6% !important;
-      left: auto !important;
-      transform: translateY(0em) !important;
-    }
-    
-    .mobile-landscape-button button {
-      height: 1.6rem !important;
-      font-size: 0.65rem !important;
-      padding-left: 0.7rem !important;
-      padding-right: 0.7rem !important;
-    }
-  }
-
-  /* Mobile Landscape - Smaller devices */
-  @media screen and (max-width: 700px) and (max-height: 320px) and (orientation: landscape) {
-    .mobile-landscape-title {
-      top: 3% !important;
-    }
-    
-    .mobile-landscape-text {
-      font-size: 1.5rem !important;
-      margin-bottom: 0.1rem !important;
-      line-height: 1 !important;
-    }
-    
-    .mobile-landscape-button {
-      bottom: 5% !important;
-    }
-    
-    .mobile-landscape-button button {
-      height: 1.4rem !important;
-      font-size: 0.6rem !important;
       padding-left: 0.7rem !important;
       padding-right: 0.7rem !important;
     }
