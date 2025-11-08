@@ -266,8 +266,8 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
   }
 
-  /* Narrow Height Responsiveness - All Devices */
-  @media screen and (max-height: 500px) {
+  /* Mobile Landscape - Height-based with orientation check */
+  @media screen and (max-height: 600px) and (orientation: landscape) {
     .mobile-landscape-title {
       top: 8% !important;
       transform: translateY(0em) !important;
@@ -302,8 +302,8 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
   }
 
-  /* Very Narrow Heights - Further Adjustments */
-  @media screen and (max-height: 450px) {
+  /* Mobile Landscape - Narrower Heights */
+  @media screen and (max-height: 500px) and (orientation: landscape) {
     .mobile-landscape-title {
       top: 5% !important;
       transform: translateY(0em) !important;
@@ -330,8 +330,8 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
   }
 
-  /* Extremely Narrow Heights */
-  @media screen and (max-height: 350px) {
+  /* Mobile Landscape - Very Narrow Heights */
+  @media screen and (max-height: 400px) and (orientation: landscape) {
     .mobile-landscape-title {
       top: 3% !important;
     }
