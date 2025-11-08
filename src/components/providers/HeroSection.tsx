@@ -96,6 +96,15 @@ export const HeroSection = () => {
         </AnimatedText>
       </div>
       
+      {/* Desktop Description */}
+      <div className="hidden lg:block absolute top-[48%] left-12 z-20 w-1/2">
+        <AnimatedText delay={0.2}>
+          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
+            {t('providers.hero.description')}
+          </p>
+        </AnimatedText>
+      </div>
+      
       {/* Desktop Button */}
       <div className="hidden md:block absolute top-[65%] left-12 z-[120]">
         <Button 
@@ -104,32 +113,23 @@ export const HeroSection = () => {
           {t('providers.hero.cta')}
         </Button>
       </div>
-      
-      {/* Desktop Subtitle */}
-      <div className="hidden lg:block absolute bottom-[8%] left-12 z-20 w-1/2">
-        <AnimatedText delay={0.2}>
-          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
-            {t('providers.hero.description')}
-          </p>
-        </AnimatedText>
-      </div>
 
-      {/* Mobile Portrait Button */}
-      <div className="block sm:hidden absolute top-[55%] left-6 z-[150] mobile-landscape-button">
-        <Button 
-          className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
-        >
-          {t('providers.hero.cta')}
-        </Button>
-      </div>
-      
-      {/* Mobile Portrait Subtitle */}
-      <div className="block sm:hidden absolute bottom-[15%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
+      {/* Mobile Portrait Description */}
+      <div className="block sm:hidden absolute top-[43%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
         <AnimatedText delay={0.2}>
           <p className="text-base text-foreground/80 font-medium leading-relaxed text-left whitespace-pre-line">
             {t('providers.hero.mobileDescription')}
           </p>
         </AnimatedText>
+      </div>
+
+      {/* Mobile Portrait Button */}
+      <div className="block sm:hidden absolute top-[58%] left-6 z-[150] mobile-landscape-button">
+        <Button 
+          className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+        >
+          {t('providers.hero.cta')}
+        </Button>
       </div>
     </section>
   );
