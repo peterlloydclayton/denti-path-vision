@@ -274,7 +274,7 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
     
     .mobile-landscape-text {
-      font-size: 1.12rem !important;
+      font-size: 0.784rem !important;
       margin-bottom: 0.5rem !important;
       line-height: 1.1 !important;
     }
@@ -295,8 +295,8 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
     
     .mobile-landscape-button button {
-      height: 1.75rem !important;
-      font-size: 0.7rem !important;
+      height: 1.225rem !important;
+      font-size: 0.49rem !important;
       padding-left: 0.7rem !important;
       padding-right: 0.7rem !important;
     }
@@ -310,7 +310,7 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
     
     .mobile-landscape-text {
-      font-size: 0.98rem !important;
+      font-size: 0.686rem !important;
       margin-bottom: 0.25rem !important;
       line-height: 1.05 !important;
     }
@@ -323,8 +323,8 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
     
     .mobile-landscape-button button {
-      height: 1.75rem !important;
-      font-size: 0.7rem !important;
+      height: 1.225rem !important;
+      font-size: 0.49rem !important;
       padding-left: 0.7rem !important;
       padding-right: 0.7rem !important;
     }
@@ -337,7 +337,7 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
     
     .mobile-landscape-text {
-      font-size: 0.84rem !important;
+      font-size: 0.588rem !important;
       margin-bottom: 0.1rem !important;
       line-height: 1 !important;
     }
@@ -347,8 +347,8 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
     
     .mobile-landscape-button button {
-      height: 1.75rem !important;
-      font-size: 0.7rem !important;
+      height: 1.225rem !important;
+      font-size: 0.49rem !important;
       padding-left: 0.7rem !important;
       padding-right: 0.7rem !important;
     }
