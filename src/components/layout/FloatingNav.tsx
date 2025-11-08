@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, Users, Stethoscope, Building, Globe, ChevronDown, Search, Calendar } from 'lucide-react';
+import { Menu, X, Home, Users, Stethoscope, Building, Globe, ChevronDown, Search, Calendar, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -20,7 +20,14 @@ const navItems = [
       { href: '/provider-scheduling', label: 'Schedule Consultation', icon: Calendar }
     ]
   },
-  { href: '/patients', label: 'navigation.patients', icon: Users },
+  { 
+    href: '/patients', 
+    label: 'navigation.patients', 
+    icon: Users,
+    submenu: [
+      { href: '/apply', label: 'Apply for Financing', icon: FileText }
+    ]
+  },
   { href: '/about', label: 'navigation.about', icon: Building },
 ];
 
