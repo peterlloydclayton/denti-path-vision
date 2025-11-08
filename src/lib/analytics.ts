@@ -1,17 +1,10 @@
 import ReactGA from 'react-ga4';
 
-// Add your Google Analytics Measurement ID here
-// You can get this from your Google Analytics dashboard (G-XXXXXXXXXX)
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with your actual GA4 measurement ID
+const GA_MEASUREMENT_ID = 'G-4TPS17HWMD';
 
 let isInitialized = false;
 
 export const initGA = (hasConsent: boolean) => {
-  if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
-    console.warn('Google Analytics: No measurement ID configured');
-    return;
-  }
-
   if (hasConsent && !isInitialized) {
     ReactGA.initialize(GA_MEASUREMENT_ID, {
       gaOptions: {
