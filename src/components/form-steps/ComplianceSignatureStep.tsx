@@ -18,6 +18,7 @@ interface ComplianceSignatureStepProps {
   onPrev: () => void;
   isSubmitting: boolean;
   setIsSubmitting: (value: boolean) => void;
+  onSubmissionComplete: (success: boolean, errorMessage?: string) => void;
 }
 
 interface Document {
@@ -30,8 +31,10 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
   formData, 
   updateFormData,
   onPrev,
+  onNext,
   isSubmitting,
-  setIsSubmitting
+  setIsSubmitting,
+  onSubmissionComplete
 }) => {
   const { t } = useTranslation();
   const { toast } = useToast();
@@ -144,15 +147,22 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
       }
       
       setSuccess(true);
+      onSubmissionComplete(true);
       
       toast({
         title: t('form.compliance.successTitle'),
         description: t('form.compliance.successMessage'),
       });
       
+      // Navigate to confirmation step after short delay
+      setTimeout(() => {
+        onNext();
+      }, 1000);
+      
     } catch (err: any) {
       const errorMessage = err?.message || 'Unknown error occurred';
       setError(errorMessage);
+      onSubmissionComplete(false, errorMessage);
       
       toast({
         title: "Submission Error",

@@ -21,6 +21,7 @@ import TermsOfUse from "./pages/TermsOfUse";
 import NotFound from "./pages/NotFound";
 import { ProviderSearch } from "./pages/ProviderSearch";
 import ProviderScheduling from "./pages/ProviderScheduling";
+import Apply from "./pages/Apply";
 import './i18n/config';
 import { useState, useEffect } from "react";
 import { initGA, trackPageView } from "./lib/analytics";
@@ -115,6 +116,7 @@ const AppContent = () => {
             <Route path="/provider-search" element={<ProviderSearch />} />
             <Route path="/provider-scheduling" element={<ProviderScheduling />} />
             <Route path="/about" element={<About />} />
+            <Route path="/apply" element={<Apply />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

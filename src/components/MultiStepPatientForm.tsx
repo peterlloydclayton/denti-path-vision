@@ -7,6 +7,7 @@ import EmploymentIncomeStep from './form-steps/EmploymentIncomeStep';
 import FinancialOverviewStep from './form-steps/FinancialOverviewStep';
 import EmotionalDecisionStep from './form-steps/EmotionalDecisionStep';
 import ComplianceSignatureStep from './form-steps/ComplianceSignatureStep';
+import ConfirmationStep from './form-steps/ConfirmationStep';
 import LanguageSwitcher from './LanguageSwitcher';
 
 export interface FormData {
@@ -32,6 +33,13 @@ export interface FormData {
   emergency_contact_name: string;
   emergency_contact_relationship: string;
   emergency_contact_phone: string;
+  
+  // Referral Information (Optional)
+  referring_practice: string;
+  referring_provider_name: string;
+  referring_contact_info: string;
+  referring_provider_email: string;
+  estimated_treatment_cost: string;
   
   // Section 2 - Employment & Income
   current_employer: string;
@@ -91,6 +99,11 @@ const INITIAL_FORM_DATA: FormData = {
   emergency_contact_name: '',
   emergency_contact_relationship: '',
   emergency_contact_phone: '',
+  referring_practice: '',
+  referring_provider_name: '',
+  referring_contact_info: '',
+  referring_provider_email: '',
+  estimated_treatment_cost: '',
   current_employer: '',
   job_title: '',
   employment_type: '',
@@ -120,21 +133,45 @@ const INITIAL_FORM_DATA: FormData = {
   confirm_information_accurate: false,
 };
 
-const getSteps = (t: any) => [
-  { title: t('form.steps.personal'), component: PersonalInfoStep },
-  { title: t('form.steps.employment'), component: EmploymentIncomeStep },
-  { title: t('form.steps.financial'), component: FinancialOverviewStep },
-  { title: t('form.steps.emotional'), component: EmotionalDecisionStep },
-  { title: t('form.steps.compliance'), component: ComplianceSignatureStep },
-];
-
 const MultiStepPatientForm: React.FC = () => {
   const { t } = useTranslation();
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
+  const [submissionError, setSubmissionError] = useState<string>('');
   
-  const STEPS = getSteps(t);
+  const handleSubmissionComplete = (success: boolean, errorMessage?: string) => {
+    setSubmissionSuccess(success);
+    setSubmissionError(errorMessage || '');
+  };
+
+  const STEPS = [
+    {
+      title: t('form.steps.personal'),
+      component: PersonalInfoStep,
+    },
+    {
+      title: t('form.steps.employment'),
+      component: EmploymentIncomeStep,
+    },
+    {
+      title: t('form.steps.financial'),
+      component: FinancialOverviewStep,
+    },
+    {
+      title: t('form.steps.emotional'),
+      component: EmotionalDecisionStep,
+    },
+    {
+      title: t('form.steps.compliance'),
+      component: ComplianceSignatureStep,
+    },
+    {
+      title: 'Confirmation',
+      component: ConfirmationStep,
+    }
+  ];
 
   const updateFormData = (newData: Partial<FormData>) => {
     setFormData(prev => ({ ...prev, ...newData }));
@@ -154,21 +191,22 @@ const MultiStepPatientForm: React.FC = () => {
     }
   };
 
-  const progress = ((currentStep + 1) / STEPS.length) * 100;
+  const totalSteps = 6;
+  const progress = ((currentStep + 1) / totalSteps) * 100;
   const CurrentStepComponent = STEPS[currentStep].component;
 
   return (
-    <div className="min-h-screen bg-muted py-8 pt-24">
+    <div className="min-h-screen bg-background py-8">
       <div className="max-w-4xl mx-auto px-4">
-        <Card className="p-8">
+        <Card className="p-6 md:p-8">
           <div className="mb-8">
             <div className="flex justify-between items-start mb-4">
-              <h1 className="text-3xl font-bold text-center flex-1">
-                {t('form.title')} - Step {currentStep + 1} of {STEPS.length}
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground flex-1">
+                {t('form.title')} - Step {currentStep + 1} of 6
               </h1>
               <LanguageSwitcher />
             </div>
-            <h2 className="text-xl text-center text-muted-foreground mb-6">
+            <h2 className="text-lg md:text-xl text-muted-foreground mb-6">
               {STEPS[currentStep].title}
             </h2>
             <Progress value={progress} className="mb-4" />
@@ -177,15 +215,55 @@ const MultiStepPatientForm: React.FC = () => {
             </div>
           </div>
 
-          <CurrentStepComponent 
-            formData={formData}
-            updateFormData={updateFormData}
-            onNext={nextStep}
-            onPrev={prevStep}
-            isSubmitting={isSubmitting}
-            setIsSubmitting={setIsSubmitting}
-          />
-
+          {currentStep === 0 && (
+            <PersonalInfoStep
+              formData={formData}
+              updateFormData={updateFormData}
+              onNext={nextStep}
+              onPrev={prevStep}
+            />
+          )}
+          {currentStep === 1 && (
+            <EmploymentIncomeStep
+              formData={formData}
+              updateFormData={updateFormData}
+              onNext={nextStep}
+              onPrev={prevStep}
+            />
+          )}
+          {currentStep === 2 && (
+            <FinancialOverviewStep
+              formData={formData}
+              updateFormData={updateFormData}
+              onNext={nextStep}
+              onPrev={prevStep}
+            />
+          )}
+          {currentStep === 3 && (
+            <EmotionalDecisionStep
+              formData={formData}
+              updateFormData={updateFormData}
+              onNext={nextStep}
+              onPrev={prevStep}
+            />
+          )}
+          {currentStep === 4 && (
+            <ComplianceSignatureStep
+              formData={formData}
+              updateFormData={updateFormData}
+              onNext={nextStep}
+              onPrev={prevStep}
+              isSubmitting={isSubmitting}
+              setIsSubmitting={setIsSubmitting}
+              onSubmissionComplete={handleSubmissionComplete}
+            />
+          )}
+          {currentStep === 5 && (
+            <ConfirmationStep
+              success={submissionSuccess}
+              errorMessage={submissionError}
+            />
+          )}
         </Card>
       </div>
     </div>
