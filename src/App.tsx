@@ -25,7 +25,7 @@ import Apply from "./pages/Apply";
 import './i18n/config';
 import { useState, useEffect } from "react";
 import { initGA, trackPageView } from "./lib/analytics";
-import { mountDentipayChatWidget } from "./lib/widget/dentipay-chat-widget.es.js";
+import { ChatWidget } from "./components/ChatWidget";
 
 const queryClient = new QueryClient();
 
@@ -129,24 +129,17 @@ const AppContent = () => {
   );
 };
 
-const App = () => {
-  // Mount chat widget
-  useEffect(() => {
-    const { unmount } = mountDentipayChatWidget({ initiallyOpen: false });
-    return () => unmount();
-  }, []);
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AppContent />
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
-};
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <AppContent />
+        <ChatWidget />
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;
