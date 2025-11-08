@@ -25,7 +25,7 @@ const navItems = [
     label: 'navigation.patients', 
     icon: Users,
     submenu: [
-      { href: '/apply', label: 'Apply for Financing', icon: FileText }
+      { href: '/patient-financing-application', label: 'Apply for Financing', icon: FileText }
     ]
   },
   { href: '/about', label: 'navigation.about', icon: Building },
