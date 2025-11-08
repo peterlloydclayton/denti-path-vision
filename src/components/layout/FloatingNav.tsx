@@ -160,7 +160,7 @@ const MobileNav = () => {
             />
 
             <motion.div
-              className="fixed top-24 right-6 z-50 bg-card border rounded-2xl shadow-elegant p-6 min-w-[280px]"
+              className="fixed top-24 right-6 z-50 bg-card border rounded-2xl shadow-elegant p-6 min-w-[280px] max-h-[80vh] overflow-y-auto"
               variants={menuVariants}
               initial="closed"
               animate="open"
