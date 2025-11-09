@@ -192,6 +192,28 @@
       "signAndSubmit": "Sign and Submit Application",
       "successTitle": "Application Submitted Successfully!",
       "successMessage": "Your financing application has been received. We'll review your information and contact you shortly with your pre-qualification results.",
+      "emailConfirmation": "A confirmation email has been sent to your email address.",
+      "whatHappensNext": "What happens next?",
+      "nextSteps": {
+        "review": "Our team will review your application within 24-48 hours",
+        "contact": "We'll contact you via email or phone with your pre-qualification results",
+        "choose": "If approved, you can choose from flexible payment plans that fit your budget",
+        "schedule": "Schedule your dental appointment with confidence knowing your financing is ready"
+      },
+      "returnHome": "Return to Home",
+      "submissionFailed": "Submission Failed",
+      "errorEncountered": "An error was encountered:",
+      "unexpectedError": "An unexpected error occurred. Please try again.",
+      "whatYouCanDo": "What you can do:",
+      "troubleshooting": {
+        "tryAgain": "Try submitting the application again",
+        "checkFields": "Double-check all required fields are filled correctly",
+        "checkConnection": "Ensure you have a stable internet connection",
+        "contactSupport": "If the issue persists, contact our support team"
+      },
+      "needHelp": "Need help?",
+      "contactUs": "Contact us at",
+      "tryAgainButton": "Try Again",
       "agreementTitle": "Patient Financing Agreement",
       "agreementContent": "PATIENT FINANCING AGREEMENT\n\nBy signing this document, I acknowledge that I have read and understand the terms and conditions of the financing agreement.\n\n1. Authorization for Credit Check\nI authorize DentiPay and its partners to obtain my credit report for the purpose of evaluating my financing application.\n\n2. Consent to Communications\nI consent to receive communications via email, phone, and SMS regarding my application and financing options.\n\n3. Understanding of Process\nI understand that this pre-qualification check will not impact my credit score.\n\n4. Accuracy of Information\nI confirm that all information provided in this application is accurate and complete to the best of my knowledge."
     }
