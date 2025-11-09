@@ -120,13 +120,13 @@ export const ChatWidget = () => {
           size="lg"
           className="
             rounded-full w-16 h-16 p-0 
-            bg-dental-blue hover:bg-dental-blue-dark
+            bg-black hover:bg-black/90
             shadow-elegant hover:shadow-peach
             transition-smooth
-            border-2 border-foreground
+            border-2 border-black
           "
         >
-          <MessageCircle size={28} className="text-foreground" />
+          <MessageCircle size={28} className="text-white" />
         </Button>
       </motion.div>
 
@@ -176,8 +176,8 @@ export const ChatWidget = () => {
                         max-w-[75%] rounded-2xl px-4 py-3 
                         ${
                           message.sender === 'user'
-                            ? 'bg-foreground text-background'
-                            : 'bg-dental-blue text-foreground border-2 border-foreground'
+                            ? 'bg-dental-blue text-white'
+                            : 'bg-dental-blue text-white border-2 border-dental-blue'
                         }
                       `}
                     >
