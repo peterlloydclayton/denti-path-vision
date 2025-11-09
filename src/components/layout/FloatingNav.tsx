@@ -304,7 +304,7 @@ const MobileNav = () => {
                     className="block w-full p-3 text-center rounded-xl bg-secondary hover:bg-secondary/80 transition-smooth font-medium"
                     onClick={() => setIsOpen(false)}
                   >
-                    Dental Docs
+                    Login
                   </a>
                 </div>
               </motion.div>

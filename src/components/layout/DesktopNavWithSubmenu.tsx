@@ -179,7 +179,7 @@ export const DesktopNavWithSubmenu = () => {
               rel="noopener noreferrer"
               className="text-lg text-muted-foreground hover:text-primary transition-smooth font-medium"
             >
-              Dental Docs
+              Login
             </a>
           </div>
         </div>
