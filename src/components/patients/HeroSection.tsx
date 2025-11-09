@@ -74,6 +74,11 @@ export const HeroSection = () => {
             {t('patients.hero.subtitle')}
           </h2>
         </AnimatedText>
+        <AnimatedText delay={0.4}>
+          <h2 className="text-xl text-gray-600 font-medium leading-relaxed text-left mt-3">
+            {t('patients.hero.subtitle2')}
+          </h2>
+        </AnimatedText>
       </div>
       
       {/* Mobile Portrait Subtitle - Hidden on mobile landscape */}
@@ -81,6 +86,11 @@ export const HeroSection = () => {
         <AnimatedText delay={0.2}>
           <h2 className="text-lg text-gray-600 font-medium leading-relaxed text-left italic">
             {t('patients.hero.subtitle')}
+          </h2>
+        </AnimatedText>
+        <AnimatedText delay={0.4}>
+          <h2 className="text-lg text-gray-600 font-medium leading-relaxed text-left mt-2">
+            {t('patients.hero.subtitle2')}
           </h2>
         </AnimatedText>
       </div>
