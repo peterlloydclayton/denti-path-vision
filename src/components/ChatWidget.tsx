@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { chatService } from '@/lib/chatService';
 import { useToast } from '@/hooks/use-toast';
+import { MessageContent } from '@/components/chat/MessageContent';
 
 interface Message {
   id: string;
@@ -181,10 +182,10 @@ export const ChatWidget = () => {
                         }
                       `}
                     >
-                      <p className="text-sm">{message.text}</p>
+                      <MessageContent text={message.text} isUser={message.sender === 'user'} />
                       <p
-                        className={`text-xs mt-1 ${
-                          message.sender === 'user' ? 'text-dental-blue' : 'text-muted-foreground'
+                        className={`text-xs mt-2 ${
+                          message.sender === 'user' ? 'text-white/70' : 'text-white/70'
                         }`}
                       >
                         {message.timestamp.toLocaleTimeString([], {
