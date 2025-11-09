@@ -183,11 +183,7 @@ export const ChatWidget = () => {
                       `}
                     >
                       <MessageContent text={message.text} isUser={message.sender === 'user'} />
-                      <p
-                        className={`text-xs mt-2 ${
-                          message.sender === 'user' ? 'text-white/70' : 'text-white/70'
-                        }`}
-                      >
+                      <p className="text-xs mt-2 text-white/60">
                         {message.timestamp.toLocaleTimeString([], {
                           hour: '2-digit',
                           minute: '2-digit',
