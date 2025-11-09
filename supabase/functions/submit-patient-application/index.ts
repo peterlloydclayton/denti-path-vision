@@ -237,9 +237,9 @@ Deno.serve(async (req) => {
         const patientEmailContent = `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
             <!-- Header with Logo -->
-            <div style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); padding: 30px 20px; text-align: center;">
-              <img src="https://res.cloudinary.com/drxvhwze4/image/upload/v1760029328/dentipay-logo-dark-tp_mi7atx.png" alt="DentiPay" style="height: 48px; width: auto; margin-bottom: 15px;" />
-              <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 600;">Thank You for Your Application</h1>
+            <div style="background: #ffffff; padding: 30px 20px; text-align: center; border-bottom: 2px solid #f3f4f6;">
+              <img src="${Deno.env.get('SUPABASE_URL')}/storage/v1/object/public/assets/dentipay-logo-email.png" alt="DentiPay" style="height: 60px; width: auto; margin-bottom: 20px;" />
+              <h1 style="color: #1e3a8a; margin: 0; font-size: 24px; font-weight: 600;">Thank You for Your Application</h1>
             </div>
             
             <!-- Main Content -->
@@ -333,6 +333,46 @@ Deno.serve(async (req) => {
     } catch (emailError) {
       console.error("Failed to send email notification:", emailError);
       // Don't fail the application submission if email fails
+    }
+
+    // Create Supabase account for the patient
+    try {
+      console.log("Creating Supabase account for patient...");
+      
+      const { data: authData, error: authError } = await supabaseAdmin.auth.admin.createUser({
+        email: applicationData.email,
+        email_confirm: false, // Require email confirmation
+        user_metadata: {
+          first_name: applicationData.first_name,
+          last_name: applicationData.last_name,
+          phone: applicationData.mobile_phone
+        }
+      });
+
+      if (authError) {
+        console.error("Error creating user account:", authError);
+        // Don't fail the application submission if account creation fails
+      } else {
+        console.log("User account created successfully:", authData.user.id);
+        
+        // Send email confirmation link
+        const { error: emailError } = await supabaseAdmin.auth.admin.generateLink({
+          type: 'signup',
+          email: applicationData.email,
+          options: {
+            redirectTo: `${req.headers.get('origin') || 'https://oqrvskdtvaykqkclpgew.supabase.co'}/auth/callback`
+          }
+        });
+
+        if (emailError) {
+          console.error("Error sending confirmation email:", emailError);
+        } else {
+          console.log("Confirmation email sent successfully");
+        }
+      }
+    } catch (accountError) {
+      console.error("Failed to create patient account:", accountError);
+      // Don't fail the application submission if account creation fails
     }
 
     // Handle signature and document if provided

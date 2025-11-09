@@ -44,14 +44,159 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string | null
+          first_name: string | null
+          id: string
+          last_name: string | null
+          phone: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          phone?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          phone?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      temp_patient_applications: {
+        Row: {
+          auto_loans: number | null
+          checking_savings: number | null
+          city: string | null
+          created_at: string | null
+          credit_cards: number | null
+          date_of_birth: string | null
+          email: string
+          employer_name: string | null
+          employment_status: string | null
+          estimated_treatment_cost: number | null
+          first_name: string
+          id: string
+          last_name: string
+          mobile_phone: string | null
+          monthly_income: number | null
+          mortgage_rent: number | null
+          other_income: number | null
+          referring_practice: string | null
+          referring_provider_email: string | null
+          signature_data: Json | null
+          ssn: string | null
+          state: string | null
+          street_address: string | null
+          student_loans: number | null
+          zip_code: string | null
+        }
+        Insert: {
+          auto_loans?: number | null
+          checking_savings?: number | null
+          city?: string | null
+          created_at?: string | null
+          credit_cards?: number | null
+          date_of_birth?: string | null
+          email: string
+          employer_name?: string | null
+          employment_status?: string | null
+          estimated_treatment_cost?: number | null
+          first_name: string
+          id?: string
+          last_name: string
+          mobile_phone?: string | null
+          monthly_income?: number | null
+          mortgage_rent?: number | null
+          other_income?: number | null
+          referring_practice?: string | null
+          referring_provider_email?: string | null
+          signature_data?: Json | null
+          ssn?: string | null
+          state?: string | null
+          street_address?: string | null
+          student_loans?: number | null
+          zip_code?: string | null
+        }
+        Update: {
+          auto_loans?: number | null
+          checking_savings?: number | null
+          city?: string | null
+          created_at?: string | null
+          credit_cards?: number | null
+          date_of_birth?: string | null
+          email?: string
+          employer_name?: string | null
+          employment_status?: string | null
+          estimated_treatment_cost?: number | null
+          first_name?: string
+          id?: string
+          last_name?: string
+          mobile_phone?: string | null
+          monthly_income?: number | null
+          mortgage_rent?: number | null
+          other_income?: number | null
+          referring_practice?: string | null
+          referring_provider_email?: string | null
+          signature_data?: Json | null
+          ssn?: string | null
+          state?: string | null
+          street_address?: string | null
+          student_loans?: number | null
+          zip_code?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
+      app_role: "admin" | "patient" | "provider"
       party_type: "patient" | "provider" | "other"
     }
     CompositeTypes: {
@@ -180,6 +325,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      app_role: ["admin", "patient", "provider"],
       party_type: ["patient", "provider", "other"],
     },
   },
