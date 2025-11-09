@@ -1,8 +1,8 @@
 import { io, Socket } from 'socket.io-client';
 
 // Get API URLs from environment or use defaults
-const API_URL = import.meta.env.VITE_API_URL || 'https://dentipay-chat-backend-115601480099.us-central1.run.app';
-const WS_URL = import.meta.env.VITE_WS_URL || 'https://dentipay-chat-backend-115601480099.us-central1.run.app';
+const API_URL = import.meta.env.VITE_API_URL || 'https://dentipay-chat-backend-z2ac3jvjza-uc.a.run.app';
+const WS_URL = import.meta.env.VITE_WS_URL || 'https://dentipay-chat-backend-z2ac3jvjza-uc.a.run.app';
 
 export interface ChatMessage {
   id: string;
