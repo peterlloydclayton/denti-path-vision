@@ -77,7 +77,7 @@ class ChatService {
         console.error('🔴 Socket error:', error);
       });
 
-      this.socket.on('chat:response', (data: { message: string }) => {
+      this.socket.on('message', (data: any) => {
         console.log('📨 Received response:', data);
       });
     } catch (error) {
@@ -104,7 +104,7 @@ class ChatService {
       }
 
       console.log('📤 Sending message:', message);
-      this.socket.emit('chat:message', { message }, (response: any) => {
+      this.socket.emit('message', { content: message }, (response: any) => {
         console.log('📬 Message sent. Response:', response);
         if (response?.error) {
           console.error('🔴 Server error:', response.error);
@@ -118,8 +118,9 @@ class ChatService {
 
   onMessage(callback: (message: string) => void): void {
     if (!this.socket) return;
-    this.socket.on('chat:response', (data: { message: string }) => {
-      callback(data.message);
+    this.socket.on('message', (data: any) => {
+      const messageContent = data.content || data.message || JSON.stringify(data);
+      callback(messageContent);
     });
   }
 
