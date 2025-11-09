@@ -69,7 +69,7 @@ export const MessageContent: React.FC<MessageContentProps> = ({ text, isUser }) 
             href={match[1]}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline hover:text-dental-blue-dark transition-colors font-medium"
+            className="text-white underline hover:opacity-80 transition-opacity font-medium"
           >
             {match[1]}
           </a>
@@ -169,5 +169,5 @@ export const MessageContent: React.FC<MessageContentProps> = ({ text, isUser }) 
     );
   }
   
-  return <div className="text-sm">{groupedContent}</div>;
+  return <div className="text-sm text-white">{groupedContent}</div>;
 };
