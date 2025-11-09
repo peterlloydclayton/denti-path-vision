@@ -22,7 +22,6 @@ const navItems = [
     label: 'navigation.providers', 
     icon: Stethoscope,
     submenu: [
-      { href: '/provider-search', label: 'Provider Search', icon: Search },
       { href: '/provider-scheduling', label: 'Schedule Consultation', icon: Calendar }
     ]
   },
