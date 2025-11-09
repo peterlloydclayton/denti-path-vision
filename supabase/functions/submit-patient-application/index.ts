@@ -13,9 +13,11 @@ serve(async (req) => {
   }
 
   try {
+    // Using the old Supabase database (epkypzawqtpokmatjuzo)
+    // TODO: Replace with actual service_role key from your Supabase project settings
     const supabaseClient = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+      'https://epkypzawqtpokmatjuzo.supabase.co',
+      'YOUR_SERVICE_ROLE_KEY_HERE' // Get from Supabase Dashboard > Settings > API
     );
 
     const applicationData = await req.json();
