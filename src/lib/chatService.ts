@@ -31,31 +31,54 @@ class ChatService {
 
   async initialize(): Promise<void> {
     try {
+      console.log('🔄 Initializing chat service...');
+      console.log('API URL:', API_URL);
+      console.log('WS URL:', WS_URL);
+      
       // Get guest token
       const response = await fetch(`${API_URL}/api/auth/guest-token?sessionId=${this.sessionId}`);
+      console.log('Token response status:', response.status);
+      
       if (!response.ok) throw new Error('Failed to get guest token');
       const data = await response.json();
       this.guestToken = data.token;
+      console.log('✅ Got guest token:', this.guestToken.substring(0, 20) + '...');
 
       // Initialize Socket.IO connection
       const wsUrl = WS_URL.replace('https://', 'wss://').replace('http://', 'ws://');
+      console.log('🔌 Connecting to WebSocket:', wsUrl);
+      
       this.socket = io(wsUrl, {
         auth: {
           token: this.guestToken,
         },
         transports: ['websocket', 'polling'],
+        reconnection: true,
+        reconnectionDelay: 1000,
+        reconnectionAttempts: 5,
       });
+
+      console.log('Socket instance created');
 
       this.socket.on('connect', () => {
-        console.log('Connected to chat server');
+        console.log('✅ Connected to chat server');
+        console.log('Socket ID:', this.socket?.id);
       });
 
-      this.socket.on('disconnect', () => {
-        console.log('Disconnected from chat server');
+      this.socket.on('disconnect', (reason) => {
+        console.log('❌ Disconnected from chat server. Reason:', reason);
+      });
+
+      this.socket.on('connect_error', (error) => {
+        console.error('🔴 Connection error:', error.message);
       });
 
       this.socket.on('error', (error) => {
-        console.error('Socket error:', error);
+        console.error('🔴 Socket error:', error);
+      });
+
+      this.socket.on('chat:response', (data: { message: string }) => {
+        console.log('📨 Received response:', data);
       });
     } catch (error) {
       console.error('Failed to initialize chat service:', error);
@@ -65,13 +88,26 @@ class ChatService {
 
   sendMessage(message: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      if (!this.socket || !this.socket.connected) {
+      if (!this.socket) {
+        console.error('🔴 Socket not initialized');
+        reject(new Error('Socket not initialized'));
+        return;
+      }
+
+      if (!this.socket.connected) {
+        console.error('🔴 Not connected to chat server. Socket state:', {
+          connected: this.socket.connected,
+          disconnected: this.socket.disconnected,
+        });
         reject(new Error('Not connected to chat server'));
         return;
       }
 
+      console.log('📤 Sending message:', message);
       this.socket.emit('chat:message', { message }, (response: any) => {
-        if (response.error) {
+        console.log('📬 Message sent. Response:', response);
+        if (response?.error) {
+          console.error('🔴 Server error:', response.error);
           reject(new Error(response.error));
         } else {
           resolve();
