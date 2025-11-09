@@ -298,22 +298,13 @@ const MobileNav = () => {
                 
                 <div className="space-y-2">
                   <a
-                    href="https://dental-docs-hub.lovable.app/login"
+                    href="https://dental-docs-hub.lovable.app/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full p-3 text-center rounded-xl bg-secondary hover:bg-secondary/80 transition-smooth font-medium"
                     onClick={() => setIsOpen(false)}
                   >
-                    {t('navigation.login')}
-                  </a>
-                  <a
-                    href="https://dental-docs-hub.lovable.app/signup"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full p-3 text-center rounded-xl bg-secondary hover:bg-secondary/80 transition-smooth font-medium"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {t('navigation.signup')}
+                    Dental Docs
                   </a>
                 </div>
               </motion.div>

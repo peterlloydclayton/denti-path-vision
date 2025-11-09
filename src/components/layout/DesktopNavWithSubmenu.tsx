@@ -175,20 +175,12 @@ export const DesktopNavWithSubmenu = () => {
           {/* Login/Signup Links */}
           <div className="flex items-center gap-4">
             <a
-              href="https://dental-docs-hub.lovable.app/login"
+              href="https://dental-docs-hub.lovable.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-lg text-muted-foreground hover:text-primary transition-smooth font-medium"
             >
-              {t('navigation.login')}
-            </a>
-            <a
-              href="https://dental-docs-hub.lovable.app/signup"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg text-muted-foreground hover:text-primary transition-smooth font-medium"
-            >
-              {t('navigation.signup')}
+              Dental Docs
             </a>
           </div>
         </div>
