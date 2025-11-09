@@ -112,6 +112,7 @@ serve(async (req) => {
       `;
 
       try {
+        // Send notification to admin team
         await resend.emails.send({
           from: 'DentiPay Applications <notifications@mydentipay.com>',
           to: notificationEmails,
@@ -119,8 +120,77 @@ serve(async (req) => {
           html: emailHtml,
         });
         console.log('Notification emails sent successfully');
+
+        // Send confirmation email to patient
+        const patientConfirmationHtml = `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <style>
+              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+              .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+              .header { background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+              .content { background: #ffffff; padding: 30px; border: 1px solid #e0e0e0; border-top: none; }
+              .button { display: inline-block; padding: 15px 30px; background: #4A90E2; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 20px 0; }
+              .info-box { background: #f8f9fa; border-left: 4px solid #4A90E2; padding: 15px; margin: 20px 0; }
+              .footer { text-align: center; padding: 20px; color: #666; font-size: 14px; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>Application Submitted Successfully!</h1>
+              </div>
+              <div class="content">
+                <p>Dear ${applicationData.first_name} ${applicationData.last_name},</p>
+                
+                <p>Thank you for submitting your financing application with DentiPay. We've received your application and our team is reviewing it.</p>
+                
+                <div class="info-box">
+                  <strong>Application ID:</strong> ${insertedData.id}<br>
+                  <strong>Submitted:</strong> ${new Date().toLocaleString()}<br>
+                  <strong>Status:</strong> Under Review
+                </div>
+
+                <p><strong>What happens next?</strong></p>
+                <ul>
+                  <li>Our team will review your application within 24-48 hours</li>
+                  <li>We'll contact you via email or phone with your pre-qualification results</li>
+                  <li>If approved, you can choose from flexible payment plans that fit your budget</li>
+                  <li>Schedule your dental appointment with confidence knowing your financing is ready</li>
+                </ul>
+
+                <p style="text-align: center;">
+                  <a href="${Deno.env.get('VITE_SUPABASE_URL') || 'https://mydentipay.com'}/patient-portal?application_id=${insertedData.id}" class="button">
+                    View Application Status
+                  </a>
+                </p>
+
+                <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+                  <strong>Need help?</strong><br>
+                  Contact us at <a href="mailto:support@mydentipay.com">support@mydentipay.com</a><br>
+                  Or call us at (555) 123-4567
+                </p>
+              </div>
+              <div class="footer">
+                <p>© ${new Date().getFullYear()} DentiPay. All rights reserved.</p>
+                <p>This email was sent to ${applicationData.email}</p>
+              </div>
+            </div>
+          </body>
+          </html>
+        `;
+
+        await resend.emails.send({
+          from: 'DentiPay <notifications@mydentipay.com>',
+          to: [applicationData.email],
+          subject: 'Your DentiPay Application Has Been Received',
+          html: patientConfirmationHtml,
+        });
+        console.log('Patient confirmation email sent successfully');
+
       } catch (emailError) {
-        console.error('Failed to send notification emails:', emailError);
+        console.error('Failed to send emails:', emailError);
         // Don't throw - application was saved successfully
       }
     } else {
