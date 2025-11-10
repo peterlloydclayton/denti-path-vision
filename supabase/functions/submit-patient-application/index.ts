@@ -252,6 +252,23 @@ Deno.serve(async (req) => {
                 Thank you for applying for financing with <strong style="color: #1e3a8a;">DentiPay</strong>. We have received your application and our team is reviewing it.
               </p>
 
+              ${confirmationLink ? `
+              <!-- Confirm Email Box -->
+              <div style="background-color: #eff6ff; border: 2px solid #1e3a8a; border-radius: 8px; padding: 25px; margin: 30px 0; text-align: center;">
+                <h2 style="color: #1e3a8a; margin-top: 0; margin-bottom: 15px; font-size: 18px; font-weight: 600;">Confirm Your Email Address</h2>
+                <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
+                  To access your application status and set up your account password, please confirm your email address by clicking the button below:
+                </p>
+                <a href="${confirmationLink}" style="display: inline-block; background-color: #1e3a8a; color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-weight: 600; font-size: 16px; margin-top: 10px;">
+                  Confirm Email & Set Password
+                </a>
+                <p style="color: #64748b; font-size: 13px; margin-top: 20px; margin-bottom: 0;">
+                  If the button doesn't work, copy and paste this link into your browser:<br/>
+                  <span style="word-break: break-all; color: #1e3a8a;">${confirmationLink}</span>
+                </p>
+              </div>
+              ` : ''}
+
               <!-- What Happens Next Box -->
               <div style="border: 2px solid #1e3a8a; border-radius: 8px; padding: 25px; margin: 30px 0;">
                 <h2 style="color: #1e3a8a; margin-top: 0; margin-bottom: 15px; font-size: 18px; font-weight: 600;">What Happens Next?</h2>
@@ -335,7 +352,8 @@ Deno.serve(async (req) => {
       // Don't fail the application submission if email fails
     }
 
-    // Create Supabase account for the patient
+    // Create Supabase account for the patient and get confirmation link
+    let confirmationLink = '';
     try {
       console.log("Creating Supabase account for patient...");
       
@@ -355,19 +373,20 @@ Deno.serve(async (req) => {
       } else {
         console.log("User account created successfully:", authData.user.id);
         
-        // Send email confirmation link
-        const { error: emailError } = await supabaseAdmin.auth.admin.generateLink({
+        // Generate email confirmation link
+        const { data: linkData, error: emailError } = await supabaseAdmin.auth.admin.generateLink({
           type: 'signup',
           email: applicationData.email,
           options: {
-            redirectTo: `${req.headers.get('origin') || 'https://oqrvskdtvaykqkclpgew.supabase.co'}/auth/callback`
+            redirectTo: `${req.headers.get('origin') || 'https://mydentipay.com'}/auth/callback`
           }
         });
 
         if (emailError) {
-          console.error("Error sending confirmation email:", emailError);
-        } else {
-          console.log("Confirmation email sent successfully");
+          console.error("Error generating confirmation link:", emailError);
+        } else if (linkData?.properties?.action_link) {
+          confirmationLink = linkData.properties.action_link;
+          console.log("Confirmation link generated successfully");
         }
       }
     } catch (accountError) {
