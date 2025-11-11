@@ -266,8 +266,8 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
   }
 
-  /* Landscape Mode - Apply to any screen in landscape orientation */
-  @media screen and (orientation: landscape) {
+  /* Landscape Mode - Only apply when screen becomes very wide/thin (aspect ratio 16:9 or wider) */
+  @media screen and (orientation: landscape) and (min-aspect-ratio: 16/9) {
     /* Scale down hero images for landscape */
     .hero-image {
       height: 65vh !important;
