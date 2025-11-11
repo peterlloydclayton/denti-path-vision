@@ -374,5 +374,16 @@
         "description": "Expandiéndose más allá de lo dental a toda la atención médica"
       }
     }
+  },
+  "footer": {
+    "description": "Revolucionando el financiamiento dental con decisiones de crédito conductual impulsadas por IA que aprueban más pacientes y aumentan la rentabilidad del proveedor.",
+    "quickLinks": "Enlaces Rápidos",
+    "legal": "Legal",
+    "providers": "Proveedores",
+    "patients": "Pacientes",
+    "about": "Acerca de",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfUse": "Términos de Uso",
+    "copyright": "© {{year}} DentiPay. Todos los derechos reservados."
   }
 }

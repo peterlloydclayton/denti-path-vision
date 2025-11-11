@@ -376,5 +376,16 @@
         "description": "Expanding beyond dental to all healthcare"
       }
     }
+  },
+  "footer": {
+    "description": "Revolutionizing dental financing with AI-powered behavioral credit decisions that approve more patients and increase provider profitability.",
+    "quickLinks": "Quick Links",
+    "legal": "Legal",
+    "providers": "Providers",
+    "patients": "Patients",
+    "about": "About",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "copyright": "© {{year}} DentiPay. All rights reserved."
   }
 }
