@@ -126,9 +126,168 @@
       "subtitle2": "Experience the Confidence and Joy of a Healthy Smile",
       "cta": "Get Financing"
     },
+    "caseStudy": {
+      "badge": "Case Study",
+      "title1": "Real Patients.",
+      "title2": "Real Providers.",
+      "title3": "Real Smiles.",
+      "description": "Discover how DentiPay has transformed dental care accessibility, covering thousands of patients and connecting them with trusted providers for life-changing treatments.",
+      "watchStories": "Watch Success Stories",
+      "featured": "Featured Story",
+      "videoTitle": "How DentiPay covered thousands for dental care",
+      "cta": "Get Financing"
+    },
+    "journey": {
+      "title": "Your Journey to Confident Dental Care",
+      "subtitle": "Getting Started is Simple",
+      "cta": "Get Financing",
+      "steps": {
+        "step1": {
+          "title": "Find Your Provider",
+          "description": "Search for dental providers near you who accept DentiPay",
+          "benefit": "Know financing is available before you visit"
+        },
+        "step2": {
+          "title": "Instant Pre-Qualification",
+          "description": "Complete our simple application and get approved in seconds",
+          "benefit": "Clear payment options. No credit score impact"
+        },
+        "step3": {
+          "title": "Treatment Planning",
+          "description": "Work with your provider to create a treatment plan",
+          "benefit": "Flexible payment plans that match your budget and timeline"
+        },
+        "step4": {
+          "title": "Treatment & Payment",
+          "description": "Begin your dental care with confidence",
+          "benefit": "Focus on your health, not financial stress"
+        }
+      }
+    },
     "benefits": {
       "title": "Why Patients Love DentiPay",
-      "subtitle": "Experience the easiest way to finance your dental care"
+      "subtitle": "Experience the easiest way to finance your dental care",
+      "cta": "Get Financing",
+      "cards": {
+        "flexible": {
+          "title": "Flexible Payment Plans",
+          "description": "6, 12, 18, and 24-month payment options available",
+          "detail": "Choose from multiple financing options that fit your budget and lifestyle"
+        },
+        "instant": {
+          "title": "Instant Approval",
+          "description": "Decisions in under 60 seconds with 94% approval rate",
+          "detail": "Get approved in seconds, not days. Start your treatment immediately"
+        },
+        "noFees": {
+          "title": "No Hidden Fees",
+          "description": "Clear terms, no prepayment penalties, competitive rates",
+          "detail": "Transparent pricing with no surprise charges or hidden costs"
+        },
+        "health": {
+          "title": "Better Oral Health",
+          "description": "Access to full range of treatments without financial barriers",
+          "detail": "Get the dental care you deserve without compromising on quality"
+        }
+      }
+    },
+    "providerSearch": {
+      "title": "Find a Provider Near You",
+      "subtitle": "Search our network of over 1,200 DentiPay-enabled practices.",
+      "cta": "View All Providers in Your Area"
+    },
+    "echo": {
+      "title": "Meet Echo, Your Personalized Healthcare AI",
+      "subtitle": "Our proprietary voice-enabled AI specializes in understanding your healthcare needs to help you navigate your financial journey with confidence.",
+      "features": {
+        "available": "Answers financing questions 24/7",
+        "explains": "Explains treatment payment options",
+        "reminders": "Provides appointment reminders and payment notifications",
+        "guides": "Guides you through the application process"
+      }
+    },
+    "stories": {
+      "title": "What patients are saying",
+      "treatment": "Treatment:",
+      "payment": "Payment:",
+      "stories": {
+        "sarah": {
+          "name": "Sarah, 28",
+          "subtitle": "Young Professional",
+          "treatment": "Invisalign",
+          "payment": "$89/month",
+          "quote": "I finally got the dental care I needed without the financial stress. The approval was instant and the monthly payments fit perfectly in my budget."
+        },
+        "johnson": {
+          "name": "The Johnson Family",
+          "subtitle": "Family of Four",
+          "treatment": "Family dental care package",
+          "payment": "25% savings by bundling",
+          "quote": "DentiPay made it possible for our whole family to get healthy smiles. We could schedule everyone's treatment at once."
+        },
+        "robert": {
+          "name": "Robert, 67",
+          "subtitle": "Retiree",
+          "treatment": "Full mouth restoration",
+          "payment": "24 months, 0% interest",
+          "quote": "I thought I couldn't afford dental care in retirement, but DentiPay changed that. The process was so simple."
+        },
+        "maria": {
+          "name": "Maria, 35",
+          "subtitle": "Emergency Patient",
+          "treatment": "Emergency root canal",
+          "payment": "Approved in 32 seconds",
+          "quote": "When I needed emergency dental care, DentiPay was there immediately. I got approved in 30 seconds and started treatment the same day."
+        }
+      }
+    },
+    "financialTools": {
+      "title": "Your Dental Financing Payment Calculator",
+      "subtitle": "Plan Your Treatment & Your Financing",
+      "cta": "Get Financing"
+    },
+    "peaceOfMind": {
+      "title": "Peace of Mind, Built-In",
+      "subtitle": "Experience dental financing designed with your comfort and confidence in mind",
+      "cta": "Get Financing",
+      "keyBenefits": "key benefits included",
+      "features": {
+        "instant": {
+          "title": "Instant Pre-Approval",
+          "features": {
+            "decisions": "Decisions in under 60 seconds",
+            "noImpact": "No impact to your credit score for pre-qualification",
+            "clear": "Clear approval amounts before you visit the dentist"
+          }
+        },
+        "flexible": {
+          "title": "Flexible Payments",
+          "features": {
+            "terms": "Choose payment terms that fit your lifestyle",
+            "noPenalty": "No prepayment penalties",
+            "automatic": "Automatic payment options available"
+          }
+        },
+        "support": {
+          "title": "24/7 Support",
+          "features": {
+            "advocates": "Patient advocates available around the clock",
+            "echo": "Echo AI assistant for instant answers",
+            "live": "Live chat and phone support"
+          }
+        },
+        "credit": {
+          "title": "Credit Building Opportunity",
+          "features": {
+            "improve": "On-time payments can help improve your credit score",
+            "reported": "Positive payment history reported to credit bureaus",
+            "build": "Build credit while improving your health"
+          }
+        }
+      }
+    },
+    "providerNetwork": {
+      "title": "Services You Can Trust"
     },
     "finalCTA": {
       "title": "Your Perfect Smile Awaits",

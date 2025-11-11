@@ -2,9 +2,11 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { PaymentCalculator } from './PaymentCalculator';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import approvalSignal from '@/assets/approval-signal.jpg';
 
 export const FinancialToolsSection = () => {
+  const { t } = useTranslation('marketing');
   const navigate = useNavigate();
   
   return (
@@ -12,10 +14,10 @@ export const FinancialToolsSection = () => {
       <div className="container mx-auto pl-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Your Dental Financing Payment Calculator
+            {t('patients.financialTools.title')}
           </h2>
           <p className="text-xl text-muted-foreground">
-            Plan Your Treatment & Your Financing
+            {t('patients.financialTools.subtitle')}
           </p>
         </AnimatedText>
 
@@ -28,7 +30,7 @@ export const FinancialToolsSection = () => {
           className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
           onClick={() => navigate('/patient-financing-application')}
         >
-          Get Financing
+          {t('patients.financialTools.cta')}
         </Button>
       </div>
       
@@ -47,7 +49,7 @@ export const FinancialToolsSection = () => {
           className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
           onClick={() => navigate('/patient-financing-application')}
         >
-          Get Financing
+          {t('patients.financialTools.cta')}
         </Button>
       </div>
     </section>

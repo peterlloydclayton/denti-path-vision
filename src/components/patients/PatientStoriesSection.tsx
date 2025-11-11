@@ -2,11 +2,43 @@ import { Users } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ParallaxSection } from '@/components/ui/parallax-section';
 import { AnimatedText } from '@/components/ui/animated-text';
-import { patientStories } from '@/data/patientsData';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const PatientStoriesSection = () => {
+  const { t } = useTranslation('marketing');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const patientStories = [
+    {
+      name: t('patients.stories.stories.sarah.name'),
+      subtitle: t('patients.stories.stories.sarah.subtitle'),
+      treatment: t('patients.stories.stories.sarah.treatment'),
+      payment: t('patients.stories.stories.sarah.payment'),
+      quote: t('patients.stories.stories.sarah.quote')
+    },
+    {
+      name: t('patients.stories.stories.johnson.name'),
+      subtitle: t('patients.stories.stories.johnson.subtitle'),
+      treatment: t('patients.stories.stories.johnson.treatment'),
+      payment: t('patients.stories.stories.johnson.payment'),
+      quote: t('patients.stories.stories.johnson.quote')
+    },
+    {
+      name: t('patients.stories.stories.robert.name'),
+      subtitle: t('patients.stories.stories.robert.subtitle'),
+      treatment: t('patients.stories.stories.robert.treatment'),
+      payment: t('patients.stories.stories.robert.payment'),
+      quote: t('patients.stories.stories.robert.quote')
+    },
+    {
+      name: t('patients.stories.stories.maria.name'),
+      subtitle: t('patients.stories.stories.maria.subtitle'),
+      treatment: t('patients.stories.stories.maria.treatment'),
+      payment: t('patients.stories.stories.maria.payment'),
+      quote: t('patients.stories.stories.maria.quote')
+    }
+  ];
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
@@ -64,11 +96,11 @@ export const PatientStoriesSection = () => {
         
         <div className="border-t pt-4">
           <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Treatment:</span>
+            <span className="text-muted-foreground">{t('patients.stories.treatment')}</span>
             <span className="font-semibold">{story.treatment}</span>
           </div>
           <div className="flex justify-between text-sm mt-1">
-            <span className="text-muted-foreground">Payment:</span>
+            <span className="text-muted-foreground">{t('patients.stories.payment')}</span>
             <span className="font-semibold text-dental-blue-custom">{story.payment}</span>
           </div>
         </div>
@@ -81,7 +113,7 @@ export const PatientStoriesSection = () => {
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            What patients are saying
+            {t('patients.stories.title')}
           </h2>
         </AnimatedText>
 

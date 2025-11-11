@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import caseStudyImage from '@/assets/case-study-patient.jpg';
 
 interface CaseStudySectionProps {
@@ -10,6 +11,7 @@ interface CaseStudySectionProps {
 }
 
 export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionProps) => {
+  const { t } = useTranslation('marketing');
   const navigate = useNavigate();
   const [isPlaying, setIsPlaying] = useState(false);
   const [objectPosition, setObjectPosition] = useState('65% center');
@@ -78,8 +80,8 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
                     {/* Bottom Overlay Text */}
                     <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                       <div className="text-white">
-                        <p className="text-sm opacity-90 mb-2">Featured Story</p>
-                        <h3 className="text-lg font-semibold">How DentiPay covered thousands for dental care</h3>
+                        <p className="text-sm opacity-90 mb-2">{t('patients.caseStudy.featured')}</p>
+                        <h3 className="text-lg font-semibold">{t('patients.caseStudy.videoTitle')}</h3>
                       </div>
                     </div>
                   </div>
@@ -100,22 +102,20 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
                 <AnimatedText>
                   <div className="space-y-6">
                      <div className="inline-flex items-center px-4 py-2 rounded-full bg-dental-blue text-dental-blue-dark text-sm font-medium">
-                      Case Study
+                      {t('patients.caseStudy.badge')}
                     </div>
                     <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                      Real Patients.<br />
-                      Real Providers.<br />
-                      <span className="text-black">Real Smiles.</span>
+                      {t('patients.caseStudy.title1')}<br />
+                      {t('patients.caseStudy.title2')}<br />
+                      <span className="text-black">{t('patients.caseStudy.title3')}</span>
                     </h2>
                     <p className="text-xl text-muted-foreground leading-relaxed">
-                      Discover how DentiPay has transformed dental care accessibility, 
-                      covering thousands of patients and connecting them with trusted providers 
-                      for life-changing treatments.
+                      {t('patients.caseStudy.description')}
                     </p>
                     <div className="flex items-center gap-4 pt-4">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        Watch Success Stories
+                        {t('patients.caseStudy.watchStories')}
                       </div>
                     </div>
                     <div className="pt-6 flex justify-center lg:justify-end">
@@ -123,7 +123,7 @@ export const CaseStudySection = ({ imagePosition = 'left' }: CaseStudySectionPro
                         className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
                         onClick={() => navigate('/patient-financing-application')}
                       >
-                        Get Financing
+                        {t('patients.caseStudy.cta')}
                       </Button>
                     </div>
                   </div>

@@ -124,9 +124,168 @@
       "subtitle2": "Experimenta la Confianza y la Alegría de una Sonrisa Saludable",
       "cta": "Obtener Financiación"
     },
+    "caseStudy": {
+      "badge": "Caso de Estudio",
+      "title1": "Pacientes Reales.",
+      "title2": "Proveedores Reales.",
+      "title3": "Sonrisas Reales.",
+      "description": "Descubre cómo DentiPay ha transformado la accesibilidad del cuidado dental, cubriendo miles de pacientes y conectándolos con proveedores confiables para tratamientos que cambian vidas.",
+      "watchStories": "Ver Historias de Éxito",
+      "featured": "Historia Destacada",
+      "videoTitle": "Cómo DentiPay cubrió miles para el cuidado dental",
+      "cta": "Obtener Financiación"
+    },
+    "journey": {
+      "title": "Tu Camino hacia la Atención Dental con Confianza",
+      "subtitle": "Empezar es Simple",
+      "cta": "Obtener Financiación",
+      "steps": {
+        "step1": {
+          "title": "Encuentra Tu Proveedor",
+          "description": "Busca proveedores dentales cerca de ti que acepten DentiPay",
+          "benefit": "Sabe que el financiamiento está disponible antes de visitar"
+        },
+        "step2": {
+          "title": "Pre-Calificación Instantánea",
+          "description": "Completa nuestra simple solicitud y obtén aprobación en segundos",
+          "benefit": "Opciones de pago claras. Sin impacto en el puntaje crediticio"
+        },
+        "step3": {
+          "title": "Planificación del Tratamiento",
+          "description": "Trabaja con tu proveedor para crear un plan de tratamiento",
+          "benefit": "Planes de pago flexibles que se ajustan a tu presupuesto y cronograma"
+        },
+        "step4": {
+          "title": "Tratamiento y Pago",
+          "description": "Comienza tu cuidado dental con confianza",
+          "benefit": "Concéntrate en tu salud, no en el estrés financiero"
+        }
+      }
+    },
     "benefits": {
       "title": "Por Qué Los Pacientes Aman DentiPay",
-      "subtitle": "Experimenta la forma más fácil de financiar tu cuidado dental"
+      "subtitle": "Experimenta la forma más fácil de financiar tu cuidado dental",
+      "cta": "Obtener Financiación",
+      "cards": {
+        "flexible": {
+          "title": "Planes de Pago Flexibles",
+          "description": "Opciones de pago de 6, 12, 18 y 24 meses disponibles",
+          "detail": "Elige entre múltiples opciones de financiamiento que se ajustan a tu presupuesto y estilo de vida"
+        },
+        "instant": {
+          "title": "Aprobación Instantánea",
+          "description": "Decisiones en menos de 60 segundos con 94% de tasa de aprobación",
+          "detail": "Obtén aprobación en segundos, no en días. Comienza tu tratamiento de inmediato"
+        },
+        "noFees": {
+          "title": "Sin Tarifas Ocultas",
+          "description": "Términos claros, sin penalidades por pago anticipado, tasas competitivas",
+          "detail": "Precios transparentes sin cargos sorpresa o costos ocultos"
+        },
+        "health": {
+          "title": "Mejor Salud Oral",
+          "description": "Acceso a toda la gama de tratamientos sin barreras financieras",
+          "detail": "Obtén el cuidado dental que mereces sin comprometer la calidad"
+        }
+      }
+    },
+    "providerSearch": {
+      "title": "Encuentra un Proveedor Cerca de Ti",
+      "subtitle": "Busca en nuestra red de más de 1,200 consultorios habilitados para DentiPay.",
+      "cta": "Ver Todos los Proveedores en Tu Área"
+    },
+    "echo": {
+      "title": "Conoce a Echo, Tu IA de Salud Personalizada",
+      "subtitle": "Nuestra IA propietaria habilitada por voz se especializa en entender tus necesidades de salud para ayudarte a navegar tu viaje financiero con confianza.",
+      "features": {
+        "available": "Responde preguntas de financiamiento 24/7",
+        "explains": "Explica opciones de pago de tratamiento",
+        "reminders": "Proporciona recordatorios de citas y notificaciones de pago",
+        "guides": "Te guía a través del proceso de solicitud"
+      }
+    },
+    "stories": {
+      "title": "Lo que dicen los pacientes",
+      "treatment": "Tratamiento:",
+      "payment": "Pago:",
+      "stories": {
+        "sarah": {
+          "name": "Sara, 28",
+          "subtitle": "Profesional Joven",
+          "treatment": "Invisalign",
+          "payment": "$89/mes",
+          "quote": "Finalmente obtuve la atención dental que necesitaba sin el estrés financiero. La aprobación fue instantánea y los pagos mensuales se ajustaron perfectamente a mi presupuesto."
+        },
+        "johnson": {
+          "name": "La Familia Johnson",
+          "subtitle": "Familia de Cuatro",
+          "treatment": "Paquete de cuidado dental familiar",
+          "payment": "25% de ahorro al agrupar",
+          "quote": "DentiPay hizo posible que toda nuestra familia obtuviera sonrisas saludables. Pudimos programar el tratamiento de todos a la vez."
+        },
+        "robert": {
+          "name": "Roberto, 67",
+          "subtitle": "Jubilado",
+          "treatment": "Restauración completa de boca",
+          "payment": "24 meses, 0% de interés",
+          "quote": "Pensé que no podría pagar el cuidado dental en la jubilación, pero DentiPay cambió eso. El proceso fue tan simple."
+        },
+        "maria": {
+          "name": "María, 35",
+          "subtitle": "Paciente de Emergencia",
+          "treatment": "Endodoncia de emergencia",
+          "payment": "Aprobado en 32 segundos",
+          "quote": "Cuando necesité atención dental de emergencia, DentiPay estuvo ahí inmediatamente. Me aprobaron en 30 segundos y comencé el tratamiento el mismo día."
+        }
+      }
+    },
+    "financialTools": {
+      "title": "Tu Calculadora de Pagos de Financiamiento Dental",
+      "subtitle": "Planifica Tu Tratamiento y Tu Financiamiento",
+      "cta": "Obtener Financiación"
+    },
+    "peaceOfMind": {
+      "title": "Tranquilidad, Incorporada",
+      "subtitle": "Experimenta el financiamiento dental diseñado con tu comodidad y confianza en mente",
+      "cta": "Obtener Financiación",
+      "keyBenefits": "beneficios clave incluidos",
+      "features": {
+        "instant": {
+          "title": "Pre-Aprobación Instantánea",
+          "features": {
+            "decisions": "Decisiones en menos de 60 segundos",
+            "noImpact": "Sin impacto en tu puntaje crediticio para la precalificación",
+            "clear": "Montos de aprobación claros antes de visitar al dentista"
+          }
+        },
+        "flexible": {
+          "title": "Pagos Flexibles",
+          "features": {
+            "terms": "Elige términos de pago que se ajusten a tu estilo de vida",
+            "noPenalty": "Sin penalidades por pago anticipado",
+            "automatic": "Opciones de pago automático disponibles"
+          }
+        },
+        "support": {
+          "title": "Soporte 24/7",
+          "features": {
+            "advocates": "Defensores del paciente disponibles las 24 horas",
+            "echo": "Asistente de IA Echo para respuestas instantáneas",
+            "live": "Chat en vivo y soporte telefónico"
+          }
+        },
+        "credit": {
+          "title": "Oportunidad de Construir Crédito",
+          "features": {
+            "improve": "Los pagos a tiempo pueden ayudar a mejorar tu puntaje crediticio",
+            "reported": "Historial de pago positivo reportado a las agencias de crédito",
+            "build": "Construye crédito mientras mejoras tu salud"
+          }
+        }
+      }
+    },
+    "providerNetwork": {
+      "title": "Servicios en los que Puedes Confiar"
     },
     "finalCTA": {
       "title": "Tu Sonrisa Perfecta Te Espera",

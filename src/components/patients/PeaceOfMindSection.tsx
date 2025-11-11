@@ -2,12 +2,53 @@ import { CheckCircle, Zap, CreditCard, Headphones, TrendingUp, ChevronDown } fro
 import { ParallaxSection } from '@/components/ui/parallax-section';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { peaceOfMindFeatures } from '@/data/patientsData';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const PeaceOfMindSection = () => {
+  const { t } = useTranslation('marketing');
   const navigate = useNavigate();
+
+  const peaceOfMindFeatures = [
+    {
+      icon: 'Zap',
+      title: t('patients.peaceOfMind.features.instant.title'),
+      features: [
+        t('patients.peaceOfMind.features.instant.features.decisions'),
+        t('patients.peaceOfMind.features.instant.features.noImpact'),
+        t('patients.peaceOfMind.features.instant.features.clear')
+      ]
+    },
+    {
+      icon: 'CreditCard',
+      title: t('patients.peaceOfMind.features.flexible.title'),
+      features: [
+        t('patients.peaceOfMind.features.flexible.features.terms'),
+        t('patients.peaceOfMind.features.flexible.features.noPenalty'),
+        t('patients.peaceOfMind.features.flexible.features.automatic')
+      ]
+    },
+    {
+      icon: 'Headphones',
+      title: t('patients.peaceOfMind.features.support.title'),
+      features: [
+        t('patients.peaceOfMind.features.support.features.advocates'),
+        t('patients.peaceOfMind.features.support.features.echo'),
+        t('patients.peaceOfMind.features.support.features.live')
+      ]
+    },
+    {
+      icon: 'TrendingUp',
+      title: t('patients.peaceOfMind.features.credit.title'),
+      features: [
+        t('patients.peaceOfMind.features.credit.features.improve'),
+        t('patients.peaceOfMind.features.credit.features.reported'),
+        t('patients.peaceOfMind.features.credit.features.build')
+      ]
+    }
+  ];
+
   const iconMap = {
     Zap,
     CreditCard,
@@ -48,10 +89,10 @@ export const PeaceOfMindSection = () => {
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Peace of Mind, Built-In
+            {t('patients.peaceOfMind.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Experience dental financing designed with your comfort and confidence in mind
+            {t('patients.peaceOfMind.subtitle')}
           </p>
         </AnimatedText>
 
@@ -75,7 +116,7 @@ export const PeaceOfMindSection = () => {
                         <div className="flex-1">
                           <h3 className="text-xl font-bold text-foreground">{feature.title}</h3>
                           <p className="text-muted-foreground mt-1 hidden sm:block">
-                            {feature.features.length} key benefits included
+                            {feature.features.length} {t('patients.peaceOfMind.keyBenefits')}
                           </p>
                         </div>
                       </div>
@@ -105,7 +146,7 @@ export const PeaceOfMindSection = () => {
             className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
             onClick={() => navigate('/patient-financing-application')}
           >
-            Get Financing
+            {t('patients.peaceOfMind.cta')}
           </Button>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Enhanced3DCard } from './Enhanced3DCard';
-import { benefits } from '@/data/patientsData';
+import { CreditCard, Clock, Shield, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,33 @@ import { useNavigate } from 'react-router-dom';
 export const BenefitsSection = () => {
   const { t } = useTranslation('marketing');
   const navigate = useNavigate();
+
+  const benefits = [
+    {
+      icon: CreditCard,
+      title: t('patients.benefits.cards.flexible.title'),
+      description: t('patients.benefits.cards.flexible.description'),
+      detail: t('patients.benefits.cards.flexible.detail')
+    },
+    {
+      icon: Clock,
+      title: t('patients.benefits.cards.instant.title'),
+      description: t('patients.benefits.cards.instant.description'),
+      detail: t('patients.benefits.cards.instant.detail')
+    },
+    {
+      icon: Shield,
+      title: t('patients.benefits.cards.noFees.title'),
+      description: t('patients.benefits.cards.noFees.description'),
+      detail: t('patients.benefits.cards.noFees.detail')
+    },
+    {
+      icon: Heart,
+      title: t('patients.benefits.cards.health.title'),
+      description: t('patients.benefits.cards.health.description'),
+      detail: t('patients.benefits.cards.health.detail')
+    }
+  ];
   
   return (
     <section className="pt-24 pb-16 bg-dental-blue relative overflow-hidden">
@@ -37,7 +64,7 @@ export const BenefitsSection = () => {
             className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
             onClick={() => navigate('/patient-financing-application')}
           >
-            Get Financing
+            {t('patients.benefits.cta')}
           </Button>
         </div>
 

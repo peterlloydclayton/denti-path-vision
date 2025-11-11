@@ -5,14 +5,17 @@ import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { motion } from 'framer-motion';
 import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
 import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
+import { useTranslation } from 'react-i18next';
 import smilingDentist from '@/assets/smiling-woman-dentist-transparent.png';
 
 export const EchoAISection = () => {
+  const { t } = useTranslation('marketing');
+  
   const aiFeatures = [
-    'Answers financing questions 24/7',
-    'Explains treatment payment options',  
-    'Provides appointment reminders and payment notifications',
-    'Guides you through the application process'
+    t('patients.echo.features.available'),
+    t('patients.echo.features.explains'),
+    t('patients.echo.features.reminders'),
+    t('patients.echo.features.guides')
   ];
 
   const aiIcons = [Bot, AudioVisualizer, Waveform, EqualizerBars];
@@ -228,11 +231,10 @@ export const EchoAISection = () => {
           </motion.div>
           <AnimatedText className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Meet Echo, Your Personalized Healthcare AI
+              {t('patients.echo.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our proprietary voice-enabled AI specializes in understanding your healthcare needs 
-              to help you navigate your financial journey with confidence.
+              {t('patients.echo.subtitle')}
             </p>
           </AnimatedText>
         </div>

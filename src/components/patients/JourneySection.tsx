@@ -5,8 +5,10 @@ import { useRef } from 'react';
 import { CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const JourneySection = () => {
+  const { t } = useTranslation('marketing');
   const navigate = useNavigate();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -19,27 +21,27 @@ export const JourneySection = () => {
   const journeySteps = [
     { 
       step: '1', 
-      title: 'Find Your Provider', 
-      desc: 'Search for dental providers near you who accept DentiPay',
-      benefit: 'Know financing is available before you visit'
+      title: t('patients.journey.steps.step1.title'),
+      desc: t('patients.journey.steps.step1.description'),
+      benefit: t('patients.journey.steps.step1.benefit')
     },
     { 
       step: '2', 
-      title: 'Instant Pre-Qualification', 
-      desc: 'Complete our simple application and get approved in seconds',
-      benefit: 'Clear payment options. No credit score impact'
+      title: t('patients.journey.steps.step2.title'),
+      desc: t('patients.journey.steps.step2.description'),
+      benefit: t('patients.journey.steps.step2.benefit')
     },
     { 
       step: '3', 
-      title: 'Treatment Planning', 
-      desc: 'Work with your provider to create a treatment plan',
-      benefit: 'Flexible payment plans that match your budget and timeline'
+      title: t('patients.journey.steps.step3.title'),
+      desc: t('patients.journey.steps.step3.description'),
+      benefit: t('patients.journey.steps.step3.benefit')
     },
     { 
       step: '4', 
-      title: 'Treatment & Payment', 
-      desc: 'Begin your dental care with confidence',
-      benefit: 'Focus on your health, not financial stress'
+      title: t('patients.journey.steps.step4.title'),
+      desc: t('patients.journey.steps.step4.description'),
+      benefit: t('patients.journey.steps.step4.benefit')
     }
   ];
 
@@ -48,10 +50,10 @@ export const JourneySection = () => {
       <div className="container mx-auto px-6 relative">
         <AnimatedText className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Your Journey to Confident Dental Care
+            {t('patients.journey.title')}
           </h2>
           <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
-            Getting Started is Simple
+            {t('patients.journey.subtitle')}
           </p>
         </AnimatedText>
 
@@ -135,7 +137,7 @@ export const JourneySection = () => {
               className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
               onClick={() => navigate('/patient-financing-application')}
             >
-              Get Financing
+              {t('patients.journey.cta')}
             </Button>
           </motion.div>
         </div>
@@ -205,12 +207,12 @@ export const JourneySection = () => {
                          viewport={{ once: true }}
                          transition={{ delay: 0.5 }}
                        >
-                            <Button 
-                              className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
-                              onClick={() => navigate('/patient-financing-application')}
-                            >
-                              Get Financing
-                            </Button>
+                             <Button 
+                               className="h-14 text-lg bg-black text-white hover:bg-black/80 shadow-elegant px-10 font-semibold"
+                               onClick={() => navigate('/patient-financing-application')}
+                             >
+                               {t('patients.journey.cta')}
+                             </Button>
                        </motion.div>
                      </div>
                    </StaggerItem>
