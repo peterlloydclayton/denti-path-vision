@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, Video } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const ProviderScheduling = () => {
+  const { t } = useTranslation('marketing');
+  
   useEffect(() => {
     // Load Calendly widget script
     const script = document.createElement('script');
@@ -30,10 +33,10 @@ const ProviderScheduling = () => {
             className="text-center mb-12"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dental-blue-darker mb-6">
-              Schedule Your Consultation
+              {t('scheduling.title')}
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Book a personalized demo with our team to discover how DentiPay can transform your practice
+              {t('scheduling.description')}
             </p>
 
             {/* Feature Pills */}
@@ -45,7 +48,7 @@ const ProviderScheduling = () => {
                 className="flex items-center gap-2 px-6 py-3 bg-background rounded-full shadow-soft border"
               >
                 <Clock className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">30-Minute Session</span>
+                <span className="text-sm font-medium">{t('scheduling.duration')}</span>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -54,7 +57,7 @@ const ProviderScheduling = () => {
                 className="flex items-center gap-2 px-6 py-3 bg-background rounded-full shadow-soft border"
               >
                 <Video className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">Virtual Meeting</span>
+                <span className="text-sm font-medium">{t('scheduling.virtual')}</span>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -63,7 +66,7 @@ const ProviderScheduling = () => {
                 className="flex items-center gap-2 px-6 py-3 bg-background rounded-full shadow-soft border"
               >
                 <Calendar className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">Flexible Scheduling</span>
+                <span className="text-sm font-medium">{t('scheduling.flexible')}</span>
               </motion.div>
             </div>
           </motion.div>
@@ -90,12 +93,12 @@ const ProviderScheduling = () => {
             className="text-center mt-16"
           >
             <p className="text-muted-foreground mb-4">
-              Questions before scheduling? Contact us at{' '}
+              {t('scheduling.contact')}{' '}
               <a 
                 href="mailto:peter@mydentipay.com" 
                 className="text-primary hover:underline font-medium"
               >
-                peter@mydentipay.com
+                {t('scheduling.email')}
               </a>
             </p>
           </motion.div>

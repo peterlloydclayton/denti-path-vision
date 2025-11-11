@@ -729,5 +729,14 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms of Use",
     "copyright": "© {{year}} DentiPay. All rights reserved."
+  },
+  "scheduling": {
+    "title": "Schedule Your Consultation",
+    "description": "Book a personalized demo with our team to discover how DentiPay can transform your practice",
+    "duration": "30-Minute Session",
+    "virtual": "Virtual Meeting",
+    "flexible": "Flexible Scheduling",
+    "contact": "Questions before scheduling? Contact us at",
+    "email": "peter@mydentipay.com"
   }
 }

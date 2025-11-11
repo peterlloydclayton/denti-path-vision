@@ -727,5 +727,14 @@
     "privacyPolicy": "Política de Privacidad",
     "termsOfUse": "Términos de Uso",
     "copyright": "© {{year}} DentiPay. Todos los derechos reservados."
+  },
+  "scheduling": {
+    "title": "Programe Su Consulta",
+    "description": "Reserve una demostración personalizada con nuestro equipo para descubrir cómo DentiPay puede transformar su práctica",
+    "duration": "Sesión de 30 Minutos",
+    "virtual": "Reunión Virtual",
+    "flexible": "Programación Flexible",
+    "contact": "¿Preguntas antes de programar? Contáctenos en",
+    "email": "peter@mydentipay.com"
   }
 }
