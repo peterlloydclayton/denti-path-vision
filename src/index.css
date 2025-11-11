@@ -267,38 +267,53 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
   }
 
   /* Mobile Landscape - Aspect ratio based for landscape devices */
-  @media screen and (max-width: 932px) and (min-aspect-ratio: 16/9) {
+  @media screen and (max-width: 932px) and (max-height: 500px) and (orientation: landscape) {
+    /* Hide hero images in landscape to prevent overlap */
+    .hero-image {
+      display: none !important;
+    }
+    
+    /* Position title at top left */
     .mobile-landscape-title {
-      top: 8% !important;
-      transform: translateY(0em) !important;
+      top: 15% !important;
+      left: 5% !important;
+      width: 45% !important;
+      transform: none !important;
     }
     
+    /* Smaller text for landscape */
     .mobile-landscape-text {
-      font-size: 1.47rem !important;
+      font-size: 1.5rem !important;
       margin-bottom: 0.5rem !important;
-      line-height: 1.1 !important;
+      line-height: 1.2 !important;
     }
     
+    /* Hide subtitle in landscape */
     .mobile-landscape-subtitle {
       display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-      height: 0 !important;
-      overflow: hidden !important;
     }
     
+    /* Position button at bottom right */
     .mobile-landscape-button {
-      bottom: 10% !important;
-      right: 6% !important;
+      bottom: 15% !important;
+      right: 5% !important;
       left: auto !important;
-      transform: translateY(0em) !important;
+      top: auto !important;
+      transform: none !important;
     }
     
+    /* Adjust button size */
     .mobile-landscape-button button {
-      height: 1.225rem !important;
-      font-size: 0.49rem !important;
-      padding-left: 0.7rem !important;
-      padding-right: 0.7rem !important;
+      height: 2.5rem !important;
+      font-size: 0.875rem !important;
+      padding-left: 1.5rem !important;
+      padding-right: 1.5rem !important;
+    }
+    
+    /* Stack buttons vertically if multiple */
+    .mobile-landscape-button > div {
+      flex-direction: column !important;
+      gap: 0.5rem !important;
     }
   }
 }
