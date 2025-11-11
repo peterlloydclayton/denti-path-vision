@@ -2,33 +2,35 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
-// Image URL for the section
+import { useTranslation } from 'react-i18next';
 
 export const ProblemSection = () => {
+  const { t } = useTranslation('marketing');
+  
   const painPoints = [
     {
-      title: "Emergency affordability crisis",
-      description: "Patients face unexpected dental costs without proper financing options",
-      benefit: "Instant approval available 24/7",
-      benefitDescription: "Get approved within minutes, even during dental emergencies"
+      title: t('providers.problem.painPoints.emergency.title'),
+      description: t('providers.problem.painPoints.emergency.description'),
+      benefit: t('providers.problem.painPoints.emergency.benefit'),
+      benefitDescription: t('providers.problem.painPoints.emergency.benefitDescription')
     },
     {
-      title: "Timeline mismatch", 
-      description: "Traditional approval processes don't align with dental treatment urgency",
-      benefit: "Real-time treatment approval",
-      benefitDescription: "Synchronize financing with treatment schedules for seamless care"
+      title: t('providers.problem.painPoints.timeline.title'),
+      description: t('providers.problem.painPoints.timeline.description'),
+      benefit: t('providers.problem.painPoints.timeline.benefit'),
+      benefitDescription: t('providers.problem.painPoints.timeline.benefitDescription')
     },
     {
-      title: "Low approval rates",
-      description: "Generic underwriting fails to understand dental-specific patient needs",
-      benefit: "94% approval rate",
-      benefitDescription: "Dental-specialized AI understands treatment value and patient circumstances"
+      title: t('providers.problem.painPoints.lowApproval.title'),
+      description: t('providers.problem.painPoints.lowApproval.description'),
+      benefit: t('providers.problem.painPoints.lowApproval.benefit'),
+      benefitDescription: t('providers.problem.painPoints.lowApproval.benefitDescription')
     },
     {
-      title: "Generic understanding",
-      description: "Banks don't comprehend the unique value and necessity of dental treatments",
-      benefit: "Dental expertise built-in",
-      benefitDescription: "Native understanding of dental treatment necessity and health impact"
+      title: t('providers.problem.painPoints.generic.title'),
+      description: t('providers.problem.painPoints.generic.description'),
+      benefit: t('providers.problem.painPoints.generic.benefit'),
+      benefitDescription: t('providers.problem.painPoints.generic.benefitDescription')
     }
   ];
 
@@ -37,7 +39,7 @@ export const ProblemSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Traditional Financing Wasn't Built for Dental Care
+            {t('providers.problem.title')}
           </h2>
         </AnimatedText>
 
@@ -68,7 +70,7 @@ export const ProblemSection = () => {
                      <CardContent className="p-12">
                        <div className="flex items-center gap-4">
                          <div className="flex-1">
-                           <div className="text-xs font-medium text-navy/70 mb-2">DENTIPAY BENEFIT</div>
+                           <div className="text-xs font-medium text-navy/70 mb-2">{t('providers.problem.dentiPayBenefit')}</div>
                            <h3 className="text-xl font-semibold mb-3">{point.benefit}</h3>
                            <p className="text-sm opacity-90 mb-2">{point.benefitDescription}</p>
                          </div>
@@ -93,23 +95,23 @@ export const ProblemSection = () => {
                  {/* Front Card */}
                  <Card className="bg-card/10 border-card/20 text-dental-blue hover:bg-card/15 transition-all duration-300 hover:shadow-elegant group-hover:opacity-0">
                    <CardContent className="p-12">
-                     <h3 className="text-2xl font-bold mb-6 text-center">Financial Care Gap</h3>
+                     <h3 className="text-2xl font-bold mb-6 text-center">{t('providers.problem.financialGap.title')}</h3>
                      <div className="space-y-4">
                        <motion.div 
                          className="flex justify-between items-center py-3 border-b border-card/20"
                          whileHover={{ x: 4 }}
                          transition={{ duration: 0.2 }}
                        >
-                         <span>Traditional Banking</span>
-                         <span className="text-red-400 font-semibold">20-40% Approval</span>
+                         <span>{t('providers.problem.financialGap.traditional')}</span>
+                         <span className="text-red-400 font-semibold">{t('providers.problem.financialGap.traditionalApproval')}</span>
                        </motion.div>
                        <motion.div 
                          className="flex justify-between items-center py-3 border-b border-card/20"
                          whileHover={{ x: 4 }}
                          transition={{ duration: 0.2 }}
                        >
-                         <span>Generic Financing</span>
-                         <span className="text-red-400 font-semibold">45-60% Approval</span>
+                         <span>{t('providers.problem.financialGap.generic')}</span>
+                         <span className="text-red-400 font-semibold">{t('providers.problem.financialGap.genericApproval')}</span>
                        </motion.div>
                      </div>
                    </CardContent>
@@ -120,9 +122,9 @@ export const ProblemSection = () => {
                    <CardContent className="p-12">
                      <div className="flex items-center justify-center h-full">
                        <div className="text-center">
-                         <div className="text-xs font-medium text-navy/70 mb-2">DENTIPAY SOLUTION</div>
-                         <h3 className="text-3xl font-bold mb-3">90% Approvals</h3>
-                         <p className="text-sm opacity-90">Specialized dental financing that understands your patients' needs</p>
+                         <div className="text-xs font-medium text-navy/70 mb-2">{t('providers.problem.financialGap.dentipaySolution')}</div>
+                         <h3 className="text-3xl font-bold mb-3">{t('providers.problem.financialGap.dentipayApproval')}</h3>
+                         <p className="text-sm opacity-90">{t('providers.problem.financialGap.dentipayDescription')}</p>
                        </div>
                      </div>
                    </CardContent>

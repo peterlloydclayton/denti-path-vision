@@ -157,6 +157,348 @@
       "description": "See how our AI-powered behavioural financing platform transforms patient approvals and streamlines your practice workflow for maximum efficiency and revenue growth.",
       "watchText": "Watch Product Overview",
       "cta": "Get Started"
+    },
+    "problem": {
+      "title": "Traditional Financing Wasn't Built for Dental Care",
+      "painPoints": {
+        "emergency": {
+          "title": "Emergency affordability crisis",
+          "description": "Patients face unexpected dental costs without proper financing options",
+          "benefit": "Instant approval available 24/7",
+          "benefitDescription": "Get approved within minutes, even during dental emergencies"
+        },
+        "timeline": {
+          "title": "Timeline mismatch",
+          "description": "Traditional approval processes don't align with dental treatment urgency",
+          "benefit": "Real-time treatment approval",
+          "benefitDescription": "Synchronize financing with treatment schedules for seamless care"
+        },
+        "lowApproval": {
+          "title": "Low approval rates",
+          "description": "Generic underwriting fails to understand dental-specific patient needs",
+          "benefit": "94% approval rate",
+          "benefitDescription": "Dental-specialized AI understands treatment value and patient circumstances"
+        },
+        "generic": {
+          "title": "Generic understanding",
+          "description": "Banks don't comprehend the unique value and necessity of dental treatments",
+          "benefit": "Dental expertise built-in",
+          "benefitDescription": "Native understanding of dental treatment necessity and health impact"
+        }
+      },
+      "financialGap": {
+        "title": "Financial Care Gap",
+        "traditional": "Traditional Banking",
+        "traditionalApproval": "20-40% Approval",
+        "generic": "Generic Financing",
+        "genericApproval": "45-60% Approval",
+        "dentipaySolution": "DENTIPAY SOLUTION",
+        "dentipayApproval": "90% Approvals",
+        "dentipayDescription": "Specialized dental financing that understands your patients' needs"
+      },
+      "dentiPayBenefit": "DENTIPAY BENEFIT"
+    },
+    "problemDeepDive": {
+      "title": "Providers Shouldn't Be Bankers",
+      "sections": {
+        "trap": {
+          "title": "The Trap",
+          "subtitle": "A System Built for Banks",
+          "teaser": "Traditional financing systems prioritize bank profits over patient care",
+          "issues": {
+            "rejected": "Patients Rejected: 60-80% denial rates leave patients without care options",
+            "revenue": "Providers Losing Revenue: Practices lose $200K+ annually from failed financing",
+            "banks": "Banks Profit: Financial institutions profit regardless of patient outcomes"
+          },
+          "answer": "Intelligence Revolution: DentiPay's AI understands dental care value, not just credit scores"
+        },
+        "stakes": {
+          "title": "The Stakes",
+          "subtitle": "When Dentistry Loses",
+          "teaser": "The cost of inadequate financing extends beyond individual practices",
+          "issues": {
+            "noUnderwriting": "1. No Underwriting Experience: Banks lack dental-specific risk assessment",
+            "blindFinancing": "2. Blind Financing: Generic algorithms miss treatment necessity and value",
+            "strained": "3. Strained Relationships: Provider-patient trust erodes with financing failures",
+            "internal": "4. Internal Risk: Practices absorb financial risk without proper tools"
+          },
+          "answer": "80% Approval • 40% Higher Acceptance • $265K Average Revenue Increase"
+        },
+        "price": {
+          "title": "The Price",
+          "subtitle": "Paid for Guesswork",
+          "teaser": "Traditional financing guesswork costs practices and patients dearly",
+          "issues": {
+            "lost": "Lost Treatment Opportunities: Delayed or denied care affects patient health",
+            "admin": "Administrative Burden: Staff spend hours on failed financing attempts",
+            "competitive": "Competitive Disadvantage: Practices without financing solutions lose patients",
+            "volatility": "Revenue Volatility: Unpredictable financing success impacts cash flow"
+          },
+          "answer": "Guesswork Declines. SCOPE Approves. 30+ data points create intelligent decisions"
+        }
+      },
+      "dentiPayAnswer": "DentiPay ANSWER",
+      "learnMore": "Learn More"
+    },
+    "trinity": {
+      "title": "One Brand. One Portal. One System.",
+      "description": "The DentiPay Trinity: Brand leverage, patient portal, and intelligence engine working in perfect harmony.",
+      "items": {
+        "dentipay": {
+          "title": "DentiPay",
+          "subtitle": "Brand Layer",
+          "features": {
+            "trusted": "Trusted dental financing brand",
+            "network": "Provider network leverage",
+            "confidence": "Patient confidence builder"
+          },
+          "quote": "The brand patients trust for dental financing"
+        },
+        "path": {
+          "title": "PATH",
+          "subtitle": "The Patient Acceptance Treatment Hub",
+          "features": {
+            "approval": "94% approval accuracy",
+            "decisions": "30-second decisions",
+            "integration": "Seamless integration"
+          },
+          "quote": "Instant financing decisions that work"
+        },
+        "scope": {
+          "title": "SCOPE",
+          "subtitle": "Intelligence Engine",
+          "features": {
+            "triage": "Clinical Triage:",
+            "triageDesc": "Treatment necessity analysis",
+            "engine": "Financial Engine:",
+            "engineDesc": "30+ data point assessment"
+          },
+          "quote": "Intelligence that understands dental care"
+        }
+      },
+      "learnMore": "Learn More"
+    },
+    "echo": {
+      "title": "Intelligence That Amplifies Your Practice",
+      "description": "Our proprietary voice-enabled AI specializes in healthcare financing to amplify your practice's potential and maximize patient acceptance.",
+      "features": {
+        "automates": "Automates patient financing consultations",
+        "instant": "Provides instant approval decisions and risk assessment",
+        "generates": "Generates treatment acceptance probability analytics",
+        "streamlines": "Streamlines your entire financing workflow"
+      },
+      "getStarted": "Get Started"
+    },
+    "workflow": {
+      "title": "AI Powered Approvals. Instant Decisions",
+      "description": "Swipe through to see how traditional financing transforms into intelligent solutions",
+      "steps": {
+        "step1": {
+          "traditional": "Patient inquiry about financing",
+          "dentipay": "Patient expresses treatment interest"
+        },
+        "step2": {
+          "traditional": "Manual credit application",
+          "dentipay": "Instant SCOPE intelligence analysis"
+        },
+        "step3": {
+          "traditional": "Wait 24-48 hours for response",
+          "dentipay": "Real-time approval in <30 seconds"
+        },
+        "step4": {
+          "traditional": "Often rejected or insufficient amount",
+          "dentipay": "Personalized financing options"
+        },
+        "step5": {
+          "traditional": "Patient seeks alternatives",
+          "dentipay": "Patient accepts treatment"
+        },
+        "step6": {
+          "traditional": "Treatment delayed or cancelled",
+          "dentipay": "Immediate treatment scheduling"
+        },
+        "step7": {
+          "traditional": "Lost revenue and patient trust",
+          "dentipay": "Guaranteed payment to provider"
+        },
+        "step8": {
+          "traditional": "Administrative burden continues",
+          "dentipay": "Automated payment management"
+        }
+      },
+      "traditionalProcess": "Traditional Process",
+      "dentipaySolution": "DentiPay Solution",
+      "getStarted": "Get Started"
+    },
+    "roi": {
+      "title": "Calculate Your ROI Potential",
+      "description": "See your practice's transformation potential",
+      "inputs": {
+        "monthlyPatients": "Monthly Patients",
+        "avgTreatment": "Average Treatment Value ($)",
+        "currentApproval": "Current Approval Rate (%)"
+      },
+      "practiceInfo": "Practice Information",
+      "projectedOutcomes": "Projected Outcomes",
+      "results": {
+        "monthlyIncrease": "Monthly Revenue Increase",
+        "annualIncrease": "Annual Revenue Increase",
+        "approvalImprovement": "Approval Rate Improvement"
+      },
+      "learnMore": "Learn More"
+    },
+    "stats": {
+      "title": "DentiPay Transforming Dental Financing One Patient at a Time",
+      "description": "Data-driven outcomes that transform dental practices and patient experiences",
+      "metrics": {
+        "maxFinancing": {
+          "label": "Maximum Financing",
+          "description": "Flexible financing options"
+        },
+        "approvalRates": {
+          "label": "Approval Rates",
+          "description": "High approval success rates"
+        },
+        "interestRates": {
+          "label": "Interest Rates",
+          "description": "0% up to 18 months"
+        },
+        "practiceGrowth": {
+          "label": "Practice Growth",
+          "description": "27 - 32% average growth"
+        }
+      },
+      "getStarted": "Get Started"
+    },
+    "testimonials": {
+      "title": "Ready to Join thousands of Providers signing up for DentiPay?",
+      "description": "Hear from providers transforming their practices and changing the future of dental finance",
+      "testimonials": {
+        "sarah": {
+          "quote": "DentiPay transformed our practice. We went from 40% approval rates to 94% overnight. The intelligence behind SCOPE understands dental care in ways traditional financing never could.",
+          "name": "Dr. Sarah Mitchell",
+          "specialty": "Cosmetic & Restorative Dentistry",
+          "metric": "$180K additional annual revenue"
+        },
+        "michael": {
+          "quote": "The Echo AI integration has revolutionized how we discuss treatment options. Patients feel confident about financing before we even finish the consultation.",
+          "name": "Dr. Michael Chen",
+          "specialty": "Oral Surgery",
+          "metric": "65% faster treatment acceptance"
+        },
+        "jennifer": {
+          "quote": "PATH's instant approvals have eliminated the anxiety around financing discussions. Our patients trust the process because it actually works for dental care.",
+          "name": "Dr. Jennifer Rodriguez",
+          "specialty": "Family Dentistry",
+          "metric": "40% increase in case acceptance"
+        },
+        "robert": {
+          "quote": "DentiPay's intelligent underwriting has completely changed our implant consultations. Patients who were previously declined now get approved for comprehensive treatments.",
+          "name": "Dr. Robert Thompson",
+          "specialty": "Periodontics & Implantology",
+          "metric": "78% increase in implant cases"
+        },
+        "amanda": {
+          "quote": "The seamless integration with our practice management system saved us hours of administrative work. Our team can focus on patient care instead of financing paperwork.",
+          "name": "Dr. Amanda Foster",
+          "specialty": "Orthodontics",
+          "metric": "$240K additional revenue in 6 months"
+        },
+        "james": {
+          "quote": "What impressed me most is how DentiPay's AI understands the complexity of full mouth reconstruction cases. Traditional lenders never got it, but this system does.",
+          "name": "Dr. James Williams",
+          "specialty": "Prosthodontics",
+          "metric": "85% approval rate on complex cases"
+        }
+      },
+      "joinToday": "Join Today"
+    },
+    "intelligence": {
+      "title": "Intelligence That Amplifies Your Practice",
+      "echo": {
+        "title": "Meet Echo",
+        "description": "Voice-enabled AI assistant that enhances every patient interaction with intelligent financing insights"
+      },
+      "tabs": {
+        "pipeline": {
+          "label": "Patient Pipeline",
+          "title": "Patient Pipeline Intelligence",
+          "features": {
+            "prequalify": "Pre-qualify patients before consultation",
+            "matching": "Intelligent treatment plan matching",
+            "followup": "Automated follow-up sequences"
+          },
+          "metric": {
+            "value": "87%",
+            "label": "Patient confidence improvement"
+          }
+        },
+        "analytics": {
+          "label": "Analytics Dashboard",
+          "title": "Practice Analytics Dashboard",
+          "features": {
+            "tracking": "Real-time approval rate tracking",
+            "revenue": "Revenue impact analytics",
+            "predictions": "Patient acceptance predictions"
+          },
+          "metric": {
+            "value": "23%",
+            "label": "Average revenue increase"
+          }
+        },
+        "communications": {
+          "label": "Communications",
+          "title": "Patient Communications",
+          "features": {
+            "notifications": "Automated approval notifications",
+            "explanations": "Treatment plan explanations",
+            "reminders": "Payment reminders and support"
+          },
+          "metric": {
+            "value": "4.5hrs",
+            "label": "Daily time savings"
+          }
+        }
+      },
+      "getStarted": "Get Started"
+    },
+    "finalCTA": {
+      "trustTitle": "Trust Based Platform",
+      "security": {
+        "bankLevel": "Bank-Level Security",
+        "hipaa": "HIPAA Compliant",
+        "uptime": "99.9% Uptime",
+        "integration": "Seamless Integration"
+      },
+      "title": "See DentiPay Intelligence in Your Practice",
+      "steps": {
+        "demo": {
+          "number": "1",
+          "title": "Schedule Demo",
+          "description": "See DentiPay intelligence in action"
+        },
+        "trial": {
+          "number": "2",
+          "title": "Free Trial",
+          "description": "Test with your actual patients"
+        },
+        "boost": {
+          "number": "3",
+          "title": "Boost Treatments",
+          "description": "Increase case acceptance and revenue"
+        }
+      },
+      "everythingTitle": "Everything You Need to Succeed",
+      "features": {
+        "integration": "Complete SCOPE & PATH integration",
+        "echo": "Echo AI voice assistant",
+        "analytics": "Analytics dashboard",
+        "manager": "Dedicated success manager",
+        "training": "Staff training program",
+        "marketing": "Marketing support materials"
+      },
+      "getStarted": "Get Started!",
+      "joinText": "Join thousands of dentists already transforming their practice"
     }
   },
   "benefits": {
