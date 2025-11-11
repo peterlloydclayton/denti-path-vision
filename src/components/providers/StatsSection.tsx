@@ -14,8 +14,10 @@ import {
   Sparkles
 } from 'lucide-react';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const StatsSection = () => {
+  const { t } = useTranslation('marketing');
   const dentalIcons = [
     Smile, Heart, Shield, Activity, Stethoscope, Plus, Star, Sparkles
   ];
@@ -33,10 +35,10 @@ export const StatsSection = () => {
   }, []);
   
   const stats = [
-    { value: 100000, prefix: '$', suffix: '', label: 'Maximum Financing', description: 'Flexible financing options' },
-    { value: 80, prefix: '', suffix: '%', label: 'Approval Rates', description: 'High approval success rates' },
-    { value: 18, prefix: '', suffix: ' months', label: 'Interest Rates', description: '0% up to 18 months' },
-    { value: 32, prefix: '', suffix: '%', label: 'Practice Growth', description: '27 - 32% average growth' }
+    { value: 100000, prefix: '$', suffix: '', label: t('providers.stats.metrics.maxFinancing.label'), description: t('providers.stats.metrics.maxFinancing.description') },
+    { value: 80, prefix: '', suffix: '%', label: t('providers.stats.metrics.approvalRates.label'), description: t('providers.stats.metrics.approvalRates.description') },
+    { value: 18, prefix: '', suffix: ' months', label: t('providers.stats.metrics.interestRates.label'), description: t('providers.stats.metrics.interestRates.description') },
+    { value: 32, prefix: '', suffix: '%', label: t('providers.stats.metrics.practiceGrowth.label'), description: t('providers.stats.metrics.practiceGrowth.description') }
   ];
 
   return (
@@ -87,10 +89,10 @@ export const StatsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            DentiPay Transforming Dental Financing One Patient at a Time
+            {t('providers.stats.title')}
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Data-driven outcomes that transform dental practices and patient experiences
+            {t('providers.stats.description')}
           </p>
         </div>
 
@@ -138,7 +140,7 @@ export const StatsSection = () => {
         {/* Get Started button at bottom of section */}
         <div className="flex justify-center mt-16">
           <Button className="bg-black text-white hover:bg-black/90 rounded-full px-12 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
-            Get Started
+            {t('providers.stats.getStarted')}
           </Button>
         </div>
       </div>

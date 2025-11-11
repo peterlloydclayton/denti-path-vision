@@ -6,8 +6,10 @@ import { ChevronDown, ChevronRight, CheckCircle } from 'lucide-react';
 import approvalMobileImage from '@/assets/approval-mobile-hand-jane-smith.png';
 import chartImprovingImage from '@/assets/chart-improving.jpg';
 import dentistOperatingImage from '@/assets/dentist-operating-on-patient.jpg';
+import { useTranslation } from 'react-i18next';
 
 export const ProblemDeepDive = () => {
+  const { t } = useTranslation('marketing');
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [expandedIssues, setExpandedIssues] = useState<Record<string, boolean>>({});
 
@@ -22,47 +24,47 @@ export const ProblemDeepDive = () => {
   const sections = [
     {
       id: 'trap',
-      title: 'The Trap',
-      subtitle: 'A System Built for Banks',
-      teaser: 'Traditional financing systems prioritize bank profits over patient care',
+      title: t('providers.problemDeepDive.sections.trap.title'),
+      subtitle: t('providers.problemDeepDive.sections.trap.subtitle'),
+      teaser: t('providers.problemDeepDive.sections.trap.teaser'),
       issues: [
-        'Patients Rejected: 60-80% denial rates leave patients without care options',
-        'Providers Losing Revenue: Practices lose $200K+ annually from failed financing',
-        'Banks Profit: Financial institutions profit regardless of patient outcomes'
+        t('providers.problemDeepDive.sections.trap.issues.rejected'),
+        t('providers.problemDeepDive.sections.trap.issues.revenue'),
+        t('providers.problemDeepDive.sections.trap.issues.banks')
       ],
-      answer: 'Intelligence Revolution: DentiPay\'s AI understands dental care value, not just credit scores',
+      answer: t('providers.problemDeepDive.sections.trap.answer'),
       image: dentistOperatingImage,
       imagePosition: 'right' as const,
       mobileImagePosition: 'bottom' as const
     },
     {
       id: 'stakes',
-      title: 'The Stakes',
-      subtitle: 'When Dentistry Loses',
-      teaser: 'The cost of inadequate financing extends beyond individual practices',
+      title: t('providers.problemDeepDive.sections.stakes.title'),
+      subtitle: t('providers.problemDeepDive.sections.stakes.subtitle'),
+      teaser: t('providers.problemDeepDive.sections.stakes.teaser'),
       issues: [
-        '1. No Underwriting Experience: Banks lack dental-specific risk assessment',
-        '2. Blind Financing: Generic algorithms miss treatment necessity and value',
-        '3. Strained Relationships: Provider-patient trust erodes with financing failures',
-        '4. Internal Risk: Practices absorb financial risk without proper tools'
+        t('providers.problemDeepDive.sections.stakes.issues.noUnderwriting'),
+        t('providers.problemDeepDive.sections.stakes.issues.blindFinancing'),
+        t('providers.problemDeepDive.sections.stakes.issues.strained'),
+        t('providers.problemDeepDive.sections.stakes.issues.internal')
       ],
-      answer: '80% Approval • 40% Higher Acceptance • $265K Average Revenue Increase',
+      answer: t('providers.problemDeepDive.sections.stakes.answer'),
       image: approvalMobileImage,
       imagePosition: 'right' as const,
       mobileImagePosition: 'bottom' as const
     },
     {
       id: 'price',
-      title: 'The Price',
-      subtitle: 'Paid for Guesswork',
-      teaser: 'Traditional financing guesswork costs practices and patients dearly',
+      title: t('providers.problemDeepDive.sections.price.title'),
+      subtitle: t('providers.problemDeepDive.sections.price.subtitle'),
+      teaser: t('providers.problemDeepDive.sections.price.teaser'),
       issues: [
-        'Lost Treatment Opportunities: Delayed or denied care affects patient health',
-        'Administrative Burden: Staff spend hours on failed financing attempts',
-        'Competitive Disadvantage: Practices without financing solutions lose patients',
-        'Revenue Volatility: Unpredictable financing success impacts cash flow'
+        t('providers.problemDeepDive.sections.price.issues.lost'),
+        t('providers.problemDeepDive.sections.price.issues.admin'),
+        t('providers.problemDeepDive.sections.price.issues.competitive'),
+        t('providers.problemDeepDive.sections.price.issues.volatility')
       ],
-      answer: 'Guesswork Declines. SCOPE Approves. 30+ data points create intelligent decisions',
+      answer: t('providers.problemDeepDive.sections.price.answer'),
       image: chartImprovingImage,
       imagePosition: 'right' as const,
       mobileImagePosition: 'bottom' as const
@@ -74,7 +76,7 @@ export const ProblemDeepDive = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Providers Shouldn't Be Bankers
+            {t('providers.problemDeepDive.title')}
           </h2>
         </div>
 
@@ -172,14 +174,14 @@ export const ProblemDeepDive = () => {
                           <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 via-transparent to-black/20" />
                         </div>
                         
-                         {/* Text Content Side */}
+                          {/* Text Content Side */}
                           <div className={`flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-success/10 via-transparent to-success/20 ${
                             section.mobileImagePosition === 'bottom' ? 'order-1' : 'order-2'
                           } ${
                             section.imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2'
                           }`}>
                             <div>
-                              <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-success">DentiPay ANSWER</h4>
+                              <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-success">{t('providers.problemDeepDive.dentiPayAnswer')}</h4>
                               <div className="flex items-start gap-3 lg:gap-4">
                                 <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-success mt-0.5 flex-shrink-0" />
                                 <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
@@ -189,7 +191,7 @@ export const ProblemDeepDive = () => {
                       </div>
                       ) : (
                         <div className="p-6 rounded-xl">
-                          <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-success">DentiPay ANSWER</h4>
+                          <h4 className="text-lg lg:text-2xl font-semibold mb-4 lg:mb-6 text-success">{t('providers.problemDeepDive.dentiPayAnswer')}</h4>
                           <div className="flex items-start gap-3 lg:gap-4">
                             <CheckCircle className="w-5 h-5 lg:w-7 lg:h-7 text-success mt-0.5 flex-shrink-0" />
                             <span className="text-base lg:text-xl font-medium leading-relaxed">{section.answer}</span>
@@ -213,7 +215,7 @@ export const ProblemDeepDive = () => {
         {/* Learn More button at bottom of section */}
         <div className="flex justify-center mt-12">
           <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
-            Learn More
+            {t('providers.problemDeepDive.learnMore')}
           </Button>
         </div>
       </div>

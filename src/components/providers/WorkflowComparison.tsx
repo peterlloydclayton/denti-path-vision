@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 export const WorkflowComparison = () => {
+  const { t } = useTranslation('marketing');
   const [activeSlide, setActiveSlide] = useState(0);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [isVisible, setIsVisible] = useState(false);
@@ -13,36 +15,36 @@ export const WorkflowComparison = () => {
   
   const workflowSteps = [
     {
-      traditional: 'Patient inquiry about financing',
-      dentipay: 'Patient expresses treatment interest'
+      traditional: t('providers.workflow.steps.step1.traditional'),
+      dentipay: t('providers.workflow.steps.step1.dentipay')
     },
     {
-      traditional: 'Manual credit application',
-      dentipay: 'Instant SCOPE intelligence analysis'
+      traditional: t('providers.workflow.steps.step2.traditional'),
+      dentipay: t('providers.workflow.steps.step2.dentipay')
     },
     {
-      traditional: 'Wait 24-48 hours for response',
-      dentipay: 'Real-time approval in <30 seconds'
+      traditional: t('providers.workflow.steps.step3.traditional'),
+      dentipay: t('providers.workflow.steps.step3.dentipay')
     },
     {
-      traditional: 'Often rejected or insufficient amount',
-      dentipay: 'Personalized financing options'
+      traditional: t('providers.workflow.steps.step4.traditional'),
+      dentipay: t('providers.workflow.steps.step4.dentipay')
     },
     {
-      traditional: 'Patient seeks alternatives',
-      dentipay: 'Patient accepts treatment'
+      traditional: t('providers.workflow.steps.step5.traditional'),
+      dentipay: t('providers.workflow.steps.step5.dentipay')
     },
     {
-      traditional: 'Treatment delayed or cancelled',
-      dentipay: 'Immediate treatment scheduling'
+      traditional: t('providers.workflow.steps.step6.traditional'),
+      dentipay: t('providers.workflow.steps.step6.dentipay')
     },
     {
-      traditional: 'Lost revenue and patient trust',
-      dentipay: 'Guaranteed payment to provider'
+      traditional: t('providers.workflow.steps.step7.traditional'),
+      dentipay: t('providers.workflow.steps.step7.dentipay')
     },
     {
-      traditional: 'Administrative burden continues',
-      dentipay: 'Automated payment management'
+      traditional: t('providers.workflow.steps.step8.traditional'),
+      dentipay: t('providers.workflow.steps.step8.dentipay')
     }
   ];
 
@@ -99,7 +101,7 @@ export const WorkflowComparison = () => {
                   {step.traditional}
                 </p>
                 <div className="mt-4 text-xs text-gray-400 font-semibold uppercase tracking-wide">
-                  Traditional Process
+                  {t('providers.workflow.traditionalProcess')}
                 </div>
               </div>
             </motion.div>
@@ -118,7 +120,7 @@ export const WorkflowComparison = () => {
                   {step.dentipay}
                 </p>
                 <div className="mt-4 text-xs text-navy font-semibold uppercase tracking-wide">
-                  DentiPay Solution
+                  {t('providers.workflow.dentipaySolution')}
                 </div>
               </div>
             </motion.div>
@@ -136,10 +138,10 @@ export const WorkflowComparison = () => {
         {/* Mobile: Header above everything */}
         <div className="text-center mb-16 lg:hidden">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            AI Powered Approvals. Instant Decisions
+            {t('providers.workflow.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Swipe through to see how traditional financing transforms into intelligent solutions
+            {t('providers.workflow.description')}
           </p>
         </div>
 
@@ -174,10 +176,10 @@ export const WorkflowComparison = () => {
             {/* Header text for landscape only */}
             <div className="text-center mb-8">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                AI Powered Approvals. Instant Decisions
+                {t('providers.workflow.title')}
               </h2>
               <p className="text-xl text-muted-foreground">
-                Swipe through to see how traditional financing transforms into intelligent solutions
+                {t('providers.workflow.description')}
               </p>
             </div>
             
@@ -210,7 +212,7 @@ export const WorkflowComparison = () => {
         {/* Get Started button at bottom of section */}
         <div className="flex justify-center mt-16">
           <Button className="bg-black text-white hover:bg-black/90 rounded-full px-12 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
-            Get Started
+            {t('providers.workflow.getStarted')}
           </Button>
         </div>
       </div>

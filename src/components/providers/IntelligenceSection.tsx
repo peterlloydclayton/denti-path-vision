@@ -4,46 +4,48 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Headphones, Target, BarChart3, MessageSquare, CheckCircle } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
+import { useTranslation } from 'react-i18next';
 
 export const IntelligenceSection = () => {
+  const { t } = useTranslation('marketing');
   const tabData = [
     {
       value: "pipeline",
-      label: "Patient Pipeline",
+      label: t('providers.intelligence.tabs.pipeline.label'),
       icon: Target,
-      title: "Patient Pipeline Intelligence",
+      title: t('providers.intelligence.tabs.pipeline.title'),
       features: [
-        "Pre-qualify patients before consultation",
-        "Intelligent treatment plan matching", 
-        "Automated follow-up sequences"
+        t('providers.intelligence.tabs.pipeline.features.prequalify'),
+        t('providers.intelligence.tabs.pipeline.features.matching'), 
+        t('providers.intelligence.tabs.pipeline.features.followup')
       ],
-      metric: { value: "87%", label: "Patient confidence improvement" },
+      metric: { value: t('providers.intelligence.tabs.pipeline.metric.value'), label: t('providers.intelligence.tabs.pipeline.metric.label') },
       color: "dental-blue"
     },
     {
       value: "analytics", 
-      label: "Analytics Dashboard",
+      label: t('providers.intelligence.tabs.analytics.label'),
       icon: BarChart3,
-      title: "Practice Analytics Dashboard",
+      title: t('providers.intelligence.tabs.analytics.title'),
       features: [
-        "Real-time approval rate tracking",
-        "Revenue impact analytics",
-        "Patient acceptance predictions"
+        t('providers.intelligence.tabs.analytics.features.tracking'),
+        t('providers.intelligence.tabs.analytics.features.revenue'),
+        t('providers.intelligence.tabs.analytics.features.predictions')
       ],
-      metric: { value: "23%", label: "Average revenue increase" },
+      metric: { value: t('providers.intelligence.tabs.analytics.metric.value'), label: t('providers.intelligence.tabs.analytics.metric.label') },
       color: "success"
     },
     {
       value: "communications",
-      label: "Communications", 
+      label: t('providers.intelligence.tabs.communications.label'), 
       icon: MessageSquare,
-      title: "Patient Communications",
+      title: t('providers.intelligence.tabs.communications.title'),
       features: [
-        "Automated approval notifications",
-        "Treatment plan explanations",
-        "Payment reminders and support"
+        t('providers.intelligence.tabs.communications.features.notifications'),
+        t('providers.intelligence.tabs.communications.features.explanations'),
+        t('providers.intelligence.tabs.communications.features.reminders')
       ],
-      metric: { value: "4.5hrs", label: "Daily time savings" },
+      metric: { value: t('providers.intelligence.tabs.communications.metric.value'), label: t('providers.intelligence.tabs.communications.metric.label') },
       color: "dental-blue-dark"
     }
   ];
@@ -53,7 +55,7 @@ export const IntelligenceSection = () => {
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Intelligence That Amplifies Your Practice
+            {t('providers.intelligence.title')}
           </h2>
         </AnimatedText>
 
@@ -78,9 +80,9 @@ export const IntelligenceSection = () => {
                 >
                   <Headphones className="w-8 h-8" />
                 </motion.div>
-                <h3 className="text-2xl font-bold mb-2">Meet Echo</h3>
+                <h3 className="text-2xl font-bold mb-2">{t('providers.intelligence.echo.title')}</h3>
                 <p className="text-lg opacity-90">
-                  Voice-enabled AI assistant that enhances every patient interaction with intelligent financing insights
+                  {t('providers.intelligence.echo.description')}
                 </p>
               </CardContent>
             </Card>
@@ -174,7 +176,7 @@ export const IntelligenceSection = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
-            Get Started
+            {t('providers.intelligence.getStarted')}
           </Button>
         </motion.div>
       </div>

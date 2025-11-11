@@ -7,8 +7,10 @@ import { Label } from '@/components/ui/label';
 import { CustomSlider } from '@/components/ui/custom-slider';
 import { Calculator, TrendingUp, DollarSign, Target, Calendar } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
+import { useTranslation } from 'react-i18next';
 
 export const ROICalculator = () => {
+  const { t } = useTranslation('marketing');
   const [monthlyPatients, setMonthlyPatients] = useState(50);
   const [avgTreatment, setAvgTreatment] = useState(2500);
   const [currentApproval, setCurrentApproval] = useState(60);
@@ -35,19 +37,19 @@ export const ROICalculator = () => {
   const inputFields = [
     { 
       id: 'patients', 
-      label: 'Monthly Patients', 
+      label: t('providers.roi.inputs.monthlyPatients'), 
       value: monthlyPatients, 
       onChange: setMonthlyPatients 
     },
     { 
       id: 'treatment', 
-      label: 'Average Treatment Value ($)', 
+      label: t('providers.roi.inputs.avgTreatment'), 
       value: avgTreatment, 
       onChange: setAvgTreatment 
     },
     { 
       id: 'approval', 
-      label: 'Current Approval Rate (%)', 
+      label: t('providers.roi.inputs.currentApproval'), 
       value: currentApproval, 
       onChange: setCurrentApproval 
     }
@@ -56,19 +58,19 @@ export const ROICalculator = () => {
   const results = [
     {
       value: roi.monthlyIncrease,
-      label: "Monthly Revenue Increase",
+      label: t('providers.roi.results.monthlyIncrease'),
       color: "dental-blue-dark",
       icon: DollarSign
     },
     {
       value: roi.annualIncrease,
-      label: "Annual Revenue Increase", 
+      label: t('providers.roi.results.annualIncrease'), 
       color: "dental-blue-dark",
       icon: Calendar
     },
     {
       value: roi.approvalImprovement,
-      label: "Approval Rate Improvement",
+      label: t('providers.roi.results.approvalImprovement'),
       color: "dental-blue-dark",
       suffix: "%",
       prefix: "+",
@@ -80,8 +82,8 @@ export const ROICalculator = () => {
     <section className="pt-24 pb-8">
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Calculate Your ROI Potential</h2>
-          <p className="text-xl text-muted-foreground">See your practice's transformation potential</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('providers.roi.title')}</h2>
+          <p className="text-xl text-muted-foreground">{t('providers.roi.description')}</p>
         </AnimatedText>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -94,7 +96,7 @@ export const ROICalculator = () => {
           >
             <Card className="hover:shadow-elegant transition-all duration-300 border-dental-blue/20">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6 text-dental-blue-dark">Practice Information</h3>
+                <h3 className="text-2xl font-bold mb-6 text-dental-blue-dark">{t('providers.roi.practiceInfo')}</h3>
                 <div className="space-y-6">
                   {/* Monthly Patients - Slider */}
                   <motion.div 
@@ -102,7 +104,7 @@ export const ROICalculator = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0 * 0.1 }}
                   >
-                    <Label className="font-medium text-dental-blue-darker">Monthly Patients</Label>
+                    <Label className="font-medium text-dental-blue-darker">{t('providers.roi.inputs.monthlyPatients')}</Label>
                     <div className="mt-2 space-y-3">
                       <div className="text-2xl font-bold text-dental-blue-darker">
                         {monthlyPatients}
@@ -128,7 +130,7 @@ export const ROICalculator = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1 * 0.1 }}
                   >
-                    <Label className="font-medium text-dental-blue-darker">Average Treatment Value</Label>
+                    <Label className="font-medium text-dental-blue-darker">{t('providers.roi.inputs.avgTreatment')}</Label>
                     <div className="mt-2 space-y-3">
                       <div className="text-2xl font-bold text-dental-blue-darker">
                         ${avgTreatment.toLocaleString()}
@@ -154,7 +156,7 @@ export const ROICalculator = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 2 * 0.1 }}
                   >
-                    <Label className="font-medium text-dental-blue-darker">Current Approval Rate</Label>
+                    <Label className="font-medium text-dental-blue-darker">{t('providers.roi.inputs.currentApproval')}</Label>
                     <div className="mt-2 space-y-3">
                       <div className="text-2xl font-bold text-dental-blue-darker">
                         {currentApproval}%
@@ -187,7 +189,7 @@ export const ROICalculator = () => {
           >
             <Card className="hover:shadow-elegant transition-all duration-300 border-dental-blue/20">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6 text-dental-blue-dark">Projected Outcomes</h3>
+                <h3 className="text-2xl font-bold mb-6 text-dental-blue-dark">{t('providers.roi.projectedOutcomes')}</h3>
                 <div className="space-y-6">
                   {results.map((result, index) => {
                     const Icon = result.icon;
@@ -220,7 +222,7 @@ export const ROICalculator = () => {
                     className="w-full mt-6 bg-intelligence hover:bg-intelligence/90 text-intelligence-foreground shadow-elegant hover:shadow-xl transition-all duration-300" 
                     size="lg"
                   >
-                    Learn More
+                    {t('providers.roi.learnMore')}
                   </Button>
                 </motion.div>
               </CardContent>

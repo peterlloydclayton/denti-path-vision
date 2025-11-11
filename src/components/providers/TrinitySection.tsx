@@ -8,8 +8,10 @@ import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animatio
 import { PathModal } from './PathModal';
 import { ScopeModal } from './ScopeModal';
 import { DentiPayModal } from './DentiPayModal';
+import { useTranslation } from 'react-i18next';
 
 export const TrinitySection = () => {
+  const { t } = useTranslation('marketing');
   const [isPathModalOpen, setIsPathModalOpen] = useState(false);
   const [isScopeModalOpen, setIsScopeModalOpen] = useState(false);
   const [isDentiPayModalOpen, setIsDentiPayModalOpen] = useState(false);
@@ -17,41 +19,41 @@ export const TrinitySection = () => {
   const trinityItems = [
     {
       icon: Cpu,
-      title: "DentiPay",
-      subtitle: "Brand Layer",
+      title: t('providers.trinity.items.dentipay.title'),
+      subtitle: t('providers.trinity.items.dentipay.subtitle'),
       color: "primary",
       borderColor: "primary/30",
       features: [
-        "Trusted dental financing brand",
-        "Provider network leverage", 
-        "Patient confidence builder"
+        t('providers.trinity.items.dentipay.features.trusted'),
+        t('providers.trinity.items.dentipay.features.network'), 
+        t('providers.trinity.items.dentipay.features.confidence')
       ],
-      quote: "The brand patients trust for dental financing"
+      quote: t('providers.trinity.items.dentipay.quote')
     },
     {
       icon: Globe,
-      title: "PATH",
-      subtitle: "The Patient Acceptance Treatment Hub", 
+      title: t('providers.trinity.items.path.title'),
+      subtitle: t('providers.trinity.items.path.subtitle'), 
       color: "secondary",
       borderColor: "secondary/50",
       features: [
-        "94% approval accuracy",
-        "30-second decisions",
-        "Seamless integration"
+        t('providers.trinity.items.path.features.approval'),
+        t('providers.trinity.items.path.features.decisions'),
+        t('providers.trinity.items.path.features.integration')
       ],
-      quote: "Instant financing decisions that work"
+      quote: t('providers.trinity.items.path.quote')
     },
     {
       icon: Brain,
-      title: "SCOPE",
-      subtitle: "Intelligence Engine",
+      title: t('providers.trinity.items.scope.title'),
+      subtitle: t('providers.trinity.items.scope.subtitle'),
       color: "success",
       borderColor: "success/50",
       features: [
-        { label: "Clinical Triage:", desc: "Treatment necessity analysis" },
-        { label: "Financial Engine:", desc: "30+ data point assessment" }
+        { label: t('providers.trinity.items.scope.features.triage'), desc: t('providers.trinity.items.scope.features.triageDesc') },
+        { label: t('providers.trinity.items.scope.features.engine'), desc: t('providers.trinity.items.scope.features.engineDesc') }
       ],
-      quote: "Intelligence that understands dental care"
+      quote: t('providers.trinity.items.scope.quote')
     }
   ];
 
@@ -60,12 +62,10 @@ export const TrinitySection = () => {
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <div>One Brand.</div>
-            <div>One Portal.</div>
-            <div>One System.</div>
+            {t('providers.trinity.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            The DentiPay Trinity: Brand leverage, patient portal, and intelligence engine working in perfect harmony.
+            {t('providers.trinity.description')}
           </p>
         </AnimatedText>
 
@@ -130,7 +130,7 @@ export const TrinitySection = () => {
                           variant="outline"
                           className="mt-auto"
                         >
-                          Learn More
+                          {t('providers.trinity.learnMore')}
                         </Button>
                       </CardContent>
                     </Card>

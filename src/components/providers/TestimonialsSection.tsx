@@ -19,8 +19,10 @@ import dentist3 from '@/assets/dentist-3.png';
 import dentist4 from '@/assets/dentist-4.png';
 import dentist5 from '@/assets/dentist-5.png';
 import dentistMale from '@/assets/dentist-male-white-coat.png';
+import { useTranslation } from 'react-i18next';
 
 export const TestimonialsSection = () => {
+  const { t } = useTranslation('marketing');
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [isLandscape, setIsLandscape] = useState(false);
@@ -114,10 +116,10 @@ export const TestimonialsSection = () => {
       <div className="container mx-auto px-6">
         <AnimatedText className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Ready to Join thousands of Providers signing up for DentiPay?
+            {t('providers.testimonials.title')}
           </h2>
           <p className="text-xl text-muted-foreground">
-            Hear from providers transforming their practices and changing the future of dental finance
+            {t('providers.testimonials.description')}
           </p>
         </AnimatedText>
 
@@ -188,7 +190,7 @@ export const TestimonialsSection = () => {
         {/* Join Today button at bottom of section */}
         <div className="flex justify-center mt-16">
           <Button className="bg-black text-white hover:bg-black/90 rounded-full px-10 py-3 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
-            Join Today
+            {t('providers.testimonials.joinToday')}
           </Button>
         </div>
       </div>

@@ -6,29 +6,31 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
 import { useNavigate } from 'react-router-dom';
 import dentistImage from '@/assets/mature-dentist-male-latin.png';
+import { useTranslation } from 'react-i18next';
 
 export const FinalCTASection = () => {
+  const { t } = useTranslation('marketing');
   const navigate = useNavigate();
   const steps = [
-    { number: 1, title: "Schedule Demo", description: "See DentiPay intelligence in action" },
-    { number: 2, title: "Free Trial", description: "Test with your actual patients" },
-    { number: 3, title: "Boost Treatments", description: "Increase case acceptance and revenue" }
+    { number: 1, title: t('providers.finalCTA.steps.demo.title'), description: t('providers.finalCTA.steps.demo.description') },
+    { number: 2, title: t('providers.finalCTA.steps.trial.title'), description: t('providers.finalCTA.steps.trial.description') },
+    { number: 3, title: t('providers.finalCTA.steps.boost.title'), description: t('providers.finalCTA.steps.boost.description') }
   ];
 
   const features = [
-    "Complete SCOPE & PATH integration",
-    "Echo AI voice assistant", 
-    "Analytics dashboard",
-    "Dedicated success manager",
-    "Staff training program",
-    "Marketing support materials"
+    t('providers.finalCTA.features.integration'),
+    t('providers.finalCTA.features.echo'), 
+    t('providers.finalCTA.features.analytics'),
+    t('providers.finalCTA.features.manager'),
+    t('providers.finalCTA.features.training'),
+    t('providers.finalCTA.features.marketing')
   ];
 
   const securityFeatures = [
-    { icon: Shield, title: "Bank-Level Security" },
-    { icon: Lock, title: "HIPAA Compliant" },
-    { icon: TrendingUp, title: "99.9% Uptime" },
-    { icon: Award, title: "Seamless Integration" }
+    { icon: Shield, title: t('providers.finalCTA.security.bankLevel') },
+    { icon: Lock, title: t('providers.finalCTA.security.hipaa') },
+    { icon: TrendingUp, title: t('providers.finalCTA.security.uptime') },
+    { icon: Award, title: t('providers.finalCTA.security.integration') }
   ];
 
   return (
@@ -44,7 +46,7 @@ export const FinalCTASection = () => {
             transition={{ duration: 0.6 }}
           >
             <AnimatedText>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16">Trust Based Platform</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16">{t('providers.finalCTA.trustTitle')}</h2>
             </AnimatedText>
             
             <StaggerContainer>
@@ -82,7 +84,7 @@ export const FinalCTASection = () => {
         <div className="container mx-auto px-6">
           <AnimatedText className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              See DentiPay Intelligence in Your Practice
+              {t('providers.finalCTA.title')}
             </h2>
           </AnimatedText>
 
@@ -124,7 +126,7 @@ export const FinalCTASection = () => {
             transition={{ duration: 0.6 }}
           >
             <AnimatedText>
-              <h3 className="text-2xl font-bold text-center mb-8">Everything You Need to Succeed</h3>
+              <h3 className="text-2xl font-bold text-center mb-8">{t('providers.finalCTA.everythingTitle')}</h3>
             </AnimatedText>
             
             <div className="grid md:grid-cols-2 gap-6">
@@ -162,7 +164,7 @@ export const FinalCTASection = () => {
                 onClick={() => navigate('/patient-financing-application')}
                 className="bg-black text-white hover:bg-black/90 px-16 py-6 text-2xl font-bold rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
               >
-                Get Started!
+                {t('providers.finalCTA.getStarted')}
               </Button>
             </motion.div>
             <motion.p 
@@ -172,7 +174,7 @@ export const FinalCTASection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Join thousands of dentists already transforming their practice
+              {t('providers.finalCTA.joinText')}
             </motion.p>
           </motion.div>
         </div>

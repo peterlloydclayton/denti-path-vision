@@ -6,14 +6,17 @@ import { PulseRipples } from '@/components/ui/pulse-ripples';
 import { motion } from 'framer-motion';
 import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
 import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
+import { useTranslation } from 'react-i18next';
 
 
 export const EchoProviderSection = () => {
+  const { t } = useTranslation('marketing');
+  
   const aiFeatures = [
-    'Automates patient financing consultations',
-    'Provides instant approval decisions and risk assessment',  
-    'Generates treatment acceptance probability analytics',
-    'Streamlines your entire financing workflow'
+    t('providers.echo.features.automates'),
+    t('providers.echo.features.instant'),  
+    t('providers.echo.features.generates'),
+    t('providers.echo.features.streamlines')
   ];
 
   const aiIcons = [Bot, AudioVisualizer, Waveform, EqualizerBars];
@@ -229,11 +232,10 @@ export const EchoProviderSection = () => {
           </motion.div>
           <AnimatedText className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Intelligence That Amplifies Your Practice
+              {t('providers.echo.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our proprietary voice-enabled AI specializes in healthcare financing 
-              to amplify your practice's potential and maximize patient acceptance.
+              {t('providers.echo.description')}
             </p>
           </AnimatedText>
         </div>
@@ -253,7 +255,7 @@ export const EchoProviderSection = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
-            Get Started
+            {t('providers.echo.getStarted')}
           </Button>
         </motion.div>
       </div>
