@@ -67,7 +67,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
           <h1 className="text-5xl font-bold mb-6 text-foreground leading-none mobile-landscape-text">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-3xl text-navy font-semibold mb-6">
+          <h2 className="block text-3xl text-navy font-semibold mb-6 mobile-landscape-subtitle">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
