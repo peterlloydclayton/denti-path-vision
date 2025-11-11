@@ -266,8 +266,8 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
   }
 
-  /* Mobile Landscape - Target devices in landscape with limited height (mobile phones) */
-  @media screen and (orientation: landscape) and (max-height: 600px) {
+  /* Landscape Mode - Apply to any screen in landscape orientation */
+  @media screen and (orientation: landscape) {
     /* Scale down hero images for landscape */
     .hero-image {
       height: 65vh !important;
