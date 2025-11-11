@@ -83,16 +83,14 @@ export const ProviderSearch = () => {
     setLoading(true);
     try {
       const data = await getActiveProviders();
-      // Geocode provider addresses using proper location data
-      const providersWithCoords = await Promise.all(
-        data.map(async (provider) => {
-          const fullAddress = getAddressForGeocoding(provider);
-          const coordinates = fullAddress ? await geocodeAddress(fullAddress) : null;
-          return { ...provider, coordinates };
-        })
-      );
-      setProviders(providersWithCoords);
-      setFilteredProviders(providersWithCoords);
+      if (data.length === 0) {
+        toast({
+          title: "No Providers Available",
+          description: "Provider directory is currently being set up. Check back soon!",
+        });
+      }
+      setProviders(data);
+      setFilteredProviders(data);
     } catch (error) {
       toast({
         title: "Error",
