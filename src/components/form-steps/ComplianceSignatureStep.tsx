@@ -51,7 +51,12 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
       title: t('form.compliance.agreementTitle'),
       content: t('form.compliance.agreementContent')
     });
-  }, [t]);
+    
+    // Pre-fill email from form data
+    if (formData.email && !signerEmail) {
+      setSignerEmail(formData.email);
+    }
+  }, [t, formData.email, signerEmail]);
 
   const handleSign = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -206,7 +211,7 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         <CardContent className="space-y-4">
           {!allComplianceChecked && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm dark:bg-red-950/30 dark:border-red-900 dark:text-red-400">
-              We need your consent to process your application
+              Please check all consent requests. We need your consent to process your application
             </div>
           )}
           
@@ -289,7 +294,8 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
                   type="text"
                   value={signerName}
                   onChange={(e) => setSignerName(e.target.value)}
-                  placeholder="John Michael Doe"
+                  placeholder="Please Type Your Full Legal Name"
+                  className="placeholder:text-muted-foreground/60"
                   required
                 />
                 {signerName && (
