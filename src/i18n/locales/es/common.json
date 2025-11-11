@@ -101,7 +101,14 @@
       "6MonthsTo1Year": "6 meses - 1 año",
       "1To2Years": "1 - 2 años",
       "2To5Years": "2 - 5 años",
-      "5PlusYears": "5+ años"
+      "5PlusYears": "5+ años",
+      "referralInformation": "Información de Referencia",
+      "referralDescription": "Por favor proporcione información sobre su consultorio dental de referencia",
+      "referringPractice": "Consultorio / Oficina Dental de Referencia",
+      "referringProviderName": "Nombre del Proveedor de Referencia",
+      "referringContactInfo": "Información de Contacto de Referencia",
+      "referringProviderEmail": "Correo Electrónico del Proveedor de Referencia",
+      "estimatedTreatmentCost": "Costo Estimado del Tratamiento"
     },
     "employment": {
       "title": "Empleo e Ingresos",

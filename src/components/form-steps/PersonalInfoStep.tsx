@@ -46,6 +46,12 @@ const personalInfoSchema = z.object({
   emergency_contact_name: z.string().min(1, "Emergency contact name is required"),
   emergency_contact_relationship: z.string().min(1, "Emergency contact relationship is required"),
   emergency_contact_phone: z.string().regex(/^\d{10}$/, "Emergency contact phone must be exactly 10 digits"),
+  // Referral Information
+  referring_practice: z.string().min(1, "Referring practice is required"),
+  referring_provider_name: z.string().optional(),
+  referring_contact_info: z.string().optional(),
+  referring_provider_email: z.string().email("Valid email is required").optional().or(z.literal('')),
+  estimated_treatment_cost: z.string().min(1, "Estimated treatment cost is required"),
 });
 
 const isLeapYear = (year: number): boolean => {
@@ -662,6 +668,91 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               </FormItem>
             )}
           />
+        </div>
+
+        {/* Referral Information Section */}
+        <div className="pt-6 border-t">
+          <h3 className="text-lg font-semibold mb-4">{t('form.personal.referralInformation')}</h3>
+          <p className="text-sm text-muted-foreground mb-4">{t('form.personal.referralDescription')}</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField
+              control={form.control}
+              name="referring_practice"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('form.personal.referringPractice')} *</FormLabel>
+                  <FormControl>
+                    <Input placeholder="ABC Dental Group" {...field} />
+                  </FormControl>
+                  {showErrors && <FormMessage />}
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="referring_provider_name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('form.personal.referringProviderName')}</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Dr. John Smith" {...field} />
+                  </FormControl>
+                  {showErrors && <FormMessage />}
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="referring_contact_info"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('form.personal.referringContactInfo')}</FormLabel>
+                  <FormControl>
+                    <Input placeholder="(555) 123-4567 or contact@example.com" {...field} />
+                  </FormControl>
+                  {showErrors && <FormMessage />}
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="referring_provider_email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('form.personal.referringProviderEmail')}</FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="doctor@dentalpractice.com" {...field} />
+                  </FormControl>
+                  {showErrors && <FormMessage />}
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="estimated_treatment_cost"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('form.personal.estimatedTreatmentCost')} *</FormLabel>
+                  <FormControl>
+                    <Input 
+                      placeholder="$5,000" 
+                      {...field}
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/[^\d.]/g, '');
+                        field.onChange(value);
+                      }}
+                    />
+                  </FormControl>
+                  {showErrors && <FormMessage />}
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
 
         <div className="flex justify-between pt-6">

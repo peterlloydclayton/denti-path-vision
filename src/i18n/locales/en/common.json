@@ -101,7 +101,14 @@
       "6MonthsTo1Year": "6 months - 1 year",
       "1To2Years": "1 - 2 years",
       "2To5Years": "2 - 5 years",
-      "5PlusYears": "5+ years"
+      "5PlusYears": "5+ years",
+      "referralInformation": "Referral Information",
+      "referralDescription": "Please provide information about your referring dental practice",
+      "referringPractice": "Referring Practice / Dental Office",
+      "referringProviderName": "Referring Provider Name",
+      "referringContactInfo": "Referring Contact Information",
+      "referringProviderEmail": "Referring Provider Email",
+      "estimatedTreatmentCost": "Estimated Treatment Cost"
     },
     "employment": {
       "title": "Employment & Income",

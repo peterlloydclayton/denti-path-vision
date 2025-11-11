@@ -96,8 +96,10 @@ export type Database = {
           monthly_income: number | null
           mortgage_rent: number | null
           other_income: number | null
+          referring_contact_info: string | null
           referring_practice: string | null
           referring_provider_email: string | null
+          referring_provider_name: string | null
           signature_data: Json | null
           ssn: string | null
           state: string | null
@@ -123,8 +125,10 @@ export type Database = {
           monthly_income?: number | null
           mortgage_rent?: number | null
           other_income?: number | null
+          referring_contact_info?: string | null
           referring_practice?: string | null
           referring_provider_email?: string | null
+          referring_provider_name?: string | null
           signature_data?: Json | null
           ssn?: string | null
           state?: string | null
@@ -150,8 +154,10 @@ export type Database = {
           monthly_income?: number | null
           mortgage_rent?: number | null
           other_income?: number | null
+          referring_contact_info?: string | null
           referring_practice?: string | null
           referring_provider_email?: string | null
+          referring_provider_name?: string | null
           signature_data?: Json | null
           ssn?: string | null
           state?: string | null
