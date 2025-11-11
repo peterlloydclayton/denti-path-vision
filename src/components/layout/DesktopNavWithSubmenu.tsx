@@ -8,11 +8,8 @@ import { LanguageSelector } from '@/components/ui/language-selector';
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 
 const navItems = [
@@ -42,6 +39,7 @@ export const DesktopNavWithSubmenu = () => {
   const isMobile = useIsMobile();
   const [scrolled, setScrolled] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,13 +50,22 @@ export const DesktopNavWithSubmenu = () => {
       setCurrentPath(window.location.pathname);
     };
     
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('nav')) {
+        setOpenSubmenu(null);
+      }
+    };
+    
     updatePath();
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('popstate', updatePath);
+    document.addEventListener('click', handleClickOutside);
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('popstate', updatePath);
+      document.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
@@ -101,9 +108,10 @@ export const DesktopNavWithSubmenu = () => {
               const isActive = currentPath === item.href || (item.submenu && item.submenu.some(sub => currentPath === sub.href));
               
               if (item.submenu) {
+                const isSubmenuOpen = openSubmenu === item.href;
                 return (
-                  <NavigationMenuItem key={item.href}>
-                    <NavigationMenuTrigger
+                  <NavigationMenuItem key={item.href} value={item.href}>
+                    <button
                       className={`
                         flex items-center gap-2 px-4 py-2 rounded-xl
                         transition-smooth font-medium text-lg
@@ -112,33 +120,42 @@ export const DesktopNavWithSubmenu = () => {
                           : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
                         }
                       `}
-                      onClick={() => {
-                        setCurrentPath(item.href);
-                        navigate(item.href);
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setOpenSubmenu(isSubmenuOpen ? null : item.href);
                       }}
+                      onPointerEnter={(e) => e.preventDefault()}
+                      onPointerMove={(e) => e.preventDefault()}
+                      onPointerLeave={(e) => e.preventDefault()}
                     >
                       <Icon size={16} />
                       <span>{t(item.label)}</span>
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="w-48 p-2 bg-background border shadow-lg rounded-lg -ml-4">
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform ${isSubmenuOpen ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                    {isSubmenuOpen && (
+                      <div className="absolute top-full mt-2 w-48 p-2 bg-popover border shadow-lg rounded-lg z-50">
                         {item.submenu.map((subItem) => {
                           const SubIcon = subItem.icon;
                           return (
-                            <NavigationMenuLink key={subItem.href} asChild>
-                              <Link
-                                to={subItem.href}
-                                onClick={() => setCurrentPath(subItem.href)}
-                                className="flex items-center gap-2 px-4 py-3 rounded-md text-lg hover:bg-secondary transition-smooth"
-                              >
-                                <SubIcon size={16} className="text-muted-foreground" />
-                                <span>{subItem.label}</span>
-                              </Link>
-                            </NavigationMenuLink>
+                            <Link
+                              key={subItem.href}
+                              to={subItem.href}
+                              onClick={() => {
+                                setCurrentPath(subItem.href);
+                                setOpenSubmenu(null);
+                              }}
+                              className="flex items-center gap-2 px-4 py-3 rounded-md text-lg hover:bg-secondary transition-smooth"
+                            >
+                              <SubIcon size={16} className="text-muted-foreground" />
+                              <span>{subItem.label}</span>
+                            </Link>
                           );
                         })}
                       </div>
-                    </NavigationMenuContent>
+                    )}
                   </NavigationMenuItem>
                 );
               }
