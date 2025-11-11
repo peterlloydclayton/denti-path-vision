@@ -294,9 +294,9 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
       display: none !important;
     }
     
-    /* Position button at bottom left under title */
+    /* Position button at bottom left under title, lowered by 10% */
     .mobile-landscape-button {
-      bottom: 10% !important;
+      bottom: 0% !important;
       left: 5% !important;
       right: auto !important;
       top: auto !important;
