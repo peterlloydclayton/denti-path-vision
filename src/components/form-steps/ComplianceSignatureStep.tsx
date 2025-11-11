@@ -9,7 +9,7 @@ import { getUserIP, getUserAgent } from '@/utils/auditUtils';
 import { FormData } from '../MultiStepPatientForm';
 import { useToast } from '@/hooks/use-toast';
 import { CheckCircle } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
+import { supabase } from '@/integrations/supabase/client';
 
 interface ComplianceSignatureStepProps {
   formData: FormData;

@@ -1,9 +1,6 @@
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = 'https://epkypzawqtpokmatjuzo.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVwa3lwemF3cXRwb2ttYXRqdXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4ODc4MTgsImV4cCI6MjA3MTQ2MzgxOH0.QYx4QwYhBRHhMdfgmuHUHpWN2R1q7CetLCAS69w3yJU';
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// This file no longer exports the supabase client.
+// Import supabase from '@/integrations/supabase/client' instead.
+// This file only contains helper functions for provider search.
 
 export interface PublicProviderProfile {
   id: string;
@@ -36,7 +33,15 @@ export interface PublicProviderProfile {
   updated_at: string;
 }
 
+// Sanitize search input to prevent SQL injection
+const sanitizeSearch = (term: string): string => {
+  return term.replace(/[%_]/g, '\\$&').slice(0, 100);
+};
+
 export const getActiveProviders = async (searchTerm?: string, city?: string) => {
+  // Import supabase locally to avoid circular dependencies
+  const { supabase } = await import('@/integrations/supabase/client');
+  
   let query = supabase
     .from('public_provider_profiles')
     .select(`
@@ -50,11 +55,13 @@ export const getActiveProviders = async (searchTerm?: string, city?: string) => 
     .eq('is_active', true);
 
   if (searchTerm) {
-    query = query.or(`full_name.ilike.%${searchTerm}%,practice_name.ilike.%${searchTerm}%,business_location.ilike.%${searchTerm}%`);
+    const safeTerm = sanitizeSearch(searchTerm);
+    query = query.or(`full_name.ilike.%${safeTerm}%,practice_name.ilike.%${safeTerm}%,business_location.ilike.%${safeTerm}%`);
   }
 
   if (city) {
-    query = query.ilike('location.city', `%${city}%`);
+    const safeCity = sanitizeSearch(city);
+    query = query.ilike('location.city', `%${safeCity}%`);
   }
 
   const { data, error } = await query;

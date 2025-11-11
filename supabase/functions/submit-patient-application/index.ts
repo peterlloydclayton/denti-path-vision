@@ -1,8 +1,37 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+
+// Rate limiting: Store IP addresses and their request timestamps
+const rateLimit = new Map<string, number[]>();
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const requests = rateLimit.get(ip) || [];
+  const recent = requests.filter(t => now - t < 3600000); // Last hour
+  
+  if (recent.length >= 5) { // Max 5 submissions per hour
+    console.log(`Rate limit exceeded for IP: ${ip}`);
+    return false;
+  }
+  
+  rateLimit.set(ip, [...recent, now]);
+  
+  // Clean up old entries periodically
+  if (rateLimit.size > 1000) {
+    const cutoff = now - 3600000;
+    for (const [key, timestamps] of rateLimit.entries()) {
+      if (timestamps.every(t => t < cutoff)) {
+        rateLimit.delete(key);
+      }
+    }
+  }
+  
+  return true;
 }
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL')!
@@ -38,113 +67,116 @@ function isOriginAllowed(origin: string): boolean {
   return ALLOWED_DOMAIN_PATTERNS.some(pattern => pattern.test(origin))
 }
 
-interface ApplicationData {
-  first_name: string
-  middle_name?: string
-  last_name: string
-  email: string
-  mobile_phone?: string
-  secondary_phone?: string
-  date_of_birth?: string
-  sex?: string
-  ssn?: string
-  ssn_last_four?: string
-  drivers_license?: string
-  marital_status?: string
-  home_street_address?: string
-  home_street_address_2?: string
-  home_city?: string
-  home_state?: string
-  home_zip?: string
-  time_at_address?: string
-  rent_or_own?: string
-  previous_address?: string
-  previous_street_address?: string
-  previous_street_address_2?: string
-  previous_city?: string
-  previous_state?: string
-  previous_zip?: string
-  emergency_contact_name?: string
-  emergency_contact_relationship?: string
-  emergency_contact_phone?: string
-  referring_practice?: string
-  referring_provider_name?: string
-  referring_contact_info?: string
-  referring_provider_email?: string
-  estimated_treatment_cost?: number
-  employment_status?: string
-  employer_name?: string
-  job_title?: string
-  work_phone?: string
-  length_of_employment?: string
-  monthly_income?: number
-  monthly_net_income?: number
-  pay_frequency?: string
-  secondary_income_sources?: string
-  household_total_income?: number
-  spouse_employer?: string
-  spouse_income?: number
-  years_at_job?: number
-  checking_balance?: number
-  savings_balance?: number
-  cash_on_hand?: number
-  investments?: number
-  retirement_accounts?: number
-  home_equity?: number
-  owned_vehicles?: number
-  business_ownership?: number
-  monthly_housing_cost?: number
-  mortgage_balance?: number
-  credit_card_balances?: number
-  auto_loans?: number
-  student_loans?: number
-  personal_loans?: number
-  medical_bills?: number
-  alimony_child_support?: number
-  credit_score?: number
-  open_credit_lines?: number
-  late_payments?: number
-  bankruptcy_history?: boolean
-  foreclosure_history?: boolean
-  recent_major_purchases?: string
-  considering_treatment_time?: string
-  priority_preference?: string
-  primary_reason?: string
-  expected_procedures?: string
-  estimated_cost?: number
-  timeline_urgency?: string
-  ready_to_proceed?: string
-  insurance_coverage?: string
-  financing_preferences?: string
-  previous_treatment?: string
-  comfort_discussing_financing?: number
-  pain_level?: number
-  primary_motivator?: string
-  decision_making_style?: string
-  confidence_impact?: string
-  obstacles?: string
-  others_involved?: string
-  trust_factors?: string
-  negative_experiences?: string
-  consent_credit_pull: boolean
-  target_payment_range?: string
-  commitment_level?: number
-  can_provide_proof?: boolean
-  comfort_auto_debit?: boolean
-  ready_for_call?: boolean
-  ready_for_deposit?: boolean
-  additional_info?: string
-  signature_data?: {
-    signer_name: string
-    signer_email: string
-    consent_given: boolean
-    ip_address: string
-    user_agent: string
-    document_hash: string
-    document_id: string
-    pdf_base64: string
-  }
-}
+// Comprehensive input validation schema
+const ApplicationSchema = z.object({
+  first_name: z.string().trim().min(1, 'First name required').max(100),
+  middle_name: z.string().trim().max(100).optional(),
+  last_name: z.string().trim().min(1, 'Last name required').max(100),
+  email: z.string().email('Invalid email').max(255),
+  mobile_phone: z.string().max(20).optional(),
+  secondary_phone: z.string().max(20).optional(),
+  date_of_birth: z.string().max(50).optional(),
+  sex: z.string().max(20).optional(),
+  ssn: z.string().regex(/^[\d-]*$/, 'Invalid SSN format').max(11).optional(),
+  ssn_last_four: z.string().regex(/^\d{0,4}$/, 'Invalid SSN last four').optional(),
+  drivers_license: z.string().max(50).optional(),
+  marital_status: z.string().max(50).optional(),
+  home_street_address: z.string().max(200).optional(),
+  home_street_address_2: z.string().max(200).optional(),
+  home_city: z.string().max(100).optional(),
+  home_state: z.string().max(50).optional(),
+  home_zip: z.string().max(20).optional(),
+  time_at_address: z.string().max(50).optional(),
+  rent_or_own: z.string().max(20).optional(),
+  previous_address: z.string().max(500).optional(),
+  previous_street_address: z.string().max(200).optional(),
+  previous_street_address_2: z.string().max(200).optional(),
+  previous_city: z.string().max(100).optional(),
+  previous_state: z.string().max(50).optional(),
+  previous_zip: z.string().max(20).optional(),
+  emergency_contact_name: z.string().max(200).optional(),
+  emergency_contact_relationship: z.string().max(50).optional(),
+  emergency_contact_phone: z.string().max(20).optional(),
+  referring_practice: z.string().max(200).optional(),
+  referring_provider_name: z.string().max(200).optional(),
+  referring_contact_info: z.string().max(500).optional(),
+  referring_provider_email: z.string().email('Invalid provider email').max(255).optional().or(z.literal('')),
+  estimated_treatment_cost: z.number().min(0).max(9999999).optional(),
+  employment_status: z.string().max(50).optional(),
+  employer_name: z.string().max(200).optional(),
+  job_title: z.string().max(100).optional(),
+  work_phone: z.string().max(20).optional(),
+  length_of_employment: z.string().max(50).optional(),
+  monthly_income: z.number().min(0).max(9999999).optional(),
+  monthly_net_income: z.number().min(0).max(9999999).optional(),
+  pay_frequency: z.string().max(50).optional(),
+  secondary_income_sources: z.string().max(500).optional(),
+  household_total_income: z.number().min(0).max(9999999).optional(),
+  spouse_employer: z.string().max(200).optional(),
+  spouse_income: z.number().min(0).max(9999999).optional(),
+  years_at_job: z.number().min(0).max(100).optional(),
+  checking_balance: z.number().min(0).max(9999999).optional(),
+  savings_balance: z.number().min(0).max(9999999).optional(),
+  cash_on_hand: z.number().min(0).max(9999999).optional(),
+  investments: z.number().min(0).max(9999999).optional(),
+  retirement_accounts: z.number().min(0).max(9999999).optional(),
+  home_equity: z.number().min(0).max(9999999).optional(),
+  owned_vehicles: z.number().min(0).max(9999999).optional(),
+  business_ownership: z.number().min(0).max(9999999).optional(),
+  monthly_housing_cost: z.number().min(0).max(9999999).optional(),
+  mortgage_balance: z.number().min(0).max(9999999).optional(),
+  credit_card_balances: z.number().min(0).max(9999999).optional(),
+  auto_loans: z.number().min(0).max(9999999).optional(),
+  student_loans: z.number().min(0).max(9999999).optional(),
+  personal_loans: z.number().min(0).max(9999999).optional(),
+  medical_bills: z.number().min(0).max(9999999).optional(),
+  alimony_child_support: z.number().min(0).max(9999999).optional(),
+  credit_score: z.number().min(300).max(850).optional(),
+  open_credit_lines: z.number().min(0).max(100).optional(),
+  late_payments: z.number().min(0).max(100).optional(),
+  bankruptcy_history: z.boolean().optional(),
+  foreclosure_history: z.boolean().optional(),
+  recent_major_purchases: z.string().max(1000).optional(),
+  considering_treatment_time: z.string().max(100).optional(),
+  priority_preference: z.string().max(100).optional(),
+  primary_reason: z.string().max(500).optional(),
+  expected_procedures: z.string().max(500).optional(),
+  estimated_cost: z.number().min(0).max(9999999).optional(),
+  timeline_urgency: z.string().max(100).optional(),
+  ready_to_proceed: z.string().max(50).optional(),
+  insurance_coverage: z.string().max(500).optional(),
+  financing_preferences: z.string().max(500).optional(),
+  previous_treatment: z.string().max(500).optional(),
+  comfort_discussing_financing: z.number().min(0).max(10).optional(),
+  pain_level: z.number().min(0).max(10).optional(),
+  primary_motivator: z.string().max(200).optional(),
+  decision_making_style: z.string().max(200).optional(),
+  confidence_impact: z.string().max(200).optional(),
+  obstacles: z.string().max(1000).optional(),
+  others_involved: z.string().max(500).optional(),
+  trust_factors: z.string().max(500).optional(),
+  negative_experiences: z.string().max(1000).optional(),
+  consent_credit_pull: z.boolean(),
+  target_payment_range: z.string().max(100).optional(),
+  commitment_level: z.number().min(0).max(10).optional(),
+  can_provide_proof: z.boolean().optional(),
+  comfort_auto_debit: z.boolean().optional(),
+  ready_for_call: z.boolean().optional(),
+  ready_for_deposit: z.boolean().optional(),
+  additional_info: z.string().max(2000).optional(),
+  signature_data: z.object({
+    signer_name: z.string().max(200),
+    signer_email: z.string().email().max(255),
+    consent_given: z.boolean(),
+    ip_address: z.string().max(100),
+    user_agent: z.string().max(500),
+    document_hash: z.string().max(200),
+    document_id: z.string().max(100),
+    pdf_base64: z.string()
+  }).optional()
+})
+
+type ApplicationData = z.infer<typeof ApplicationSchema>
 
 Deno.serve(async (req) => {
   // Handle CORS preflight requests
@@ -155,8 +187,45 @@ Deno.serve(async (req) => {
   try {
     console.log('=== Submit Patient Application Started ===')
     
-    const applicationData: ApplicationData = await req.json()
-    console.log('Application data received for:', `${applicationData.first_name} ${applicationData.last_name}`)
+    // Rate limiting check
+    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+                     req.headers.get('x-real-ip') || 
+                     'unknown';
+    
+    if (!checkRateLimit(clientIP)) {
+      console.log(`Rate limit exceeded for IP: ${clientIP}`);
+      return new Response(
+        JSON.stringify({ error: 'Too many requests. Please try again later.' }),
+        { 
+          status: 429, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      )
+    }
+    
+    // Parse and validate input data
+    const rawData = await req.json()
+    
+    let applicationData: ApplicationData;
+    try {
+      applicationData = ApplicationSchema.parse(rawData)
+      console.log('Application data validated for:', `${applicationData.first_name} ${applicationData.last_name}`)
+    } catch (validationError) {
+      console.error('Validation error:', validationError)
+      if (validationError instanceof z.ZodError) {
+        return new Response(
+          JSON.stringify({ 
+            error: 'Invalid application data',
+            details: validationError.errors.map(e => `${e.path.join('.')}: ${e.message}`).join(', ')
+          }),
+          { 
+            status: 400, 
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+          }
+        )
+      }
+      throw validationError
+    }
 
     // Remove signature_data from the application data before inserting
     const { signature_data, ...dbApplicationData } = applicationData
