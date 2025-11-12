@@ -1,1 +1,4 @@
 project_id = "oqrvskdtvaykqkclpgew"
+
+[functions.submit-patient-application]
+verify_jwt = false
