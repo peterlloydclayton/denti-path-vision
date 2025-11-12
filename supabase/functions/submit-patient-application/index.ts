@@ -289,7 +289,7 @@ Deno.serve(async (req) => {
           </div>
         `;
 
-        await fetch(mailjetUrl, {
+        const adminEmailResponse = await fetch(mailjetUrl, {
           method: 'POST',
           headers: {
             'Authorization': `Basic ${auth}`,
@@ -315,6 +315,14 @@ Deno.serve(async (req) => {
           })
         });
 
+        const adminEmailResult = await adminEmailResponse.json();
+        console.log("Mailjet admin email response:", JSON.stringify(adminEmailResult));
+        
+        if (!adminEmailResponse.ok) {
+          console.error("Mailjet admin email failed:", adminEmailResult);
+          throw new Error(`Mailjet error: ${JSON.stringify(adminEmailResult)}`);
+        }
+        
         console.log("Admin notification email sent successfully via Mailjet");
 
       } else {
@@ -481,7 +489,7 @@ Deno.serve(async (req) => {
           </div>
         `;
 
-        await fetch(mailjetUrl, {
+        const patientEmailResponse = await fetch(mailjetUrl, {
           method: 'POST',
           headers: {
             'Authorization': `Basic ${auth}`,
@@ -504,6 +512,14 @@ Deno.serve(async (req) => {
           })
         });
 
+        const patientEmailResult = await patientEmailResponse.json();
+        console.log("Mailjet patient email response:", JSON.stringify(patientEmailResult));
+        
+        if (!patientEmailResponse.ok) {
+          console.error("Mailjet patient email failed:", patientEmailResult);
+          throw new Error(`Mailjet error: ${JSON.stringify(patientEmailResult)}`);
+        }
+        
         console.log("Patient thank you email sent successfully");
       }
     } catch (patientEmailError) {
