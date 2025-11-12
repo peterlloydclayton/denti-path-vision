@@ -87,16 +87,16 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       </div>
       
       {/* Desktop Buttons - moved down 15% more, aligned with text */}
-      <div className="hidden md:block absolute top-[70%] left-12 z-[120]">
-        <div className="flex gap-4">
+      <div className="hidden md:block absolute top-[70%] max-h-[800px]:top-[75%] max-h-[700px]:top-[78%] left-12 z-[120]">
+        <div className="flex gap-4 max-h-[700px]:gap-2">
           <Button 
-            className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-16 max-h-[700px]:h-12 text-xl max-h-[700px]:text-base bg-black hover:bg-black/90 text-white shadow-elegant px-12 max-h-[700px]:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
             onClick={() => navigate('/patients')}
           >
             {t('home.hero.ctaPatients')}
           </Button>
           <Button 
-            className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-16 max-h-[700px]:h-12 text-xl max-h-[700px]:text-base bg-black hover:bg-black/90 text-white shadow-elegant px-12 max-h-[700px]:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
             onClick={() => navigate('/providers')}
           >
             {t('home.hero.ctaProviders')}
