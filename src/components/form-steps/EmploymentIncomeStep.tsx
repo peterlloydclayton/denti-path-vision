@@ -27,13 +27,31 @@ const employmentIncomeSchema = z.object({
   job_title: z.string().min(1, "Job title is required"),
   employment_type: z.string().min(1, "Employment type is required"),
   length_of_employment: z.string().min(1, "Length of employment is required"),
-  monthly_gross_income: z.string().min(1, "Monthly gross income is required"),
-  monthly_net_income: z.string().min(1, "Monthly net income is required"),
+  monthly_gross_income: z.string().min(1, "Monthly gross income is required")
+    .refine((val) => {
+      const num = parseFloat(val);
+      return !isNaN(num) && num >= 0 && num <= 999999999;
+    }, { message: "Monthly gross income must be between 0 and 999,999,999" }),
+  monthly_net_income: z.string().min(1, "Monthly net income is required")
+    .refine((val) => {
+      const num = parseFloat(val);
+      return !isNaN(num) && num >= 0 && num <= 999999999;
+    }, { message: "Monthly net income must be between 0 and 999,999,999" }),
   pay_frequency: z.string().min(1, "Pay frequency is required"),
   secondary_income_sources: z.string().optional(),
-  household_total_income: z.string().optional(),
+  household_total_income: z.string().optional()
+    .refine((val) => {
+      if (!val || val === '') return true;
+      const num = parseFloat(val);
+      return !isNaN(num) && num >= 0 && num <= 999999999;
+    }, { message: "Household income must be between 0 and 999,999,999" }),
   spouse_employer: z.string().optional(),
-  spouse_income: z.string().optional(),
+  spouse_income: z.string().optional()
+    .refine((val) => {
+      if (!val || val === '') return true;
+      const num = parseFloat(val);
+      return !isNaN(num) && num >= 0 && num <= 999999999;
+    }, { message: "Spouse income must be between 0 and 999,999,999" }),
 });
 
 const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({ 

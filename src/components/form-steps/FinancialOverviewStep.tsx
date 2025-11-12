@@ -21,11 +21,34 @@ interface FinancialOverviewStepProps {
 }
 
 const financialOverviewSchema = z.object({
-  checking_balance: z.string().min(1, 'Checking account balance is required'),
-  savings_balance: z.string().optional(),
-  retirement_accounts: z.string().optional(),
-  investment_accounts: z.string().optional(),
-  mortgage_rent_payment: z.string().min(1, 'Mortgage/rent payment is required'),
+  checking_balance: z.string().min(1, 'Checking account balance is required')
+    .refine((val) => {
+      const num = parseFloat(val);
+      return !isNaN(num) && num >= 0 && num <= 999999999;
+    }, { message: "Checking balance must be between 0 and 999,999,999" }),
+  savings_balance: z.string().optional()
+    .refine((val) => {
+      if (!val || val === '') return true;
+      const num = parseFloat(val);
+      return !isNaN(num) && num >= 0 && num <= 999999999;
+    }, { message: "Savings balance must be between 0 and 999,999,999" }),
+  retirement_accounts: z.string().optional()
+    .refine((val) => {
+      if (!val || val === '') return true;
+      const num = parseFloat(val);
+      return !isNaN(num) && num >= 0 && num <= 999999999;
+    }, { message: "Retirement accounts must be between 0 and 999,999,999" }),
+  investment_accounts: z.string().optional()
+    .refine((val) => {
+      if (!val || val === '') return true;
+      const num = parseFloat(val);
+      return !isNaN(num) && num >= 0 && num <= 999999999;
+    }, { message: "Investment accounts must be between 0 and 999,999,999" }),
+  mortgage_rent_payment: z.string().min(1, 'Mortgage/rent payment is required')
+    .refine((val) => {
+      const num = parseFloat(val);
+      return !isNaN(num) && num >= 0 && num <= 999999999;
+    }, { message: "Mortgage/rent payment must be between 0 and 999,999,999" }),
   credit_score: z.string().optional(),
   credit_score_unknown: z.boolean(),
 }).refine((data) => {
