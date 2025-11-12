@@ -75,25 +75,25 @@ export const HeroSection = () => {
       </div>
       
       {/* Mobile Portrait Title */}
-      <div className="block sm:hidden absolute top-[15%] left-6 z-[130] w-3/4 mobile-landscape-title">
+      <div className="block sm:hidden absolute top-[15%] left-6 z-[130] w-3/4">
         <AnimatedText>
-          <h1 className="text-5xl font-bold mb-6 text-dental-blue leading-none mobile-landscape-text">
+          <h1 className="text-5xl font-bold text-dental-blue leading-none">
             {t('about.hero.title')}
           </h1>
         </AnimatedText>
       </div>
       
-      {/* Desktop & Tablet Title */}
-      <div className="hidden md:block absolute top-[13%] lg:top-[20%] left-12 z-[130] w-[90%] lg:w-1/2">
+      {/* Tablet & Desktop Title - More responsive sizing */}
+      <div className="hidden sm:block absolute top-[13%] md:top-[15%] lg:top-[20%] left-6 sm:left-8 md:left-12 z-[130] w-[85%] sm:w-[75%] md:w-[70%] lg:w-1/2">
         <AnimatedText>
-          <h1 className="text-hero-mobile md:text-hero font-bold text-dental-blue">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-hero font-bold text-dental-blue leading-tight">
             {t('about.hero.title')}
           </h1>
         </AnimatedText>
       </div>
       
-      {/* Desktop Subtitle */}
-      <div className="hidden md:block absolute top-[65%] left-12 z-[130] w-2/5">
+      {/* Subtitle - Only show on larger screens where there's space */}
+      <div className="hidden xl:block absolute top-[50%] left-12 z-[130] w-2/5">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-dental-blue/80 font-medium leading-relaxed text-left">
             {t('about.hero.subtitle')}
@@ -101,18 +101,17 @@ export const HeroSection = () => {
         </AnimatedText>
       </div>
       
-      
-      {/* Desktop Button */}
-      <div className="hidden md:block absolute top-[80%] max-h-[800px]:top-[85%] max-h-[700px]:top-[88%] left-12 z-[120]">
+      {/* Tablet & Desktop Button - Using bottom positioning to avoid overlap */}
+      <div className="hidden sm:block absolute bottom-[12%] md:bottom-[15%] lg:bottom-[12%] left-6 sm:left-8 md:left-12 z-[130]">
         <Button 
-          className="h-16 text-xl bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+          className="h-12 sm:h-14 md:h-16 text-base sm:text-lg md:text-xl bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 sm:px-10 md:px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
           {t('about.hero.cta')}
         </Button>
       </div>
 
       {/* Mobile Portrait Button */}
-      <div className={`block sm:hidden absolute ${isSpanish ? 'top-[57%]' : 'top-[52%]'} left-6 z-[150] mobile-landscape-button`}>
+      <div className={`block sm:hidden absolute ${isSpanish ? 'top-[57%]' : 'top-[52%]'} left-6 z-[130]`}>
         <Button 
           className="h-12 text-lg bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
