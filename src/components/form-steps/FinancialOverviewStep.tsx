@@ -85,6 +85,7 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                       <Input 
                         type="number" 
                         min="0" 
+                        max="999999999"
                         step="0.01" 
                         placeholder="5000.00" 
                         {...field} 
@@ -105,6 +106,7 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                       <Input 
                         type="number" 
                         min="0" 
+                        max="999999999"
                         step="0.01" 
                         placeholder="10000.00" 
                         {...field} 
@@ -125,6 +127,7 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                       <Input 
                         type="number" 
                         min="0" 
+                        max="999999999"
                         step="0.01" 
                         placeholder="50000.00" 
                         {...field} 
@@ -145,6 +148,7 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                       <Input 
                         type="number" 
                         min="0" 
+                        max="999999999"
                         step="0.01" 
                         placeholder="25000.00" 
                         {...field} 
@@ -169,6 +173,7 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
+                      max="999999999"
                       step="0.01" 
                       placeholder="1200.00" 
                       {...field} 

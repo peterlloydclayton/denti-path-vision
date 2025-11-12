@@ -193,6 +193,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
+                      max="999999999"
                       step="0.01" 
                       placeholder="5000.00" 
                       {...field} 
@@ -213,6 +214,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
+                      max="999999999"
                       step="0.01" 
                       placeholder="4000.00" 
                       {...field} 
@@ -277,6 +279,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
+                      max="999999999"
                       step="0.01" 
                       placeholder="8000.00" 
                       {...field} 
@@ -311,6 +314,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
+                      max="999999999"
                       step="0.01" 
                       placeholder="3000.00" 
                       {...field} 

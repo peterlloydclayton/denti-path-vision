@@ -87,6 +87,7 @@ export type Database = {
           checking_balance: number | null
           checking_savings: number | null
           city: string | null
+          consent_credit_pull: boolean | null
           created_at: string | null
           credit_card_balances: number | null
           credit_cards: number | null
@@ -134,6 +135,7 @@ export type Database = {
           checking_balance?: number | null
           checking_savings?: number | null
           city?: string | null
+          consent_credit_pull?: boolean | null
           created_at?: string | null
           credit_card_balances?: number | null
           credit_cards?: number | null
@@ -181,6 +183,7 @@ export type Database = {
           checking_balance?: number | null
           checking_savings?: number | null
           city?: string | null
+          consent_credit_pull?: boolean | null
           created_at?: string | null
           credit_card_balances?: number | null
           credit_cards?: number | null

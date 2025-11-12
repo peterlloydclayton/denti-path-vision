@@ -156,6 +156,7 @@ const ApplicationSchema = z.object({
   others_involved: z.string().max(500).optional(),
   trust_factors: z.string().max(500).optional(),
   negative_experiences: z.string().max(1000).optional(),
+  consent_credit_pull: z.boolean(),
   target_payment_range: z.string().max(100).optional(),
   commitment_level: z.number().min(0).max(10).optional(),
   can_provide_proof: z.boolean().optional(),

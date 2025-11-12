@@ -127,6 +127,7 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         primary_reason: formData.treatment_reason.join(', '),
         timeline_urgency: formData.urgency_scale,
         ready_to_proceed: formData.ready_to_proceed,
+        consent_credit_pull: formData.authorize_credit_report,
         redirect_url: 'https://dental-docs-hub.lovable.app',
         signature_data: {
           signer_name: signerName,
