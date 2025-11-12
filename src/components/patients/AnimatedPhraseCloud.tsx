@@ -2,23 +2,23 @@ import { motion } from 'framer-motion';
 
 export const AnimatedPhraseCloud = () => {
   const phrases = [
-    // Main stats - responsive sizes
-    { text: "1,200+ Verified providers nationwide", size: "text-xl sm:text-2xl lg:text-4xl", speed: 30 },
-    { text: "4.8/5 Average provider rating", size: "text-lg sm:text-xl lg:text-3xl", speed: 25 },
-    { text: "All Specialties covered", size: "text-2xl sm:text-3xl lg:text-5xl", speed: 35 },
-    { text: "Same-Day Treatment starts available", size: "text-base sm:text-lg lg:text-2xl", speed: 28 },
-    { text: "Instant Pre-Approval", size: "text-xl sm:text-2xl lg:text-4xl", speed: 29 },
-    { text: "Flexible Payments", size: "text-lg sm:text-xl lg:text-3xl", speed: 27 },
-    { text: "24/7 Support", size: "text-base sm:text-lg lg:text-2xl", speed: 31 },
-    { text: "Credit Building Opportunity", size: "text-lg sm:text-xl lg:text-3xl", speed: 23 },
+    // Main stats - with landscape-specific sizing
+    { text: "1,200+ Verified providers nationwide", size: "text-sm landscape:text-base lg:text-4xl", speed: 30 },
+    { text: "4.8/5 Average provider rating", size: "text-xs landscape:text-sm lg:text-3xl", speed: 25 },
+    { text: "All Specialties covered", size: "text-base landscape:text-lg lg:text-5xl", speed: 35 },
+    { text: "Same-Day Treatment starts available", size: "text-xs landscape:text-sm lg:text-2xl", speed: 28 },
+    { text: "Instant Pre-Approval", size: "text-sm landscape:text-base lg:text-4xl", speed: 29 },
+    { text: "Flexible Payments", size: "text-xs landscape:text-sm lg:text-3xl", speed: 27 },
+    { text: "24/7 Support", size: "text-xs landscape:text-sm lg:text-2xl", speed: 31 },
+    { text: "Credit Building Opportunity", size: "text-xs landscape:text-sm lg:text-3xl", speed: 23 },
     
     // Supporting phrases for visual richness
-    { text: "Pre-screened dental professionals", size: "text-sm sm:text-base lg:text-xl", speed: 20 },
-    { text: "Consistent high-quality experience", size: "text-base sm:text-lg lg:text-2xl", speed: 32 },
-    { text: "Standardized financial processes", size: "text-xs sm:text-sm lg:text-lg", speed: 18 },
-    { text: "Guaranteed pricing transparency", size: "text-lg sm:text-xl lg:text-3xl", speed: 26 },
-    { text: "Trusted network nationwide", size: "text-xl sm:text-2xl lg:text-4xl", speed: 33 },
-    { text: "Quality care guaranteed", size: "text-base sm:text-lg lg:text-2xl", speed: 24 },
+    { text: "Pre-screened dental professionals", size: "text-xs landscape:text-xs lg:text-xl", speed: 20 },
+    { text: "Consistent high-quality experience", size: "text-xs landscape:text-sm lg:text-2xl", speed: 32 },
+    { text: "Standardized financial processes", size: "text-[10px] landscape:text-xs lg:text-lg", speed: 18 },
+    { text: "Guaranteed pricing transparency", size: "text-xs landscape:text-sm lg:text-3xl", speed: 26 },
+    { text: "Trusted network nationwide", size: "text-sm landscape:text-base lg:text-4xl", speed: 33 },
+    { text: "Quality care guaranteed", size: "text-xs landscape:text-sm lg:text-2xl", speed: 24 },
   ];
 
   // Create six rows with different phrases
@@ -59,7 +59,7 @@ export const AnimatedPhraseCloud = () => {
               delay: index * 0.1,
               ease: "easeOut"
             }}
-            className={`${phrase.size} font-bold text-dental-blue whitespace-nowrap px-4`}
+            className={`${phrase.size} font-bold text-dental-blue whitespace-nowrap px-2 landscape:px-3 lg:px-4`}
           >
             {phrase.text}
           </motion.span>
@@ -69,8 +69,8 @@ export const AnimatedPhraseCloud = () => {
   );
 
   return (
-    <div className="py-6 sm:py-8 lg:py-12 overflow-hidden">
-      <div className="space-y-3 sm:space-y-4 lg:space-y-8">
+    <div className="py-4 landscape:py-3 lg:py-12 overflow-hidden">
+      <div className="space-y-2 landscape:space-y-1.5 lg:space-y-8">
         {/* Row 1 - Moving right to left */}
         <ScrollingRow 
           phrases={row1} 
