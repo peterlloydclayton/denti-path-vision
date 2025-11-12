@@ -62,12 +62,12 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       </div>
       
       {/* Mobile Portrait Title */}
-      <div className="block sm:hidden absolute top-[12%] left-6 z-20 w-3/4 mobile-landscape-title">
+      <div className="block sm:hidden absolute top-[12%] landscape:top-[8%] left-6 landscape:left-4 z-20 w-3/4 landscape:w-[45%]">
         <AnimatedText>
-          <h1 className="text-5xl font-bold mb-6 text-foreground leading-none mobile-landscape-text">
+          <h1 className="text-5xl landscape:text-2xl font-bold mb-6 landscape:mb-2 text-foreground leading-none landscape:leading-tight">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-3xl text-navy font-semibold mb-6 mobile-landscape-subtitle">
+          <h2 className="block text-3xl landscape:text-lg text-navy font-semibold mb-6 landscape:mb-2">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
@@ -114,16 +114,16 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       </div>
 
       {/* Mobile Portrait Buttons - Stacked vertically */}
-      <div className="block sm:hidden absolute top-[55%] left-6 z-[150] mobile-landscape-button">
-        <div className="flex flex-col gap-3">
+      <div className="block sm:hidden absolute top-[55%] landscape:top-[65%] left-6 landscape:left-4 z-[150]">
+        <div className="flex flex-col landscape:flex-row gap-3 landscape:gap-2">
           <Button 
-            className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-10 landscape:h-8 text-base landscape:text-sm bg-black hover:bg-black/90 text-white shadow-elegant px-4 landscape:px-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
             onClick={() => navigate('/patients')}
           >
             {t('home.hero.ctaPatients')}
           </Button>
           <Button 
-            className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-10 landscape:h-8 text-base landscape:text-sm bg-black hover:bg-black/90 text-white shadow-elegant px-4 landscape:px-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
             onClick={() => navigate('/providers')}
           >
             {t('home.hero.ctaProviders')}
