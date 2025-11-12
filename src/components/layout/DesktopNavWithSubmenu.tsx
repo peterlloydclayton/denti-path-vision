@@ -110,8 +110,15 @@ export const DesktopNavWithSubmenu = () => {
               if (item.submenu) {
                 const isSubmenuOpen = openSubmenu === item.href;
                 return (
-                  <NavigationMenuItem key={item.href} value={item.href}>
-                    <button
+                  <NavigationMenuItem 
+                    key={item.href} 
+                    value={item.href}
+                    onMouseEnter={() => setOpenSubmenu(item.href)}
+                    onMouseLeave={() => setOpenSubmenu(null)}
+                  >
+                    <Link
+                      to={item.href}
+                      onClick={() => setCurrentPath(item.href)}
                       className={`
                         flex items-center gap-2 px-4 py-2 rounded-xl
                         transition-smooth font-medium text-lg
@@ -120,13 +127,6 @@ export const DesktopNavWithSubmenu = () => {
                           : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
                         }
                       `}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setOpenSubmenu(isSubmenuOpen ? null : item.href);
-                      }}
-                      onPointerEnter={(e) => e.preventDefault()}
-                      onPointerMove={(e) => e.preventDefault()}
-                      onPointerLeave={(e) => e.preventDefault()}
                     >
                       <Icon size={16} />
                       <span>{t(item.label)}</span>
@@ -134,7 +134,7 @@ export const DesktopNavWithSubmenu = () => {
                         size={16}
                         className={`transition-transform ${isSubmenuOpen ? 'rotate-180' : ''}`}
                       />
-                    </button>
+                    </Link>
                     {isSubmenuOpen && (
                       <div className="absolute top-full mt-2 w-48 p-2 bg-popover border shadow-lg rounded-lg z-50">
                         {item.submenu.map((subItem) => {
