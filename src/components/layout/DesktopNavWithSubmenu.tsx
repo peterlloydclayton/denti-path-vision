@@ -113,12 +113,13 @@ export const DesktopNavWithSubmenu = () => {
                   <NavigationMenuItem 
                     key={item.href} 
                     value={item.href}
-                    onMouseEnter={() => setOpenSubmenu(item.href)}
-                    onMouseLeave={() => setOpenSubmenu(null)}
                   >
-                    <Link
-                      to={item.href}
-                      onClick={() => setCurrentPath(item.href)}
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setOpenSubmenu(isSubmenuOpen ? null : item.href);
+                      }}
                       className={`
                         flex items-center gap-2 px-4 py-2 rounded-xl
                         transition-smooth font-medium text-lg
@@ -134,7 +135,7 @@ export const DesktopNavWithSubmenu = () => {
                         size={16}
                         className={`transition-transform ${isSubmenuOpen ? 'rotate-180' : ''}`}
                       />
-                    </Link>
+                    </button>
                     {isSubmenuOpen && (
                       <div className="absolute top-full mt-2 w-48 p-2 bg-popover border shadow-lg rounded-lg z-50">
                         {item.submenu.map((subItem) => {
