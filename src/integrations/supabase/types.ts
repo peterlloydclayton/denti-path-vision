@@ -85,12 +85,10 @@ export type Database = {
           business_ownership: number | null
           cash_on_hand: number | null
           checking_balance: number | null
-          checking_savings: number | null
           city: string | null
           consent_credit_pull: boolean | null
           created_at: string | null
           credit_card_balances: number | null
-          credit_cards: number | null
           date_of_birth: string | null
           email: string
           employer_name: string | null
@@ -108,7 +106,6 @@ export type Database = {
           monthly_housing_cost: number | null
           monthly_income: number | null
           mortgage_balance: number | null
-          mortgage_rent: number | null
           open_credit_lines: number | null
           other_income: number | null
           owned_vehicles: number | null
@@ -133,12 +130,10 @@ export type Database = {
           business_ownership?: number | null
           cash_on_hand?: number | null
           checking_balance?: number | null
-          checking_savings?: number | null
           city?: string | null
           consent_credit_pull?: boolean | null
           created_at?: string | null
           credit_card_balances?: number | null
-          credit_cards?: number | null
           date_of_birth?: string | null
           email: string
           employer_name?: string | null
@@ -156,7 +151,6 @@ export type Database = {
           monthly_housing_cost?: number | null
           monthly_income?: number | null
           mortgage_balance?: number | null
-          mortgage_rent?: number | null
           open_credit_lines?: number | null
           other_income?: number | null
           owned_vehicles?: number | null
@@ -181,12 +175,10 @@ export type Database = {
           business_ownership?: number | null
           cash_on_hand?: number | null
           checking_balance?: number | null
-          checking_savings?: number | null
           city?: string | null
           consent_credit_pull?: boolean | null
           created_at?: string | null
           credit_card_balances?: number | null
-          credit_cards?: number | null
           date_of_birth?: string | null
           email?: string
           employer_name?: string | null
@@ -204,7 +196,6 @@ export type Database = {
           monthly_housing_cost?: number | null
           monthly_income?: number | null
           mortgage_balance?: number | null
-          mortgage_rent?: number | null
           open_credit_lines?: number | null
           other_income?: number | null
           owned_vehicles?: number | null
