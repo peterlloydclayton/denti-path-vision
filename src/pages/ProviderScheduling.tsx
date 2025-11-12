@@ -85,23 +85,6 @@ const ProviderScheduling = () => {
             />
           </motion.div>
 
-          {/* Bottom CTA Section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center mt-16"
-          >
-            <p className="text-muted-foreground mb-4">
-              {t('scheduling.contact')}{' '}
-              <a 
-                href="mailto:peter@mydentipay.com" 
-                className="text-primary hover:underline font-medium"
-              >
-                {t('scheduling.email')}
-              </a>
-            </p>
-          </motion.div>
         </div>
       </section>
     </div>
