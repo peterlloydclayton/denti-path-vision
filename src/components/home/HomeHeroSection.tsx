@@ -9,6 +9,7 @@ import { FloatingIcons } from '@/components/ui/floating-icons';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { PlayIntroButton } from '@/components/PlayIntroButton';
+
 const heroImage = 'https://res.cloudinary.com/drxvhwze4/image/upload/v1759199954/Dentist-female-african_nefprl.png';
 
 interface HomeHeroSectionProps {
@@ -18,126 +19,227 @@ interface HomeHeroSectionProps {
 export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
   const { t } = useTranslation('marketing');
   const navigate = useNavigate();
+
   return (
-    <section className="h-screen relative z-30 overflow-hidden">
+    <section className="hero-section relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/5">
       {/* Background */}
-      <div className="absolute inset-0 bg-dental-blue" style={{ height: '100vh' }}></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(var(--primary-rgb),0.1),transparent_50%)]" />
       
       {/* Floating Icons Background */}
       <FloatingIcons />
       
-      <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 lg:pb-24">
         {/* Desktop Layout */}
-        <div className="hidden lg:flex justify-center items-center min-h-screen">
-          <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-xl min-h-screen relative z-[100]">
-            <img 
+        <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-12rem)]">
+          <ScrollReveal className="space-y-6 xl:space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-4 xl:space-y-6"
+            >
+              <h1 className="text-4xl xl:text-6xl 2xl:text-7xl font-bold leading-tight text-foreground">
+                {t('home.hero.title')}
+              </h1>
+              <p className="text-xl xl:text-2xl 2xl:text-3xl text-primary font-semibold">
+                {t('home.hero.subtitle')}
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <MagneticButton>
+                <GlowButton
+                  onClick={() => navigate('/patients')}
+                  className="w-full sm:w-auto"
+                >
+                  {t('home.hero.ctaPatients')}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </GlowButton>
+              </MagneticButton>
+
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => navigate('/providers')}
+                className="w-full sm:w-auto group hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
+                {t('home.hero.ctaProviders')}
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="text-base xl:text-lg text-muted-foreground max-w-2xl leading-relaxed"
+            >
+              {t('home.hero.description')}
+            </motion.p>
+          </ScrollReveal>
+
+          <ScrollReveal className="relative h-[85vh]">
+            <PulseRipples />
+            <ProgressiveImage
               src={heroImage}
-              alt="Professional dental provider"
-              className="absolute bottom-0 left-1/2 xl:left-[50%] 2xl:left-[50%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              alt="Dental professional"
+              className="hero-image w-full h-full object-contain object-center"
             />
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Tablet Layout */}
-        <div className="hidden sm:flex lg:hidden justify-start items-center min-h-screen ml-[20%]">
-          <div className="w-full max-w-sm min-h-screen relative z-[100]">
-            <img 
-              src={heroImage}
-              alt="Professional dental provider"
-              className="absolute bottom-0 left-[40%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[52vh]"
-            />
+        <div className="hidden sm:block lg:hidden">
+          <div className="grid grid-cols-1 gap-8 items-center">
+            <ScrollReveal className="text-center space-y-4">
+              <h1 className="text-3xl md:text-4xl font-bold leading-tight text-foreground">
+                {t('home.hero.title')}
+              </h1>
+              <p className="text-lg md:text-xl text-primary font-semibold">
+                {t('home.hero.subtitle')}
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal className="relative h-[52vh] mx-auto w-full max-w-lg">
+              <PulseRipples />
+              <ProgressiveImage
+                src={heroImage}
+                alt="Dental professional"
+                className="hero-image w-full h-full object-contain object-center"
+              />
+            </ScrollReveal>
+
+            <ScrollReveal className="space-y-6 text-center max-w-2xl mx-auto">
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed px-4">
+                {t('home.hero.description')}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 justify-center px-4">
+                <MagneticButton>
+                  <GlowButton
+                    onClick={() => navigate('/patients')}
+                    className="w-full sm:w-auto"
+                  >
+                    {t('home.hero.ctaPatients')}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </GlowButton>
+                </MagneticButton>
+
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => navigate('/providers')}
+                  className="w-full sm:w-auto"
+                >
+                  {t('home.hero.ctaProviders')}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
 
         {/* Mobile Portrait Layout */}
-        <div className="flex sm:hidden justify-start items-start pt-20 h-[calc(100vh-5rem)] ml-[37.5%]">
-          <div className="w-full max-w-md h-[calc(100vh-5rem)] relative z-[100]">
-            <img 
-              src={heroImage}
-              alt="Professional dental provider"
-              className="absolute bottom-[-5%] left-[-160px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
-            />
+        <div className="sm:hidden block portrait:block landscape:hidden">
+          <div className="flex flex-col gap-6 items-center text-center min-h-[calc(100vh-8rem)]">
+            <ScrollReveal className="space-y-3 pt-4">
+              <h1 className="text-2xl font-bold leading-tight text-foreground px-4">
+                {t('home.hero.title')}
+              </h1>
+              <p className="text-base text-primary font-semibold px-4">
+                {t('home.hero.subtitle')}
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal className="relative w-full h-[calc(90vh-20rem)] max-h-[400px]">
+              <PulseRipples />
+              <ProgressiveImage
+                src={heroImage}
+                alt="Dental professional"
+                className="hero-image w-full h-full object-contain object-center"
+              />
+            </ScrollReveal>
+
+            <ScrollReveal className="space-y-4 w-full px-4">
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {t('home.hero.description')}
+              </p>
+
+              <div className="flex flex-col gap-3">
+                <MagneticButton>
+                  <GlowButton
+                    onClick={() => navigate('/patients')}
+                    className="w-full"
+                  >
+                    {t('home.hero.ctaPatients')}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </GlowButton>
+                </MagneticButton>
+
+                <Button
+                  variant="outline"
+                  size="default"
+                  onClick={() => navigate('/providers')}
+                  className="w-full"
+                >
+                  {t('home.hero.ctaProviders')}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
-      </div>
-      
-      {/* Mobile Portrait Title */}
-      <div className="block sm:hidden absolute top-[12%] landscape:top-[8%] left-6 landscape:left-4 z-20 w-3/4 landscape:w-[45%]">
-        <AnimatedText>
-          <h1 className="text-5xl landscape:text-2xl font-bold mb-6 landscape:mb-2 text-foreground leading-none landscape:leading-tight">
-            {t('home.hero.title')}
-          </h1>
-          <h2 className="block text-3xl landscape:text-lg text-navy font-semibold mb-6 landscape:mb-2">
-            {t('home.hero.subtitle')}
-          </h2>
-        </AnimatedText>
-      </div>
-      
-      
-      {/* Desktop & Tablet Title */}
-      <div className="hidden md:block absolute top-[10%] lg:top-[17%] left-12 z-20 w-1/2">
-        <AnimatedText>
-          <h1 className="text-6xl md:text-7xl font-bold text-foreground">
-            {t('home.hero.title')}
-          </h1>
-          <h2 className="block text-4xl mt-8 md:mt-16 lg:mt-8 text-navy font-semibold">
-            {t('home.hero.subtitle')}
-          </h2>
-        </AnimatedText>
-      </div>
-      
-      {/* Desktop Buttons - moved down 15% more, aligned with text */}
-      <div className="hidden md:block absolute top-[70%] max-h-[800px]:top-[75%] max-h-[700px]:top-[78%] left-12 z-[120]">
-        <div className="flex gap-4 max-h-[700px]:gap-2">
-          <Button 
-            className="h-16 max-h-[700px]:h-12 text-xl max-h-[700px]:text-base bg-black hover:bg-black/90 text-white shadow-elegant px-12 max-h-[700px]:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
-            onClick={() => navigate('/patients')}
-          >
-            {t('home.hero.ctaPatients')}
-          </Button>
-          <Button 
-            className="h-16 max-h-[700px]:h-12 text-xl max-h-[700px]:text-base bg-black hover:bg-black/90 text-white shadow-elegant px-12 max-h-[700px]:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
-            onClick={() => navigate('/providers')}
-          >
-            {t('home.hero.ctaProviders')}
-          </Button>
-        </div>
-      </div>
-      
-      {/* Desktop Subtitle */}
-      <div className="hidden lg:block absolute top-[55%] left-12 z-20 w-1/2">
-        <AnimatedText delay={0.2}>
-          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
-            {t('home.hero.description')}
-          </p>
-        </AnimatedText>
-      </div>
 
-      {/* Mobile Portrait Buttons - Stacked vertically */}
-      <div className="block sm:hidden absolute top-[55%] landscape:top-[65%] left-6 landscape:left-4 z-[150]">
-        <div className="flex flex-col landscape:flex-row gap-3 landscape:gap-2">
-          <Button 
-            className="h-10 landscape:h-8 text-base landscape:text-sm bg-black hover:bg-black/90 text-white shadow-elegant px-4 landscape:px-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
-            onClick={() => navigate('/patients')}
-          >
-            {t('home.hero.ctaPatients')}
-          </Button>
-          <Button 
-            className="h-10 landscape:h-8 text-base landscape:text-sm bg-black hover:bg-black/90 text-white shadow-elegant px-4 landscape:px-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
-            onClick={() => navigate('/providers')}
-          >
-            {t('home.hero.ctaProviders')}
-          </Button>
+        {/* Mobile Landscape Layout - NEW */}
+        <div className="sm:hidden landscape:block portrait:hidden">
+          <div className="grid grid-cols-2 gap-4 items-center h-[calc(100vh-6rem)] py-4">
+            <ScrollReveal className="space-y-2 pl-2">
+              <h1 className="text-lg font-bold leading-tight text-foreground">
+                {t('home.hero.title')}
+              </h1>
+              <p className="text-sm text-primary font-semibold">
+                {t('home.hero.subtitle')}
+              </p>
+              <p className="text-xs text-muted-foreground leading-snug line-clamp-3">
+                {t('home.hero.description')}
+              </p>
+              
+              <div className="flex flex-col gap-2 pt-2">
+                <Button
+                  size="sm"
+                  onClick={() => navigate('/patients')}
+                  className="w-full text-xs"
+                >
+                  {t('home.hero.ctaPatients')}
+                  <ArrowRight className="ml-1 h-3 w-3" />
+                </Button>
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => navigate('/providers')}
+                  className="w-full text-xs"
+                >
+                  {t('home.hero.ctaProviders')}
+                  <ArrowRight className="ml-1 h-3 w-3" />
+                </Button>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal className="relative h-[75vh] max-h-[300px]">
+              <ProgressiveImage
+                src={heroImage}
+                alt="Dental professional"
+                className="w-full h-full object-contain object-center"
+              />
+            </ScrollReveal>
+          </div>
         </div>
-      </div>
-      
-      {/* Mobile Portrait Subtitle */}
-      <div className="hidden absolute bottom-[15%] left-6 z-20 w-3/4 mobile-landscape-subtitle">
-        <AnimatedText delay={0.2}>
-          <p className="text-base text-foreground/80 font-medium leading-relaxed text-left whitespace-pre-line">
-            {t('home.hero.mobileDescription')}
-          </p>
-        </AnimatedText>
       </div>
 
       {/* Play Intro Button */}
