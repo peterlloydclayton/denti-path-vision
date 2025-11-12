@@ -93,7 +93,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Subtitle */}
-      <div className={`hidden md:block absolute ${isSpanish ? 'top-[45%] lg:top-[55%]' : 'top-[40%] lg:top-[50%]'} left-12 z-[130] w-2/5`}>
+      <div className="hidden md:block absolute top-[65%] left-12 z-[130] w-2/5">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-dental-blue/80 font-medium leading-relaxed text-left">
             {t('about.hero.subtitle')}
@@ -103,7 +103,7 @@ export const HeroSection = () => {
       
       
       {/* Desktop Button */}
-      <div className={`hidden md:block absolute ${isSpanish ? 'top-[75%]' : 'top-[70%]'} left-12 z-[120]`}>
+      <div className="hidden md:block absolute top-[80%] max-h-[800px]:top-[85%] max-h-[700px]:top-[88%] left-12 z-[120]">
         <Button 
           className="h-16 text-xl bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >

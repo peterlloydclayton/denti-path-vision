@@ -68,7 +68,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Subtitle - positioned below title */}
-      <div className="hidden md:block absolute top-[50%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[65%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
           <h2 className="text-xl text-gray-600 font-medium leading-relaxed text-left italic">
             {t('patients.hero.subtitle')}
@@ -96,7 +96,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Button */}
-      <div className="hidden md:block absolute top-[70%] left-12 z-[120]">
+      <div className="hidden md:block absolute top-[80%] max-h-[800px]:top-[85%] max-h-[700px]:top-[88%] left-12 z-[120]">
         <Button 
           className="h-16 text-xl bg-black text-white hover:bg-black/80 shadow-elegant px-12 font-semibold"
           onClick={() => navigate('/patient-financing-application')}

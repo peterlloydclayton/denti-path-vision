@@ -97,7 +97,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Description */}
-      <div className="hidden lg:block absolute top-[48%] left-12 z-20 w-1/2">
+      <div className="hidden lg:block absolute top-[65%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
             {t('providers.hero.description')}
@@ -106,7 +106,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Button */}
-      <div className="hidden md:block absolute top-[70%] left-12 z-[120]">
+      <div className="hidden md:block absolute top-[80%] max-h-[800px]:top-[85%] max-h-[700px]:top-[88%] left-12 z-[120]">
         <Button 
           className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
