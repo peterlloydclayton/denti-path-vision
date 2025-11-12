@@ -317,7 +317,85 @@ Deno.serve(async (req) => {
 
         console.log("Admin notification email sent successfully via Mailjet");
 
-        // Send thank you email to the patient
+      } else {
+        console.log("Mailjet credentials not configured, skipping email notification");
+      }
+    } catch (emailError) {
+      console.error("Failed to send email notification:", emailError);
+      // Don't fail the application submission if email fails
+    }
+
+    // Create Supabase account for the patient and get confirmation link
+    let confirmationLink = '';
+    try {
+      console.log("Creating Supabase account for patient...");
+      
+      const { data: authData, error: authError } = await supabaseAdmin.auth.admin.createUser({
+        email: applicationData.email,
+        email_confirm: false, // Require email confirmation
+        user_metadata: {
+          first_name: applicationData.first_name,
+          last_name: applicationData.last_name,
+          phone: applicationData.mobile_phone
+        }
+      });
+
+      if (authError) {
+        // If user already exists, try to generate a password reset link instead
+        if (authError.message?.includes('already been registered')) {
+          console.log("User already exists, generating password reset link...");
+          try {
+            const { data: linkData, error: resetError } = await supabaseAdmin.auth.admin.generateLink({
+              type: 'recovery',
+              email: applicationData.email,
+              options: {
+                redirectTo: `${req.headers.get('origin') || 'https://mydentipay.com'}/auth/callback`
+              }
+            });
+            
+            if (!resetError && linkData?.properties?.action_link) {
+              confirmationLink = linkData.properties.action_link;
+              console.log("Password reset link generated for existing user");
+            }
+          } catch (resetLinkError) {
+            console.error("Error generating password reset link:", resetLinkError);
+          }
+        } else {
+          console.error("Error creating user account:", authError);
+        }
+      } else {
+        console.log("User account created successfully:", authData.user.id);
+        
+        // Generate email confirmation link
+        const { data: linkData, error: emailError } = await supabaseAdmin.auth.admin.generateLink({
+          type: 'signup',
+          email: applicationData.email,
+          options: {
+            redirectTo: `${req.headers.get('origin') || 'https://mydentipay.com'}/auth/callback`
+          }
+        });
+
+        if (emailError) {
+          console.error("Error generating confirmation link:", emailError);
+        } else if (linkData?.properties?.action_link) {
+          confirmationLink = linkData.properties.action_link;
+          console.log("Confirmation link generated successfully");
+        }
+      }
+    } catch (accountError) {
+      console.error("Failed to create patient account:", accountError);
+      // Don't fail the application submission if account creation fails
+    }
+
+    // Send thank you email to the patient (after confirmationLink is ready)
+    try {
+      const apiKey = Deno.env.get("MAILJET_API_KEY");
+      const apiSecret = Deno.env.get("MAILJET_API_SECRET");
+      
+      if (apiKey && apiSecret && apiKey.trim() !== '' && apiSecret.trim() !== '') {
+        const mailjetUrl = 'https://api.mailjet.com/v3.1/send';
+        const auth = btoa(`${apiKey}:${apiSecret}`);
+
         const patientEmailContent = `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
             <!-- Header with Logo -->
@@ -427,55 +505,10 @@ Deno.serve(async (req) => {
         });
 
         console.log("Patient thank you email sent successfully");
-
-      } else {
-        console.log("Mailjet credentials not configured, skipping email notification");
       }
-    } catch (emailError) {
-      console.error("Failed to send email notification:", emailError);
+    } catch (patientEmailError) {
+      console.error("Failed to send patient email:", patientEmailError);
       // Don't fail the application submission if email fails
-    }
-
-    // Create Supabase account for the patient and get confirmation link
-    let confirmationLink = '';
-    try {
-      console.log("Creating Supabase account for patient...");
-      
-      const { data: authData, error: authError } = await supabaseAdmin.auth.admin.createUser({
-        email: applicationData.email,
-        email_confirm: false, // Require email confirmation
-        user_metadata: {
-          first_name: applicationData.first_name,
-          last_name: applicationData.last_name,
-          phone: applicationData.mobile_phone
-        }
-      });
-
-      if (authError) {
-        console.error("Error creating user account:", authError);
-        // Don't fail the application submission if account creation fails
-      } else {
-        console.log("User account created successfully:", authData.user.id);
-        
-        // Generate email confirmation link
-        const { data: linkData, error: emailError } = await supabaseAdmin.auth.admin.generateLink({
-          type: 'signup',
-          email: applicationData.email,
-          options: {
-            redirectTo: `${req.headers.get('origin') || 'https://mydentipay.com'}/auth/callback`
-          }
-        });
-
-        if (emailError) {
-          console.error("Error generating confirmation link:", emailError);
-        } else if (linkData?.properties?.action_link) {
-          confirmationLink = linkData.properties.action_link;
-          console.log("Confirmation link generated successfully");
-        }
-      }
-    } catch (accountError) {
-      console.error("Failed to create patient account:", accountError);
-      // Don't fail the application submission if account creation fails
     }
 
     // Handle signature and document if provided
@@ -529,7 +562,10 @@ Deno.serve(async (req) => {
           .from('signed_documents')
           .insert({
             signature_id: signatureData.id,
-            file_path: uploadData.path,
+            storage_path: uploadData.path,
+            file_name: fileName,
+            file_size: pdfBytes.length,
+            mime_type: 'application/pdf'
           })
 
         if (docError) {
