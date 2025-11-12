@@ -87,7 +87,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       </div>
       
       {/* Desktop Buttons - moved down 15% more, aligned with text */}
-      <div className="hidden md:block absolute top-[70%] max-h-[800px]:top-[75%] max-h-[700px]:top-[78%] left-12 z-[120]">
+      <div className="hidden md:block absolute top-[80%] max-h-[800px]:top-[85%] max-h-[700px]:top-[88%] left-12 z-[120]">
         <div className="flex gap-4 max-h-[700px]:gap-2">
           <Button 
             className="h-16 max-h-[700px]:h-12 text-xl max-h-[700px]:text-base bg-black hover:bg-black/90 text-white shadow-elegant px-12 max-h-[700px]:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
@@ -105,7 +105,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       </div>
       
       {/* Desktop Subtitle */}
-      <div className="hidden lg:block absolute top-[55%] left-12 z-20 w-1/2">
+      <div className="hidden lg:block absolute top-[65%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
             {t('home.hero.description')}
