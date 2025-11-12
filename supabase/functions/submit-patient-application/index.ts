@@ -131,7 +131,7 @@ const ApplicationSchema = z.object({
   personal_loans: z.number().min(0).max(999999999).optional(),
   medical_bills: z.number().min(0).max(999999999).optional(),
   alimony_child_support: z.number().min(0).max(999999999).optional(),
-  credit_score: z.number().min(300).max(850).optional(),
+  credit_score: z.number().min(300).max(850).nullable().optional(),
   open_credit_lines: z.number().min(0).max(100).optional(),
   late_payments: z.number().min(0).max(100).optional(),
   bankruptcy_history: z.boolean().optional(),
