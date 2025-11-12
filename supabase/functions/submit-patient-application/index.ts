@@ -206,6 +206,13 @@ Deno.serve(async (req) => {
     // Parse and validate input data
     const rawData = await req.json()
     
+    // Preprocess credit_score: convert 0 or values < 300 to null
+    if (rawData.credit_score !== undefined && rawData.credit_score !== null) {
+      if (typeof rawData.credit_score === 'number' && rawData.credit_score < 300) {
+        rawData.credit_score = null;
+      }
+    }
+    
     let applicationData: ApplicationData;
     try {
       applicationData = ApplicationSchema.parse(rawData)
