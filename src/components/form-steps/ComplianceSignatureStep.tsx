@@ -61,8 +61,22 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
   const handleSign = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    console.log('🚀 Form submission started');
+    console.log('Form validation:', {
+      consentGiven,
+      signerName,
+      signerEmail,
+      hasDocument: !!document,
+      authorize_credit_report: formData.authorize_credit_report,
+      consent_communications: formData.consent_communications,
+      understand_no_credit_impact: formData.understand_no_credit_impact,
+      confirm_information_accurate: formData.confirm_information_accurate
+    });
+    
     if (!consentGiven || !signerName || !signerEmail || !document) {
-      setError('Please complete all required fields and provide consent');
+      const errorMsg = 'Please complete all required fields and provide consent';
+      console.error('❌ Validation failed:', errorMsg);
+      setError(errorMsg);
       return;
     }
 
@@ -173,10 +187,12 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
       };
 
       // Submit to edge function
+      console.log('📤 Submitting to edge function...');
       const { data, error } = await supabase.functions.invoke('submit-patient-application', {
         body: applicationData
       });
 
+      console.log('📥 Edge function response:', { data, error });
       if (error) throw error;
 
       if (!data?.success) {
