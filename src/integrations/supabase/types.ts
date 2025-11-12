@@ -79,138 +79,315 @@ export type Database = {
       }
       temp_patient_applications: {
         Row: {
+          additional_info: string | null
           alimony_child_support: number | null
           auto_loans: number | null
           bankruptcy_history: boolean | null
           business_ownership: number | null
+          can_provide_proof: boolean | null
           cash_on_hand: number | null
           checking_balance: number | null
           city: string | null
+          comfort_auto_debit: boolean | null
+          comfort_discussing_financing: number | null
+          commitment_level: number | null
+          confidence_impact: string | null
           consent_credit_pull: boolean | null
+          considering_treatment_time: string | null
           created_at: string | null
           credit_card_balances: number | null
+          credit_score: number | null
           date_of_birth: string | null
+          decision_making_style: string | null
+          drivers_license: string | null
           email: string
+          emergency_contact_name: string | null
+          emergency_contact_phone: string | null
+          emergency_contact_relationship: string | null
           employer_name: string | null
           employment_status: string | null
+          estimated_cost: number | null
           estimated_treatment_cost: number | null
+          expected_procedures: string | null
+          financing_preferences: string | null
           first_name: string
           foreclosure_history: boolean | null
+          home_city: string | null
           home_equity: number | null
+          home_state: string | null
+          home_street_address: string | null
+          home_street_address_2: string | null
+          home_zip: string | null
+          household_total_income: number | null
           id: string
+          insurance_coverage: string | null
           investments: number | null
+          job_title: string | null
           last_name: string
           late_payments: number | null
+          length_of_employment: string | null
+          marital_status: string | null
           medical_bills: number | null
+          middle_name: string | null
           mobile_phone: string | null
           monthly_housing_cost: number | null
           monthly_income: number | null
+          monthly_net_income: number | null
           mortgage_balance: number | null
+          negative_experiences: string | null
+          obstacles: string | null
           open_credit_lines: number | null
           other_income: number | null
+          others_involved: string | null
           owned_vehicles: number | null
+          pain_level: number | null
+          pay_frequency: string | null
           personal_loans: number | null
+          previous_address: string | null
+          previous_city: string | null
+          previous_state: string | null
+          previous_street_address: string | null
+          previous_street_address_2: string | null
+          previous_treatment: string | null
+          previous_zip: string | null
+          primary_motivator: string | null
+          primary_reason: string | null
+          priority_preference: string | null
+          ready_for_call: boolean | null
+          ready_for_deposit: boolean | null
+          ready_to_proceed: string | null
+          recent_major_purchases: string | null
           referring_contact_info: string | null
           referring_practice: string | null
           referring_provider_email: string | null
           referring_provider_name: string | null
+          rent_or_own: string | null
           retirement_accounts: number | null
           savings_balance: number | null
+          secondary_income_sources: string | null
+          secondary_phone: string | null
+          sex: string | null
           signature_data: Json | null
+          spouse_employer: string | null
+          spouse_income: number | null
           ssn: string | null
           state: string | null
           street_address: string | null
           student_loans: number | null
+          target_payment_range: string | null
+          time_at_address: string | null
+          timeline_urgency: string | null
+          trust_factors: string | null
+          work_phone: string | null
+          years_at_job: number | null
           zip_code: string | null
         }
         Insert: {
+          additional_info?: string | null
           alimony_child_support?: number | null
           auto_loans?: number | null
           bankruptcy_history?: boolean | null
           business_ownership?: number | null
+          can_provide_proof?: boolean | null
           cash_on_hand?: number | null
           checking_balance?: number | null
           city?: string | null
+          comfort_auto_debit?: boolean | null
+          comfort_discussing_financing?: number | null
+          commitment_level?: number | null
+          confidence_impact?: string | null
           consent_credit_pull?: boolean | null
+          considering_treatment_time?: string | null
           created_at?: string | null
           credit_card_balances?: number | null
+          credit_score?: number | null
           date_of_birth?: string | null
+          decision_making_style?: string | null
+          drivers_license?: string | null
           email: string
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
+          emergency_contact_relationship?: string | null
           employer_name?: string | null
           employment_status?: string | null
+          estimated_cost?: number | null
           estimated_treatment_cost?: number | null
+          expected_procedures?: string | null
+          financing_preferences?: string | null
           first_name: string
           foreclosure_history?: boolean | null
+          home_city?: string | null
           home_equity?: number | null
+          home_state?: string | null
+          home_street_address?: string | null
+          home_street_address_2?: string | null
+          home_zip?: string | null
+          household_total_income?: number | null
           id?: string
+          insurance_coverage?: string | null
           investments?: number | null
+          job_title?: string | null
           last_name: string
           late_payments?: number | null
+          length_of_employment?: string | null
+          marital_status?: string | null
           medical_bills?: number | null
+          middle_name?: string | null
           mobile_phone?: string | null
           monthly_housing_cost?: number | null
           monthly_income?: number | null
+          monthly_net_income?: number | null
           mortgage_balance?: number | null
+          negative_experiences?: string | null
+          obstacles?: string | null
           open_credit_lines?: number | null
           other_income?: number | null
+          others_involved?: string | null
           owned_vehicles?: number | null
+          pain_level?: number | null
+          pay_frequency?: string | null
           personal_loans?: number | null
+          previous_address?: string | null
+          previous_city?: string | null
+          previous_state?: string | null
+          previous_street_address?: string | null
+          previous_street_address_2?: string | null
+          previous_treatment?: string | null
+          previous_zip?: string | null
+          primary_motivator?: string | null
+          primary_reason?: string | null
+          priority_preference?: string | null
+          ready_for_call?: boolean | null
+          ready_for_deposit?: boolean | null
+          ready_to_proceed?: string | null
+          recent_major_purchases?: string | null
           referring_contact_info?: string | null
           referring_practice?: string | null
           referring_provider_email?: string | null
           referring_provider_name?: string | null
+          rent_or_own?: string | null
           retirement_accounts?: number | null
           savings_balance?: number | null
+          secondary_income_sources?: string | null
+          secondary_phone?: string | null
+          sex?: string | null
           signature_data?: Json | null
+          spouse_employer?: string | null
+          spouse_income?: number | null
           ssn?: string | null
           state?: string | null
           street_address?: string | null
           student_loans?: number | null
+          target_payment_range?: string | null
+          time_at_address?: string | null
+          timeline_urgency?: string | null
+          trust_factors?: string | null
+          work_phone?: string | null
+          years_at_job?: number | null
           zip_code?: string | null
         }
         Update: {
+          additional_info?: string | null
           alimony_child_support?: number | null
           auto_loans?: number | null
           bankruptcy_history?: boolean | null
           business_ownership?: number | null
+          can_provide_proof?: boolean | null
           cash_on_hand?: number | null
           checking_balance?: number | null
           city?: string | null
+          comfort_auto_debit?: boolean | null
+          comfort_discussing_financing?: number | null
+          commitment_level?: number | null
+          confidence_impact?: string | null
           consent_credit_pull?: boolean | null
+          considering_treatment_time?: string | null
           created_at?: string | null
           credit_card_balances?: number | null
+          credit_score?: number | null
           date_of_birth?: string | null
+          decision_making_style?: string | null
+          drivers_license?: string | null
           email?: string
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
+          emergency_contact_relationship?: string | null
           employer_name?: string | null
           employment_status?: string | null
+          estimated_cost?: number | null
           estimated_treatment_cost?: number | null
+          expected_procedures?: string | null
+          financing_preferences?: string | null
           first_name?: string
           foreclosure_history?: boolean | null
+          home_city?: string | null
           home_equity?: number | null
+          home_state?: string | null
+          home_street_address?: string | null
+          home_street_address_2?: string | null
+          home_zip?: string | null
+          household_total_income?: number | null
           id?: string
+          insurance_coverage?: string | null
           investments?: number | null
+          job_title?: string | null
           last_name?: string
           late_payments?: number | null
+          length_of_employment?: string | null
+          marital_status?: string | null
           medical_bills?: number | null
+          middle_name?: string | null
           mobile_phone?: string | null
           monthly_housing_cost?: number | null
           monthly_income?: number | null
+          monthly_net_income?: number | null
           mortgage_balance?: number | null
+          negative_experiences?: string | null
+          obstacles?: string | null
           open_credit_lines?: number | null
           other_income?: number | null
+          others_involved?: string | null
           owned_vehicles?: number | null
+          pain_level?: number | null
+          pay_frequency?: string | null
           personal_loans?: number | null
+          previous_address?: string | null
+          previous_city?: string | null
+          previous_state?: string | null
+          previous_street_address?: string | null
+          previous_street_address_2?: string | null
+          previous_treatment?: string | null
+          previous_zip?: string | null
+          primary_motivator?: string | null
+          primary_reason?: string | null
+          priority_preference?: string | null
+          ready_for_call?: boolean | null
+          ready_for_deposit?: boolean | null
+          ready_to_proceed?: string | null
+          recent_major_purchases?: string | null
           referring_contact_info?: string | null
           referring_practice?: string | null
           referring_provider_email?: string | null
           referring_provider_name?: string | null
+          rent_or_own?: string | null
           retirement_accounts?: number | null
           savings_balance?: number | null
+          secondary_income_sources?: string | null
+          secondary_phone?: string | null
+          sex?: string | null
           signature_data?: Json | null
+          spouse_employer?: string | null
+          spouse_income?: number | null
           ssn?: string | null
           state?: string | null
           street_address?: string | null
           student_loans?: number | null
+          target_payment_range?: string | null
+          time_at_address?: string | null
+          timeline_urgency?: string | null
+          trust_factors?: string | null
+          work_phone?: string | null
+          years_at_job?: number | null
           zip_code?: string | null
         }
         Relationships: []
