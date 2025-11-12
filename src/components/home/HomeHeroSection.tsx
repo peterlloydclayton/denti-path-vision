@@ -19,7 +19,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
   const { t } = useTranslation('marketing');
   const navigate = useNavigate();
   return (
-    <section className="h-screen relative z-30 overflow-hidden">
+    <section className="h-screen relative z-10 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-dental-blue" style={{ height: '100vh' }}></div>
       
@@ -29,33 +29,33 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop Layout */}
         <div className="hidden lg:flex justify-center items-center min-h-screen">
-          <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-xl min-h-screen relative z-[100]">
+          <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-xl min-h-screen relative z-10">
             <img 
               src={heroImage}
               alt="Professional dental provider"
-              className="absolute bottom-0 left-1/2 xl:left-[50%] 2xl:left-[50%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
+              className="absolute bottom-0 left-1/2 xl:left-[50%] 2xl:left-[50%] -translate-x-1/2 xl:-translate-x-1/2 2xl:-translate-x-1/2 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[85vh]"
             />
           </div>
         </div>
 
         {/* Tablet Layout */}
         <div className="hidden sm:flex lg:hidden justify-start items-center min-h-screen ml-[20%]">
-          <div className="w-full max-w-sm min-h-screen relative z-[100]">
+          <div className="w-full max-w-sm min-h-screen relative z-10">
             <img 
               src={heroImage}
               alt="Professional dental provider"
-              className="absolute bottom-0 left-[40%] -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[52vh]"
+              className="absolute bottom-0 left-[40%] -translate-x-1/2 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[52vh]"
             />
           </div>
         </div>
 
         {/* Mobile Portrait Layout */}
         <div className="flex sm:hidden justify-start items-start pt-20 h-[calc(100vh-5rem)] ml-[37.5%]">
-          <div className="w-full max-w-md h-[calc(100vh-5rem)] relative z-[100]">
+          <div className="w-full max-w-md h-[calc(100vh-5rem)] relative z-10">
             <img 
               src={heroImage}
               alt="Professional dental provider"
-              className="absolute bottom-[-5%] left-[-160px] transform-none w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[calc(90vh-12rem)]"
+              className="absolute bottom-[-5%] left-[-160px] transform-none w-auto object-contain object-bottom z-10 max-w-none hero-image h-[calc(90vh-12rem)]"
             />
           </div>
         </div>
@@ -87,7 +87,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       </div>
       
       {/* Desktop Buttons - moved down 15% more, aligned with text */}
-      <div className="hidden md:block absolute top-[80%] max-h-[800px]:top-[85%] max-h-[700px]:top-[88%] left-12 z-[120]">
+      <div className="hidden md:block absolute top-[80%] max-h-[800px]:top-[85%] max-h-[700px]:top-[88%] left-12 z-20">
         <div className="flex gap-4 max-h-[700px]:gap-2">
           <Button 
             className="h-16 max-h-[700px]:h-12 text-xl max-h-[700px]:text-base bg-black hover:bg-black/90 text-white shadow-elegant px-12 max-h-[700px]:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
@@ -114,7 +114,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       </div>
 
       {/* Mobile Portrait Buttons - Stacked vertically */}
-      <div className="block sm:hidden absolute top-[55%] landscape:top-[65%] left-6 landscape:left-4 z-[150]">
+      <div className="block sm:hidden absolute top-[55%] landscape:top-[65%] left-6 landscape:left-4 z-20">
         <div className="flex flex-col landscape:flex-row gap-3 landscape:gap-2">
           <Button 
             className="h-10 landscape:h-8 text-base landscape:text-sm bg-black hover:bg-black/90 text-white shadow-elegant px-4 landscape:px-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
