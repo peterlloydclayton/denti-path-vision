@@ -156,6 +156,7 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         referring_provider_email: formData.referring_provider_email,
         estimated_treatment_cost: formData.estimated_treatment_cost ? parseFloat(formData.estimated_treatment_cost) : undefined,
         employer_name: formData.current_employer,
+        employer_address: formData.employer_address,
         job_title: formData.job_title,
         employment_status: formData.employment_type,
         length_of_employment: formData.length_of_employment,
@@ -178,6 +179,9 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         timeline_urgency: formData.urgency_scale,
         ready_to_proceed: formData.ready_to_proceed,
         consent_credit_pull: formData.authorize_credit_report,
+        consent_communications: formData.consent_communications,
+        understand_no_credit_impact: formData.understand_no_credit_impact,
+        confirm_information_accurate: formData.confirm_information_accurate,
         redirect_url: 'https://dental-docs-hub.lovable.app',
         signature_data: {
           signer_name: signerName,
