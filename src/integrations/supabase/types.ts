@@ -77,6 +77,45 @@ export type Database = {
         }
         Relationships: []
       }
+      provider_searches: {
+        Row: {
+          created_at: string
+          id: string
+          ip_address: string | null
+          location_search: string | null
+          radius_filter: number | null
+          results_count: number
+          search_term: string | null
+          search_timestamp: string
+          user_agent: string | null
+          user_location: Json | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          location_search?: string | null
+          radius_filter?: number | null
+          results_count?: number
+          search_term?: string | null
+          search_timestamp?: string
+          user_agent?: string | null
+          user_location?: Json | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          location_search?: string | null
+          radius_filter?: number | null
+          results_count?: number
+          search_term?: string | null
+          search_timestamp?: string
+          user_agent?: string | null
+          user_location?: Json | null
+        }
+        Relationships: []
+      }
       signatures: {
         Row: {
           consent_given: boolean

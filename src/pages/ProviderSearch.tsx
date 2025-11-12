@@ -170,6 +170,26 @@ export const ProviderSearch = () => {
     return '';
   };
 
+  const logSearch = useCallback(async (resultsCount: number) => {
+    // Only log if there's an actual search (not initial load)
+    if (!searchTerm && !locationSearch) return;
+
+    try {
+      await supabase.functions.invoke('log-provider-search', {
+        body: {
+          searchTerm: searchTerm || undefined,
+          locationSearch: locationSearch || undefined,
+          radiusFilter: radiusFilter ? parseInt(radiusFilter) : undefined,
+          resultsCount,
+          userLocation: userLocation || undefined,
+        },
+      });
+    } catch (error) {
+      console.error('Error logging search:', error);
+      // Don't show error to user as this is background tracking
+    }
+  }, [searchTerm, locationSearch, radiusFilter, userLocation]);
+
   const filterProviders = useCallback(() => {
     let filtered = [...providers];
 
@@ -216,7 +236,10 @@ export const ProviderSearch = () => {
 
     setFilteredProviders(filtered);
     updateMapMarkers(filtered);
-  }, [providers, searchTerm, locationSearch, userLocation, radiusFilter, googleMapsLoaded]);
+    
+    // Log the search to backend
+    logSearch(filtered.length);
+  }, [providers, searchTerm, locationSearch, userLocation, radiusFilter, googleMapsLoaded, logSearch]);
 
   const updateMapMarkers = (providersToShow: ProviderWithDistance[]) => {
     if (mapRef.current && googleMapsLoaded) {
