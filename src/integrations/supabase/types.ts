@@ -79,10 +79,16 @@ export type Database = {
       }
       temp_patient_applications: {
         Row: {
+          alimony_child_support: number | null
           auto_loans: number | null
+          bankruptcy_history: boolean | null
+          business_ownership: number | null
+          cash_on_hand: number | null
+          checking_balance: number | null
           checking_savings: number | null
           city: string | null
           created_at: string | null
+          credit_card_balances: number | null
           credit_cards: number | null
           date_of_birth: string | null
           email: string
@@ -90,16 +96,28 @@ export type Database = {
           employment_status: string | null
           estimated_treatment_cost: number | null
           first_name: string
+          foreclosure_history: boolean | null
+          home_equity: number | null
           id: string
+          investments: number | null
           last_name: string
+          late_payments: number | null
+          medical_bills: number | null
           mobile_phone: string | null
+          monthly_housing_cost: number | null
           monthly_income: number | null
+          mortgage_balance: number | null
           mortgage_rent: number | null
+          open_credit_lines: number | null
           other_income: number | null
+          owned_vehicles: number | null
+          personal_loans: number | null
           referring_contact_info: string | null
           referring_practice: string | null
           referring_provider_email: string | null
           referring_provider_name: string | null
+          retirement_accounts: number | null
+          savings_balance: number | null
           signature_data: Json | null
           ssn: string | null
           state: string | null
@@ -108,10 +126,16 @@ export type Database = {
           zip_code: string | null
         }
         Insert: {
+          alimony_child_support?: number | null
           auto_loans?: number | null
+          bankruptcy_history?: boolean | null
+          business_ownership?: number | null
+          cash_on_hand?: number | null
+          checking_balance?: number | null
           checking_savings?: number | null
           city?: string | null
           created_at?: string | null
+          credit_card_balances?: number | null
           credit_cards?: number | null
           date_of_birth?: string | null
           email: string
@@ -119,16 +143,28 @@ export type Database = {
           employment_status?: string | null
           estimated_treatment_cost?: number | null
           first_name: string
+          foreclosure_history?: boolean | null
+          home_equity?: number | null
           id?: string
+          investments?: number | null
           last_name: string
+          late_payments?: number | null
+          medical_bills?: number | null
           mobile_phone?: string | null
+          monthly_housing_cost?: number | null
           monthly_income?: number | null
+          mortgage_balance?: number | null
           mortgage_rent?: number | null
+          open_credit_lines?: number | null
           other_income?: number | null
+          owned_vehicles?: number | null
+          personal_loans?: number | null
           referring_contact_info?: string | null
           referring_practice?: string | null
           referring_provider_email?: string | null
           referring_provider_name?: string | null
+          retirement_accounts?: number | null
+          savings_balance?: number | null
           signature_data?: Json | null
           ssn?: string | null
           state?: string | null
@@ -137,10 +173,16 @@ export type Database = {
           zip_code?: string | null
         }
         Update: {
+          alimony_child_support?: number | null
           auto_loans?: number | null
+          bankruptcy_history?: boolean | null
+          business_ownership?: number | null
+          cash_on_hand?: number | null
+          checking_balance?: number | null
           checking_savings?: number | null
           city?: string | null
           created_at?: string | null
+          credit_card_balances?: number | null
           credit_cards?: number | null
           date_of_birth?: string | null
           email?: string
@@ -148,16 +190,28 @@ export type Database = {
           employment_status?: string | null
           estimated_treatment_cost?: number | null
           first_name?: string
+          foreclosure_history?: boolean | null
+          home_equity?: number | null
           id?: string
+          investments?: number | null
           last_name?: string
+          late_payments?: number | null
+          medical_bills?: number | null
           mobile_phone?: string | null
+          monthly_housing_cost?: number | null
           monthly_income?: number | null
+          mortgage_balance?: number | null
           mortgage_rent?: number | null
+          open_credit_lines?: number | null
           other_income?: number | null
+          owned_vehicles?: number | null
+          personal_loans?: number | null
           referring_contact_info?: string | null
           referring_practice?: string | null
           referring_provider_email?: string | null
           referring_provider_name?: string | null
+          retirement_accounts?: number | null
+          savings_balance?: number | null
           signature_data?: Json | null
           ssn?: string | null
           state?: string | null
