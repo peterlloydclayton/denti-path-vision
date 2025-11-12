@@ -109,6 +109,7 @@ export type Database = {
           estimated_cost: number | null
           estimated_treatment_cost: number | null
           expected_procedures: string | null
+          expires_at: string | null
           financing_preferences: string | null
           first_name: string
           foreclosure_history: boolean | null
@@ -213,6 +214,7 @@ export type Database = {
           estimated_cost?: number | null
           estimated_treatment_cost?: number | null
           expected_procedures?: string | null
+          expires_at?: string | null
           financing_preferences?: string | null
           first_name: string
           foreclosure_history?: boolean | null
@@ -317,6 +319,7 @@ export type Database = {
           estimated_cost?: number | null
           estimated_treatment_cost?: number | null
           expected_procedures?: string | null
+          expires_at?: string | null
           financing_preferences?: string | null
           first_name?: string
           foreclosure_history?: boolean | null
