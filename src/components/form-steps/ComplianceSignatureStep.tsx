@@ -83,11 +83,13 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
     for (const field of numericFields) {
       if (field.value) {
         const numValue = parseFloat(field.value);
+        console.log(`Validating ${field.name}: ${field.value} -> ${numValue}`);
         if (numValue > MAX_VALUE) {
-          setError(`${field.name} cannot exceed $999,999,999. Please go back and correct this value.`);
+          const errorMsg = `${field.name} (${numValue.toLocaleString()}) cannot exceed $999,999,999. Please go back and correct this value.`;
+          setError(errorMsg);
           toast({
             title: "Value Too Large",
-            description: `${field.name} cannot exceed $999,999,999`,
+            description: errorMsg,
             variant: "destructive",
           });
           return;
