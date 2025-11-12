@@ -66,6 +66,35 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
       return;
     }
 
+    // Validate numeric fields before conversion
+    const numericFields = [
+      { name: 'monthly_gross_income', value: formData.monthly_gross_income },
+      { name: 'monthly_net_income', value: formData.monthly_net_income },
+      { name: 'household_total_income', value: formData.household_total_income },
+      { name: 'spouse_income', value: formData.spouse_income },
+      { name: 'checking_balance', value: formData.checking_balance },
+      { name: 'savings_balance', value: formData.savings_balance },
+      { name: 'retirement_accounts', value: formData.retirement_accounts },
+      { name: 'investment_accounts', value: formData.investment_accounts },
+      { name: 'mortgage_rent_payment', value: formData.mortgage_rent_payment },
+    ];
+
+    const MAX_VALUE = 999999999;
+    for (const field of numericFields) {
+      if (field.value) {
+        const numValue = parseFloat(field.value);
+        if (numValue > MAX_VALUE) {
+          setError(`${field.name} cannot exceed $999,999,999. Please go back and correct this value.`);
+          toast({
+            title: "Value Too Large",
+            description: `${field.name} cannot exceed $999,999,999`,
+            variant: "destructive",
+          });
+          return;
+        }
+      }
+    }
+
     setIsSubmitting(true);
     setError('');
 
