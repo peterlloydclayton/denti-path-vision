@@ -206,10 +206,14 @@ Deno.serve(async (req) => {
     // Parse and validate input data
     const rawData = await req.json()
     
-    // Preprocess credit_score: convert 0 or values < 300 to null
+    // Preprocess credit_score: convert 0 or values < 300 to null, cap at 850
     if (rawData.credit_score !== undefined && rawData.credit_score !== null) {
-      if (typeof rawData.credit_score === 'number' && rawData.credit_score < 300) {
-        rawData.credit_score = null;
+      if (typeof rawData.credit_score === 'number') {
+        if (rawData.credit_score < 300) {
+          rawData.credit_score = null;
+        } else if (rawData.credit_score > 850) {
+          rawData.credit_score = 850; // Cap at standard FICO max
+        }
       }
     }
     
