@@ -77,6 +77,89 @@ export type Database = {
         }
         Relationships: []
       }
+      signatures: {
+        Row: {
+          consent_given: boolean
+          created_at: string
+          document_hash: string | null
+          document_id: string | null
+          id: string
+          ip_address: string | null
+          patient_id: string | null
+          signature_type: string
+          signed_at: string
+          signer_email: string
+          signer_name: string
+          user_agent: string | null
+        }
+        Insert: {
+          consent_given?: boolean
+          created_at?: string
+          document_hash?: string | null
+          document_id?: string | null
+          id?: string
+          ip_address?: string | null
+          patient_id?: string | null
+          signature_type: string
+          signed_at?: string
+          signer_email: string
+          signer_name: string
+          user_agent?: string | null
+        }
+        Update: {
+          consent_given?: boolean
+          created_at?: string
+          document_hash?: string | null
+          document_id?: string | null
+          id?: string
+          ip_address?: string | null
+          patient_id?: string | null
+          signature_type?: string
+          signed_at?: string
+          signer_email?: string
+          signer_name?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
+      signed_documents: {
+        Row: {
+          created_at: string
+          file_name: string
+          file_size: number | null
+          id: string
+          mime_type: string | null
+          signature_id: string
+          storage_path: string
+        }
+        Insert: {
+          created_at?: string
+          file_name: string
+          file_size?: number | null
+          id?: string
+          mime_type?: string | null
+          signature_id: string
+          storage_path: string
+        }
+        Update: {
+          created_at?: string
+          file_name?: string
+          file_size?: number | null
+          id?: string
+          mime_type?: string | null
+          signature_id?: string
+          storage_path?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "signed_documents_signature_id_fkey"
+            columns: ["signature_id"]
+            isOneToOne: false
+            referencedRelation: "signatures"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       temp_patient_applications: {
         Row: {
           additional_info: string | null
