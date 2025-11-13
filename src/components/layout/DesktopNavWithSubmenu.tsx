@@ -118,7 +118,7 @@ export const DesktopNavWithSubmenu = () => {
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        setOpenSubmenu(isSubmenuOpen ? null : item.href);
+                        setOpenSubmenu(item.href);
                       }}
                       className={`
                         flex items-center gap-2 px-4 py-2 rounded-xl
