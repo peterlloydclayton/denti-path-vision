@@ -198,32 +198,43 @@ const MobileNav = () => {
                   if (item.submenu) {
                     return (
                       <motion.div key={item.href} variants={itemVariants}>
-                        <Link
-                          to={item.href}
-                          onClick={() => {
-                            setIsOpen(false);
-                            setCurrentPath(item.href);
-                          }}
+                        <div
                           className={`
-                            w-full flex items-center justify-between gap-4 p-4 rounded-xl
-                            transition-smooth hover:bg-card-hover
+                            w-full flex items-center justify-between gap-4 rounded-xl overflow-hidden
+                            transition-smooth
                             ${isActive 
                               ? 'bg-primary text-primary-foreground shadow-soft' 
-                              : 'text-card-foreground hover:text-primary'
+                              : 'bg-card hover:bg-card-hover text-card-foreground'
                             }
                           `}
                         >
-                          <div className="flex items-center gap-4">
+                          <Link
+                            to={item.href}
+                            onClick={() => {
+                              setIsOpen(false);
+                              setCurrentPath(item.href);
+                            }}
+                            className="flex items-center gap-4 p-4 flex-1 hover:text-primary transition-smooth"
+                          >
                             <Icon size={20} />
                             <span className="font-medium">{t(item.label)}</span>
-                          </div>
-                          <motion.div
-                            animate={{ rotate: isExpanded ? 180 : 0 }}
-                            transition={{ duration: 0.2 }}
+                          </Link>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setExpandedItem(isExpanded ? null : item.href);
+                            }}
+                            className="p-4 hover:bg-background/10 transition-smooth"
+                            aria-label="Toggle submenu"
                           >
-                            <ChevronDown size={16} />
-                          </motion.div>
-                        </Link>
+                            <motion.div
+                              animate={{ rotate: isExpanded ? 180 : 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <ChevronDown size={16} />
+                            </motion.div>
+                          </button>
+                        </div>
                         <AnimatePresence>
                           {isExpanded && (
                             <motion.div
