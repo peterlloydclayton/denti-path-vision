@@ -12,7 +12,7 @@ export const HeroSection = () => {
       <div className="absolute inset-0 bg-primary"></div>
       
       {/* Hero Image - Right Side - All Screens */}
-      <div className="absolute right-0 bottom-0 h-full w-1/2 md:w-2/5 z-10">
+      <div className="absolute right-0 bottom-0 h-full w-3/5 md:w-3/5 z-10">
         <img 
           src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
           alt="Happy patient with dental financing"
