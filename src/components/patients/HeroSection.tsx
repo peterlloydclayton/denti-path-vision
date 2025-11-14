@@ -16,7 +16,7 @@ export const HeroSection = () => {
         <img 
           src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
           alt="Happy patient with dental financing"
-          className="absolute bottom-0 right-0 h-[85vh] w-auto object-contain object-bottom"
+          className="absolute bottom-0 right-0 h-[200vh] w-auto object-contain object-bottom"
         />
       </div>
 
@@ -34,8 +34,8 @@ export const HeroSection = () => {
         {/* Middle Spacer for proper vertical distribution */}
         <div className="flex-1" />
 
-        {/* Subtitle - Middle Left (hidden on all landscape orientations) */}
-        <div className="w-full md:w-1/2 lg:w-2/5 hidden portrait:block">
+        {/* Subtitle - Middle Left (hidden on mobile landscape, visible on portrait and desktop) */}
+        <div className="w-full md:w-1/2 lg:w-2/5 hidden portrait:block lg:block">
           <AnimatedText delay={0.2}>
             <h2 className="text-base md:text-xl text-gray-600 font-medium leading-relaxed italic">
               {t('patients.hero.subtitle')}
