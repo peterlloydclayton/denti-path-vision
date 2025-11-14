@@ -16,7 +16,7 @@ export const HeroSection = () => {
         <img 
           src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
           alt="Happy patient with dental financing"
-          className="absolute bottom-0 right-0 h-[200vh] w-auto object-contain object-bottom"
+          className="absolute bottom-0 right-0 h-[300vh] w-auto object-contain object-bottom"
         />
       </div>
 
