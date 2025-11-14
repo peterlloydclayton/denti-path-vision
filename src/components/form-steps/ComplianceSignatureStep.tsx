@@ -80,6 +80,22 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
       return;
     }
 
+    // Validate treatment cost first (10 million limit)
+    if (formData.estimated_treatment_cost) {
+      const treatmentCost = parseFloat(formData.estimated_treatment_cost);
+      const MAX_TREATMENT_COST = 10000000;
+      if (!isNaN(treatmentCost) && treatmentCost > MAX_TREATMENT_COST) {
+        const errorMsg = `Treatment cost ($${treatmentCost.toLocaleString()}) cannot exceed $10,000,000. Please go back and correct this value.`;
+        setError(errorMsg);
+        toast({
+          title: "Value Too Large",
+          description: errorMsg,
+          variant: "destructive",
+        });
+        return;
+      }
+    }
+
     // Validate numeric fields before conversion
     const numericFields = [
       { name: 'monthly_gross_income', value: formData.monthly_gross_income },
