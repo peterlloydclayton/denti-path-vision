@@ -5,16 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Cpu, Globe, Brain } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animations';
-import { PathModal } from './PathModal';
-import { ScopeModal } from './ScopeModal';
-import { DentiPayModal } from './DentiPayModal';
+import { ProviderSignupModal } from './ProviderSignupModal';
 import { useTranslation } from 'react-i18next';
 
 export const TrinitySection = () => {
   const { t } = useTranslation('marketing');
-  const [isPathModalOpen, setIsPathModalOpen] = useState(false);
-  const [isScopeModalOpen, setIsScopeModalOpen] = useState(false);
-  const [isDentiPayModalOpen, setIsDentiPayModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const trinityItems = [
     {
@@ -122,11 +118,7 @@ export const TrinitySection = () => {
 
                         {/* Learn More button for all cards */}
                         <Button
-                          onClick={() => {
-                            if (index === 0) setIsDentiPayModalOpen(true);
-                            if (index === 1) setIsPathModalOpen(true);
-                            if (index === 2) setIsScopeModalOpen(true);
-                          }}
+                          onClick={() => setIsModalOpen(true)}
                           variant="outline"
                           className="mt-auto"
                         >
@@ -141,10 +133,8 @@ export const TrinitySection = () => {
           </div>
         </StaggerContainer>
 
-        {/* Modals */}
-        <DentiPayModal isOpen={isDentiPayModalOpen} onClose={() => setIsDentiPayModalOpen(false)} />
-        <PathModal isOpen={isPathModalOpen} onClose={() => setIsPathModalOpen(false)} />
-        <ScopeModal isOpen={isScopeModalOpen} onClose={() => setIsScopeModalOpen(false)} />
+        {/* Modal */}
+        <ProviderSignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
     </section>
   );
