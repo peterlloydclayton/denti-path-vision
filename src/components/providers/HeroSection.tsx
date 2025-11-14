@@ -2,9 +2,12 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import { ProviderSignupModal } from './ProviderSignupModal';
 
 export const HeroSection = () => {
   const { t } = useTranslation('marketing');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <section className="h-screen relative z-30 overflow-hidden">
       {/* Controlled Background */}
@@ -127,10 +130,13 @@ export const HeroSection = () => {
       <div className="block sm:hidden absolute top-[58%] left-6 z-[150] mobile-landscape-button">
         <Button 
           className="h-10 text-base bg-black hover:bg-black/90 text-white shadow-elegant px-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+          onClick={() => setIsModalOpen(true)}
         >
           {t('providers.hero.cta')}
         </Button>
       </div>
+
+      <ProviderSignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

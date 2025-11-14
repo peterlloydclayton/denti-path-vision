@@ -13,11 +13,13 @@ import {
   Star,
   Sparkles
 } from 'lucide-react';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ProviderSignupModal } from './ProviderSignupModal';
 
 export const StatsSection = () => {
   const { t } = useTranslation('marketing');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dentalIcons = [
     Smile, Heart, Shield, Activity, Stethoscope, Plus, Star, Sparkles
   ];
@@ -139,11 +141,16 @@ export const StatsSection = () => {
         
         {/* Get Started button at bottom of section */}
         <div className="flex justify-center mt-16">
-          <Button className="bg-black text-white hover:bg-black/90 rounded-full px-12 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+          <Button 
+            className="bg-black text-white hover:bg-black/90 rounded-full px-12 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+            onClick={() => setIsModalOpen(true)}
+          >
             {t('providers.stats.getStarted')}
           </Button>
         </div>
       </div>
+
+      <ProviderSignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

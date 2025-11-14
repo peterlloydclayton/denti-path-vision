@@ -7,10 +7,13 @@ import { StaggerContainer, StaggerItem } from '@/components/ui/enhanced-animatio
 import { useNavigate } from 'react-router-dom';
 import dentistImage from '@/assets/mature-dentist-male-latin.png';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import { ProviderSignupModal } from './ProviderSignupModal';
 
 export const FinalCTASection = () => {
   const { t } = useTranslation('marketing');
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const steps = [
     { number: 1, title: t('providers.finalCTA.steps.demo.title'), description: t('providers.finalCTA.steps.demo.description') },
     { number: 2, title: t('providers.finalCTA.steps.trial.title'), description: t('providers.finalCTA.steps.trial.description') },
@@ -161,7 +164,7 @@ export const FinalCTASection = () => {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mb-6">
               <Button 
-                onClick={() => navigate('/patient-financing-application')}
+                onClick={() => setIsModalOpen(true)}
                 className="bg-black text-white hover:bg-black/90 px-16 py-6 text-2xl font-bold rounded-xl shadow-elegant hover:shadow-xl transition-all duration-300"
               >
                 {t('providers.finalCTA.getStarted')}
@@ -211,6 +214,8 @@ export const FinalCTASection = () => {
           />
         </motion.div>
       </section>
+
+      <ProviderSignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };

@@ -7,10 +7,13 @@ import { motion } from 'framer-motion';
 import { AudioVisualizer, Waveform, EqualizerBars } from '@/components/ui/audio-visualizer';
 import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import { ProviderSignupModal } from './ProviderSignupModal';
 
 
 export const EchoProviderSection = () => {
   const { t } = useTranslation('marketing');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const aiFeatures = [
     t('providers.echo.features.automates'),
@@ -254,11 +257,16 @@ export const EchoProviderSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Button className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium">
+          <Button 
+            className="bg-black text-white hover:bg-black/90 rounded-full px-8 py-3 text-base font-medium"
+            onClick={() => setIsModalOpen(true)}
+          >
             {t('providers.echo.getStarted')}
           </Button>
         </motion.div>
       </div>
+
+      <ProviderSignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };
