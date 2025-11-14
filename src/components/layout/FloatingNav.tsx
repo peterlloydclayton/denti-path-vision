@@ -198,8 +198,12 @@ const MobileNav = () => {
                   if (item.submenu) {
                     return (
                       <motion.div key={item.href} variants={itemVariants}>
-                        <button
-                          onClick={() => setExpandedItem(isExpanded ? null : item.href)}
+                        <Link
+                          to={item.href}
+                          onClick={() => {
+                            setIsOpen(false);
+                            setCurrentPath(item.href);
+                          }}
                           className={`
                             w-full flex items-center justify-between gap-4 p-4 rounded-xl
                             transition-smooth hover:bg-card-hover
@@ -219,7 +223,7 @@ const MobileNav = () => {
                           >
                             <ChevronDown size={16} />
                           </motion.div>
-                        </button>
+                        </Link>
                         <AnimatePresence>
                           {isExpanded && (
                             <motion.div
