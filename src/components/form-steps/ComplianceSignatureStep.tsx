@@ -154,25 +154,58 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         referring_provider_name: formData.referring_provider_name,
         referring_contact_info: formData.referring_contact_info,
         referring_provider_email: formData.referring_provider_email,
-        estimated_treatment_cost: formData.estimated_treatment_cost ? parseFloat(formData.estimated_treatment_cost) : undefined,
+        estimated_treatment_cost: (() => {
+          const value = parseFloat(formData.estimated_treatment_cost);
+          return !isNaN(value) && value > 0 ? value : undefined;
+        })(),
         employer_name: formData.current_employer,
         employer_address: formData.employer_address,
         job_title: formData.job_title,
         employment_status: formData.employment_type,
         length_of_employment: formData.length_of_employment,
-        monthly_income: formData.monthly_gross_income ? parseFloat(formData.monthly_gross_income) : undefined,
-        monthly_net_income: formData.monthly_net_income ? parseFloat(formData.monthly_net_income) : undefined,
+        monthly_income: (() => {
+          const value = parseFloat(formData.monthly_gross_income);
+          return !isNaN(value) ? value : undefined;
+        })(),
+        monthly_net_income: (() => {
+          const value = parseFloat(formData.monthly_net_income);
+          return !isNaN(value) ? value : undefined;
+        })(),
         pay_frequency: formData.pay_frequency,
         secondary_income_sources: formData.secondary_income_sources,
-        household_total_income: formData.household_total_income ? parseFloat(formData.household_total_income) : undefined,
+        household_total_income: (() => {
+          const value = parseFloat(formData.household_total_income);
+          return !isNaN(value) ? value : undefined;
+        })(),
         spouse_employer: formData.spouse_employer,
-        spouse_income: formData.spouse_income ? parseFloat(formData.spouse_income) : undefined,
-        checking_balance: formData.checking_balance ? parseFloat(formData.checking_balance) : undefined,
-        savings_balance: formData.savings_balance ? parseFloat(formData.savings_balance) : undefined,
-        retirement_accounts: formData.retirement_accounts ? parseFloat(formData.retirement_accounts) : undefined,
-        investments: formData.investment_accounts ? parseFloat(formData.investment_accounts) : undefined,
-        monthly_housing_cost: formData.mortgage_rent_payment ? parseFloat(formData.mortgage_rent_payment) : undefined,
-        credit_score: formData.credit_score_unknown ? undefined : (formData.credit_score ? parseInt(formData.credit_score) : undefined),
+        spouse_income: (() => {
+          const value = parseFloat(formData.spouse_income);
+          return !isNaN(value) ? value : undefined;
+        })(),
+        checking_balance: (() => {
+          const value = parseFloat(formData.checking_balance);
+          return !isNaN(value) ? value : undefined;
+        })(),
+        savings_balance: (() => {
+          const value = parseFloat(formData.savings_balance);
+          return !isNaN(value) ? value : undefined;
+        })(),
+        retirement_accounts: (() => {
+          const value = parseFloat(formData.retirement_accounts);
+          return !isNaN(value) ? value : undefined;
+        })(),
+        investments: (() => {
+          const value = parseFloat(formData.investment_accounts);
+          return !isNaN(value) ? value : undefined;
+        })(),
+        monthly_housing_cost: (() => {
+          const value = parseFloat(formData.mortgage_rent_payment);
+          return !isNaN(value) ? value : undefined;
+        })(),
+        credit_score: formData.credit_score_unknown ? undefined : (() => {
+          const value = parseInt(formData.credit_score);
+          return !isNaN(value) ? value : undefined;
+        })(),
         considering_treatment_time: formData.considering_treatment_time,
         priority_preference: formData.priority_preference,
         primary_reason: formData.treatment_reason.join(', '),
