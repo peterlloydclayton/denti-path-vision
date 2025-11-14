@@ -34,8 +34,8 @@ export const HeroSection = () => {
         {/* Middle Spacer for proper vertical distribution */}
         <div className="flex-1" />
 
-        {/* Subtitle - Middle Left (hidden on landscape mobile if too tight) */}
-        <div className="w-full md:w-1/2 lg:w-2/5 hidden portrait:block sm:block">
+        {/* Subtitle - Middle Left (hidden on all landscape orientations) */}
+        <div className="w-full md:w-1/2 lg:w-2/5 hidden portrait:block">
           <AnimatedText delay={0.2}>
             <h2 className="text-base md:text-xl text-gray-600 font-medium leading-relaxed italic">
               {t('patients.hero.subtitle')}
