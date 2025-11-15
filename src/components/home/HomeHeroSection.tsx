@@ -29,7 +29,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop Layout */}
         <div className="hidden lg:flex justify-center items-center min-h-screen">
-          <div className="w-full max-w-md xl:max-w-[48rem] 2xl:max-w-[48rem] min-h-screen relative z-10">
+          <div className="w-full max-w-md xl:max-w-[48rem] 2xl:max-w-[72rem] min-h-screen relative z-10">
             <img 
               src={heroImage}
               alt="Professional dental provider"
