@@ -141,9 +141,11 @@ const ApplicationSchema = z.object({
   considering_treatment_time: z.string().max(100).optional(),
   priority_preference: z.string().max(100).optional(),
   primary_reason: z.string().max(500).optional(),
+  treatment_reason: z.array(z.string()).optional(),
   expected_procedures: z.string().max(500).optional(),
   estimated_cost: z.number().min(0).max(999999999).optional(),
   timeline_urgency: z.string().max(100).optional(),
+  urgency_scale: z.number().int().min(0).max(10).optional(),
   ready_to_proceed: z.string().max(50).optional(),
   insurance_coverage: z.string().max(500).optional(),
   financing_preferences: z.string().max(500).optional(),
@@ -242,8 +244,20 @@ Deno.serve(async (req) => {
       throw validationError
     }
 
-    // Remove signature_data from the application data before inserting
+    // Remove signature_data from the application data and extract signature fields
     const { signature_data, ...dbApplicationData } = applicationData
+
+    // Extract signature fields if signature_data exists
+    const signatureFields = signature_data ? {
+      signature_signer_name: signature_data.signer_name,
+      signature_signer_email: signature_data.signer_email,
+      signature_consent_given: signature_data.consent_given,
+      signature_ip_address: signature_data.ip_address,
+      signature_user_agent: signature_data.user_agent,
+      signature_document_hash: signature_data.document_hash,
+      signature_document_id: signature_data.document_id,
+      signature_pdf_base64: signature_data.pdf_base64,
+    } : {}
 
     // Insert application data
     console.log('Inserting application data into database...')
@@ -251,6 +265,7 @@ Deno.serve(async (req) => {
       .from('temp_patient_applications')
       .insert({
         ...dbApplicationData,
+        ...signatureFields,
         expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
         created_at: new Date().toISOString()
       })

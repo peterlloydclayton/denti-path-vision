@@ -224,8 +224,11 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         })(),
         considering_treatment_time: formData.considering_treatment_time,
         priority_preference: formData.priority_preference,
-        primary_reason: formData.treatment_reason.join(', '),
-        timeline_urgency: formData.urgency_scale,
+        treatment_reason: formData.treatment_reason, // Send as array
+        urgency_scale: (() => {
+          const value = parseInt(formData.urgency_scale);
+          return !isNaN(value) ? value : undefined;
+        })(),
         ready_to_proceed: formData.ready_to_proceed,
         consent_credit_pull: formData.authorize_credit_report,
         consent_communications: formData.consent_communications,
