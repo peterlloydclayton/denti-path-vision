@@ -191,7 +191,7 @@ Deno.serve(async (req) => {
   }
 
   try {
-    console.log('=== Submit Patient Application Started ===')
+    console.log('=== Submit Patient Application Started (v2) ===')
     
     // Rate limiting check
     const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
