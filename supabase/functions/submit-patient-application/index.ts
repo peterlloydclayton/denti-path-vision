@@ -34,14 +34,14 @@ function checkRateLimit(ip: string): boolean {
   return true;
 }
 
-// Use EXTERNAL database credentials with SERVICE ROLE KEY to bypass RLS
-const externalUrl = Deno.env.get('EXTERNAL_SUPABASE_URL')!
-const externalServiceKey = Deno.env.get('EXTERNAL_SUPABASE_SERVICE_ROLE_KEY')!
+// Use local database credentials with SERVICE ROLE KEY to bypass RLS
+const supabaseUrl = Deno.env.get('SUPABASE_URL')!
+const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
 
-console.log('Connecting to external database:', externalUrl.substring(0, 30) + '...')
+console.log('Connecting to local database:', supabaseUrl.substring(0, 30) + '...')
 
-// Create Supabase client for external database (service role bypasses RLS)
-const supabaseAdmin = createClient(externalUrl, externalServiceKey, {
+// Create Supabase client for local database (service role bypasses RLS)
+const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
   auth: {
     autoRefreshToken: false,
     persistSession: false
