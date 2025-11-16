@@ -114,7 +114,6 @@ export const DesktopNavWithSubmenu = () => {
                     key={item.href} 
                     value={item.href}
                     onMouseEnter={() => setOpenSubmenu(item.href)}
-                    onMouseLeave={() => setOpenSubmenu(null)}
                   >
                     <Link
                       to={item.href}
