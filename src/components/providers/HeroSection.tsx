@@ -111,6 +111,7 @@ export const HeroSection = () => {
       {/* Desktop Button */}
       <div className="hidden md:block absolute top-[80%] max-h-[800px]:top-[85%] max-h-[700px]:top-[88%] left-12 z-[120]">
         <Button 
+          onClick={() => setIsModalOpen(true)}
           className="h-16 text-xl bg-black hover:bg-black/90 text-white shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
           {t('providers.hero.cta')}
