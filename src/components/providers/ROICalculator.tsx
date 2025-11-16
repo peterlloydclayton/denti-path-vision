@@ -8,12 +8,14 @@ import { CustomSlider } from '@/components/ui/custom-slider';
 import { Calculator, TrendingUp, DollarSign, Target, Calendar } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { useTranslation } from 'react-i18next';
+import { ProviderSignupModal } from './ProviderSignupModal';
 
 export const ROICalculator = () => {
   const { t } = useTranslation('marketing');
   const [monthlyPatients, setMonthlyPatients] = useState(50);
   const [avgTreatment, setAvgTreatment] = useState(2500);
   const [currentApproval, setCurrentApproval] = useState(60);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const calculateROI = () => {
     const patients = monthlyPatients || 0;
@@ -219,6 +221,7 @@ export const ROICalculator = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Button 
+                    onClick={() => setIsModalOpen(true)}
                     className="w-full mt-6 bg-intelligence hover:bg-intelligence/90 text-intelligence-foreground shadow-elegant hover:shadow-xl transition-all duration-300" 
                     size="lg"
                   >
@@ -230,6 +233,8 @@ export const ROICalculator = () => {
           </motion.div>
         </div>
       </div>
+      
+      <ProviderSignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };
