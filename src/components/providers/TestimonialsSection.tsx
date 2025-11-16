@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Star, CheckCircle, Quote } from 'lucide-react';
 import { AnimatedText } from '@/components/ui/animated-text';
+import { ProviderSignupModal } from './ProviderSignupModal';
 import {
   Carousel,
   CarouselContent,
@@ -26,6 +27,7 @@ export const TestimonialsSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [isLandscape, setIsLandscape] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onSelect = useCallback((api: CarouselApi) => {
     if (!api) return;
@@ -189,11 +191,16 @@ export const TestimonialsSection = () => {
         
         {/* Join Today button at bottom of section */}
         <div className="flex justify-center mt-16">
-          <Button className="bg-black text-white hover:bg-black/90 rounded-full px-10 py-3 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+          <Button 
+            onClick={() => setIsModalOpen(true)}
+            className="bg-black text-white hover:bg-black/90 rounded-full px-10 py-3 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+          >
             {t('providers.testimonials.joinToday')}
           </Button>
         </div>
       </div>
+      
+      <ProviderSignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

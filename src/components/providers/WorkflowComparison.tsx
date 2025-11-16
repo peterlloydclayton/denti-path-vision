@@ -5,12 +5,14 @@ import { EmblaParallaxCarousel } from '@/components/ui/embla-parallax-carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
+import { ProviderSignupModal } from './ProviderSignupModal';
 
 export const WorkflowComparison = () => {
   const { t } = useTranslation('marketing');
   const [activeSlide, setActiveSlide] = useState(0);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   
   const workflowSteps = [
@@ -211,11 +213,16 @@ export const WorkflowComparison = () => {
         
         {/* Get Started button at bottom of section */}
         <div className="flex justify-center mt-16">
-          <Button className="bg-black text-white hover:bg-black/90 rounded-full px-12 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+          <Button 
+            onClick={() => setIsModalOpen(true)}
+            className="bg-black text-white hover:bg-black/90 rounded-full px-12 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+          >
             {t('providers.workflow.getStarted')}
           </Button>
         </div>
       </div>
+      
+      <ProviderSignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };
