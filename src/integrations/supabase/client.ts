@@ -2,9 +2,9 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-// Using direct credentials to ensure connection to correct backend
-const SUPABASE_URL = "https://epkypzawqtpokmatjuzo.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVwa3lwemF3cXRwb2ttYXRqdXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4ODc4MTgsImV4cCI6MjA3MTQ2MzgxOH0.QYx4QwYhBRHhMdfgmuHUHpWN2R1q7CetLCAS69w3yJU";
+// Using credentials to connect to Lovable Cloud backend
+const SUPABASE_URL = "https://oqrvskdtvaykqkclpgew.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xcnZza2R0dmF5a3FrY2xwZ2V3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEwNzA0NjksImV4cCI6MjA3NjY0NjQ2OX0.tWqCep9MA1yaB5qmrax3saC9NPbHUZy3_F6QjHE9ZFM";
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
