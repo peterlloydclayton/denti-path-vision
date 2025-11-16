@@ -56,6 +56,11 @@ export const TestimonialsSection = () => {
     };
   }, [api, onSelect]);
 
+  const handleButtonClick = () => {
+    console.log('Testimonials button clicked');
+    setIsModalOpen(true);
+  };
+
   const testimonials = [
     {
       quote: "DentiPay transformed our practice. We went from 40% approval rates to 94% overnight. The intelligence behind SCOPE understands dental care in ways traditional financing never could.",
@@ -192,7 +197,7 @@ export const TestimonialsSection = () => {
         {/* Join Today button at bottom of section */}
         <div className="flex justify-center mt-16">
           <Button 
-            onClick={() => setIsModalOpen(true)}
+            onClick={handleButtonClick}
             className="bg-black text-white hover:bg-black/90 rounded-full px-10 py-3 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
           >
             {t('providers.testimonials.joinToday')}

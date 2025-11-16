@@ -26,6 +26,7 @@ export const ProviderSignupModal = ({ isOpen, onClose }: ProviderSignupModalProp
   ];
 
   const handleSignup = () => {
+    console.log('Modal Sign Up button clicked - navigating to /provider-signup');
     navigate('/provider-signup');
     onClose();
   };

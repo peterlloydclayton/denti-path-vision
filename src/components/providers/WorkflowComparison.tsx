@@ -82,6 +82,11 @@ export const WorkflowComparison = () => {
     setActiveSlide(slideIndex);
   };
 
+  const handleButtonClick = () => {
+    console.log('WorkflowComparison button clicked');
+    setIsModalOpen(true);
+  };
+
   const createCard = (step: typeof workflowSteps[0], index: number) => {
     const isFlipped = flippedCards.includes(index);
     
@@ -214,7 +219,7 @@ export const WorkflowComparison = () => {
         {/* Get Started button at bottom of section */}
         <div className="flex justify-center mt-16">
           <Button 
-            onClick={() => setIsModalOpen(true)}
+            onClick={handleButtonClick}
             className="bg-black text-white hover:bg-black/90 rounded-full px-12 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
           >
             {t('providers.workflow.getStarted')}

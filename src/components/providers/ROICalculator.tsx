@@ -17,6 +17,11 @@ export const ROICalculator = () => {
   const [currentApproval, setCurrentApproval] = useState(60);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleButtonClick = () => {
+    console.log('ROI Calculator button clicked');
+    setIsModalOpen(true);
+  };
+
   const calculateROI = () => {
     const patients = monthlyPatients || 0;
     const treatment = avgTreatment || 0;
@@ -221,7 +226,7 @@ export const ROICalculator = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Button 
-                    onClick={() => setIsModalOpen(true)}
+                    onClick={handleButtonClick}
                     className="w-full mt-6 bg-intelligence hover:bg-intelligence/90 text-intelligence-foreground shadow-elegant hover:shadow-xl transition-all duration-300" 
                     size="lg"
                   >
