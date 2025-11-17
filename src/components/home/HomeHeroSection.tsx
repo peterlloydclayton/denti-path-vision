@@ -28,23 +28,12 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       
       <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop Layout */}
-        <div className="hidden lg:flex justify-center items-center min-h-screen">
+        <div className="hidden md:flex justify-center items-center min-h-screen">
           <div className="w-full max-w-md min-h-screen relative z-10">
             <img 
               src={heroImage}
               alt="Professional dental provider"
               className="absolute bottom-0 left-1/2 -translate-x-1/2 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[127.5vh]"
-            />
-          </div>
-        </div>
-
-        {/* Tablet Layout */}
-        <div className="hidden sm:flex lg:hidden justify-start items-center min-h-screen ml-[20%]">
-          <div className="w-full max-w-sm min-h-screen relative z-10">
-            <img 
-              src={heroImage}
-              alt="Professional dental provider"
-              className="absolute bottom-0 left-[40%] -translate-x-1/2 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[52vh]"
             />
           </div>
         </div>
@@ -75,12 +64,12 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       
       
       {/* Desktop & Tablet Title */}
-      <div className="hidden md:block absolute top-[10%] lg:top-[17%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[10%] left-12 z-20 w-1/2">
         <AnimatedText>
           <h1 className="text-6xl md:text-7xl font-bold text-foreground">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-4xl mt-8 md:mt-16 lg:mt-8 text-navy font-semibold">
+          <h2 className="block text-4xl mt-8 md:mt-16 text-navy font-semibold">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
@@ -105,7 +94,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       </div>
       
       {/* Desktop Subtitle */}
-      <div className="hidden lg:block absolute top-[63%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[63%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
             {t('home.hero.description')}

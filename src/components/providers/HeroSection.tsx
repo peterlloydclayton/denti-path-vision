@@ -39,25 +39,13 @@ export const HeroSection = () => {
       
       <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop Layout */}
-        <div className="hidden lg:flex justify-center items-center min-h-screen">
+        <div className="hidden md:flex justify-center items-center min-h-screen">
           {/* Right Hero Image - Centered */}
           <div className="w-full max-w-md min-h-screen relative z-[100]">
             <img 
               src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759199955/dentist-male-asian_upscayl_2x_upscayl-standard-4x_sn0djl.png"
               alt="Professional dentist providing quality care"
               className="absolute bottom-0 left-1/2 -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
-            />
-          </div>
-        </div>
-
-        {/* Tablet Layout */}
-        <div className="hidden sm:flex lg:hidden justify-center items-center min-h-screen">
-          {/* Right Hero Image - Centered */}
-          <div className="w-full max-w-md min-h-screen relative z-[100]">
-            <img 
-              src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759199955/dentist-male-asian_upscayl_2x_upscayl-standard-4x_sn0djl.png"
-              alt="Professional dentist providing quality care"
-              className="absolute bottom-0 left-[15%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[85vh]"
             />
           </div>
         </div>
@@ -88,7 +76,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop & Tablet Title */}
-      <div className="hidden md:block absolute top-[15%] lg:top-[17%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[15%] left-12 z-20 w-1/2">
         <AnimatedText>
           <h1 className="text-6xl md:text-7xl font-bold text-foreground">
             {t('providers.hero.title')}
@@ -100,7 +88,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Description */}
-      <div className="hidden lg:block absolute top-[63%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[63%] left-12 z-20 w-1/2">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
             {t('providers.hero.description')}
