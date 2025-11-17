@@ -26,7 +26,7 @@ export const HeroSection = () => {
       
       <div className="container mx-auto px-2 md:px-6 h-screen overflow-hidden relative">
         {/* Desktop Layout */}
-        <div className="hidden lg:flex justify-center items-center min-h-screen">
+        <div className="hidden md:flex justify-center items-center min-h-screen">
           {/* Right Hero Video - Centered */}
           <div className="w-full max-w-md min-h-screen relative z-[100]">
             <video 
@@ -37,22 +37,6 @@ export const HeroSection = () => {
               muted
               playsInline
               className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[61vh]"
-            />
-          </div>
-        </div>
-
-        {/* Tablet Layout */}
-        <div className="hidden sm:flex lg:hidden justify-center items-center min-h-screen">
-          {/* Right Hero Video - Centered */}
-          <div className="w-full max-w-[240px] min-h-screen relative z-[100]">
-            <video 
-              ref={videoRef2}
-              src={heroNeuralNetwork}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute bottom-[-15%] left-[-10%] w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[20vh]"
             />
           </div>
         </div>
@@ -84,16 +68,16 @@ export const HeroSection = () => {
       </div>
       
       {/* Tablet & Desktop Title - More responsive sizing */}
-      <div className="hidden sm:block absolute top-[13%] md:top-[15%] lg:top-[20%] left-6 sm:left-8 md:left-12 z-[130] w-[85%] sm:w-[75%] md:w-[70%] lg:w-1/2">
+      <div className="hidden sm:block absolute top-[13%] md:top-[15%] left-6 sm:left-8 md:left-12 z-[130] w-[85%] sm:w-[75%] md:w-[70%]">
         <AnimatedText>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-hero font-bold text-dental-blue leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-dental-blue leading-tight">
             {t('about.hero.title')}
           </h1>
         </AnimatedText>
       </div>
       
       {/* Subtitle - Only show on larger screens where there's space */}
-      <div className="hidden xl:block absolute top-[50%] left-12 z-[130] w-2/5">
+      <div className="hidden md:block absolute top-[50%] left-12 z-[130] w-2/5">
         <AnimatedText delay={0.2}>
           <p className="text-xl text-dental-blue/80 font-medium leading-relaxed text-left">
             {t('about.hero.subtitle')}
@@ -102,7 +86,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Tablet & Desktop Button - Using bottom positioning to avoid overlap */}
-      <div className="hidden sm:block absolute bottom-[12%] md:bottom-[15%] lg:bottom-[12%] left-6 sm:left-8 md:left-12 z-[130]">
+      <div className="hidden sm:block absolute bottom-[12%] md:bottom-[15%] left-6 sm:left-8 md:left-12 z-[130]">
         <Button 
           className="h-12 sm:h-14 md:h-16 text-base sm:text-lg md:text-xl bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 sm:px-10 md:px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >

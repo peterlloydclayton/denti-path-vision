@@ -56,14 +56,14 @@ export const HeroSection = () => {
       </div>
 
       {/* Desktop & Tablet Content */}
-      <div className="hidden sm:block absolute top-[10%] md:top-[15%] left-6 md:left-12 z-20 w-full md:w-1/2 lg:w-2/5">
+      <div className="hidden sm:block absolute top-[10%] md:top-[15%] left-6 md:left-12 z-20 w-full md:w-1/2">
         <AnimatedText>
-          <h1 className="text-4xl sm:text-5xl md:text-hero-mobile lg:text-hero font-bold text-foreground leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-hero-mobile font-bold text-foreground leading-tight">
             {t('patients.hero.title')}
           </h1>
         </AnimatedText>
         
-        <div className="mt-8 md:mt-12 lg:mt-16">
+        <div className="mt-8 md:mt-12">
           <AnimatedText delay={0.2}>
             <h2 className="text-base md:text-xl text-gray-600 font-medium leading-relaxed italic">
               {t('patients.hero.subtitle')}
