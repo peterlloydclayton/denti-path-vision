@@ -28,7 +28,7 @@ export const HeroSection = () => {
         {/* Desktop Layout */}
         <div className="hidden lg:flex justify-center items-center min-h-screen">
           {/* Right Hero Video - Centered */}
-          <div className="w-full max-w-md xl:max-w-lg min-h-screen relative z-[100]">
+          <div className="w-full max-w-md min-h-screen relative z-[100]">
             <video 
               ref={videoRef1}
               src={heroNeuralNetwork}
@@ -36,7 +36,7 @@ export const HeroSection = () => {
               loop
               muted
               playsInline
-              className="absolute bottom-[-10%] left-1/2 xl:left-[25%] -translate-x-1/2 xl:-translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[61vh]"
+              className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-auto object-contain object-bottom z-[110] max-w-none hero-image h-[61vh]"
             />
           </div>
         </div>
