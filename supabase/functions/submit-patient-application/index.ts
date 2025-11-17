@@ -35,10 +35,23 @@ function checkRateLimit(ip: string): boolean {
 }
 
 // Use external database credentials
-const supabaseUrl = (Deno.env.get('EXTERNAL_SUPABASE_URL') || Deno.env.get('SUPABASE_URL'))!.trim()
-const supabaseServiceKey = (Deno.env.get('EXTERNAL_SUPABASE_SERVICE_ROLE_KEY') || Deno.env.get('SUPABASE_SERVICE_ROLE_KEY'))!.trim()
+const supabaseUrl = (Deno.env.get('EXTERNAL_SUPABASE_URL') || Deno.env.get('SUPABASE_URL'))!
+  .trim()
+  .replace(/[\r\n\t]/g, '') // Remove line breaks, carriage returns, and tabs
+
+const supabaseServiceKey = (Deno.env.get('EXTERNAL_SUPABASE_SERVICE_ROLE_KEY') || Deno.env.get('SUPABASE_SERVICE_ROLE_KEY'))!
+  .trim()
+  .replace(/[\r\n\t\s]/g, '') // Remove all whitespace, line breaks, tabs
+
+// Validate the service key format (should be a JWT token)
+if (!supabaseServiceKey || supabaseServiceKey.split('.').length !== 3) {
+  console.error('Invalid service role key format. Key should be a valid JWT token.')
+  throw new Error('Invalid EXTERNAL_SUPABASE_SERVICE_ROLE_KEY configuration')
+}
 
 console.log('Connecting to external database:', supabaseUrl.substring(0, 30) + '...')
+console.log('Service key length:', supabaseServiceKey.length)
+console.log('Service key preview:', supabaseServiceKey.substring(0, 20) + '...')
 
 // Create Supabase client (service role bypasses RLS)
 const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
