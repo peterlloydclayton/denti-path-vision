@@ -260,12 +260,16 @@ Deno.serve(async (req) => {
       throw validationError
     }
 
-    // Insert application data with signature_data as JSONB
+    // Insert application data (exclude signature_data if not in external schema)
     console.log('Inserting application data into database...')
+    
+    // Remove signature_data from the insert since it might not exist in external database
+    const { signature_data, ...insertData } = applicationData as any
+    
     const { data: tempApp, error: appError } = await supabaseAdmin
       .from('temp_patient_applications')
       .insert({
-        ...applicationData,
+        ...insertData,
         expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
         created_at: new Date().toISOString()
       })
