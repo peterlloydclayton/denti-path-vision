@@ -41,7 +41,7 @@ export const HeroSection = () => {
         {/* Desktop Layout */}
         <div className="hidden md:flex justify-center items-center min-h-screen">
           {/* Right Hero Image - Centered */}
-          <div className="w-full max-w-md min-h-screen relative z-[100]">
+          <div className="w-full min-h-screen relative z-[100]">
             <img 
               src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759199955/dentist-male-asian_upscayl_2x_upscayl-standard-4x_sn0djl.png"
               alt="Professional dentist providing quality care"

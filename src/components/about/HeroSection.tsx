@@ -28,7 +28,7 @@ export const HeroSection = () => {
         {/* Desktop Layout */}
         <div className="hidden md:flex justify-center items-center min-h-screen">
           {/* Right Hero Video - Centered */}
-          <div className="w-full max-w-md min-h-screen relative z-[100]">
+          <div className="w-full min-h-screen relative z-[100]">
             <video 
               ref={videoRef1}
               src={heroNeuralNetwork}
