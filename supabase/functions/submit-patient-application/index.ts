@@ -247,15 +247,12 @@ Deno.serve(async (req) => {
       throw validationError
     }
 
-    // Remove signature_data from the application data (signature fields go to signatures table, not temp_patient_applications)
-    const { signature_data, ...dbApplicationData } = applicationData
-
-    // Insert application data without signature fields
+    // Insert application data with signature_data as JSONB
     console.log('Inserting application data into database...')
     const { data: tempApp, error: appError } = await supabaseAdmin
       .from('temp_patient_applications')
       .insert({
-        ...dbApplicationData,
+        ...applicationData,
         expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
         created_at: new Date().toISOString()
       })
