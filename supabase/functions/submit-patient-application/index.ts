@@ -34,13 +34,13 @@ function checkRateLimit(ip: string): boolean {
   return true;
 }
 
-// Use local database credentials with SERVICE ROLE KEY to bypass RLS
-const supabaseUrl = Deno.env.get('SUPABASE_URL')!
-const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+// Use external database credentials
+const supabaseUrl = Deno.env.get('EXTERNAL_SUPABASE_URL') || Deno.env.get('SUPABASE_URL')!
+const supabaseServiceKey = Deno.env.get('EXTERNAL_SUPABASE_SERVICE_ROLE_KEY') || Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
 
-console.log('Connecting to local database:', supabaseUrl.substring(0, 30) + '...')
+console.log('Connecting to external database:', supabaseUrl.substring(0, 30) + '...')
 
-// Create Supabase client for local database (service role bypasses RLS)
+// Create Supabase client (service role bypasses RLS)
 const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
   auth: {
     autoRefreshToken: false,
@@ -247,28 +247,15 @@ Deno.serve(async (req) => {
       throw validationError
     }
 
-    // Remove signature_data from the application data and extract signature fields
+    // Remove signature_data from the application data (signature fields go to signatures table, not temp_patient_applications)
     const { signature_data, ...dbApplicationData } = applicationData
 
-    // Extract signature fields if signature_data exists
-    const signatureFields = signature_data ? {
-      signature_signer_name: signature_data.signer_name,
-      signature_signer_email: signature_data.signer_email,
-      signature_consent_given: signature_data.consent_given,
-      signature_ip_address: signature_data.ip_address,
-      signature_user_agent: signature_data.user_agent,
-      signature_document_hash: signature_data.document_hash,
-      signature_document_id: signature_data.document_id,
-      signature_pdf_base64: signature_data.pdf_base64,
-    } : {}
-
-    // Insert application data
+    // Insert application data without signature fields
     console.log('Inserting application data into database...')
     const { data: tempApp, error: appError } = await supabaseAdmin
       .from('temp_patient_applications')
       .insert({
         ...dbApplicationData,
-        ...signatureFields,
         expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
         created_at: new Date().toISOString()
       })
