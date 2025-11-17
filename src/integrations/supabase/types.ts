@@ -203,6 +203,7 @@ export type Database = {
         Row: {
           additional_info: string | null
           alimony_child_support: number | null
+          authorize_credit_report: boolean | null
           auto_loans: number | null
           bankruptcy_history: boolean | null
           business_ownership: number | null
@@ -214,6 +215,8 @@ export type Database = {
           comfort_discussing_financing: number | null
           commitment_level: number | null
           confidence_impact: string | null
+          confirm_information_accurate: boolean | null
+          consent_communications: boolean | null
           consent_credit_pull: boolean | null
           considering_treatment_time: string | null
           created_at: string | null
@@ -301,6 +304,7 @@ export type Database = {
           time_at_address: string | null
           timeline_urgency: string | null
           trust_factors: string | null
+          understand_no_credit_impact: boolean | null
           work_phone: string | null
           years_at_job: number | null
           zip_code: string | null
@@ -308,6 +312,7 @@ export type Database = {
         Insert: {
           additional_info?: string | null
           alimony_child_support?: number | null
+          authorize_credit_report?: boolean | null
           auto_loans?: number | null
           bankruptcy_history?: boolean | null
           business_ownership?: number | null
@@ -319,6 +324,8 @@ export type Database = {
           comfort_discussing_financing?: number | null
           commitment_level?: number | null
           confidence_impact?: string | null
+          confirm_information_accurate?: boolean | null
+          consent_communications?: boolean | null
           consent_credit_pull?: boolean | null
           considering_treatment_time?: string | null
           created_at?: string | null
@@ -406,6 +413,7 @@ export type Database = {
           time_at_address?: string | null
           timeline_urgency?: string | null
           trust_factors?: string | null
+          understand_no_credit_impact?: boolean | null
           work_phone?: string | null
           years_at_job?: number | null
           zip_code?: string | null
@@ -413,6 +421,7 @@ export type Database = {
         Update: {
           additional_info?: string | null
           alimony_child_support?: number | null
+          authorize_credit_report?: boolean | null
           auto_loans?: number | null
           bankruptcy_history?: boolean | null
           business_ownership?: number | null
@@ -424,6 +433,8 @@ export type Database = {
           comfort_discussing_financing?: number | null
           commitment_level?: number | null
           confidence_impact?: string | null
+          confirm_information_accurate?: boolean | null
+          consent_communications?: boolean | null
           consent_credit_pull?: boolean | null
           considering_treatment_time?: string | null
           created_at?: string | null
@@ -511,6 +522,7 @@ export type Database = {
           time_at_address?: string | null
           timeline_urgency?: string | null
           trust_factors?: string | null
+          understand_no_credit_impact?: boolean | null
           work_phone?: string | null
           years_at_job?: number | null
           zip_code?: string | null
