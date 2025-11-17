@@ -222,6 +222,7 @@ export type Database = {
           created_at: string | null
           credit_card_balances: number | null
           credit_score: number | null
+          credit_score_unknown: boolean | null
           date_of_birth: string | null
           decision_making_style: string | null
           drivers_license: string | null
@@ -229,6 +230,7 @@ export type Database = {
           emergency_contact_name: string | null
           emergency_contact_phone: string | null
           emergency_contact_relationship: string | null
+          employer_address: string | null
           employer_name: string | null
           employment_status: string | null
           estimated_cost: number | null
@@ -303,8 +305,10 @@ export type Database = {
           target_payment_range: string | null
           time_at_address: string | null
           timeline_urgency: string | null
+          treatment_reason: string | null
           trust_factors: string | null
           understand_no_credit_impact: boolean | null
+          urgency_scale: number | null
           work_phone: string | null
           years_at_job: number | null
           zip_code: string | null
@@ -331,6 +335,7 @@ export type Database = {
           created_at?: string | null
           credit_card_balances?: number | null
           credit_score?: number | null
+          credit_score_unknown?: boolean | null
           date_of_birth?: string | null
           decision_making_style?: string | null
           drivers_license?: string | null
@@ -338,6 +343,7 @@ export type Database = {
           emergency_contact_name?: string | null
           emergency_contact_phone?: string | null
           emergency_contact_relationship?: string | null
+          employer_address?: string | null
           employer_name?: string | null
           employment_status?: string | null
           estimated_cost?: number | null
@@ -412,8 +418,10 @@ export type Database = {
           target_payment_range?: string | null
           time_at_address?: string | null
           timeline_urgency?: string | null
+          treatment_reason?: string | null
           trust_factors?: string | null
           understand_no_credit_impact?: boolean | null
+          urgency_scale?: number | null
           work_phone?: string | null
           years_at_job?: number | null
           zip_code?: string | null
@@ -440,6 +448,7 @@ export type Database = {
           created_at?: string | null
           credit_card_balances?: number | null
           credit_score?: number | null
+          credit_score_unknown?: boolean | null
           date_of_birth?: string | null
           decision_making_style?: string | null
           drivers_license?: string | null
@@ -447,6 +456,7 @@ export type Database = {
           emergency_contact_name?: string | null
           emergency_contact_phone?: string | null
           emergency_contact_relationship?: string | null
+          employer_address?: string | null
           employer_name?: string | null
           employment_status?: string | null
           estimated_cost?: number | null
@@ -521,8 +531,10 @@ export type Database = {
           target_payment_range?: string | null
           time_at_address?: string | null
           timeline_urgency?: string | null
+          treatment_reason?: string | null
           trust_factors?: string | null
           understand_no_credit_impact?: boolean | null
+          urgency_scale?: number | null
           work_phone?: string | null
           years_at_job?: number | null
           zip_code?: string | null
