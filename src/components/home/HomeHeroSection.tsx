@@ -23,9 +23,12 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      const width = window.innerWidth;
+      setWindowWidth(width);
+      console.log('Viewport width:', width + 'px');
     };
 
+    console.log('Initial viewport width:', windowWidth + 'px');
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -143,11 +146,6 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
 
       {/* Play Intro Button */}
       {onPlayIntro && <PlayIntroButton onClick={onPlayIntro} />}
-
-      {/* Width Indicator */}
-      <div className="absolute top-4 right-4 z-50 text-red-600 font-bold text-2xl bg-white/90 px-4 py-2 rounded">
-        {windowWidth}px
-      </div>
     </section>
   );
 };
