@@ -55,7 +55,7 @@ export const HeroSection = () => {
         </Button>
       </div>
 
-      {/* Desktop & Tablet Content */}
+      {/* Desktop & Tablet Title */}
       <div className="hidden sm:block absolute top-[10%] left-6 md:left-12 z-20 w-full md:w-1/2">
         <AnimatedText>
           <h1 className="text-6xl md:text-7xl font-bold text-foreground">
@@ -75,15 +75,16 @@ export const HeroSection = () => {
             </h2>
           </AnimatedText>
         </div>
+      </div>
 
-        <div className="mt-8 md:mt-16">
-          <Button 
-            className="h-12 md:h-16 text-base md:text-xl bg-black text-white hover:bg-black/80 shadow-elegant px-8 md:px-12 font-semibold"
-            onClick={() => navigate('/patient-financing-application')}
-          >
-            {t('patients.hero.cta')}
-          </Button>
-        </div>
+      {/* Desktop Button - positioned to match home page */}
+      <div className="hidden sm:block absolute bottom-[15%] left-6 md:left-12 z-20">
+        <Button 
+          className="h-12 md:h-16 text-base md:text-xl bg-black text-white hover:bg-black/80 shadow-elegant px-8 md:px-12 font-semibold"
+          onClick={() => navigate('/patient-financing-application')}
+        >
+          {t('patients.hero.cta')}
+        </Button>
       </div>
     </section>
   );
