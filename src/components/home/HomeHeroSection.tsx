@@ -9,6 +9,7 @@ import { FloatingIcons } from '@/components/ui/floating-icons';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { PlayIntroButton } from '@/components/PlayIntroButton';
+import { useState, useEffect } from 'react';
 const heroImage = 'https://res.cloudinary.com/drxvhwze4/image/upload/v1759199954/Dentist-female-african_nefprl.png';
 
 interface HomeHeroSectionProps {
@@ -18,6 +19,17 @@ interface HomeHeroSectionProps {
 export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
   const { t } = useTranslation('marketing');
   const navigate = useNavigate();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section className="h-screen relative z-10 overflow-hidden">
       {/* Background */}
@@ -131,6 +143,11 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
 
       {/* Play Intro Button */}
       {onPlayIntro && <PlayIntroButton onClick={onPlayIntro} />}
+
+      {/* Width Indicator */}
+      <div className="absolute top-4 right-4 z-50 text-red-600 font-bold text-2xl bg-white/90 px-4 py-2 rounded">
+        {windowWidth}px
+      </div>
     </section>
   );
 };
