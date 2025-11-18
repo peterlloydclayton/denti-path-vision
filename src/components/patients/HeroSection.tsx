@@ -56,27 +56,27 @@ export const HeroSection = () => {
       </div>
 
       {/* Desktop & Tablet Content */}
-      <div className="hidden sm:block absolute top-[10%] md:top-[15%] left-6 md:left-12 z-20 w-full md:w-1/2">
+      <div className="hidden sm:block absolute top-[10%] left-6 md:left-12 z-20 w-full md:w-1/2">
         <AnimatedText>
-          <h1 className="text-4xl sm:text-5xl md:text-hero-mobile font-bold text-foreground leading-tight">
+          <h1 className="text-6xl md:text-7xl font-bold text-foreground">
             {t('patients.hero.title')}
           </h1>
         </AnimatedText>
         
-        <div className="mt-8 md:mt-12">
+        <div className="mt-8 md:mt-16">
           <AnimatedText delay={0.2}>
-            <h2 className="text-base md:text-xl text-gray-600 font-medium leading-relaxed italic">
+            <h2 className="text-4xl text-gray-600 font-medium italic">
               {t('patients.hero.subtitle')}
             </h2>
           </AnimatedText>
           <AnimatedText delay={0.4}>
-            <h2 className="text-base md:text-xl text-gray-600 font-medium leading-relaxed mt-2 md:mt-3">
+            <h2 className="text-4xl text-gray-600 font-medium mt-4">
               {t('patients.hero.subtitle2')}
             </h2>
           </AnimatedText>
         </div>
 
-        <div className="mt-8 md:mt-12">
+        <div className="mt-8 md:mt-16">
           <Button 
             className="h-12 md:h-16 text-base md:text-xl bg-black text-white hover:bg-black/80 shadow-elegant px-8 md:px-12 font-semibold"
             onClick={() => navigate('/patient-financing-application')}
