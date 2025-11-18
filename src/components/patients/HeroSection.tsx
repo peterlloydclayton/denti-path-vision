@@ -12,7 +12,7 @@ export const HeroSection = () => {
       <div className="absolute inset-0 bg-primary"></div>
       
       {/* Image Container */}
-      <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
+      <div className="w-full px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop & Tablet Layout */}
         <div className="hidden sm:flex justify-end items-end h-screen">
           <div className="w-3/5 h-full relative z-10">

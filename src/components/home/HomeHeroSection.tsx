@@ -26,7 +26,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       {/* Floating Icons Background */}
       <FloatingIcons />
       
-      <div className="container mx-auto px-2 md:px-6 h-screen overflow-visible relative">
+      <div className="w-full px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop Layout */}
         <div className="hidden md:flex justify-center items-center min-h-screen">
           <div className="w-full min-h-screen relative z-10">

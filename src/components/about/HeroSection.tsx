@@ -24,7 +24,7 @@ export const HeroSection = () => {
       {/* Controlled Background */}
       <div className="absolute inset-0 bg-black" style={{ height: '100vh' }}></div>
       
-      <div className="container mx-auto px-2 md:px-6 h-screen overflow-hidden relative">
+      <div className="w-full px-2 md:px-6 h-screen overflow-hidden relative">
         {/* Desktop Layout */}
         <div className="hidden md:flex justify-center items-center min-h-screen">
           {/* Right Hero Video - Centered */}
