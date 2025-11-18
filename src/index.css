@@ -266,57 +266,6 @@ All colors MUST be HSL. Black primary, white secondary, pastels for accents only
     }
   }
 
-  /* Landscape Mode - Only apply when screen becomes very wide/thin (aspect ratio 16:9 or wider) */
-  @media screen and (orientation: landscape) and (min-aspect-ratio: 16/9) {
-    /* Scale down hero images for landscape */
-    .hero-image {
-      height: 65vh !important;
-      max-height: 65vh !important;
-    }
-    
-    /* Position title at top left with less width */
-    .mobile-landscape-title {
-      top: 10% !important;
-      left: 5% !important;
-      width: 40% !important;
-      transform: none !important;
-    }
-    
-    /* Smaller text for landscape */
-    .mobile-landscape-text {
-      font-size: 1.5rem !important;
-      margin-bottom: 0.5rem !important;
-      line-height: 1.2 !important;
-    }
-    
-    /* Hide subtitle in landscape to save space */
-    .mobile-landscape-subtitle {
-      display: none !important;
-    }
-    
-    /* Position button at bottom left under title, lowered by 10% */
-    .mobile-landscape-button {
-      bottom: 0% !important;
-      left: 5% !important;
-      right: auto !important;
-      top: auto !important;
-      transform: none !important;
-    }
-    
-    /* Adjust button size */
-    .mobile-landscape-button button {
-      height: 2.5rem !important;
-      font-size: 0.875rem !important;
-      padding-left: 1.5rem !important;
-      padding-right: 1.5rem !important;
-    }
-    
-    /* Stack buttons vertically if multiple */
-    .mobile-landscape-button > div {
-      flex-direction: column !important;
-      gap: 0.5rem !important;
-    }
-  }
 }
 
 /* 3D Card Animation Classes */
