@@ -15,7 +15,7 @@ export const HeroSection = () => {
       <div className="w-full px-2 md:px-6 h-screen overflow-visible relative">
         {/* Desktop & Tablet Layout */}
         <div className="hidden sm:flex justify-end items-end h-screen">
-          <div className="h-full relative z-10">
+          <div className="w-3/5 h-full relative z-10">
             <img 
               src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
               alt="Happy patient with dental financing"
