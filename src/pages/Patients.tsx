@@ -12,7 +12,7 @@ import { FinalCTASection } from '@/components/patients/FinalCTASection';
 
 const Patients = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden mobile-landscape:relative">
       <HeroSection />
       <CaseStudySection />
       <JourneySection />

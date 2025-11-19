@@ -46,7 +46,7 @@ export const JourneySection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-background relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 bg-background relative overflow-hidden mobile-landscape:min-h-0">
       <div className="container mx-auto px-6 relative">
         <AnimatedText className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">

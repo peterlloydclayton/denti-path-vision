@@ -7,7 +7,7 @@ export const HeroSection = () => {
   const { t } = useTranslation('marketing');
   const navigate = useNavigate();
   return (
-    <section className="h-screen relative z-30 overflow-hidden">
+    <section className="h-screen relative z-30 overflow-hidden mobile-landscape:overflow-visible">
       {/* Controlled Background */}
       <div className="absolute inset-0 bg-primary"></div>
       
