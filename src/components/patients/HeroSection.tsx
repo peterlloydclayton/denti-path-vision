@@ -63,14 +63,14 @@ export const HeroSection = () => {
           </h1>
         </AnimatedText>
         
-        <div className="mt-8 md:mt-16 mobile-landscape:hidden">
+        <div className="mt-8 md:mt-16">
           <AnimatedText delay={0.2}>
-            <h2 className="text-4xl text-gray-600 font-medium italic">
+            <h2 className="text-4xl mobile-landscape:text-2xl text-gray-600 font-medium italic">
               {t('patients.hero.subtitle')}
             </h2>
           </AnimatedText>
           <AnimatedText delay={0.4}>
-            <h2 className="text-4xl text-gray-600 font-medium mt-4">
+            <h2 className="text-4xl mobile-landscape:text-2xl text-gray-600 font-medium mt-4">
               {t('patients.hero.subtitle2')}
             </h2>
           </AnimatedText>
