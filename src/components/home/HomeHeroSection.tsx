@@ -66,12 +66,12 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       </div>
       
       {/* Mobile Portrait Title */}
-      <div className="block sm:hidden absolute top-[12%] landscape:top-[8%] left-6 landscape:left-4 z-20 w-3/4 landscape:w-[45%]">
+      <div className="block sm:hidden absolute top-[12%] mobile-landscape:top-[6%] left-6 mobile-landscape:left-4 z-20 w-3/4 mobile-landscape:w-[45%]">
         <AnimatedText>
-          <h1 className="text-5xl landscape:text-2xl font-bold mb-6 landscape:mb-2 text-foreground leading-none landscape:leading-tight">
+          <h1 className="text-5xl mobile-landscape:text-2xl font-bold mb-6 mobile-landscape:mb-2 text-foreground leading-none mobile-landscape:leading-tight">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-3xl landscape:text-lg text-navy font-semibold mb-6 landscape:mb-2">
+          <h2 className="block text-3xl mobile-landscape:text-base text-navy font-semibold mb-6 mobile-landscape:mb-2">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
@@ -79,28 +79,28 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       
       
       {/* Desktop & Tablet Title */}
-      <div className="hidden md:block absolute top-[15%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[15%] mobile-landscape:top-[6%] left-12 mobile-landscape:left-8 z-20 w-1/2 mobile-landscape:w-[45%]">
         <AnimatedText>
-          <h1 className="text-6xl md:text-7xl font-bold text-foreground">
+          <h1 className="text-6xl md:text-7xl mobile-landscape:text-3xl font-bold text-foreground">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-4xl mt-8 md:mt-16 text-gray-600 font-medium">
+          <h2 className="block text-4xl mobile-landscape:text-base mt-8 md:mt-16 mobile-landscape:mt-2 text-gray-600 font-medium">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
       </div>
       
       {/* Desktop Buttons - moved down 15% more, aligned with text */}
-      <div className="hidden md:block absolute top-[80%] max-h-[800px]:top-[85%] max-h-[700px]:top-[88%] left-12 z-20">
-        <div className="flex gap-4 max-h-[700px]:gap-2">
+      <div className="hidden md:block absolute top-[80%] mobile-landscape:top-[75%] max-h-[800px]:top-[85%] max-h-[700px]:top-[88%] left-12 mobile-landscape:left-8 z-20">
+        <div className="flex gap-4 mobile-landscape:gap-2 max-h-[700px]:gap-2">
           <Button 
-            className="h-16 max-h-[700px]:h-12 text-xl max-h-[700px]:text-base bg-black hover:bg-black/90 text-white shadow-elegant px-12 max-h-[700px]:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-16 mobile-landscape:h-10 max-h-[700px]:h-12 text-xl mobile-landscape:text-sm max-h-[700px]:text-base bg-black hover:bg-black/90 text-white shadow-elegant px-12 mobile-landscape:px-6 max-h-[700px]:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
             onClick={() => navigate('/patients')}
           >
             {t('home.hero.ctaPatients')}
           </Button>
           <Button 
-            className="h-16 max-h-[700px]:h-12 text-xl max-h-[700px]:text-base bg-black hover:bg-black/90 text-white shadow-elegant px-12 max-h-[700px]:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-16 mobile-landscape:h-10 max-h-[700px]:h-12 text-xl mobile-landscape:text-sm max-h-[700px]:text-base bg-black hover:bg-black/90 text-white shadow-elegant px-12 mobile-landscape:px-6 max-h-[700px]:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
             onClick={() => navigate('/providers')}
           >
             {t('home.hero.ctaProviders')}
@@ -109,25 +109,25 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       </div>
       
       {/* Desktop Subtitle */}
-      <div className="hidden md:block absolute top-[63%] left-12 z-20 w-1/2">
+      <div className="hidden md:block absolute top-[63%] mobile-landscape:top-[55%] left-12 mobile-landscape:left-8 z-20 w-1/2 mobile-landscape:w-[45%]">
         <AnimatedText delay={0.2}>
-          <p className="text-xl text-foreground/80 font-medium leading-relaxed text-left">
+          <p className="text-xl mobile-landscape:text-xs text-foreground/80 font-medium leading-relaxed text-left">
             {t('home.hero.description')}
           </p>
         </AnimatedText>
       </div>
 
       {/* Mobile Portrait Buttons - Stacked vertically */}
-      <div className="block sm:hidden absolute top-[55%] landscape:top-[65%] left-6 landscape:left-4 z-20">
-        <div className="flex flex-col landscape:flex-row gap-3 landscape:gap-2">
+      <div className="block sm:hidden absolute top-[55%] mobile-landscape:top-[65%] left-6 mobile-landscape:left-4 z-20">
+        <div className="flex flex-col mobile-landscape:flex-row gap-3 mobile-landscape:gap-2">
           <Button 
-            className="h-10 landscape:h-8 text-base landscape:text-sm bg-black hover:bg-black/90 text-white shadow-elegant px-4 landscape:px-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-10 mobile-landscape:h-8 text-base mobile-landscape:text-sm bg-black hover:bg-black/90 text-white shadow-elegant px-4 mobile-landscape:px-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
             onClick={() => navigate('/patients')}
           >
             {t('home.hero.ctaPatients')}
           </Button>
           <Button 
-            className="h-10 landscape:h-8 text-base landscape:text-sm bg-black hover:bg-black/90 text-white shadow-elegant px-4 landscape:px-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+            className="h-10 mobile-landscape:h-8 text-base mobile-landscape:text-sm bg-black hover:bg-black/90 text-white shadow-elegant px-4 mobile-landscape:px-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
             onClick={() => navigate('/providers')}
           >
             {t('home.hero.ctaProviders')}
