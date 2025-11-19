@@ -43,13 +43,22 @@ export const HeroSection = () => {
             {t('patients.hero.title')}
           </h1>
         </AnimatedText>
-        <div className="mt-4 mobile-landscape:mt-2">
+        <div className="mt-4 mobile-landscape:hidden">
           <AnimatedText delay={0.2}>
-            <h3 className="text-2xl mobile-landscape:text-base text-gray-600 font-medium mobile-landscape:leading-tight">
+            <h3 className="text-2xl text-gray-600 font-medium">
               {t('patients.hero.subtitle')}
             </h3>
           </AnimatedText>
         </div>
+      </div>
+
+      {/* Landscape Mobile Subtitle - positioned below title */}
+      <div className="hidden mobile-landscape:block absolute top-[41%] left-4 z-20 w-[45%]">
+        <AnimatedText delay={0.2}>
+          <h3 className="text-base text-gray-600 font-medium leading-tight">
+            {t('patients.hero.subtitle')}
+          </h3>
+        </AnimatedText>
       </div>
 
       {/* Mobile Portrait Button */}
@@ -70,9 +79,9 @@ export const HeroSection = () => {
           </h1>
         </AnimatedText>
         
-        <div className="mt-8 md:mt-16">
+        <div className="mt-8 md:mt-16 mobile-landscape:hidden">
           <AnimatedText delay={0.2}>
-            <h3 className="text-4xl mobile-landscape:text-base text-gray-600 font-medium mobile-landscape:leading-tight">
+            <h3 className="text-4xl text-gray-600 font-medium">
               {t('patients.hero.subtitle')}
             </h3>
           </AnimatedText>
