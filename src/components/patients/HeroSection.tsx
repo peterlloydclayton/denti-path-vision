@@ -53,11 +53,11 @@ export const HeroSection = () => {
       </div>
 
       {/* Landscape Mobile Subtitle - positioned below title */}
-      <div className="hidden mobile-landscape:block absolute top-[41%] left-4 z-20 w-[45%]">
+      <div className="hidden mobile-landscape:block absolute top-[55%] left-8 z-20 w-[45%]">
         <AnimatedText delay={0.2}>
-          <h3 className="text-base text-gray-600 font-medium leading-tight">
+          <p className="text-xs text-foreground/80 font-medium leading-relaxed text-left">
             {t('patients.hero.subtitle')}
-          </h3>
+          </p>
         </AnimatedText>
       </div>
 
