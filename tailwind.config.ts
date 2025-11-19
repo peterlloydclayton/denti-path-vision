@@ -10,6 +10,9 @@ export default {
       padding: "2rem",
     },
     extend: {
+      screens: {
+        'mobile-landscape': {'raw': '(max-height: 500px) and (orientation: landscape)'},
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
