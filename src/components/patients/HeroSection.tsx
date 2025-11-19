@@ -56,7 +56,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Desktop & Tablet Title */}
-      <div className="hidden sm:block absolute top-[10%] left-6 md:left-12 z-20 w-full md:w-1/2">
+      <div className="hidden sm:block absolute top-[15%] left-6 md:left-12 z-20 w-full md:w-1/2">
         <AnimatedText>
           <h1 className="text-6xl md:text-7xl font-bold text-foreground">
             {t('patients.hero.title')}
