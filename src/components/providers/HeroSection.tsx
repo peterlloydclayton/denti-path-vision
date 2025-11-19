@@ -69,7 +69,7 @@ export const HeroSection = () => {
           <h1 className="text-5xl mobile-landscape:text-2xl font-bold mb-6 mobile-landscape:mb-2 text-foreground leading-none mobile-landscape:leading-tight">
             {t('providers.hero.title')}
           </h1>
-          <h2 className="block text-3xl mobile-landscape:text-base text-intelligence font-semibold mb-6 mobile-landscape:mb-2">
+          <h2 className="block text-3xl mobile-landscape:hidden text-intelligence font-semibold mb-6">
             {t('providers.hero.subtitle')}
           </h2>
         </AnimatedText>
@@ -81,7 +81,7 @@ export const HeroSection = () => {
           <h1 className="text-6xl md:text-7xl mobile-landscape:text-3xl font-bold text-foreground">
             {t('providers.hero.title')}
           </h1>
-          <h2 className="block text-4xl mobile-landscape:text-base mt-8 mobile-landscape:mt-2 text-intelligence font-semibold">
+          <h2 className="block text-4xl mobile-landscape:hidden mt-8 text-intelligence font-semibold">
             {t('providers.hero.subtitle')}
           </h2>
         </AnimatedText>

@@ -71,7 +71,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
           <h1 className="text-5xl mobile-landscape:text-2xl font-bold mb-6 mobile-landscape:mb-2 text-foreground leading-none mobile-landscape:leading-tight">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-3xl mobile-landscape:text-base text-navy font-semibold mb-6 mobile-landscape:mb-2">
+          <h2 className="block text-3xl mobile-landscape:hidden text-navy font-semibold mb-6">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
@@ -84,7 +84,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
           <h1 className="text-6xl md:text-7xl mobile-landscape:text-3xl font-bold text-foreground">
             {t('home.hero.title')}
           </h1>
-          <h2 className="block text-4xl mobile-landscape:text-base mt-8 md:mt-16 mobile-landscape:mt-2 text-gray-600 font-medium">
+          <h2 className="block text-4xl mobile-landscape:hidden mt-8 md:mt-16 text-gray-600 font-medium">
             {t('home.hero.subtitle')}
           </h2>
         </AnimatedText>
