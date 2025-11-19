@@ -59,9 +59,9 @@ export const HeroSection = () => {
       </div>
       
       {/* Mobile Portrait Title */}
-      <div className="block sm:hidden absolute top-[15%] left-6 z-[130] w-3/4">
+      <div className="block sm:hidden absolute top-[15%] mobile-landscape:top-[26%] left-6 mobile-landscape:left-4 z-[130] w-3/4 mobile-landscape:w-[45%]">
         <AnimatedText>
-          <h1 className="text-5xl font-bold text-dental-blue leading-none">
+          <h1 className="text-5xl mobile-landscape:text-2xl font-bold text-dental-blue leading-none mobile-landscape:leading-tight">
             {t('about.hero.title')}
           </h1>
         </AnimatedText>
@@ -73,6 +73,15 @@ export const HeroSection = () => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-dental-blue leading-tight">
             {t('about.hero.title')}
           </h1>
+        </AnimatedText>
+      </div>
+
+      {/* Landscape Mobile Subtitle - shortened version */}
+      <div className="hidden mobile-landscape:block absolute top-[55%] left-8 z-[130] w-[45%]">
+        <AnimatedText delay={0.2}>
+          <p className="text-xs text-dental-blue/80 font-medium leading-relaxed text-left">
+            Revolutionizing dental financing with intelligent technology.
+          </p>
         </AnimatedText>
       </div>
       
