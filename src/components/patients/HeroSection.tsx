@@ -45,9 +45,9 @@ export const HeroSection = () => {
         </AnimatedText>
         <div className="mt-4 mobile-landscape:mt-2">
           <AnimatedText delay={0.2}>
-            <h2 className="text-2xl mobile-landscape:text-lg text-gray-600 font-medium">
+            <h3 className="text-2xl mobile-landscape:text-base text-gray-600 font-medium mobile-landscape:leading-tight">
               {t('patients.hero.subtitle')}
-            </h2>
+            </h3>
           </AnimatedText>
         </div>
       </div>
@@ -72,9 +72,9 @@ export const HeroSection = () => {
         
         <div className="mt-8 md:mt-16">
           <AnimatedText delay={0.2}>
-            <h2 className="text-4xl mobile-landscape:text-2xl text-gray-600 font-medium">
+            <h3 className="text-4xl mobile-landscape:text-base text-gray-600 font-medium mobile-landscape:leading-tight">
               {t('patients.hero.subtitle')}
-            </h2>
+            </h3>
           </AnimatedText>
         </div>
       </div>
