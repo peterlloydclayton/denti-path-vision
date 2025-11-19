@@ -68,7 +68,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Tablet & Desktop Title - More responsive sizing */}
-      <div className="hidden sm:block absolute top-[13%] md:top-[15%] left-6 sm:left-8 md:left-12 z-[130] w-[85%] sm:w-[75%] md:w-[70%]">
+      <div className="hidden md:block absolute top-[13%] md:top-[15%] left-6 sm:left-8 md:left-12 z-[130] w-[85%] sm:w-[75%] md:w-[70%]">
         <AnimatedText>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-dental-blue leading-tight">
             {t('about.hero.title')}
@@ -76,35 +76,26 @@ export const HeroSection = () => {
         </AnimatedText>
       </div>
 
-      {/* Landscape Mobile Subtitle - shortened version */}
-      <div className="hidden mobile-landscape:block absolute top-[55%] left-8 z-[130] w-[45%]">
+      {/* Desktop Subtitle */}
+      <div className="hidden md:block absolute top-[63%] mobile-landscape:top-[55%] left-12 mobile-landscape:left-8 z-[130] w-1/2 mobile-landscape:w-[45%]">
         <AnimatedText delay={0.2}>
-          <p className="text-xs text-dental-blue/80 font-medium leading-relaxed text-left">
+          <p className="text-xl mobile-landscape:text-xs text-dental-blue/80 font-medium leading-relaxed text-left">
             Revolutionizing dental financing with intelligent technology.
           </p>
         </AnimatedText>
       </div>
       
-      {/* Subtitle - Only show on larger screens where there's space */}
-      <div className="hidden md:block absolute top-[50%] left-12 z-[130] w-2/5">
-        <AnimatedText delay={0.2}>
-          <p className="text-xl text-dental-blue/80 font-medium leading-relaxed text-left">
-            {t('about.hero.subtitle')}
-          </p>
-        </AnimatedText>
-      </div>
-      
-      {/* Tablet & Desktop Button - Using bottom positioning to avoid overlap */}
-      <div className="hidden sm:block absolute bottom-[12%] md:bottom-[15%] left-6 sm:left-8 md:left-12 z-[130]">
+      {/* Tablet & Desktop Button */}
+      <div className="hidden md:block absolute top-[80%] mobile-landscape:top-[75%] left-12 mobile-landscape:left-8 z-[130]">
         <Button 
-          className="h-12 sm:h-14 md:h-16 text-base sm:text-lg md:text-xl bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 sm:px-10 md:px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+          className="h-16 mobile-landscape:h-10 text-xl mobile-landscape:text-sm bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-12 mobile-landscape:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
           {t('about.hero.cta')}
         </Button>
       </div>
 
       {/* Mobile Portrait Button */}
-      <div className={`block sm:hidden absolute ${isSpanish ? 'top-[57%]' : 'top-[52%]'} left-6 z-[130]`}>
+      <div className={`block sm:hidden absolute ${isSpanish ? 'top-[57%]' : 'top-[52%]'} mobile-landscape:top-[65%] left-6 mobile-landscape:left-4 z-[130]`}>
         <Button 
           className="h-12 text-lg bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
