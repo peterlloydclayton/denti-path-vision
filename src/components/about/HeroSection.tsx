@@ -104,7 +104,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Mobile Portrait & Landscape Button */}
-      <div className="block md:hidden absolute top-[52%] mobile-landscape:top-[65%] left-6 mobile-landscape:left-4 z-[130]">
+      <div className="block md:hidden mobile-landscape:block absolute top-[52%] mobile-landscape:top-[65%] left-6 mobile-landscape:left-4 z-[130]">
         <Button 
           className="h-12 mobile-landscape:h-10 text-lg mobile-landscape:text-sm bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 mobile-landscape:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
