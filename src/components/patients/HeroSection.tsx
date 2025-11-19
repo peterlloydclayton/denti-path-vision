@@ -43,6 +43,18 @@ export const HeroSection = () => {
             {t('patients.hero.title')}
           </h1>
         </AnimatedText>
+        <div className="mt-4 mobile-landscape:mt-2">
+          <AnimatedText delay={0.2}>
+            <h2 className="text-2xl mobile-landscape:text-lg text-gray-600 font-medium italic">
+              {t('patients.hero.subtitle')}
+            </h2>
+          </AnimatedText>
+          <AnimatedText delay={0.4}>
+            <h2 className="text-2xl mobile-landscape:text-lg text-gray-600 font-medium mt-2">
+              {t('patients.hero.subtitle2')}
+            </h2>
+          </AnimatedText>
+        </div>
       </div>
 
       {/* Mobile Portrait Button */}
