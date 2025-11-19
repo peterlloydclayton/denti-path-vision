@@ -63,7 +63,7 @@ export const HeroSection = () => {
           </h1>
         </AnimatedText>
         
-        <div className="mt-8 md:mt-16">
+        <div className="mt-8 md:mt-16 mobile-landscape:hidden">
           <AnimatedText delay={0.2}>
             <h2 className="text-4xl mobile-landscape:text-2xl text-gray-600 font-medium italic">
               {t('patients.hero.subtitle')}
