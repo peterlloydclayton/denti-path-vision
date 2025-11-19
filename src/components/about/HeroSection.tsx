@@ -59,7 +59,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Mobile Portrait & Landscape Title */}
-      <div className="block md:hidden absolute top-[15%] mobile-landscape:top-[26%] left-6 mobile-landscape:left-4 z-[130] w-3/4 mobile-landscape:w-[45%]">
+      <div className="block md:hidden mobile-landscape:block absolute top-[15%] mobile-landscape:top-[26%] left-6 mobile-landscape:left-4 z-[130] w-3/4 mobile-landscape:w-[45%]">
         <AnimatedText>
           <h1 className="text-5xl mobile-landscape:text-2xl font-bold text-dental-blue leading-none mobile-landscape:leading-tight">
             {t('about.hero.title')}
