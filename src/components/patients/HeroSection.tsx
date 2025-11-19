@@ -19,7 +19,7 @@ export const HeroSection = () => {
             <img 
               src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
               alt="Happy patient with dental financing"
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[127.5vh]"
+              className="absolute bottom-0 mobile-landscape:bottom-[15%] left-1/2 -translate-x-1/2 w-auto object-contain object-bottom z-10 max-w-none hero-image h-[127.5vh]"
             />
           </div>
         </div>
@@ -30,7 +30,7 @@ export const HeroSection = () => {
             <img 
               src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
               alt="Happy patient with dental financing"
-              className="absolute bottom-[-5%] left-[-160px] transform-none w-auto object-contain object-bottom z-10 max-w-none h-[calc(90vh-12rem)]"
+              className="absolute bottom-[-5%] mobile-landscape:bottom-[10%] left-[-160px] transform-none w-auto object-contain object-bottom z-10 max-w-none h-[calc(90vh-12rem)]"
             />
           </div>
         </div>
@@ -46,7 +46,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Mobile Portrait Button */}
-      <div className="block sm:hidden absolute bottom-[8%] mobile-landscape:bottom-[5%] left-6 mobile-landscape:left-4 z-20 w-auto">
+      <div className="block sm:hidden absolute bottom-[8%] mobile-landscape:bottom-[20%] left-6 mobile-landscape:left-4 z-20 w-auto">
         <Button 
           className="h-12 mobile-landscape:h-10 text-base mobile-landscape:text-sm bg-black text-white hover:bg-black/80 shadow-elegant px-8 mobile-landscape:px-6 font-semibold"
           onClick={() => navigate('/patient-financing-application')}
@@ -78,7 +78,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Desktop Button - positioned to match home page */}
-      <div className="hidden sm:block absolute bottom-[15%] mobile-landscape:bottom-[8%] left-6 md:left-12 mobile-landscape:left-8 z-20">
+      <div className="hidden sm:block absolute bottom-[15%] mobile-landscape:bottom-[23%] left-6 md:left-12 mobile-landscape:left-8 z-20">
         <Button 
           className="h-12 md:h-16 mobile-landscape:h-10 text-base md:text-xl mobile-landscape:text-sm bg-black text-white hover:bg-black/80 shadow-elegant px-8 md:px-12 mobile-landscape:px-6 font-semibold"
           onClick={() => navigate('/patient-financing-application')}
