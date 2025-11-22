@@ -363,10 +363,19 @@ Deno.serve(async (req) => {
 
     if (appError) {
       console.error('Application insert error:', appError)
+      console.error('Error code:', appError.code)
+      console.error('Error details:', appError.details)
+      console.error('Error hint:', appError.hint)
+      console.error('Error message:', appError.message)
       console.error('Full error details:', JSON.stringify(appError, null, 2))
       console.error('Insert payload keys:', Object.keys(secureApplicationData).sort())
+      console.error('Insert payload sample:', JSON.stringify(secureApplicationData, null, 2).substring(0, 500))
       return new Response(
-        JSON.stringify({ error: 'Failed to submit application' }),
+        JSON.stringify({ 
+          error: 'Failed to submit application',
+          details: appError.message || appError.code || 'Unknown database error',
+          hint: appError.hint
+        }),
         { 
           status: 500, 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
