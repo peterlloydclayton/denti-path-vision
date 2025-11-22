@@ -81,8 +81,8 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
     }
 
     // Validate treatment cost first (10 million limit)
-    if (formData.estimated_treatment_cost) {
-      const treatmentCost = parseFloat(formData.estimated_treatment_cost);
+    if (formData.estimated_cost) {
+      const treatmentCost = parseFloat(formData.estimated_cost);
       const MAX_TREATMENT_COST = 10000000;
       if (!isNaN(treatmentCost) && treatmentCost > MAX_TREATMENT_COST) {
         const errorMsg = `Treatment cost ($${treatmentCost.toLocaleString()}) cannot exceed $10,000,000. Please go back and correct this value.`;
@@ -181,8 +181,8 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         referring_provider_name: formData.referring_provider_name,
         referring_contact_info: formData.referring_contact_info,
         referring_provider_email: formData.referring_provider_email,
-        estimated_treatment_cost: (() => {
-          const value = parseFloat(formData.estimated_treatment_cost);
+        estimated_cost: (() => {
+          const value = parseFloat(formData.estimated_cost);
           return !isNaN(value) && value > 0 ? value : undefined;
         })(),
         employer_name: formData.current_employer,

@@ -39,7 +39,7 @@ export interface FormData {
   referring_provider_name: string;
   referring_contact_info: string;
   referring_provider_email: string;
-  estimated_treatment_cost: string;
+  estimated_cost: string;
   
   // Section 2 - Employment & Income
   current_employer: string;
@@ -104,7 +104,7 @@ const INITIAL_FORM_DATA: FormData = {
   referring_provider_name: '',
   referring_contact_info: '',
   referring_provider_email: '',
-  estimated_treatment_cost: '',
+  estimated_cost: '',
   current_employer: '',
   employer_address: '',
   job_title: '',
