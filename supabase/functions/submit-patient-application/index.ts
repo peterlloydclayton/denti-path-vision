@@ -116,7 +116,7 @@ const ApplicationSchema = z.object({
   referring_provider_name: z.string().max(200).optional(),
   referring_contact_info: z.string().max(500).optional(),
   referring_provider_email: z.string().email('Invalid provider email').max(255).optional().or(z.literal('')),
-  estimated_treatment_cost: z.number().min(0).max(999999999).optional(),
+  estimated_cost: z.number().min(0).max(999999999).optional(),
   employment_status: z.string().max(50).optional(),
   employer_name: z.string().max(200).optional(),
   employer_address: z.string().max(500).optional(),

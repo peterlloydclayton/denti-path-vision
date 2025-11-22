@@ -51,7 +51,7 @@ const personalInfoSchema = z.object({
   referring_provider_name: z.string().optional(),
   referring_contact_info: z.string().optional(),
   referring_provider_email: z.string().email("Valid email is required").optional().or(z.literal('')),
-  estimated_treatment_cost: z.string().min(1, "Estimated treatment cost is required"),
+  estimated_cost: z.string().min(1, "Estimated treatment cost is required"),
 });
 
 const isLeapYear = (year: number): boolean => {
@@ -734,7 +734,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
 
             <FormField
               control={form.control}
-              name="estimated_treatment_cost"
+              name="estimated_cost"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t('form.personal.estimatedTreatmentCost')} *</FormLabel>
