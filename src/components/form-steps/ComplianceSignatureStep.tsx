@@ -80,12 +80,13 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
       return;
     }
 
-    // Validate treatment cost first (10 million limit)
+    // Validate treatment cost first (1 million limit to match backend)
     if (formData.estimated_cost) {
       const treatmentCost = parseFloat(formData.estimated_cost);
-      const MAX_TREATMENT_COST = 10000000;
+      console.log(`💰 Validating estimated_cost: ${formData.estimated_cost} -> ${treatmentCost}`);
+      const MAX_TREATMENT_COST = 1000000;
       if (!isNaN(treatmentCost) && treatmentCost > MAX_TREATMENT_COST) {
-        const errorMsg = `Treatment cost ($${treatmentCost.toLocaleString()}) cannot exceed $10,000,000. Please go back and correct this value.`;
+        const errorMsg = `Treatment cost ($${treatmentCost.toLocaleString()}) cannot exceed $1,000,000. Please go back and correct this value.`;
         setError(errorMsg);
         toast({
           title: "Value Too Large",
