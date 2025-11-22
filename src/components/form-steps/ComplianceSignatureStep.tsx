@@ -9,7 +9,6 @@ import { getUserIP, getUserAgent } from '@/utils/auditUtils';
 import { FormData } from '../MultiStepPatientForm';
 import { useToast } from '@/hooks/use-toast';
 import { CheckCircle } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
 
 interface ComplianceSignatureStepProps {
   formData: FormData;
@@ -258,14 +257,24 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         }
       };
 
-      // Submit to edge function
-      console.log('📤 Submitting to edge function...');
-      const { data, error } = await supabase.functions.invoke('submit-patient-application', {
-        body: applicationData
+      // Submit to external edge function
+      console.log('📤 Submitting to external edge function...');
+      const response = await fetch('https://epkypzawqtpokmatjuzo.supabase.co/functions/v1/submit-patient-application', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVwa3lwemF3cXRwb2ttYXRqdXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4ODc4MTgsImV4cCI6MjA3MTQ2MzgxOH0.QYx4QwYhBRHhMdfgmuHUHpWN2R1q7CetLCAS69w3yJU'
+        },
+        body: JSON.stringify(applicationData)
       });
 
-      console.log('📥 Edge function response:', { data, error });
-      if (error) throw error;
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        throw new Error(errorData.error || `HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log('📥 Edge function response:', data);
 
       if (!data?.success) {
         throw new Error(data?.error || 'Submission failed');
