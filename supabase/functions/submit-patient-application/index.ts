@@ -351,6 +351,7 @@ Deno.serve(async (req) => {
     };
     
     console.log('Final field count before insert:', Object.keys(secureApplicationData).length);
+    console.log('Final fields being inserted:', Object.keys(secureApplicationData).sort());
     
     const { data: tempApp, error: appError } = await supabaseAdmin
       .from('temp_patient_applications')
@@ -361,11 +362,7 @@ Deno.serve(async (req) => {
     if (appError) {
       console.error('Application insert error:', appError)
       console.error('Full error details:', JSON.stringify(appError, null, 2))
-      console.error('Insert payload keys:', Object.keys({
-        ...insertData,
-        expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-        created_at: new Date().toISOString()
-      }).sort())
+      console.error('Insert payload keys:', Object.keys(secureApplicationData).sort())
       return new Response(
         JSON.stringify({ error: 'Failed to submit application' }),
         { 
