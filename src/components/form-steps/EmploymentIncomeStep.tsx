@@ -30,28 +30,28 @@ const employmentIncomeSchema = z.object({
   monthly_gross_income: z.string().min(1, "Monthly gross income is required")
     .refine((val) => {
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 999999999;
-    }, { message: "Monthly gross income must be between 0 and 999,999,999" }),
+      return !isNaN(num) && num >= 0 && num <= 1000000;
+    }, { message: "Monthly gross income must be between 0 and 1,000,000" }),
   monthly_net_income: z.string().min(1, "Monthly net income is required")
     .refine((val) => {
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 999999999;
-    }, { message: "Monthly net income must be between 0 and 999,999,999" }),
+      return !isNaN(num) && num >= 0 && num <= 1000000;
+    }, { message: "Monthly net income must be between 0 and 1,000,000" }),
   pay_frequency: z.string().min(1, "Pay frequency is required"),
   secondary_income_sources: z.string().optional(),
   household_total_income: z.string().optional()
     .refine((val) => {
       if (!val || val === '') return true;
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 999999999;
-    }, { message: "Household income must be between 0 and 999,999,999" }),
+      return !isNaN(num) && num >= 0 && num <= 1000000;
+    }, { message: "Household income must be between 0 and 1,000,000" }),
   spouse_employer: z.string().optional(),
   spouse_income: z.string().optional()
     .refine((val) => {
       if (!val || val === '') return true;
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 999999999;
-    }, { message: "Spouse income must be between 0 and 999,999,999" }),
+      return !isNaN(num) && num >= 0 && num <= 1000000;
+    }, { message: "Spouse income must be between 0 and 1,000,000" }),
 });
 
 const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({ 
@@ -211,7 +211,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
-                      max="999999999"
+                      max="1000000"
                       step="0.01" 
                       placeholder="5000.00" 
                       {...field} 
@@ -232,7 +232,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
-                      max="999999999"
+                      max="1000000"
                       step="0.01" 
                       placeholder="4000.00" 
                       {...field} 
@@ -297,7 +297,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
-                      max="999999999"
+                      max="1000000"
                       step="0.01" 
                       placeholder="8000.00" 
                       {...field} 
@@ -332,7 +332,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
-                      max="999999999"
+                      max="1000000"
                       step="0.01" 
                       placeholder="3000.00" 
                       {...field} 

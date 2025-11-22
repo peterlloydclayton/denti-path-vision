@@ -51,7 +51,11 @@ const personalInfoSchema = z.object({
   referring_provider_name: z.string().optional(),
   referring_contact_info: z.string().optional(),
   referring_provider_email: z.string().email("Valid email is required").optional().or(z.literal('')),
-  estimated_cost: z.string().min(1, "Estimated treatment cost is required"),
+  estimated_cost: z.string().min(1, "Estimated treatment cost is required")
+    .refine((val) => {
+      const num = parseFloat(val);
+      return !isNaN(num) && num >= 0 && num <= 1000000;
+    }, { message: "Estimated cost must be between 0 and 1,000,000" }),
 });
 
 const isLeapYear = (year: number): boolean => {
@@ -740,6 +744,10 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                   <FormLabel>{t('form.personal.estimatedTreatmentCost')} *</FormLabel>
                   <FormControl>
                     <Input 
+                      type="number"
+                      min="0"
+                      max="1000000"
+                      step="0.01"
                       placeholder="$5,000" 
                       {...field}
                       onChange={(e) => {
