@@ -117,7 +117,7 @@ const ApplicationSchema = z.object({
   referring_contact_info: z.string().max(500).optional(),
   referring_provider_email: z.string().email('Invalid provider email').max(255).optional().or(z.literal('')),
   // Backwards compatibility - accepts estimated_treatment_cost and transforms to estimated_cost
-  estimated_treatment_cost: z.number().min(0).max(10000000).optional(),
+  estimated_treatment_cost: z.number().min(0).max(1000000).optional(),
   employment_status: z.string().max(50).optional(),
   employer_name: z.string().max(200).optional(),
   employer_address: z.string().max(500).optional(),
@@ -168,8 +168,7 @@ const ApplicationSchema = z.object({
     return val;
   }),
   expected_procedures: z.string().max(500).optional(),
-  // estimated_cost: max 10 million to handle large dental procedures
-  estimated_cost: z.number().min(0).max(10000000).optional(),
+  estimated_cost: z.number().min(0).max(1000000).optional(),
   timeline_urgency: z.string().max(100).optional(),
   urgency_scale: z.number().int().min(0).max(10).optional(),
   ready_to_proceed: z.string().max(50).optional(),
