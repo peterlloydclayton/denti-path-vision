@@ -271,8 +271,8 @@ Deno.serve(async (req) => {
     // Insert application data (matching original working version approach)
     console.log('Inserting application data into database...')
     
-    // Remove signature_data from the insert
-    const { signature_data, ...insertData } = applicationData as any
+    // Keep all data including signature_data
+    const insertData = { ...applicationData } as any
     
     // Convert treatment_reason from comma-separated string back to array for external DB
     if (insertData.treatment_reason && typeof insertData.treatment_reason === 'string') {
