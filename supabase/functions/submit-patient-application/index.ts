@@ -272,17 +272,41 @@ Deno.serve(async (req) => {
     // Insert application data (matching original working version approach)
     console.log('Inserting application data into database...')
     
-    // Remove signature_data - external DB doesn't have this column
-    const { signature_data, ...insertData } = applicationData as any
+    // Remove signature_data and map it to individual signature_* fields for external DB
+    const { signature_data, authorize_credit_report, other_income, ...insertData } = applicationData as any
     
-    // Log signature data separately for audit trail
+    // Map signature_data to external DB signature columns
     if (signature_data) {
-      console.log('Signature data received (not stored in external DB):', {
-        signer_name: signature_data.signer_name,
-        signer_email: signature_data.signer_email,
-        consent_given: signature_data.consent_given,
-        document_id: signature_data.document_id
-      });
+      console.log('Mapping signature_data to external DB signature fields');
+      insertData.signature_signer_name = signature_data.signer_name;
+      insertData.signature_signer_email = signature_data.signer_email;
+      insertData.signature_consent_given = signature_data.consent_given;
+      insertData.signature_document_id = signature_data.document_id;
+      if (signature_data.document_hash) {
+        insertData.signature_document_hash = signature_data.document_hash;
+      }
+      if (signature_data.pdf_base64) {
+        insertData.signature_pdf_base64 = signature_data.pdf_base64;
+      }
+      if (signature_data.ip_address) {
+        insertData.signature_ip_address = signature_data.ip_address;
+      }
+      if (signature_data.user_agent) {
+        insertData.signature_user_agent = signature_data.user_agent;
+      }
+    }
+    
+    // Map authorize_credit_report to consent_credit_pull
+    if (authorize_credit_report !== undefined) {
+      insertData.consent_credit_pull = authorize_credit_report;
+    }
+    
+    // Map other_income to secondary_income_sources (if other_income has a value)
+    if (other_income !== undefined && other_income !== null) {
+      // If secondary_income_sources is empty or doesn't exist, use other_income
+      if (!insertData.secondary_income_sources || insertData.secondary_income_sources.trim() === '') {
+        insertData.secondary_income_sources = String(other_income);
+      }
     }
     
     // Backwards compatibility: transform estimated_treatment_cost to estimated_cost
@@ -329,7 +353,11 @@ Deno.serve(async (req) => {
       'can_provide_proof', 'comfort_auto_debit', 'ready_for_call', 'ready_for_deposit',
       'trust_factors', 'negative_experiences', 'target_payment_range', 'additional_info',
       'confirm_information_accurate', 'consent_communications',
-      'understand_no_credit_impact', 'consent_credit_pull'
+      'understand_no_credit_impact', 'consent_credit_pull',
+      // Signature fields mapped from signature_data
+      'signature_signer_name', 'signature_signer_email', 'signature_consent_given',
+      'signature_document_id', 'signature_document_hash', 'signature_pdf_base64',
+      'signature_ip_address', 'signature_user_agent'
     ];
     
     // Filter insertData to only include allowed fields
