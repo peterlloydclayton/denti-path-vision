@@ -284,6 +284,10 @@ Deno.serve(async (req) => {
       console.log('Converted treatment_reason to array:', insertData.treatment_reason);
     }
     
+    // Log all the fields we're trying to insert
+    console.log('Fields to insert:', Object.keys(insertData).sort());
+    console.log('Field count:', Object.keys(insertData).length);
+    
     const { data: tempApp, error: appError } = await supabaseAdmin
       .from('temp_patient_applications')
       .insert({
