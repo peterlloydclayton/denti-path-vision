@@ -344,7 +344,7 @@ Deno.serve(async (req) => {
       'open_credit_lines', 'late_payments', 'credit_score',
       'bankruptcy_history', 'foreclosure_history', 'recent_major_purchases',
       'referring_practice', 'referring_provider_name', 'referring_contact_info',
-      'referring_provider_email', 'estimated_cost', 'estimated_treatment_cost', 'treatment_reason',
+      'referring_provider_email', 'estimated_cost', 'treatment_reason',  // removed estimated_treatment_cost
       'considering_treatment_time', 'priority_preference', 'primary_reason',
       'expected_procedures', 'timeline_urgency', 'ready_to_proceed', 'insurance_coverage',
       'financing_preferences', 'previous_treatment', 'primary_motivator',
@@ -371,12 +371,9 @@ Deno.serve(async (req) => {
     console.log('Filtered to allowed fields. Count:', Object.keys(filteredData).length);
     console.log('Filtered field names:', Object.keys(filteredData).sort());
     
-    // Add security metadata and expiration (like original version)
-    const secureApplicationData = {
-      ...filteredData,
-      expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-      created_at: new Date().toISOString()
-    };
+    // Use filtered data directly without adding created_at/expires_at
+    // (external DB will handle these with defaults)
+    const secureApplicationData = filteredData;
     
     console.log('Final field count before insert:', Object.keys(secureApplicationData).length);
     console.log('Final fields being inserted:', Object.keys(secureApplicationData).sort());
