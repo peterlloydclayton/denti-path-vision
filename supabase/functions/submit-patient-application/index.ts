@@ -306,11 +306,11 @@ Deno.serve(async (req) => {
       .from('temp_patient_applications')
       .insert({
         ...insertData,
-        expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-        created_at: new Date().toISOString()
+        expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+        // Don't set created_at - let the database default handle it
       })
       .select()
-      .single()
+      .maybeSingle()
 
     if (appError) {
       console.error('Application insert error:', appError)
