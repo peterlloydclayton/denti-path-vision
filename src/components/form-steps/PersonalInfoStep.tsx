@@ -54,8 +54,8 @@ const personalInfoSchema = z.object({
   estimated_cost: z.string().min(1, "Estimated treatment cost is required")
     .refine((val) => {
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 1000000;
-    }, { message: "Estimated cost must be between 0 and 1,000,000" }),
+      return !isNaN(num) && num > 0 && num <= 1000000;
+    }, { message: "Estimated cost must be between $1 and $1,000,000" }),
 });
 
 const isLeapYear = (year: number): boolean => {
