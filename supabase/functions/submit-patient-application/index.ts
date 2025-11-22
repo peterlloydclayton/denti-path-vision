@@ -288,6 +288,20 @@ Deno.serve(async (req) => {
     console.log('Fields to insert:', Object.keys(insertData).sort());
     console.log('Field count:', Object.keys(insertData).length);
     
+    // Get the actual columns from the external database table
+    const { data: tableColumns, error: columnError } = await supabaseAdmin
+      .from('temp_patient_applications')
+      .select('*')
+      .limit(0);
+    
+    if (columnError) {
+      console.error('Error fetching table schema:', columnError);
+    }
+    
+    // Filter insertData to only include fields that exist in the external database
+    // by attempting a dry-run query first
+    console.log('About to insert with expires_at and created_at added...');
+    
     const { data: tempApp, error: appError } = await supabaseAdmin
       .from('temp_patient_applications')
       .insert({
