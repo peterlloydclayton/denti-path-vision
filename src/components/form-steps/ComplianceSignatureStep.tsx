@@ -224,7 +224,9 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         })(),
         considering_treatment_time: formData.considering_treatment_time,
         priority_preference: formData.priority_preference,
-        treatment_reason: formData.treatment_reason, // Send as array
+        treatment_reason: Array.isArray(formData.treatment_reason) 
+          ? formData.treatment_reason.join(', ') 
+          : formData.treatment_reason,
         urgency_scale: (() => {
           const value = parseInt(formData.urgency_scale);
           return !isNaN(value) ? value : undefined;
