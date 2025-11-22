@@ -265,6 +265,12 @@ Deno.serve(async (req) => {
     // Remove signature_data from the insert since it might not exist in external database
     const { signature_data, ...insertData } = applicationData as any
     
+    // Log data for debugging
+    console.log('Insert data keys:', Object.keys(insertData))
+    console.log('treatment_reason value:', insertData.treatment_reason, 'type:', typeof insertData.treatment_reason)
+    console.log('primary_motivator value:', insertData.primary_motivator, 'type:', typeof insertData.primary_motivator)
+    console.log('confidence_impact value:', insertData.confidence_impact, 'type:', typeof insertData.confidence_impact)
+    
     const { data: tempApp, error: appError } = await supabaseAdmin
       .from('temp_patient_applications')
       .insert({
