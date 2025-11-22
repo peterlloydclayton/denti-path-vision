@@ -245,7 +245,6 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         consent_communications: formData.consent_communications,
         understand_no_credit_impact: formData.understand_no_credit_impact,
         confirm_information_accurate: formData.confirm_information_accurate,
-        redirect_url: 'https://dental-docs-hub.lovable.app',
         signature_data: {
           signer_name: signerName,
           signer_email: signerEmail,
