@@ -117,6 +117,7 @@ const ApplicationSchema = z.object({
   referring_contact_info: z.string().max(500).optional(),
   referring_provider_email: z.string().email('Invalid provider email').max(255).optional().or(z.literal('')),
   estimated_cost: z.number().min(0).max(1000000).optional(),
+  estimated_treatment_cost: z.number().min(0).max(1000000).optional(), // Backwards compatibility
   employment_status: z.string().max(50).optional(),
   employer_name: z.string().max(200).optional(),
   employer_address: z.string().max(500).optional(),
@@ -284,6 +285,14 @@ Deno.serve(async (req) => {
       });
     }
     
+    // Backwards compatibility: transform estimated_treatment_cost to estimated_cost
+    if (insertData.estimated_treatment_cost !== undefined && insertData.estimated_cost === undefined) {
+      insertData.estimated_cost = insertData.estimated_treatment_cost;
+      console.log('Transformed estimated_treatment_cost to estimated_cost:', insertData.estimated_cost);
+    }
+    // Remove old field name if it exists
+    delete insertData.estimated_treatment_cost;
+    
     // Convert treatment_reason from comma-separated string back to array for external DB
     if (insertData.treatment_reason && typeof insertData.treatment_reason === 'string') {
       insertData.treatment_reason = insertData.treatment_reason
@@ -293,9 +302,50 @@ Deno.serve(async (req) => {
       console.log('Converted treatment_reason to array:', insertData.treatment_reason);
     }
     
+    // Define exact fields that exist in the database (from temp_patient_applications table schema)
+    const allowedFields = [
+      'first_name', 'last_name', 'middle_name', 'email', 'mobile_phone', 'secondary_phone',
+      'ssn', 'date_of_birth', 'sex', 'drivers_license', 'marital_status',
+      'home_street_address', 'home_street_address_2', 'home_city', 'home_state', 'home_zip',
+      'time_at_address', 'rent_or_own', 'previous_address', 'previous_street_address',
+      'previous_street_address_2', 'previous_city', 'previous_state', 'previous_zip',
+      'emergency_contact_name', 'emergency_contact_relationship', 'emergency_contact_phone',
+      'employer_name', 'employer_address', 'job_title', 'work_phone', 'employment_status',
+      'length_of_employment', 'pay_frequency', 'monthly_income', 'monthly_net_income',
+      'secondary_income_sources', 'household_total_income', 'spouse_employer', 'spouse_income',
+      'years_at_job', 'checking_balance', 'savings_balance', 'cash_on_hand', 'investments',
+      'retirement_accounts', 'home_equity', 'owned_vehicles', 'business_ownership',
+      'monthly_housing_cost', 'mortgage_balance', 'credit_card_balances', 'auto_loans',
+      'student_loans', 'personal_loans', 'medical_bills', 'alimony_child_support',
+      'open_credit_lines', 'late_payments', 'credit_score', 'credit_score_unknown',
+      'bankruptcy_history', 'foreclosure_history', 'recent_major_purchases',
+      'referring_practice', 'referring_provider_name', 'referring_contact_info',
+      'referring_provider_email', 'estimated_cost', 'treatment_reason',
+      'considering_treatment_time', 'priority_preference', 'primary_reason',
+      'expected_procedures', 'timeline_urgency', 'ready_to_proceed', 'insurance_coverage',
+      'financing_preferences', 'previous_treatment', 'primary_motivator',
+      'decision_making_style', 'confidence_impact', 'obstacles', 'others_involved',
+      'comfort_discussing_financing', 'pain_level', 'urgency_scale', 'commitment_level',
+      'can_provide_proof', 'comfort_auto_debit', 'ready_for_call', 'ready_for_deposit',
+      'trust_factors', 'negative_experiences', 'target_payment_range', 'additional_info',
+      'confirm_information_accurate', 'authorize_credit_report', 'consent_communications',
+      'understand_no_credit_impact', 'consent_credit_pull'
+    ];
+    
+    // Filter insertData to only include allowed fields
+    const filteredData: Record<string, any> = {};
+    for (const field of allowedFields) {
+      if (insertData[field] !== undefined) {
+        filteredData[field] = insertData[field];
+      }
+    }
+    
+    console.log('Filtered to allowed fields. Count:', Object.keys(filteredData).length);
+    console.log('Filtered field names:', Object.keys(filteredData).sort());
+    
     // Add security metadata and expiration (like original version)
     const secureApplicationData = {
-      ...insertData,
+      ...filteredData,
       expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
       created_at: new Date().toISOString()
     };
@@ -529,10 +579,10 @@ Deno.serve(async (req) => {
                     <td style="padding: 8px 0; color: #64748b; font-weight: 500;">Referring Practice:</td>
                     <td style="padding: 8px 0; color: #1e293b;">${applicationData.referring_practice}</td>
                   </tr>` : ''}
-                  ${applicationData.estimated_treatment_cost ? `
+                  ${applicationData.estimated_cost || applicationData.estimated_treatment_cost ? `
                   <tr>
                     <td style="padding: 8px 0; color: #64748b; font-weight: 500;">Estimated Cost:</td>
-                    <td style="padding: 8px 0; color: #1e293b; font-weight: 600;">$${applicationData.estimated_treatment_cost}</td>
+                    <td style="padding: 8px 0; color: #1e293b; font-weight: 600;">$${applicationData.estimated_cost || applicationData.estimated_treatment_cost}</td>
                   </tr>` : ''}
                 </table>
               </div>
