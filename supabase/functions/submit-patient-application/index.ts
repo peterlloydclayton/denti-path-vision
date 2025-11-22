@@ -156,7 +156,16 @@ const ApplicationSchema = z.object({
   considering_treatment_time: z.string().max(100).optional(),
   priority_preference: z.string().max(100).optional(),
   primary_reason: z.string().max(500).optional(),
-  treatment_reason: z.string().max(500).optional(),
+  treatment_reason: z.union([
+    z.string().max(500),
+    z.array(z.string())
+  ]).optional().transform(val => {
+    // Accept both string and array, convert array to comma-separated string
+    if (Array.isArray(val)) {
+      return val.join(', ');
+    }
+    return val;
+  }),
   expected_procedures: z.string().max(500).optional(),
   estimated_cost: z.number().min(0).max(999999999).optional(),
   timeline_urgency: z.string().max(100).optional(),
@@ -265,11 +274,15 @@ Deno.serve(async (req) => {
     // Remove signature_data from the insert since it might not exist in external database
     const { signature_data, ...insertData } = applicationData as any
     
-    // Log data for debugging
-    console.log('Insert data keys:', Object.keys(insertData))
-    console.log('treatment_reason value:', insertData.treatment_reason, 'type:', typeof insertData.treatment_reason)
-    console.log('primary_motivator value:', insertData.primary_motivator, 'type:', typeof insertData.primary_motivator)
-    console.log('confidence_impact value:', insertData.confidence_impact, 'type:', typeof insertData.confidence_impact)
+    // Convert treatment_reason from comma-separated string back to array
+    // The external database has this as a text array column
+    if (insertData.treatment_reason && typeof insertData.treatment_reason === 'string') {
+      insertData.treatment_reason = insertData.treatment_reason
+        .split(',')
+        .map((s: string) => s.trim())
+        .filter((s: string) => s.length > 0);
+      console.log('Converted treatment_reason to array:', insertData.treatment_reason);
+    }
     
     const { data: tempApp, error: appError } = await supabaseAdmin
       .from('temp_patient_applications')
