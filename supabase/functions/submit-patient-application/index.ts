@@ -288,26 +288,70 @@ Deno.serve(async (req) => {
     console.log('Fields to insert:', Object.keys(insertData).sort());
     console.log('Field count:', Object.keys(insertData).length);
     
-    // Get the actual columns from the external database table
-    const { data: tableColumns, error: columnError } = await supabaseAdmin
-      .from('temp_patient_applications')
-      .select('*')
-      .limit(0);
+    // Only include fields that exist in the original working version
+    // Based on additional-files/supabase_functions_submit-patient-application_index.ts
+    const allowedFields = {
+      first_name: insertData.first_name,
+      middle_name: insertData.middle_name,
+      last_name: insertData.last_name,
+      email: insertData.email,
+      mobile_phone: insertData.mobile_phone,
+      secondary_phone: insertData.secondary_phone,
+      date_of_birth: insertData.date_of_birth,
+      sex: insertData.sex,
+      ssn: insertData.ssn,
+      drivers_license: insertData.drivers_license,
+      marital_status: insertData.marital_status,
+      home_street_address: insertData.home_street_address,
+      home_city: insertData.home_city,
+      home_state: insertData.home_state,
+      home_zip: insertData.home_zip,
+      time_at_address: insertData.time_at_address,
+      rent_or_own: insertData.rent_or_own,
+      previous_address: insertData.previous_address,
+      emergency_contact_name: insertData.emergency_contact_name,
+      emergency_contact_relationship: insertData.emergency_contact_relationship,
+      emergency_contact_phone: insertData.emergency_contact_phone,
+      referring_practice: insertData.referring_practice,
+      referring_provider_name: insertData.referring_provider_name,
+      referring_contact_info: insertData.referring_contact_info,
+      referring_provider_email: insertData.referring_provider_email,
+      estimated_treatment_cost: insertData.estimated_treatment_cost,
+      employment_status: insertData.employment_status,
+      employer_name: insertData.employer_name,
+      employer_address: insertData.employer_address,
+      job_title: insertData.job_title,
+      length_of_employment: insertData.length_of_employment,
+      monthly_income: insertData.monthly_income,
+      monthly_net_income: insertData.monthly_net_income,
+      pay_frequency: insertData.pay_frequency,
+      secondary_income_sources: insertData.secondary_income_sources,
+      spouse_employer: insertData.spouse_employer,
+      checking_balance: insertData.checking_balance,
+      monthly_housing_cost: insertData.monthly_housing_cost,
+      treatment_reason: insertData.treatment_reason,
+      considering_treatment_time: insertData.considering_treatment_time,
+      priority_preference: insertData.priority_preference,
+      urgency_scale: insertData.urgency_scale,
+      ready_to_proceed: insertData.ready_to_proceed,
+      consent_credit_pull: insertData.consent_credit_pull,
+      consent_communications: insertData.consent_communications,
+      understand_no_credit_impact: insertData.understand_no_credit_impact,
+      confirm_information_accurate: insertData.confirm_information_accurate
+    };
     
-    if (columnError) {
-      console.error('Error fetching table schema:', columnError);
-    }
+    // Remove undefined values
+    const cleanedData = Object.fromEntries(
+      Object.entries(allowedFields).filter(([_, v]) => v !== undefined)
+    );
     
-    // Filter insertData to only include fields that exist in the external database
-    // by attempting a dry-run query first
-    console.log('About to insert with expires_at and created_at added...');
+    console.log('Cleaned field count:', Object.keys(cleanedData).length);
     
     const { data: tempApp, error: appError } = await supabaseAdmin
       .from('temp_patient_applications')
       .insert({
-        ...insertData,
+        ...cleanedData,
         expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
-        // Don't set created_at - let the database default handle it
       })
       .select()
       .maybeSingle()
