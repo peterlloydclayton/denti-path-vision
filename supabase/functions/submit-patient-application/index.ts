@@ -271,8 +271,18 @@ Deno.serve(async (req) => {
     // Insert application data (matching original working version approach)
     console.log('Inserting application data into database...')
     
-    // Keep all data including signature_data
-    const insertData = { ...applicationData } as any
+    // Remove signature_data - external DB doesn't have this column
+    const { signature_data, ...insertData } = applicationData as any
+    
+    // Log signature data separately for audit trail
+    if (signature_data) {
+      console.log('Signature data received (not stored in external DB):', {
+        signer_name: signature_data.signer_name,
+        signer_email: signature_data.signer_email,
+        consent_given: signature_data.consent_given,
+        document_id: signature_data.document_id
+      });
+    }
     
     // Convert treatment_reason from comma-separated string back to array for external DB
     if (insertData.treatment_reason && typeof insertData.treatment_reason === 'string') {
