@@ -49,11 +49,11 @@ if (!supabaseServiceKey || supabaseServiceKey.split('.').length !== 3) {
   throw new Error('Invalid EXTERNAL_SUPABASE_SERVICE_ROLE_KEY configuration')
 }
 
-console.log('Connecting to external database:', supabaseUrl.substring(0, 30) + '...')
-console.log('Service key length:', supabaseServiceKey.length)
-console.log('Service key preview:', supabaseServiceKey.substring(0, 20) + '...')
+    console.log('Connecting to external database:', supabaseUrl.substring(0, 30) + '...')
+    console.log('Service key length:', supabaseServiceKey.length)
+    console.log('Service key preview:', supabaseServiceKey.substring(0, 20) + '...')
 
-// Create Supabase client (service role bypasses RLS)
+    // Create Supabase client (service role bypasses RLS)
 const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
   auth: {
     autoRefreshToken: false,
@@ -314,6 +314,12 @@ Deno.serve(async (req) => {
 
     if (appError) {
       console.error('Application insert error:', appError)
+      console.error('Full error details:', JSON.stringify(appError, null, 2))
+      console.error('Insert payload keys:', Object.keys({
+        ...insertData,
+        expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+        created_at: new Date().toISOString()
+      }).sort())
       return new Response(
         JSON.stringify({ error: 'Failed to submit application' }),
         { 
