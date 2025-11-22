@@ -271,8 +271,8 @@ Deno.serve(async (req) => {
     // Insert application data (exclude signature_data if not in external schema)
     console.log('Inserting application data into database...')
     
-    // Remove signature_data from the insert since it might not exist in external database
-    const { signature_data, ...insertData } = applicationData as any
+    // Remove signature_data and redirect_url from the insert
+    const { signature_data, redirect_url, ...insertData } = applicationData as any
     
     // Convert treatment_reason from comma-separated string back to array
     // The external database has this as a text array column
