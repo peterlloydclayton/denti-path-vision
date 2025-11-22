@@ -302,23 +302,22 @@ Deno.serve(async (req) => {
       console.log('Converted treatment_reason to array:', insertData.treatment_reason);
     }
     
-    // Define exact fields that exist in the database (from temp_patient_applications table schema)
+    // Define exact fields that exist in the EXTERNAL database (epkypzawqtpokmatjuzo)
     const allowedFields = [
       'first_name', 'last_name', 'middle_name', 'email', 'mobile_phone', 'secondary_phone',
       'ssn', 'date_of_birth', 'sex', 'drivers_license', 'marital_status',
-      'street_address', 'city', 'state', 'zip_code',  // Main address fields
       'home_street_address', 'home_street_address_2', 'home_city', 'home_state', 'home_zip',
       'time_at_address', 'rent_or_own', 'previous_address', 'previous_street_address',
       'previous_street_address_2', 'previous_city', 'previous_state', 'previous_zip',
       'emergency_contact_name', 'emergency_contact_relationship', 'emergency_contact_phone',
       'employer_name', 'employer_address', 'job_title', 'work_phone', 'employment_status',
       'length_of_employment', 'pay_frequency', 'monthly_income', 'monthly_net_income',
-      'other_income', 'secondary_income_sources', 'household_total_income', 'spouse_employer', 'spouse_income',
+      'secondary_income_sources', 'household_total_income', 'spouse_employer', 'spouse_income',
       'years_at_job', 'checking_balance', 'savings_balance', 'cash_on_hand', 'investments',
       'retirement_accounts', 'home_equity', 'owned_vehicles', 'business_ownership',
       'monthly_housing_cost', 'mortgage_balance', 'credit_card_balances', 'auto_loans',
       'student_loans', 'personal_loans', 'medical_bills', 'alimony_child_support',
-      'open_credit_lines', 'late_payments', 'credit_score', 'credit_score_unknown',
+      'open_credit_lines', 'late_payments', 'credit_score',
       'bankruptcy_history', 'foreclosure_history', 'recent_major_purchases',
       'referring_practice', 'referring_provider_name', 'referring_contact_info',
       'referring_provider_email', 'estimated_cost', 'estimated_treatment_cost', 'treatment_reason',
@@ -329,8 +328,7 @@ Deno.serve(async (req) => {
       'comfort_discussing_financing', 'pain_level', 'urgency_scale', 'commitment_level',
       'can_provide_proof', 'comfort_auto_debit', 'ready_for_call', 'ready_for_deposit',
       'trust_factors', 'negative_experiences', 'target_payment_range', 'additional_info',
-      'signature_data',  // Added missing field
-      'confirm_information_accurate', 'authorize_credit_report', 'consent_communications',
+      'confirm_information_accurate', 'consent_communications',
       'understand_no_credit_impact', 'consent_credit_pull'
     ];
     
