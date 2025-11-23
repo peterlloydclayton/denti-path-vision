@@ -24,31 +24,31 @@ const financialOverviewSchema = z.object({
   checking_balance: z.string().min(1, 'Checking account balance is required')
     .refine((val) => {
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 1000000;
-    }, { message: "Checking balance must be between 0 and 1,000,000" }),
+      return !isNaN(num) && num >= 0 && num <= 9999999;
+    }, { message: "Checking balance must be between 0 and 9,999,999" }),
   savings_balance: z.string().optional()
     .refine((val) => {
       if (!val || val === '') return true;
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 1000000;
-    }, { message: "Savings balance must be between 0 and 1,000,000" }),
+      return !isNaN(num) && num >= 0 && num <= 9999999;
+    }, { message: "Savings balance must be between 0 and 9,999,999" }),
   retirement_accounts: z.string().optional()
     .refine((val) => {
       if (!val || val === '') return true;
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 1000000;
-    }, { message: "Retirement accounts must be between 0 and 1,000,000" }),
+      return !isNaN(num) && num >= 0 && num <= 9999999;
+    }, { message: "Retirement accounts must be between 0 and 9,999,999" }),
   investment_accounts: z.string().optional()
     .refine((val) => {
       if (!val || val === '') return true;
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 1000000;
-    }, { message: "Investment accounts must be between 0 and 1,000,000" }),
+      return !isNaN(num) && num >= 0 && num <= 9999999;
+    }, { message: "Investment accounts must be between 0 and 9,999,999" }),
   mortgage_rent_payment: z.string().min(1, 'Mortgage/rent payment is required')
     .refine((val) => {
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 1000000;
-    }, { message: "Mortgage/rent payment must be between 0 and 1,000,000" }),
+      return !isNaN(num) && num >= 0 && num <= 9999999;
+    }, { message: "Mortgage/rent payment must be between 0 and 9,999,999" }),
   credit_score: z.string().optional(),
   credit_score_unknown: z.boolean(),
 }).refine((data) => {
@@ -108,10 +108,17 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                       <Input 
                         type="number" 
                         min="0" 
-                        max="1000000"
+                        max="9999999"
                         step="0.01" 
                         placeholder="5000.00" 
-                        {...field} 
+                        {...field}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          const parts = value.split('.');
+                          if (parts[0].length <= 7) {
+                            field.onChange(value);
+                          }
+                        }}
                       />
                     </FormControl>
                     {showErrors && <FormMessage />}
@@ -129,10 +136,17 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                       <Input 
                         type="number" 
                         min="0" 
-                        max="1000000"
+                        max="9999999"
                         step="0.01" 
                         placeholder="10000.00" 
-                        {...field} 
+                        {...field}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          const parts = value.split('.');
+                          if (parts[0].length <= 7) {
+                            field.onChange(value);
+                          }
+                        }}
                       />
                     </FormControl>
                     {showErrors && <FormMessage />}
@@ -150,10 +164,17 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                       <Input 
                         type="number" 
                         min="0" 
-                        max="1000000"
+                        max="9999999"
                         step="0.01" 
                         placeholder="50000.00" 
-                        {...field} 
+                        {...field}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          const parts = value.split('.');
+                          if (parts[0].length <= 7) {
+                            field.onChange(value);
+                          }
+                        }}
                       />
                     </FormControl>
                     {showErrors && <FormMessage />}
@@ -171,10 +192,17 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                       <Input 
                         type="number" 
                         min="0" 
-                        max="1000000"
+                        max="9999999"
                         step="0.01" 
                         placeholder="25000.00" 
-                        {...field} 
+                        {...field}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          const parts = value.split('.');
+                          if (parts[0].length <= 7) {
+                            field.onChange(value);
+                          }
+                        }}
                       />
                     </FormControl>
                     {showErrors && <FormMessage />}
@@ -196,10 +224,17 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
-                      max="1000000"
+                      max="9999999"
                       step="0.01" 
                       placeholder="1200.00" 
-                      {...field} 
+                      {...field}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        const parts = value.split('.');
+                        if (parts[0].length <= 7) {
+                          field.onChange(value);
+                        }
+                      }}
                     />
                   </FormControl>
                   {showErrors && <FormMessage />}
@@ -242,7 +277,13 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                         min="300" 
                         max="850" 
                         placeholder="720" 
-                        {...field} 
+                        {...field}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          if (value.length <= 3) {
+                            field.onChange(value);
+                          }
+                        }}
                       />
                     </FormControl>
                     {showErrors && <FormMessage />}

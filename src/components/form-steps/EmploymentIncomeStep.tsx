@@ -30,28 +30,28 @@ const employmentIncomeSchema = z.object({
   monthly_gross_income: z.string().min(1, "Monthly gross income is required")
     .refine((val) => {
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 1000000;
-    }, { message: "Monthly gross income must be between 0 and 1,000,000" }),
+      return !isNaN(num) && num >= 0 && num <= 9999999;
+    }, { message: "Monthly gross income must be between 0 and 9,999,999" }),
   monthly_net_income: z.string().min(1, "Monthly net income is required")
     .refine((val) => {
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 1000000;
-    }, { message: "Monthly net income must be between 0 and 1,000,000" }),
+      return !isNaN(num) && num >= 0 && num <= 9999999;
+    }, { message: "Monthly net income must be between 0 and 9,999,999" }),
   pay_frequency: z.string().min(1, "Pay frequency is required"),
   secondary_income_sources: z.string().optional(),
   household_total_income: z.string().optional()
     .refine((val) => {
       if (!val || val === '') return true;
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 1000000;
-    }, { message: "Household income must be between 0 and 1,000,000" }),
+      return !isNaN(num) && num >= 0 && num <= 9999999;
+    }, { message: "Household income must be between 0 and 9,999,999" }),
   spouse_employer: z.string().optional(),
   spouse_income: z.string().optional()
     .refine((val) => {
       if (!val || val === '') return true;
       const num = parseFloat(val);
-      return !isNaN(num) && num >= 0 && num <= 1000000;
-    }, { message: "Spouse income must be between 0 and 1,000,000" }),
+      return !isNaN(num) && num >= 0 && num <= 9999999;
+    }, { message: "Spouse income must be between 0 and 9,999,999" }),
 });
 
 const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({ 
@@ -211,10 +211,17 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
-                      max="1000000"
+                      max="9999999"
                       step="0.01" 
                       placeholder="5000.00" 
-                      {...field} 
+                      {...field}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        const parts = value.split('.');
+                        if (parts[0].length <= 7) {
+                          field.onChange(value);
+                        }
+                      }}
                     />
                   </FormControl>
                   {showErrors && <FormMessage />}
@@ -232,10 +239,17 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
-                      max="1000000"
+                      max="9999999"
                       step="0.01" 
                       placeholder="4000.00" 
-                      {...field} 
+                      {...field}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        const parts = value.split('.');
+                        if (parts[0].length <= 7) {
+                          field.onChange(value);
+                        }
+                      }}
                     />
                   </FormControl>
                   {showErrors && <FormMessage />}
@@ -297,10 +311,17 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
-                      max="1000000"
+                      max="9999999"
                       step="0.01" 
                       placeholder="8000.00" 
-                      {...field} 
+                      {...field}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        const parts = value.split('.');
+                        if (parts[0].length <= 7) {
+                          field.onChange(value);
+                        }
+                      }}
                     />
                   </FormControl>
                   {showErrors && <FormMessage />}
@@ -332,10 +353,17 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                     <Input 
                       type="number" 
                       min="0" 
-                      max="1000000"
+                      max="9999999"
                       step="0.01" 
                       placeholder="3000.00" 
-                      {...field} 
+                      {...field}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        const parts = value.split('.');
+                        if (parts[0].length <= 7) {
+                          field.onChange(value);
+                        }
+                      }}
                     />
                   </FormControl>
                   {showErrors && <FormMessage />}
