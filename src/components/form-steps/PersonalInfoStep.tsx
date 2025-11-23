@@ -54,8 +54,8 @@ const personalInfoSchema = z.object({
   estimated_cost: z.string().min(1, "Estimated treatment cost is required")
     .refine((val) => {
       const num = parseFloat(val);
-      return !isNaN(num) && num > 0 && num <= 1000000;
-    }, { message: "Estimated cost must be between $1 and $1,000,000" }),
+      return !isNaN(num) && num > 0 && num <= 9999999;
+    }, { message: "Estimated cost must be between $1 and $9,999,999" }),
 });
 
 const isLeapYear = (year: number): boolean => {
@@ -746,13 +746,16 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                     <Input 
                       type="number"
                       min="0"
-                      max="1000000"
+                      max="9999999"
                       step="0.01"
                       placeholder="$5,000" 
                       {...field}
                       onChange={(e) => {
                         const value = e.target.value.replace(/[^\d.]/g, '');
-                        field.onChange(value);
+                        const parts = value.split('.');
+                        if (parts[0].length <= 7) {
+                          field.onChange(value);
+                        }
                       }}
                     />
                   </FormControl>
