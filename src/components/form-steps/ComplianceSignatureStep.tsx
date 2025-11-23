@@ -143,17 +143,6 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
 
       const base64Pdf = btoa(String.fromCharCode(...pdfBytes));
 
-      // Convert treatment_reason from array to string if needed
-      const treatmentReasonString = Array.isArray(formData.treatment_reason) 
-        ? formData.treatment_reason.join(', ') 
-        : formData.treatment_reason;
-      
-      console.log('Treatment reason conversion:', { 
-        original: formData.treatment_reason, 
-        converted: treatmentReasonString,
-        isArray: Array.isArray(formData.treatment_reason)
-      });
-
       // Prepare application data matching the edge function's ApplicationData interface
       const applicationData = {
         first_name: formData.first_name,
@@ -235,7 +224,7 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         })(),
         considering_treatment_time: formData.considering_treatment_time,
         priority_preference: formData.priority_preference,
-        treatment_reason: treatmentReasonString,
+        treatment_reason: formData.treatment_reason,
         urgency_scale: (() => {
           const value = parseInt(formData.urgency_scale);
           return !isNaN(value) ? value : undefined;
