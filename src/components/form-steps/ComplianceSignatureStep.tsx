@@ -246,9 +246,9 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         }
       };
 
-      // Submit to external edge function
-      console.log('📤 Submitting to external edge function...');
-      const response = await fetch('https://epkypzawqtpokmatjuzo.supabase.co/functions/v1/submit-patient-application', {
+      // Submit to external edge function (v2 - goes directly to patient_applications)
+      console.log('📤 Submitting to external edge function (v2)...');
+      const response = await fetch('https://epkypzawqtpokmatjuzo.supabase.co/functions/v1/submit-patient-application_v2', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
