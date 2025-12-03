@@ -413,6 +413,7 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
                   onChange={(e) => setSignerName(e.target.value)}
                   placeholder="Please Type Your Full Legal Name"
                   className="placeholder:text-muted-foreground/60"
+                  maxLength={60}
                   required
                 />
                 {signerName && (

@@ -20,42 +20,49 @@ interface PersonalInfoStepProps {
   setIsSubmitting?: (value: boolean) => void;
 }
 
+const MAX_TEXT_LENGTH = 60;
+const MAX_ESTIMATED_COST = 250000;
+
 const personalInfoSchema = z.object({
-  first_name: z.string().min(1, "First name is required"),
-  middle_name: z.string().optional(),
-  last_name: z.string().min(1, "Last name is required"),
+  first_name: z.string().min(1, "First name is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
+  middle_name: z.string().max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`).optional(),
+  last_name: z.string().min(1, "Last name is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
   date_of_birth: z.object({
     day: z.string().min(1, "Day is required"),
     month: z.string().min(1, "Month is required"),
     year: z.string().min(1, "Year is required"),
   }),
   ssn: z.string().regex(/^\d{9}$/, "Social Security Number must be exactly 9 digits"),
-  drivers_license: z.string().min(1, "Driver's License/State ID is required"),
+  drivers_license: z.string().min(1, "Driver's License/State ID is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
   sex: z.string().min(1, "Sex (Assigned At Birth) is required"),
   marital_status: z.string().min(1, "Marital status is required"),
   primary_phone: z.string().regex(/^\d{10}$/, "Phone number must be exactly 10 digits"),
   secondary_phone: z.string().regex(/^\d{10}$/, "Phone number must be exactly 10 digits").optional().or(z.literal('')),
-  email: z.string().email("Valid email is required"),
-  street_address: z.string().min(1, "Street address is required"),
-  city: z.string().min(1, "City is required"),
+  email: z.string().email("Valid email is required").max(100, "Maximum 100 characters"),
+  street_address: z.string().min(1, "Street address is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
+  city: z.string().min(1, "City is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
   state: z.string().min(1, "State is required"),
-  zip_code: z.string().min(5, "Valid ZIP code is required"),
+  zip_code: z.string().min(5, "Valid ZIP code is required").max(10, "Maximum 10 characters"),
   time_at_address: z.string().min(1, "Time at address is required"),
   rent_or_own: z.string().min(1, "Please specify if you rent or own"),
-  previous_address: z.string().optional(),
-  emergency_contact_name: z.string().min(1, "Emergency contact name is required"),
+  previous_address: z.string().max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`).optional(),
+  emergency_contact_name: z.string().min(1, "Emergency contact name is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
   emergency_contact_relationship: z.string().min(1, "Emergency contact relationship is required"),
   emergency_contact_phone: z.string().regex(/^\d{10}$/, "Emergency contact phone must be exactly 10 digits"),
   // Referral Information
-  referring_practice: z.string().min(1, "Referring practice is required"),
-  referring_provider_name: z.string().optional(),
-  referring_contact_info: z.string().optional(),
-  referring_provider_email: z.string().email("Valid email is required").optional().or(z.literal('')),
+  referring_practice: z.string().min(1, "Referring practice is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
+  referring_provider_name: z.string().max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`).optional(),
+  referring_contact_info: z.string().max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`).optional(),
+  referring_provider_email: z.string().email("Valid email is required").max(100, "Maximum 100 characters").optional().or(z.literal('')),
   estimated_cost: z.string().min(1, "Estimated treatment cost is required")
     .refine((val) => {
       const num = parseFloat(val);
-      return !isNaN(num) && num > 0 && num <= 9999999;
-    }, { message: "Estimated cost must be between $1 and $9,999,999" }),
+      return !isNaN(num) && num > 0;
+    }, { message: "Please enter a valid amount" })
+    .refine((val) => {
+      const num = parseFloat(val);
+      return num <= MAX_ESTIMATED_COST;
+    }, { message: `Maximum estimated cost is $${MAX_ESTIMATED_COST.toLocaleString()}` }),
 });
 
 const isLeapYear = (year: number): boolean => {
@@ -156,6 +163,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
   const { t } = useTranslation();
   const [showErrors, setShowErrors] = useState(false);
   const [availableDays, setAvailableDays] = useState<string[]>([]);
+  const [estimatedCostError, setEstimatedCostError] = useState<string | null>(null);
   
   const form = useForm({
     resolver: zodResolver(personalInfoSchema),
@@ -215,7 +223,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               <FormItem>
                 <FormLabel>{t('form.personal.firstName')} *</FormLabel>
                 <FormControl>
-                  <Input placeholder="John" {...field} />
+                  <Input placeholder="John" maxLength={MAX_TEXT_LENGTH} {...field} />
                 </FormControl>
                 {showErrors && <FormMessage />}
               </FormItem>
@@ -229,7 +237,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               <FormItem>
                 <FormLabel>{t('form.personal.middleName')}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Michael" {...field} />
+                  <Input placeholder="Michael" maxLength={MAX_TEXT_LENGTH} {...field} />
                 </FormControl>
                 {showErrors && <FormMessage />}
               </FormItem>
@@ -243,7 +251,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               <FormItem>
                 <FormLabel>{t('form.personal.lastName')} *</FormLabel>
                 <FormControl>
-                  <Input placeholder="Doe" {...field} />
+                  <Input placeholder="Doe" maxLength={MAX_TEXT_LENGTH} {...field} />
                 </FormControl>
                 {showErrors && <FormMessage />}
               </FormItem>
@@ -359,7 +367,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               <FormItem>
                 <FormLabel>{t('form.personal.driversLicense')} *</FormLabel>
                 <FormControl>
-                  <Input placeholder="DL123456789" {...field} />
+                  <Input placeholder="DL123456789" maxLength={MAX_TEXT_LENGTH} {...field} />
                 </FormControl>
                 {showErrors && <FormMessage />}
               </FormItem>
@@ -485,7 +493,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
             <FormItem>
               <FormLabel>{t('form.personal.streetAddress')} *</FormLabel>
               <FormControl>
-                <Input placeholder="123 Main Street" {...field} />
+                <Input placeholder="123 Main Street" maxLength={MAX_TEXT_LENGTH} {...field} />
               </FormControl>
               {showErrors && <FormMessage />}
             </FormItem>
@@ -500,7 +508,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               <FormItem>
                 <FormLabel>{t('form.personal.city')} *</FormLabel>
                 <FormControl>
-                  <Input placeholder="Anytown" {...field} />
+                  <Input placeholder="Anytown" maxLength={MAX_TEXT_LENGTH} {...field} />
                 </FormControl>
                 {showErrors && <FormMessage />}
               </FormItem>
@@ -603,7 +611,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
             <FormItem>
               <FormLabel>{t('form.personal.previousAddress')}</FormLabel>
               <FormControl>
-                <Input placeholder="456 Previous St, Old City, ST 67890" {...field} />
+                <Input placeholder="456 Previous St, Old City, ST 67890" maxLength={MAX_TEXT_LENGTH} {...field} />
               </FormControl>
               {showErrors && <FormMessage />}
             </FormItem>
@@ -618,7 +626,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               <FormItem>
                 <FormLabel>{t('form.personal.emergencyContactName')} *</FormLabel>
                 <FormControl>
-                  <Input placeholder="Jane Doe" {...field} />
+                  <Input placeholder="Jane Doe" maxLength={MAX_TEXT_LENGTH} {...field} />
                 </FormControl>
                 {showErrors && <FormMessage />}
               </FormItem>
@@ -687,7 +695,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                 <FormItem>
                   <FormLabel>{t('form.personal.referringPractice')} *</FormLabel>
                   <FormControl>
-                    <Input placeholder="ABC Dental Group" {...field} />
+                    <Input placeholder="ABC Dental Group" maxLength={MAX_TEXT_LENGTH} {...field} />
                   </FormControl>
                   {showErrors && <FormMessage />}
                 </FormItem>
@@ -701,7 +709,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                 <FormItem>
                   <FormLabel>{t('form.personal.referringProviderName')}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Dr. John Smith" {...field} />
+                    <Input placeholder="Dr. John Smith" maxLength={MAX_TEXT_LENGTH} {...field} />
                   </FormControl>
                   {showErrors && <FormMessage />}
                 </FormItem>
@@ -715,7 +723,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                 <FormItem>
                   <FormLabel>{t('form.personal.referringContactInfo')}</FormLabel>
                   <FormControl>
-                    <Input placeholder="(555) 123-4567 or contact@example.com" {...field} />
+                    <Input placeholder="(555) 123-4567 or contact@example.com" maxLength={MAX_TEXT_LENGTH} {...field} />
                   </FormControl>
                   {showErrors && <FormMessage />}
                 </FormItem>
@@ -746,20 +754,35 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                     <Input 
                       type="number"
                       min="0"
-                      max="9999999"
+                      max={MAX_ESTIMATED_COST}
                       step="0.01"
                       placeholder="$5,000" 
                       {...field}
                       onChange={(e) => {
                         const value = e.target.value.replace(/[^\d.]/g, '');
-                        const parts = value.split('.');
-                        if (parts[0].length <= 7) {
-                          field.onChange(value);
+                        field.onChange(value);
+                        // Clear error when user starts typing
+                        if (estimatedCostError) {
+                          setEstimatedCostError(null);
+                        }
+                      }}
+                      onBlur={(e) => {
+                        field.onBlur();
+                        const num = parseFloat(e.target.value);
+                        if (!isNaN(num) && num > MAX_ESTIMATED_COST) {
+                          setEstimatedCostError(`Maximum estimated cost is $${MAX_ESTIMATED_COST.toLocaleString()}`);
+                        } else if (!isNaN(num) && num <= 0) {
+                          setEstimatedCostError('Please enter a valid amount greater than $0');
+                        } else {
+                          setEstimatedCostError(null);
                         }
                       }}
                     />
                   </FormControl>
-                  {showErrors && <FormMessage />}
+                  {estimatedCostError && (
+                    <p className="text-sm font-medium text-destructive">{estimatedCostError}</p>
+                  )}
+                  {showErrors && !estimatedCostError && <FormMessage />}
                 </FormItem>
               )}
             />

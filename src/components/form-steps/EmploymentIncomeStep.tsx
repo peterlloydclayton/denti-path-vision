@@ -21,10 +21,12 @@ interface EmploymentIncomeStepProps {
   setIsSubmitting?: (value: boolean) => void;
 }
 
+const MAX_TEXT_LENGTH = 60;
+
 const employmentIncomeSchema = z.object({
-  current_employer: z.string().min(1, "Current employer is required"),
-  employer_address: z.string().min(1, "Employer address is required"),
-  job_title: z.string().min(1, "Job title is required"),
+  current_employer: z.string().min(1, "Current employer is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
+  employer_address: z.string().min(1, "Employer address is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
+  job_title: z.string().min(1, "Job title is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
   employment_type: z.string().min(1, "Employment type is required"),
   length_of_employment: z.string().min(1, "Length of employment is required"),
   monthly_gross_income: z.string().min(1, "Monthly gross income is required")
@@ -38,14 +40,14 @@ const employmentIncomeSchema = z.object({
       return !isNaN(num) && num >= 0 && num <= 9999999;
     }, { message: "Monthly net income must be between 0 and 9,999,999" }),
   pay_frequency: z.string().min(1, "Pay frequency is required"),
-  secondary_income_sources: z.string().optional(),
+  secondary_income_sources: z.string().max(200, "Maximum 200 characters").optional(),
   household_total_income: z.string().optional()
     .refine((val) => {
       if (!val || val === '') return true;
       const num = parseFloat(val);
       return !isNaN(num) && num >= 0 && num <= 9999999;
     }, { message: "Household income must be between 0 and 9,999,999" }),
-  spouse_employer: z.string().optional(),
+  spouse_employer: z.string().max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`).optional(),
   spouse_income: z.string().optional()
     .refine((val) => {
       if (!val || val === '') return true;
@@ -116,7 +118,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                 <FormItem>
                   <FormLabel>{t('form.employment.currentEmployer')} *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Company Name" {...field} />
+                    <Input placeholder="Company Name" maxLength={MAX_TEXT_LENGTH} {...field} />
                   </FormControl>
                   {showErrors && <FormMessage />}
                 </FormItem>
@@ -130,7 +132,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                 <FormItem>
                   <FormLabel>Employer Address *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Street Address, City, State, ZIP" {...field} />
+                    <Input placeholder="Street Address, City, State, ZIP" maxLength={MAX_TEXT_LENGTH} {...field} />
                   </FormControl>
                   {showErrors && <FormMessage />}
                 </FormItem>
@@ -144,7 +146,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                 <FormItem>
                   <FormLabel>{t('form.employment.jobTitle')} *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your job title" {...field} />
+                    <Input placeholder="Your job title" maxLength={MAX_TEXT_LENGTH} {...field} />
                   </FormControl>
                   {showErrors && <FormMessage />}
                 </FormItem>
@@ -292,6 +294,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                 <FormControl>
                   <Textarea 
                     placeholder="Describe any additional income sources..."
+                    maxLength={200}
                     {...field} 
                   />
                 </FormControl>
@@ -336,7 +339,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                 <FormItem>
                   <FormLabel>{t('form.employment.spouseEmployer')}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Spouse's employer" {...field} />
+                    <Input placeholder="Spouse's employer" maxLength={MAX_TEXT_LENGTH} {...field} />
                   </FormControl>
                   {showErrors && <FormMessage />}
                 </FormItem>
