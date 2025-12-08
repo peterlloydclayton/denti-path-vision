@@ -41,7 +41,7 @@ const employmentIncomeSchema = z.object({
       return !isNaN(num) && num >= 0 && num <= 9999999;
     }, { message: "Monthly net income must be between 0 and 9,999,999" }),
   pay_frequency: z.string().min(1, "Pay frequency is required"),
-  secondary_income_sources: z.string().max(200, "Maximum 200 characters").optional(),
+  secondary_income_sources: z.string().max(75, "Maximum 75 characters").optional(),
   household_total_income: z.string().optional()
     .refine((val) => {
       if (!val || val === '') return true;
@@ -295,7 +295,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                 <FormControl>
                   <Textarea 
                     placeholder="Describe any additional income sources..."
-                    maxLength={200}
+                    maxLength={75}
                     {...field} 
                   />
                 </FormControl>
