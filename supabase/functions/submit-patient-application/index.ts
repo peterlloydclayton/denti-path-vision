@@ -516,9 +516,9 @@ Deno.serve(async (req) => {
       } else {
         console.log("User account created successfully:", authData.user.id);
         
-        // Generate email confirmation link
+        // Generate magic link for email confirmation (no password required)
         const { data: linkData, error: emailError } = await supabaseAdmin.auth.admin.generateLink({
-          type: 'signup',
+          type: 'magiclink',
           email: applicationData.email,
           options: {
             redirectTo: `${req.headers.get('origin') || 'https://mydentipay.com'}/auth/callback`

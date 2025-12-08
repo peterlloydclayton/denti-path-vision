@@ -21,11 +21,12 @@ interface EmploymentIncomeStepProps {
   setIsSubmitting?: (value: boolean) => void;
 }
 
-const MAX_TEXT_LENGTH = 60;
+const MAX_TEXT_LENGTH = 25;
+const MAX_ADDRESS_LENGTH = 50;
 
 const employmentIncomeSchema = z.object({
   current_employer: z.string().min(1, "Current employer is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
-  employer_address: z.string().min(1, "Employer address is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
+  employer_address: z.string().min(1, "Employer address is required").max(MAX_ADDRESS_LENGTH, `Maximum ${MAX_ADDRESS_LENGTH} characters`),
   job_title: z.string().min(1, "Job title is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
   employment_type: z.string().min(1, "Employment type is required"),
   length_of_employment: z.string().min(1, "Length of employment is required"),
@@ -132,7 +133,7 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                 <FormItem>
                   <FormLabel>Employer Address *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Street Address, City, State, ZIP" maxLength={MAX_TEXT_LENGTH} {...field} />
+                    <Input placeholder="Street Address, City, State, ZIP" maxLength={MAX_ADDRESS_LENGTH} {...field} />
                   </FormControl>
                   {showErrors && <FormMessage />}
                 </FormItem>
