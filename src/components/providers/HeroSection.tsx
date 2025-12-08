@@ -69,9 +69,6 @@ export const HeroSection = () => {
           <h1 className="text-4xl mobile-landscape:text-2xl font-bold text-foreground leading-tight mobile-landscape:leading-tight">
             {t('providers.hero.title')}
           </h1>
-          <h2 className="block text-2xl mobile-landscape:hidden text-gray-600 font-medium mt-4">
-            {t('providers.hero.subtitle')}
-          </h2>
         </AnimatedText>
       </div>
       
@@ -81,9 +78,6 @@ export const HeroSection = () => {
           <h1 className="text-6xl md:text-7xl mobile-landscape:text-3xl font-bold text-foreground">
             {t('providers.hero.title')}
           </h1>
-          <h2 className="block text-4xl mobile-landscape:hidden mt-8 md:mt-16 text-gray-600 font-medium">
-            {t('providers.hero.subtitle')}
-          </h2>
         </AnimatedText>
       </div>
       
