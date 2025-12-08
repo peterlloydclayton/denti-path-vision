@@ -762,14 +762,14 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                       {...field}
                       onChange={(e) => {
                         const value = e.target.value.replace(/[^\d.]/g, '');
-                        field.onChange(value);
-                        // Clear error when user starts typing
-                        if (estimatedCostError) {
-                          setEstimatedCostError(null);
+                        const parts = value.split('.');
+                        if (parts[0].length <= 7) {
+                          field.onChange(value);
                         }
                       }}
                       onBlur={(e) => {
                         field.onBlur();
+                        form.trigger('estimated_cost');
                         const num = parseFloat(e.target.value);
                         if (!isNaN(num) && num > MAX_ESTIMATED_COST) {
                           setEstimatedCostError(`Maximum estimated cost is $${MAX_ESTIMATED_COST.toLocaleString()}`);

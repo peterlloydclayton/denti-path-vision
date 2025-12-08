@@ -119,9 +119,13 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                             field.onChange(value);
                           }
                         }}
+                        onBlur={() => {
+                          field.onBlur();
+                          form.trigger('checking_balance');
+                        }}
                       />
                     </FormControl>
-                    {showErrors && <FormMessage />}
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -147,9 +151,13 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                             field.onChange(value);
                           }
                         }}
+                        onBlur={() => {
+                          field.onBlur();
+                          form.trigger('savings_balance');
+                        }}
                       />
                     </FormControl>
-                    {showErrors && <FormMessage />}
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -175,9 +183,13 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                             field.onChange(value);
                           }
                         }}
+                        onBlur={() => {
+                          field.onBlur();
+                          form.trigger('retirement_accounts');
+                        }}
                       />
                     </FormControl>
-                    {showErrors && <FormMessage />}
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -203,9 +215,13 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                             field.onChange(value);
                           }
                         }}
+                        onBlur={() => {
+                          field.onBlur();
+                          form.trigger('investment_accounts');
+                        }}
                       />
                     </FormControl>
-                    {showErrors && <FormMessage />}
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -235,9 +251,13 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                           field.onChange(value);
                         }
                       }}
+                      onBlur={() => {
+                        field.onBlur();
+                        form.trigger('mortgage_rent_payment');
+                      }}
                     />
                   </FormControl>
-                  {showErrors && <FormMessage />}
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -284,9 +304,13 @@ const FinancialOverviewStep: React.FC<FinancialOverviewStepProps> = ({
                             field.onChange(value);
                           }
                         }}
+                        onBlur={() => {
+                          field.onBlur();
+                          form.trigger('credit_score');
+                        }}
                       />
                     </FormControl>
-                    {showErrors && <FormMessage />}
+                    <FormMessage />
                   </FormItem>
                 )}
               />

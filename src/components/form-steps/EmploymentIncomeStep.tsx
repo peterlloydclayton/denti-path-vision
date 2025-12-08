@@ -225,9 +225,13 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                           field.onChange(value);
                         }
                       }}
+                      onBlur={() => {
+                        field.onBlur();
+                        form.trigger('monthly_gross_income');
+                      }}
                     />
                   </FormControl>
-                  {showErrors && <FormMessage />}
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -253,9 +257,13 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                           field.onChange(value);
                         }
                       }}
+                      onBlur={() => {
+                        field.onBlur();
+                        form.trigger('monthly_net_income');
+                      }}
                     />
                   </FormControl>
-                  {showErrors && <FormMessage />}
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -326,9 +334,13 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                           field.onChange(value);
                         }
                       }}
+                      onBlur={() => {
+                        field.onBlur();
+                        form.trigger('household_total_income');
+                      }}
                     />
                   </FormControl>
-                  {showErrors && <FormMessage />}
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -368,9 +380,13 @@ const EmploymentIncomeStep: React.FC<EmploymentIncomeStepProps> = ({
                           field.onChange(value);
                         }
                       }}
+                      onBlur={() => {
+                        field.onBlur();
+                        form.trigger('spouse_income');
+                      }}
                     />
                   </FormControl>
-                  {showErrors && <FormMessage />}
+                  <FormMessage />
                 </FormItem>
               )}
             />
