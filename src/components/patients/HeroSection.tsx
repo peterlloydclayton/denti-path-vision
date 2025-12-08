@@ -62,7 +62,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Mobile Portrait Button */}
-      <div className="block sm:hidden absolute top-[58%] mobile-landscape:bottom-[10%] left-6 mobile-landscape:left-4 z-20 w-auto">
+      <div className="block sm:hidden absolute top-[53%] mobile-landscape:bottom-[10%] left-6 mobile-landscape:left-4 z-20 w-auto">
         <Button 
           className="h-12 mobile-landscape:h-10 text-base mobile-landscape:text-sm bg-black text-white hover:bg-black/80 shadow-elegant px-8 mobile-landscape:px-6 font-semibold"
           onClick={() => navigate('/patient-financing-application')}
