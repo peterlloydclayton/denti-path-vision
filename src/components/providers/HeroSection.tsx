@@ -87,12 +87,12 @@ export const HeroSection = () => {
         </AnimatedText>
       </div>
       
-      {/* Desktop Description */}
-      <div className="hidden md:block absolute top-[63%] mobile-landscape:top-[55%] left-12 mobile-landscape:left-8 z-20 w-1/2 mobile-landscape:w-[45%]">
+      {/* Desktop Description - matches Patients subtitle styling */}
+      <div className="hidden md:block absolute top-[42%] mobile-landscape:top-[55%] left-12 mobile-landscape:left-8 z-20 w-1/2 mobile-landscape:w-[45%]">
         <AnimatedText delay={0.2}>
-          <p className="text-xl mobile-landscape:text-xs text-foreground/80 font-medium leading-relaxed text-left">
+          <h3 className="text-4xl mobile-landscape:text-xs text-gray-600 font-medium leading-relaxed text-left">
             {t('providers.hero.description')}
-          </p>
+          </h3>
         </AnimatedText>
       </div>
       
