@@ -243,7 +243,9 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
           document_hash: documentHash,
           document_id: document.id,
           pdf_base64: base64Pdf
-        }
+        },
+        // Honeypot field - bots will fill this, humans won't see it
+        website_url: formData.website_url
       };
 
       // Submit to external edge function (v2 - goes directly to patient_applications)
@@ -401,6 +403,20 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSign} className="space-y-6">
+            {/* Honeypot field - hidden from humans, bots will fill it */}
+            <div className="absolute -left-[9999px] opacity-0 pointer-events-none" aria-hidden="true">
+              <label htmlFor="website_url">Website URL</label>
+              <input
+                type="text"
+                id="website_url"
+                name="website_url"
+                value={formData.website_url}
+                onChange={(e) => updateFormData({ website_url: e.target.value })}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="signerName" className="block text-sm font-medium mb-2">
