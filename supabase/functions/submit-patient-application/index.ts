@@ -204,7 +204,9 @@ const ApplicationSchema = z.object({
     document_hash: z.string().max(200),
     document_id: z.string().max(100),
     pdf_base64: z.string()
-  }).optional()
+  }).optional(),
+  // Honeypot field - should always be empty for real users
+  website_url: z.string().max(500).optional()
 })
 
 type ApplicationData = z.infer<typeof ApplicationSchema>
@@ -236,6 +238,23 @@ Deno.serve(async (req) => {
     
     // Parse and validate input data
     const rawData = await req.json()
+    
+    // Honeypot check - if website_url has a value, this is likely a bot
+    if (rawData.website_url && rawData.website_url.trim() !== '') {
+      console.log(`🤖 Bot detected - honeypot field filled. IP: ${clientIP}`);
+      // Return success to not alert the bot, but don't process
+      return new Response(
+        JSON.stringify({ 
+          success: true, 
+          message: 'Application submitted successfully',
+          applicationId: crypto.randomUUID() // Fake ID
+        }),
+        { 
+          status: 200, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      )
+    }
     
     // Preprocess credit_score: convert 0 or values < 300 to null, cap at 850
     if (rawData.credit_score !== undefined && rawData.credit_score !== null) {
@@ -272,8 +291,8 @@ Deno.serve(async (req) => {
     // Insert application data (matching original working version approach)
     console.log('Inserting application data into database...')
     
-    // Remove signature_data and map it to individual signature_* fields for external DB
-    const { signature_data, authorize_credit_report, other_income, ...insertData } = applicationData as any
+    // Remove signature_data, honeypot field, and map to individual fields for external DB
+    const { signature_data, authorize_credit_report, other_income, website_url, ...insertData } = applicationData as any
     
     // Map signature_data to external DB signature columns
     if (signature_data) {
