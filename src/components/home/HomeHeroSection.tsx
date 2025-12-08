@@ -36,7 +36,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
   return (
     <section className="h-screen relative z-10 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-dental-blue" style={{ height: '100vh' }}></div>
+      <div className="absolute inset-0 bg-primary" style={{ height: '100vh' }}></div>
       
       {/* Floating Icons Background */}
       <FloatingIcons />
