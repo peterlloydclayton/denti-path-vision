@@ -20,7 +20,9 @@ interface PersonalInfoStepProps {
   setIsSubmitting?: (value: boolean) => void;
 }
 
-const MAX_TEXT_LENGTH = 60;
+const MAX_TEXT_LENGTH = 25;
+const MAX_EMAIL_LENGTH = 40;
+const MAX_ADDRESS_LENGTH = 50;
 const MAX_ESTIMATED_COST = 250000;
 
 const personalInfoSchema = z.object({
@@ -38,22 +40,22 @@ const personalInfoSchema = z.object({
   marital_status: z.string().min(1, "Marital status is required"),
   primary_phone: z.string().regex(/^\d{10}$/, "Phone number must be exactly 10 digits"),
   secondary_phone: z.string().regex(/^\d{10}$/, "Phone number must be exactly 10 digits").optional().or(z.literal('')),
-  email: z.string().email("Valid email is required").max(100, "Maximum 100 characters"),
-  street_address: z.string().min(1, "Street address is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
+  email: z.string().email("Valid email is required").max(MAX_EMAIL_LENGTH, `Maximum ${MAX_EMAIL_LENGTH} characters`),
+  street_address: z.string().min(1, "Street address is required").max(MAX_ADDRESS_LENGTH, `Maximum ${MAX_ADDRESS_LENGTH} characters`),
   city: z.string().min(1, "City is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
   state: z.string().min(1, "State is required"),
   zip_code: z.string().min(5, "Valid ZIP code is required").max(10, "Maximum 10 characters"),
   time_at_address: z.string().min(1, "Time at address is required"),
   rent_or_own: z.string().min(1, "Please specify if you rent or own"),
-  previous_address: z.string().max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`).optional(),
+  previous_address: z.string().max(MAX_ADDRESS_LENGTH, `Maximum ${MAX_ADDRESS_LENGTH} characters`).optional(),
   emergency_contact_name: z.string().min(1, "Emergency contact name is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
   emergency_contact_relationship: z.string().min(1, "Emergency contact relationship is required"),
   emergency_contact_phone: z.string().regex(/^\d{10}$/, "Emergency contact phone must be exactly 10 digits"),
   // Referral Information
   referring_practice: z.string().min(1, "Referring practice is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
   referring_provider_name: z.string().max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`).optional(),
-  referring_contact_info: z.string().max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`).optional(),
-  referring_provider_email: z.string().email("Valid email is required").max(100, "Maximum 100 characters").optional().or(z.literal('')),
+  referring_contact_info: z.string().max(MAX_ADDRESS_LENGTH, `Maximum ${MAX_ADDRESS_LENGTH} characters`).optional(),
+  referring_provider_email: z.string().email("Valid email is required").max(MAX_EMAIL_LENGTH, `Maximum ${MAX_EMAIL_LENGTH} characters`).optional().or(z.literal('')),
   estimated_cost: z.string().min(1, "Estimated treatment cost is required")
     .refine((val) => {
       const num = parseFloat(val);
@@ -478,7 +480,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               <FormItem>
                 <FormLabel>{t('form.personal.email')} *</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="john@example.com" {...field} />
+                  <Input type="email" placeholder="john@example.com" maxLength={MAX_EMAIL_LENGTH} {...field} />
                 </FormControl>
                 {showErrors && <FormMessage />}
               </FormItem>
@@ -493,7 +495,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
             <FormItem>
               <FormLabel>{t('form.personal.streetAddress')} *</FormLabel>
               <FormControl>
-                <Input placeholder="123 Main Street" maxLength={MAX_TEXT_LENGTH} {...field} />
+                <Input placeholder="123 Main Street" maxLength={MAX_ADDRESS_LENGTH} {...field} />
               </FormControl>
               {showErrors && <FormMessage />}
             </FormItem>
@@ -611,7 +613,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
             <FormItem>
               <FormLabel>{t('form.personal.previousAddress')}</FormLabel>
               <FormControl>
-                <Input placeholder="456 Previous St, Old City, ST 67890" maxLength={MAX_TEXT_LENGTH} {...field} />
+                <Input placeholder="456 Previous St, Old City, ST 67890" maxLength={MAX_ADDRESS_LENGTH} {...field} />
               </FormControl>
               {showErrors && <FormMessage />}
             </FormItem>
@@ -723,7 +725,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                 <FormItem>
                   <FormLabel>{t('form.personal.referringContactInfo')}</FormLabel>
                   <FormControl>
-                    <Input placeholder="(555) 123-4567 or contact@example.com" maxLength={MAX_TEXT_LENGTH} {...field} />
+                    <Input placeholder="(555) 123-4567 or contact@example.com" maxLength={MAX_ADDRESS_LENGTH} {...field} />
                   </FormControl>
                   {showErrors && <FormMessage />}
                 </FormItem>
@@ -737,7 +739,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                 <FormItem>
                   <FormLabel>{t('form.personal.referringProviderEmail')}</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="doctor@dentalpractice.com" {...field} />
+                    <Input type="email" placeholder="doctor@dentalpractice.com" maxLength={MAX_EMAIL_LENGTH} {...field} />
                   </FormControl>
                   {showErrors && <FormMessage />}
                 </FormItem>

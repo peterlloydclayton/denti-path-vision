@@ -83,13 +83,13 @@ Deno.serve(async (req) => {
       }
     );
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error in log-provider-search function:', error);
     
     return new Response(
       JSON.stringify({ 
         success: false, 
-        error: error.message 
+        error: error instanceof Error ? error.message : 'Unknown error' 
       }),
       { 
         status: 500,
