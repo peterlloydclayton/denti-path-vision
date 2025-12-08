@@ -101,11 +101,11 @@ export const HeroSection = () => {
       </div>
 
       {/* Mobile Portrait Description */}
-      <div className="block sm:hidden absolute top-[43%] mobile-landscape:top-[35%] left-6 mobile-landscape:left-4 z-20 w-3/4 mobile-landscape:w-[45%]">
+      <div className="block sm:hidden absolute top-[35%] mobile-landscape:top-[35%] left-6 mobile-landscape:left-4 z-20 w-3/4 mobile-landscape:w-[45%]">
         <AnimatedText delay={0.2}>
-          <p className="text-base mobile-landscape:text-xs text-foreground/80 font-medium leading-relaxed text-left whitespace-pre-line">
+          <h3 className="text-2xl mobile-landscape:text-xs text-gray-600 font-medium leading-relaxed text-left">
             {t('providers.hero.mobileDescription')}
-          </p>
+          </h3>
         </AnimatedText>
       </div>
 
