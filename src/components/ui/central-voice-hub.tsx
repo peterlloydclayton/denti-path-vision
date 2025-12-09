@@ -21,7 +21,7 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
       <AnimatePresence>
         {isExpanded && (
           <>
@@ -81,7 +81,7 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
         transition={{ type: 'spring', stiffness: 400, damping: 25 }}
         onClick={() => setIsExpanded(!isExpanded)}
         className={`
-          relative w-20 h-20 rounded-full 
+          relative w-[120px] h-[120px] rounded-full 
           bg-foreground text-dental-blue
           shadow-2xl
           transition-all duration-300
@@ -133,7 +133,7 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <X className="w-8 h-8 relative z-10 text-dental-blue" />
+              <X className="w-12 h-12 relative z-10 text-dental-blue" />
             </motion.div>
           ) : (
             <motion.div
@@ -144,19 +144,19 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
               transition={{ duration: 0.2 }}
               className="relative z-10"
             >
-              <Mic className="w-8 h-8 text-dental-blue" />
+              <Mic className="w-12 h-12 text-dental-blue" />
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Label - positioned to the left to avoid going off screen */}
+        {/* Label - centered above button */}
         <motion.span
-          className="absolute -top-10 right-0 text-xs font-medium text-foreground bg-background px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap border border-border"
+          className="absolute -top-12 left-1/2 -translate-x-1/2 text-sm font-medium text-foreground bg-background px-4 py-2 rounded-lg shadow-lg whitespace-nowrap border border-border"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: isExpanded ? 0 : 1, y: isExpanded ? 10 : 0 }}
         >
           Chat with Echo
-          <div className="absolute -bottom-1 right-6 w-2 h-2 bg-background border-r border-b border-border rotate-45" />
+          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-background border-r border-b border-border rotate-45" />
         </motion.span>
       </motion.button>
     </div>
