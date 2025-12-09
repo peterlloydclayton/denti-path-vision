@@ -5,3 +5,9 @@ verify_jwt = false
 
 [functions.test-mailjet]
 verify_jwt = false
+
+[functions.realtime-voice-token]
+verify_jwt = false
+
+[functions.log-provider-search]
+verify_jwt = false
