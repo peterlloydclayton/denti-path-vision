@@ -34,39 +34,41 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
               onClick={() => setIsExpanded(false)}
             />
 
-            {/* Options */}
+            {/* Options - Side by side */}
             <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.8 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
               transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-              className="absolute bottom-20 right-0 flex flex-col gap-3 items-end z-50"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center gap-4 z-[60]"
             >
-              {/* Voice Chat Option */}
+              {/* Voice Chat Option - Left side */}
               <motion.button
-                initial={{ x: 20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: -80, opacity: 1 }}
+                exit={{ x: -20, opacity: 0 }}
                 transition={{ delay: 0.05 }}
                 onClick={handleVoiceChat}
-                className="flex items-center gap-3 px-4 py-3 bg-dental-blue text-white rounded-full shadow-lg hover:bg-dental-blue-dark transition-colors group"
+                className="flex items-center gap-2 px-4 py-3 bg-dental-blue text-foreground rounded-full shadow-lg hover:bg-dental-blue-dark transition-colors group"
               >
-                <span className="text-sm font-medium whitespace-nowrap">Talk to Echo</span>
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                  <Mic className="w-5 h-5" />
+                <div className="w-8 h-8 rounded-full bg-foreground/20 flex items-center justify-center">
+                  <Mic className="w-4 h-4 text-foreground" />
                 </div>
+                <span className="text-sm font-medium whitespace-nowrap text-foreground">Talk to Echo</span>
               </motion.button>
 
-              {/* Text Chat Option */}
+              {/* Text Chat Option - Right side */}
               <motion.button
                 initial={{ x: 20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                animate={{ x: 80, opacity: 1 }}
+                exit={{ x: 20, opacity: 0 }}
                 transition={{ delay: 0.1 }}
                 onClick={handleTextChat}
-                className="flex items-center gap-3 px-4 py-3 bg-foreground text-background rounded-full shadow-lg hover:bg-foreground/90 transition-colors group"
+                className="flex items-center gap-2 px-4 py-3 bg-foreground text-background rounded-full shadow-lg hover:bg-foreground/90 transition-colors group"
               >
                 <span className="text-sm font-medium whitespace-nowrap">Text Chat</span>
-                <div className="w-10 h-10 rounded-full bg-background/20 flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5" />
+                <div className="w-8 h-8 rounded-full bg-background/20 flex items-center justify-center">
+                  <MessageCircle className="w-4 h-4" />
                 </div>
               </motion.button>
             </motion.div>
