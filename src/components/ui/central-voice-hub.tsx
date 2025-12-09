@@ -82,11 +82,11 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
         onClick={() => setIsExpanded(!isExpanded)}
         className={`
           relative w-20 h-20 rounded-full 
-          bg-dental-blue text-white
-          shadow-2xl hover:shadow-dental-blue/50
+          bg-foreground text-dental-blue
+          shadow-2xl
           transition-all duration-300
           flex items-center justify-center
-          border-4 border-white/20
+          border-4 border-dental-blue/30
           z-50
         `}
         whileHover={{ scale: 1.05 }}
@@ -94,12 +94,12 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
       >
         {/* Glow Effect */}
         <motion.div
-          className="absolute inset-0 rounded-full bg-dental-blue"
+          className="absolute inset-0 rounded-full bg-foreground"
           animate={{
             boxShadow: [
-              '0 0 20px 5px rgba(0, 149, 255, 0.4)',
-              '0 0 40px 10px rgba(0, 149, 255, 0.6)',
-              '0 0 20px 5px rgba(0, 149, 255, 0.4)',
+              '0 0 20px 5px rgba(255, 255, 255, 0.3), 0 0 30px 10px rgba(0, 149, 255, 0.2)',
+              '0 0 30px 10px rgba(255, 255, 255, 0.5), 0 0 50px 15px rgba(0, 149, 255, 0.4)',
+              '0 0 20px 5px rgba(255, 255, 255, 0.3), 0 0 30px 10px rgba(0, 149, 255, 0.2)',
             ],
           }}
           transition={{
@@ -111,7 +111,7 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
 
         {/* Pulse Ring */}
         <motion.div
-          className="absolute inset-0 rounded-full border-2 border-dental-blue"
+          className="absolute inset-0 rounded-full border-2 border-dental-blue/50"
           animate={{
             scale: [1, 1.4, 1.4],
             opacity: [0.6, 0, 0],
@@ -133,7 +133,7 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <X className="w-8 h-8 relative z-10" />
+              <X className="w-8 h-8 relative z-10 text-dental-blue" />
             </motion.div>
           ) : (
             <motion.div
@@ -144,18 +144,19 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
               transition={{ duration: 0.2 }}
               className="relative z-10"
             >
-              <Mic className="w-8 h-8" />
+              <Mic className="w-8 h-8 text-dental-blue" />
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Label */}
+        {/* Label - positioned to the left to avoid going off screen */}
         <motion.span
-          className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-medium text-foreground bg-background px-2 py-1 rounded shadow-md whitespace-nowrap"
+          className="absolute -top-10 right-0 text-xs font-medium text-foreground bg-background px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap border border-border"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: isExpanded ? 0 : 1, y: isExpanded ? 10 : 0 }}
         >
           Chat with Echo
+          <div className="absolute -bottom-1 right-6 w-2 h-2 bg-background border-r border-b border-border rotate-45" />
         </motion.span>
       </motion.button>
     </div>
