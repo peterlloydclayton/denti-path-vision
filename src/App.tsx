@@ -8,6 +8,8 @@ import { GDPRBanner } from "@/components/layout/GDPRBanner";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { Footer } from "@/components/layout/Footer";
 import { SplashScreen } from "@/components/SplashScreen";
+import { VoiceAgentOverlay } from "@/components/VoiceAgentOverlay";
+import { VoiceAgentButton } from "@/components/VoiceAgentButton";
 import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import Providers from "./pages/Providers";
@@ -36,6 +38,8 @@ const AppContent = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showSplash, setShowSplash] = useState(false);
+  const [showVoiceAgent, setShowVoiceAgent] = useState(false);
+  const [autoStartVoice, setAutoStartVoice] = useState(false);
 
   useEffect(() => {
     // Check for explicit intro request
@@ -89,10 +93,26 @@ const AppContent = () => {
       params.delete('intro');
       navigate({ search: params.toString() }, { replace: true });
     }
+
+    // Auto-open voice agent after splash on home page
+    if (location.pathname === '/') {
+      setAutoStartVoice(true);
+      setShowVoiceAgent(true);
+    }
   };
 
   const handlePlayIntro = () => {
     setShowSplash(true);
+  };
+
+  const handleOpenVoiceAgent = () => {
+    setAutoStartVoice(false);
+    setShowVoiceAgent(true);
+  };
+
+  const handleCloseVoiceAgent = () => {
+    setShowVoiceAgent(false);
+    setAutoStartVoice(false);
   };
 
   return (
@@ -102,6 +122,18 @@ const AppContent = () => {
           <SplashScreen key="splash" onComplete={handleSplashComplete} />
         )}
       </AnimatePresence>
+
+      {/* Voice Agent Overlay */}
+      <VoiceAgentOverlay 
+        isOpen={showVoiceAgent} 
+        onClose={handleCloseVoiceAgent}
+        autoStart={autoStartVoice}
+      />
+
+      {/* Floating Voice Button - show when not in splash and voice agent is closed */}
+      {!showSplash && !showVoiceAgent && (
+        <VoiceAgentButton onClick={handleOpenVoiceAgent} />
+      )}
 
       <ScrollToTop />
       <div className="relative min-h-screen flex flex-col">

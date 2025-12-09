@@ -1,0 +1,263 @@
+import { supabase } from "@/integrations/supabase/client";
+
+export type VoiceAgentStatus = 'idle' | 'connecting' | 'connected' | 'speaking' | 'listening' | 'error';
+
+export interface VoiceAgentCallbacks {
+  onStatusChange: (status: VoiceAgentStatus) => void;
+  onTranscript: (text: string, isFinal: boolean, role: 'user' | 'assistant') => void;
+  onError: (error: string) => void;
+  onToolCall: (toolName: string, args: Record<string, unknown>) => void;
+}
+
+export class VoiceAgent {
+  private pc: RTCPeerConnection | null = null;
+  private dc: RTCDataChannel | null = null;
+  private audioEl: HTMLAudioElement;
+  private localStream: MediaStream | null = null;
+  private callbacks: VoiceAgentCallbacks;
+  private currentTranscript = '';
+  private isConnected = false;
+
+  constructor(callbacks: VoiceAgentCallbacks) {
+    this.callbacks = callbacks;
+    this.audioEl = document.createElement("audio");
+    this.audioEl.autoplay = true;
+  }
+
+  async connect(): Promise<void> {
+    try {
+      this.callbacks.onStatusChange('connecting');
+      console.log('VoiceAgent: Requesting microphone access...');
+
+      // Request microphone access
+      this.localStream = await navigator.mediaDevices.getUserMedia({ 
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true
+        } 
+      });
+
+      console.log('VoiceAgent: Getting ephemeral token...');
+
+      // Get ephemeral token from edge function
+      const { data, error } = await supabase.functions.invoke('realtime-voice-token');
+      
+      if (error) {
+        console.error('VoiceAgent: Token error:', error);
+        throw new Error('Failed to get voice session token');
+      }
+
+      if (!data?.client_secret?.value) {
+        console.error('VoiceAgent: Invalid token response:', data);
+        throw new Error('Invalid token response');
+      }
+
+      const ephemeralKey = data.client_secret.value;
+      console.log('VoiceAgent: Got ephemeral token, setting up WebRTC...');
+
+      // Create peer connection
+      this.pc = new RTCPeerConnection();
+
+      // Set up remote audio playback
+      this.pc.ontrack = (e) => {
+        console.log('VoiceAgent: Received audio track');
+        this.audioEl.srcObject = e.streams[0];
+      };
+
+      // Add local audio track
+      this.localStream.getTracks().forEach(track => {
+        this.pc!.addTrack(track, this.localStream!);
+      });
+
+      // Set up data channel for events
+      this.dc = this.pc.createDataChannel("oai-events");
+      this.setupDataChannelHandlers();
+
+      // Create and set local description
+      const offer = await this.pc.createOffer();
+      await this.pc.setLocalDescription(offer);
+
+      console.log('VoiceAgent: Connecting to OpenAI Realtime API...');
+
+      // Connect to OpenAI's Realtime API
+      const baseUrl = "https://api.openai.com/v1/realtime";
+      const model = "gpt-4o-realtime-preview-2024-12-17";
+      
+      const sdpResponse = await fetch(`${baseUrl}?model=${model}`, {
+        method: "POST",
+        body: offer.sdp,
+        headers: {
+          Authorization: `Bearer ${ephemeralKey}`,
+          "Content-Type": "application/sdp"
+        },
+      });
+
+      if (!sdpResponse.ok) {
+        const errorText = await sdpResponse.text();
+        console.error('VoiceAgent: SDP error:', errorText);
+        throw new Error('Failed to establish WebRTC connection');
+      }
+
+      const answer: RTCSessionDescriptionInit = {
+        type: "answer",
+        sdp: await sdpResponse.text(),
+      };
+      
+      await this.pc.setRemoteDescription(answer);
+      console.log('VoiceAgent: WebRTC connection established');
+
+      this.isConnected = true;
+      this.callbacks.onStatusChange('connected');
+
+    } catch (error) {
+      console.error('VoiceAgent: Connection error:', error);
+      this.callbacks.onStatusChange('error');
+      this.callbacks.onError(error instanceof Error ? error.message : 'Connection failed');
+      throw error;
+    }
+  }
+
+  private setupDataChannelHandlers(): void {
+    if (!this.dc) return;
+
+    this.dc.onopen = () => {
+      console.log('VoiceAgent: Data channel opened');
+      // Send initial greeting prompt
+      setTimeout(() => {
+        this.sendEvent({
+          type: 'response.create',
+          response: {
+            modalities: ['audio', 'text'],
+            instructions: 'Greet the user warmly and introduce yourself as Echo, DentiPay\'s AI assistant. Ask how you can help them today - whether they\'re a patient looking for dental financing or a dental practice interested in offering financing options.'
+          }
+        });
+      }, 500);
+    };
+
+    this.dc.onmessage = (e) => {
+      try {
+        const event = JSON.parse(e.data);
+        this.handleServerEvent(event);
+      } catch (error) {
+        console.error('VoiceAgent: Error parsing event:', error);
+      }
+    };
+
+    this.dc.onerror = (error) => {
+      console.error('VoiceAgent: Data channel error:', error);
+      this.callbacks.onError('Connection error');
+    };
+
+    this.dc.onclose = () => {
+      console.log('VoiceAgent: Data channel closed');
+      if (this.isConnected) {
+        this.callbacks.onStatusChange('idle');
+        this.isConnected = false;
+      }
+    };
+  }
+
+  private handleServerEvent(event: Record<string, unknown>): void {
+    const eventType = event.type as string;
+    
+    switch (eventType) {
+      case 'session.created':
+        console.log('VoiceAgent: Session created');
+        break;
+
+      case 'response.audio.delta':
+        this.callbacks.onStatusChange('speaking');
+        break;
+
+      case 'response.audio.done':
+        this.callbacks.onStatusChange('listening');
+        break;
+
+      case 'response.audio_transcript.delta':
+        this.currentTranscript += event.delta as string;
+        this.callbacks.onTranscript(this.currentTranscript, false, 'assistant');
+        break;
+
+      case 'response.audio_transcript.done':
+        this.callbacks.onTranscript(event.transcript as string, true, 'assistant');
+        this.currentTranscript = '';
+        break;
+
+      case 'conversation.item.input_audio_transcription.completed':
+        this.callbacks.onTranscript(event.transcript as string, true, 'user');
+        break;
+
+      case 'input_audio_buffer.speech_started':
+        this.callbacks.onStatusChange('listening');
+        break;
+
+      case 'response.function_call_arguments.done':
+        const toolName = event.name as string;
+        let args = {};
+        try {
+          args = JSON.parse(event.arguments as string || '{}');
+        } catch {
+          args = {};
+        }
+        console.log('VoiceAgent: Tool call:', toolName, args);
+        this.callbacks.onToolCall(toolName, args);
+        
+        // Send tool result back
+        this.sendEvent({
+          type: 'conversation.item.create',
+          item: {
+            type: 'function_call_output',
+            call_id: event.call_id,
+            output: JSON.stringify({ success: true })
+          }
+        });
+        this.sendEvent({ type: 'response.create' });
+        break;
+
+      case 'error':
+        console.error('VoiceAgent: Server error:', event);
+        this.callbacks.onError((event.error as { message?: string })?.message || 'Unknown error');
+        break;
+
+      default:
+        // Log other events for debugging
+        if (eventType.includes('error')) {
+          console.error('VoiceAgent: Error event:', event);
+        }
+    }
+  }
+
+  private sendEvent(event: Record<string, unknown>): void {
+    if (this.dc?.readyState === 'open') {
+      this.dc.send(JSON.stringify(event));
+    }
+  }
+
+  disconnect(): void {
+    console.log('VoiceAgent: Disconnecting...');
+    
+    if (this.localStream) {
+      this.localStream.getTracks().forEach(track => track.stop());
+      this.localStream = null;
+    }
+
+    if (this.dc) {
+      this.dc.close();
+      this.dc = null;
+    }
+
+    if (this.pc) {
+      this.pc.close();
+      this.pc = null;
+    }
+
+    this.audioEl.srcObject = null;
+    this.isConnected = false;
+    this.callbacks.onStatusChange('idle');
+  }
+
+  isActive(): boolean {
+    return this.isConnected;
+  }
+}
