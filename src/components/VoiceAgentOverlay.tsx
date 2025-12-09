@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import { X, Mic, MicOff, Volume2, Bot } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -11,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 interface VoiceAgentOverlayProps {
   isOpen: boolean;
   onClose: () => void;
+  onNavigate: (path: string) => void;
   autoStart?: boolean;
 }
 
@@ -21,8 +21,7 @@ interface Message {
   timestamp: Date;
 }
 
-export const VoiceAgentOverlay = ({ isOpen, onClose, autoStart = false }: VoiceAgentOverlayProps) => {
-  const navigate = useNavigate();
+export const VoiceAgentOverlay = ({ isOpen, onClose, onNavigate, autoStart = false }: VoiceAgentOverlayProps) => {
   const { toast } = useToast();
   const [status, setStatus] = useState<VoiceAgentStatus>('idle');
   const [messages, setMessages] = useState<Message[]>([]);
@@ -42,8 +41,7 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, autoStart = false }: VoiceA
           description: "Taking you to learn about dental financing options...",
         });
         setTimeout(() => {
-          navigate('/patients');
-          onClose();
+          onNavigate('/patients');
         }, 1500);
         break;
 
@@ -53,8 +51,7 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, autoStart = false }: VoiceA
           description: "Taking you to learn about offering financing...",
         });
         setTimeout(() => {
-          navigate('/providers');
-          onClose();
+          onNavigate('/providers');
         }, 1500);
         break;
 
@@ -64,14 +61,12 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, autoStart = false }: VoiceA
           description: "Let's get your practice started with DentiPay...",
         });
         setTimeout(() => {
-          navigate('/providers');
-          // Dispatch custom event to trigger modal
+          onNavigate('/providers');
           window.dispatchEvent(new CustomEvent('openProviderSignup'));
-          onClose();
         }, 1500);
         break;
     }
-  }, [navigate, onClose, toast]);
+  }, [onNavigate, toast]);
 
   const startAgent = useCallback(async () => {
     if (agentRef.current?.isActive()) return;
@@ -121,7 +116,6 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, autoStart = false }: VoiceA
   useEffect(() => {
     if (isOpen && autoStart && !hasStartedRef.current) {
       hasStartedRef.current = true;
-      // Small delay to allow animation to complete
       const timer = setTimeout(() => {
         startAgent();
       }, 500);

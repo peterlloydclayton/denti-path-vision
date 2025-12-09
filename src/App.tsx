@@ -8,8 +8,10 @@ import { GDPRBanner } from "@/components/layout/GDPRBanner";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { Footer } from "@/components/layout/Footer";
 import { SplashScreen } from "@/components/SplashScreen";
+import { VoiceAgentFullscreenIntro } from "@/components/VoiceAgentFullscreenIntro";
 import { VoiceAgentOverlay } from "@/components/VoiceAgentOverlay";
-import { VoiceAgentButton } from "@/components/VoiceAgentButton";
+import { ChatWidget } from "@/components/ChatWidget";
+import { CentralVoiceHub } from "@/components/ui/central-voice-hub";
 import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import Providers from "./pages/Providers";
@@ -26,9 +28,8 @@ import ProviderScheduling from "./pages/ProviderScheduling";
 import ProviderSignup from "./pages/ProviderSignup";
 import Apply from "./pages/Apply";
 import './i18n/config';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { initGA, trackPageView } from "./lib/analytics";
-import { ChatWidget } from "./components/ChatWidget";
 
 const queryClient = new QueryClient();
 
@@ -38,8 +39,9 @@ const AppContent = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showSplash, setShowSplash] = useState(false);
-  const [showVoiceAgent, setShowVoiceAgent] = useState(false);
-  const [autoStartVoice, setAutoStartVoice] = useState(false);
+  const [showVoiceIntro, setShowVoiceIntro] = useState(false);
+  const [showVoicePanel, setShowVoicePanel] = useState(false);
+  const [showTextChat, setShowTextChat] = useState(false);
 
   useEffect(() => {
     // Check for explicit intro request
@@ -94,10 +96,9 @@ const AppContent = () => {
       navigate({ search: params.toString() }, { replace: true });
     }
 
-    // Auto-open voice agent after splash on home page
+    // Show fullscreen voice intro after splash on home page
     if (location.pathname === '/') {
-      setAutoStartVoice(true);
-      setShowVoiceAgent(true);
+      setShowVoiceIntro(true);
     }
   };
 
@@ -105,15 +106,36 @@ const AppContent = () => {
     setShowSplash(true);
   };
 
-  const handleOpenVoiceAgent = () => {
-    setAutoStartVoice(false);
-    setShowVoiceAgent(true);
+  // Navigation handler that keeps voice overlay open
+  const handleVoiceNavigate = useCallback((path: string) => {
+    navigate(path);
+    // Don't close - let it stay open across navigation
+  }, [navigate]);
+
+  const handleCloseVoiceIntro = () => {
+    setShowVoiceIntro(false);
   };
 
-  const handleCloseVoiceAgent = () => {
-    setShowVoiceAgent(false);
-    setAutoStartVoice(false);
+  const handleCloseVoicePanel = () => {
+    setShowVoicePanel(false);
   };
+
+  const handleCloseTextChat = () => {
+    setShowTextChat(false);
+  };
+
+  const handleOpenVoiceChat = () => {
+    setShowTextChat(false);
+    setShowVoicePanel(true);
+  };
+
+  const handleOpenTextChat = () => {
+    setShowVoicePanel(false);
+    setShowTextChat(true);
+  };
+
+  // Determine if hub should be shown
+  const showHub = !showSplash && !showVoiceIntro && !showVoicePanel && !showTextChat;
 
   return (
     <>
@@ -123,16 +145,32 @@ const AppContent = () => {
         )}
       </AnimatePresence>
 
-      {/* Voice Agent Overlay */}
-      <VoiceAgentOverlay 
-        isOpen={showVoiceAgent} 
-        onClose={handleCloseVoiceAgent}
-        autoStart={autoStartVoice}
+      {/* Fullscreen Voice Intro - shown after splash */}
+      <VoiceAgentFullscreenIntro 
+        isOpen={showVoiceIntro} 
+        onClose={handleCloseVoiceIntro}
+        onNavigate={handleVoiceNavigate}
       />
 
-      {/* Floating Voice Button - show when not in splash and voice agent is closed */}
-      {!showSplash && !showVoiceAgent && (
-        <VoiceAgentButton onClick={handleOpenVoiceAgent} />
+      {/* Voice Panel - for regular usage */}
+      <VoiceAgentOverlay 
+        isOpen={showVoicePanel} 
+        onClose={handleCloseVoicePanel}
+        onNavigate={handleVoiceNavigate}
+      />
+
+      {/* Text Chat Panel */}
+      <ChatWidget 
+        isOpen={showTextChat} 
+        onClose={handleCloseTextChat}
+      />
+
+      {/* Central Hub Button - only show when nothing else is open */}
+      {showHub && (
+        <CentralVoiceHub 
+          onVoiceChat={handleOpenVoiceChat}
+          onTextChat={handleOpenTextChat}
+        />
       )}
 
       <ScrollToTop />
@@ -170,7 +208,6 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AppContent />
-        <ChatWidget />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -1,79 +1,163 @@
-import { Bot } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { AudioVisualizer, Waveform, EqualizerBars } from './audio-visualizer';
-import { PulseRipples } from './pulse-ripples';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { MessageCircle, Mic, X } from 'lucide-react';
 
 interface CentralVoiceHubProps {
-  className?: string;
+  onTextChat: () => void;
+  onVoiceChat: () => void;
 }
 
-export const CentralVoiceHub = ({ className = '' }: CentralVoiceHubProps) => {
+export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleTextChat = () => {
+    setIsExpanded(false);
+    onTextChat();
+  };
+
+  const handleVoiceChat = () => {
+    setIsExpanded(false);
+    onVoiceChat();
+  };
+
   return (
-    <div className={`relative flex flex-col items-center ${className}`}>
-      {/* Main Bot Icon with Ripples */}
-      <div className="relative mb-8">
-        <PulseRipples isActive={true} className="w-24 h-24" />
+    <div className="fixed bottom-6 right-6 z-50">
+      <AnimatePresence>
+        {isExpanded && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-background/40 backdrop-blur-sm z-40"
+              onClick={() => setIsExpanded(false)}
+            />
+
+            {/* Options */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.8 }}
+              transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+              className="absolute bottom-20 right-0 flex flex-col gap-3 items-end z-50"
+            >
+              {/* Voice Chat Option */}
+              <motion.button
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.05 }}
+                onClick={handleVoiceChat}
+                className="flex items-center gap-3 px-4 py-3 bg-dental-blue text-white rounded-full shadow-lg hover:bg-dental-blue-dark transition-colors group"
+              >
+                <span className="text-sm font-medium whitespace-nowrap">Talk to Echo</span>
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                  <Mic className="w-5 h-5" />
+                </div>
+              </motion.button>
+
+              {/* Text Chat Option */}
+              <motion.button
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                onClick={handleTextChat}
+                className="flex items-center gap-3 px-4 py-3 bg-foreground text-background rounded-full shadow-lg hover:bg-foreground/90 transition-colors group"
+              >
+                <span className="text-sm font-medium whitespace-nowrap">Text Chat</span>
+                <div className="w-10 h-10 rounded-full bg-background/20 flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5" />
+                </div>
+              </motion.button>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Main Hub Button */}
+      <motion.button
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+        onClick={() => setIsExpanded(!isExpanded)}
+        className={`
+          relative w-20 h-20 rounded-full 
+          bg-dental-blue text-white
+          shadow-2xl hover:shadow-dental-blue/50
+          transition-all duration-300
+          flex items-center justify-center
+          border-4 border-white/20
+          z-50
+        `}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        {/* Glow Effect */}
         <motion.div
-          className="absolute inset-0 flex items-center justify-center z-20"
+          className="absolute inset-0 rounded-full bg-dental-blue"
           animate={{
-            rotate: [0, 5, -5, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          <Bot className="text-dental-blue" size={48} />
-        </motion.div>
-        
-        {/* Inner glow effect */}
-        <motion.div
-          className="absolute inset-0 w-24 h-24 rounded-full bg-gradient-radial from-dental-blue/20 to-transparent"
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.6, 0.3],
+            boxShadow: [
+              '0 0 20px 5px rgba(0, 149, 255, 0.4)',
+              '0 0 40px 10px rgba(0, 149, 255, 0.6)',
+              '0 0 20px 5px rgba(0, 149, 255, 0.4)',
+            ],
           }}
           transition={{
             duration: 2,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: 'easeInOut',
           }}
         />
-      </div>
 
-      {/* Audio Visualizers Stack */}
-      <div className="flex flex-col items-center gap-6">
+        {/* Pulse Ring */}
         <motion.div
-          animate={{ opacity: [0.7, 1, 0.7] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <AudioVisualizer className="h-10" barCount={15} />
-        </motion.div>
-        
-        <motion.div
-          animate={{ opacity: [0.5, 0.9, 0.5] }}
-          transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
-        >
-          <Waveform />
-        </motion.div>
-        
-      </div>
+          className="absolute inset-0 rounded-full border-2 border-dental-blue"
+          animate={{
+            scale: [1, 1.4, 1.4],
+            opacity: [0.6, 0, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeOut',
+          }}
+        />
 
-      {/* Speaking indicator text */}
-      <motion.p
-        className="text-sm text-dental-blue/70 mt-4 font-medium"
-        animate={{
-          opacity: [0.5, 1, 0.5],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      >
-        Echo is explaining your options...
-      </motion.p>
+        {/* Icon */}
+        <AnimatePresence mode="wait">
+          {isExpanded ? (
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <X className="w-8 h-8 relative z-10" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="mic"
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="relative z-10"
+            >
+              <Mic className="w-8 h-8" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Label */}
+        <motion.span
+          className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-medium text-foreground bg-background px-2 py-1 rounded shadow-md whitespace-nowrap"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: isExpanded ? 0 : 1, y: isExpanded ? 10 : 0 }}
+        >
+          Chat with Echo
+        </motion.span>
+      </motion.button>
     </div>
   );
 };
