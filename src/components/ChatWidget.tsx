@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
+import { X, Send, Loader2, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,8 +15,12 @@ interface Message {
   timestamp: Date;
 }
 
-export const ChatWidget = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface ChatWidgetProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -32,7 +36,9 @@ export const ChatWidget = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Initialize chat service when component mounts
+    if (!isOpen) return;
+
+    // Initialize chat service when component opens
     const initChat = async () => {
       try {
         await chatService.initialize();
@@ -64,7 +70,7 @@ export const ChatWidget = () => {
     return () => {
       chatService.disconnect();
     };
-  }, [toast]);
+  }, [isOpen, toast]);
 
   useEffect(() => {
     // Auto-scroll to bottom when new messages arrive
@@ -108,38 +114,25 @@ export const ChatWidget = () => {
   };
 
   return (
-    <>
-      {/* Floating Chat Button */}
-      <motion.div
-        className="fixed bottom-6 right-6 z-50"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-      >
-        <Button
-          onClick={() => setIsOpen(!isOpen)}
-          size="lg"
-          className="
-            rounded-full w-16 h-16 p-0 
-            bg-black hover:bg-black/90
-            shadow-elegant hover:shadow-peach
-            transition-smooth
-            border-2 border-black
-          "
-        >
-          <MessageCircle size={28} className="text-white" />
-        </Button>
-      </motion.div>
-
-      {/* Chat Window */}
-      <AnimatePresence>
-        {isOpen && (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
           <motion.div
-            className="fixed bottom-28 right-6 z-50 w-96 h-[600px] bg-background border-2 border-foreground rounded-2xl shadow-elegant overflow-hidden flex flex-col"
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-background/60 backdrop-blur-sm z-[100]"
+            onClick={onClose}
+          />
+
+          {/* Chat Window - Side Panel */}
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed right-0 top-0 h-full w-full max-w-md bg-background border-l border-border shadow-2xl z-[101] flex flex-col"
           >
             {/* Header */}
             <div className="bg-foreground text-background p-4 flex items-center justify-between border-b-2 border-dental-blue">
@@ -155,7 +148,7 @@ export const ChatWidget = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => setIsOpen(false)}
+                onClick={onClose}
                 className="hover:bg-dental-blue/20 text-background hover:text-background"
               >
                 <X size={20} />
@@ -232,8 +225,8 @@ export const ChatWidget = () => {
               </p>
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        </>
+      )}
+    </AnimatePresence>
   );
 };
