@@ -8,8 +8,7 @@ import { GDPRBanner } from "@/components/layout/GDPRBanner";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { Footer } from "@/components/layout/Footer";
 import { SplashScreen } from "@/components/SplashScreen";
-import { VoiceAgentFullscreenIntro } from "@/components/VoiceAgentFullscreenIntro";
-import { VoiceAgentOverlay } from "@/components/VoiceAgentOverlay";
+import { EchoAvatarCompanion } from "@/components/EchoAvatarCompanion";
 import { ChatWidget } from "@/components/ChatWidget";
 import { CentralVoiceHub } from "@/components/ui/central-voice-hub";
 import { AnimatePresence } from "framer-motion";
@@ -39,8 +38,7 @@ const AppContent = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showSplash, setShowSplash] = useState(false);
-  const [showVoiceIntro, setShowVoiceIntro] = useState(false);
-  const [showVoicePanel, setShowVoicePanel] = useState(false);
+  const [showEchoCompanion, setShowEchoCompanion] = useState(false);
   const [showTextChat, setShowTextChat] = useState(false);
 
   useEffect(() => {
@@ -96,9 +94,9 @@ const AppContent = () => {
       navigate({ search: params.toString() }, { replace: true });
     }
 
-    // Show fullscreen voice intro after splash on home page
+    // Show Echo companion after splash on home page
     if (location.pathname === '/') {
-      setShowVoiceIntro(true);
+      setShowEchoCompanion(true);
     }
   };
 
@@ -106,18 +104,13 @@ const AppContent = () => {
     setShowSplash(true);
   };
 
-  // Navigation handler that keeps voice overlay open
+  // Navigation handler that keeps Echo companion open
   const handleVoiceNavigate = useCallback((path: string) => {
     navigate(path);
-    // Don't close - let it stay open across navigation
   }, [navigate]);
 
-  const handleCloseVoiceIntro = () => {
-    setShowVoiceIntro(false);
-  };
-
-  const handleCloseVoicePanel = () => {
-    setShowVoicePanel(false);
+  const handleCloseEchoCompanion = () => {
+    setShowEchoCompanion(false);
   };
 
   const handleCloseTextChat = () => {
@@ -126,16 +119,16 @@ const AppContent = () => {
 
   const handleOpenVoiceChat = () => {
     setShowTextChat(false);
-    setShowVoicePanel(true);
+    setShowEchoCompanion(true);
   };
 
   const handleOpenTextChat = () => {
-    setShowVoicePanel(false);
+    setShowEchoCompanion(false);
     setShowTextChat(true);
   };
 
   // Determine if hub should be shown
-  const showHub = !showSplash && !showVoiceIntro && !showVoicePanel && !showTextChat;
+  const showHub = !showSplash && !showEchoCompanion && !showTextChat;
 
   return (
     <>
@@ -145,18 +138,12 @@ const AppContent = () => {
         )}
       </AnimatePresence>
 
-      {/* Fullscreen Voice Intro - shown after splash */}
-      <VoiceAgentFullscreenIntro 
-        isOpen={showVoiceIntro} 
-        onClose={handleCloseVoiceIntro}
+      {/* Echo Avatar Companion */}
+      <EchoAvatarCompanion 
+        isOpen={showEchoCompanion} 
+        onClose={handleCloseEchoCompanion}
         onNavigate={handleVoiceNavigate}
-      />
-
-      {/* Voice Panel - for regular usage */}
-      <VoiceAgentOverlay 
-        isOpen={showVoicePanel} 
-        onClose={handleCloseVoicePanel}
-        onNavigate={handleVoiceNavigate}
+        autoStart={true}
       />
 
       {/* Text Chat Panel */}
