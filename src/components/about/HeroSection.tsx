@@ -58,39 +58,47 @@ export const HeroSection = () => {
         </div>
       </div>
       
-      {/* Mobile Portrait & Landscape Title */}
-      <div className="block md:hidden mobile-landscape:block absolute top-[10%] mobile-landscape:top-[15%] left-6 mobile-landscape:left-4 z-[130] w-[75%] mobile-landscape:w-[50%]">
+      {/* Mobile Portrait Title - matches home page positioning */}
+      <div className="block sm:hidden absolute top-[12%] left-6 z-[130] w-3/4">
         <AnimatedText>
-          <h1 className="text-2xl mobile-landscape:text-lg font-bold text-dental-blue leading-tight">
+          <h1 className="text-5xl font-bold text-dental-blue leading-none">
             {t('about.hero.title')}
           </h1>
         </AnimatedText>
+      </div>
+      
+      {/* Mobile Portrait Headline & Subtitle - lower on page */}
+      <div className="block sm:hidden absolute top-[32%] left-6 z-[130] w-3/4">
         <AnimatedText delay={0.1}>
-          <h2 className="text-xl mobile-landscape:text-base font-semibold text-dental-blue leading-tight mt-4">
+          <h2 className="text-2xl font-semibold text-dental-blue leading-tight">
             {t('about.hero.headline')}
           </h2>
         </AnimatedText>
         <AnimatedText delay={0.2}>
-          <p className="text-sm mobile-landscape:text-xs text-dental-blue/70 font-medium leading-relaxed mt-3">
+          <p className="text-base text-dental-blue/70 font-medium leading-relaxed mt-3">
             {t('about.hero.subtitle')}
           </p>
         </AnimatedText>
       </div>
       
-      {/* Tablet & Desktop Title */}
-      <div className="hidden md:block mobile-landscape:hidden absolute top-[10%] md:top-[12%] left-6 sm:left-8 md:left-12 z-[130] w-[55%]">
+      {/* Desktop Title - matches home page positioning at top-[15%] */}
+      <div className="hidden md:block absolute top-[15%] left-12 z-[130] w-1/2">
         <AnimatedText>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-dental-blue leading-tight">
+          <h1 className="text-6xl md:text-7xl font-bold text-dental-blue leading-tight">
             {t('about.hero.title')}
           </h1>
         </AnimatedText>
+      </div>
+      
+      {/* Desktop Headline & Subtitle - lower on page around 55% */}
+      <div className="hidden md:block absolute top-[55%] left-12 z-[130] w-1/2">
         <AnimatedText delay={0.15}>
-          <h2 className="text-3xl md:text-4xl font-semibold text-dental-blue leading-tight mt-6 md:mt-8">
+          <h2 className="text-3xl md:text-4xl font-semibold text-dental-blue leading-tight">
             {t('about.hero.headline')}
           </h2>
         </AnimatedText>
         <AnimatedText delay={0.25}>
-          <p className="text-lg md:text-xl text-dental-blue/70 font-medium leading-relaxed mt-4 md:mt-6">
+          <p className="text-lg md:text-xl text-dental-blue/70 font-medium leading-relaxed mt-4">
             {t('about.hero.subtitle')}
           </p>
         </AnimatedText>
