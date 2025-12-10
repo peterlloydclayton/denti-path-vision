@@ -6,6 +6,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { AudioVisualizer, Waveform } from '@/components/ui/audio-visualizer';
 import { VoiceAgent, VoiceAgentStatus } from '@/utils/VoiceAgent';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslation } from 'react-i18next';
 
 interface VoiceAgentOverlayProps {
   isOpen: boolean;
@@ -23,6 +24,7 @@ interface Message {
 
 export const VoiceAgentOverlay = ({ isOpen, onClose, onNavigate, autoStart = false }: VoiceAgentOverlayProps) => {
   const { toast } = useToast();
+  const { i18n } = useTranslation();
   const [status, setStatus] = useState<VoiceAgentStatus>('idle');
   const [messages, setMessages] = useState<Message[]>([]);
   const [currentTranscript, setCurrentTranscript] = useState('');
@@ -30,6 +32,17 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, onNavigate, autoStart = fal
   const agentRef = useRef<VoiceAgent | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const hasStartedRef = useRef(false);
+
+  const handleLanguageChange = useCallback((language: 'es' | 'en') => {
+    if (i18n.language !== language) {
+      console.log('VoiceAgentOverlay: Switching language to', language);
+      i18n.changeLanguage(language);
+      toast({
+        title: language === 'es' ? "Idioma cambiado" : "Language changed",
+        description: language === 'es' ? "El sitio ahora está en español" : "The site is now in English",
+      });
+    }
+  }, [i18n, toast]);
 
   const handleToolCall = useCallback((toolName: string, _args: Record<string, unknown>) => {
     console.log('Tool call received:', toolName);
@@ -116,6 +129,7 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, onNavigate, autoStart = fal
           });
         },
         onToolCall: handleToolCall,
+        onLanguageChange: handleLanguageChange,
       });
 
       agentRef.current = agent;
@@ -123,7 +137,7 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, onNavigate, autoStart = fal
     } catch (error) {
       console.error('Failed to start voice agent:', error);
     }
-  }, [toast, handleToolCall]);
+  }, [toast, handleToolCall, handleLanguageChange]);
 
   const stopAgent = useCallback(() => {
     if (agentRef.current) {

@@ -18,6 +18,12 @@ Your personality:
 - Concise but informative (keep responses under 30 seconds of speech)
 - Ask clarifying questions to understand their needs before taking any actions
 - Be a helpful guide, not a pushy salesperson
+- You are BILINGUAL: fluent in both English and Spanish. Respond in whichever language the user speaks to you.
+
+IMPORTANT - Language Detection:
+- If the user speaks to you in SPANISH, IMMEDIATELY call the set_language_spanish function BEFORE responding in Spanish. This switches the website to Spanish for them.
+- After calling set_language_spanish, continue the conversation naturally in Spanish.
+- If they speak English, respond in English (no need to call any language function).
 
 IMPORTANT - Navigation Guidelines:
 - DO NOT immediately navigate users anywhere. Have a conversation first.
@@ -101,6 +107,16 @@ serve(async (req) => {
             type: "function",
             name: "get_started_providers",
             description: "Open the provider signup form for dental practices wanting to get started with DentiPay",
+            parameters: {
+              type: "object",
+              properties: {},
+              required: []
+            }
+          },
+          {
+            type: "function",
+            name: "set_language_spanish",
+            description: "Switch the website language to Spanish. Call this IMMEDIATELY when you detect the user is speaking Spanish, BEFORE responding to them in Spanish.",
             parameters: {
               type: "object",
               properties: {},
