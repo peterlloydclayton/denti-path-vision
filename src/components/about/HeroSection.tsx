@@ -59,38 +59,39 @@ export const HeroSection = () => {
       </div>
       
       {/* Mobile Portrait & Landscape Title */}
-      <div className="block md:hidden mobile-landscape:block absolute top-[12%] mobile-landscape:top-[20%] left-6 mobile-landscape:left-4 z-[130] w-[70%] mobile-landscape:w-[45%]">
+      <div className="block md:hidden mobile-landscape:block absolute top-[10%] mobile-landscape:top-[15%] left-6 mobile-landscape:left-4 z-[130] w-[75%] mobile-landscape:w-[50%]">
         <AnimatedText>
-          <h1 className="text-3xl mobile-landscape:text-xl font-bold text-dental-blue leading-tight mobile-landscape:leading-tight">
+          <h1 className="text-2xl mobile-landscape:text-lg font-bold text-dental-blue leading-tight">
             {t('about.hero.title')}
           </h1>
         </AnimatedText>
-        <AnimatedText delay={0.15}>
-          <p className="text-base mobile-landscape:text-xs text-dental-blue/70 font-medium leading-relaxed mt-4">
+        <AnimatedText delay={0.1}>
+          <h2 className="text-xl mobile-landscape:text-base font-semibold text-dental-blue leading-tight mt-4">
+            {t('about.hero.headline')}
+          </h2>
+        </AnimatedText>
+        <AnimatedText delay={0.2}>
+          <p className="text-sm mobile-landscape:text-xs text-dental-blue/70 font-medium leading-relaxed mt-3">
             {t('about.hero.subtitle')}
           </p>
         </AnimatedText>
       </div>
       
       {/* Tablet & Desktop Title */}
-      <div className="hidden md:block mobile-landscape:hidden absolute top-[13%] md:top-[15%] left-6 sm:left-8 md:left-12 z-[130] w-[50%]">
+      <div className="hidden md:block mobile-landscape:hidden absolute top-[10%] md:top-[12%] left-6 sm:left-8 md:left-12 z-[130] w-[55%]">
         <AnimatedText>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-dental-blue leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-dental-blue leading-tight">
             {t('about.hero.title')}
           </h1>
         </AnimatedText>
-        <AnimatedText delay={0.2}>
-          <p className="text-xl md:text-2xl text-dental-blue/70 font-medium leading-relaxed mt-8 md:mt-12">
-            {t('about.hero.subtitle')}
-          </p>
+        <AnimatedText delay={0.15}>
+          <h2 className="text-3xl md:text-4xl font-semibold text-dental-blue leading-tight mt-6 md:mt-8">
+            {t('about.hero.headline')}
+          </h2>
         </AnimatedText>
-      </div>
-
-      {/* Landscape Mobile Subtitle */}
-      <div className="hidden mobile-landscape:block absolute top-[55%] left-8 z-[130] w-[45%]">
-        <AnimatedText delay={0.2}>
-          <p className="text-xs text-dental-blue/80 font-medium leading-relaxed text-left">
-            Revolutionizing dental financing with intelligent technology.
+        <AnimatedText delay={0.25}>
+          <p className="text-lg md:text-xl text-dental-blue/70 font-medium leading-relaxed mt-4 md:mt-6">
+            {t('about.hero.subtitle')}
           </p>
         </AnimatedText>
       </div>
