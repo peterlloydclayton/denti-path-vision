@@ -59,29 +59,26 @@ export const HeroSection = () => {
       </div>
       
       {/* Mobile Portrait & Landscape Title */}
-      <div className="block md:hidden mobile-landscape:block absolute top-[15%] mobile-landscape:top-[26%] left-6 mobile-landscape:left-4 z-[130] w-3/4 mobile-landscape:w-[45%]">
+      <div className="block md:hidden mobile-landscape:block absolute top-[12%] mobile-landscape:top-[26%] left-6 mobile-landscape:left-4 z-[130] w-3/4 mobile-landscape:w-[45%]">
         <AnimatedText>
-          <h1 className="text-5xl mobile-landscape:text-2xl font-bold text-dental-blue leading-none mobile-landscape:leading-tight">
+          <h1 className="text-4xl mobile-landscape:text-2xl font-bold text-dental-blue leading-tight mobile-landscape:leading-tight mb-4">
             {t('about.hero.title')}
           </h1>
+          <h2 className="text-xl mobile-landscape:text-sm text-dental-blue/70 font-medium leading-relaxed">
+            {t('about.hero.subtitle')}
+          </h2>
         </AnimatedText>
       </div>
       
       {/* Tablet & Desktop Title - More responsive sizing */}
-      <div className="hidden md:block mobile-landscape:hidden absolute top-[13%] md:top-[15%] left-6 sm:left-8 md:left-12 z-[130] w-[85%] sm:w-[75%] md:w-[70%]">
+      <div className="hidden md:block mobile-landscape:hidden absolute top-[13%] md:top-[15%] left-6 sm:left-8 md:left-12 z-[130] w-[85%] sm:w-[75%] md:w-[60%]">
         <AnimatedText>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-dental-blue leading-tight">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-dental-blue leading-tight mb-6 md:mb-10">
             {t('about.hero.title')}
           </h1>
-        </AnimatedText>
-      </div>
-
-      {/* Desktop Subtitle */}
-      <div className="hidden md:block mobile-landscape:hidden absolute top-[63%] left-12 z-[130] w-1/2">
-        <AnimatedText delay={0.2}>
-          <p className="text-xl text-dental-blue/80 font-medium leading-relaxed text-left">
+          <h2 className="text-2xl md:text-3xl text-dental-blue/70 font-medium leading-relaxed">
             {t('about.hero.subtitle')}
-          </p>
+          </h2>
         </AnimatedText>
       </div>
 
