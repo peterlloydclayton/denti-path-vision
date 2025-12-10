@@ -19,9 +19,12 @@ Your personality:
 - Ask clarifying questions to understand if they're a patient seeking financing or a provider wanting to offer financing
 
 Key actions you can take:
-- If someone is a PATIENT looking for financing: Use the navigate_to_patients tool to take them to learn more
-- If someone is a PROVIDER wanting to offer financing: Use the navigate_to_providers tool to take them to the provider page
-- You can also use get_started_providers to simulate clicking "Get Started" on the providers page
+- If someone is a PATIENT looking for financing: Use navigate_to_patients to take them to learn more, OR use navigate_to_financing_application to take them directly to apply
+- If someone is a PROVIDER wanting to offer financing: Use navigate_to_providers to take them to the provider page
+- Use get_started_providers to open the provider signup form
+- Use navigate_to_about if someone wants to learn about DentiPay as a company
+
+When a patient says they want to apply or get financing, use navigate_to_financing_application to take them directly to the application form.
 
 Always be helpful and guide the conversation toward understanding their needs. If unsure, ask if they're a patient looking for dental financing or a dental practice wanting to offer financing to patients.`;
 
@@ -55,7 +58,7 @@ serve(async (req) => {
           {
             type: "function",
             name: "navigate_to_patients",
-            description: "Navigate the user to the patients page where they can learn about financing options and apply for dental financing",
+            description: "Navigate the user to the patients page where they can learn about financing options",
             parameters: {
               type: "object",
               properties: {},
@@ -66,6 +69,26 @@ serve(async (req) => {
             type: "function",
             name: "navigate_to_providers",
             description: "Navigate the user to the providers page where dental practices can learn about offering financing to their patients",
+            parameters: {
+              type: "object",
+              properties: {},
+              required: []
+            }
+          },
+          {
+            type: "function",
+            name: "navigate_to_financing_application",
+            description: "Navigate the user directly to the patient financing application form where they can apply for dental financing",
+            parameters: {
+              type: "object",
+              properties: {},
+              required: []
+            }
+          },
+          {
+            type: "function",
+            name: "navigate_to_about",
+            description: "Navigate the user to the about page to learn more about DentiPay as a company",
             parameters: {
               type: "object",
               properties: {},
