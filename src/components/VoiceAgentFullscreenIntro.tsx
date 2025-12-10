@@ -133,7 +133,7 @@ export const VoiceAgentFullscreenIntro = ({ isOpen, onClose, onNavigate }: Voice
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[200] bg-gradient-to-b from-background via-background to-dental-blue/10 flex flex-col items-center justify-center"
+          className="fixed inset-0 z-[200] bg-background/70 backdrop-blur-xl flex flex-col items-center justify-center"
         >
           {/* Close Button */}
           <Button
