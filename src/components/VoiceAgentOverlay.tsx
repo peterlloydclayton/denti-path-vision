@@ -292,9 +292,9 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, onNavigate, autoStart = fal
                 {messages.length === 0 && !currentTranscript && status === 'idle' && (
                   <div className="text-center py-8">
                     <Bot className="w-12 h-12 mx-auto text-muted-foreground/50 mb-4" />
-                    <p className="text-muted-foreground text-sm">
+                    <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
                       Click the microphone to start talking with Echo
-                    </p>
+                    </h2>
                   </div>
                 )}
               </div>
