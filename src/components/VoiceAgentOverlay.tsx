@@ -55,6 +55,26 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, onNavigate, autoStart = fal
         }, 1500);
         break;
 
+      case 'navigate_to_financing_application':
+        toast({
+          title: "Opening Financing Application",
+          description: "Taking you to apply for dental financing...",
+        });
+        setTimeout(() => {
+          onNavigate('/patient-financing-application');
+        }, 1500);
+        break;
+
+      case 'navigate_to_about':
+        toast({
+          title: "Navigating to About",
+          description: "Learn more about DentiPay...",
+        });
+        setTimeout(() => {
+          onNavigate('/about');
+        }, 1500);
+        break;
+
       case 'get_started_providers':
         toast({
           title: "Opening Provider Signup",
