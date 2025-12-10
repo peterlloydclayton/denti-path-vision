@@ -109,9 +109,9 @@ serve(async (req) => {
         tool_choice: "auto",
         turn_detection: {
           type: "server_vad",
-          threshold: 0.5,
-          prefix_padding_ms: 300,
-          silence_duration_ms: 800
+          threshold: 0.7,  // Higher = less sensitive to background noise
+          prefix_padding_ms: 400,
+          silence_duration_ms: 1200  // Longer silence needed before interruption
         },
         input_audio_transcription: {
           model: "whisper-1"
