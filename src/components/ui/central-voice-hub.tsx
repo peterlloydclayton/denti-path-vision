@@ -36,12 +36,13 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
 
             {/* Voice Chat Option - Left side */}
             <motion.button
-              initial={{ opacity: 0, x: 0 }}
-              animate={{ opacity: 1, x: -100 }}
-              exit={{ opacity: 0, x: 0 }}
+              initial={{ opacity: 0, x: 60, scale: 0.8 }}
+              animate={{ opacity: 1, x: -80, scale: 1 }}
+              exit={{ opacity: 0, x: 60, scale: 0.8 }}
               transition={{ type: 'spring', damping: 20, stiffness: 300, delay: 0.05 }}
               onClick={handleVoiceChat}
-              className="absolute bottom-[30px] left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-3 bg-dental-blue rounded-full shadow-lg hover:bg-dental-blue-dark transition-colors z-[60]"
+              className="absolute bottom-[30px] left-1/2 flex items-center gap-2 px-4 py-3 bg-dental-blue rounded-full shadow-lg hover:bg-dental-blue-dark transition-colors z-[60]"
+              style={{ transform: 'translateX(-50%)' }}
             >
               <div className="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center">
                 <Mic className="w-4 h-4 text-black" />
@@ -51,12 +52,13 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
 
             {/* Text Chat Option - Right side */}
             <motion.button
-              initial={{ opacity: 0, x: 0 }}
-              animate={{ opacity: 1, x: 100 }}
-              exit={{ opacity: 0, x: 0 }}
+              initial={{ opacity: 0, x: -60, scale: 0.8 }}
+              animate={{ opacity: 1, x: 80, scale: 1 }}
+              exit={{ opacity: 0, x: -60, scale: 0.8 }}
               transition={{ type: 'spring', damping: 20, stiffness: 300, delay: 0.1 }}
               onClick={handleTextChat}
-              className="absolute bottom-[30px] left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-3 bg-foreground text-background rounded-full shadow-lg hover:bg-foreground/90 transition-colors z-[60]"
+              className="absolute bottom-[30px] left-1/2 flex items-center gap-2 px-4 py-3 bg-foreground text-background rounded-full shadow-lg hover:bg-foreground/90 transition-colors z-[60]"
+              style={{ transform: 'translateX(-50%)' }}
             >
               <span className="text-sm font-medium whitespace-nowrap">Text Chat</span>
               <div className="w-8 h-8 rounded-full bg-background/20 flex items-center justify-center">
@@ -73,35 +75,10 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
         animate={{ scale: 1 }}
         transition={{ type: 'spring', stiffness: 400, damping: 25 }}
         onClick={() => setIsExpanded(!isExpanded)}
-        className={`
-          relative w-[120px] h-[120px] rounded-full 
-          bg-foreground text-dental-blue
-          shadow-2xl
-          transition-all duration-300
-          flex items-center justify-center
-          border-4 border-dental-blue/30
-          z-50
-        `}
+        className="relative w-[120px] h-[120px] rounded-full bg-foreground text-dental-blue shadow-2xl transition-all duration-300 flex items-center justify-center border-4 border-dental-blue/30 z-50 overflow-hidden"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        {/* Glow Effect */}
-        <motion.div
-          className="absolute inset-0 rounded-full bg-foreground"
-          animate={{
-            boxShadow: [
-              '0 0 20px 5px rgba(255, 255, 255, 0.3), 0 0 30px 10px rgba(0, 149, 255, 0.2)',
-              '0 0 30px 10px rgba(255, 255, 255, 0.5), 0 0 50px 15px rgba(0, 149, 255, 0.4)',
-              '0 0 20px 5px rgba(255, 255, 255, 0.3), 0 0 30px 10px rgba(0, 149, 255, 0.2)',
-            ],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-
         {/* Pulse Ring */}
         <motion.div
           className="absolute inset-0 rounded-full border-2 border-dental-blue/50"
