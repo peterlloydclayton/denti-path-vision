@@ -151,15 +151,16 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
         </motion.button>
 
         {/* Label above button */}
-        <motion.span
-          className="absolute left-1/2 -translate-x-1/2 text-sm font-medium text-foreground bg-background px-4 py-2 rounded-lg shadow-lg whitespace-nowrap border border-border pointer-events-none"
-          style={{ bottom: buttonSize + 16 }}
+        <motion.div
+          className="absolute left-1/2 -translate-x-1/2 text-center pointer-events-none"
+          style={{ bottom: buttonSize + 20 }}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: isExpanded ? 0 : 1, y: isExpanded ? 10 : 0 }}
         >
-          Chat with Echo
-          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-background border-r border-b border-border rotate-45" />
-        </motion.span>
+          <h2 className="text-2xl md:text-3xl font-semibold text-foreground whitespace-nowrap">
+            Click the microphone to start talking with Echo
+          </h2>
+        </motion.div>
       </div>
     </>
   );
