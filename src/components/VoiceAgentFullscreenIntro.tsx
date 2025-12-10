@@ -5,6 +5,7 @@ import { X, Mic, MicOff, Bot } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { VoiceAgent, VoiceAgentStatus } from '@/utils/VoiceAgent';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslation } from 'react-i18next';
 import logo from '@/assets/dentipay-logo.png';
 
 interface VoiceAgentFullscreenIntroProps {
@@ -16,11 +17,23 @@ interface VoiceAgentFullscreenIntroProps {
 export const VoiceAgentFullscreenIntro = ({ isOpen, onClose, onNavigate }: VoiceAgentFullscreenIntroProps) => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { i18n } = useTranslation();
   const [status, setStatus] = useState<VoiceAgentStatus>('idle');
   const [transcript, setTranscript] = useState('');
   const [transcriptRole, setTranscriptRole] = useState<'user' | 'assistant'>('assistant');
   const agentRef = useRef<VoiceAgent | null>(null);
   const hasStartedRef = useRef(false);
+
+  const handleLanguageChange = useCallback((language: 'es' | 'en') => {
+    if (i18n.language !== language) {
+      console.log('VoiceAgentFullscreenIntro: Switching language to', language);
+      i18n.changeLanguage(language);
+      toast({
+        title: language === 'es' ? "Idioma cambiado" : "Language changed",
+        description: language === 'es' ? "El sitio ahora está en español" : "The site is now in English",
+      });
+    }
+  }, [i18n, toast]);
 
   const handleToolCall = useCallback((toolName: string, _args: Record<string, unknown>) => {
     console.log('Tool call received:', toolName);
@@ -101,6 +114,7 @@ export const VoiceAgentFullscreenIntro = ({ isOpen, onClose, onNavigate }: Voice
           });
         },
         onToolCall: handleToolCall,
+        onLanguageChange: handleLanguageChange,
       });
 
       agentRef.current = agent;
@@ -108,7 +122,7 @@ export const VoiceAgentFullscreenIntro = ({ isOpen, onClose, onNavigate }: Voice
     } catch (error) {
       console.error('Failed to start voice agent:', error);
     }
-  }, [toast, handleToolCall]);
+  }, [toast, handleToolCall, handleLanguageChange]);
 
   const stopAgent = useCallback(() => {
     if (agentRef.current) {

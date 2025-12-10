@@ -7,6 +7,7 @@ export interface VoiceAgentCallbacks {
   onTranscript: (text: string, isFinal: boolean, role: 'user' | 'assistant') => void;
   onError: (error: string) => void;
   onToolCall: (toolName: string, args: Record<string, unknown>) => void;
+  onLanguageChange?: (language: 'es' | 'en') => void;
 }
 
 export class VoiceAgent {
@@ -243,6 +244,13 @@ export class VoiceAgent {
           args = {};
         }
         console.log('VoiceAgent: Tool call:', toolName, args);
+        
+        // Handle language change internally
+        if (toolName === 'set_language_spanish') {
+          console.log('VoiceAgent: Language change detected - switching to Spanish');
+          this.callbacks.onLanguageChange?.('es');
+        }
+        
         this.callbacks.onToolCall(toolName, args);
         
         // Send tool result back
