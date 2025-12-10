@@ -17,6 +17,7 @@ export class VoiceAgent {
   private callbacks: VoiceAgentCallbacks;
   private currentTranscript = '';
   private isConnected = false;
+  private isConnecting = false;
 
   constructor(callbacks: VoiceAgentCallbacks) {
     this.callbacks = callbacks;
@@ -25,6 +26,14 @@ export class VoiceAgent {
   }
 
   async connect(): Promise<void> {
+    // Prevent concurrent connection attempts
+    if (this.isConnecting || this.isConnected) {
+      console.log('VoiceAgent: Already connecting or connected');
+      return;
+    }
+    
+    this.isConnecting = true;
+    
     try {
       this.callbacks.onStatusChange('connecting');
       console.log('VoiceAgent: Requesting microphone access...');
@@ -38,10 +47,22 @@ export class VoiceAgent {
         } 
       });
 
+      // Check if disconnected while waiting for mic access
+      if (!this.isConnecting) {
+        this.cleanupLocalStream();
+        return;
+      }
+
       console.log('VoiceAgent: Getting ephemeral token...');
 
       // Get ephemeral token from edge function
       const { data, error } = await supabase.functions.invoke('realtime-voice-token');
+      
+      // Check if disconnected while waiting for token
+      if (!this.isConnecting) {
+        this.cleanupLocalStream();
+        return;
+      }
       
       if (error) {
         console.error('VoiceAgent: Token error:', error);
@@ -93,6 +114,12 @@ export class VoiceAgent {
         },
       });
 
+      // Check if disconnected while waiting for SDP response
+      if (!this.isConnecting || !this.pc) {
+        console.log('VoiceAgent: Disconnected during SDP exchange, aborting');
+        return;
+      }
+
       if (!sdpResponse.ok) {
         const errorText = await sdpResponse.text();
         console.error('VoiceAgent: SDP error:', errorText);
@@ -104,17 +131,32 @@ export class VoiceAgent {
         sdp: await sdpResponse.text(),
       };
       
+      // Final check before setting remote description
+      if (!this.pc) {
+        console.log('VoiceAgent: Connection closed before remote description');
+        return;
+      }
+      
       await this.pc.setRemoteDescription(answer);
       console.log('VoiceAgent: WebRTC connection established');
 
       this.isConnected = true;
+      this.isConnecting = false;
       this.callbacks.onStatusChange('connected');
 
     } catch (error) {
       console.error('VoiceAgent: Connection error:', error);
+      this.isConnecting = false;
       this.callbacks.onStatusChange('error');
       this.callbacks.onError(error instanceof Error ? error.message : 'Connection failed');
       throw error;
+    }
+  }
+  
+  private cleanupLocalStream(): void {
+    if (this.localStream) {
+      this.localStream.getTracks().forEach(track => track.stop());
+      this.localStream = null;
     }
   }
 
@@ -237,10 +279,10 @@ export class VoiceAgent {
   disconnect(): void {
     console.log('VoiceAgent: Disconnecting...');
     
-    if (this.localStream) {
-      this.localStream.getTracks().forEach(track => track.stop());
-      this.localStream = null;
-    }
+    // Stop any in-progress connection
+    this.isConnecting = false;
+    
+    this.cleanupLocalStream();
 
     if (this.dc) {
       this.dc.close();
