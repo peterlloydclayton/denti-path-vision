@@ -133,7 +133,7 @@ export const VoiceAgentFullscreenIntro = ({ isOpen, onClose, onNavigate }: Voice
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[200] bg-background/70 backdrop-blur-xl flex flex-col items-center justify-center"
+          className="fixed inset-0 z-[200] bg-background/40 backdrop-blur-xl flex flex-col items-center justify-center"
         >
           {/* Close Button */}
           <Button
@@ -185,7 +185,7 @@ export const VoiceAgentFullscreenIntro = ({ isOpen, onClose, onNavigate }: Voice
             )}
             {status === 'listening' && (
               <motion.div
-                className="absolute inset-0 rounded-full border-4 border-green-500"
+                className="absolute inset-0 rounded-full border-4 border-dental-blue-dark"
                 animate={{ scale: [1, 1.1, 1], opacity: [0.8, 0.4, 0.8] }}
                 transition={{ duration: 0.8, repeat: Infinity }}
               />
@@ -250,7 +250,7 @@ export const VoiceAgentFullscreenIntro = ({ isOpen, onClose, onNavigate }: Voice
                   key={i}
                   className={`w-1.5 md:w-2 rounded-full ${
                     status === 'speaking' ? 'bg-dental-blue' :
-                    status === 'listening' ? 'bg-green-500' :
+                    status === 'listening' ? 'bg-dental-blue-dark' :
                     'bg-muted-foreground/30'
                   }`}
                   animate={{
@@ -280,7 +280,7 @@ export const VoiceAgentFullscreenIntro = ({ isOpen, onClose, onNavigate }: Voice
               size="lg"
               variant={status === 'idle' || status === 'error' ? 'default' : 'outline'}
               className={`rounded-full w-20 h-20 ${
-                status === 'listening' ? 'bg-green-500 hover:bg-green-600 border-green-500' :
+                status === 'listening' ? 'bg-dental-blue-dark hover:bg-dental-blue-dark/90 border-dental-blue-dark' :
                 status === 'speaking' ? 'bg-dental-blue hover:bg-dental-blue-dark border-dental-blue' :
                 'bg-dental-blue hover:bg-dental-blue-dark'
               }`}
