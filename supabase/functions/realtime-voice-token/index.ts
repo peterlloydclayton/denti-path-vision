@@ -52,7 +52,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         model: "gpt-4o-realtime-preview-2024-12-17",
-        voice: "coral",
+        voice: "ash",  // British-sounding voice
         instructions: SYSTEM_PROMPT,
         tools: [
           {
