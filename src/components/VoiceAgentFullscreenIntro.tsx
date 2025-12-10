@@ -305,10 +305,10 @@ export const VoiceAgentFullscreenIntro = ({ isOpen, onClose, onNavigate }: Voice
                 <Mic className="w-8 h-8" />
               )}
             </Button>
-            <p className="text-center text-sm text-muted-foreground mt-4">
+            <p className="text-center text-2xl md:text-3xl font-semibold text-foreground mt-6">
               {agentRef.current?.isActive() 
                 ? 'Click to end conversation' 
-                : 'Click to start talking'}
+                : 'Click the microphone to start talking with Echo'}
             </p>
           </motion.div>
         </motion.div>
