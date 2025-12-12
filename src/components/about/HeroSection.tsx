@@ -117,10 +117,10 @@ export const HeroSection = () => {
         </Button>
       </div>
 
-      {/* Mobile Portrait & Landscape Button */}
-      <div className="block md:hidden mobile-landscape:block absolute top-[59%] mobile-landscape:top-[65%] left-6 mobile-landscape:left-4 z-[130]">
+      {/* Mobile Portrait Button - hidden in landscape */}
+      <div className="block sm:hidden mobile-landscape:hidden absolute top-[59%] left-6 z-[130]">
         <Button 
-          className="h-12 mobile-landscape:h-10 text-lg mobile-landscape:text-sm bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 mobile-landscape:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+          className="h-12 text-lg bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
           {t('about.hero.cta')}
         </Button>
