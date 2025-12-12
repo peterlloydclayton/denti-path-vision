@@ -67,17 +67,12 @@ export const HeroSection = () => {
         </AnimatedText>
       </div>
       
-      {/* Mobile Portrait Headline & Subtitle - lower on page */}
-      <div className="block sm:hidden absolute top-[32%] left-6 z-[130] w-3/4">
+      {/* Mobile Portrait Headline - lower on page, no subtitle */}
+      <div className="block sm:hidden absolute top-[37%] left-6 z-[130] w-3/4">
         <AnimatedText delay={0.1}>
           <h2 className="text-2xl font-semibold text-dental-blue leading-tight">
             {t('about.hero.headline')}
           </h2>
-        </AnimatedText>
-        <AnimatedText delay={0.2}>
-          <p className="text-base text-dental-blue/70 font-medium leading-relaxed mt-3">
-            {t('about.hero.subtitle')}
-          </p>
         </AnimatedText>
       </div>
       
@@ -114,7 +109,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Mobile Portrait & Landscape Button */}
-      <div className="block md:hidden mobile-landscape:block absolute top-[52%] mobile-landscape:top-[65%] left-6 mobile-landscape:left-4 z-[130]">
+      <div className="block md:hidden mobile-landscape:block absolute top-[59%] mobile-landscape:top-[65%] left-6 mobile-landscape:left-4 z-[130]">
         <Button 
           className="h-12 mobile-landscape:h-10 text-lg mobile-landscape:text-sm bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 mobile-landscape:px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
