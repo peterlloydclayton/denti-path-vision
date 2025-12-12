@@ -68,7 +68,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Mobile Portrait Headline - lower on page, no subtitle */}
-      <div className="block sm:hidden absolute top-[37%] left-6 z-[130] w-3/4">
+      <div className="block sm:hidden absolute top-[44%] left-6 z-[130] w-3/4">
         <AnimatedText delay={0.1}>
           <h2 className="text-2xl font-semibold text-dental-blue leading-tight">
             {t('about.hero.headline')}
