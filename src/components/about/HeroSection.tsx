@@ -59,18 +59,18 @@ export const HeroSection = () => {
       </div>
       
       {/* Mobile Portrait Title - matches home page positioning */}
-      <div className="block sm:hidden absolute top-[12%] left-6 z-[130] w-3/4">
+      <div className="block sm:hidden absolute top-[12%] mobile-landscape:top-[26%] left-6 mobile-landscape:left-4 z-[130] w-3/4 mobile-landscape:w-[45%]">
         <AnimatedText>
-          <h1 className="text-5xl font-bold text-dental-blue leading-none">
+          <h1 className="text-5xl mobile-landscape:text-2xl font-bold text-dental-blue leading-none mobile-landscape:leading-tight">
             {t('about.hero.title')}
           </h1>
         </AnimatedText>
       </div>
       
       {/* Mobile Portrait Headline - lower on page, no subtitle */}
-      <div className="block sm:hidden absolute top-[44%] left-6 z-[130] w-3/4">
+      <div className="block sm:hidden absolute top-[44%] mobile-landscape:top-[55%] left-6 mobile-landscape:left-4 z-[130] w-3/4 mobile-landscape:w-[45%]">
         <AnimatedText delay={0.1}>
-          <h2 className="text-2xl font-semibold text-dental-blue leading-tight">
+          <h2 className="text-2xl mobile-landscape:text-xs font-semibold text-dental-blue leading-tight">
             {t('about.hero.headline')}
           </h2>
         </AnimatedText>
