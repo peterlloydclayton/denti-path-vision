@@ -29,6 +29,7 @@ import Apply from "./pages/Apply";
 import './i18n/config';
 import { useState, useEffect, useCallback } from "react";
 import { initGA, trackPageView } from "./lib/analytics";
+import { toast } from "sonner";
 
 const queryClient = new QueryClient();
 
@@ -94,10 +95,17 @@ const AppContent = () => {
       navigate({ search: params.toString() }, { replace: true });
     }
 
-    // Show Echo companion after 5 seconds on home page
+    // Show voice assistant prompt after 5 seconds on home page
     if (location.pathname === '/') {
       setTimeout(() => {
-        setShowEchoCompanion(true);
+        toast("Would you like to chat with Echo?", {
+          description: "Our AI assistant can help you navigate and answer questions.",
+          duration: 10000,
+          action: {
+            label: "Start Chat",
+            onClick: () => setShowEchoCompanion(true),
+          },
+        });
       }, 5000);
     }
   };
