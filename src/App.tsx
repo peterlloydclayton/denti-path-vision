@@ -11,6 +11,7 @@ import { SplashScreen } from "@/components/SplashScreen";
 import { EchoAvatarCompanion } from "@/components/EchoAvatarCompanion";
 import { ChatWidget } from "@/components/ChatWidget";
 import { CentralVoiceHub } from "@/components/ui/central-voice-hub";
+import { VoiceAssistantPrompt } from "@/components/VoiceAssistantPrompt";
 import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import Providers from "./pages/Providers";
@@ -29,7 +30,6 @@ import Apply from "./pages/Apply";
 import './i18n/config';
 import { useState, useEffect, useCallback } from "react";
 import { initGA, trackPageView } from "./lib/analytics";
-import { toast } from "sonner";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +41,7 @@ const AppContent = () => {
   const [showSplash, setShowSplash] = useState(false);
   const [showEchoCompanion, setShowEchoCompanion] = useState(false);
   const [showTextChat, setShowTextChat] = useState(false);
+  const [showVoicePrompt, setShowVoicePrompt] = useState(false);
 
   useEffect(() => {
     // Check for explicit intro request
@@ -98,16 +99,18 @@ const AppContent = () => {
     // Show voice assistant prompt after 5 seconds on home page
     if (location.pathname === '/') {
       setTimeout(() => {
-        toast("Would you like to chat with Echo?", {
-          description: "Our AI assistant can help you navigate and answer questions.",
-          duration: 10000,
-          action: {
-            label: "Start Chat",
-            onClick: () => setShowEchoCompanion(true),
-          },
-        });
+        setShowVoicePrompt(true);
       }, 5000);
     }
+  };
+
+  const handleAcceptVoicePrompt = () => {
+    setShowVoicePrompt(false);
+    setShowEchoCompanion(true);
+  };
+
+  const handleDismissVoicePrompt = () => {
+    setShowVoicePrompt(false);
   };
 
   const handlePlayIntro = () => {
@@ -138,7 +141,7 @@ const AppContent = () => {
   };
 
   // Determine if hub should be shown
-  const showHub = !showSplash && !showEchoCompanion && !showTextChat;
+  const showHub = !showSplash && !showEchoCompanion && !showTextChat && !showVoicePrompt;
 
   return (
     <>
@@ -147,6 +150,13 @@ const AppContent = () => {
           <SplashScreen key="splash" onComplete={handleSplashComplete} />
         )}
       </AnimatePresence>
+
+      {/* Voice Assistant Prompt */}
+      <VoiceAssistantPrompt
+        isVisible={showVoicePrompt}
+        onAccept={handleAcceptVoicePrompt}
+        onDismiss={handleDismissVoicePrompt}
+      />
 
       {/* Echo Avatar Companion */}
       <EchoAvatarCompanion 
