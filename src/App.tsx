@@ -94,9 +94,11 @@ const AppContent = () => {
       navigate({ search: params.toString() }, { replace: true });
     }
 
-    // Show Echo companion after splash on home page
+    // Show Echo companion after 5 seconds on home page
     if (location.pathname === '/') {
-      setShowEchoCompanion(true);
+      setTimeout(() => {
+        setShowEchoCompanion(true);
+      }, 5000);
     }
   };
 
