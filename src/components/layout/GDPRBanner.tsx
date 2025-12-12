@@ -31,7 +31,7 @@ export const GDPRBanner = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md z-50"
+          className="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md z-[9999]"
           initial={{ opacity: 0, y: 100, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 100, scale: 0.95 }}
