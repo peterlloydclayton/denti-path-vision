@@ -77,23 +77,23 @@ export const HeroSection = () => {
       </div>
       
       {/* Desktop Title - matches home page positioning at top-[15%] */}
-      <div className="hidden md:block absolute top-[15%] left-12 z-[130] w-1/2">
+      <div className="hidden md:block absolute top-[15%] mobile-landscape:top-[26%] left-12 mobile-landscape:left-4 z-[130] w-1/2 mobile-landscape:w-[45%]">
         <AnimatedText>
-          <h1 className="text-6xl md:text-7xl font-bold text-dental-blue leading-tight">
+          <h1 className="text-6xl md:text-7xl mobile-landscape:text-2xl font-bold text-dental-blue leading-tight">
             {t('about.hero.title')}
           </h1>
         </AnimatedText>
       </div>
       
       {/* Desktop Headline & Subtitle - lower on page around 55% */}
-      <div className="hidden md:block absolute top-[55%] left-12 z-[130] w-1/2">
+      <div className="hidden md:block absolute top-[55%] mobile-landscape:top-[55%] left-12 mobile-landscape:left-4 z-[130] w-1/2 mobile-landscape:w-[45%]">
         <AnimatedText delay={0.15}>
-          <h2 className="text-3xl md:text-4xl font-semibold text-dental-blue leading-tight">
+          <h2 className="text-3xl md:text-4xl mobile-landscape:text-xs font-semibold text-dental-blue leading-tight">
             {t('about.hero.headline')}
           </h2>
         </AnimatedText>
         <AnimatedText delay={0.25}>
-          <p className="text-lg md:text-xl text-dental-blue/70 font-medium leading-relaxed mt-4">
+          <p className="text-lg md:text-xl mobile-landscape:text-xs text-dental-blue/70 font-medium leading-relaxed mt-4 mobile-landscape:mt-2">
             {t('about.hero.subtitle')}
           </p>
         </AnimatedText>
@@ -103,6 +103,15 @@ export const HeroSection = () => {
       <div className="hidden md:block mobile-landscape:hidden absolute top-[80%] left-12 z-[130]">
         <Button 
           className="h-16 text-xl bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-12 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+        >
+          {t('about.hero.cta')}
+        </Button>
+      </div>
+
+      {/* Mobile Landscape Button (separate element for better control) */}
+      <div className="hidden mobile-landscape:block absolute top-[75%] left-4 z-[130]">
+        <Button 
+          className="h-10 text-sm bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-6 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
           {t('about.hero.cta')}
         </Button>
