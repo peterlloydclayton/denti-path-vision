@@ -234,6 +234,8 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         consent_communications: formData.consent_communications,
         understand_no_credit_impact: formData.understand_no_credit_impact,
         confirm_information_accurate: formData.confirm_information_accurate,
+        consent_pii_collection: formData.consent_pii_collection,
+        consent_health_info_sharing: formData.consent_health_info_sharing,
         signature_data: {
           signer_name: signerName,
           signer_email: signerEmail,
@@ -318,7 +320,9 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
   const allComplianceChecked = formData.authorize_credit_report && 
                                 formData.consent_communications && 
                                 formData.understand_no_credit_impact && 
-                                formData.confirm_information_accurate;
+                                formData.confirm_information_accurate &&
+                                formData.consent_pii_collection &&
+                                formData.consent_health_info_sharing;
 
   return (
     <div className="space-y-6">
@@ -379,6 +383,30 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
             />
             <label htmlFor="confirm_information_accurate" className="text-sm leading-relaxed">
               {t('form.compliance.confirmAccurate')}
+            </label>
+          </div>
+
+          <div className="flex items-start space-x-3">
+            <Checkbox
+              id="consent_pii_collection"
+              checked={formData.consent_pii_collection}
+              onCheckedChange={(checked) => updateFormData({ consent_pii_collection: checked as boolean })}
+              required
+            />
+            <label htmlFor="consent_pii_collection" className="text-sm leading-relaxed">
+              {t('form.compliance.consentPiiCollection')}
+            </label>
+          </div>
+
+          <div className="flex items-start space-x-3">
+            <Checkbox
+              id="consent_health_info_sharing"
+              checked={formData.consent_health_info_sharing}
+              onCheckedChange={(checked) => updateFormData({ consent_health_info_sharing: checked as boolean })}
+              required
+            />
+            <label htmlFor="consent_health_info_sharing" className="text-sm leading-relaxed">
+              {t('form.compliance.consentHealthInfoSharing')}
             </label>
           </div>
         </CardContent>
@@ -498,7 +526,8 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
                 type="submit"
                 disabled={isSubmitting || !consentGiven || !signerName || !signerEmail || 
                          !formData.authorize_credit_report || !formData.consent_communications || 
-                         !formData.understand_no_credit_impact || !formData.confirm_information_accurate}
+                         !formData.understand_no_credit_impact || !formData.confirm_information_accurate ||
+                         !formData.consent_pii_collection || !formData.consent_health_info_sharing}
                 className="px-8"
               >
                 {isSubmitting ? t('form.compliance.submitting') : t('form.compliance.signAndSubmit')}

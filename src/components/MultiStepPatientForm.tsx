@@ -76,6 +76,8 @@ export interface FormData {
   consent_communications: boolean;
   understand_no_credit_impact: boolean;
   confirm_information_accurate: boolean;
+  consent_pii_collection: boolean;
+  consent_health_info_sharing: boolean;
   
   // Honeypot field for bot detection (should always be empty for real users)
   website_url: string;
@@ -136,6 +138,8 @@ const INITIAL_FORM_DATA: FormData = {
   consent_communications: false,
   understand_no_credit_impact: false,
   confirm_information_accurate: false,
+  consent_pii_collection: false,
+  consent_health_info_sharing: false,
   website_url: '', // Honeypot - must remain empty
 };
 
