@@ -189,8 +189,6 @@
       "consentCommunications": "I consent to receive communications via email, phone, and SMS regarding my application and financing options.",
       "understandNoCredit": "I understand that this pre-qualification check will not impact my credit score.",
       "confirmAccurate": "I confirm that all information provided in this application is accurate and complete to the best of my knowledge.",
-      "consentPiiCollection": "I consent to the collection, storage, and processing of my personally identifiable information (PII), including but not limited to my name, address, Social Security Number, date of birth, financial information, and contact details, for the purpose of evaluating and processing my financing application.",
-      "consentHealthInfoSharing": "I authorize DentiPay to share my personal and health-related information on a limited basis with relevant healthcare providers, dental practices, financing partners, and authorized personnel involved in processing my application and providing treatment services. I understand this information will be handled in accordance with applicable privacy laws and regulations.",
       "digitalSignature": "Digital Signature",
       "fullLegalName": "Full Legal Name",
       "signaturePreview": "Signature Preview",

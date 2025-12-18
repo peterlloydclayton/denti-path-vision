@@ -189,8 +189,6 @@
       "consentCommunications": "Consiento recibir comunicaciones por correo electrónico, teléfono y SMS con respecto a mi solicitud y opciones de financiamiento.",
       "understandNoCredit": "Entiendo que esta verificación de precalificación no afectará mi puntaje de crédito.",
       "confirmAccurate": "Confirmo que toda la información proporcionada en esta solicitud es precisa y completa según mi mejor conocimiento.",
-      "consentPiiCollection": "Consiento la recopilación, almacenamiento y procesamiento de mi información de identificación personal (PII), incluyendo pero no limitado a mi nombre, dirección, Número de Seguro Social, fecha de nacimiento, información financiera y datos de contacto, con el propósito de evaluar y procesar mi solicitud de financiamiento.",
-      "consentHealthInfoSharing": "Autorizo a DentiPay a compartir mi información personal y relacionada con la salud de manera limitada con proveedores de atención médica, consultorios dentales, socios de financiamiento y personal autorizado involucrado en el procesamiento de mi solicitud y la prestación de servicios de tratamiento. Entiendo que esta información se manejará de acuerdo con las leyes y regulaciones de privacidad aplicables.",
       "digitalSignature": "Firma Digital",
       "fullLegalName": "Nombre Legal Completo",
       "signaturePreview": "Vista Previa de Firma",
