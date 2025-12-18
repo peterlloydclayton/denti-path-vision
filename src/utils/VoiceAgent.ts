@@ -246,9 +246,12 @@ export class VoiceAgent {
         console.log('VoiceAgent: Tool call:', toolName, args);
         
         // Handle language change internally
-        if (toolName === 'set_language_spanish') {
-          console.log('VoiceAgent: Language change detected - switching to Spanish');
-          this.callbacks.onLanguageChange?.('es');
+        if (toolName === 'set_language') {
+          const lang = (args as { language?: string }).language;
+          console.log('VoiceAgent: Language change detected - switching to', lang);
+          if (lang === 'es' || lang === 'en') {
+            this.callbacks.onLanguageChange?.(lang);
+          }
         }
         
         this.callbacks.onToolCall(toolName, args);

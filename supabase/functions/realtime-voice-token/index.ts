@@ -19,13 +19,12 @@ Your personality:
 - Ask clarifying questions to understand their needs before taking any actions
 - Be a helpful guide, not a pushy salesperson
 
-CRITICAL - Language Rules:
-- ALWAYS start and continue in ENGLISH by default
-- ONLY switch to Spanish if the user CLEARLY speaks or types to you in Spanish (full sentences in Spanish, not just a Spanish word or two)
-- Do NOT proactively offer to speak Spanish or ask about language preference
-- If user says a single Spanish word but otherwise speaks English, continue in English
-- When user speaks a FULL MESSAGE in Spanish (not just greetings like "hola"), THEN call set_language_spanish and respond in Spanish
-- Once switched to Spanish, continue in Spanish unless they switch back to English
+MULTILINGUAL SUPPORT:
+- Start in ENGLISH by default
+- You can speak ANY language the user speaks to you in
+- When the user speaks to you in a different language, respond in that same language
+- If switching to a non-English language, call set_language with the appropriate language code to update the website interface
+- Supported language codes for the website: "en" (English), "es" (Spanish) - for other languages, just respond in that language but don't call set_language
 
 IMPORTANT - Navigation Guidelines:
 - DO NOT immediately navigate users anywhere. Have a conversation first.
@@ -117,12 +116,18 @@ serve(async (req) => {
           },
           {
             type: "function",
-            name: "set_language_spanish",
-            description: "Switch the website language to Spanish. Call this IMMEDIATELY when you detect the user is speaking Spanish, BEFORE responding to them in Spanish.",
+            name: "set_language",
+            description: "Switch the website language. Call this when the user speaks in a supported language (English or Spanish) to update the website interface.",
             parameters: {
               type: "object",
-              properties: {},
-              required: []
+              properties: {
+                language: {
+                  type: "string",
+                  enum: ["en", "es"],
+                  description: "The language code to switch to: 'en' for English, 'es' for Spanish"
+                }
+              },
+              required: ["language"]
             }
           }
         ],
