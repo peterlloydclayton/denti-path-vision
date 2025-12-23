@@ -11,3 +11,6 @@ verify_jwt = false
 
 [functions.log-provider-search]
 verify_jwt = false
+
+[functions.get-public-providers]
+verify_jwt = false
