@@ -84,6 +84,15 @@ const ReferringProviderSelector: React.FC<ReferringProviderSelectorProps> = ({
         state: p.state || '',
         practice_name: p.practice_name || p.business_location || 'Unknown Practice',
       }));
+      
+      // Debug: Print all practices to console
+      console.log('=== PRACTICES LIST ===');
+      console.log(`Total providers: ${mappedProviders.length}`);
+      mappedProviders.forEach((p, index) => {
+        console.log(`${index + 1}. ${p.practice_name} - ${p.full_name} (${p.city}, ${p.state})`);
+      });
+      console.log('=== END PRACTICES LIST ===');
+      
       setProviders(mappedProviders);
     } catch (err) {
       console.error('Error fetching providers:', err);
