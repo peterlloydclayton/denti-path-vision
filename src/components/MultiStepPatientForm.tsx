@@ -41,6 +41,7 @@ export interface FormData {
   referring_provider_name: string;
   referring_contact_info: string;
   referring_provider_email: string;
+  referring_provider_id: string; // UUID from public_provider_profiles
   estimated_cost: string;
   
   // Section 2 - Employment & Income
@@ -109,6 +110,7 @@ const INITIAL_FORM_DATA: FormData = {
   referring_provider_name: '',
   referring_contact_info: '',
   referring_provider_email: '',
+  referring_provider_id: '',
   estimated_cost: '',
   current_employer: '',
   employer_address: '',
