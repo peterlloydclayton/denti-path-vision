@@ -249,13 +249,13 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         website_url: formData.website_url
       };
 
-      // Submit to external edge function (v2 - goes directly to patient_applications)
-      console.log('📤 Submitting to external edge function (v2)...');
-      const response = await fetch('https://epkypzawqtpokmatjuzo.supabase.co/functions/v1/submit-patient-application_v2', {
+      // Submit to Cloud edge function
+      console.log('📤 Submitting to Cloud edge function...');
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-patient-application`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVwa3lwemF3cXRwb2ttYXRqdXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4ODc4MTgsImV4cCI6MjA3MTQ2MzgxOH0.QYx4QwYhBRHhMdfgmuHUHpWN2R1q7CetLCAS69w3yJU'
+          'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
         },
         body: JSON.stringify(applicationData)
       });
