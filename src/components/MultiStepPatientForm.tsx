@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -9,6 +9,8 @@ import EmotionalDecisionStep from './form-steps/EmotionalDecisionStep';
 import ComplianceSignatureStep from './form-steps/ComplianceSignatureStep';
 import ConfirmationStep from './form-steps/ConfirmationStep';
 import LanguageSwitcher from './LanguageSwitcher';
+import { getStepByNumber, getFieldNamesForStep } from '@/data/formFieldMetadata';
+import { dispatchStepChange } from '@/hooks/useFormContext';
 
 export interface FormData {
   // Section 1 - Personal Information
@@ -151,6 +153,14 @@ const MultiStepPatientForm: React.FC = () => {
     setSubmissionSuccess(success);
     setSubmissionError(errorMessage || '');
   };
+
+  // Dispatch step changes for Echo Lite form awareness
+  useEffect(() => {
+    const stepMeta = getStepByNumber(currentStep + 1);
+    if (stepMeta) {
+      dispatchStepChange(currentStep + 1, stepMeta.title, getFieldNamesForStep(currentStep + 1));
+    }
+  }, [currentStep]);
 
   const STEPS = [
     {

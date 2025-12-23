@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minus, Mic, MicOff, FileText, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { VoiceAgent, VoiceAgentStatus } from '@/utils/VoiceAgent';
+import { VoiceAgent, VoiceAgentStatus, PageContext } from '@/utils/VoiceAgent';
 import { useToast } from '@/hooks/use-toast';
+import { FORM_STEP_CHANGE_EVENT, FormStepChangeDetail } from '@/hooks/useFormContext';
 import echoAvatar from '@/assets/echo-avatar.png';
 
 type CompanionState = 'active' | 'minimized' | 'closed';
@@ -30,6 +32,7 @@ export const EchoAvatarCompanion = ({
   autoStart = true 
 }: EchoAvatarCompanionProps) => {
   const { toast } = useToast();
+  const location = useLocation();
   const [companionState, setCompanionState] = useState<CompanionState>('active');
   const [status, setStatus] = useState<VoiceAgentStatus>('idle');
   const [messages, setMessages] = useState<Message[]>([]);
@@ -38,6 +41,49 @@ export const EchoAvatarCompanion = ({
   const agentRef = useRef<VoiceAgent | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const hasStartedRef = useRef(false);
+
+  // Send page context to voice agent when location changes
+  const sendPageContext = useCallback((context: PageContext) => {
+    if (agentRef.current?.isActive()) {
+      agentRef.current.sendPageContext(context);
+    }
+  }, []);
+
+  // Listen for form step changes
+  useEffect(() => {
+    const handleStepChange = (event: CustomEvent<FormStepChangeDetail>) => {
+      const { stepNumber, stepTitle, fields } = event.detail;
+      sendPageContext({
+        page: 'Patient Financing Application',
+        stepNumber,
+        stepTitle,
+        fields
+      });
+    };
+
+    window.addEventListener(FORM_STEP_CHANGE_EVENT, handleStepChange as EventListener);
+    return () => {
+      window.removeEventListener(FORM_STEP_CHANGE_EVENT, handleStepChange as EventListener);
+    };
+  }, [sendPageContext]);
+
+  // Send initial page context when agent connects
+  useEffect(() => {
+    if (status === 'connected') {
+      const isOnForm = location.pathname === '/patient-financing-application' || 
+                       location.pathname === '/apply';
+      if (isOnForm) {
+        sendPageContext({
+          page: 'Patient Financing Application',
+          stepNumber: 1,
+          stepTitle: 'Personal Information',
+          fields: ['First Name', 'Last Name', 'Date of Birth', 'SSN', 'Email', 'Phone']
+        });
+      } else {
+        sendPageContext({ page: location.pathname });
+      }
+    }
+  }, [status, location.pathname, sendPageContext]);
 
   const handleToolCall = useCallback((toolName: string, _args: Record<string, unknown>) => {
     console.log('Tool call received:', toolName);

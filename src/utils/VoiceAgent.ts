@@ -10,6 +10,14 @@ export interface VoiceAgentCallbacks {
   onLanguageChange?: (language: 'es' | 'en') => void;
 }
 
+export interface PageContext {
+  page: string;
+  stepNumber?: number;
+  stepTitle?: string;
+  fields?: string[];
+  currentFormData?: Record<string, unknown>;
+}
+
 export class VoiceAgent {
   private pc: RTCPeerConnection | null = null;
   private dc: RTCDataChannel | null = null;
@@ -19,11 +27,56 @@ export class VoiceAgent {
   private currentTranscript = '';
   private isConnected = false;
   private isConnecting = false;
+  private lastPageContext: string = '';
 
   constructor(callbacks: VoiceAgentCallbacks) {
     this.callbacks = callbacks;
     this.audioEl = document.createElement("audio");
     this.audioEl.autoplay = true;
+  }
+
+  /**
+   * Send page context to the voice agent so it knows what the user is viewing
+   */
+  sendPageContext(context: PageContext): void {
+    if (!this.dc || this.dc.readyState !== 'open') {
+      console.log('VoiceAgent: Data channel not ready for page context');
+      return;
+    }
+
+    // Build context message
+    let contextMessage = `PAGE_CONTEXT: User is on ${context.page}`;
+    
+    if (context.stepNumber && context.stepTitle) {
+      contextMessage += ` - Form Step ${context.stepNumber}: ${context.stepTitle}`;
+    }
+    
+    if (context.fields && context.fields.length > 0) {
+      contextMessage += `. Fields on this step: ${context.fields.join(', ')}`;
+    }
+
+    // Avoid sending duplicate context
+    if (contextMessage === this.lastPageContext) {
+      return;
+    }
+    this.lastPageContext = contextMessage;
+
+    console.log('VoiceAgent: Sending page context:', contextMessage);
+
+    // Send as a system context message
+    this.sendEvent({
+      type: 'conversation.item.create',
+      item: {
+        type: 'message',
+        role: 'system',
+        content: [
+          {
+            type: 'input_text',
+            text: contextMessage
+          }
+        ]
+      }
+    });
   }
 
   async connect(): Promise<void> {
