@@ -170,6 +170,7 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         referring_provider_name: formData.referring_provider_name,
         referring_contact_info: formData.referring_contact_info,
         referring_provider_email: formData.referring_provider_email,
+        referring_provider_id: formData.referring_provider_id || undefined,
         estimated_cost: (() => {
           const value = parseFloat(formData.estimated_cost);
           return !isNaN(value) && value > 0 ? value : undefined;

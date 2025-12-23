@@ -168,7 +168,6 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
   const [availableDays, setAvailableDays] = useState<string[]>([]);
   const [estimatedCostError, setEstimatedCostError] = useState<string | null>(null);
   const [isManualEntry, setIsManualEntry] = useState(false);
-  const [selectedProviderId, setSelectedProviderId] = useState<string | null>(null);
   
   const form = useForm({
     resolver: zodResolver(personalInfoSchema),
@@ -222,18 +221,20 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
     
     if (isManual) {
       // Clear auto-filled fields for manual entry
-      setSelectedProviderId(null);
       form.setValue('referring_practice', '');
       form.setValue('referring_provider_name', '');
       form.setValue('referring_contact_info', '');
       form.setValue('referring_provider_email', '');
+      // Clear the provider ID in formData
+      updateFormData({ referring_provider_id: '' });
     } else if (provider) {
       // Auto-fill from selected provider
-      setSelectedProviderId(provider.id);
       form.setValue('referring_practice', provider.practice_name || '');
       form.setValue('referring_provider_name', provider.full_name || '');
       form.setValue('referring_contact_info', provider.contact_phone || '');
       form.setValue('referring_provider_email', provider.contact_email || '');
+      // Store the provider ID in formData for submission
+      updateFormData({ referring_provider_id: provider.id });
     }
   };
 
@@ -718,7 +719,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
             <div className="mt-2">
               <ReferringProviderSelector
                 onSelect={handleProviderSelect}
-                selectedProviderId={selectedProviderId}
+                selectedProviderId={formData.referring_provider_id || null}
               />
             </div>
           </div>
@@ -783,7 +784,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                 )}
               />
             </div>
-          ) : selectedProviderId ? (
+          ) : formData.referring_provider_id ? (
             // Provider selected - show read-only summary
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-muted/50 rounded-lg">
               <div>
