@@ -54,13 +54,13 @@ const ReferringProviderSelector: React.FC<ReferringProviderSelectorProps> = ({
       setLoading(true);
       setError(null);
 
+      // Use the existing external edge function
       const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/get-public-providers`,
+        'https://epkypzawqtpokmatjuzo.supabase.co/functions/v1/get-public-provider-profiles',
         {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
           },
         }
       );
@@ -70,7 +70,21 @@ const ReferringProviderSelector: React.FC<ReferringProviderSelectorProps> = ({
       }
 
       const data = await response.json();
-      setProviders(data.providers || []);
+      // Map external response to our interface
+      const mappedProviders = (data.providers || []).map((p: any) => ({
+        id: p.id,
+        provider_id: p.provider_id,
+        practice_id: p.practice_id,
+        full_name: p.full_name || '',
+        title: p.title || '',
+        contact_email: p.contact_email || '',
+        contact_phone: p.contact_phone || '',
+        business_location: p.business_location || '',
+        city: p.city || '',
+        state: p.state || '',
+        practice_name: p.practice_name || p.business_location || 'Unknown Practice',
+      }));
+      setProviders(mappedProviders);
     } catch (err) {
       console.error('Error fetching providers:', err);
       setError('Unable to load providers');
