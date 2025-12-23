@@ -70,8 +70,8 @@ const ReferringProviderSelector: React.FC<ReferringProviderSelectorProps> = ({
       }
 
       const data = await response.json();
-      // Map external response to our interface
-      const mappedProviders = (data.providers || []).map((p: any) => ({
+      // Map external response to our interface - API returns array directly
+      const mappedProviders = (Array.isArray(data) ? data : []).map((p: any) => ({
         id: p.id,
         provider_id: p.provider_id,
         practice_id: p.practice_id,
