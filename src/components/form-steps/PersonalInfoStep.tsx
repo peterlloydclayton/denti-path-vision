@@ -21,9 +21,10 @@ interface PersonalInfoStepProps {
   setIsSubmitting?: (value: boolean) => void;
 }
 
-const MAX_TEXT_LENGTH = 25;
-const MAX_EMAIL_LENGTH = 40;
-const MAX_ADDRESS_LENGTH = 50;
+const MAX_NAME_LENGTH = 100;
+const MAX_TEXT_LENGTH = 100;
+const MAX_EMAIL_LENGTH = 255;
+const MAX_ADDRESS_LENGTH = 200;
 const MAX_ESTIMATED_COST = 250000;
 
 const personalInfoSchema = z.object({
