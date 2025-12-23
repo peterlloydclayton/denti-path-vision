@@ -21,8 +21,8 @@ interface EmploymentIncomeStepProps {
   setIsSubmitting?: (value: boolean) => void;
 }
 
-const MAX_TEXT_LENGTH = 25;
-const MAX_ADDRESS_LENGTH = 50;
+const MAX_TEXT_LENGTH = 100;
+const MAX_ADDRESS_LENGTH = 200;
 
 const employmentIncomeSchema = z.object({
   current_employer: z.string().min(1, "Current employer is required").max(MAX_TEXT_LENGTH, `Maximum ${MAX_TEXT_LENGTH} characters`),
