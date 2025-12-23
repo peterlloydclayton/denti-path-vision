@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Form } from '@/components/ui/form';
 import { FormData } from '../MultiStepPatientForm';
+import ReferringProviderSelector, { PublicProvider } from './ReferringProviderSelector';
 
 interface PersonalInfoStepProps {
   formData: FormData;
@@ -166,6 +167,8 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
   const [showErrors, setShowErrors] = useState(false);
   const [availableDays, setAvailableDays] = useState<string[]>([]);
   const [estimatedCostError, setEstimatedCostError] = useState<string | null>(null);
+  const [isManualEntry, setIsManualEntry] = useState(false);
+  const [selectedProviderId, setSelectedProviderId] = useState<string | null>(null);
   
   const form = useForm({
     resolver: zodResolver(personalInfoSchema),
@@ -213,6 +216,26 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
     { value: "Neighbor", label: t('form.personal.neighbor') },
     { value: "Other", label: t('form.personal.other') },
   ];
+
+  const handleProviderSelect = (provider: PublicProvider | null, isManual: boolean) => {
+    setIsManualEntry(isManual);
+    
+    if (isManual) {
+      // Clear auto-filled fields for manual entry
+      setSelectedProviderId(null);
+      form.setValue('referring_practice', '');
+      form.setValue('referring_provider_name', '');
+      form.setValue('referring_contact_info', '');
+      form.setValue('referring_provider_email', '');
+    } else if (provider) {
+      // Auto-fill from selected provider
+      setSelectedProviderId(provider.id);
+      form.setValue('referring_practice', provider.practice_name || '');
+      form.setValue('referring_provider_name', provider.full_name || '');
+      form.setValue('referring_contact_info', provider.contact_phone || '');
+      form.setValue('referring_provider_email', provider.contact_email || '');
+    }
+  };
 
   return (
     <Form {...form}>
@@ -689,63 +712,101 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
           <h3 className="text-lg font-semibold mb-4">{t('form.personal.referralInformation')}</h3>
           <p className="text-sm text-muted-foreground mb-4">{t('form.personal.referralDescription')}</p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField
-              control={form.control}
-              name="referring_practice"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('form.personal.referringPractice')} *</FormLabel>
-                  <FormControl>
-                    <Input placeholder="ABC Dental Group" maxLength={MAX_TEXT_LENGTH} {...field} />
-                  </FormControl>
-                  {showErrors && <FormMessage />}
-                </FormItem>
-              )}
-            />
+          {/* Provider Selector */}
+          <div className="mb-4">
+            <FormLabel>{t('form.personal.referringPractice')} *</FormLabel>
+            <div className="mt-2">
+              <ReferringProviderSelector
+                onSelect={handleProviderSelect}
+                selectedProviderId={selectedProviderId}
+              />
+            </div>
+          </div>
 
-            <FormField
-              control={form.control}
-              name="referring_provider_name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('form.personal.referringProviderName')}</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Dr. John Smith" maxLength={MAX_TEXT_LENGTH} {...field} />
-                  </FormControl>
-                  {showErrors && <FormMessage />}
-                </FormItem>
-              )}
-            />
+          {/* Conditional fields based on selection */}
+          {isManualEntry ? (
+            // Manual entry mode - show editable fields
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="referring_practice"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('form.personal.referringPractice')} *</FormLabel>
+                    <FormControl>
+                      <Input placeholder="ABC Dental Group" maxLength={MAX_TEXT_LENGTH} {...field} />
+                    </FormControl>
+                    {showErrors && <FormMessage />}
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name="referring_contact_info"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('form.personal.referringContactInfo')}</FormLabel>
-                  <FormControl>
-                    <Input placeholder="(555) 123-4567 or contact@example.com" maxLength={MAX_ADDRESS_LENGTH} {...field} />
-                  </FormControl>
-                  {showErrors && <FormMessage />}
-                </FormItem>
-              )}
-            />
+              <FormField
+                control={form.control}
+                name="referring_provider_name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('form.personal.referringProviderName')}</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Dr. John Smith" maxLength={MAX_TEXT_LENGTH} {...field} />
+                    </FormControl>
+                    {showErrors && <FormMessage />}
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name="referring_provider_email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('form.personal.referringProviderEmail')}</FormLabel>
-                  <FormControl>
-                    <Input type="email" placeholder="doctor@dentalpractice.com" maxLength={MAX_EMAIL_LENGTH} {...field} />
-                  </FormControl>
-                  {showErrors && <FormMessage />}
-                </FormItem>
-              )}
-            />
+              <FormField
+                control={form.control}
+                name="referring_contact_info"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('form.personal.referringContactInfo')}</FormLabel>
+                    <FormControl>
+                      <Input placeholder="(555) 123-4567 or contact@example.com" maxLength={MAX_ADDRESS_LENGTH} {...field} />
+                    </FormControl>
+                    {showErrors && <FormMessage />}
+                  </FormItem>
+                )}
+              />
 
+              <FormField
+                control={form.control}
+                name="referring_provider_email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('form.personal.referringProviderEmail')}</FormLabel>
+                    <FormControl>
+                      <Input type="email" placeholder="doctor@dentalpractice.com" maxLength={MAX_EMAIL_LENGTH} {...field} />
+                    </FormControl>
+                    {showErrors && <FormMessage />}
+                  </FormItem>
+                )}
+              />
+            </div>
+          ) : selectedProviderId ? (
+            // Provider selected - show read-only summary
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-muted/50 rounded-lg">
+              <div>
+                <p className="text-sm font-medium text-muted-foreground">{t('form.personal.referringPractice')}</p>
+                <p className="text-sm">{form.watch('referring_practice') || '-'}</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-muted-foreground">{t('form.personal.referringProviderName')}</p>
+                <p className="text-sm">{form.watch('referring_provider_name') || '-'}</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-muted-foreground">{t('form.personal.referringContactInfo')}</p>
+                <p className="text-sm">{form.watch('referring_contact_info') || '-'}</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-muted-foreground">{t('form.personal.referringProviderEmail')}</p>
+                <p className="text-sm">{form.watch('referring_provider_email') || '-'}</p>
+              </div>
+            </div>
+          ) : null}
+
+          {/* Estimated Cost - always visible */}
+          <div className="mt-4">
             <FormField
               control={form.control}
               name="estimated_cost"
