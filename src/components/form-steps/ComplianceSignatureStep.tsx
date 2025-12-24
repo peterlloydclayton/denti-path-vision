@@ -249,13 +249,13 @@ const ComplianceSignatureStep: React.FC<ComplianceSignatureStepProps> = ({
         website_url: formData.website_url
       };
 
-      // Submit to Cloud edge function
-      console.log('📤 Submitting to Cloud edge function...');
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-patient-application`, {
+      // Submit directly to external v2 edge function (has Slack + email integrations)
+      const externalSupabaseUrl = 'https://epkypzawqtpokmatjuzo.supabase.co';
+      console.log('📤 Submitting to external v2 edge function...');
+      const response = await fetch(`${externalSupabaseUrl}/functions/v1/submit-patient-application_v2`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(applicationData)
       });
