@@ -115,7 +115,7 @@ const ReferringProviderSelector: React.FC<ReferringProviderSelectorProps> = ({
     }
     const provider = providers.find((p) => p.id === selectedValue);
     if (provider) {
-      return `${provider.practice_name} - ${provider.full_name}`;
+      return `${provider.full_name} - ${provider.practice_name}`;
     }
     return 'Select a dental practice...';
   };
@@ -182,9 +182,9 @@ const ReferringProviderSelector: React.FC<ReferringProviderSelectorProps> = ({
                     >
                       <Building2 className="mr-2 h-4 w-4 text-muted-foreground" />
                       <div className="flex flex-col">
-                        <span className="font-medium">{provider.practice_name}</span>
+                        <span className="font-medium">{provider.full_name}</span>
                         <span className="text-xs text-muted-foreground">
-                          {provider.full_name}{provider.city ? ` • ${provider.city}, ${provider.state}` : ''}
+                          {provider.practice_name}{provider.city ? ` • ${provider.city}, ${provider.state}` : ''}
                         </span>
                       </div>
                       <Check
