@@ -82,7 +82,8 @@ const ReferringProviderSelector: React.FC<ReferringProviderSelectorProps> = ({
         business_location: p.business_location || '',
         city: p.city || '',
         state: p.state || '',
-        practice_name: p.practice_name || p.business_location || 'Unknown Practice',
+        // API returns nested practice.business_name
+        practice_name: p.practice?.business_name || p.business_location || 'Unknown Practice',
       }));
       
       setProviders(mappedProviders);
