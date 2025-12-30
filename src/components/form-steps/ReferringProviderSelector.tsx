@@ -163,7 +163,12 @@ const ReferringProviderSelector: React.FC<ReferringProviderSelectorProps> = ({
                     className="cursor-pointer"
                   >
                     <User className="mr-2 h-4 w-4 text-muted-foreground" />
-                    <span>Other (Enter Manually)</span>
+                    <div className="flex flex-col">
+                      <span className="font-bold">Other (Enter Manually)</span>
+                      <span className="text-xs text-muted-foreground">
+                        Optionally Provide The Referring Practice or Provider
+                      </span>
+                    </div>
                     <Check
                       className={cn(
                         'ml-auto h-4 w-4',
