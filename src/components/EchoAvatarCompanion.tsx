@@ -378,7 +378,7 @@ export const EchoAvatarCompanion = ({
 
               {messages.length === 0 && !currentTranscript && (
                 <p className="text-xs text-center text-muted-foreground py-4">
-                  Tap the mic to start a conversation
+                  We'll be with you in one moment...
                 </p>
               )}
             </div>
