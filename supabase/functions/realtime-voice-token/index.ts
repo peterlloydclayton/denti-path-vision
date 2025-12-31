@@ -208,12 +208,13 @@ serve(async (req) => {
         tool_choice: "auto",
         turn_detection: {
           type: "server_vad",
-          threshold: 0.7,  // Higher = less sensitive to background noise
-          prefix_padding_ms: 400,
-          silence_duration_ms: 1200  // Longer silence needed before interruption
+          threshold: 0.8,  // Even higher = less sensitive to background noise
+          prefix_padding_ms: 500,
+          silence_duration_ms: 1500  // Longer silence needed before response
         },
         input_audio_transcription: {
-          model: "whisper-1"
+          model: "whisper-1",
+          language: "en"  // Hint to expect English - reduces false Spanish detection
         }
       }),
     });
