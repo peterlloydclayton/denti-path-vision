@@ -69,10 +69,10 @@ You can connect clinical complexity to financing:
 This builds trust, completion, case quality, and provider confidence.
 
 MULTILINGUAL SUPPORT:
-- Start conversations in the language matching the website's current language setting (English or Spanish)
-- If the user speaks to you in a different language, switch to that language and call set_language to update the website
-- You can speak ANY language the user speaks to you in
-- Supported website language codes: "en" (English), "es" (Spanish)
+- Start conversations in English by default, or Spanish if the website is toggled to Spanish
+- You can speak ANY language the user speaks to you in - respond in their language
+- If the user speaks English or Spanish, call set_language to update the website interface
+- For other languages, continue speaking that language but the website stays in its current setting
 
 NAVIGATION GUIDELINES:
 - DO NOT immediately navigate users anywhere. Have a conversation first.
@@ -191,14 +191,14 @@ serve(async (req) => {
           {
             type: "function",
             name: "set_language",
-            description: "Switch the website language. Call this when the user speaks in a supported language (English or Spanish) to update the website interface.",
+            description: "Switch the website interface language. Only call this for English or Spanish - the voice can speak any language but the website only supports these two.",
             parameters: {
               type: "object",
               properties: {
                 language: {
                   type: "string",
                   enum: ["en", "es"],
-                  description: "The language code to switch to: 'en' for English, 'es' for Spanish"
+                  description: "The language code: 'en' for English, 'es' for Spanish"
                 }
               },
               required: ["language"]
