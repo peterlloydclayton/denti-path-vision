@@ -213,8 +213,8 @@ serve(async (req) => {
           silence_duration_ms: 1500  // Longer silence needed before response
         },
         input_audio_transcription: {
-          model: "whisper-1",
-          language: "en"  // Hint to expect English - reduces false Spanish detection
+          model: "whisper-1"
+          // No language hint - allows Whisper to auto-detect any language
         }
       }),
     });
