@@ -24,20 +24,21 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en', // Always start in English
+    lng: 'en', // Always start in English unless user explicitly toggles Spanish
     fallbackLng: 'en',
     debug: false,
     defaultNS: 'common',
     ns: ['common', 'marketing'],
-    
+
     interpolation: {
       escapeValue: false,
     },
 
     detection: {
-      // Only use localStorage - language only changes when user explicitly toggles it
+      // Only use our explicit app language key; ignore any old i18nextLng values
       order: ['localStorage'],
       caches: ['localStorage'],
+      lookupLocalStorage: 'dp_lang',
     },
   });
 
