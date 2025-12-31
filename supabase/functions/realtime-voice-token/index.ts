@@ -216,7 +216,8 @@ serve(async (req) => {
           silence_duration_ms: 1200  // Longer silence needed before interruption
         },
         input_audio_transcription: {
-          model: "whisper-1"
+          model: "whisper-1",
+          language: "en"  // Start with English transcription - can switch dynamically
         }
       }),
     });
