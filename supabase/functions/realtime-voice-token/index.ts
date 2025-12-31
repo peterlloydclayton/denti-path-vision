@@ -138,7 +138,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         model: "gpt-4o-realtime-preview",
-        voice: "shimmer",
+        voice: "coral",
         instructions: SYSTEM_PROMPT,
         tools: [
           {
