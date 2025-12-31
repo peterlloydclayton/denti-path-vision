@@ -225,7 +225,7 @@ export class VoiceAgent {
           type: 'response.create',
           response: {
             modalities: ['audio', 'text'],
-            instructions: 'Greet the user warmly and introduce yourself as Echo, DentiPay\'s AI assistant. Ask how you can help them today - whether they\'re a patient looking for dental financing or a dental practice interested in offering financing options.'
+            instructions: "CRITICAL: Start in ENGLISH for your first message, even if the user's browser/site language is Spanish. Greet the user warmly and introduce yourself as Echo, DentiPay's AI assistant. Ask how you can help them today - whether they're a patient looking for dental financing or a dental practice interested in offering financing options. After your first English greeting, you may switch to the user's language ONLY if they clearly speak to you in that language (full sentences)."
           }
         });
       }, 500);
