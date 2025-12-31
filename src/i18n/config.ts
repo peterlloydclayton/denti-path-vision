@@ -24,6 +24,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
+    lng: 'en', // Always start in English
     fallbackLng: 'en',
     debug: false,
     defaultNS: 'common',
@@ -34,7 +35,8 @@ i18n
     },
 
     detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'],
+      // Only use localStorage - language only changes when user explicitly toggles it
+      order: ['localStorage'],
       caches: ['localStorage'],
     },
   });
