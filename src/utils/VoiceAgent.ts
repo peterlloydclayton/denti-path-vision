@@ -28,9 +28,11 @@ export class VoiceAgent {
   private isConnected = false;
   private isConnecting = false;
   private lastPageContext: string = '';
+  private initialLanguage: string = 'en';
 
-  constructor(callbacks: VoiceAgentCallbacks) {
+  constructor(callbacks: VoiceAgentCallbacks, initialLanguage: string = 'en') {
     this.callbacks = callbacks;
+    this.initialLanguage = initialLanguage;
     this.audioEl = document.createElement("audio");
     this.audioEl.autoplay = true;
   }
@@ -221,11 +223,15 @@ export class VoiceAgent {
       console.log('VoiceAgent: Data channel opened');
       // Send initial greeting prompt
       setTimeout(() => {
+        const greetingInstructions = this.initialLanguage === 'es'
+          ? 'Saluda al usuario calurosamente EN ESPAÑOL e introdúcete como Echo, el asistente de IA de DentiPay. Pregunta cómo puedes ayudarles hoy, ya sea que sean un paciente buscando financiamiento dental o una práctica dental interesada en ofrecer opciones de financiamiento.'
+          : 'Greet the user warmly IN ENGLISH and introduce yourself as Echo, DentiPay\'s AI assistant. Ask how you can help them today - whether they\'re a patient looking for dental financing or a dental practice interested in offering financing options.';
+        
         this.sendEvent({
           type: 'response.create',
           response: {
             modalities: ['audio', 'text'],
-            instructions: "CRITICAL: Start in ENGLISH for your first message, even if the user's browser/site language is Spanish. Greet the user warmly and introduce yourself as Echo, DentiPay's AI assistant. Ask how you can help them today - whether they're a patient looking for dental financing or a dental practice interested in offering financing options. After your first English greeting, you may switch to the user's language ONLY if they clearly speak to you in that language (full sentences)."
+            instructions: greetingInstructions
           }
         });
       }, 500);

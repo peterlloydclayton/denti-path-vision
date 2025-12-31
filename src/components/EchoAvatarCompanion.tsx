@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minus, Mic, MicOff, FileText, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -32,6 +33,7 @@ export const EchoAvatarCompanion = ({
   autoStart = true 
 }: EchoAvatarCompanionProps) => {
   const { toast } = useToast();
+  const { i18n } = useTranslation();
   const location = useLocation();
   const [companionState, setCompanionState] = useState<CompanionState>('active');
   const [status, setStatus] = useState<VoiceAgentStatus>('idle');
@@ -138,6 +140,9 @@ export const EchoAvatarCompanion = ({
     if (agentRef.current?.isActive()) return;
 
     try {
+      // Pass the current site language to the voice agent
+      const currentLanguage = i18n.language?.startsWith('es') ? 'es' : 'en';
+      
       const agent = new VoiceAgent({
         onStatusChange: setStatus,
         onTranscript: (text, isFinal, role) => {
@@ -162,7 +167,7 @@ export const EchoAvatarCompanion = ({
           });
         },
         onToolCall: handleToolCall,
-      });
+      }, currentLanguage);
 
       agentRef.current = agent;
       await agent.connect();

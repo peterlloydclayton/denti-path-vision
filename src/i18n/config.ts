@@ -24,7 +24,6 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en', // Always start in English
     fallbackLng: 'en',
     debug: false,
     defaultNS: 'common',
@@ -35,10 +34,8 @@ i18n
     },
 
     detection: {
-      // Only check localStorage for explicit user choice, ignore browser settings
-      order: ['localStorage'],
+      order: ['localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
-      lookupLocalStorage: 'i18nextLng',
     },
   });
 
