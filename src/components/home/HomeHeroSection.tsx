@@ -111,7 +111,7 @@ export const HomeHeroSection = ({ onPlayIntro }: HomeHeroSectionProps) => {
       {/* Desktop Subtitle */}
       <div className="hidden md:block absolute top-[63%] mobile-landscape:top-[55%] left-12 mobile-landscape:left-8 z-20 w-1/2 mobile-landscape:w-[45%]">
         <AnimatedText delay={0.2}>
-          <p className="text-xl mobile-landscape:text-xs text-foreground/80 font-medium leading-relaxed text-left">
+          <p className="text-xl 2xl:text-2xl 3xl:text-3xl mobile-landscape:text-xs text-foreground/80 font-medium leading-relaxed text-left">
             {t('home.hero.description')}
           </p>
         </AnimatedText>
