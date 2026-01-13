@@ -87,7 +87,7 @@ export const HowItWorksSection = () => {
                 <AnimatedText>
                   <div className="space-y-6">
                     <div className="inline-flex items-center px-4 py-2 rounded-full bg-dental-blue text-dental-blue-dark text-sm font-medium">
-                      Product Overview
+                      Service Overview
                     </div>
                     <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
                       How It Works
