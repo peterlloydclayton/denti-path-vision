@@ -2,6 +2,7 @@ import { AnimatedText } from '@/components/ui/animated-text';
 import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import dentistOfficeImage from '@/assets/dentist-office-how-it-works.jpg';
 
 export const HowItWorksSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -29,23 +30,23 @@ export const HowItWorksSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-background via-secondary/10 to-background">
+    <section className="py-12 bg-gradient-to-br from-background via-secondary/10 to-background">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="bg-card/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl border border-border/50">
-            <div className="grid lg:grid-cols-2 min-h-[600px]">
+            <div className="grid lg:grid-cols-2 min-h-[450px]">
               {/* Video Side */}
               <div className="relative group cursor-pointer order-1 lg:order-1">
                 {!isPlaying ? (
                   <div 
-                    className="relative w-full h-full min-h-[400px] lg:min-h-full"
+                    className="relative w-full h-full min-h-[300px] lg:min-h-full"
                     onClick={handlePlayClick}
                   >
                     <img 
-                      src="https://res.cloudinary.com/drxvhwze4/image/upload/v1759199955/dental-network-community_gdikrs.png" 
-                      alt="DentiPay Trinity System"
+                      src={dentistOfficeImage} 
+                      alt="Dentist in modern dental office"
                       className={`w-full h-full object-cover transition-opacity duration-700 ${isLoaded ? 'opacity-100 animate-fade-in' : 'opacity-0'}`}
-                      style={{ objectPosition: '50% center' }}
+                      style={{ objectPosition: '50% 30%' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-black/40 group-hover:from-primary/30 group-hover:to-black/50 transition-all duration-500" />
                     
@@ -63,10 +64,10 @@ export const HowItWorksSection = () => {
                     </div>
 
                     {/* Bottom Overlay Text */}
-                    <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                       <div className="text-white">
                         <p className="text-sm opacity-90 mb-2">Watch Video</p>
-                        <h3 className="text-lg font-semibold">See the Trinity in Action</h3>
+                        <h3 className="text-lg font-semibold">Learn how DentiPay works for your patients</h3>
                       </div>
                     </div>
                   </div>
@@ -74,7 +75,7 @@ export const HowItWorksSection = () => {
                   <iframe
                     src={getVimeoEmbedUrl("https://vimeo.com/1154002963")}
                     title="How DentiPay Works"
-                    className="w-full h-full min-h-[400px] lg:min-h-full"
+                    className="w-full h-full min-h-[300px] lg:min-h-full"
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
