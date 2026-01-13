@@ -87,13 +87,13 @@ export const HowItWorksSection = () => {
                 <AnimatedText>
                   <div className="space-y-6">
                     <div className="inline-flex items-center px-4 py-2 rounded-full bg-dental-blue text-dental-blue-dark text-sm font-medium">
-                      How it Works
+                      Product Overview
                     </div>
                     <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                      One Brand. One Portal. One System.
+                      How It Works
                     </h2>
                     <p className="text-xl text-muted-foreground leading-relaxed">
-                      The DentiPay Trinity: Brand leverage, patient portal, and intelligence engine working in perfect harmony.
+                      From patient intake to case funding—we handle the entire financing journey so you can focus on delivering exceptional care.
                     </p>
                     <div className="flex items-center gap-4 pt-4">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
