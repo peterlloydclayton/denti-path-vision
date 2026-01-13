@@ -17,10 +17,10 @@ const Providers = () => {
   return (
     <div className="overflow-x-hidden">
       <HeroSection />
-      <HowItWorksSection />
       <VideoSection />
       <ProblemSection />
       <ProblemDeepDive />
+      <HowItWorksSection />
       <TrinitySection />
       <EchoProviderSection />
       <WorkflowComparison />
