@@ -407,13 +407,22 @@ Deno.serve(async (req) => {
         const mailjetUrl = 'https://api.mailjet.com/v3.1/send';
         const auth = btoa(`${apiKey}:${apiSecret}`);
         
-        // Admin notification email
+        // Admin notification email - simplified to just name and referral source
+        const referralSource = applicationData.referring_practice 
+          ? applicationData.referring_practice 
+          : (applicationData.referring_provider_name 
+            ? applicationData.referring_provider_name 
+            : 'Web Search');
+        
         const adminHtmlContent = `
           <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
             <h1 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">New Patient Financing Application</h1>
-            <p><strong>Name:</strong> ${applicationData.first_name}${applicationData.middle_name ? ` ${applicationData.middle_name}` : ''} ${applicationData.last_name}</p>
-            <p><strong>Email:</strong> ${applicationData.email}</p>
-            <p><strong>Mobile Phone:</strong> ${applicationData.mobile_phone || 'N/A'}</p>
+            <p style="font-size: 18px; margin: 20px 0;">
+              We have a new financing application from <strong>${applicationData.first_name} ${applicationData.last_name}</strong>
+            </p>
+            <p style="font-size: 16px; color: #374151;">
+              Referred by: <strong>${referralSource}</strong>
+            </p>
             <p><strong>Application ID:</strong> ${tempApp.id}</p>
             <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 12px;">
               <em>This email was automatically generated from the DentiPay patient financing application form.</em>
