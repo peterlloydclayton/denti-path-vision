@@ -212,17 +212,13 @@ export class VoiceAgent {
     if (!this.dc) return;
 
     this.dc.onopen = () => {
-      // Send initial greeting prompt
+      // Send initial greeting prompt - always in English
       setTimeout(() => {
-        const greetingInstructions = this.initialLanguage === 'es'
-          ? 'Saluda al usuario calurosamente EN ESPAÑOL e introdúcete como Echo, el asistente de IA de DentiPay. Pregunta cómo puedes ayudarles hoy, ya sea que sean un paciente buscando financiamiento dental o una práctica dental interesada en ofrecer opciones de financiamiento.'
-          : 'Greet the user warmly IN ENGLISH and introduce yourself as Echo, DentiPay\'s AI assistant. Ask how you can help them today - whether they\'re a patient looking for dental financing or a dental practice interested in offering financing options.';
-        
         this.sendEvent({
           type: 'response.create',
           response: {
             modalities: ['audio', 'text'],
-            instructions: greetingInstructions
+            instructions: 'Greet the user warmly IN ENGLISH and introduce yourself as Echo, DentiPay\'s AI assistant. Ask how you can help them today - whether they\'re a patient looking for dental financing or a dental practice interested in offering financing options.'
           }
         });
       }, 500);
