@@ -265,7 +265,6 @@ Deno.serve(async (req) => {
       applicationData = ApplicationSchema.parse(rawData)
     } catch (validationError) {
       if (validationError instanceof z.ZodError) {
-      if (validationError instanceof z.ZodError) {
         return new Response(
           JSON.stringify({ 
             error: 'Invalid application data',
@@ -768,4 +767,4 @@ Deno.serve(async (req) => {
       }
     )
   }
-})
+});
