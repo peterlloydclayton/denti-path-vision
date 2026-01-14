@@ -209,8 +209,10 @@ const AppContent = () => {
   );
 };
 
+const helmetContext = {};
+
 const App = () => (
-  <HelmetProvider>
+  <HelmetProvider context={helmetContext}>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
