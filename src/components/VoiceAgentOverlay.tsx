@@ -201,13 +201,13 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, onNavigate, autoStart = fal
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
+          {/* Backdrop (visual only — does not block page interactions) */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-background/60 backdrop-blur-sm z-[100]"
-            onClick={onClose}
+            className="fixed inset-0 bg-background/60 backdrop-blur-sm z-[100] pointer-events-none"
+            aria-hidden="true"
           />
 
           {/* Side Panel */}
