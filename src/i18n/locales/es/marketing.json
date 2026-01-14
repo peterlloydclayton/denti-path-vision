@@ -822,8 +822,13 @@
         },
         "colinDedely": {
           "name": "Colin Dedely",
-          "role": "Tecnología y Sistemas de Crédito",
-          "description": "Colin Dedely es el Socio Fundador de Tecnología y Sistemas de Crédito en DentiPay, donde lidera el desarrollo de la arquitectura fintech de la plataforma, el motor de preaprobación de pacientes y los sistemas de optimización de crédito del proveedor. Con un historial comprobado de asegurar más de $80 millones en financiamiento al consumidor con una tasa de aprobación líder en la industria del 90%."
+          "role": "Director Financiero de Fondeo",
+          "description": "Colin Dedely es el Socio Fundador y Director Financiero de Fondeo en DentiPay, donde lidera el desarrollo de la arquitectura fintech de la plataforma, el motor de preaprobación de pacientes y los sistemas de optimización de crédito del proveedor. Con un historial comprobado de asegurar más de $80 millones en financiamiento al consumidor con una tasa de aprobación líder en la industria del 90%."
+        },
+        "peterClayton": {
+          "name": "Peter Clayton",
+          "role": "Director de Tecnología",
+          "description": "Peter Clayton es el Socio Fundador de Tecnología y Sistemas de IA en DentiPay, liderando la arquitectura de la plataforma, integración de IA e infraestructura en la nube. Con más de 25 años en tecnología abarcando sistemas CRM, desarrollo web, software empresarial e implementación de IA, construye los sistemas inteligentes que impulsan las herramientas de proveedores y la experiencia del paciente de DentiPay. Peter se especializa en arquitecturas de IA multi-agente, plataformas de IA de voz y soluciones en la nube escalables que traducen la tecnología emergente en resultados comerciales medibles."
         }
       }
     },

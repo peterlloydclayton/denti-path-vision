@@ -8,6 +8,7 @@ import donaldThorne from '@/assets/profiles/donald-thorne.png';
 import nuttalyaReussi from '@/assets/profiles/nuttalya-reussi.png';
 import michaelWeydemuller from '@/assets/profiles/michael-weydemuller.png';
 import colinDedely from '@/assets/profiles/colin-dedely.png';
+import peterClayton from '@/assets/profiles/peter-clayton.jpg';
 import { useTranslation } from 'react-i18next';
 
 export const LeadershipSection = () => {
@@ -48,6 +49,13 @@ export const LeadershipSection = () => {
       color: 'dental-peach',
       description: t('about.leadership.bios.colinDedely.description'),
       image: colinDedely
+    },
+    {
+      name: t('about.leadership.bios.peterClayton.name'),
+      role: t('about.leadership.bios.peterClayton.role'),
+      color: 'dental-blue',
+      description: t('about.leadership.bios.peterClayton.description'),
+      image: peterClayton
     }
   ];
 
