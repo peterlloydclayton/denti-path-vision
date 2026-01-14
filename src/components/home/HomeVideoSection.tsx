@@ -47,11 +47,9 @@ export const HomeVideoSection = ({ imagePosition = 'left', mobileImagePosition =
     setIsPlaying(true);
   };
 
-  const getEmbedUrl = (url: string) => {
-    const videoId = url.includes('youtu.be/') 
-      ? url.split('youtu.be/')[1].split('?')[0]
-      : url.split('v=')[1]?.split('&')[0];
-    return `https://www.youtube.com/embed/${videoId}?autoplay=1&fs=1&rel=0&modestbranding=1`;
+  const getVimeoEmbedUrl = (url: string) => {
+    const videoId = url.split('vimeo.com/')[1]?.split('?')[0];
+    return `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`;
   };
 
   // Mobile order classes based on mobileImagePosition
@@ -110,11 +108,11 @@ export const HomeVideoSection = ({ imagePosition = 'left', mobileImagePosition =
                   </div>
                 ) : (
                   <iframe
-                    src={getEmbedUrl("https://youtu.be/eWq1aw-ug_s?si=UUoV9voG69eUMYCg")}
+                    src={getVimeoEmbedUrl("https://vimeo.com/1139515331")}
                     title={t('home.video.title')}
                     className="w-full h-full min-h-[400px] lg:min-h-full"
                     frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
                   />
                 )}
