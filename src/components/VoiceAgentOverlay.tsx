@@ -35,7 +35,6 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, onNavigate, autoStart = fal
 
   const handleLanguageChange = useCallback((language: 'es' | 'en') => {
     if (i18n.language !== language) {
-      console.log('VoiceAgentOverlay: Switching language to', language);
       i18n.changeLanguage(language);
       toast({
         title: language === 'es' ? "Idioma cambiado" : "Language changed",
@@ -45,8 +44,6 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, onNavigate, autoStart = fal
   }, [i18n, toast]);
 
   const handleToolCall = useCallback((toolName: string, _args: Record<string, unknown>) => {
-    console.log('Tool call received:', toolName);
-    
     switch (toolName) {
       case 'navigate_to_patients':
         toast({
@@ -134,8 +131,8 @@ export const VoiceAgentOverlay = ({ isOpen, onClose, onNavigate, autoStart = fal
 
       agentRef.current = agent;
       await agent.connect();
-    } catch (error) {
-      console.error('Failed to start voice agent:', error);
+    } catch {
+      // Ignore voice agent start errors
     }
   }, [toast, handleToolCall, handleLanguageChange]);
 

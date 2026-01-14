@@ -15,7 +15,6 @@ function checkRateLimit(ip: string): boolean {
   const recent = requests.filter(t => now - t < 3600000); // Last hour
   
   if (recent.length >= 5) { // Max 5 submissions per hour
-    console.log(`Rate limit exceeded for IP: ${ip}`);
     return false;
   }
   
@@ -49,9 +48,6 @@ if (!supabaseServiceKey || supabaseServiceKey.split('.').length !== 3) {
   throw new Error('Invalid EXTERNAL_SUPABASE_SERVICE_ROLE_KEY configuration')
 }
 
-    console.log('Connecting to external database:', supabaseUrl.substring(0, 30) + '...')
-    console.log('Service key length:', supabaseServiceKey.length)
-    console.log('Service key preview:', supabaseServiceKey.substring(0, 20) + '...')
 
     // Create Supabase client (service role bypasses RLS)
 const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
@@ -218,7 +214,6 @@ Deno.serve(async (req) => {
   }
 
   try {
-    console.log('=== Submit Patient Application Started (v2) ===')
     
     // Rate limiting check
     const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
@@ -226,7 +221,6 @@ Deno.serve(async (req) => {
                      'unknown';
     
     if (!checkRateLimit(clientIP)) {
-      console.log(`Rate limit exceeded for IP: ${clientIP}`);
       return new Response(
         JSON.stringify({ error: 'Too many requests. Please try again later.' }),
         { 
@@ -241,7 +235,6 @@ Deno.serve(async (req) => {
     
     // Honeypot check - if website_url has a value, this is likely a bot
     if (rawData.website_url && rawData.website_url.trim() !== '') {
-      console.log(`🤖 Bot detected - honeypot field filled. IP: ${clientIP}`);
       // Return success to not alert the bot, but don't process
       return new Response(
         JSON.stringify({ 
@@ -270,9 +263,8 @@ Deno.serve(async (req) => {
     let applicationData: ApplicationData;
     try {
       applicationData = ApplicationSchema.parse(rawData)
-      console.log('Application data validated for:', `${applicationData.first_name} ${applicationData.last_name}`)
     } catch (validationError) {
-      console.error('Validation error:', validationError)
+      if (validationError instanceof z.ZodError) {
       if (validationError instanceof z.ZodError) {
         return new Response(
           JSON.stringify({ 
@@ -289,14 +281,12 @@ Deno.serve(async (req) => {
     }
 
     // Insert application data (matching original working version approach)
-    console.log('Inserting application data into database...')
     
     // Remove signature_data, honeypot field, and map to individual fields for external DB
     const { signature_data, authorize_credit_report, other_income, website_url, ...insertData } = applicationData as any
     
     // Map signature_data to external DB signature columns
     if (signature_data) {
-      console.log('Mapping signature_data to external DB signature fields');
       insertData.signature_signer_name = signature_data.signer_name;
       insertData.signature_signer_email = signature_data.signer_email;
       insertData.signature_consent_given = signature_data.consent_given;
@@ -331,7 +321,6 @@ Deno.serve(async (req) => {
     // Backwards compatibility: transform estimated_treatment_cost to estimated_cost
     if (insertData.estimated_treatment_cost !== undefined && insertData.estimated_cost === undefined) {
       insertData.estimated_cost = insertData.estimated_treatment_cost;
-      console.log('Transformed estimated_treatment_cost to estimated_cost:', insertData.estimated_cost);
     }
     // Remove old field name if it exists
     delete insertData.estimated_treatment_cost;
@@ -342,7 +331,6 @@ Deno.serve(async (req) => {
         .split(',')
         .map((s: string) => s.trim())
         .filter((s: string) => s.length > 0);
-      console.log('Converted treatment_reason to array:', insertData.treatment_reason);
     }
     
     // Define exact fields that exist in the EXTERNAL database (epkypzawqtpokmatjuzo)
@@ -387,15 +375,9 @@ Deno.serve(async (req) => {
       }
     }
     
-    console.log('Filtered to allowed fields. Count:', Object.keys(filteredData).length);
-    console.log('Filtered field names:', Object.keys(filteredData).sort());
-    
     // Use filtered data directly without adding created_at/expires_at
     // (external DB will handle these with defaults)
     const secureApplicationData = filteredData;
-    
-    console.log('Final field count before insert:', Object.keys(secureApplicationData).length);
-    console.log('Final fields being inserted:', Object.keys(secureApplicationData).sort());
     
     const { data: tempApp, error: appError } = await supabaseAdmin
       .from('temp_patient_applications')
@@ -404,14 +386,6 @@ Deno.serve(async (req) => {
       .maybeSingle()
 
     if (appError) {
-      console.error('Application insert error:', appError)
-      console.error('Error code:', appError.code)
-      console.error('Error details:', appError.details)
-      console.error('Error hint:', appError.hint)
-      console.error('Error message:', appError.message)
-      console.error('Full error details:', JSON.stringify(appError, null, 2))
-      console.error('Insert payload keys:', Object.keys(secureApplicationData).sort())
-      console.error('Insert payload sample:', JSON.stringify(secureApplicationData, null, 2).substring(0, 500))
       return new Response(
         JSON.stringify({ 
           error: 'Failed to submit application',
@@ -424,8 +398,6 @@ Deno.serve(async (req) => {
         }
       )
     }
-    
-    console.log('Application successfully inserted with ID:', tempApp.id)
 
     // Send email notification using Mailjet
     try {

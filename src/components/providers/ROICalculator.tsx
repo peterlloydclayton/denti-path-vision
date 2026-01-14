@@ -18,7 +18,6 @@ export const ROICalculator = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleButtonClick = () => {
-    console.log('ROI Calculator button clicked');
     setIsModalOpen(true);
   };
 
