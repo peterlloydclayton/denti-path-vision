@@ -41,7 +41,7 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
 
       {/* Hub Container - centered at bottom of viewport */}
       <div 
-        className="fixed z-50"
+        className="fixed z-50 pointer-events-none"
         style={{ 
           bottom: '24px',
           left: '50vw',
@@ -66,7 +66,7 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
                   marginLeft: -80, // half of pill width estimate
                   marginTop: -24, // half of pill height estimate
                 }}
-                className="flex items-center gap-2 px-4 py-3 bg-dental-blue rounded-full shadow-lg hover:bg-dental-blue/90 transition-colors z-[60]"
+                className="flex items-center gap-2 px-4 py-3 bg-dental-blue rounded-full shadow-lg hover:bg-dental-blue/90 transition-colors z-[60] pointer-events-auto"
               >
                 <div className="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center">
                   <Mic className="w-4 h-4 text-black" />
@@ -88,7 +88,7 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
                   marginLeft: -60, // half of pill width estimate
                   marginTop: -24, // half of pill height estimate
                 }}
-                className="flex items-center gap-2 px-4 py-3 bg-foreground text-background rounded-full shadow-lg hover:bg-foreground/90 transition-colors z-[60]"
+                className="flex items-center gap-2 px-4 py-3 bg-foreground text-background rounded-full shadow-lg hover:bg-foreground/90 transition-colors z-[60] pointer-events-auto"
               >
                 <span className="text-sm font-medium whitespace-nowrap">Text Chat</span>
                 <div className="w-8 h-8 rounded-full bg-background/20 flex items-center justify-center">
@@ -106,7 +106,7 @@ export const CentralVoiceHub = ({ onTextChat, onVoiceChat }: CentralVoiceHubProp
           transition={{ type: 'spring', stiffness: 400, damping: 25 }}
           onClick={() => setIsExpanded(!isExpanded)}
           style={{ width: buttonSize, height: buttonSize }}
-          className="relative rounded-full bg-foreground shadow-2xl flex items-center justify-center overflow-hidden"
+          className="relative rounded-full bg-foreground shadow-2xl flex items-center justify-center overflow-hidden pointer-events-auto"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
