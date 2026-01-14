@@ -88,8 +88,6 @@ export const EchoAvatarCompanion = ({
   }, [status, location.pathname, sendPageContext]);
 
   const handleToolCall = useCallback((toolName: string, _args: Record<string, unknown>) => {
-    console.log('Tool call received:', toolName);
-    
     switch (toolName) {
       case 'navigate_to_patients':
         toast({
@@ -171,8 +169,8 @@ export const EchoAvatarCompanion = ({
 
       agentRef.current = agent;
       await agent.connect();
-    } catch (error) {
-      console.error('Failed to start voice agent:', error);
+    } catch {
+      // Ignore voice agent start errors
     }
   }, [toast, handleToolCall]);
 

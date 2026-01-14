@@ -42,7 +42,6 @@ export class VoiceAgent {
    */
   sendPageContext(context: PageContext): void {
     if (!this.dc || this.dc.readyState !== 'open') {
-      console.log('VoiceAgent: Data channel not ready for page context');
       return;
     }
 
@@ -63,7 +62,7 @@ export class VoiceAgent {
     }
     this.lastPageContext = contextMessage;
 
-    console.log('VoiceAgent: Sending page context:', contextMessage);
+    
 
     // Send as a system context message
     this.sendEvent({
@@ -84,7 +83,6 @@ export class VoiceAgent {
   async connect(): Promise<void> {
     // Prevent concurrent connection attempts
     if (this.isConnecting || this.isConnected) {
-      console.log('VoiceAgent: Already connecting or connected');
       return;
     }
     
@@ -92,7 +90,6 @@ export class VoiceAgent {
     
     try {
       this.callbacks.onStatusChange('connecting');
-      console.log('VoiceAgent: Requesting microphone access...');
 
       // Request microphone access
       this.localStream = await navigator.mediaDevices.getUserMedia({ 
@@ -109,7 +106,7 @@ export class VoiceAgent {
         return;
       }
 
-      console.log('VoiceAgent: Getting ephemeral token...');
+      
 
       // Get ephemeral token from edge function
       const { data, error } = await supabase.functions.invoke('realtime-voice-token');
@@ -121,24 +118,23 @@ export class VoiceAgent {
       }
       
       if (error) {
-        console.error('VoiceAgent: Token error:', error);
+        
         throw new Error('Failed to get voice session token');
       }
 
       if (!data?.client_secret?.value) {
-        console.error('VoiceAgent: Invalid token response:', data);
+        
         throw new Error('Invalid token response');
       }
 
       const ephemeralKey = data.client_secret.value;
-      console.log('VoiceAgent: Got ephemeral token, setting up WebRTC...');
+      
 
       // Create peer connection
       this.pc = new RTCPeerConnection();
 
       // Set up remote audio playback
       this.pc.ontrack = (e) => {
-        console.log('VoiceAgent: Received audio track');
         this.audioEl.srcObject = e.streams[0];
       };
 
@@ -155,7 +151,7 @@ export class VoiceAgent {
       const offer = await this.pc.createOffer();
       await this.pc.setLocalDescription(offer);
 
-      console.log('VoiceAgent: Connecting to OpenAI Realtime API...');
+      
 
       // Connect to OpenAI's Realtime API
       const baseUrl = "https://api.openai.com/v1/realtime";
@@ -172,13 +168,10 @@ export class VoiceAgent {
 
       // Check if disconnected while waiting for SDP response
       if (!this.isConnecting || !this.pc) {
-        console.log('VoiceAgent: Disconnected during SDP exchange, aborting');
         return;
       }
 
       if (!sdpResponse.ok) {
-        const errorText = await sdpResponse.text();
-        console.error('VoiceAgent: SDP error:', errorText);
         throw new Error('Failed to establish WebRTC connection');
       }
 
@@ -189,19 +182,18 @@ export class VoiceAgent {
       
       // Final check before setting remote description
       if (!this.pc) {
-        console.log('VoiceAgent: Connection closed before remote description');
         return;
       }
       
       await this.pc.setRemoteDescription(answer);
-      console.log('VoiceAgent: WebRTC connection established');
+      
 
       this.isConnected = true;
       this.isConnecting = false;
       this.callbacks.onStatusChange('connected');
 
     } catch (error) {
-      console.error('VoiceAgent: Connection error:', error);
+      
       this.isConnecting = false;
       this.callbacks.onStatusChange('error');
       this.callbacks.onError(error instanceof Error ? error.message : 'Connection failed');
@@ -220,7 +212,6 @@ export class VoiceAgent {
     if (!this.dc) return;
 
     this.dc.onopen = () => {
-      console.log('VoiceAgent: Data channel opened');
       // Send initial greeting prompt
       setTimeout(() => {
         const greetingInstructions = this.initialLanguage === 'es'
@@ -241,18 +232,16 @@ export class VoiceAgent {
       try {
         const event = JSON.parse(e.data);
         this.handleServerEvent(event);
-      } catch (error) {
-        console.error('VoiceAgent: Error parsing event:', error);
+      } catch {
+        // Ignore parsing errors
       }
     };
 
-    this.dc.onerror = (error) => {
-      console.error('VoiceAgent: Data channel error:', error);
+    this.dc.onerror = () => {
       this.callbacks.onError('Connection error');
     };
 
     this.dc.onclose = () => {
-      console.log('VoiceAgent: Data channel closed');
       if (this.isConnected) {
         this.callbacks.onStatusChange('idle');
         this.isConnected = false;
@@ -265,7 +254,6 @@ export class VoiceAgent {
     
     switch (eventType) {
       case 'session.created':
-        console.log('VoiceAgent: Session created');
         break;
 
       case 'response.audio.delta':
@@ -302,12 +290,9 @@ export class VoiceAgent {
         } catch {
           args = {};
         }
-        console.log('VoiceAgent: Tool call:', toolName, args);
-        
         // Handle language change internally
         if (toolName === 'set_language') {
           const lang = (args as { language?: string }).language;
-          console.log('VoiceAgent: Language change detected - switching to', lang);
           if (lang === 'es' || lang === 'en') {
             this.callbacks.onLanguageChange?.(lang);
           }
@@ -328,15 +313,11 @@ export class VoiceAgent {
         break;
 
       case 'error':
-        console.error('VoiceAgent: Server error:', event);
         this.callbacks.onError((event.error as { message?: string })?.message || 'Unknown error');
         break;
 
       default:
-        // Log other events for debugging
-        if (eventType.includes('error')) {
-          console.error('VoiceAgent: Error event:', event);
-        }
+        // Ignore other events
     }
   }
 
@@ -347,7 +328,6 @@ export class VoiceAgent {
   }
 
   disconnect(): void {
-    console.log('VoiceAgent: Disconnecting...');
     
     // Stop any in-progress connection
     this.isConnecting = false;

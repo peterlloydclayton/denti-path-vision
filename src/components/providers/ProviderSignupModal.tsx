@@ -26,7 +26,6 @@ export const ProviderSignupModal = ({ isOpen, onClose }: ProviderSignupModalProp
   ];
 
   const handleSignup = () => {
-    console.log('Modal Sign Up button clicked - navigating to dental-docs-hub');
     window.location.href = 'https://dental-docs-hub.lovable.app/provider-signup';
   };
 

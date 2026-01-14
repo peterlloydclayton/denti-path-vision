@@ -5,6 +5,7 @@ import { HomeTrinitySection } from '@/components/home/HomeTrinitySection';
 import { HomeVideoSection } from '@/components/home/HomeVideoSection';
 import { HomeRevolutionaryResultsSection } from '@/components/home/HomeRevolutionaryResultsSection';
 import { HomeFinalCTASection } from '@/components/home/HomeFinalCTASection';
+import { SEOHead, organizationSchema, websiteSchema, dentalFinancingServiceSchema } from '@/components/SEOHead';
 
 interface IndexProps {
   onPlayIntro?: () => void;
@@ -13,6 +14,13 @@ interface IndexProps {
 const Index = ({ onPlayIntro }: IndexProps) => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="AI-Powered Dental Financing"
+        description="DentiPay revolutionizes dental financing with AI-powered instant approvals, 94% acceptance rates, and flexible payment plans. Make dental care accessible for everyone."
+        canonicalUrl="/"
+        jsonLd={[organizationSchema, websiteSchema, dentalFinancingServiceSchema]}
+      />
+      
       {/* Hero Section */}
       <HomeHeroSection onPlayIntro={onPlayIntro} />
 

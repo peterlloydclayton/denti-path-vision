@@ -33,7 +33,6 @@ export const dispatchStepChange = (stepNumber: number, stepTitle: string, fields
     detail: { stepNumber, stepTitle, fields }
   });
   window.dispatchEvent(event);
-  console.log('FormContext: Dispatched step change', { stepNumber, stepTitle, fields });
 };
 
 /**

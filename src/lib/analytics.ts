@@ -12,7 +12,6 @@ export const initGA = (hasConsent: boolean) => {
       },
     });
     isInitialized = true;
-    console.log('Google Analytics initialized');
   }
 };
 
@@ -36,6 +35,5 @@ export const disableGA = () => {
   if (isInitialized) {
     // Set opt-out flag
     window[`ga-disable-${GA_MEASUREMENT_ID}`] = true;
-    console.log('Google Analytics disabled');
   }
 };
