@@ -81,7 +81,8 @@ export const LeadershipSection = () => {
                       <img 
                         src={leader.image} 
                         alt={leader.name}
-                        className="w-48 h-48 object-cover rounded-full ring-4 ring-primary/20 mb-6"
+                        className="w-48 h-48 object-cover object-top rounded-full ring-4 ring-primary/20 mb-6"
+                        style={{ objectPosition: leader.name === 'Peter Clayton' ? '50% 20%' : 'center top' }}
                       />
                       <h3 className="text-2xl font-bold mb-2 text-black">{leader.name}</h3>
                       <p className="text-lg font-medium text-black">{leader.role}</p>
