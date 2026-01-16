@@ -68,7 +68,7 @@ export const HeroSection = () => {
       </div>
       
       {/* Mobile Portrait Headline - lower on page, no subtitle */}
-      <div className="block sm:hidden absolute top-[51.5%] mobile-landscape:top-[55%] left-6 mobile-landscape:left-4 z-[130] w-3/4 mobile-landscape:w-[45%]">
+      <div className="block sm:hidden absolute top-[49%] mobile-landscape:top-[55%] left-6 mobile-landscape:left-4 z-[130] w-3/4 mobile-landscape:w-[45%]">
         <AnimatedText delay={0.1}>
           <h2 className="text-2xl mobile-landscape:text-xs font-semibold text-dental-blue leading-tight">
             {t('about.hero.headline')}
@@ -118,7 +118,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Mobile Portrait Button - hidden in landscape */}
-      <div className="block sm:hidden mobile-landscape:hidden absolute top-[66.5%] left-6 z-[130]">
+      <div className="block sm:hidden mobile-landscape:hidden absolute top-[64%] left-6 z-[130]">
         <Button 
           className="h-12 text-lg bg-dental-blue text-black hover:bg-dental-blue/80 shadow-elegant px-8 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
         >
