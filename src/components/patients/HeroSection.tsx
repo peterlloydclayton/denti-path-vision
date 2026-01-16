@@ -25,7 +25,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Mobile Portrait Layout */}
-        <div className="flex sm:hidden justify-start items-start pt-20 h-[calc(100vh-5rem)] ml-[37.5%]">
+        <div className="flex sm:hidden justify-start items-start pt-20 h-[calc(100vh-5rem)] ml-[52.5%]">
           <div className="w-full max-w-md h-[calc(100vh-5rem)] relative z-10">
             <img 
               src="https://res.cloudinary.com/drxvhwze4/image/upload/v1758032045/patient-woman-latina_t6hmm3.png"
