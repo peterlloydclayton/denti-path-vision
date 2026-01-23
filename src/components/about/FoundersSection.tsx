@@ -18,7 +18,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { type CarouselApi } from '@/components/ui/carousel';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import adamZuckerman from '@/assets/profiles/adam-zuckerman.png';
-import charlesZahedi from '@/assets/profiles/charles-zahedi.png';
 import emilioArguello from '@/assets/profiles/emilio-arguello.jpg';
 import drCarmy from '@/assets/profiles/dr-carmy.jpeg';
 import { useTranslation } from 'react-i18next';
@@ -69,12 +68,6 @@ export const FoundersSection = () => {
       role: t('about.founders.bios.adamZuckerman.role'),
       description: t('about.founders.bios.adamZuckerman.description'),
       image: adamZuckerman
-    },
-    {
-      name: t('about.founders.bios.charlesZahedi.name'),
-      role: t('about.founders.bios.charlesZahedi.role'),
-      description: t('about.founders.bios.charlesZahedi.description'),
-      image: charlesZahedi
     },
     {
       name: t('about.founders.bios.emilioArguello.name'),
