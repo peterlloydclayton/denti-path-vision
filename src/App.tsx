@@ -28,6 +28,7 @@ import { ProviderSearch } from "./pages/ProviderSearch";
 import ProviderScheduling from "./pages/ProviderScheduling";
 import ProviderSignup from "./pages/ProviderSignup";
 import Apply from "./pages/Apply";
+import ChatTest from "./pages/ChatTest";
 import './i18n/config';
 import { useState, useEffect, useCallback } from "react";
 import { initGA, trackPageView } from "./lib/analytics";
@@ -199,6 +200,7 @@ const AppContent = () => {
             <Route path="/about" element={<About />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
+            <Route path="/chat-test" element={<ChatTest />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
