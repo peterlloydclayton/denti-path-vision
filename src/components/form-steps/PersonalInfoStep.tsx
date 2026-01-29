@@ -372,7 +372,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
                 <FormLabel>{t('form.personal.ssn')} *</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="123-45-6789" 
+                    placeholder="Please enter your Social Security Number"
                     value={field.value ? field.value.replace(/(\d{3})(\d{2})(\d{4})/, '$1-$2-$3') : ''}
                     onChange={(e) => {
                       const value = e.target.value.replace(/\D/g, '');
@@ -394,7 +394,7 @@ const PersonalInfoStep: React.FC<PersonalInfoStepProps> = ({
               <FormItem>
                 <FormLabel>{t('form.personal.driversLicense')} *</FormLabel>
                 <FormControl>
-                  <Input placeholder="DL123456789" maxLength={MAX_TEXT_LENGTH} {...field} />
+                  <Input placeholder="Please enter your Driver's License Number or State ID number" maxLength={MAX_TEXT_LENGTH} {...field} />
                 </FormControl>
                 {showErrors && <FormMessage />}
               </FormItem>
