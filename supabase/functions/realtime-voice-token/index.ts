@@ -126,18 +126,31 @@ serve(async (req) => {
 
     console.log('Generating ephemeral token for OpenAI Realtime API...');
 
-    // Request an ephemeral token from OpenAI
-    const response = await fetch("https://api.openai.com/v1/realtime/sessions", {
+    // Request an ephemeral token from OpenAI (new client_secrets endpoint)
+    const response = await fetch("https://api.openai.com/v1/realtime/client_secrets", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${OPENAI_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4o-realtime-preview",
-        voice: "sage",
-        instructions: SYSTEM_PROMPT,
-        tools: [
+        session: {
+          type: "realtime",
+          model: "gpt-realtime",
+          instructions: SYSTEM_PROMPT,
+          audio: {
+            output: { voice: "sage" },
+            input: {
+              transcription: { model: "whisper-1" },
+              turn_detection: {
+                type: "server_vad",
+                threshold: 0.8,
+                prefix_padding_ms: 500,
+                silence_duration_ms: 1500,
+              },
+            },
+          },
+          tools: [
           {
             type: "function",
             name: "navigate_to_patients",
@@ -204,18 +217,9 @@ serve(async (req) => {
               required: ["language"]
             }
           }
-        ],
-        tool_choice: "auto",
-        turn_detection: {
-          type: "server_vad",
-          threshold: 0.8,  // Even higher = less sensitive to background noise
-          prefix_padding_ms: 500,
-          silence_duration_ms: 1500  // Longer silence needed before response
+          ],
+          tool_choice: "auto",
         },
-        input_audio_transcription: {
-          model: "whisper-1"
-          // No language hint - allows Whisper to auto-detect any language
-        }
       }),
     });
 
@@ -226,9 +230,16 @@ serve(async (req) => {
     }
 
     const data = await response.json();
-    console.log("Session created successfully:", data.id);
+    console.log("Session created successfully:", data?.session?.id);
 
-    return new Response(JSON.stringify(data), {
+    // Reshape to keep backward compatibility with existing client
+    const payload = {
+      ...data,
+      client_secret: { value: data.value, expires_at: data.expires_at },
+      id: data?.session?.id,
+    };
+
+    return new Response(JSON.stringify(payload), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   } catch (error) {
