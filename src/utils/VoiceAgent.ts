@@ -217,7 +217,6 @@ export class VoiceAgent {
         this.sendEvent({
           type: 'response.create',
           response: {
-            modalities: ['audio', 'text'],
             instructions: 'Greet the user warmly IN ENGLISH and introduce yourself as Echo, DentiPay\'s AI assistant. Ask how you can help them today - whether they\'re a patient looking for dental financing or a dental practice interested in offering financing options.'
           }
         });
