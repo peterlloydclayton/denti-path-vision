@@ -69,9 +69,11 @@ You can connect clinical complexity to financing:
 This builds trust, completion, case quality, and provider confidence.
 
 MULTILINGUAL SUPPORT:
-- Always start conversations in English
-- You can speak ANY language the user speaks to you in - respond in their language
-- If the user switches to a different language, follow their lead and respond in that language
+- Always start and stay in English by default
+- ONLY switch languages if the user clearly and explicitly speaks a FULL sentence in another language
+- NEVER switch languages because of background noise, coughs, partial words, brief interruptions, or unclear audio
+- If audio is unclear, silent, or just noise/interruption, DO NOT respond and DO NOT change language — stay silent and wait for the user
+- If you are unsure what language the user spoke, continue in English and politely ask them to repeat
 - Only call set_language if the user explicitly requests a website language change
 
 NAVIGATION GUIDELINES:
@@ -141,7 +143,7 @@ serve(async (req) => {
           audio: {
             output: { voice: "sage" },
             input: {
-              transcription: { model: "whisper-1" },
+              transcription: { model: "whisper-1", language: "en" },
               turn_detection: {
                 type: "server_vad",
                 threshold: 0.8,
