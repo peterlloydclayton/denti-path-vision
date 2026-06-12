@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import jayOku from '@/assets/profiles/jay-oku.png';
 import donaldThorne from '@/assets/profiles/donald-thorne.png';
 import nuttalyaReussi from '@/assets/profiles/nuttalya-reussi.png';
-import michaelWeydemuller from '@/assets/profiles/michael-weydemuller.png';
 import colinDedely from '@/assets/profiles/colin-dedely.png';
 import peterClayton from '@/assets/profiles/peter-clayton.jpg';
 import { useTranslation } from 'react-i18next';
