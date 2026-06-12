@@ -36,13 +36,6 @@ export const LeadershipSection = () => {
       image: nuttalyaReussi
     },
     {
-      name: t('about.leadership.bios.michaelWeydemuller.name'),
-      role: t('about.leadership.bios.michaelWeydemuller.role'),
-      color: 'dental-green',
-      description: t('about.leadership.bios.michaelWeydemuller.description'),
-      image: michaelWeydemuller
-    },
-    {
       name: t('about.leadership.bios.colinDedely.name'),
       role: t('about.leadership.bios.colinDedely.role'),
       color: 'dental-peach',
