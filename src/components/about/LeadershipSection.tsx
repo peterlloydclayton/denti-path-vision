@@ -64,7 +64,7 @@ export const LeadershipSection = () => {
         </AnimatedText>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {leaders.map((leader, index) => (
               <AnimatedText key={index} delay={index * 0.1}>
                 <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
