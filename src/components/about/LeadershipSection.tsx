@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import jayOku from '@/assets/profiles/jay-oku.png';
 import donaldThorne from '@/assets/profiles/donald-thorne.png';
 import nuttalyaReussi from '@/assets/profiles/nuttalya-reussi.png';
-import michaelWeydemuller from '@/assets/profiles/michael-weydemuller.png';
 import colinDedely from '@/assets/profiles/colin-dedely.png';
 import peterClayton from '@/assets/profiles/peter-clayton.jpg';
 import { useTranslation } from 'react-i18next';
@@ -37,13 +36,6 @@ export const LeadershipSection = () => {
       image: nuttalyaReussi
     },
     {
-      name: t('about.leadership.bios.michaelWeydemuller.name'),
-      role: t('about.leadership.bios.michaelWeydemuller.role'),
-      color: 'dental-green',
-      description: t('about.leadership.bios.michaelWeydemuller.description'),
-      image: michaelWeydemuller
-    },
-    {
       name: t('about.leadership.bios.colinDedely.name'),
       role: t('about.leadership.bios.colinDedely.role'),
       color: 'dental-peach',
@@ -72,7 +64,7 @@ export const LeadershipSection = () => {
         </AnimatedText>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {leaders.map((leader, index) => (
               <AnimatedText key={index} delay={index * 0.1}>
                 <Card className="shadow-elegant hover:shadow-elegant transition-smooth hover:-translate-y-1 h-full">
