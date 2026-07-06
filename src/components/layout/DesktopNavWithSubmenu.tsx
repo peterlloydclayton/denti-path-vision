@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Users, Stethoscope, Building, ChevronDown, Search, Calendar, FileText } from 'lucide-react';
+import { Home, Users, Stethoscope, Building, Monitor, ChevronDown, Search, Calendar, FileText } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
@@ -30,6 +30,7 @@ const navItems = [
       { href: '/patient-financing-application', label: 'Apply for Financing', icon: FileText }
     ]
   },
+  { href: 'demo', label: 'Demo', icon: Monitor, external: 'https://www.rapidfirevc.com/dentipay-live' },
   { href: '/about', label: 'navigation.about', icon: Building },
 ];
 
@@ -161,21 +162,40 @@ export const DesktopNavWithSubmenu = () => {
               
               return (
                 <NavigationMenuItem key={item.href}>
-                  <Link
-                    to={item.href}
-                    onClick={() => setCurrentPath(item.href)}
-                    className={`
-                      flex items-center gap-2 px-4 py-2 rounded-xl
-                      transition-smooth font-medium text-lg
-                      ${isActive 
-                        ? 'bg-primary text-primary-foreground shadow-soft' 
-                        : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
-                      }
-                    `}
-                  >
-                    <Icon size={16} />
-                    <span>{t(item.label)}</span>
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.external}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`
+                        flex items-center gap-2 px-4 py-2 rounded-xl
+                        transition-smooth font-medium text-lg
+                        ${isActive
+                          ? 'bg-primary text-primary-foreground shadow-soft'
+                          : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
+                        }
+                      `}
+                    >
+                      <Icon size={16} />
+                      <span>{t(item.label)}</span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      onClick={() => setCurrentPath(item.href)}
+                      className={`
+                        flex items-center gap-2 px-4 py-2 rounded-xl
+                        transition-smooth font-medium text-lg
+                        ${isActive 
+                          ? 'bg-primary text-primary-foreground shadow-soft' 
+                          : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
+                        }
+                      `}
+                    >
+                      <Icon size={16} />
+                      <span>{t(item.label)}</span>
+                    </Link>
+                  )}
                 </NavigationMenuItem>
               );
             })}
