@@ -162,21 +162,40 @@ export const DesktopNavWithSubmenu = () => {
               
               return (
                 <NavigationMenuItem key={item.href}>
-                  <Link
-                    to={item.href}
-                    onClick={() => setCurrentPath(item.href)}
-                    className={`
-                      flex items-center gap-2 px-4 py-2 rounded-xl
-                      transition-smooth font-medium text-lg
-                      ${isActive 
-                        ? 'bg-primary text-primary-foreground shadow-soft' 
-                        : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
-                      }
-                    `}
-                  >
-                    <Icon size={16} />
-                    <span>{t(item.label)}</span>
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.external}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`
+                        flex items-center gap-2 px-4 py-2 rounded-xl
+                        transition-smooth font-medium text-lg
+                        ${isActive
+                          ? 'bg-primary text-primary-foreground shadow-soft'
+                          : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
+                        }
+                      `}
+                    >
+                      <Icon size={16} />
+                      <span>{t(item.label)}</span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      onClick={() => setCurrentPath(item.href)}
+                      className={`
+                        flex items-center gap-2 px-4 py-2 rounded-xl
+                        transition-smooth font-medium text-lg
+                        ${isActive 
+                          ? 'bg-primary text-primary-foreground shadow-soft' 
+                          : 'text-muted-foreground hover:text-primary hover:bg-secondary/50'
+                        }
+                      `}
+                    >
+                      <Icon size={16} />
+                      <span>{t(item.label)}</span>
+                    </Link>
+                  )}
                 </NavigationMenuItem>
               );
             })}
