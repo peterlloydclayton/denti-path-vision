@@ -27,6 +27,7 @@ const navItems = [
       { href: '/patient-financing-application', label: 'Apply for Financing', icon: FileText }
     ]
   },
+  { href: 'demo', label: 'Demo', icon: Monitor, external: 'https://www.rapidfirevc.com/dentipay-live' },
   { href: '/about', label: 'navigation.about', icon: Building },
 ];
 
