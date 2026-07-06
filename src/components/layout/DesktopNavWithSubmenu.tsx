@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Users, Stethoscope, Building, ChevronDown, Search, Calendar, FileText } from 'lucide-react';
+import { Home, Users, Stethoscope, Building, Monitor, ChevronDown, Search, Calendar, FileText } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
