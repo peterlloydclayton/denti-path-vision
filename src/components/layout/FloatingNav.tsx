@@ -282,24 +282,44 @@ const MobileNav = () => {
                   
                   return (
                     <motion.div key={item.href} variants={itemVariants}>
-                      <Link
-                        to={item.href}
-                        onClick={() => {
-                          setIsOpen(false);
-                          setCurrentPath(item.href);
-                        }}
-                        className={`
-                          flex items-center gap-4 p-4 rounded-xl
-                          transition-smooth hover:bg-card-hover
-                          ${isActive 
-                            ? 'bg-primary text-primary-foreground shadow-soft' 
-                            : 'text-card-foreground hover:text-primary'
-                          }
-                        `}
-                      >
-                        <Icon size={20} />
-                        <span className="font-medium">{item.label.startsWith('navigation.') ? t(item.label) : item.label}</span>
-                      </Link>
+                      {item.external ? (
+                        <a
+                          href={item.external}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setIsOpen(false)}
+                          className={`
+                            flex items-center gap-4 p-4 rounded-xl
+                            transition-smooth hover:bg-card-hover
+                            ${isActive 
+                              ? 'bg-primary text-primary-foreground shadow-soft' 
+                              : 'text-card-foreground hover:text-primary'
+                            }
+                          `}
+                        >
+                          <Icon size={20} />
+                          <span className="font-medium">{item.label.startsWith('navigation.') ? t(item.label) : item.label}</span>
+                        </a>
+                      ) : (
+                        <Link
+                          to={item.href}
+                          onClick={() => {
+                            setIsOpen(false);
+                            setCurrentPath(item.href);
+                          }}
+                          className={`
+                            flex items-center gap-4 p-4 rounded-xl
+                            transition-smooth hover:bg-card-hover
+                            ${isActive 
+                              ? 'bg-primary text-primary-foreground shadow-soft' 
+                              : 'text-card-foreground hover:text-primary'
+                            }
+                          `}
+                        >
+                          <Icon size={20} />
+                          <span className="font-medium">{item.label.startsWith('navigation.') ? t(item.label) : item.label}</span>
+                        </Link>
+                      )}
                     </motion.div>
                   );
                 })}
