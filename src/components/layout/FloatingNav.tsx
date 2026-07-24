@@ -28,6 +28,7 @@ const navItems = [
     ]
   },
   { href: 'demo', label: 'Demo', icon: Monitor, external: 'https://www.rapidfirevc.com/dentipay-live' },
+  { href: 'dp-labs', label: 'DP Labs', icon: Monitor, external: 'https://www.dentipaylabs.com' },
   { href: '/about', label: 'navigation.about', icon: Building },
 ];
 
