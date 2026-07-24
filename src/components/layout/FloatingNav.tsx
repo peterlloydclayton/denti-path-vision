@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, Users, Stethoscope, Building, Monitor, Globe, ChevronDown, Search, Calendar, FileText } from 'lucide-react';
+import { Menu, X, Home, Users, Stethoscope, Building, Monitor, Globe, ChevronDown, Search, Calendar, FileText, FlaskConical } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -28,7 +28,7 @@ const navItems = [
     ]
   },
   { href: 'demo', label: 'Demo', icon: Monitor, external: 'https://www.rapidfirevc.com/dentipay-live' },
-  { href: 'dp-labs', label: 'DP Labs', icon: Monitor, external: 'https://www.dentipaylabs.com' },
+  { href: 'dp-labs', label: 'DP Labs', icon: FlaskConical, external: 'https://www.dentipaylabs.com' },
   { href: '/about', label: 'navigation.about', icon: Building },
 ];
 
