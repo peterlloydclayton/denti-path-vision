@@ -140,7 +140,7 @@ serve(async (req) => {
         session: {
           type: "realtime",
           model: "gpt-realtime",
-          instructions: SYSTEM_PROMPT,
+          instructions: ECHO_SYSTEM_PROMPT,
           audio: {
             output: { voice: "sage" },
             input: {
