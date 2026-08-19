@@ -1,20 +1,10 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { ECHO_SYSTEM_PROMPT } from "../_shared/echo-prompt.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-runtime-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
-
-const SYSTEM_PROMPT = `You are Echo, a friendly and knowledgeable dental financing assistant for DentiPay. You help patients understand their dental financing options, answer questions about payment plans, and guide them through the application process.
-
-Key responsibilities:
-- Explain DentiPay's financing options clearly and simply
-- Help patients understand eligibility requirements
-- Guide users to the financing application when ready
-- Answer questions about dental procedures and costs in general terms
-- Be empathetic and understanding about dental anxiety and financial concerns
-
-Keep responses concise, warm, and helpful. If asked about specific medical advice, recommend consulting with a dental professional.`;
 
 serve(async (req) => {
   // Handle CORS preflight
