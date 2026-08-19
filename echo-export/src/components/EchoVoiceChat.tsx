@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useToast } from '@/hooks/use-toast';
 import { VoiceAgent, VoiceAgentStatus, PageContext } from '@/utils/VoiceAgent';
+import echoAvatar from '@/assets/echo-avatar.png';
 
 
 interface Message {
