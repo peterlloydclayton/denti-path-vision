@@ -12,6 +12,7 @@ This folder contains a backend-ready copy of the DentiPay Echo voice + text assi
 - **Frontend**
   - `src/utils/VoiceAgent.ts` — WebRTC / OpenAI Realtime client.
   - `src/components/EchoVoiceChat.tsx` — Floating voice + text chat widget.
+  - `src/assets/echo-avatar.png` — Echo's avatar image (used for the floating launcher button and the chat header).
 
 ## Requirements in the target project
 
@@ -38,7 +39,16 @@ The backend project (`dental-docs-hub`) meets all of these requirements.
    ```bash
    cp echo-export/src/utils/VoiceAgent.ts <target-project>/src/utils/VoiceAgent.ts
    cp echo-export/src/components/EchoVoiceChat.tsx <target-project>/src/components/EchoVoiceChat.tsx
+   mkdir -p <target-project>/src/assets
+   cp echo-export/src/assets/echo-avatar.png <target-project>/src/assets/echo-avatar.png
    ```
+
+   The widget imports the avatar as `import echoAvatar from '@/assets/echo-avatar.png';`, so the file must live at
+   `src/assets/echo-avatar.png` in the target project (the `@` alias must point to `src`, which is the Lovable default).
+   The avatar is rendered in two places: the round floating launcher button (56px) and the chat header (36px, with a
+   `ring-primary/30` accent). The chat window itself is a 360px rounded card with a header, a 320px scrollable message
+   area (user bubbles use `bg-primary/text-primary-foreground`, assistant bubbles `bg-muted/text-foreground`), a live
+   in-progress transcript line with a blinking caret, and an input row with a mic toggle and send button.
 
 3. In the target project, make sure the `OPENAI_API_KEY` secret is set. It must be the same key used by the marketing site for identical model behavior. Add it in the target project's Lovable Secrets panel.
 
