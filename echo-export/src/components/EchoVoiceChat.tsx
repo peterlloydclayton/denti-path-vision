@@ -145,55 +145,62 @@ export const EchoVoiceChat = ({ pageContext }: EchoVoiceChatProps) => {
       { id: crypto.randomUUID(), role: 'user', text: trimmed, timestamp: new Date() },
     ]);
 
+    const functionUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+
     try {
-      const { data, error } = await supabase.functions.invoke('chat', {
-        body: {
+      const response = await fetch(functionUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify({
           messages: [
             ...messages.map((m) => ({ role: m.role, content: m.text })),
             { role: 'user', content: trimmed },
           ],
-        },
+        }),
       });
 
-      if (error) throw error;
+      if (!response.ok) {
+        throw new Error(`Chat function error: ${response.status}`);
+      }
 
-      // The chat function returns a streaming response. Read it as text.
-      const response = data as Response;
       const reader = response.body?.getReader();
       if (!reader) {
         throw new Error('No response body');
       }
 
       const decoder = new TextDecoder();
-      let fullText = '';
+      let buffer = '';
+      let content = '';
 
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
-        fullText += decoder.decode(value, { stream: true });
-      }
+        buffer += decoder.decode(value, { stream: true });
 
-      // Parse SSE chunks from OpenAI response format
-      const lines = fullText
-        .split('\n')
-        .filter((line) => line.startsWith('data: '))
-        .map((line) => line.replace('data: ', ''));
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
 
-      let content = '';
-      for (const line of lines) {
-        if (line === '[DONE]') continue;
-        try {
-          const parsed = JSON.parse(line);
-          const delta = parsed.choices?.[0]?.delta?.content;
-          if (delta) content += delta;
-        } catch {
-          // ignore malformed lines
+        for (const line of lines) {
+          const trimmedLine = line.trim();
+          if (!trimmedLine.startsWith('data: ')) continue;
+          const data = trimmedLine.replace('data: ', '');
+          if (data === '[DONE]') continue;
+          try {
+            const parsed = JSON.parse(data);
+            const delta = parsed.choices?.[0]?.delta?.content;
+            if (delta) content += delta;
+          } catch {
+            // ignore malformed lines
+          }
         }
       }
 
       setMessages((prev) => [
         ...prev,
-        { id: crypto.randomUUID(), role: 'assistant', text: content || fullText, timestamp: new Date() },
+        { id: crypto.randomUUID(), role: 'assistant', text: content, timestamp: new Date() },
       ]);
     } catch (error) {
       console.error('Chat error:', error);
