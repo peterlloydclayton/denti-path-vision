@@ -228,8 +228,8 @@ export const EchoVoiceChat = ({ pageContext }: EchoVoiceChatProps) => {
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b bg-primary/5">
             <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground text-xs font-bold">E</span>
+              <div className="h-9 w-9 rounded-full overflow-hidden ring-2 ring-primary/30 bg-primary/10">
+                <img src={echoAvatar} alt="Echo" className="w-full h-full object-cover" />
               </div>
               <div>
                 <p className="font-semibold text-sm">Echo</p>
@@ -316,14 +316,18 @@ export const EchoVoiceChat = ({ pageContext }: EchoVoiceChatProps) => {
         </div>
       )}
 
-      <Button
-        size="icon"
-        className="h-12 w-12 rounded-full shadow-lg"
+      <button
+        type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        aria-label="Open Echo chat"
+        aria-label={isOpen ? 'Close Echo chat' : 'Open Echo chat'}
+        className="h-14 w-14 rounded-full shadow-lg overflow-hidden ring-2 ring-primary/40 bg-background hover:scale-105 transition-transform flex items-center justify-center"
       >
-        {isOpen ? <X className="h-5 w-5" /> : <MessageSquare className="h-5 w-5" />}
-      </Button>
+        {isOpen ? (
+          <X className="h-5 w-5 text-foreground" />
+        ) : (
+          <img src={echoAvatar} alt="Echo assistant" className="w-full h-full object-cover" />
+        )}
+      </button>
     </div>
   );
 };
