@@ -23,6 +23,14 @@ serve(async (req) => {
   }
 
   try {
+    let body: Record<string, unknown> = {};
+    try {
+      body = await req.json();
+    } catch (_) {
+      body = {};
+    }
+    const instructions = buildEchoInstructions(body);
+
     const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
     if (!OPENAI_API_KEY) {
       console.error('OPENAI_API_KEY is not set');
