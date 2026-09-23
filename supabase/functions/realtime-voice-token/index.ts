@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
-import { ECHO_SYSTEM_PROMPT } from "../_shared/echo-prompt.ts";
+import { buildEchoInstructions } from "../_shared/echo-channel.ts";
 import { isAuthorizedEchoRequest } from "../_shared/echo-auth.ts";
 
 const corsHeaders = {
@@ -23,6 +23,14 @@ serve(async (req) => {
   }
 
   try {
+    let body: Record<string, unknown> = {};
+    try {
+      body = await req.json();
+    } catch (_) {
+      body = {};
+    }
+    const instructions = buildEchoInstructions(body);
+
     const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
     if (!OPENAI_API_KEY) {
       console.error('OPENAI_API_KEY is not set');
@@ -42,7 +50,7 @@ serve(async (req) => {
         session: {
           type: "realtime",
           model: "gpt-realtime",
-          instructions: ECHO_SYSTEM_PROMPT,
+          instructions,
           audio: {
             output: { voice: "sage" },
             input: {

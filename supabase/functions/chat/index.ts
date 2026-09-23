@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { ECHO_SYSTEM_PROMPT } from "../_shared/echo-prompt.ts";
+import { buildEchoInstructions } from "../_shared/echo-channel.ts";
 import { isAuthorizedEchoRequest } from "../_shared/echo-auth.ts";
 
 const corsHeaders = {
@@ -21,7 +21,9 @@ serve(async (req) => {
   }
 
   try {
-    const { messages } = await req.json();
+    const body = await req.json();
+    const { messages } = body;
+    const systemPrompt = buildEchoInstructions(body);
     
     const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
     if (!OPENAI_API_KEY) {
@@ -39,7 +41,7 @@ serve(async (req) => {
       body: JSON.stringify({
         model: "gpt-4o-mini",
         messages: [
-          { role: "system", content: ECHO_SYSTEM_PROMPT },
+          { role: "system", content: systemPrompt },
           ...messages,
         ],
         stream: true,
