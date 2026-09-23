@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { ECHO_SYSTEM_PROMPT } from "../_shared/echo-prompt.ts";
+import { buildEchoInstructions } from "../_shared/echo-channel.ts";
 import { isAuthorizedEchoRequest } from "../_shared/echo-auth.ts";
 
 const corsHeaders = {
