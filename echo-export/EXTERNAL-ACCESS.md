@@ -34,6 +34,34 @@ Requests without a valid key receive `401 Unauthorized`.
 This project's own site calls the same functions with its anon key instead,
 which continues to work unchanged.
 
+## Per-channel knowledge (tailored info at the edge)
+
+Both endpoints accept two optional fields on the JSON body so each calling app
+can add its own context without touching the central brain:
+
+| Field | Type | Purpose |
+| --- | --- | --- |
+| `channel` | string (≤64 chars) | Name of the calling surface, e.g. `"dental-docs-hub"` |
+| `channel_context` | string (≤8000 chars) | Knowledge, page context, or guidance that applies only to this channel. `context` is accepted as an alias. |
+
+Example:
+```json
+{
+  "channel": "dental-docs-hub",
+  "channel_context": "You are in the provider document portal. Users are practice staff reviewing patient files. Uploads appear under Documents > Pending.",
+  "messages": [{ "role": "user", "content": "Where do I find pending uploads?" }]
+}
+```
+
+These notes are appended to the shared Echo prompt as a `CHANNEL CONTEXT`
+section and are strictly additive: they can add facts and surface guidance, but
+they cannot override the approved-claims policy, the prohibitions (no
+diagnosis, no prices, no guarantees), or the tone rules. Conflicts always
+resolve in favour of the central brain, and Echo will not disclose the notes.
+
+Send `channel_context` fresh on each request — the functions are stateless, so
+it can change per page or per user state.
+
 ## Request / response formats
 
 ### POST /chat
