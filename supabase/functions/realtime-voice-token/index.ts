@@ -29,7 +29,7 @@ serve(async (req) => {
     } catch (_) {
       body = {};
     }
-    const instructions = buildEchoInstructions(body);
+    const instructions = await buildEchoInstructions(body);
 
     const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
     if (!OPENAI_API_KEY) {

@@ -23,7 +23,7 @@ serve(async (req) => {
   try {
     const body = await req.json();
     const { messages } = body;
-    const systemPrompt = buildEchoInstructions(body);
+    const systemPrompt = await buildEchoInstructions(body);
     
     const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
     if (!OPENAI_API_KEY) {
