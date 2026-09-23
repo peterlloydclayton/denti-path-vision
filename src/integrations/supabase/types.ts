@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      echo_channel_contexts: {
+        Row: {
+          channel: string
+          context: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          channel: string
+          context: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          channel?: string
+          context?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       interested_parties: {
         Row: {
           created_at: string
