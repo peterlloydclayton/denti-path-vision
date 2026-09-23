@@ -10,7 +10,6 @@ import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { Footer } from "@/components/layout/Footer";
 import { SplashScreen } from "@/components/SplashScreen";
 import { EchoAvatarCompanion } from "@/components/EchoAvatarCompanion";
-import { ChatWidget } from "@/components/ChatWidget";
 import { CentralVoiceHub } from "@/components/ui/central-voice-hub";
 import { VoiceAssistantPrompt } from "@/components/VoiceAssistantPrompt";
 import { AnimatePresence } from "framer-motion";
@@ -42,7 +41,6 @@ const AppContent = () => {
   const navigate = useNavigate();
   const [showSplash, setShowSplash] = useState(false);
   const [showEchoCompanion, setShowEchoCompanion] = useState(false);
-  const [showTextChat, setShowTextChat] = useState(false);
   const [showVoicePrompt, setShowVoicePrompt] = useState(false);
 
   useEffect(() => {
@@ -128,22 +126,12 @@ const AppContent = () => {
     setShowEchoCompanion(false);
   };
 
-  const handleCloseTextChat = () => {
-    setShowTextChat(false);
-  };
-
   const handleOpenVoiceChat = () => {
-    setShowTextChat(false);
     setShowEchoCompanion(true);
   };
 
-  const handleOpenTextChat = () => {
-    setShowEchoCompanion(false);
-    setShowTextChat(true);
-  };
-
   // Determine if hub should be shown
-  const showHub = !showSplash && !showEchoCompanion && !showTextChat && !showVoicePrompt;
+  const showHub = !showSplash && !showEchoCompanion && !showVoicePrompt;
 
   return (
     <>
@@ -168,17 +156,10 @@ const AppContent = () => {
         autoStart={true}
       />
 
-      {/* Text Chat Panel */}
-      <ChatWidget 
-        isOpen={showTextChat} 
-        onClose={handleCloseTextChat}
-      />
-
       {/* Central Hub Button - only show when nothing else is open */}
       {showHub && (
         <CentralVoiceHub 
           onVoiceChat={handleOpenVoiceChat}
-          onTextChat={handleOpenTextChat}
         />
       )}
 
