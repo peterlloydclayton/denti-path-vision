@@ -17,6 +17,7 @@ https://oqrvskdtvaykqkclpgew.supabase.co/functions/v1
 |---|---|---|
 | Text chat | `POST .../chat` | Streaming text conversation with Echo |
 | Voice session | `POST .../realtime-voice-token` | Mints an ephemeral OpenAI Realtime session (voice) with the full Echo prompt |
+| Channel notes | `GET/PUT .../echo-channels` | Store and retrieve the per-channel knowledge for your app |
 
 ## Authentication
 
