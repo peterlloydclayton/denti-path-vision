@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Users, Stethoscope, Building, Monitor, ChevronDown, Search, Calendar, FileText, FlaskConical } from 'lucide-react';
+import { Home, Users, Stethoscope, Building, ChevronDown, Search, Calendar, FileText, FlaskConical } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
@@ -30,7 +30,6 @@ const navItems = [
       { href: '/patient-financing-application', label: 'Apply for Financing', icon: FileText }
     ]
   },
-  { href: 'demo', label: 'Demo', icon: Monitor, external: 'https://www.rapidfirevc.com/dentipay-live' },
   { href: 'dp-labs', label: 'DP Labs', icon: FlaskConical, external: 'https://www.dentipaylabs.com' },
   { href: '/about', label: 'navigation.about', icon: Building },
 ];
