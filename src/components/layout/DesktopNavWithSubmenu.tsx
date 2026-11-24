@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Users, Stethoscope, Building, ChevronDown, Search, Calendar, FileText, FlaskConical } from 'lucide-react';
+import { Home, Users, Stethoscope, Building, ChevronDown, Search, Calendar, FileText } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,13 @@ import {
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
 
-const navItems = [
+const navItems: Array<{
+  href: string;
+  label: string;
+  icon: typeof Home;
+  external?: string;
+  submenu?: Array<{ href: string; label: string; icon: typeof Home }>;
+}> = [
   { href: '/', label: 'navigation.home', icon: Home },
   { 
     href: '/providers', 
@@ -30,7 +36,6 @@ const navItems = [
       { href: '/patient-financing-application', label: 'Apply for Financing', icon: FileText }
     ]
   },
-  { href: 'dp-labs', label: 'DP Labs', icon: FlaskConical, external: 'https://www.dentipaylabs.com' },
   { href: '/about', label: 'navigation.about', icon: Building },
 ];
 
